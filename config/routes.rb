@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'contact', to: 'contact#index'
+  get 'about', to: 'about#index'
   get 'login', to: 'login#index'
   get 'register', to: 'register#index'
   get 'home', to: 'home#index'
