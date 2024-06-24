@@ -1,22 +1,22 @@
 <%= render "shared/customer/header" %>
 
 <!-- Page heading -->
-<div class="bg-white border-y border-zinc-200 py-8">
+<div class="bg-white border-b border-zinc-200 py-8">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex gap-x-4 items-center justify-between">
-      <div class="min-w-0 flex-1 flex items-center gap-x-3">
-        <a href="/assessments" class="rounded-full bg-white px-3 py-2 text-sm font-semibold text-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+      <div class="min-w-0 flex-1 flex items-center gap-x-2">
+        <a href="/assessments" class="text-blue-600 p-2.5 hover:rounded-full hover:bg-zinc-100 hover:shadow-sm">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-4">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
           </svg>
         </a>
 
-        <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Business Manager</h1>
+        <h1 class="mb-0.5 text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Business Manager</h1>
       </div>
 
       <div class="flex gap-x-3">
         <div class="relative dropdown">
-          <button tabindex="0" type="button" class="rounded-full bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+          <button tabindex="0" type="button" class="rounded-full bg-zinc-100 p-2 text-gray-600 shadow-sm hover:bg-zinc-200">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
             </svg>
@@ -25,6 +25,13 @@
           <div tabindex="0" class="dropdown-content absolute right-0 z-10 -mr-1 mt-2 w-40 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="mobile-menu-button" tabindex="-1">
             <div class="py-1" role="none">
               <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+              <a href="#" class="sm:hidden group flex items-center px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-0">
+                <svg class="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                </svg>
+                Try yourself
+              </a>
               <a href="#" class="sm:hidden group flex items-center px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-0">
                 <svg class="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
@@ -47,6 +54,19 @@
                 Archive
               </a>
             </div>
+          </div>
+        </div>
+
+        <div class="relative dropdown dropdown-hover hidden sm:block">
+          <button tabindex="1" type="button" class="rounded-full bg-zinc-100 p-2 text-gray-600 shadow-sm hover:bg-zinc-200">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            </svg>
+          </button>
+
+          <div tabindex="1" class="dropdown-content absolute -right-6 z-10 -mr-1 mt-2 origin-top-right" role="menu" aria-orientation="vertical" aria-labelledby="mobile-menu-button" tabindex="-1">
+            <div class="rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none py-2 px-3 whitespace-nowrap bg-zinc-200 text-sm text-gray-700">Try yourself</div>
           </div>
         </div>
 
@@ -106,7 +126,7 @@
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200 bg-white">
-                  <tr class="hover:bg-blue-50 cursor-pointer">
+                  <tr class="hover:bg-blue-50 cursor-pointer" data-controller="clickable-row" data-url="/assessment/candidate">
                     <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 truncate">Shan Puri</td>
                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -143,9 +163,8 @@
                       </button>
                     </td>
                   </tr>
-      
-                  
-                  <tr class="hover:bg-blue-50 cursor-pointer">
+                   
+                  <tr class="hover:bg-blue-50 cursor-pointer" data-controller="clickable-row" data-url="/assessment/candidate">
                     <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 truncate">Sam Parr</td>
                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">85%</td>
                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Completed</td>
