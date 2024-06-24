@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'candidates', to: 'candidates#index'
+  get 'candidate', to: 'candidates#show'
   get 'assessments', to: 'assessments#index'
   get 'assessments/new', to: 'assessments#new'
   get 'assessment', to: 'assessments#show'
