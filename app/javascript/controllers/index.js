@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import ClickableRowController from "./clickable_row_controller"
+application.register("clickable-row", ClickableRowController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'candidates', to: 'candidates#index'
   get 'assessments', to: 'assessments#index'
   get 'assessments/new', to: 'assessments#new'
+  get 'assessment', to: 'assessments#show'
   get 'contact', to: 'contact#index'
   get 'about', to: 'about#index'
   get 'login', to: 'login#index'
