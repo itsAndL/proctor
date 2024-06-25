@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'register/candidate', to: 'register#candidate'
+
   get 'profile/profile', to: 'profile#profile'
   get 'profile/team', to: 'profile#team'
   get 'customer/candidates', to: 'candidates#index'
@@ -7,10 +9,11 @@ Rails.application.routes.draw do
   get 'customer/assessments/new', to: 'assessments#new'
   get 'customer/assessments/1', to: 'assessments#show'
   get 'customer/assessments/1/candidates/1', to: 'assessments#candidate'
+  get 'register/customer', to: 'register#customer'
+
+  get 'login', to: 'login#index'
   get 'contact', to: 'contact#index'
   get 'about', to: 'about#index'
-  get 'login', to: 'login#index'
-  get 'register/customer', to: 'register#customer'
   get 'home', to: 'home#index'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
