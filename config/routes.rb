@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'account', to: 'account#index'
+  get 'account/team', to: 'account#team'
   get 'candidates', to: 'candidates#index'
   get 'candidate', to: 'candidates#show'
   get 'assessments', to: 'assessments#index'

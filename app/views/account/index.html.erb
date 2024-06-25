@@ -1,0 +1,60 @@
+<%= render "shared/customer/header" %>
+
+<main class="bg-gray-50 pt-10 pb-16 h-full">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <form action="#" method="POST">
+      <div class="bg-white shadow sm:overflow-hidden rounded-xl min-h-[450px]">
+        <div>
+          <nav class="isolate flex divide-x divide-gray-200 shadow" aria-label="Tabs">
+            <!-- Current: "text-gray-900", Default: "text-gray-500 hover:text-gray-700" -->
+            <a href="/account" class="group relative min-w-0 flex-1 overflow-hidden bg-white px-4 py-4 text-center text-sm font-medium text-gray-900 hover:bg-gray-50 focus:z-10" aria-current="page">
+              <span>Account</span>
+              <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-500"></span>
+            </a>
+            <a href="/account/team" class="group relative min-w-0 flex-1 overflow-hidden bg-white px-4 py-4 text-center text-sm font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-700 focus:z-10">
+              <span>Team management</span>
+              <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-0.5 bg-transparent"></span>
+            </a>
+          </nav>
+        </div>
+        <div class="space-y-6 px-4 py-6 sm:p-6">
+          <div>
+            <h3 class="text-base font-semibold leading-6 text-gray-900">Account Information</h3>
+            <p class="mt-1 text-sm text-gray-500">Update your account details.</p>
+          </div>
+
+          <div class="grid grid-cols-6 gap-6">
+            <div class="col-span-6 sm:col-span-3">
+              <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">First name</label>
+              <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="mt-2 block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
+            </div>
+
+            <div class="col-span-6 sm:col-span-3">
+              <label for="last-name" class="block text-sm font-medium leading-6 text-gray-900">Last name</label>
+              <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="mt-2 block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
+            </div>
+
+            <div class="col-span-6 sm:col-span-3">
+              <label for="email-address" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
+              <input type="text" name="email-address" id="email-address" autocomplete="email" class="mt-2 block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
+            </div>
+
+            <div class="col-span-6 sm:col-span-3">
+              <label for="phone-number" class="block text-sm font-medium leading-6 text-gray-900">Phone number</label>
+              <input type="text" name="phone-number" id="phone-number" autocomplete="tel" class="mt-2 block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
+            </div>
+
+            <div class="col-span-6 sm:col-span-4">
+              <label for="company-name" class="block text-sm font-medium leading-6 text-gray-900">Company name</label>
+              <input type="text" name="company-name" id="company-name" autocomplete="organization" class="mt-2 block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
+            </div>
+          </div>
+
+          <div class="text-right">
+            <button type="submit" class="inline-flex justify-center rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Save</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</main>
