@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :candidate do
     get 'assessments', to: 'assessments#index'
+    get 'assessments/1', to: 'assessments#show'
   end
   get 'register/candidate', to: 'register#candidate'
 

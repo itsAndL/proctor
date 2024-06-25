@@ -10,6 +10,9 @@ application.register("clickable-row", ClickableRowController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import SurveyController from "./survey_controller"
+application.register("survey", SurveyController)
+
 import SurveyCreatorController from "./survey_creator_controller"
 application.register("survey-creator", SurveyCreatorController)
 
