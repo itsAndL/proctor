@@ -1,21 +1,8 @@
-<%= render "customer/shared/header" %>
+<%= render "candidate/shared/header" %>
 
 <main class="bg-zinc-50 h-full">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-16">
     <div class="bg-white shadow sm:overflow-hidden rounded-xl">
-      <div>
-        <nav class="isolate flex divide-x divide-gray-200 shadow" aria-label="Tabs">
-          <!-- Current: "text-gray-900", Default: "text-gray-500 hover:text-gray-700" -->
-          <a href="/profile/profile" class="group relative min-w-0 flex-1 overflow-hidden bg-white px-4 py-4 text-center text-sm font-medium text-gray-900 hover:bg-gray-50 focus:z-10" aria-current="page">
-            <span>Profile</span>
-            <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-500"></span>
-          </a>
-          <a href="/profile/team" class="group relative min-w-0 flex-1 overflow-hidden bg-white px-4 py-4 text-center text-sm font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-700 focus:z-10"><!-- maybe i don't need this 'Team management' section -->
-            <span>Team management</span>
-            <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-0.5 bg-transparent"></span>
-          </a>
-        </nav>
-      </div>
       <div class="px-4 py-6 sm:p-6">
         <div class="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2">
           <div>
@@ -24,34 +11,32 @@
           </div>
 
           <form action="#" method="POST">
-            <div class="grid grid-cols-2 gap-x-6 gap-y-8">
-              <div class="col-span-2 sm:col-span-1">
+            <div class="grid grid-cols-1 gap-x-6 gap-y-8">
+              <div class="flex items-center gap-x-8">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="h-24 w-24 flex-none rounded-lg bg-gray-800 object-cover">
+                <div>
+                  <button type="button" class="rounded-full bg-gray-900 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-700">Change picture</button>
+                  <p class="mt-2 text-xs leading-5 text-gray-500">JPG, GIF or PNG. 1MB max.</p>
+                </div>
+              </div>
+
+              <div>
                 <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">First name</label>
                 <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="mt-2 block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
               </div>
 
-              <div class="col-span-2 sm:col-span-1">
+              <div>
                 <label for="last-name" class="block text-sm font-medium leading-6 text-gray-900">Last name</label>
                 <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="mt-2 block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
               </div>
 
-              <div class="col-span-2">
+              <div>
                 <label for="email-address" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
                 <input type="text" name="email-address" id="email-address" autocomplete="email" class="mt-2 block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
               </div>
-
-              <div class="col-span-2">
-                <label for="phone-number" class="block text-sm font-medium leading-6 text-gray-900">Phone number</label>
-                <input type="text" name="phone-number" id="phone-number" autocomplete="tel" class="mt-2 block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
-              </div>
-
-              <div class="col-span-2"><!-- maybe i don't need this 'Company name' input -->
-                <label for="company-name" class="block text-sm font-medium leading-6 text-gray-900">Company name</label>
-                <input type="text" name="company-name" id="company-name" autocomplete="organization" class="mt-2 block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
-              </div>
             </div>
 
-            <div class="mt-8 text-right">
+            <div class="mt-8">
               <button type="submit" class="rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Save</button>
             </div>
           </form>
@@ -82,7 +67,7 @@
               </div>
             </div>
 
-            <div class="mt-8 text-right">
+            <div class="mt-8">
               <button type="submit" class="rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Save</button>
             </div>
           </form>
