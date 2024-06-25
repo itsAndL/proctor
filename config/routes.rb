@@ -1,14 +1,19 @@
 Rails.application.routes.draw do
+  namespace :candidate do
+    get 'assessments', to: 'assessments#index'
+  end
   get 'register/candidate', to: 'register#candidate'
 
   get 'profile/profile', to: 'profile#profile'
   get 'profile/team', to: 'profile#team'
-  get 'customer/candidates', to: 'customer/candidates#index'
-  get 'customer/candidates/1', to: 'customer/candidates#show'
-  get 'customer/assessments', to: 'customer/assessments#index'
-  get 'customer/assessments/new', to: 'customer/assessments#new'
-  get 'customer/assessments/1', to: 'customer/assessments#show'
-  get 'customer/assessments/1/candidates/1', to: 'customer/assessments#candidate'
+  namespace :customer do
+    get 'candidates', to: 'candidates#index'
+    get 'candidates/1', to: 'candidates#show'
+    get 'assessments', to: 'assessments#index'
+    get 'assessments/new', to: 'assessments#new'
+    get 'assessments/1', to: 'assessments#show'
+    get 'assessments/1/candidates/1', to: 'assessments#candidate'
+  end
   get 'register/customer', to: 'register#customer'
 
   get 'login', to: 'login#index'
