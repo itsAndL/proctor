@@ -6,11 +6,11 @@
       <div>
         <nav class="isolate flex divide-x divide-gray-200 shadow" aria-label="Tabs">
           <!-- Current: "text-gray-900", Default: "text-gray-500 hover:text-gray-700" -->
-          <a href="/account" class="group relative min-w-0 flex-1 overflow-hidden bg-white px-4 py-4 text-center text-sm font-medium text-gray-900 hover:bg-gray-50 focus:z-10" aria-current="page">
-            <span>Account</span>
+          <a href="/profile/profile" class="group relative min-w-0 flex-1 overflow-hidden bg-white px-4 py-4 text-center text-sm font-medium text-gray-900 hover:bg-gray-50 focus:z-10" aria-current="page">
+            <span>Profile</span>
             <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-500"></span>
           </a>
-          <a href="/account/team" class="group relative min-w-0 flex-1 overflow-hidden bg-white px-4 py-4 text-center text-sm font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-700 focus:z-10">
+          <a href="/profile/team" class="group relative min-w-0 flex-1 overflow-hidden bg-white px-4 py-4 text-center text-sm font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-700 focus:z-10"><!-- maybe i don't need this 'Team management' section -->
             <span>Team management</span>
             <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-0.5 bg-transparent"></span>
           </a>
@@ -19,8 +19,8 @@
       <div class="px-4 py-6 sm:p-6">
         <div class="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2">
           <div>
-            <h2 class="text-base font-semibold leading-7 text-gray-900">Account Information</h2>
-            <p class="mt-1 text-sm leading-6 text-gray-500">Update your account details.</p>
+            <h2 class="text-base font-semibold leading-7 text-gray-900">Profile Information</h2>
+            <p class="mt-1 text-sm leading-6 text-gray-500">Update your profile details.</p>
           </div>
 
           <form action="#" method="POST">
@@ -45,7 +45,7 @@
                 <input type="text" name="phone-number" id="phone-number" autocomplete="tel" class="mt-2 block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
               </div>
 
-              <div class="col-span-2">
+              <div class="col-span-2"><!-- maybe i don't need this 'Company name' input -->
                 <label for="company-name" class="block text-sm font-medium leading-6 text-gray-900">Company name</label>
                 <input type="text" name="company-name" id="company-name" autocomplete="organization" class="mt-2 block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
               </div>
