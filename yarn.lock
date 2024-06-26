@@ -607,11 +607,6 @@ jiti@^1.21.0:
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.21.6.tgz#6c7f7398dd4b3142767f9a168af2f317a428d268"
   integrity sha512-2yTgeWTWzMWkHu6Jp9NKgePDaYHbntiwvYuuJLbbN9vl7DC9DvXKOB2BC3ZZ92D3cvV/aflH0osDfwpHepQ53w==
 
-knockout@^3.5.0, knockout@^3.5.1:
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/knockout/-/knockout-3.5.1.tgz#62c81e81843bea2008fd23c575edd9ca978e75cf"
-  integrity sha512-wRJ9I4az0QcsH7A4v4l0enUpkS++MBx0BnL/68KaLzJg7x1qmbjSlwEoCNol7KTYZ+pmtI7Eh2J0Nu6/2Z5J/Q==
-
 lilconfig@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/lilconfig/-/lilconfig-2.1.0.tgz#78e23ac89ebb7e1bfbf25b18043de756548e7f52"
@@ -933,30 +928,6 @@ supports-preserve-symlinks-flag@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
-
-survey-core@^1.11.3:
-  version "1.11.3"
-  resolved "https://registry.yarnpkg.com/survey-core/-/survey-core-1.11.3.tgz#25a1c48e9d9108a078b07e7a81e2d023767d172b"
-  integrity sha512-OuOJhemeV+Ya2xT2Q0HzK6uurrohfPkThs79y0Tk6qr+w9vqxIFCZ6ZEgbtB6rTdGk3hql0slTh314Ij3mH1Eg==
-
-survey-creator-core@^1.11.3:
-  version "1.11.3"
-  resolved "https://registry.yarnpkg.com/survey-creator-core/-/survey-creator-core-1.11.3.tgz#59510ff53ea7e94ad05b8c5da430df8212cbbfe6"
-  integrity sha512-7u6LQHoDo7WdTDgkeTKsfKLBVBgrNeXMTQGRlwQ9Fxk/qVVulDQAmx0w0jtetF4r4QN106t6UkPaRBcsAkWzsg==
-
-survey-creator-knockout@^1.11.3:
-  version "1.11.3"
-  resolved "https://registry.yarnpkg.com/survey-creator-knockout/-/survey-creator-knockout-1.11.3.tgz#a1745d7514b6faebc9aa1d4726f2ed3861663a94"
-  integrity sha512-NV8xHSfctjmCvIg/zScdVYIf18sekYRzQ4LZutZPDc54ak/YaEoEdZ2OZvSAMfeMd1wrcmiNEoLZkri5+hkdvQ==
-  dependencies:
-    knockout "^3.5.0"
-
-survey-knockout-ui@^1.11.3:
-  version "1.11.3"
-  resolved "https://registry.yarnpkg.com/survey-knockout-ui/-/survey-knockout-ui-1.11.3.tgz#e940dbdb24ede2bf69b95ea206b1070d6d9699e6"
-  integrity sha512-Yyy9UGWGdU7HjUJzsez+xAlSRURuFs9v4vNCk+x9wNJ2JzvZ9tsFgvlE4dh73GVPTjjtnddLg+pzaTeB06GaAQ==
-  dependencies:
-    knockout "^3.5.0"
 
 tailwindcss@^3.4.4:
   version "3.4.4"
