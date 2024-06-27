@@ -1,0 +1,93 @@
+<dialog id="my_modal_<%= id %>" class="modal px-6">
+  <div class="modal-box max-w-7xl rounded-xl p-16">
+    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-16 top-16">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </form>
+
+    <div class="flex items-center flex-wrap gap-4">
+      <button type="button" class="ring-1 rounded-full py-2.5 px-4 text-sm font-semibold focus:outline-none ring-slate-700 text-slate-700 hover:text-slate-900  active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300">Preview</button>
+      <button type="button" class="rounded-full py-2.5 px-6 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-gray-900 text-white hover:text-slate-100 hover:bg-gray-700">Add</button>
+    </div>
+
+    <div class="mt-6 grid grid-cols-2 gap-x-8">
+      <div>
+        <h1 class="font-bold leading-7 text-gray-900 text-2xl tracking-tight">Problem Solving</h1>
+
+        <p class="mt-8 font-medium text-sm text-gray-800">This Problem Solving test evaluates candidates' ability to define problems and analyze data and textual information to make correct decisions. This test helps you identify candidates who use analytical skills to evaluate and respond to complex situations.</p>
+      
+        <div class="mt-7 flex flex-wrap gap-x-16 gap-y-5">
+          <div class="space-y-1">
+            <svg width="100%" height="100%" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" fit="" preserveAspectRatio="xMidYMid meet" focusable="false" class="size-4">
+              <path d="M6.5 11.5465L12 2.54651L17.5 11.5465H6.5ZM17.5 22.5465C16.25 22.5465 15.1875 22.109 14.3125 21.234C13.4375 20.359 13 19.2965 13 18.0465C13 16.7965 13.4375 15.734 14.3125 14.859C15.1875 13.984 16.25 13.5465 17.5 13.5465C18.75 13.5465 19.8125 13.984 20.6875 14.859C21.5625 15.734 22 16.7965 22 18.0465C22 19.2965 21.5625 20.359 20.6875 21.234C19.8125 22.109 18.75 22.5465 17.5 22.5465ZM3 22.0465V14.0465H11V22.0465H3ZM17.5 20.5465C18.2 20.5465 18.7917 20.3048 19.275 19.8215C19.7583 19.3382 20 18.7465 20 18.0465C20 17.3465 19.7583 16.7548 19.275 16.2715C18.7917 15.7882 18.2 15.5465 17.5 15.5465C16.8 15.5465 16.2083 15.7882 15.725 16.2715C15.2417 16.7548 15 17.3465 15 18.0465C15 18.7465 15.2417 19.3382 15.725 19.8215C16.2083 20.3048 16.8 20.5465 17.5 20.5465ZM5 20.0465H9V16.0465H5V20.0465ZM10.05 9.54651H13.95L12 6.39651L10.05 9.54651Z" fill="currentColor"></path>
+            </svg>
+            <div class="text-sm font-bold">Type</div>
+            <div class="text-xs font-medium">Cognitive ability</div>
+          </div>
+          <div class="space-y-1">
+            <svg width="100%" height="100%" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" fit="" preserveAspectRatio="xMidYMid meet" focusable="false" class="size-4">
+              <path d="M9 3.54651V1.54651H15V3.54651H9ZM11 14.5465H13V8.54651H11V14.5465ZM12 22.5465C10.7667 22.5465 9.60417 22.309 8.5125 21.834C7.42083 21.359 6.46667 20.7132 5.65 19.8965C4.83333 19.0798 4.1875 18.1257 3.7125 17.034C3.2375 15.9423 3 14.7798 3 13.5465C3 12.3132 3.2375 11.1507 3.7125 10.059C4.1875 8.96734 4.83333 8.01318 5.65 7.19651C6.46667 6.37984 7.42083 5.73401 8.5125 5.25901C9.60417 4.78401 10.7667 4.54651 12 4.54651C13.0333 4.54651 14.025 4.71318 14.975 5.04651C15.925 5.37984 16.8167 5.86318 17.65 6.49651L19.05 5.09651L20.45 6.49651L19.05 7.89651C19.6833 8.72984 20.1667 9.62151 20.5 10.5715C20.8333 11.5215 21 12.5132 21 13.5465C21 14.7798 20.7625 15.9423 20.2875 17.034C19.8125 18.1257 19.1667 19.0798 18.35 19.8965C17.5333 20.7132 16.5792 21.359 15.4875 21.834C14.3958 22.309 13.2333 22.5465 12 22.5465ZM12 20.5465C13.9333 20.5465 15.5833 19.8632 16.95 18.4965C18.3167 17.1298 19 15.4798 19 13.5465C19 11.6132 18.3167 9.96318 16.95 8.59651C15.5833 7.22984 13.9333 6.54651 12 6.54651C10.0667 6.54651 8.41667 7.22984 7.05 8.59651C5.68333 9.96318 5 11.6132 5 13.5465C5 15.4798 5.68333 17.1298 7.05 18.4965C8.41667 19.8632 10.0667 20.5465 12 20.5465Z" fill="currentColor"></path>
+            </svg>
+            <div class="text-sm font-bold">Time</div>
+            <div class="text-xs font-medium">9 mins</div>
+          </div>
+          <div class="space-y-1">
+            <svg width="100%" height="100%" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" fit="" preserveAspectRatio="xMidYMid meet" focusable="false" class="size-4">
+              <path d="M4 19.5465H8V11.5465H4V19.5465ZM10 19.5465H14V5.54651H10V19.5465ZM16 19.5465H20V13.5465H16V19.5465ZM2 21.5465V9.54651H8V3.54651H16V11.5465H22V21.5465H2Z" fill="currentColor"></path>
+            </svg>
+            <div class="text-sm font-bold">Level</div>
+            <div class="text-xs font-medium">Intermediate</div>
+          </div>
+        </div>
+        
+        <div class="mt-7">
+          <h2 class="font-bold leading-7 text-gray-900 text-lg tracking-tight">Covered skills</h2>
+          <div class="mt-1 space-y-1.5">
+            <div class="flex gap-x-2.5 items-center font-medium text-sm text-gray-800">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+              </svg>
+              <p>Creating and adjusting schedules</p>
+            </div>
+            <div class="flex gap-x-2.5 items-center font-medium text-sm text-gray-800">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+              </svg>
+              <p>Interpreting data and applying logic to make decisions</p>
+            </div>
+            <div class="flex gap-x-2.5 items-center font-medium text-sm text-gray-800">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+              </svg>
+              <p>Prioritizing and applying order based on a given set of rules</p>
+            </div>
+            <div class="flex gap-x-2.5 items-center font-medium text-sm text-gray-800">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+              </svg>
+              <p>Analyzing textual and numerical information to draw conclusions</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-7">
+          <h2 class="font-bold leading-7 text-gray-900 text-lg tracking-tight">This test is relevant for</h2>
+          <p class="mt-2 font-medium text-sm text-gray-800">Any role that involves managing constantly shifting variables with tight deadlines. This may include administrative assistants, project managers, planners, and people working in hospitality or sales.</p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="font-bold leading-7 text-gray-900 text-lg tracking-tight">Description</h2>
+        <p class="mt-2 font-medium text-sm text-gray-800">Effective problem-solving requires a broad skill set that enables individuals, teams, and businesses to advance towards stated objectives. It involves the ability to define a problem, to break it down into manageable parts, to develop approaches to solve the (sub)problem using creativity and analytical thinking, and to execute flawlessly.</p>
+        <p class="mt-4 font-medium text-sm text-gray-800">This Problem Solving test allows you to identify candidates who display these abilities. The test presents candidates with typical problem-solving scenarios like scheduling on the basis of a diverse set of conditions, identifying the right sequence of actions based on a number of business rules, and drawing conclusions based on textual and numerical information.</p>
+        <p class="mt-4 font-medium text-sm text-gray-800">The test requires candidates to identify the right answers to the questions in a limited amount of time. Successful candidates can quickly identify the key elements of the problem and work through the problem at speed without making mistakes. This is a great test to include to check candidates' overall analytical skills.</p>
+      </div>
+    </div>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>

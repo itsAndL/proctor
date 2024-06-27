@@ -167,7 +167,8 @@
                 <div class="mt-7 flex items-center justify-between flex-wrap gap-4">
                   <div class="flex items-center flex-wrap gap-4">
                     <button type="button" class="ring-1 rounded-full py-2 px-4 text-sm font-semibold focus:outline-none ring-slate-700 text-slate-700 hover:text-slate-900  active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300">Preview</button>
-                    <button type="button" class="ring-1 rounded-full py-2 px-4 text-sm font-semibold focus:outline-none ring-slate-700 text-slate-700 hover:text-slate-900  active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300">Details</button>
+                    <button type="button" onclick="my_modal_1.showModal()" class="ring-1 rounded-full py-2 px-4 text-sm font-semibold focus:outline-none ring-slate-700 text-slate-700 hover:text-slate-900  active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300">Details</button>
+                    <%= render partial: "test_details", locals: {id: 1} %>
                   </div>
 
                   <button type="button" class="rounded-full py-2 px-6 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-gray-900 text-white hover:text-slate-100 hover:bg-gray-700">Add</button>
@@ -220,7 +221,8 @@
                 <div class="mt-7 flex items-center justify-between flex-wrap gap-4">
                   <div class="flex items-center flex-wrap gap-4">
                     <button type="button" class="ring-1 rounded-full py-2 px-4 text-sm font-semibold focus:outline-none ring-slate-700 text-slate-700 hover:text-slate-900  active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300">Preview</button>
-                    <button type="button" class="ring-1 rounded-full py-2 px-4 text-sm font-semibold focus:outline-none ring-slate-700 text-slate-700 hover:text-slate-900  active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300">Details</button>
+                    <button type="button" onclick="my_modal_2.showModal()" class="ring-1 rounded-full py-2 px-4 text-sm font-semibold focus:outline-none ring-slate-700 text-slate-700 hover:text-slate-900  active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300">Details</button>
+                    <%= render partial: "test_details", locals: {id: 2} %>
                   </div>
 
                   <button type="button" class="ring-1 inline-flex items-center gap-x-1.5 rounded-full py-2 px-3 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-white ring-red-500 text-red-500 hover:text-white hover:bg-red-500">
@@ -272,7 +274,8 @@
                 <div class="mt-7 flex items-center justify-between flex-wrap gap-4">
                   <div class="flex items-center flex-wrap gap-4">
                     <button type="button" class="ring-1 rounded-full py-2 px-4 text-sm font-semibold focus:outline-none ring-slate-700 text-slate-700 hover:text-slate-900  active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300">Preview</button>
-                    <button type="button" class="ring-1 rounded-full py-2 px-4 text-sm font-semibold focus:outline-none ring-slate-700 text-slate-700 hover:text-slate-900  active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300">Details</button>
+                    <button type="button" onclick="my_modal_3.showModal()" class="ring-1 rounded-full py-2 px-4 text-sm font-semibold focus:outline-none ring-slate-700 text-slate-700 hover:text-slate-900  active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300">Details</button>
+                    <%= render partial: "test_details", locals: {id: 3} %>
                   </div>
 
                   <button type="button" class="rounded-full py-2 px-6 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-gray-900 text-white hover:text-slate-100 hover:bg-gray-700">Add</button>
