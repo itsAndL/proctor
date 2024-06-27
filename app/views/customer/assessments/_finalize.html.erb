@@ -1,0 +1,70 @@
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-16">
+  <nav aria-label="Progress">
+    <ol role="list" class="divide-y divide-gray-300 rounded-xl md:rounded-full border border-gray-300 md:flex md:divide-y-0">
+      <li class="relative md:flex md:flex-1">
+        <a href="/customer/assessments/new?step=choose_tests" class="group flex w-full items-center">
+          <span class="flex items-center px-6 py-4 text-sm font-medium">
+            <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 group-hover:bg-blue-800">
+              <svg class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            <span class="ml-4 text-sm font-medium text-gray-900">Choose tests</span>
+          </span>
+        </a>
+        <div class="absolute right-0 top-0 hidden h-full w-5 md:block" aria-hidden="true">
+          <svg class="h-full w-full text-gray-300" viewBox="0 0 22 80" fill="none" preserveAspectRatio="none">
+            <path d="M0 -2L20 40L0 82" vector-effect="non-scaling-stroke" stroke="currentcolor" stroke-linejoin="round" />
+          </svg>
+        </div>
+      </li>
+      <li class="relative md:flex md:flex-1">
+        <a href="/customer/assessments/new?step=add_questions" class="group flex w-full items-center">
+          <span class="flex items-center px-6 py-4 text-sm font-medium">
+            <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 group-hover:bg-blue-800">
+              <svg class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            <span class="ml-4 text-sm font-medium text-gray-900">Add questions</span>
+          </span>
+        </a>
+        <div class="absolute right-0 top-0 hidden h-full w-5 md:block" aria-hidden="true">
+          <svg class="h-full w-full text-gray-300" viewBox="0 0 22 80" fill="none" preserveAspectRatio="none">
+            <path d="M0 -2L20 40L0 82" vector-effect="non-scaling-stroke" stroke="currentcolor" stroke-linejoin="round" />
+          </svg>
+        </div>
+      </li>
+      <li class="relative md:flex md:flex-1">
+        <a href="/customer/assessments/new?step=finalize" class="flex items-center px-6 py-4 text-sm font-medium" aria-current="step">
+          <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border-2 border-blue-600">
+            <span class="text-blue-600">03</span>
+          </span>
+          <span class="ml-4 text-sm font-medium text-blue-600">Finalize</span>
+        </a>
+      </li>
+    </ol>
+  </nav>
+
+  <div class="mt-12">
+    <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Finalize</h1>
+    <div class="mt-5"></div>
+  </div>
+</div>
+
+<div class="fixed bottom-0 w-full">
+  <div class="px-6 py-4 border-t border-zinc-200 flex justify-between bg-white">
+    <a href="/customer/assessments/new?step=add_questions" class="inline-flex gap-x-2.5 items-center ring-1 rounded-full py-3 px-5 text-sm font-semibold focus:outline-none ring-slate-700 text-slate-700 hover:text-slate-900  active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-3">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+      </svg>
+      <span>Back</span>
+    </a>
+    <a href="/customer/assessments/1" class="inline-flex gap-x-2.5 items-center rounded-full bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+      <span>Finish</span>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-3">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+      </svg>
+    </a>
+  </div>
+</div>
