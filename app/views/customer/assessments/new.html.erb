@@ -13,11 +13,12 @@
         <div>
           <div class="flex items-center gap-x-2.5">
             <h2 class="truncate text-xl font-bold leading-7 text-slate-900"><!-- Untitled assessment -->Business Manager</h2>
-            <button>
+            <button onclick="my_modal_4.showModal()">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-4">
                 <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
               </svg>
             </button>
+            <%= render partial: "rename_assessment", locals: {id: 4} %>
           </div>
 
           <div class="mt-1 flex gap-x-6 items-center">
@@ -37,6 +38,8 @@
           </div>
         </div>
       </div>
+
+      <a href="/customer/assessments/1" class="ring-1 rounded-full py-2 px-3 text-sm font-semibold focus:outline-none ring-slate-700 text-slate-700 hover:text-slate-900  active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300">Save and exit</a>
     </div>
   </div>
 </div>
