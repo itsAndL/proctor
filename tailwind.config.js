@@ -10,6 +10,7 @@ module.exports = {
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/typography'),
     require('daisyui'),
+    require('@tailwindash/triangle'),
   ],
   daisyui: {
     themes: ["cupcake"],

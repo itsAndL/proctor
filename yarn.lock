@@ -215,6 +215,11 @@
   resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-7.1.3.tgz#4db480347775aeecd4dde2405659eef74a458881"
   integrity sha512-ojNvnoZtPN0pYvVFtlO7dyEN9Oml1B6IDM+whGKVak69MMYW99lC2NOWXWeE3bmwEydbP/nn6ERcpfjHVjYQjA==
 
+"@tailwindash/triangle@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@tailwindash/triangle/-/triangle-1.0.5.tgz#b63d5015a4f924fbaf028f88288bd9e6c0dffd4c"
+  integrity sha512-NKXOMqhMTZwpt9Nv4Qqm37UwjmhpWUnrq+1jabDl4y9jcMZKtohaajr+ay+fYe6VFx1bjZFvl1CXobwGsv+7gg==
+
 "@tailwindcss/aspect-ratio@^0.4.2":
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/@tailwindcss/aspect-ratio/-/aspect-ratio-0.4.2.tgz#9ffd52fee8e3c8b20623ff0dcb29e5c21fb0a9ba"
