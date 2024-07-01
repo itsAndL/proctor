@@ -15,8 +15,8 @@
       </div>
     </div>
 
-    <div class="pt-2 sm:pt-5 pb-5 flex justify-between itmes-center gap-x-8 gap-y-6">
-      <div class="relative rounded-md-sm w-full max-w-sm">
+    <div class="pt-2 sm:pt-5 pb-5 flex flex-col md:flex-row md:justify-between md:itmes-center gap-x-20 gap-y-6">
+      <div class="relative rounded-md-sm w-full md:max-w-sm h-fit">
         <input type="text" name="candidate" id="candidate" class="block w-full rounded-full py-2.5 pl-5 pr-10 text-gray-800 border border-gray-800 placeholder:text-gray-400 font-medium focus:border focus:border-gray-800 focus:ring-1 focus:ring-inset focus:ring-gray-800 sm:text-sm sm:leading-6" placeholder="Search assessments">
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="h-5 w-5 text-gray-400">
@@ -25,10 +25,10 @@
         </div>
       </div>
 
-      <span class="isolate inline-flex rounded-md shadow-sm border border-gray-800 divide-x divide-gray-800 bg-white">
-        <button type="button" class="relative rounded-l-md px-5 py-2 text-sm font-bold text-gray-900 bg-blue-50 focus:z-10">Active (2)</button>
-        <button type="button" class="relative px-5 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50 focus:z-10">Inactive (1)</button>
-        <button type="button" class="relative rounded-r-md px-5 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50 focus:z-10">Archived (3)</button>
+      <span class="md:whitespace-nowrap isolate grid grid-cols-3 rounded-md shadow-sm border border-gray-800 divide-x divide-gray-800 bg-white">
+        <button type="button" class="relative rounded-l-md px-5 py-3 text-sm font-bold text-gray-900 bg-blue-50 focus:z-10">Active (2)</button>
+        <button type="button" class="relative px-5 py-3 text-sm font-semibold text-gray-900 hover:bg-gray-50 focus:z-10">Inactive (1)</button>
+        <button type="button" class="relative rounded-r-md px-5 py-3 text-sm font-semibold text-gray-900 hover:bg-gray-50 focus:z-10">Archived (3)</button>
       </span>
     </div>
 
@@ -54,7 +54,7 @@
                   <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800">2</td>
                   <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden sm:table-cell">100 %</td>
                   <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell">6 days ago</td>
-                  <td class="relative whitespac-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
+                  <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
                     <div class="dropdown dropdown-hover">
                       <button tabindex="0" type="button" class="text-gray-800 hover:bg-white hover:rounded-full p-0.5">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -90,7 +90,7 @@
                   <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800">18</td>
                   <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden sm:table-cell">80 %</td>
                   <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell">13 days ago</td>
-                  <td class="relative whitespac-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
+                  <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
                     <div class="dropdown dropdown-hover">
                       <button tabindex="1" type="button" class="text-gray-800 hover:bg-white hover:rounded-full p-0.5">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
