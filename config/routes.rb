@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     get 'profile/team', to: 'profile#team'
   end
   get 'register/customer', to: 'register#customer'
+  get 'preview/1', to: 'preview#show'
 
   get 'login', to: 'login#index'
   get 'contact', to: 'contact#index'

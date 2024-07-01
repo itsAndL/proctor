@@ -1,0 +1,129 @@
+<header class="border-b border-gray-300">
+  <div class="bg-white py-5 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex justify-center md:justify-start">
+    <h1 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">Milk Road</h1>
+  </div>
+</header>
+
+<main class="bg-zinc-50 h-full pt-10">
+  <div data-controller="slider" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
+    <form id="slide-1" class="border border-gray-200 bg-white rounded-xl px-6 pt-8 pb-6 md:pb-8 md:p-12">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-7">
+        <div class="text-sm md:text-base font-medium text-gray-800"> 
+          <p>What is the main point of the message below?</p>
+          <p><br></p>
+          <blockquote class="px-4 py-1 border-s-4 border-gray-300">"Thanks for checking in. We’re busier than ever here at the clinic. It’s a busy time of year—more and more people are wanting to get procedures done here instead of the hospital. I think we’re going to have to put this off until next spring. Sorry to string you along. We usually slow down a bit in April and May. I’ll reach out to you early next year."</blockquote>
+        </div>
+        <div>
+          <h1 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">Select only one</h1>
+          <div class="mt-4 space-y-5">
+            <div class="flex items-center border border-gray-300 rounded-md p-4">
+              <input id="option-1" name="selected-option" type="radio" class="size-7 border-gray-300 text-blue-600 focus:ring-blue-600">
+              <label for="option-1" class="ml-5 block text-sm md:text-base font-semibold text-gray-800">The sender does not want to work with the recipient.</label>
+            </div>
+            <div class="flex items-center border border-gray-300 rounded-md p-4">
+              <input id="option-2" name="selected-option" type="radio" class="size-7 border-gray-300 text-blue-600 focus:ring-blue-600">
+              <label for="option-2" class="ml-5 block text-sm md:text-base font-semibold text-gray-800">The sender is upset that the recipient has delayed things.</label>
+            </div>
+            <div class="flex items-center border border-gray-300 rounded-md p-4">
+              <input id="option-3" name="selected-option" type="radio" class="size-7 border-gray-300 text-blue-600 focus:ring-blue-600">
+              <label for="option-3" class="ml-5 block text-sm md:text-base font-semibold text-gray-800">The sender is very busy due to health issues.</label>
+            </div>
+            <div class="flex items-center border border-gray-300 rounded-md p-4">
+              <input id="option-4" name="selected-option" type="radio" class="size-7 border-gray-300 text-blue-600 focus:ring-blue-600">
+              <label for="option-4" class="ml-5 block text-sm md:text-base font-semibold text-gray-800">The sender wants to work with the recipient at a later time.</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-9 flex justify-end">
+        <button data-slider-slide-param="1" data-action="slider#next" type="button" class="inline-flex gap-x-2.5 items-center rounded-full bg-blue-600 px-7 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+          <span>Next</span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-3">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+          </svg>
+        </button>
+      </div>
+    </form>
+
+    <form id="slide-2" class="hidden border border-gray-200 bg-white rounded-xl px-6 pt-8 pb-6 md:pb-8 md:p-12">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-7">
+        <div class="text-sm md:text-base font-medium text-gray-800"> 
+          <p>What is the issue with how the speaker in the audio clip communicates her message?</p>
+          <p><br></p>
+          <audio src="https://tgo-assets-production.s3.amazonaws.com/production/0d6b3998-160b-4c60-b9ec-aea7ef4e5da9-683cd612-2608-44e5-8ef6-2dd6a6f25d73.mp3?AWSAccessKeyId=ASIAUJMDFWCPTECDUNSN&amp;Signature=IRTIsTEKps9c6m%2BJYcgbmELXKUQ%3D&amp;x-amz-security-token=IQoJb3JpZ2luX2VjEKj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCWV1LXdlc3QtMSJGMEQCIFnp05U4cyoRbQnZad35WX0uoWWa2KVpQUzodZT8PsJ7AiBea4P6gCCbBLpBX3fmoyLSAipEo%2BRVsdz%2BU6k5Df5cJSrzAwhhEAIaDDI5NTAxNzIzMDQ5NSIMEnSs%2FKUMwwN8xbtwKtAD19MWV1tm2aQ0A1XD6dOvPPo90ny3DuNGevi%2Bh7DanhVObuCeomOuzhWtZQrEJfUawfPZyDvdXR2QSJtH5RACXZE4amT4lrbMky21HLw01W%2B%2BI51gCoZDNOVtKxJwDiIMZPANEFv9YFcZtnfDm3IVSDm%2FVo8KL3u9SDYtSVXZvjcbbal%2BA04g2IWPL%2Ft40jGNLBS4z0ZW21sAQfBhIcijmb%2BEcH%2BQnNll2G59AusFvQRcNqedY%2FNT0Pa8AmYIRGgeJizK%2BKkZMp8ExaKnzhQuBGEakSiWLxG7U6lv%2Fjogh0czA0h%2B2U%2ByZ7CpXygyLeNjUMiuzLoRjq4GaZBjQc1dBMZwMxCBDB3zSSD8MaSPsPFgPGQoaihmAWwEeXljm2zXhsi4fyA%2F5k5pXpLWGs%2FYQ%2BLvaQkPWq5fy%2BND79os7hgn75YYhCFuIDkuODgr9Ho3pG09XsTO44SxxjxRHgVfMIm9ZyPeRikwiyNbUSY74ldY7bMFPo%2FcddIO1KxMhEcfHhxbFe2Utq%2B%2FoT39gUuE4cYYlFIVWKyuCvdp3UxYXsIMo75bwQx8j8zeJWhZ1IQ7baFIFqf69j721GryGQR%2BHhDcqUn1l%2FZuE7RtN%2FHX6SgwkpWLtAY6pgF8vVsIeNXC5Hw9FNiL2LHIv%2BeDpy9V2pWkawZtIRxdoYSRyIhehEpV9%2FVXzOKDhghnW%2BX10gEn5GGHlHYQ8AwArWNlhmrb%2BfQ5kZnnKi4VOyBEZc7%2BZTxPML%2B0hLv1uvYvTGVJwfPm2LrKaC99ZGo3r4NDNAdGDlX6romFn9JKV1KycvGLF6WfYtubTJGlLnBQJkGrtlMops0MNkK%2BKgPogxLc4ycR&amp;Expires=1719878849" controls="controls" controlslist="nodownload"></audio>
+        </div>
+        <div>
+          <h1 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">Select only one</h1>
+          <div class="mt-4 space-y-5">
+            <div class="flex items-center border border-gray-300 rounded-md p-4">
+              <input id="option-1" name="selected-option" type="radio" class="size-7 border-gray-300 text-blue-600 focus:ring-blue-600">
+              <label for="option-1" class="ml-5 block text-sm md:text-base font-semibold text-gray-800">The use of the word "but" detracts from the compliment.</label>
+            </div>
+            <div class="flex items-center border border-gray-300 rounded-md p-4">
+              <input id="option-2" name="selected-option" type="radio" class="size-7 border-gray-300 text-blue-600 focus:ring-blue-600">
+              <label for="option-2" class="ml-5 block text-sm md:text-base font-semibold text-gray-800">Nothing. It's fine the way it is.</label>
+            </div>
+            <div class="flex items-center border border-gray-300 rounded-md p-4">
+              <input id="option-3" name="selected-option" type="radio" class="size-7 border-gray-300 text-blue-600 focus:ring-blue-600">
+              <label for="option-3" class="ml-5 block text-sm md:text-base font-semibold text-gray-800">The speaker should begin with the negative feedback, not the positive part.</label>
+            </div>
+            <div class="flex items-center border border-gray-300 rounded-md p-4">
+              <input id="option-4" name="selected-option" type="radio" class="size-7 border-gray-300 text-blue-600 focus:ring-blue-600">
+              <label for="option-4" class="ml-5 block text-sm md:text-base font-semibold text-gray-800">The speaker shouldn't be so positive when delivering constructive feedback.</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-9 flex justify-end">
+        <button data-slider-slide-param="2" data-action="slider#next" type="button" class="inline-flex gap-x-2.5 items-center rounded-full bg-blue-600 px-7 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+          <span>Next</span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-3">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+          </svg>
+        </button>
+      </div>
+    </form>
+
+    <form id="slide-3" class="hidden border border-gray-200 bg-white rounded-xl px-6 pt-8 pb-6 md:pb-8 md:p-12">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-7">
+        <div class="text-sm md:text-base font-medium text-gray-800">
+          <p>You are told by your supervisor that a colleague is avoiding you because you hurt their feelings with something you said.&nbsp;</p>
+          <p><br></p>
+          <p><strong>What's the best way to move forward to address the situation?</strong></p>
+        </div>
+        <div>
+          <h1 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">Select only one</h1>
+          <div class="mt-4 space-y-5">
+            <div class="flex items-center border border-gray-300 rounded-md p-4">
+              <input id="option-1" name="selected-option" type="radio" class="size-7 border-gray-300 text-blue-600 focus:ring-blue-600">
+              <label for="option-1" class="ml-5 block text-sm md:text-base font-semibold text-gray-800">Leave the colleague alone because you make them uncomfortable.</label>
+            </div>
+            <div class="flex items-center border border-gray-300 rounded-md p-4">
+              <input id="option-2" name="selected-option" type="radio" class="size-7 border-gray-300 text-blue-600 focus:ring-blue-600">
+              <label for="option-2" class="ml-5 block text-sm md:text-base font-semibold text-gray-800">Ask the colleague for a private conversation so you can apologize and find out exactly what hurt their feelings.</label>
+            </div>
+            <div class="flex items-center border border-gray-300 rounded-md p-4">
+              <input id="option-3" name="selected-option" type="radio" class="size-7 border-gray-300 text-blue-600 focus:ring-blue-600">
+              <label for="option-3" class="ml-5 block text-sm md:text-base font-semibold text-gray-800">Ask the colleague for a private conversation so you can apologize and find out exactly what hurt their feelings.</label>
+            </div>
+            <div class="flex items-center border border-gray-300 rounded-md p-4">
+              <input id="option-4" name="selected-option" type="radio" class="size-7 border-gray-300 text-blue-600 focus:ring-blue-600">
+              <label for="option-4" class="ml-5 block text-sm md:text-base font-semibold text-gray-800">Ask your supervisor what part of what you said has hurt your colleague's feelings, so you can avoid that in the future.</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-9 flex justify-end">
+        <button type="button" class="inline-flex gap-x-2.5 items-center rounded-full bg-blue-600 px-7 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+          <span>Finish</span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-3">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+          </svg>
+        </button>
+      </div>
+    </form>
+  </div>
+</main>
