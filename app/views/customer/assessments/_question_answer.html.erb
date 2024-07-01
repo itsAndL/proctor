@@ -1,0 +1,80 @@
+<dialog id="my_modal_<%= id %>" class="modal px-6">
+  <div class="modal-box max-w-5xl rounded-xl pt-10 pb-8 px-8 bg-white relative max-h-[700px]">
+    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-8 top-10">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </form>
+
+    <h1 class="font-bold leading-7 text-gray-800 text-2xl tracking-tight">Review answer</h1>
+
+    <form class="mt-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-12">
+        <div>
+          <h2 class="font-bold leading-7 text-gray-800 text-base tracking-tight">Question</h2>
+
+          <div class="mt-5 font-medium text-base text-gray-900 pb-7">
+            <p>Tell us about yourself, what attracts you to this opportunity, and why you are a great candidate for this role.</p>
+            <p class="mt-7"><i>Pro tip: it might be helpful to pretend you are writing this to a new friend and just be yourself. We want to get to know you better</i></p>
+          </div>
+
+          <div class="pt-7 border-t border-gray-300 max-lg:pb-7">
+            <h2 class="font-bold leading-7 text-gray-900 text-base tracking-tight">What to look for in the answer?</h2>
+            <p class="mt-2 font-medium text-sm text-gray-800">In the candidate's answer, look for agreement between their stated motivation and the challenges and opportunities that the role you are seeking to fill provides. Is the candidate motivated in ways that reflect what your organization can offer and the effort needed to get the results you require in this role?</p>
+            <p class="mt-8 font-medium text-sm text-gray-800">Look for a clear understanding of the requirements and expectations listed in your job post. A strong candidate should show a serious personal and professional interest in the role. A weak answer will only scratch the surface of the role and state the obvious, such as “I have experience in this field” or “I’m interested in this role.”</p>
+          </div>
+        </div>
+
+        <div class="max-lg:pt-7 max-lg:border-t max-lg:border-gray-300">
+          <div>
+            <h2 class="font-bold leading-7 text-gray-900 text-base tracking-tight">Answer</h2>
+            <div class="mt-4 border border-gray-300 py-2 px-3 rounded-md text-gray-900 text-sm font-medium">
+              <p>I’m really excited about this opportunity because it aligns perfectly with my passion for strategic planning and business development. What attracts me most to this role is the chance to drive growth and improve operational efficiency, which are key strengths of mine.</p>
+              <p class="mt-3">I believe I’m a great candidate because I have over five years of experience in business management, where I successfully led teams, managed budgets, and implemented strategies that resulted in a 20% increase in revenue. My ability to analyze market trends, identify opportunities, and optimize processes has consistently delivered positive outcomes.</p>
+              <p class="mt-3">In short, I’m deeply passionate about driving business success, and I’m eager to bring my strategic vision and leadership skills to your team to help achieve your company’s goals.</p>
+            </div>
+            <div class="mt-3 flex items-center gap-x-1">
+              <svg class="size-4" width="100%" height="100%" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">
+                <path d="M9 3.54651V1.54651H15V3.54651H9ZM11 14.5465H13V8.54651H11V14.5465ZM12 22.5465C10.7667 22.5465 9.60417 22.309 8.5125 21.834C7.42083 21.359 6.46667 20.7132 5.65 19.8965C4.83333 19.0798 4.1875 18.1257 3.7125 17.034C3.2375 15.9423 3 14.7798 3 13.5465C3 12.3132 3.2375 11.1507 3.7125 10.059C4.1875 8.96734 4.83333 8.01318 5.65 7.19651C6.46667 6.37984 7.42083 5.73401 8.5125 5.25901C9.60417 4.78401 10.7667 4.54651 12 4.54651C13.0333 4.54651 14.025 4.71318 14.975 5.04651C15.925 5.37984 16.8167 5.86318 17.65 6.49651L19.05 5.09651L20.45 6.49651L19.05 7.89651C19.6833 8.72984 20.1667 9.62151 20.5 10.5715C20.8333 11.5215 21 12.5132 21 13.5465C21 14.7798 20.7625 15.9423 20.2875 17.034C19.8125 18.1257 19.1667 19.0798 18.35 19.8965C17.5333 20.7132 16.5792 21.359 15.4875 21.834C14.3958 22.309 13.2333 22.5465 12 22.5465ZM12 20.5465C13.9333 20.5465 15.5833 19.8632 16.95 18.4965C18.3167 17.1298 19 15.4798 19 13.5465C19 11.6132 18.3167 9.96318 16.95 8.59651C15.5833 7.22984 13.9333 6.54651 12 6.54651C10.0667 6.54651 8.41667 7.22984 7.05 8.59651C5.68333 9.96318 5 11.6132 5 13.5465C5 15.4798 5.68333 17.1298 7.05 18.4965C8.41667 19.8632 10.0667 20.5465 12 20.5465Z" fill="currentColor"></path>
+              </svg>
+              <p class="text-gray-900 text-sm">Finished in 00:03:48 out of 00:05:00</p>
+            </div>
+          </div>
+
+          <div class="mt-9">
+            <h2 class="font-bold leading-7 text-gray-900 text-sm tracking-tight">Rate answer</h2>
+            <div class="mt-1 mb-4 flex items-center">
+              <!-- Active: "text-yellow-400", Inactive: "text-gray-200" -->
+              <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+              </svg>
+              <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+              </svg>
+              <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+              </svg>
+              <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+              </svg>
+              <svg class="h-5 w-5 flex-shrink-0 text-gray-200" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <textarea placeholder="Comment" rows="4" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-9 flex items-center justify-end gap-x-5 bg-white">
+        <button type="button" class="ring-1 rounded-full py-2.5 px-4 text-sm font-semibold focus:outline-none ring-slate-700 text-slate-700 hover:text-slate-900  active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300">Cancel</button>
+        <button type="submit" class="rounded-full bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Confirm</button>
+      </div>
+    </form>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>
