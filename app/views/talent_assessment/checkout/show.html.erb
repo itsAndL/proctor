@@ -1,0 +1,24 @@
+<header class="border-b border-gray-300">
+  <div class="bg-white py-5 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 flex justify-center md:justify-start">
+    <h1 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">Milk Road</h1>
+  </div>
+</header>
+
+<main class="bg-zinc-50 h-full pt-10">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pb-16">
+    <div class="border border-gray-200 bg-white rounded-xl px-6 py-10 md:px-12 md:py-16">
+      <h1 class="font-extrabold leading-7 text-gray-800 text-2xl pb-2 border-b-2 border-gray-900">Great job! You've completed your assessment</h1>
+      <p class="mt-5 text-gray-800 space-y-3 font-medium">Would you like to see your results now? We will automatically redirect you to view your assessment outcome</p>
+
+      <div data-controller="countdown" class="mt-12 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+        <p class="text-gray-800 space-y-3 font-medium text-sm">Redirecting in <strong><span data-countdown-target="timer">10</span> seconds</strong></p>
+        <a data-countdown-target="nextPage" href="/candidate/assessments/1?status=completed" class="inline-flex gap-x-2.5 items-center rounded-full bg-blue-600 px-7 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+          <span>Go there now</span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-3">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</main>

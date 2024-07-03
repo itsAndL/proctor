@@ -7,6 +7,12 @@ import { application } from "./application"
 import ClickableRowController from "./clickable_row_controller"
 application.register("clickable-row", ClickableRowController)
 
+import CountdownController from "./countdown_controller"
+application.register("countdown", CountdownController)
+
+import FullscreenController from "./fullscreen_controller"
+application.register("fullscreen", FullscreenController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 

@@ -1,12 +1,26 @@
 Rails.application.routes.draw do
+  # Routes for candidate
+  namespace :talent_assessment do
+    get 'checkout', to: 'checkout#show'
+    get 'test/1/feedback', to: 'test#feedback'
+    get 'test/1/intro', to: 'test#intro'
+    get 'test/1/questions', to: 'test#questions'
+    get 'practice_test/1/intro', to: 'practice_test#intro'
+    get 'practice_test/1/questions', to: 'practice_test#questions'
+    get 'overview', to: 'overview#show'
+    get 'setup', to: 'setup#show'
+  end
+
   namespace :candidate do
     get 'assessments', to: 'assessments#index'
     get 'assessments/1', to: 'assessments#show'
 
     get 'profile', to: 'profile#index'
   end
+
   get 'register/candidate', to: 'register#candidate'
 
+  # Routes for customer
   namespace :customer do
     get 'candidates', to: 'candidates#index'
     get 'candidates/1', to: 'candidates#show'
@@ -19,9 +33,11 @@ Rails.application.routes.draw do
     get 'profile', to: 'profile#profile'
     get 'profile/team', to: 'profile#team'
   end
+
   get 'register/customer', to: 'register#customer'
   get 'preview/1', to: 'preview#show'
 
+  # Routes for general
   get 'login', to: 'login#index'
   get 'contact', to: 'contact#index'
   get 'about', to: 'about#index'
