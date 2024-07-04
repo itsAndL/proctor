@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   # Routes for customer
   namespace :customer do
+    get 'tests', to: 'tests#index'
+
     get 'candidates', to: 'candidates#index'
     get 'candidates/1', to: 'candidates#show'
 

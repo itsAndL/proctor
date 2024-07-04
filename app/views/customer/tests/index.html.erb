@@ -1,77 +1,17 @@
-<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-16">
-  <nav aria-label="Progress">
-    <ol role="list" class="divide-y divide-gray-300 rounded-xl md:rounded-full border border-gray-300 md:flex md:divide-y-0">
-      <li class="relative md:flex md:flex-1">
-        <a href="/customer/assessments/new?step=choose_tests" class="flex items-center px-6 py-4 text-sm font-medium" aria-current="step">
-          <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border-2 border-blue-600">
-            <span class="text-blue-600">01</span>
-          </span>
-          <span class="ml-4 text-sm font-medium text-blue-600">Choose tests</span>
-        </a>
-        <div class="absolute right-0 top-0 hidden h-full w-5 md:block" aria-hidden="true">
-          <svg class="h-full w-full text-gray-300" viewBox="0 0 22 80" fill="none" preserveAspectRatio="none">
-            <path d="M0 -2L20 40L0 82" vector-effect="non-scaling-stroke" stroke="currentcolor" stroke-linejoin="round" />
-          </svg>
-        </div>
-      </li>
-      <li class="relative md:flex md:flex-1">
-        <a href="/customer/assessments/new?step=add_questions" class="group flex items-center">
-          <span class="flex items-center px-6 py-4 text-sm font-medium">
-            <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border-2 border-gray-300 group-hover:border-gray-400">
-              <span class="text-gray-500 group-hover:text-gray-900">02</span>
-            </span>
-            <span class="ml-4 text-sm font-medium text-gray-500 group-hover:text-gray-900">Add questions</span>
-          </span>
-        </a>
-        <div class="absolute right-0 top-0 hidden h-full w-5 md:block" aria-hidden="true">
-          <svg class="h-full w-full text-gray-300" viewBox="0 0 22 80" fill="none" preserveAspectRatio="none">
-            <path d="M0 -2L20 40L0 82" vector-effect="non-scaling-stroke" stroke="currentcolor" stroke-linejoin="round" />
-          </svg>
-        </div>
-      </li>
-      <li class="relative md:flex md:flex-1">
-        <a href="/customer/assessments/new?step=finalize" class="group flex items-center">
-          <span class="flex items-center px-6 py-4 text-sm font-medium">
-            <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border-2 border-gray-300 group-hover:border-gray-400">
-              <span class="text-gray-500 group-hover:text-gray-900">03</span>
-            </span>
-            <span class="ml-4 text-sm font-medium text-gray-500 group-hover:text-gray-900">Finalize</span>
-          </span>
-        </a>
-      </li>
-    </ol>
-  </nav>
+<%= render "customer/shared/header" %>
 
-  <div class="mt-12">
-    <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Choose tests</h1>
-    <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
-      <div class="group cursor-pointer inline-flex justify-between gap-x-2.5 items-center rounded-full bg-black pl-5 pr-4 py-2 text-sm font-semibold text-white shadow-sm">
-        <span class="py-1 truncate ">Motivation</span>
-        <div class="hidden group-hover:flex gap-x-1.5">
-          <button type="button" class="text-white p-1 hover:rounded-full hover:bg-white hover:text-white hover:bg-opacity-50 hover:shadow-sm">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-            </svg>
-          </button>
-          <button type="button" class="text-white p-1 hover:rounded-full hover:bg-white hover:text-white hover:bg-opacity-50 hover:shadow-sm">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-      </div>
-      <div class="cursor-pointer rounded-full px-5 py-3 text-sm font-semibold text-gray-400 border border-dashed border-gray-400 shadow-sm text-center">
-        2nd test
-      </div>
-      <div class="cursor-pointer rounded-full px-5 py-3 text-sm font-semibold text-gray-400 border border-dashed border-gray-400 shadow-sm text-center">
-        3nd test
-      </div>
-      <div class="cursor-pointer rounded-full px-5 py-3 text-sm font-semibold text-gray-400 border border-dashed border-gray-400 shadow-sm text-center">
-        4nd test
-      </div>
-      <div class="cursor-pointer rounded-full px-5 py-3 text-sm font-semibold text-gray-400 border border-dashed border-gray-400 shadow-sm text-center">
-        5nd test
+<main class="bg-zinc-50 h-full">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="pt-8 flex items-center justify-between gap-x-4">
+      <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Tests</h1>
+  
+      <div>
+        <a href="/customer/assessments/new?step=choose_tests" class="inline-flex items-center gap-x-1.5 rounded-full bg-blue-600 px-4 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+          </svg>
+          Create assessment
+        </a>
       </div>
     </div>
 
@@ -372,15 +312,4 @@
       </div>
     </div>
   </div>
-</div>
-
-<div class="fixed bottom-0 w-full">
-  <div class="px-6 py-4 border-t border-zinc-200 flex justify-end bg-white">
-    <a href="/customer/assessments/new?step=add_questions" class="inline-flex gap-x-2.5 items-center rounded-full bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
-      <span>Next</span>
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-3">
-        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-      </svg>
-    </a>
-  </div>
-</div>
+</main>

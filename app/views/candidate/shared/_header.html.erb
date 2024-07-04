@@ -1,7 +1,7 @@
 <header>
   <nav class="bg-white border-b border-zinc-200" data-controller="toggle">
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-      <div class="relative flex h-20 justify-between">
+      <div class="relative flex h-[70px] justify-between">
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
           <!-- Mobile menu button -->
           <button data-action="toggle#toggle" type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" aria-controls="mobile-menu" aria-expanded="false">
@@ -58,13 +58,13 @@
                 From: "transform opacity-100 scale-100"
                 To: "transform opacity-0 scale-95"
             -->
-            <div tabindex="0" class="dropdown-content absolute right-0 z-10 mt-2 w-52 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+            <div tabindex="0" class="dropdown-content absolute right-0 z-10 mt-2 w-48 origin-top-right divide-y divide-gray-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
               <div class="py-1" role="none">
                 <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-                <a href="/candidate/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="menu-item-0">Profile</a>
+                <a href="/candidate/profile" class="block px-4 py-2 text-sm font-medium text-gray-800 hover:bg-zinc-100" role="menuitem" tabindex="-1" id="menu-item-0">Profile</a>
               </div>
               <div class="py-1" role="none">
-                <a href="/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="menu-item-6">Sign out</a>
+                <a href="/" class="block px-4 py-2 text-sm font-medium text-gray-800 hover:bg-zinc-100" role="menuitem" tabindex="-1" id="menu-item-6">Sign out</a>
               </div>
             </div>
           </div>
@@ -76,7 +76,7 @@
     <div data-toggle-target="element" class="hidden sm:hidden" id="mobile-menu">
       <div class="space-y-1 pb-4 pt-2">
         <!-- Current: "bg-blue-50 border-blue-500 text-blue-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" -->
-        <a href="/candidate/assessments" class="block border-l-4 border-blue-500 bg-blue-50 py-2 pl-3 pr-4 text-base font-medium text-blue-700">My assessments</a>
+        <a href="/candidate/assessments" class="block border-l-4 border-blue-600 bg-blue-50 py-2 pl-3 pr-4 text-base font-medium text-blue-700">My assessments</a>
         <a href="/candidate/profile" class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">Profile</a>
         <a href="/" class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">Sign out</a>
       </div>
