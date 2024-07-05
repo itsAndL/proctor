@@ -64,7 +64,7 @@
                 <a href="/candidate/profile" class="block px-4 py-2 text-sm font-medium text-gray-800 hover:bg-zinc-100" role="menuitem" tabindex="-1" id="menu-item-0">Profile</a>
               </div>
               <div class="py-1" role="none">
-                <a href="/" class="block px-4 py-2 text-sm font-medium text-gray-800 hover:bg-zinc-100" role="menuitem" tabindex="-1" id="menu-item-6">Sign out</a>
+                <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "block px-4 py-2 text-sm font-medium text-gray-800 hover:bg-zinc-100" %>
               </div>
             </div>
           </div>
@@ -78,7 +78,7 @@
         <!-- Current: "bg-blue-50 border-blue-500 text-blue-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" -->
         <a href="/candidate/assessments" class="block border-l-4 border-blue-600 bg-blue-50 py-2 pl-3 pr-4 text-base font-medium text-blue-700">My assessments</a>
         <a href="/candidate/profile" class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">Profile</a>
-        <a href="/" class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">Sign out</a>
+        <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700" %>
       </div>
     </div>
   </nav>

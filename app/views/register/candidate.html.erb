@@ -18,8 +18,14 @@
       </form>
 
       <div class="mt-8">
-        <p class="text-xs text-gray-500 font-medium">Already have an account? <a class="font-medium text-blue-600 underline" href="/login">Log in</a></p>
-        <p class="mt-2.5 text-xs text-gray-500 font-medium">Are you a company? <a class="font-medium text-blue-600 underline" href="/register/customer">Sign up as a company</a></p>
+        <p class="text-xs text-gray-500 font-medium">
+          Already have an account?
+          <%= link_to "Log in", new_session_path(User), class: "font-medium text-blue-600 underline" %>
+        </p>
+        <p class="mt-2.5 text-xs text-gray-500 font-medium">
+          Are you a company?
+          <%= link_to "Sign up as a company", new_registration_path(User), class: "font-medium text-blue-600 underline" %>
+        </p>
       </div>
     </main>
   </div>

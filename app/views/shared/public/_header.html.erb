@@ -20,7 +20,7 @@
       </form>
 
       <div class="flex flex-1 items-center justify-end space-x-6">
-        <a href="/login" class="text-sm font-medium text-white hover:text-gray-100">Log in</a>
+        <%= link_to "Log in", new_session_path(User), class: "text-sm font-medium text-white hover:text-gray-100" %>
         <a href="/register/candidate" class="text-sm font-medium text-white hover:text-gray-100">For candidates</a>
       </div>
     </div>
@@ -39,7 +39,9 @@
     </div>
     <div class="flex flex-1 items-center justify-end gap-x-6">
       <a class="hidden group lg:inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none ring-slate-700 text-slate-700 hover:text-slate-900  active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300" variant="outline" color="slate" href="#">Book a demo</a>
-      <a class="group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-blue-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600" color="blue" variant="solid" href="/register/customer"><span>Get started <span class="hidden lg:inline">today</span></span></a>
+      <%= link_to new_registration_path(User), class: "group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-blue-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600" do %>
+        <span>Get started <span class="hidden lg:inline">today</span></span>
+      <% end %>
     </div>
     <div class="flex lg:hidden">
       <button data-action="toggle#toggle" type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
@@ -79,7 +81,7 @@
             <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Book a demo</a>
           </div>
           <div class="py-6">
-            <a href="/login" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log in</a>
+            <%= link_to "Log in", new_session_path(User), class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
             <a href="/register/candidate" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">For candidates</a>
           </div>
         </div>
