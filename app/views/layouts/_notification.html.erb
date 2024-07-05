@@ -1,0 +1,36 @@
+<% if notice || alert %>
+  <div
+    data-controller="notification"
+    data-notification-delay-value="4000"
+    data-transition-enter-from="opacity-0 translate-x-6"
+    data-transition-enter-to="opacity-100 translate-x-0"
+    data-transition-leave-from="opacity-100 translate-x-0"
+    data-transition-leave-to="opacity-0 translate-x-6"
+    class="transition transform duration-1000 pointer-events-none fixed sm:top-8 inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6"
+  >
+    <div class="flex w-full flex-col items-center space-y-4 sm:items-end">
+      <div class="pointer-events-auto w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-md ring-1 ring-gray-200">
+        <div class="p-4">
+          <div class="flex items-start gap-x-4">
+            <div class="flex-shrink-0">
+              <% if notice %>
+                <%= svg_tag "check-circle", class: "size-6 text-green-400", "stroke-width": 2 %>
+              <% else %>
+                <%= svg_tag "x-circle", class: "size-6 text-red-400", "stroke-width": 2 %>
+              <% end %>
+            </div>
+            <div class="w-0 flex-1">
+              <p class="text-sm font-medium text-gray-700"><%= notice || alert %></p>
+            </div>
+            <div class="flex flex-shrink-0">
+              <button data-action="notification#hide" type="button" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                <span class="sr-only">Close</span>
+                <%= svg_tag "x-mark", class: "size-6 text-gray-400" %>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
