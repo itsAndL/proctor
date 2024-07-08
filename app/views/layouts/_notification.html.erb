@@ -1,0 +1,35 @@
+<% if notice || alert %>
+  <div
+    data-controller="notification"
+    data-notification-delay-value="4000"
+    data-transition-enter-from="opacity-0 translate-x-6"
+    data-transition-enter-to="opacity-100 translate-x-0"
+    data-transition-leave-from="opacity-100 translate-x-0"
+    data-transition-leave-to="opacity-0 translate-x-6"
+    class="transition transform duration-1000 pointer-events-none fixed sm:top-8 inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6"
+  >
+    <div class="flex w-full flex-col items-center space-y-4 sm:items-end">
+      <div class="pointer-events-auto w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-md ring-1 ring-gray-200">
+        <div class="p-4">
+          <div class="flex items-start gap-x-3">
+            <div class="flex-shrink-0">
+              <% if notice %>
+                <%= svg_tag "check-circle", class: "size-6 text-green-400", "stroke-width": 2 %>
+              <% else %>
+                <%= svg_tag "x-circle", class: "size-6 text-red-400", "stroke-width": 2 %>
+              <% end %>
+            </div>
+            <div class="w-0 flex-1">
+              <p class="text-sm font-medium text-gray-700"><%= notice || alert %></p>
+            </div>
+            <div class="flex flex-shrink-0">
+              <button data-action="notification#hide" type="button" class="rounded-full p-1.5 -my-1 text-slate-800 hover:bg-zinc-100">
+                <%= svg_tag "x-mark", class: "size-[18px] text-gray-600", "stroke-width": 2 %>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

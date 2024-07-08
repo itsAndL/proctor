@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+
   # Routes for candidate
   namespace :talent_assessment do
     get 'checkout', to: 'checkout#show'
@@ -36,11 +38,9 @@ Rails.application.routes.draw do
     get 'profile/team', to: 'profile#team'
   end
 
-  get 'register/customer', to: 'register#customer'
   get 'preview/1', to: 'preview#show'
 
   # Routes for general
-  get 'login', to: 'login#index'
   get 'contact', to: 'contact#index'
   get 'about', to: 'about#index'
   get 'home', to: 'home#index'
