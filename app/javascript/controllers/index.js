@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AvatarUploadController from "./avatar_upload_controller"
+application.register("avatar-upload", AvatarUploadController)
+
 import ClickableRowController from "./clickable_row_controller"
 application.register("clickable-row", ClickableRowController)
 

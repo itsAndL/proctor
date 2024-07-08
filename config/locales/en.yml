@@ -29,3 +29,12 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      business:
+        contact_name: Your name
+        contact_role: Your job title or role
+        company: Company name
+        website: Website
+        bio: Bio
+        avatar: Your company logo
