@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resource :role, only: :new
-  resources :businesses, except: :destroy
+  resources :businesses, except: :destroy, param: :hashid
 
   # Routes for candidate
   namespace :talent_assessment do

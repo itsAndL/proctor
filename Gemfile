@@ -65,3 +65,4 @@ end
 
 
 gem "devise", "~> 4.9"
+gem "hashid-rails", "~> 1.4"

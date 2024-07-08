@@ -101,6 +101,10 @@ GEM
     erubi (1.13.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    hashid-rails (1.4.1)
+      activerecord (>= 4.0)
+      hashids (~> 1.0)
+    hashids (1.0.6)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
@@ -247,6 +251,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   devise (~> 4.9)
+  hashid-rails (~> 1.4)
   jbuilder
   jsbundling-rails
   pg (~> 1.1)
