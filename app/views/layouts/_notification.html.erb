@@ -11,7 +11,7 @@
     <div class="flex w-full flex-col items-center space-y-4 sm:items-end">
       <div class="pointer-events-auto w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-md ring-1 ring-gray-200">
         <div class="p-4">
-          <div class="flex items-start gap-x-4">
+          <div class="flex items-start gap-x-3">
             <div class="flex-shrink-0">
               <% if notice %>
                 <%= svg_tag "check-circle", class: "size-6 text-green-400", "stroke-width": 2 %>
@@ -23,9 +23,8 @@
               <p class="text-sm font-medium text-gray-700"><%= notice || alert %></p>
             </div>
             <div class="flex flex-shrink-0">
-              <button data-action="notification#hide" type="button" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                <span class="sr-only">Close</span>
-                <%= svg_tag "x-mark", class: "size-6 text-gray-400" %>
+              <button data-action="notification#hide" type="button" class="rounded-full p-1.5 -my-1 text-slate-800 hover:bg-zinc-100">
+                <%= svg_tag "x-mark", class: "size-[18px] text-gray-600", "stroke-width": 2 %>
               </button>
             </div>
           </div>

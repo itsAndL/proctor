@@ -1,16 +1,33 @@
-<h2>Resend confirmation instructions</h2>
+<div class="relative flex min-h-full shrink-0 justify-center md:px-12 lg:px-0">
+  <div class="relative z-10 flex flex-1 flex-col bg-white px-4 py-10 shadow-2xl sm:justify-center md:flex-none md:px-28">
+    <main class="mx-auto w-full max-w-md sm:px-4 md:w-96 md:max-w-sm md:px-0">
+      <div><a aria-label="Home" href="/"><%= svg_tag "assesskit", class: "h-12 w-auto" %></a>
+      <h2 class="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">Resend confirmation instructions</h2>
+      <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+        <div class="mt-10 grid grid-cols-1 gap-y-7">
+          <div>
+            <%= f.label :email, "Email address", class: "mb-3 block text-sm font-medium text-gray-700" %>
+            <%= f.email_field :email, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), required: true, class: "block w-full appearance-none rounded-md border border-gray-200 bg-gray-50 px-3 py-2 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 sm:text-sm" %>
+          </div>
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+          <div>
+            <%= f.submit "Resend instructions", class: "mt-1 group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-blue-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600 w-full" %>
+          </div>
+        </div>
+      <% end %>
+      <div class="mt-8">
+        <p class="text-xs text-gray-500 font-medium">
+          Don’t have an account?
+          <%= link_to "Create one", new_registration_path(resource_name), class: "font-medium text-blue-600 underline" %>
+        </p>
+        <p class="mt-2.5 text-xs text-gray-500 font-medium">
+          Already have an account?
+          <%= link_to "Log in", new_session_path(resource_name), class: "font-medium text-blue-600 underline" %>
+        </p>
+      </div>
+    </main>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
+  <div class="hidden sm:contents lg:relative lg:block lg:flex-1">
+    <%= image_tag "features-bg.jpg", width: "1664", height: "1866", loading: "lazy", decoding: "async", class: "absolute inset-0 h-full w-full object-cover", style: "color:transparent" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
