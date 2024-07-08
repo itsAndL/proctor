@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  resource :role, only: :new
+
   # Routes for candidate
   namespace :talent_assessment do
     get 'checkout', to: 'checkout#show'
