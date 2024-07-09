@@ -21,24 +21,23 @@
                     <div>
                       <%= form.label :company, class: "required-label" %>
                       <%= form.text_field :company, required: true, autocomplete: "organization", class: "primary-field" %>
+                      <%= render FieldErrorComponent.new(:company, business) %>
                     </div>
 
                     <div>
                       <%= form.label :website, class: "primary-label" %>
-                      <div class="flex rounded-md shadow-sm">
-                        <span class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 px-3 text-gray-500 sm:text-sm bg-gray-50">https://</span>
-                        <%= form.text_field :website, placeholder: "www.example.com", class: "block w-full min-w-0 flex-1 rounded-none rounded-r-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6" %>
-                      </div>
+                      <%= form.text_field :website, placeholder: "www.example.com", class: "primary-field" %>
                     </div>
 
                     <div>
                        <%= form.label :bio, class: "required-label" %>
                        <%= form.text_area :bio, rows: "3", required: true, placeholder: "Write a few sentences about your company.", class: "primary-field" %>
+                       <%= render FieldErrorComponent.new(:company, business) %>
                     </div>
 
                     <div data-controller="file-upload" data-file-upload-visibility-class="hidden" data-file-upload-loading-class="opacity-50">
                       <span class="required-label"><%= t(".avatar") %></span>
-                      <div class="mt-1 flex items-center gap-x-5">
+                      <div class="mt-2 flex items-center gap-x-5">
                         <div class="relative">
                           <%= render AvatarComponent.new(avatarable: business, variant: :medium, data: {"file-upload-target": "image"}) %>
                           <div data-file-upload-target="activity" class="hidden absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
@@ -51,6 +50,7 @@
                           <p class="mt-1.5 text-xs leading-5 text-gray-500">JPG, JPEG or PNG. 2MB max.</p>
                         </div>
                       </div>
+                      <%= render FieldErrorComponent.new(:company, business) %>
                       <div data-file-upload-target="error" class="hidden bg-red-50 border-l-4 border-red-400 p-4 mt-4">
                         <div class="ml-3">
                           <p class="text-sm text-red-700"><%= t(".something_went_wrong") %></p>
@@ -75,7 +75,8 @@
                   <div class="grid grid-cols-1 gap-x-6 gap-y-6">
                     <div>
                       <%= form.label :contact_name, class: "required-label" %>
-                      <%= form.text_field :contact_name, autocomplete: "name", class: "primary-field" %>
+                      <%= form.text_field :contact_name, autocomplete: "name", required: true, class: "primary-field" %>
+                      <%= render FieldErrorComponent.new(:company, business) %>
                     </div>
 
                     <div>
