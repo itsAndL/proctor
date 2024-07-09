@@ -38,3 +38,12 @@ en:
         website: Website
         bio: Bio
         avatar: Your company logo
+  businesses:
+    form:
+      avatar: Your company logo
+      loading: Loading...
+      change_avatar: Upload
+      something_went_wrong: Something went wrong uploading your image, please try again.
+  errors:
+    messages:
+      attached: is not attached

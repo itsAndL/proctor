@@ -19,8 +19,8 @@
                 <div class="col-span-2">
                   <div class="grid grid-cols-1 gap-x-6 gap-y-6">
                     <div>
-                      <%= form.label :company, class: "primary-label" %>
-                      <%= form.text_field :company, autocomplete: "organization", required: true, class: "primary-field" %>
+                      <%= form.label :company, class: "required-label" %>
+                      <%= form.text_field :company, required: true, autocomplete: "organization", class: "primary-field" %>
                     </div>
 
                     <div>
@@ -32,18 +32,28 @@
                     </div>
 
                     <div>
-                       <%= form.label :bio, class: "primary-label" %>
+                       <%= form.label :bio, class: "required-label" %>
                        <%= form.text_area :bio, rows: "3", required: true, placeholder: "Write a few sentences about your company.", class: "primary-field" %>
                     </div>
 
-                    <div>
-                      <span class="primary-label">Your company logo</span>
-                      <div data-controller="avatar-upload" class="mt-2 flex items-center gap-x-6">
-                        <%= image_tag business.avatar.attached? ? business.avatar : 'avatar.png', class: "h-28 w-28 flex-none rounded-full object-cover", data: { avatar_upload_target: "preview" } %>
+                    <div data-controller="file-upload" data-file-upload-visibility-class="hidden" data-file-upload-loading-class="opacity-50">
+                      <span class="required-label"><%= t(".avatar") %></span>
+                      <div class="mt-1 flex items-center gap-x-5">
+                        <div class="relative">
+                          <%= render AvatarComponent.new(avatarable: business, variant: :medium, data: {"file-upload-target": "image"}) %>
+                          <div data-file-upload-target="activity" class="hidden absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                            <%= svg_tag "refresh", class: "w-8 h-8 text-gray-900 animate-reverse-spin", title: t(".loading") %>
+                          </div>
+                        </div>
                         <div>
-                          <%= form.label :avatar, "Upload", class: "rounded-full bg-gray-900 px-3.5 py-2 text-xs font-semibold text-white shadow-sm hover:bg-gray-700 cursor-pointer" %>
-                          <%= form.file_field :avatar, direct_upload: true, accept: "image/png, image/jpg, image/jpeg", class: "hidden", data: { avatar_upload_target: "input", action: "change->avatar-upload#preview" } %>
+                          <%= form.file_field :avatar, direct_upload: true, accept: "image/png, image/jpg, image/jpeg", data: {action: "file-upload#select direct-upload:initialize->file-upload#start direct-upload:error->file-upload#error"}, class: "hidden" %>
+                          <%= form.label :avatar, t(".change_avatar"), class: "cursor-pointer rounded-full bg-gray-900 px-3.5 py-2 text-xs font-semibold text-white shadow-sm hover:bg-gray-700" %>
                           <p class="mt-1.5 text-xs leading-5 text-gray-500">JPG, JPEG or PNG. 2MB max.</p>
+                        </div>
+                      </div>
+                      <div data-file-upload-target="error" class="hidden bg-red-50 border-l-4 border-red-400 p-4 mt-4">
+                        <div class="ml-3">
+                          <p class="text-sm text-red-700"><%= t(".something_went_wrong") %></p>
                         </div>
                       </div>
                     </div>
@@ -64,8 +74,8 @@
                 <div class="col-span-2">
                   <div class="grid grid-cols-1 gap-x-6 gap-y-6">
                     <div>
-                      <%= form.label :contact_name, class: "primary-label" %>
-                      <%= form.text_field :contact_name, autocomplete: "name", required: true, class: "primary-field" %>
+                      <%= form.label :contact_name, class: "required-label" %>
+                      <%= form.text_field :contact_name, autocomplete: "name", class: "primary-field" %>
                     </div>
 
                     <div>

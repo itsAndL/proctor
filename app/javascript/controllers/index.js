@@ -4,14 +4,14 @@
 
 import { application } from "./application"
 
-import AvatarUploadController from "./avatar_upload_controller"
-application.register("avatar-upload", AvatarUploadController)
-
 import ClickableRowController from "./clickable_row_controller"
 application.register("clickable-row", ClickableRowController)
 
 import CountdownController from "./countdown_controller"
 application.register("countdown", CountdownController)
+
+import FileUploadController from "./file_upload_controller"
+application.register("file-upload", FileUploadController)
 
 import FullscreenController from "./fullscreen_controller"
 application.register("fullscreen", FullscreenController)

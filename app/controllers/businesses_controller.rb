@@ -1,4 +1,6 @@
 class BusinessesController < ApplicationController
+  before_action :require_new_business!, only: %i[new create]
+
   def new
     @business = current_user.build_business
   end
@@ -29,6 +31,12 @@ class BusinessesController < ApplicationController
   end
 
   private
+
+  def require_new_business!
+    return if current_user.business.blank?
+
+    redirect_to edit_business_path(current_user.business)
+  end
 
   def business_params
     params.require(:business).permit(:contact_name, :contact_role, :company, :bio, :website, :avatar)

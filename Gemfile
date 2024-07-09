@@ -66,3 +66,5 @@ end
 
 gem "devise", "~> 4.9"
 gem "hashid-rails", "~> 1.4"
+gem "view_component", "~> 3.12"
+gem "image_processing", "~> 1.12"
