@@ -38,12 +38,23 @@ en:
         website: Website
         bio: Bio
         avatar: Your company logo
+      candidate:
+        name: Your name
+        avatar: Your profile picture
   businesses:
     form:
       avatar: Your company logo
       loading: Loading...
       change_avatar: Upload
       something_went_wrong: Something went wrong uploading your image, please try again.
+  candidates:
+    form:
+      avatar: Your profile picture
+      loading: Loading...
+      change_avatar: Upload
+      something_went_wrong: Something went wrong uploading your image, please try again.
   errors:
     messages:
       attached: is not attached
+      content_type_invalid: image format not supported
+      max_file_size_invalid: image over %{size}

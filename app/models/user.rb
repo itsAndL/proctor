@@ -6,4 +6,5 @@ class User < ApplicationRecord
          :confirmable
 
   has_one :business, dependent: :destroy
+  has_one :candidate, dependent: :destroy
 end
