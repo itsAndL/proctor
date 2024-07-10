@@ -24,8 +24,6 @@ Rails.application.routes.draw do
     get 'profile', to: 'profile#index'
   end
 
-  get 'register/candidate', to: 'register#candidate'
-
   # Routes for customer
   namespace :customer do
     get 'tests', to: 'tests#index'

@@ -1,44 +1,20 @@
     
 <!-- Header -->
-<header data-controller="toggle" class="bg-white">
-  <div class="bg-gray-900 ">
-    <div class="mx-auto flex h-10 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-      <form class="block flex-1">
-        <div class="flex">
-          <div class="group relative -ml-2 rounded-md border-transparent bg-gray-900 focus-within:ring-2 focus-within:ring-white">
-            <select class="flex items-center rounded-md border-transparent bg-gray-900 bg-none py-0.5 pl-2 pr-5 text-sm font-medium text-white focus:border-transparent focus:outline-none focus:ring-0 group-hover:text-gray-100">
-              <option>EN</option>
-              <option>FR</option>
-            </select>
-            <div class="pointer-events-none absolute inset-y-0 -right-0.5 flex items-center">
-              <svg class="h-5 w-5 text-gray-300" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"></path>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </form>
-
-      <div class="flex flex-1 items-center justify-end space-x-6">
-        <%= link_to "Log in", new_session_path(User), class: "text-sm font-medium text-white hover:text-gray-100" %>
-        <a href="/register/candidate" class="text-sm font-medium text-white hover:text-gray-100">For candidates</a>
-      </div>
-    </div>
-  </div>
-  <nav class="mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-6 lg:px-8 " aria-label="Global">
+<header data-controller="toggle" class="bg-white border-b border-zinc-100">
+  <nav class="mx-auto flex max-w-7xl items-center justify-between gap-x-5 p-6 lg:px-8" aria-label="Global">
     <div class="flex lg:flex-1">
       <a href="/" class="-m-1.5 p-1.5">
-        <%= svg_tag "assesskit", class: "h-10 w-auto" %>
+        <%= svg_tag "assesskit", class: "h-9 sm:h-10 w-auto" %>
       </a>
     </div>
-    <div class="hidden lg:flex lg:gap-x-12">
-      <a href="#features" class="text-sm font-semibold leading-6 text-gray-900">Features</a>
-      <a href="#pricing" class="text-sm font-semibold leading-6 text-gray-900">Pricing</a>
-      <a href="/about" class="text-sm font-semibold leading-6 text-gray-900">About Us</a>
-      <a href="/contact" class="text-sm font-semibold leading-6 text-gray-900">Contact</a>
+    <div class="hidden lg:flex lg:gap-x-9">
+      <a href="/#features" class="text-base font-semibold leading-6 text-gray-700">Features</a>
+      <a href="/#pricing" class="text-base font-semibold leading-6 text-gray-700">Pricing</a>
+      <a href="/about" class="text-base font-semibold leading-6 text-gray-700">About Us</a>
+      <a href="/contact" class="text-base font-semibold leading-6 text-gray-700">Contact</a>
     </div>
-    <div class="flex flex-1 items-center justify-end gap-x-6">
-      <a class="hidden group lg:inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none ring-slate-700 text-slate-700 hover:text-slate-900  active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300" variant="outline" color="slate" href="#">Book a demo</a>
+    <div class="flex flex-1 items-center justify-end gap-x-5">
+      <%= link_to "Log in", new_session_path(User), class: "hidden group lg:inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none ring-slate-700 ring-inset text-slate-700 hover:text-slate-900  active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300" %>
       <%= link_to new_registration_path(User), class: "group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-blue-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600" do %>
         <span>Get started <span class="hidden lg:inline">today</span></span>
       <% end %>
@@ -71,18 +47,14 @@
       <div class="mt-6 flow-root">
         <div class="-my-6 divide-y divide-gray-500/10">
           <div class="py-6">
-            <a href="#features" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Features</a>
-            <a href="#pricing" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Pricing</a>
+            <a href="/#features" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Features</a>
+            <a href="/#pricing" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Pricing</a>
             <a href="/about" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">About Us</a>
             <a href="/contact" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Contact</a>
           </div>
           <div class="py-6">
-            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Get started today</a>
-            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Book a demo</a>
-          </div>
-          <div class="py-6">
+            <%= link_to "Get started today", new_registration_path(User), class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
             <%= link_to "Log in", new_session_path(User), class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
-            <a href="/register/candidate" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">For candidates</a>
           </div>
         </div>
       </div>

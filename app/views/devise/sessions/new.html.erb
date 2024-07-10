@@ -2,17 +2,23 @@
   <div class="relative z-10 flex flex-1 flex-col bg-white px-4 py-10 shadow-2xl sm:justify-center md:flex-none md:px-28">
     <main class="mx-auto w-full max-w-md sm:px-4 md:w-96 md:max-w-sm md:px-0">
       <div><a aria-label="Home" href="/"><%= svg_tag "assesskit", class: "h-12 w-auto" %></a>
-      <h2 class="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account</h2>
+      <h2 class="mt-12 text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account</h2>
+      <p class="mt-2 text-sm text-gray-700">
+        Don’t have an account?
+        <%= link_to "Create one.", new_registration_path(resource_name), class: "font-medium text-blue-600 hover:underline" %>
+      </p>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="mt-10 grid grid-cols-1 gap-y-7">
           <div>
-            <%= f.label :email, "Email address", class: "mb-3 block text-sm font-medium text-gray-700" %>
-            <%= f.email_field :email, autocomplete: "email", required: true, class: "block w-full appearance-none rounded-md border border-gray-200 bg-gray-50 px-3 py-2 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 sm:text-sm" %>
+            <%= f.label :email, "Email address", class: "required-label" %>
+            <%= f.email_field :email, autocomplete: "email", required: true, class: "primary-field" %>
+            <%= render FieldErrorComponent.new(:email, resource) %>
           </div>   
           
           <div>
-            <%= f.label :password, class: "mb-3 block text-sm font-medium text-gray-700" %>
-            <%= f.password_field :password, autocomplete: "current-password", required: true, class: "block w-full appearance-none rounded-md border border-gray-200 bg-gray-50 px-3 py-2 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 sm:text-sm" %>
+            <%= f.label :password, class: "required-label" %>
+            <%= f.password_field :password, autocomplete: "current-password", required: true, class: "primary-field" %>
+            <%= render FieldErrorComponent.new(:password, resource) %>
           </div>
 
           <div class="flex items-center justify-between">
@@ -33,13 +39,6 @@
           </div>
         </div>
       <% end %>
-      <div class="mt-8">
-        <p class="text-xs text-gray-500 font-medium">
-          Don’t have an account?
-          <%= link_to "Create one", new_registration_path(resource_name), class: "font-medium text-blue-600 underline" %>
-        </p>
-        <p class="mt-2.5 text-xs text-gray-500 font-medium">Are you a candidate? <a class="font-medium text-blue-600 underline" href="/register/candidate">Sign up as a candidate</a></p>
-      </div>
     </main>
   </div>
   <div class="hidden sm:contents lg:relative lg:block lg:flex-1">
