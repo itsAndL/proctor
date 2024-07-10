@@ -14,8 +14,9 @@
     <%= stylesheet_link_tag "https://unpkg.com/survey-creator-core/survey-creator-core.min.css", "data-turbo-track": "reload" %>
   </head>
 
-  <body class="bg-white flex h-screen flex-col">
-    <%= render 'layouts/notification' %>
+  <body class="bg-white flex flex-col h-screen">
+    <%=  render NotificationComponent.new(notice:, alert:) %>
+    <%= render NavBar::BaseComponent.new(current_user) %>
     <%= yield %>
   </body>
 </html>
