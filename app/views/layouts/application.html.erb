@@ -15,8 +15,8 @@
   </head>
 
   <body class="bg-white flex flex-col h-screen">
-    <%=  render NotificationComponent.new(notice:, alert:) %>
-    <%= render NavBar::BaseComponent.new(current_user) %>
+    <%= render NotificationComponent.new(notice:, alert:) %>
+    <%= render NavBar::BaseComponent.new(request:, user: current_user) %>
     <%= yield %>
   </body>
 </html>
