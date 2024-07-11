@@ -1,8 +1,8 @@
 <header>
   <nav class="bg-white border-b border-zinc-200" data-controller="toggle">
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-      <div class="relative flex h-[70px] justify-between">
-        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+      <div class="relative flex h-16 sm:h-[70px] justify-between">
+        <div class="absolute inset-y-0 left-0 flex items-center md:hidden">
           <!-- Mobile menu button -->
           <button data-action="toggle#toggle" type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" aria-controls="mobile-menu" aria-expanded="false">
             <span class="absolute -inset-0.5"></span>
@@ -25,23 +25,25 @@
             </svg>
           </button>
         </div>
-        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+        <div class="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
           <div class="flex flex-shrink-0 items-center">
-            <a href="/candidate/assessments">
-              <%= svg_tag "assesskit", class: "h-10 w-auto" %>
-            </a>
+            <%= link_to secondary_root_path do %>
+              <%= helpers.svg_tag "assesskit", class: "h-9 sm:h-10 w-auto" %>
+            <% end %>
           </div>
-          <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+          <div class="hidden md:ml-6 md:flex md:space-x-8">
             <!-- Current: "border-blue-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
-            <a href="/candidate/assessments" class="<%= navbar_tab_style("assessments") %>">My applications</a>
+            <% navbar_links.each do |link| %>
+              <%= link_to link[:title], link[:path], class: helpers.navbar_item(link[:path]) %>
+            <% end %>
           </div>
         </div>
-        <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+        <div class="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
           <!-- Profile dropdown -->
           <div class="dropdown dropdown-end relative ml-3 inline-block text-left">
             <div>
-              <button tabindex="0" type="button" class="hidden sm:inline-flex text-gray-900 w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold" id="menu-button" aria-expanded="true" aria-haspopup="true">
-                <span class="-mt-0.5">sam-parr@example.com</span>
+              <button tabindex="0" type="button" class="hidden md:inline-flex text-gray-900 w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                <span class="-mt-0.5"><%= user.email %></span>
                 <svg class="-mr-1 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                   <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
                 </svg>
@@ -61,7 +63,9 @@
             <div tabindex="0" class="dropdown-content absolute right-0 z-10 mt-2 w-48 origin-top-right divide-y divide-gray-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
               <div class="py-1" role="none">
                 <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-                <a href="/candidate/profile" class="block px-4 py-2 text-sm font-medium text-gray-800 hover:bg-zinc-100" role="menuitem" tabindex="-1" id="menu-item-0">Profile</a>
+                <% dropdown_links.each do |link| %>
+                  <%= link_to link[:title], link[:path], class: "block px-4 py-2 text-sm font-medium text-gray-800 hover:bg-zinc-100" %>
+                <% end %>
               </div>
               <div class="py-1" role="none">
                 <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "block px-4 py-2 text-sm font-medium text-gray-800 hover:bg-zinc-100" %>
@@ -73,11 +77,12 @@
     </div>
 
     <!-- Mobile menu, show/hide based on menu state. -->
-    <div data-toggle-target="element" class="hidden sm:hidden" id="mobile-menu">
+    <div data-toggle-target="element" class="hidden md:hidden" id="mobile-menu">
       <div class="space-y-1 pb-4 pt-2">
         <!-- Current: "bg-blue-50 border-blue-500 text-blue-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" -->
-        <a href="/candidate/assessments" class="block border-l-4 border-blue-600 bg-blue-50 py-2 pl-3 pr-4 text-base font-medium text-blue-700">My assessments</a>
-        <a href="/candidate/profile" class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">Profile</a>
+        <% navbar_links.concat(dropdown_links).each do |link| %>
+          <%= link_to link[:title], link[:path], class: helpers.dropdown_item(link[:path]) %>
+        <% end %>
         <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700" %>
       </div>
     </div>

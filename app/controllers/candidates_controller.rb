@@ -24,7 +24,7 @@ class CandidatesController < ApplicationController
     @candidate = current_user.candidate
 
     if @candidate.update(candidate_params)
-      redirect_to candidate_assessments_path, notice: 'Your candidate profile was successfully updated.'
+      redirect_to secondary_root_path, notice: 'Your candidate profile was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end

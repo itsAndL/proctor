@@ -24,7 +24,7 @@ class BusinessesController < ApplicationController
     @business = current_user.business
 
     if @business.update(business_params)
-      redirect_to customer_assessments_path, notice: 'Your business profile was successfully updated.'
+      redirect_to secondary_root_path, notice: 'Your business profile was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end

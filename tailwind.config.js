@@ -3,7 +3,8 @@ module.exports = {
     './app/views/**/*.html.erb',
     './app/helpers/**/*.rb',
     './app/assets/stylesheets/**/*.css',
-    './app/javascript/**/*.js'
+    './app/javascript/**/*.js',
+    "./app/components/**/*.{rb,html,html.erb,yml}"
   ],
   plugins: [
     require('@tailwindcss/forms'),
