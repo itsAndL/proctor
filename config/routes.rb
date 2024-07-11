@@ -1,12 +1,8 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
-    # Add other controllers here if you want to customize them as well
-    # sessions: 'users/sessions',
-    # passwords: 'users/passwords',
-    # confirmations: 'users/confirmations',
-    # unlocks: 'users/unlocks',
-    # omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
   resource :role, only: :new

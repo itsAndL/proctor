@@ -63,6 +63,8 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  gem "letter_opener_web"
 end
 
 
@@ -70,3 +72,4 @@ gem "devise", "~> 4.9"
 gem "hashid-rails", "~> 1.4"
 gem "view_component", "~> 3.12"
 gem "image_processing", "~> 1.12"
+gem "rexml", "~> 3.3"
