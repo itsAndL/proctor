@@ -16,6 +16,6 @@
   }
 
   .primary-form-submit {
-    @apply cursor-pointer rounded-full bg-blue-600 px-6 py-2 text-base font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600;
+    @apply cursor-pointer rounded-full bg-blue-600 px-6 py-2.5 font-semibold text-white text-sm shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600;
   }
 }

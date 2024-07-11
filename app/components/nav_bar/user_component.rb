@@ -52,16 +52,23 @@ class NavBar::UserComponent < ViewComponent::Base
 
   def business_dropdown_links
     [
-      { title: 'Profile', path: customer_profile_path },
+      { title: 'My account', path: edit_user_registration_path },
+      { title: 'My business profile', path: edit_business_path(user.business) },
       { title: 'Test Library', path: customer_tests_path }
     ]
   end
 
   def candidate_dropdown_links
-    [{ title: 'Profile', path: candidate_profile_path }]
+    [
+      { title: 'My account', path: edit_user_registration_path },
+      { title: 'My candidate profile', path: edit_candidate_path(user.candidate) }
+    ]
   end
 
   def user_dropdown_links
-    [{ title: 'Get started', path: new_role_path }]
+    [
+      { title: 'My account', path: edit_user_registration_path },
+      { title: 'Get started', path: new_role_path }
+    ]
   end
 end

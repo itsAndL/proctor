@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    # Add other controllers here if you want to customize them as well
+    # sessions: 'users/sessions',
+    # passwords: 'users/passwords',
+    # confirmations: 'users/confirmations',
+    # unlocks: 'users/unlocks',
+    # omniauth_callbacks: 'users/omniauth_callbacks'
+  }
 
   resource :role, only: :new
   resources :businesses, except: :destroy, param: :hashid
@@ -20,8 +28,6 @@ Rails.application.routes.draw do
   namespace :candidate do
     get 'assessments', to: 'assessments#index'
     get 'assessments/1', to: 'assessments#show'
-
-    get 'profile', to: 'profile#index'
   end
 
   # Routes for customer
@@ -36,7 +42,6 @@ Rails.application.routes.draw do
     get 'assessments/1', to: 'assessments#show'
     get 'assessments/1/candidates/1', to: 'assessments#candidate'
 
-    get 'profile', to: 'profile#profile'
     get 'profile/team', to: 'profile#team'
   end
 

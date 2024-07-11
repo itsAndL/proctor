@@ -24,7 +24,7 @@
           </div>
           
           <div>
-            <%= f.label :password_confirmation, class: "required-label" %>
+            <%= f.label :password_confirmation, "Confirm password", class: "required-label" %>
             <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true, class: "primary-field" %>
             <%= render FieldErrorComponent.new(:password_confirmation, resource) %>
           </div>

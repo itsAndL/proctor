@@ -1,43 +1,87 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<main class="bg-zinc-50 h-full">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
+    <div class="pt-12">
+      <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Your account</h1>
+    </div>
+      
+    <div class="pt-6 space-y-8">
+      <div class="bg-white shadow sm:overflow-hidden rounded-xl">
+        <div class="px-4 py-6 sm:px-6 sm:py-7">
+          <div class="grid grid-cols-1 gap-x-10 gap-y-10 md:grid-cols-3">
+            <div>
+              <h2 class="text-base font-bold text-gray-900">Change email address</h2>
+              <p class="mt-1 text-sm font-semibold text-gray-500 leading-5">Enter your current password to change your email.</p>
+            </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+            <div class="col-span-2">
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+                <div class="grid grid-cols-1 gap-x-6 gap-y-6">              
+                  <div>
+                    <label for="current-email" class="primary-label">Current email</label>
+                    <input type="email" name="current-email" id="current-email" class="primary-field" disabled placeholder="you@example.com" value="<%= resource.email %>">
+                  </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                  <div>
+                    <%= f.label :email, "New email", class: "required-label" %>
+                    <%= f.email_field :email, autocomplete: "email", required: true, class: "primary-field" %>
+                    <%= render FieldErrorComponent.new(:email, resource) %>
+                  </div>
+
+                  <div>
+                    <%= f.label :current_password, "Current password", class: "required-label" %>
+                    <%= f.password_field :current_password, autocomplete: "current-password", required: true, class: "primary-field" %>
+                    <%= render FieldErrorComponent.new(:current_password, resource) %>
+                  </div>
+                </div>
+
+                <div class="mt-8 text-right">
+                  <%= f.submit "Change email", class: "primary-form-submit" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white shadow sm:overflow-hidden rounded-xl">
+        <div class="px-4 py-6 sm:px-6 sm:py-7">
+          <div class="grid grid-cols-1 gap-x-10 gap-y-10 md:grid-cols-3">
+            <div>
+              <h2 class="text-base font-bold text-gray-900">Change password</h2>
+              <p class="mt-1 text-sm font-semibold text-gray-500 leading-5">Enter your current password to change your password.</p>
+            </div>
+
+            <div class="col-span-2">
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+                <div class="grid grid-cols-1 gap-x-6 gap-y-6">
+                  <div>
+                    <%= f.label :current_password, "Current password", class: "required-label" %>
+                    <%= f.password_field :current_password, autocomplete: "current-password", required: true, class: "primary-field" %>
+                    <%= render FieldErrorComponent.new(:current_password, resource) %>
+                  </div>
+
+                  <div>
+                    <%= f.label :password, "New password", class: "required-label" %>
+                    <%= f.password_field :password, autocomplete: "new-password", required: true, class: "primary-field" %>
+                    <%= render FieldErrorComponent.new(:password, resource) %>
+                  </div>
+                  
+                  <div>
+                    <%= f.label :password_confirmation, "Confirm password", class: "required-label" %>
+                    <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true, class: "primary-field" %>
+                    <%= render FieldErrorComponent.new(:password_confirmation, resource) %>
+                  </div>
+                </div>
+
+                <div class="mt-8 text-right">
+                  <%= f.submit "Change password", class: "primary-form-submit" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
   </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+</main>
