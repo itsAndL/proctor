@@ -18,5 +18,6 @@
     <%= render NotificationComponent.new(notice:, alert:) %>
     <%= render NavBar::BaseComponent.new(request:, user: current_user) %>
     <%= yield %>
+    <%= render FooterComponent.new(request:) %>
   </body>
 </html>
