@@ -1,5 +1,93 @@
-<p>Welcome <%= @email %>!</p>
-
-<p>You can confirm your account email through the link below:</p>
-
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<!-- Above CTA -->
+<table cellspacing="0" cellpadding="0" border="0" role="presentation" width="100%" align="center" class="r3-o" style="background-color: #ffffff; table-layout: fixed; width: 100%;">
+  <tbody>
+    <tr>
+      <th width="100%" valign="top" class="r5-c" style="font-weight: normal;">
+        <table cellspacing="0" cellpadding="0" border="0" role="presentation" width="100%" class="r6-o" style="table-layout: fixed; width: 100%;">
+          <tbody>
+            <tr>
+              <td valign="top" class="r14-i" style="padding-left: 40px; padding-right: 40px; padding-top: 30px;">
+                <table width="100%" cellspacing="0" cellpadding="0" border="0" role="presentation">
+                  <tbody>
+                    <tr>
+                      <td class="r15-c nl2go-default-textstyle" align="left" style="color: #3b3f44; font-family: Arial; font-size: 15px; line-height: 1.5; word-break: break-word; text-align: left; valign: top;">
+                        <div>
+                          <h2 class="default-heading2" style="margin: 0; color: #1f2d3d; font-family: Poppins,arial; font-size: 32px; word-break: break-word; line-height: 34px"><span style="color: #242424; font-family: Arial, helvetica, sans-serif; font-size: 27px;">Welcome <%= @email %>!</span></h2>
+                          <p style="margin: 0;">&nbsp;</p>
+                          <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;"><strong>You can confirm your account email through the link below:</strong></span></p>
+                          <p style="margin: 0;">&nbsp;</p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </th>
+    </tr>
+  </tbody>
+</table>
+<!-- CTA -->
+<table cellspacing="0" cellpadding="0" border="0" role="presentation" width="100%" align="center" class="r3-o" style="table-layout: fixed; width: 100%;">
+  <tbody>
+    <tr>
+      <td class="r17-i" style="background-color: #ffffff; color: #000000; font-family: arial,helvetica,sans-serif; font-size: 16px; padding-left: 40px; padding-right: 40px;">
+        <table width="100%" cellspacing="0" cellpadding="0" border="0" role="presentation">
+          <tbody>
+            <tr>
+              <th width="100%" valign="middle" class="r18-c" style="font-weight: normal;">
+                <table cellspacing="0" cellpadding="0" border="0" role="presentation" width="100%" class="r6-o" style="table-layout: fixed; width: 100%;">
+                  <tbody>
+                    <tr>
+                      <td valign="top" class="r19-i" style="color: #3b3f44; font-family: Open Sans; font-size: 16px; padding-right: 10px;">
+                        <table width="100%" cellspacing="0" cellpadding="0" border="0" role="presentation">
+                          <tbody>
+                            <tr>
+                              <td class="r20-c" align="left">
+                                <table cellspacing="0" cellpadding="0" border="0" role="presentation" width="200" class="r21-o" style="table-layout: fixed; width: 200px;">
+                                  <tbody>
+                                    <tr class="nl2go-responsive-hide">
+                                      <td height="15" style="font-size: 15px; line-height: 15px;">­</td>
+                                    </tr>
+                                    <tr>
+                                      <td height="18" align="center" valign="top" class="r22-i nl2go-default-textstyle" style="color: #3b3f44; font-family: Arial; font-size: 15px; line-height: 1.5; word-break: break-word;">
+                                        <!--[if mso]> 
+                                        <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="<%= confirmation_url(@resource, confirmation_token: @token) %>" style="v-text-anchor:middle; height: 41px; width: 199px;" arcsize="50%" fillcolor="#2563eb" strokecolor="#2563eb" strokeweight="1px" data-btn="1">
+                                          <w:anchorlock> </w:anchorlock>
+                                          <v:textbox inset="0,0,0,0">
+                                            <div style="display:none;">
+                                              <center class="default-button"><span><span style="color:#ffffff;font-size:15px;">Match me!</span></span></center>
+                                            </div>
+                                          </v:textbox>
+                                        </v:roundrect>
+                                        <![endif]-->
+                                        <!--[if !mso]><!-- -->
+                                          <%= link_to confirmation_url(@resource, confirmation_token: @token), title: "Confirm my account", data: {btn: 1}, sib_link_id: 0, class: "r23-r default-button", style: "font-style: normal; font-weight: normal; line-height: 1.15; text-decoration: none; word-break: break-word; border-style: solid; word-wrap: break-word; display: block; -webkit-text-size-adjust: none; background-color: #2563eb; border-color: #000000; border-radius: 50px; border-width: 0px; color: #000000; font-family: open sans,arial,helvetica,sans-serif; font-size: 16px; height: 18px; mso-hide: all; padding-bottom: 12px; padding-left: 5px; padding-right: 5px; padding-top: 12px; width: 190px;" do %>
+                                            <span style="color: #ffffff; font-size: 15px;">Confirm my account</span>
+                                          <% end %>
+                                        <!--<![endif]--> 
+                                      </td>
+                                    </tr>
+                                    <tr class="nl2go-responsive-hide">
+                                      <td height="15" style="font-size: 15px; line-height: 15px;">­</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </th>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>

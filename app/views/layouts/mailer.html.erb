@@ -1,13 +1,325 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
   <head>
+    <meta content="text/html;charset=UTF-8" http-equiv="Content-Type">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <style>
-      /* Email styles need to be inline */
-    </style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ensuring Integrity in Remote Testing</title>
+    <style type="text/css" emogrify="no">#outlook a { padding:0; } .ExternalClass { width:100%; } .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div { line-height: 100%; } table td { border-collapse: collapse; mso-line-height-rule: exactly; } .editable.image { font-size: 0 !important; line-height: 0 !important; } .nl2go_preheader { display: none !important; mso-hide:all !important; mso-line-height-rule: exactly; visibility: hidden !important; line-height: 0px !important; font-size: 0px !important; } body { width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0; } img { outline:none; text-decoration:none; -ms-interpolation-mode: bicubic; } a img { border:none; } table { border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; } th { font-weight: normal; text-align: left; } *[class="gmail-fix"] { display: none !important; } </style>
+    <style type="text/css" emogrify="no"> @media (max-width: 600px) { .gmx-killpill { content: ' \03D1';} } </style>
+    <style type="text/css" emogrify="no">@media (max-width: 600px) { .gmx-killpill { content: ' \03D1';} .r0-o { border-style: solid !important; margin: 0 auto 0 auto !important; width: 320px !important } .r1-i { background-color: #f4f4f4 !important } .r2-c { box-sizing: border-box !important; text-align: center !important; valign: top !important; width: 100% !important } .r3-o { border-style: solid !important; margin: 0 auto 0 auto !important; width: 100% !important } .r4-i { background-color: #f4f4f4 !important; padding-bottom: 5px !important; padding-left: 15px !important; padding-right: 15px !important; padding-top: 15px !important } .r5-c { box-sizing: border-box !important; display: block !important; valign: top !important; width: 100% !important } .r6-o { border-style: solid !important; width: 100% !important } .r7-o { border-style: solid !important; margin: 0 auto 0 0 !important; width: 100% !important } .r8-i { text-align: right !important } .r9-o { border-style: solid !important; margin-bottom: 0px !important; margin-top: 0px !important; width: 100% !important } .r10-i { color: #3b3f44 !important; padding-bottom: 0px !important; padding-top: 0px !important } .r11-i { background-color: #242424 !important; color: #3b3f44 !important; padding-bottom: 0px !important; padding-left: 20px !important; padding-right: 20px !important; padding-top: 0px !important } .r12-c { box-sizing: border-box !important; valign: top !important; width: 50% !important } .r13-o { background-size: auto !important; border-style: solid !important; margin: 0 auto 0 0 !important; width: 160px !important } .r14-i { padding-bottom: 0px !important; padding-left: 20px !important; padding-right: 20px !important; padding-top: 30px !important } .r15-c { box-sizing: border-box !important; padding-bottom: 0px !important; padding-left: 0px !important; padding-right: 0px !important; padding-top: 0px !important; text-align: left !important; valign: top !important; width: 100% !important } .r16-c { box-sizing: border-box !important; text-align: center !important; valign: middle !important; width: 100% !important } .r17-i { background-color: #ffffff !important; color: #000000 !important; padding-left: 15px !important; padding-right: 15px !important; padding-top: 0px !important } .r18-c { box-sizing: border-box !important; display: block !important; valign: middle !important; width: 100% !important } .r19-i { color: #3b3f44 !important; padding-left: 0px !important; padding-right: 10px !important } .r20-c { box-sizing: border-box !important; text-align: left !important; valign: top !important; width: 100% !important } .r21-o { border-style: solid !important; margin: 0 auto 0 0 !important; margin-bottom: 15px !important; margin-top: 15px !important; width: 100% !important } .r22-i { text-align: center !important } .r23-r { background-color: #2563eb !important; border-color: #000000 !important; border-radius: 50px !important; border-width: 0px !important; box-sizing: border-box; height: initial !important; padding-bottom: 12px !important; padding-left: 5px !important; padding-right: 5px !important; padding-top: 12px !important; text-align: center !important; width: 100% !important } .r24-i { background-color: #ffffff !important; padding-bottom: 20px !important; padding-left: 0px !important; padding-right: 0px !important; padding-top: 20px !important } .r25-o { border-style: solid !important; margin: 0 auto 0 0 !important; margin-bottom: 0px !important; margin-top: 0px !important; width: 100% !important } .r26-i { padding-bottom: 0px !important; padding-left: 20px !important; padding-right: 20px !important; padding-top: 0px !important; text-align: left !important } .r27-i { background-color: #f4f4f4 !important; color: #3b3f44 !important; padding-bottom: 40px !important; padding-left: 20px !important; padding-right: 20px !important; padding-top: 40px !important } .r28-o { background-size: auto !important; border-style: solid !important; margin: 0 auto 0 0 !important; width: 120px !important } .r29-i { color: #3b3f44 !important; padding-bottom: 32px !important; padding-left: 0px !important; padding-top: 0px !important } .r30-i { color: #3b3f44 !important; padding-bottom: 16px !important; padding-left: 0px !important; padding-right: 0px !important; padding-top: 0px !important } .r31-i { background-color: #f4f4f4 !important; color: #3b3f44 !important; padding-bottom: 0px !important; padding-left: 0px !important; padding-right: 30px !important; text-align: left !important } body { -webkit-text-size-adjust: none } .nl2go-responsive-hide { display: none } .nl2go-body-table { min-width: unset !important } .mobshow { height: auto !important; overflow: visible !important; max-height: unset !important; visibility: visible !important; border: none !important } .resp-table { display: inline-table !important } .magic-resp { display: table-cell !important } } </style>
+    <!--[if !mso]><!-->
+    <style type="text/css" emogrify="no">@import url("https://fonts.googleapis.com/css2?family=Open Sans&family=Poppins"); </style>
+    <!--<![endif]-->
+    <style type="text/css">p, h1, h2, h3, h4, ol, ul, li { margin: 0; } a, a:link { color: #2563eb; text-decoration: underline } .nl2go-default-textstyle { color: #3b3f44; font-family: Arial; font-size: 15px; line-height: 1.5; word-break: break-word } .default-button { color: #000000; font-family: Arial; font-size: 16px; font-style: normal; font-weight: normal; line-height: 1.15; text-decoration: none; word-break: break-word } .default-heading1 { color: #1F2D3D; font-family: Poppins, arial; font-size: 36px; word-break: break-word } .default-heading2 { color: #1F2D3D; font-family: Poppins, arial; font-size: 32px; word-break: break-word } .default-heading3 { color: #1F2D3D; font-family: Poppins, arial; font-size: 24px; word-break: break-word } .default-heading4 { color: #1F2D3D; font-family: Poppins, arial; font-size: 18px; word-break: break-word } a[x-apple-data-detectors] { color: inherit !important; text-decoration: inherit !important; font-size: inherit !important; font-family: inherit !important; font-weight: inherit !important; line-height: inherit !important; } .no-show-for-you { border: none; display: none; float: none; font-size: 0; height: 0; line-height: 0; max-height: 0; mso-hide: all; overflow: hidden; table-layout: fixed; visibility: hidden; width: 0; } </style>
+    <!--[if mso]>
+    <xml>
+      <o:OfficeDocumentSettings>
+        <o:AllowPNG/>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+    <style type="text/css">a:link{color: #2563eb; text-decoration: underline;}</style>
   </head>
-
-  <body>
-    <%= yield %>
+  <body bgcolor="#f4f4f4" text="#3b3f44" link="#2563eb" yahoo="fix" style="background-color: #f4f4f4;" data-new-gr-c-s-check-loaded="14.1187.0" data-gr-ext-installed="">
+    <table cellspacing="0" cellpadding="0" border="0" role="presentation" class="nl2go-body-table" width="100%" style="background-color: #f4f4f4; width: 100%;">
+      <tbody>
+        <tr>
+          <td>
+            <table cellspacing="0" cellpadding="0" border="0" role="presentation" width="600" align="center" class="r0-o" style="table-layout: fixed; width: 600px;">
+              <tbody>
+                <tr>
+                  <td valign="top" class="r1-i" style="background-color: #f4f4f4;">
+                    <table cellspacing="0" cellpadding="0" border="0" role="presentation" width="100%" align="center" class="r3-o" style="table-layout: fixed; width: 100%;">
+                      <tbody>
+                        <tr>
+                          <td class="r4-i" style="background-color: #f4f4f4; padding-top: 35px;">
+                            <table width="100%" cellspacing="0" cellpadding="0" border="0" role="presentation">
+                              <tbody>
+                                <tr>
+                                  <th width="100%" valign="top" class="r5-c" style="font-weight: normal;">
+                                    <table cellspacing="0" cellpadding="0" border="0" role="presentation" width="100%" align="left" class="r7-o" style="table-layout: fixed; width: 100%;">
+                                      <tbody>
+                                        <tr>
+                                          <td align="right" valign="top" class="r8-i nl2go-default-textstyle" style="color: #3b3f44; font-family: Arial; font-size: 15px; line-height: 1.5; word-break: break-word; text-align: right;">
+                                            <div>
+                                              <p style="margin: 0;"></p>
+                                            </div>
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </th>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table cellspacing="0" cellpadding="0" border="0" role="presentation" width="100%" align="center" class="r3-o" style="background-color: #f4f4f4; color: #3b3f44; font-family: Open Sans; font-size: 15px; table-layout: fixed; width: 100%;">
+                      <tbody>
+                        <tr>
+                          <th width="100%" valign="top" class="r5-c" style="font-weight: normal;">
+                            <table cellspacing="0" cellpadding="0" border="0" role="presentation" width="600" class="r9-o" style="table-layout: fixed; width: 600px;">
+                              <tbody>
+                                <tr>
+                                  <td class="r10-i nl2go-default-textstyle" style="line-height: 1.5; word-break: break-word; color: #3b3f44; font-family: Open Sans, arial; font-size: 15px;">
+                                    <table style="width: 100%; padding: 0px; margin: 0px; border-collapse: collapse;">
+                                      <tbody>
+                                        <tr>
+                                          <td style="width: 100%; background-color: #242424; border-radius: 5px 5px 0px 0px; padding: 10px;"></td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </th>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table cellspacing="0" cellpadding="0" border="0" role="presentation" width="100%" align="center" class="r3-o" style="table-layout: fixed; width: 100%;">
+                      <tbody>
+                        <tr>
+                          <td class="r11-i" style="background-color: #242424; color: #3b3f44; font-family: Arial; font-size: 15px; padding-left: 40px; padding-right: 40px;">
+                            <table width="100%" cellspacing="0" cellpadding="0" border="0" role="presentation">
+                              <tbody>
+                                <tr>
+                                  <th width="50%" valign="top" class="r12-c" style="font-weight: normal;">
+                                    <table cellspacing="0" cellpadding="0" border="0" role="presentation" width="160" align="left" class="r13-o" style="table-layout: fixed; width: 160px;">
+                                      <tbody>
+                                        <tr>
+                                          <td class="r10-i" style="color: #3b3f44; font-family: Arial; font-size: 15px; padding-bottom: 15px; padding-top: 15px;"> 
+                                            <svg width="325.9600158691406" height="78.80549793474188" viewBox="0 0 369.6774193548386 74.89873487996165" style="height: 38px; width: auto;">
+                                              <g id="SvgjsG4254" featurekey="e7LhAk-0" transform="matrix(1.4946863693409997,0,0,1.4946863693409997,0,-0.029894411599940725)" fill="white">
+                                                <g xmlns="http://www.w3.org/2000/svg" id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                  <g id="Artboard" transform="translate(-587.000000, -53.000000)" fill="#2563eb" fill-rule="nonzero">
+                                                    <g id="Asset-19LETTERS1" transform="translate(587.000000, 53.020000)">
+                                                      <path d="M34.130182,2.07 L34.130182,2.07 C32.470182,-0.69 28.480182,-0.69 26.820182,2.07 L0.270181968,46.26 C-0.479818032,47.51 0.420181968,49.11 1.88018197,49.11 L8.49018197,49.11 C16.390182,49.11 23.710182,44.97 27.780182,38.19 L47.940182,4.66 C43.490182,8.1 37.030182,6.89 34.130182,2.07 L34.130182,2.07 Z" id="Path"></path>
+                                                      <path d="M60.000182,45.14 L54.470182,35.93 C51.460182,30.91 49.600182,25.3 49.010182,19.51 C48.890182,18.32 47.340182,17.97 46.720182,18.99 L37.210182,34.82 C33.430182,41.11 37.960182,49.11 45.290182,49.11 L57.900182,49.11 C59.010182,49.11 60.010182,48.39 60.340182,47.27 C60.550182,46.55 60.370182,45.78 59.990182,45.14 L60.000182,45.14 Z" id="Path"></path>
+                                                    </g>
+                                                  </g>
+                                                </g>
+                                              </g>
+                                              <g id="SvgjsG4255" featurekey="Qg0WB5-0" transform="matrix(2.4702666933129263,0,0,2.4702666933129263,109.01490243893015,9.441899940045916)" fill="#f4f4f4">
+                                                <path d="M5.86 5.539999999999999 q0.01 -0.06 0.065 -0.13 t0.135 -0.13 t0.17 -0.095 t0.17 -0.035 l2.56 0 q0.17 0 0.29 0.105 t0.18 0.185 l0.25 0.57 l5.25 13.54 q0.08 0.2 -0.03 0.325 t-0.38 0.125 l-2.87 0 q-0.23 0 -0.355 -0.085 t-0.195 -0.285 q-0.2 -0.51 -0.39 -1.015 t-0.38 -1.015 l-5.31 0 q-0.19 0.51 -0.385 1.015 t-0.385 1.015 q-0.13 0.37 -0.51 0.37 l-2.95 0 q-0.19 0 -0.315 -0.1 t-0.045 -0.3 z M7.68 9.82 q-0.19 0.51 -0.385 1.1 t-0.385 1.19 t-0.385 1.185 t-0.385 1.095 l3.07 0 z M18.41 16.05 q0.27 0.27 0.585 0.455 t0.605 0.3 t0.51 0.165 t0.3 0.05 q0.19 0 0.485 -0.015 t0.565 -0.09 t0.465 -0.245 t0.195 -0.48 q0 -0.28 -0.11 -0.445 t-0.32 -0.28 t-0.515 -0.205 t-0.685 -0.21 q-1.2 -0.32 -1.98 -0.77 t-1.235 -1.005 t-0.635 -1.195 t-0.18 -1.35 q0 -0.83 0.33 -1.51 t0.94 -1.165 t1.46 -0.75 t1.89 -0.265 q0.63 0 1.18 0.105 t1.05 0.33 t0.975 0.58 t0.945 0.845 q0.17 0.2 0.175 0.375 t-0.225 0.375 q-0.39 0.32 -0.745 0.63 t-0.735 0.69 q-0.12 0.1 -0.24 0.125 t-0.23 -0.005 t-0.21 -0.1 t-0.18 -0.17 q-0.35 -0.39 -0.8 -0.525 t-0.84 -0.135 q-0.49 0 -0.78 0.17 t-0.27 0.52 q0.02 0.26 0.195 0.405 t0.43 0.235 t0.54 0.145 t0.525 0.125 q0.9 0.29 1.65 0.63 t1.3 0.835 t0.855 1.185 t0.305 1.68 t-0.395 1.77 t-1.085 1.31 t-1.635 0.81 t-2.035 0.28 q-0.62 0 -1.26 -0.11 t-1.24 -0.355 t-1.14 -0.63 t-0.96 -0.935 q-0.11 -0.14 -0.165 -0.295 t-0.05 -0.305 t0.06 -0.275 t0.175 -0.215 l1.29 -1.29 q0.24 -0.2 0.425 -0.14 t0.475 0.34 z M29.990000000000002 16.05 q0.27 0.27 0.585 0.455 t0.605 0.3 t0.51 0.165 t0.3 0.05 q0.19 0 0.485 -0.015 t0.565 -0.09 t0.465 -0.245 t0.195 -0.48 q0 -0.28 -0.11 -0.445 t-0.32 -0.28 t-0.515 -0.205 t-0.685 -0.21 q-1.2 -0.32 -1.98 -0.77 t-1.235 -1.005 t-0.635 -1.195 t-0.18 -1.35 q0 -0.83 0.33 -1.51 t0.94 -1.165 t1.46 -0.75 t1.89 -0.265 q0.63 0 1.18 0.105 t1.05 0.33 t0.975 0.58 t0.945 0.845 q0.17 0.2 0.175 0.375 t-0.225 0.375 q-0.39 0.32 -0.745 0.63 t-0.735 0.69 q-0.12 0.1 -0.24 0.125 t-0.23 -0.005 t-0.21 -0.1 t-0.18 -0.17 q-0.35 -0.39 -0.8 -0.525 t-0.84 -0.135 q-0.49 0 -0.78 0.17 t-0.27 0.52 q0.02 0.26 0.195 0.405 t0.43 0.235 t0.54 0.145 t0.525 0.125 q0.9 0.29 1.65 0.63 t1.3 0.835 t0.855 1.185 t0.305 1.68 t-0.395 1.77 t-1.085 1.31 t-1.635 0.81 t-2.035 0.28 q-0.62 0 -1.26 -0.11 t-1.24 -0.355 t-1.14 -0.63 t-0.96 -0.935 q-0.11 -0.14 -0.165 -0.295 t-0.05 -0.305 t0.06 -0.275 t0.175 -0.215 l1.29 -1.29 q0.24 -0.2 0.425 -0.14 t0.475 0.34 z M50.31 18.48 q-0.88 0.81 -1.98 1.265 t-2.33 0.455 q-1.37 0 -2.59 -0.5 t-2.14 -1.385 t-1.46 -2.085 t-0.54 -2.61 q0 -0.88 0.215 -1.705 t0.61 -1.545 t0.96 -1.325 t1.265 -1.035 t1.52 -0.67 t1.73 -0.24 q0.83 0 1.61 0.22 t1.465 0.62 t1.255 0.96 t0.98 1.225 t0.635 1.42 t0.225 1.555 q0 0.52 -0.015 0.85 t-0.155 0.525 t-0.465 0.27 t-0.955 0.075 l-7.2 0 q0.1 0.64 0.405 1.07 t0.705 0.685 t0.85 0.365 t0.85 0.11 q0.36 0 0.74 -0.075 t0.735 -0.2 t0.65 -0.29 t0.475 -0.345 q0.16 -0.13 0.275 -0.195 t0.245 -0.065 t0.265 0.09 t0.305 0.26 l1.06 1.2 q0.11 0.13 0.14 0.235 t0.03 0.215 q0 0.2 -0.11 0.345 t-0.26 0.255 z M45.5 10.15 q-0.39 0 -0.755 0.155 t-0.685 0.415 t-0.575 0.59 t-0.415 0.67 l5.11 0 q-0.21 -0.39 -0.455 -0.72 t-0.56 -0.58 t-0.72 -0.39 t-0.945 -0.14 z M55.73 16.05 q0.27 0.27 0.585 0.455 t0.605 0.3 t0.51 0.165 t0.3 0.05 q0.19 0 0.485 -0.015 t0.565 -0.09 t0.465 -0.245 t0.195 -0.48 q0 -0.28 -0.11 -0.445 t-0.32 -0.28 t-0.515 -0.205 t-0.685 -0.21 q-1.2 -0.32 -1.98 -0.77 t-1.235 -1.005 t-0.635 -1.195 t-0.18 -1.35 q0 -0.83 0.33 -1.51 t0.94 -1.165 t1.46 -0.75 t1.89 -0.265 q0.63 0 1.18 0.105 t1.05 0.33 t0.975 0.58 t0.945 0.845 q0.17 0.2 0.175 0.375 t-0.225 0.375 q-0.39 0.32 -0.745 0.63 t-0.735 0.69 q-0.12 0.1 -0.24 0.125 t-0.23 -0.005 t-0.21 -0.1 t-0.18 -0.17 q-0.35 -0.39 -0.8 -0.525 t-0.84 -0.135 q-0.49 0 -0.78 0.17 t-0.27 0.52 q0.02 0.26 0.195 0.405 t0.43 0.235 t0.54 0.145 t0.525 0.125 q0.9 0.29 1.65 0.63 t1.3 0.835 t0.855 1.185 t0.305 1.68 t-0.395 1.77 t-1.085 1.31 t-1.635 0.81 t-2.035 0.28 q-0.62 0 -1.26 -0.11 t-1.24 -0.355 t-1.14 -0.63 t-0.96 -0.935 q-0.11 -0.14 -0.165 -0.295 t-0.05 -0.305 t0.06 -0.275 t0.175 -0.215 l1.29 -1.29 q0.24 -0.2 0.425 -0.14 t0.475 0.34 z M67.30999999999999 16.05 q0.27 0.27 0.585 0.455 t0.605 0.3 t0.51 0.165 t0.3 0.05 q0.19 0 0.485 -0.015 t0.565 -0.09 t0.465 -0.245 t0.195 -0.48 q0 -0.28 -0.11 -0.445 t-0.32 -0.28 t-0.515 -0.205 t-0.685 -0.21 q-1.2 -0.32 -1.98 -0.77 t-1.235 -1.005 t-0.635 -1.195 t-0.18 -1.35 q0 -0.83 0.33 -1.51 t0.94 -1.165 t1.46 -0.75 t1.89 -0.265 q0.63 0 1.18 0.105 t1.05 0.33 t0.975 0.58 t0.945 0.845 q0.17 0.2 0.175 0.375 t-0.225 0.375 q-0.39 0.32 -0.745 0.63 t-0.735 0.69 q-0.12 0.1 -0.24 0.125 t-0.23 -0.005 t-0.21 -0.1 t-0.18 -0.17 q-0.35 -0.39 -0.8 -0.525 t-0.84 -0.135 q-0.49 0 -0.78 0.17 t-0.27 0.52 q0.02 0.26 0.195 0.405 t0.43 0.235 t0.54 0.145 t0.525 0.125 q0.9 0.29 1.65 0.63 t1.3 0.835 t0.855 1.185 t0.305 1.68 t-0.395 1.77 t-1.085 1.31 t-1.635 0.81 t-2.035 0.28 q-0.62 0 -1.26 -0.11 t-1.24 -0.355 t-1.14 -0.63 t-0.96 -0.935 q-0.11 -0.14 -0.165 -0.295 t-0.05 -0.305 t0.06 -0.275 t0.175 -0.215 l1.29 -1.29 q0.24 -0.2 0.425 -0.14 t0.475 0.34 z M77.38 5.59 q0 -0.18 0.115 -0.31 t0.325 -0.13 l2.96 0 q0.15 0 0.315 0.12 t0.165 0.32 l0 5.45 q1.09 -1.4 2.14 -2.76 t2.13 -2.76 q0.11 -0.17 0.285 -0.275 t0.345 -0.105 l3.8 0 q0.24 0 0.24 0.15 q0 0.1 -0.11 0.24 l-4.71 6.21 l5.21 7.84 q0.11 0.17 0.11 0.27 q0 0.15 -0.22 0.15 l-3.78 0 q-0.17 0 -0.335 -0.1 t-0.275 -0.27 q-0.53 -0.72 -0.965 -1.38 t-0.845 -1.315 t-0.83 -1.325 t-0.92 -1.41 l-1.27 1.46 l0 3.9 q0 0.44 -0.48 0.44 l-2.95 0 q-0.45 0 -0.45 -0.44 l0 -13.97 z M92.27 8.08 q0 -0.32 0.18 -0.55 t0.56 -0.23 l2.29 0 q0.12 0 0.26 0.055 t0.26 0.16 t0.205 0.245 t0.085 0.32 l0 11.15 q0 0.38 -0.21 0.575 t-0.6 0.195 l-2.29 0 q-0.74 0 -0.74 -0.77 l0 -11.15 z M92.27 3.0199999999999996 q0 -0.42 0.18 -0.595 t0.56 -0.175 l2.32 0 q0.35 0 0.565 0.175 t0.215 0.595 l0 1.95 q0 0.12 -0.055 0.26 t-0.155 0.27 t-0.245 0.215 t-0.325 0.085 l-2.32 0 q-0.74 0 -0.74 -0.83 l0 -1.95 z M99.28 5.32 q0 -0.31 0.205 -0.465 t0.585 -0.295 l2.27 -0.79 q0.05 -0.01 0.095 -0.01 l0.085 0 q0.37 0 0.495 0.215 t0.125 0.565 l-0.01 3.15 l1.67 0 q0.32 0 0.52 0.19 t0.2 0.57 l0 1.93 q0 0.42 -0.2 0.615 t-0.52 0.195 l-1.67 0 l0.01 8.04 q0 0.38 -0.22 0.575 t-0.61 0.195 l-2.26 0 q-0.77 0 -0.77 -0.77 l-0.01 -8.04 l-0.73 0 q-0.77 0 -0.77 -0.81 l0 -1.93 q0 -0.76 0.77 -0.76 l0.73 0 z"></path>
+                                              </g>
+                                            </svg>
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </th>
+                                  <th width="50%" valign="top" class="r12-c" style="font-weight: normal;"> </th>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <%= yield %>
+                    <!-- Closing section -->
+                    <table cellspacing="0" cellpadding="0" border="0" role="presentation" width="100%" align="center" class="r3-o" style="table-layout: fixed; width: 100%;">
+                      <tbody>
+                        <tr>
+                          <td class="r24-i" style="background-color: #ffffff; padding-bottom: 20px; padding-top: 20px;">
+                            <table width="100%" cellspacing="0" cellpadding="0" border="0" role="presentation">
+                              <tbody>
+                                <tr>
+                                  <th width="100%" valign="top" class="r5-c" style="font-weight: normal;">
+                                    <table cellspacing="0" cellpadding="0" border="0" role="presentation" width="100%" align="left" class="r25-o" style="table-layout: fixed; width: 100%;">
+                                      <tbody>
+                                        <tr>
+                                          <td align="left" valign="top" class="r26-i nl2go-default-textstyle" style="color: #3b3f44; font-family: Arial; font-size: 15px; line-height: 1.5; word-break: break-word; padding-left: 40px; padding-right: 40px; text-align: left;">
+                                            <div>
+                                              <p style="margin: 0;"><span style="color: #242424;">All the best,&nbsp;</span></p>
+                                              <p style="margin: 0;"><span style="color: #242424;">The AssessKit team</span></p>
+                                            </div>
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </th>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table cellspacing="0" cellpadding="0" border="0" role="presentation" width="100%" align="center" class="r3-o" style="background-color: #f4f4f4; color: #3b3f44; font-family: Open Sans; font-size: 15px; table-layout: fixed; width: 100%;">
+                      <tbody>
+                        <tr>
+                          <th width="100%" valign="top" class="r5-c" style="font-weight: normal;">
+                            <table cellspacing="0" cellpadding="0" border="0" role="presentation" width="600" class="r6-o" style="table-layout: fixed; width: 600px;">
+                              <tbody>
+                                <tr>
+                                  <td class="r10-i nl2go-default-textstyle" style="line-height: 1.5; word-break: break-word; color: #3b3f44; font-family: Open Sans, arial; font-size: 15px;">
+                                    <table style="width: 100%; padding: 0px; margin: 0px; border-collapse: collapse;">
+                                      <tbody>
+                                        <tr>
+                                          <td style="width: 100%; background-color: #ffffff; border-radius: 0px 0px 5px 5px; padding: 10px;"></td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </th>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table cellspacing="0" cellpadding="0" border="0" role="presentation" width="100%" align="center" class="r3-o" style="table-layout: fixed; width: 100%;">
+                      <tbody>
+                        <tr>
+                          <td class="r27-i" style="background-color: #f4f4f4; color: #3b3f44; font-family: Arial; font-size: 15px; padding-bottom: 40px; padding-left: 40px; padding-top: 40px;">
+                            <table width="100%" cellspacing="0" cellpadding="0" border="0" role="presentation">
+                              <tbody>
+                                <tr>
+                                  <th width="100%" valign="top" class="r5-c" style="font-weight: normal;">
+                                    <table cellspacing="0" cellpadding="0" border="0" role="presentation" width="150" align="left" class="r28-o" style="table-layout: fixed; width: 150px;">
+                                      <tbody>
+                                        <tr>
+                                          <td class="r29-i" style="color: #3b3f44; font-family: arial,helvetica,sans-serif; font-size: 16px; padding-bottom: 32px;">
+                                            <a href="http://localhost:3000" target="_blank" style="color: #2563eb; text-decoration: underline;" sib_link_id="2">
+                                              <svg width="325.9600158691406" height="78.80549793474188" viewBox="0 0 369.6774193548386 74.89873487996165" style="height: 38px; width: auto;">
+                                                <g id="SvgjsG4254" featurekey="e7LhAk-0" transform="matrix(1.4946863693409997,0,0,1.4946863693409997,0,-0.029894411599940725)" fill="white">
+                                                  <g xmlns="http://www.w3.org/2000/svg" id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <g id="Artboard" transform="translate(-587.000000, -53.000000)" fill="#2563eb" fill-rule="nonzero">
+                                                      <g id="Asset-19LETTERS1" transform="translate(587.000000, 53.020000)">
+                                                        <path d="M34.130182,2.07 L34.130182,2.07 C32.470182,-0.69 28.480182,-0.69 26.820182,2.07 L0.270181968,46.26 C-0.479818032,47.51 0.420181968,49.11 1.88018197,49.11 L8.49018197,49.11 C16.390182,49.11 23.710182,44.97 27.780182,38.19 L47.940182,4.66 C43.490182,8.1 37.030182,6.89 34.130182,2.07 L34.130182,2.07 Z" id="Path"></path>
+                                                        <path d="M60.000182,45.14 L54.470182,35.93 C51.460182,30.91 49.600182,25.3 49.010182,19.51 C48.890182,18.32 47.340182,17.97 46.720182,18.99 L37.210182,34.82 C33.430182,41.11 37.960182,49.11 45.290182,49.11 L57.900182,49.11 C59.010182,49.11 60.010182,48.39 60.340182,47.27 C60.550182,46.55 60.370182,45.78 59.990182,45.14 L60.000182,45.14 Z" id="Path"></path>
+                                                      </g>
+                                                    </g>
+                                                  </g>
+                                                </g>
+                                                <g id="SvgjsG4255" featurekey="Qg0WB5-0" transform="matrix(2.4702666933129263,0,0,2.4702666933129263,109.01490243893015,9.441899940045916)" fill="#242424">
+                                                  <path d="M5.86 5.539999999999999 q0.01 -0.06 0.065 -0.13 t0.135 -0.13 t0.17 -0.095 t0.17 -0.035 l2.56 0 q0.17 0 0.29 0.105 t0.18 0.185 l0.25 0.57 l5.25 13.54 q0.08 0.2 -0.03 0.325 t-0.38 0.125 l-2.87 0 q-0.23 0 -0.355 -0.085 t-0.195 -0.285 q-0.2 -0.51 -0.39 -1.015 t-0.38 -1.015 l-5.31 0 q-0.19 0.51 -0.385 1.015 t-0.385 1.015 q-0.13 0.37 -0.51 0.37 l-2.95 0 q-0.19 0 -0.315 -0.1 t-0.045 -0.3 z M7.68 9.82 q-0.19 0.51 -0.385 1.1 t-0.385 1.19 t-0.385 1.185 t-0.385 1.095 l3.07 0 z M18.41 16.05 q0.27 0.27 0.585 0.455 t0.605 0.3 t0.51 0.165 t0.3 0.05 q0.19 0 0.485 -0.015 t0.565 -0.09 t0.465 -0.245 t0.195 -0.48 q0 -0.28 -0.11 -0.445 t-0.32 -0.28 t-0.515 -0.205 t-0.685 -0.21 q-1.2 -0.32 -1.98 -0.77 t-1.235 -1.005 t-0.635 -1.195 t-0.18 -1.35 q0 -0.83 0.33 -1.51 t0.94 -1.165 t1.46 -0.75 t1.89 -0.265 q0.63 0 1.18 0.105 t1.05 0.33 t0.975 0.58 t0.945 0.845 q0.17 0.2 0.175 0.375 t-0.225 0.375 q-0.39 0.32 -0.745 0.63 t-0.735 0.69 q-0.12 0.1 -0.24 0.125 t-0.23 -0.005 t-0.21 -0.1 t-0.18 -0.17 q-0.35 -0.39 -0.8 -0.525 t-0.84 -0.135 q-0.49 0 -0.78 0.17 t-0.27 0.52 q0.02 0.26 0.195 0.405 t0.43 0.235 t0.54 0.145 t0.525 0.125 q0.9 0.29 1.65 0.63 t1.3 0.835 t0.855 1.185 t0.305 1.68 t-0.395 1.77 t-1.085 1.31 t-1.635 0.81 t-2.035 0.28 q-0.62 0 -1.26 -0.11 t-1.24 -0.355 t-1.14 -0.63 t-0.96 -0.935 q-0.11 -0.14 -0.165 -0.295 t-0.05 -0.305 t0.06 -0.275 t0.175 -0.215 l1.29 -1.29 q0.24 -0.2 0.425 -0.14 t0.475 0.34 z M29.990000000000002 16.05 q0.27 0.27 0.585 0.455 t0.605 0.3 t0.51 0.165 t0.3 0.05 q0.19 0 0.485 -0.015 t0.565 -0.09 t0.465 -0.245 t0.195 -0.48 q0 -0.28 -0.11 -0.445 t-0.32 -0.28 t-0.515 -0.205 t-0.685 -0.21 q-1.2 -0.32 -1.98 -0.77 t-1.235 -1.005 t-0.635 -1.195 t-0.18 -1.35 q0 -0.83 0.33 -1.51 t0.94 -1.165 t1.46 -0.75 t1.89 -0.265 q0.63 0 1.18 0.105 t1.05 0.33 t0.975 0.58 t0.945 0.845 q0.17 0.2 0.175 0.375 t-0.225 0.375 q-0.39 0.32 -0.745 0.63 t-0.735 0.69 q-0.12 0.1 -0.24 0.125 t-0.23 -0.005 t-0.21 -0.1 t-0.18 -0.17 q-0.35 -0.39 -0.8 -0.525 t-0.84 -0.135 q-0.49 0 -0.78 0.17 t-0.27 0.52 q0.02 0.26 0.195 0.405 t0.43 0.235 t0.54 0.145 t0.525 0.125 q0.9 0.29 1.65 0.63 t1.3 0.835 t0.855 1.185 t0.305 1.68 t-0.395 1.77 t-1.085 1.31 t-1.635 0.81 t-2.035 0.28 q-0.62 0 -1.26 -0.11 t-1.24 -0.355 t-1.14 -0.63 t-0.96 -0.935 q-0.11 -0.14 -0.165 -0.295 t-0.05 -0.305 t0.06 -0.275 t0.175 -0.215 l1.29 -1.29 q0.24 -0.2 0.425 -0.14 t0.475 0.34 z M50.31 18.48 q-0.88 0.81 -1.98 1.265 t-2.33 0.455 q-1.37 0 -2.59 -0.5 t-2.14 -1.385 t-1.46 -2.085 t-0.54 -2.61 q0 -0.88 0.215 -1.705 t0.61 -1.545 t0.96 -1.325 t1.265 -1.035 t1.52 -0.67 t1.73 -0.24 q0.83 0 1.61 0.22 t1.465 0.62 t1.255 0.96 t0.98 1.225 t0.635 1.42 t0.225 1.555 q0 0.52 -0.015 0.85 t-0.155 0.525 t-0.465 0.27 t-0.955 0.075 l-7.2 0 q0.1 0.64 0.405 1.07 t0.705 0.685 t0.85 0.365 t0.85 0.11 q0.36 0 0.74 -0.075 t0.735 -0.2 t0.65 -0.29 t0.475 -0.345 q0.16 -0.13 0.275 -0.195 t0.245 -0.065 t0.265 0.09 t0.305 0.26 l1.06 1.2 q0.11 0.13 0.14 0.235 t0.03 0.215 q0 0.2 -0.11 0.345 t-0.26 0.255 z M45.5 10.15 q-0.39 0 -0.755 0.155 t-0.685 0.415 t-0.575 0.59 t-0.415 0.67 l5.11 0 q-0.21 -0.39 -0.455 -0.72 t-0.56 -0.58 t-0.72 -0.39 t-0.945 -0.14 z M55.73 16.05 q0.27 0.27 0.585 0.455 t0.605 0.3 t0.51 0.165 t0.3 0.05 q0.19 0 0.485 -0.015 t0.565 -0.09 t0.465 -0.245 t0.195 -0.48 q0 -0.28 -0.11 -0.445 t-0.32 -0.28 t-0.515 -0.205 t-0.685 -0.21 q-1.2 -0.32 -1.98 -0.77 t-1.235 -1.005 t-0.635 -1.195 t-0.18 -1.35 q0 -0.83 0.33 -1.51 t0.94 -1.165 t1.46 -0.75 t1.89 -0.265 q0.63 0 1.18 0.105 t1.05 0.33 t0.975 0.58 t0.945 0.845 q0.17 0.2 0.175 0.375 t-0.225 0.375 q-0.39 0.32 -0.745 0.63 t-0.735 0.69 q-0.12 0.1 -0.24 0.125 t-0.23 -0.005 t-0.21 -0.1 t-0.18 -0.17 q-0.35 -0.39 -0.8 -0.525 t-0.84 -0.135 q-0.49 0 -0.78 0.17 t-0.27 0.52 q0.02 0.26 0.195 0.405 t0.43 0.235 t0.54 0.145 t0.525 0.125 q0.9 0.29 1.65 0.63 t1.3 0.835 t0.855 1.185 t0.305 1.68 t-0.395 1.77 t-1.085 1.31 t-1.635 0.81 t-2.035 0.28 q-0.62 0 -1.26 -0.11 t-1.24 -0.355 t-1.14 -0.63 t-0.96 -0.935 q-0.11 -0.14 -0.165 -0.295 t-0.05 -0.305 t0.06 -0.275 t0.175 -0.215 l1.29 -1.29 q0.24 -0.2 0.425 -0.14 t0.475 0.34 z M67.30999999999999 16.05 q0.27 0.27 0.585 0.455 t0.605 0.3 t0.51 0.165 t0.3 0.05 q0.19 0 0.485 -0.015 t0.565 -0.09 t0.465 -0.245 t0.195 -0.48 q0 -0.28 -0.11 -0.445 t-0.32 -0.28 t-0.515 -0.205 t-0.685 -0.21 q-1.2 -0.32 -1.98 -0.77 t-1.235 -1.005 t-0.635 -1.195 t-0.18 -1.35 q0 -0.83 0.33 -1.51 t0.94 -1.165 t1.46 -0.75 t1.89 -0.265 q0.63 0 1.18 0.105 t1.05 0.33 t0.975 0.58 t0.945 0.845 q0.17 0.2 0.175 0.375 t-0.225 0.375 q-0.39 0.32 -0.745 0.63 t-0.735 0.69 q-0.12 0.1 -0.24 0.125 t-0.23 -0.005 t-0.21 -0.1 t-0.18 -0.17 q-0.35 -0.39 -0.8 -0.525 t-0.84 -0.135 q-0.49 0 -0.78 0.17 t-0.27 0.52 q0.02 0.26 0.195 0.405 t0.43 0.235 t0.54 0.145 t0.525 0.125 q0.9 0.29 1.65 0.63 t1.3 0.835 t0.855 1.185 t0.305 1.68 t-0.395 1.77 t-1.085 1.31 t-1.635 0.81 t-2.035 0.28 q-0.62 0 -1.26 -0.11 t-1.24 -0.355 t-1.14 -0.63 t-0.96 -0.935 q-0.11 -0.14 -0.165 -0.295 t-0.05 -0.305 t0.06 -0.275 t0.175 -0.215 l1.29 -1.29 q0.24 -0.2 0.425 -0.14 t0.475 0.34 z M77.38 5.59 q0 -0.18 0.115 -0.31 t0.325 -0.13 l2.96 0 q0.15 0 0.315 0.12 t0.165 0.32 l0 5.45 q1.09 -1.4 2.14 -2.76 t2.13 -2.76 q0.11 -0.17 0.285 -0.275 t0.345 -0.105 l3.8 0 q0.24 0 0.24 0.15 q0 0.1 -0.11 0.24 l-4.71 6.21 l5.21 7.84 q0.11 0.17 0.11 0.27 q0 0.15 -0.22 0.15 l-3.78 0 q-0.17 0 -0.335 -0.1 t-0.275 -0.27 q-0.53 -0.72 -0.965 -1.38 t-0.845 -1.315 t-0.83 -1.325 t-0.92 -1.41 l-1.27 1.46 l0 3.9 q0 0.44 -0.48 0.44 l-2.95 0 q-0.45 0 -0.45 -0.44 l0 -13.97 z M92.27 8.08 q0 -0.32 0.18 -0.55 t0.56 -0.23 l2.29 0 q0.12 0 0.26 0.055 t0.26 0.16 t0.205 0.245 t0.085 0.32 l0 11.15 q0 0.38 -0.21 0.575 t-0.6 0.195 l-2.29 0 q-0.74 0 -0.74 -0.77 l0 -11.15 z M92.27 3.0199999999999996 q0 -0.42 0.18 -0.595 t0.56 -0.175 l2.32 0 q0.35 0 0.565 0.175 t0.215 0.595 l0 1.95 q0 0.12 -0.055 0.26 t-0.155 0.27 t-0.245 0.215 t-0.325 0.085 l-2.32 0 q-0.74 0 -0.74 -0.83 l0 -1.95 z M99.28 5.32 q0 -0.31 0.205 -0.465 t0.585 -0.295 l2.27 -0.79 q0.05 -0.01 0.095 -0.01 l0.085 0 q0.37 0 0.495 0.215 t0.125 0.565 l-0.01 3.15 l1.67 0 q0.32 0 0.52 0.19 t0.2 0.57 l0 1.93 q0 0.42 -0.2 0.615 t-0.52 0.195 l-1.67 0 l0.01 8.04 q0 0.38 -0.22 0.575 t-0.61 0.195 l-2.26 0 q-0.77 0 -0.77 -0.77 l-0.01 -8.04 l-0.73 0 q-0.77 0 -0.77 -0.81 l0 -1.93 q0 -0.76 0.77 -0.76 l0.73 0 z"></path>
+                                                </g>
+                                              </svg>
+                                            </a>
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                    <table cellspacing="0" cellpadding="0" border="0" role="presentation" width="560" class="r9-o" style="table-layout: fixed; width: 560px;">
+                                      <tbody>
+                                        <tr>
+                                          <td class="r30-i nl2go-default-textstyle" style="line-height: 1.5; word-break: break-word; color: #3b3f44; font-family: Arial; font-size: 15px; padding-bottom: 16px;">
+                                            <table style="width: 100%; background-color: ededed;">
+                                              <tbody>
+                                                <tr>
+                                                  <td>
+                                                    <div id="hs_cos_wrapper_module_16729247898562" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" data-hs-cos-general-type="widget" data-hs-cos-type="module" style="color: inherit; font-size: inherit; line-height: inherit;">
+                                                      <table role="presentation" align="left" class="hs_cos_wrapper_type_social_module" width="auto" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto; text-align: left; border-spacing: 0;">
+                                                        <tbody>
+                                                          <tr align="left">
+                                                            <td class="social-network-cell" style="border-collapse: collapse; mso-line-height-rule: exactly; font-family: Arial, sans-serif; font-size: 15px; color: #000000; word-break: break-word;">
+                                                              <table role="presentation" align="left" class="hs_cos_wrapper_type_social_module_single" width="auto" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto; text-align: left; border-spacing: 0;">
+                                                                <tbody>
+                                                                  <tr align="left">
+                                                                    <td class="display_block_on_small_screens" valign="middle" style="border-collapse: collapse; mso-line-height-rule: exactly; font-family: Arial, sans-serif; font-size: 15px; color: #000000; word-break: break-word; padding: 0px 8px 0px 0px; line-height: 1; vertical-align: middle;">
+                                                                      <a href="#" data-hs-link-id="0" target="_blank" style="color: #00a4bd; mso-line-height-rule: exactly; text-decoration: none;" sib_link_id="3">
+                                                                        <svg style="height: 26px; width: 26px; fill: #2563eb;" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                                                          <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
+                                                                        </svg>
+                                                                      </a>
+                                                                    </td>
+                                                                  </tr>
+                                                                </tbody>
+                                                              </table>
+                                                            </td>
+                                                            <td class="social-network-cell" style="border-collapse: collapse; mso-line-height-rule: exactly; font-family: Arial, sans-serif; font-size: 15px; color: #000000; word-break: break-word;">
+                                                              <table role="presentation" align="left" class="hs_cos_wrapper_type_social_module_single" width="auto" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto; text-align: left; border-spacing: 0;">
+                                                                <tbody>
+                                                                  <tr align="left">
+                                                                    <td class="display_block_on_small_screens" valign="middle" style="border-collapse: collapse; mso-line-height-rule: exactly; font-family: Arial, sans-serif; font-size: 15px; color: #000000; word-break: break-word; padding: 0px 8px; line-height: 1; vertical-align: middle;">
+                                                                      <a href="#" data-hs-link-id="0" target="_blank" style="color: #00a4bd; mso-line-height-rule: exactly; text-decoration: none;" sib_link_id="4">
+                                                                        <svg style="height: 26px; width: 26px; fill: #2563eb;" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                                                          <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path>
+                                                                        </svg>
+                                                                      </a>
+                                                                    </td>
+                                                                  </tr>
+                                                                </tbody>
+                                                              </table>
+                                                            </td>
+                                                            <td class="social-network-cell" style="border-collapse: collapse; mso-line-height-rule: exactly; font-family: Arial, sans-serif; font-size: 15px; color: #000000; word-break: break-word;">
+                                                              <table role="presentation" align="left" class="hs_cos_wrapper_type_social_module_single" width="auto" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto; text-align: left; border-spacing: 0;">
+                                                                <tbody>
+                                                                  <tr align="left">
+                                                                    <td class="display_block_on_small_screens" valign="middle" style="border-collapse: collapse; mso-line-height-rule: exactly; font-family: Arial, sans-serif; font-size: 15px; color: #000000; word-break: break-word; padding: 0px 8px; line-height: 1; vertical-align: middle;">
+                                                                      <a href="#" data-hs-link-id="0" target="_blank" style="color: #00a4bd; mso-line-height-rule: exactly; text-decoration: none;" sib_link_id="5">
+                                                                        <svg style="height: 26px; width: 26px; fill: #2563eb;" aria-hidden="true" viewBox="0 0 24 24">
+                                                                          <path d="M13.3174 10.7749L19.1457 4H17.7646L12.7039 9.88256L8.66193 4H4L10.1122 12.8955L4 20H5.38119L10.7254 13.7878L14.994 20H19.656L13.3171 10.7749H13.3174ZM11.4257 12.9738L10.8064 12.0881L5.87886 5.03974H8.00029L11.9769 10.728L12.5962 11.6137L17.7652 19.0075H15.6438L11.4257 12.9742V12.9738Z"></path>
+                                                                        </svg>
+                                                                      </a>
+                                                                    </td>
+                                                                  </tr>
+                                                                </tbody>
+                                                              </table>
+                                                            </td>
+                                                            <td class="social-network-cell" style="border-collapse: collapse; mso-line-height-rule: exactly; font-family: Arial, sans-serif; font-size: 15px; color: #000000; word-break: break-word;">
+                                                              <table role="presentation" align="left" class="hs_cos_wrapper_type_social_module_single" width="auto" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto; text-align: left; border-spacing: 0;">
+                                                                <tbody>
+                                                                  <tr align="left">
+                                                                    <td class="display_block_on_small_screens" valign="middle" style="border-collapse: collapse; mso-line-height-rule: exactly; font-family: Arial, sans-serif; font-size: 15px; color: #000000; word-break: break-word; padding: 0px 8px; line-height: 1; vertical-align: middle;">
+                                                                      <a href="#" data-hs-link-id="1" target="_blank" style="color: #00a4bd; mso-line-height-rule: exactly; text-decoration: none;" sib_link_id="6">
+                                                                        <svg style="height: 26px; width: 26px; fill: #2563eb;" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                                                          <path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clip-rule="evenodd" />
+                                                                        </svg>
+                                                                      </a>
+                                                                    </td>
+                                                                  </tr>
+                                                                </tbody>
+                                                              </table>
+                                                            </td>
+                                                          </tr>
+                                                        </tbody>
+                                                      </table>
+                                                    </div>
+                                                  </td>
+                                                </tr>
+                                              </tbody>
+                                            </table>
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                    <table cellspacing="0" cellpadding="0" border="0" role="presentation" width="100%" align="left" class="r7-o" style="table-layout: fixed; width: 100%;">
+                                      <tbody>
+                                        <tr>
+                                          <td align="left" valign="top" class="r31-i nl2go-default-textstyle" style="line-height: 1.5; word-break: break-word; background-color: #f4f4f4; color: #3b3f44; font-family: arial,helvetica,sans-serif; font-size: 16px; padding-right: 30px; text-align: left;">
+                                            <div>
+                                              <p style="margin: 0;"><span style="color: #666666; font-family: Arial, helvetica, sans-serif; font-size: 12px;">620 8th Ave, New York, NY 10018</span></p>
+                                              <p style="margin: 0; color: #888888; font-family: 'Open Sans','Arial',Helvetica,sans-serif; font-size: 14px;"><br><span style="color: #666666; font-family: Arial, helvetica, sans-serif; font-size: 12px;">This email was sent to&nbsp;<%= @email %>.&nbsp;You received it because you have an AssessKit profile and we want to keep you informed.</span></p>
+                                            </div>
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </th>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </body>
 </html>
