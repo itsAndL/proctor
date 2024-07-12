@@ -145,6 +145,7 @@
 
         <div class="mt-4 pb-16">
           <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <!-- focus: border-2 border-gray-900 -->
             <div class="rounded-xl border border-gray-300 bg-white px-6 py-5 shadow-sm block">
               <div class="w-full">
                 <h2 class="text-lg font-medium leading-7 text-slate-900">Problem Solving</h2>
@@ -193,13 +194,11 @@
                     <button type="button" onclick="my_modal_1.showModal()" class="ring-1 rounded-full py-2 px-4 text-sm font-semibold focus:outline-none ring-slate-700 text-slate-700 hover:text-slate-900  active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300">Details</button>
                     <%= render partial: "customer/assessments/test_details", locals: {id: 1} %>
                   </div>
-
-                  <button type="button" class="rounded-full py-2 px-6 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-gray-900 text-white hover:text-slate-100 hover:bg-gray-700">Add</button>
                 </div>
               </div>
             </div>
 
-            <div class="rounded-xl border-2 border-gray-900 bg-white px-6 py-5 shadow-sm block">
+            <div class="rounded-xl border border-gray-300 bg-white px-6 py-5 shadow-sm block">
               <div class="w-full">
                 <h2 class="text-lg font-medium leading-7 text-slate-900">Motivation</h2>
                 <div class="mt-3 flex items-center flex-wrap gap-3">
@@ -247,13 +246,6 @@
                     <button type="button" onclick="my_modal_2.showModal()" class="ring-1 rounded-full py-2 px-4 text-sm font-semibold focus:outline-none ring-slate-700 text-slate-700 hover:text-slate-900  active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300">Details</button>
                     <%= render partial: "customer/assessments/test_details", locals: {id: 2} %>
                   </div>
-
-                  <button type="button" class="ring-1 inline-flex items-center gap-x-1.5 rounded-full py-2 px-3 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-white ring-red-500 text-red-500 hover:text-white hover:bg-red-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                    </svg>
-                    Remove
-                  </button>
                 </div>
               </div>
             </div>
@@ -300,8 +292,6 @@
                     <button type="button" onclick="my_modal_3.showModal()" class="ring-1 rounded-full py-2 px-4 text-sm font-semibold focus:outline-none ring-slate-700 text-slate-700 hover:text-slate-900  active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300">Details</button>
                     <%= render partial: "customer/assessments/test_details", locals: {id: 3} %>
                   </div>
-
-                  <button type="button" class="rounded-full py-2 px-6 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-gray-900 text-white hover:text-slate-100 hover:bg-gray-700">Add</button>
                 </div>
               </div>
             </div>
