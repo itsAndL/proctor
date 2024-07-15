@@ -37,6 +37,9 @@ Rails.application.configure do
   # Store uploaded files on the local file system in a temporary directory.
   config.active_storage.service = :test
 
+  # Devise mailer.
+  config.action_mailer.default_url_options = {host: "www.example.com", locale: nil}
+
   config.action_mailer.perform_caching = false
 
   # Tell Action Mailer not to deliver emails to the real world.
