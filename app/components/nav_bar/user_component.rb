@@ -10,9 +10,9 @@ class NavBar::UserComponent < ViewComponent::Base
   end
 
   def navbar_links
-    if user.business
+    if user.business&.persisted?
       business_navbar_links
-    elsif user.candidate
+    elsif user.candidate&.persisted?
       candidate_navbar_links
     else
       user_navbar_links
@@ -20,9 +20,9 @@ class NavBar::UserComponent < ViewComponent::Base
   end
 
   def dropdown_links
-    if user.business
+    if user.business&.persisted?
       business_dropdown_links
-    elsif user.candidate
+    elsif user.candidate&.persisted?
       candidate_dropdown_links
     else
       user_dropdown_links
