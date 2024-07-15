@@ -20,5 +20,6 @@
   },
   "devDependencies": {
     "daisyui": "^4.12.2"
-  }
+  },
+  "packageManager": "yarn@1.22.21"
 }
