@@ -51,17 +51,21 @@ class NavBar::UserComponent < ViewComponent::Base
   end
 
   def business_dropdown_links
+    profile_path = user.business.persisted? ? edit_business_path(user.business) : new_business_path
+
     [
       { title: 'My account', path: edit_user_registration_path },
-      { title: 'My business profile', path: edit_business_path(user.business) },
+      { title: 'My business profile', path: profile_path },
       { title: 'Test Library', path: customer_tests_path }
     ]
   end
 
   def candidate_dropdown_links
+    profile_path = user.candidate.persisted? ? edit_candidate_path(user.candidate) : new_candidate_path
+
     [
       { title: 'My account', path: edit_user_registration_path },
-      { title: 'My candidate profile', path: edit_candidate_path(user.candidate) }
+      { title: 'My candidate profile', path: profile_path }
     ]
   end
 
