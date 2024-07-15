@@ -1,6 +1,6 @@
 module ApplicationHelper
   def svg_tag(icon_name, options = {})
-    file = Rails.root.join('app/assets/images/svg', "#{icon_name}.svg").read
+    file = Rails.root.join('app/assets/images/icons', "#{icon_name}.svg").read
     doc = Nokogiri::HTML::DocumentFragment.parse file
     svg = doc.at_css 'svg'
 
