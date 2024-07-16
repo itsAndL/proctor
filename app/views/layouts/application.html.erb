@@ -9,9 +9,6 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
-
-    <%= stylesheet_link_tag "https://unpkg.com/survey-core/defaultV2.min.css", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "https://unpkg.com/survey-creator-core/survey-creator-core.min.css", "data-turbo-track": "reload" %>
   </head>
 
   <body class="bg-white flex flex-col h-screen">
@@ -19,5 +16,6 @@
     <%= render NavBar::BaseComponent.new(request:, user: current_user) %>
     <%= yield %>
     <%= render FooterComponent.new(request:) %>
+    <%= turbo_frame_tag "modal" %>
   </body>
 </html>

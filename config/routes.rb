@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   }
 
   resource :role, only: :new
-  resources :businesses, except: :destroy, param: :hashid
-  resources :candidates, except: :destroy, param: :hashid
+  resources :businesses, only: %i[new create edit update], param: :hashid
+  resources :candidates, only: %i[new create edit update], param: :hashid
+  resources :tests, only: %i[index show], param: :hashid
 
   # Routes for candidate
   namespace :talent_assessment do
@@ -29,8 +30,6 @@ Rails.application.routes.draw do
 
   # Routes for customer
   namespace :customer do
-    get 'tests', to: 'tests#index'
-
     get 'candidates', to: 'candidates#index'
     get 'candidates/1', to: 'candidates#show'
 
