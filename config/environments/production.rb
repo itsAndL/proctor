@@ -81,18 +81,20 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
     port: 587,
-    domain: ENV["HOST"],
+    domain: 'proctor.51.77.141.250.sslip.io',
     user_name: Rails.application.credentials.dig(:gmail, :username),
     password: Rails.application.credentials.dig(:gmail, :password),
     authentication: 'plain',
     enable_starttls_auto: true
   }
 
+  config.action_mailer.asset_host = 'https://proctor.51.77.141.250.sslip.io'
+
   # Devise mailer.
-  config.action_mailer.default_url_options = {host: ENV["HOST"], locale: nil}
+  config.action_mailer.default_url_options = { host: 'proctor.51.77.141.250.sslip.io', locale: nil }
 
   # Configure host for URL helpers.
-  Rails.application.routes.default_url_options = {host: ENV["HOST"], locale: nil}
+  Rails.application.routes.default_url_options = { host: 'proctor.51.77.141.250.sslip.io', locale: nil }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
