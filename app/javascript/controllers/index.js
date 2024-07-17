@@ -13,6 +13,9 @@ application.register("countdown", CountdownController)
 import FileUploadController from "./file_upload_controller"
 application.register("file-upload", FileUploadController)
 
+import FilterController from "./filter_controller"
+application.register("filter", FilterController)
+
 import FullscreenController from "./fullscreen_controller"
 application.register("fullscreen", FullscreenController)
 
@@ -21,6 +24,9 @@ application.register("hello", HelloController)
 
 import ModalController from "./modal_controller"
 application.register("modal", ModalController)
+
+import SearchController from "./search_controller"
+application.register("search", SearchController)
 
 import SliderController from "./slider_controller"
 application.register("slider", SliderController)

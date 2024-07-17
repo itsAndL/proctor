@@ -74,11 +74,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_16_103342) do
     t.text "description"
     t.bigint "test_type_id", null: false
     t.integer "level"
+    t.integer "format"
     t.json "covered_skills"
     t.text "relevancy"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["test_type_id"], name: "index_tests_on_test_type_id"
+    t.index ["title"], name: "index_tests_on_title"
   end
 
   create_table "users", force: :cascade do |t|
