@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_16_103342) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_18_130159) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -79,6 +79,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_16_103342) do
     t.text "relevancy"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["format"], name: "index_tests_on_format"
     t.index ["test_type_id"], name: "index_tests_on_test_type_id"
     t.index ["title"], name: "index_tests_on_title"
   end
