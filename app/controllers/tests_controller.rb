@@ -8,16 +8,16 @@ class TestsController < ApplicationController
       @tests = @tests.filter_by_search_query(params[:search_query])
     end
 
-    # Filter by selected test types if any
-    if params[:test_focus].present?
-      test_type_ids = params[:test_focus].map(&:to_i)
-      @tests = @tests.where(test_type_id: test_type_ids)
+    # Filter by selected test categories if any
+    if params[:test_category].present?
+      test_category_ids = params[:test_category].map(&:to_i)
+      @tests = @tests.where(test_category_id: test_category_ids)
     end
 
-    # Filter by selected test formats if any
-    if params[:test_format].present?
-      test_formats = params[:test_format].map(&:to_i)
-      @tests = @tests.where(format: test_formats)
+    # Filter by selected test types if any
+    if params[:test_type].present?
+      test_types = params[:test_type].map(&:camelize)
+      @tests = @tests.where(type: test_types)
     end
   end
 

@@ -87,18 +87,18 @@
 
           <div data-filter-target="section" class="hidden lg:block pt-6">
             <div class="space-y-4">
-              <% TestType.order(:title).each.with_index(1) do |test_type, index| %>
+              <% TestCategory.order(:title).each.with_index(1) do |test_type, index| %>
                 <div class="flex items-center">
-                  <%= check_box_tag 'test_focus[]', 
+                  <%= check_box_tag 'test_category[]', 
                             test_type.id, 
-                            params[:test_focus]&.include?(test_type.id.to_s), 
-                            id: "test-focus-#{index}", 
+                            params[:test_category]&.include?(test_type.id.to_s), 
+                            id: "test-category-#{index}", 
                             class: "h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500",
                             data: { 
                               search_target: "checkbox",
                               action: "change->search#submitOnCheck"
                             } %>
-                  <%= label_tag "test-focus-#{index}", "#{test_type.title} <span class='text-gray-500'>(#{test_type.tests.count})</span>".html_safe, class: "ml-3 text-sm font-medium text-gray-800" %>
+                  <%= label_tag "test-category-#{index}", "#{test_type.title} <span class='text-gray-500'>(#{test_type.tests.count})</span>".html_safe, class: "ml-3 text-sm font-medium text-gray-800" %>
                 </div>
               <% end %>
             </div>
@@ -118,19 +118,18 @@
 
           <div data-filter-target="section" class="hidden lg:block pt-6">
             <div class="space-y-4">
-              <% Test.formats.keys.each.with_index(1) do |format_key, index| %>
-                <% format_value = Test.formats[format_key] %>
+              <% Test.types.each.with_index(1) do |type, index| %>
                 <div class="flex items-center">
-                  <%= check_box_tag 'test_format[]',
-                                    format_value, 
-                                    params[:test_format]&.include?(format_value.to_s), 
-                                    id: "test-format-#{index}", 
+                  <%= check_box_tag 'test_type[]',
+                                    type, 
+                                    params[:test_type]&.include?(type), 
+                                    id: "test-type-#{index}", 
                                     class: "h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500",
                                     data: { 
                                       search_target: "checkbox",
                                       action: "change->search#submitOnCheck"
                                     } %>
-                  <%= label_tag "test-format-#{index}", "#{format_key.to_s.titleize} <span class='text-gray-500'>(#{Test.where(format: format_value).count})</span>".html_safe, class: "ml-3 text-sm font-medium text-gray-800" %>
+                  <%= label_tag "test-type-#{index}", "#{t(".types.#{type}")} <span class='text-gray-500'>(#{type.camelize.constantize.count})</span>".html_safe, class: "ml-3 text-sm font-medium text-gray-800" %>
                 </div>
               <% end %>
             </div>
@@ -177,7 +176,7 @@
       <div class="lg:col-span-3">
         <%= turbo_frame_tag "filter_section" do %>
           <p class="text-base text-gray-700 font-bold">
-            <% if params[:search_query].present? || params[:test_focus].present? || params[:test_format].present? %>
+            <% if params[:search_query].present? || params[:test_category].present? || params[:test_type].present? %>
               Results (<%= @tests.count %>)
             <% else %>
               <%= pluralize(@tests.count, 'test', 'tests') %> available.
@@ -212,7 +211,7 @@
                       <div class="rounded-xl ring-1 ring-gray-300 hover:ring-gray-900 bg-white px-6 py-5 shadow-sm h-full">
                         <h2 class="text-lg font-bold leading-7 text-slate-900"><%= test.title %></h2>
                         <div class="mt-4 flex items-center flex-wrap gap-3">
-                          <p class="rounded-full bg-blue-100 px-2 text-xs font-semibold leading-6 text-gray-900"><%= test.type %></p>
+                          <p class="rounded-full bg-blue-100 px-2 text-xs font-semibold leading-6 text-gray-900"><%= test.category %></p>
                           <p class="inline-flex gap-x-2 items-center rounded-full bg-gray-200 px-2 text-xs font-semibold leading-6 text-gray-900">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-4">
                               <path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1 0 9.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1 1 14.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
@@ -246,7 +245,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 16" fill="none" fit="" preserveAspectRatio="xMidYMid meet" focusable="false" class="size-4">
                               <path fill-rule="evenodd" clip-rule="evenodd" d="M4.14182 2.45731C4.53022 1.80997 5.4684 1.80997 5.8568 2.45731L7.97371 5.98548C8.37362 6.652 7.89351 7.49998 7.11621 7.49998H2.8824C2.10511 7.49998 1.625 6.652 2.02491 5.98548L4.14182 2.45731ZM7.11621 6.49998L4.99931 2.9718L2.8824 6.49998L7.11621 6.49998ZM9.49951 6.5C9.49951 5.94772 9.94723 5.5 10.4995 5.5H13.4995C14.0518 5.5 14.4995 5.94772 14.4995 6.5V9.5C14.4995 10.0523 14.0518 10.5 13.4995 10.5H10.4995C9.94723 10.5 9.49951 10.0523 9.49951 9.5V6.5ZM13.4995 6.5H10.4995V9.5H13.4995V6.5ZM3.49951 11.5C3.49951 10.3954 4.39494 9.5 5.49951 9.5C6.60408 9.5 7.49951 10.3954 7.49951 11.5C7.49951 12.6046 6.60408 13.5 5.49951 13.5C4.39494 13.5 3.49951 12.6046 3.49951 11.5ZM5.49951 8.5C3.84266 8.5 2.49951 9.84315 2.49951 11.5C2.49951 13.1569 3.84266 14.5 5.49951 14.5C7.15637 14.5 8.49951 13.1569 8.49951 11.5C8.49951 9.84315 7.15637 8.5 5.49951 8.5Z" fill="black"></path>
                             </svg>
-                            <p><%= test.format.titleize %></p>
+                            <p><%= test.type.titleize %></p>
                           </div>
                         </div>
 

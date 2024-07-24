@@ -1,4 +1,4 @@
-class TestType < ApplicationRecord
+class TestCategory < ApplicationRecord
   validates :title, presence: true
 
   has_many :tests, dependent: :nullify

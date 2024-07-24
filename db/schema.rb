@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_18_130159) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_24_100554) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,7 +62,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_18_130159) do
     t.index ["user_id"], name: "index_candidates_on_user_id"
   end
 
-  create_table "test_types", force: :cascade do |t|
+  create_table "test_categories", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -72,15 +72,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_18_130159) do
     t.string "title"
     t.text "overview"
     t.text "description"
-    t.bigint "test_type_id", null: false
     t.integer "level"
-    t.integer "format"
     t.json "covered_skills"
     t.text "relevancy"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["format"], name: "index_tests_on_format"
-    t.index ["test_type_id"], name: "index_tests_on_test_type_id"
+    t.string "type"
+    t.bigint "test_category_id", null: false
+    t.index ["test_category_id"], name: "index_tests_on_test_category_id"
     t.index ["title"], name: "index_tests_on_title"
   end
 
@@ -104,5 +103,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_18_130159) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "businesses", "users"
   add_foreign_key "candidates", "users"
-  add_foreign_key "tests", "test_types"
+  add_foreign_key "tests", "test_categories"
 end
