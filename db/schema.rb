@@ -75,10 +75,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_24_100554) do
     t.integer "level"
     t.json "covered_skills"
     t.text "relevancy"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "type"
     t.bigint "test_category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["test_category_id"], name: "index_tests_on_test_category_id"
     t.index ["title"], name: "index_tests_on_title"
   end
