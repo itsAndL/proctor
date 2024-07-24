@@ -7,3 +7,14 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+require "seeds_helper"
+
+def seed(file)
+  load Rails.root.join('db', 'seeds', "#{file}.rb")
+  puts "Seeded #{file}"
+end
+
+puts "Seeding #{Rails.env} database..."
+seed 'multiple_choice_tests'
+puts 'Seeded database'

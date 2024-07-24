@@ -2,7 +2,7 @@ class Test < ApplicationRecord
   include Hashid::Rails
   include PgSearch::Model
 
-  belongs_to :test_type
+  belongs_to :test_category
 
   validates :title, :overview, :description, :level, :relevancy, presence: true
 
@@ -18,6 +18,10 @@ class Test < ApplicationRecord
 
   def category
     test_category&.title
+  end
+
+  def category=(value)
+    self.test_category = TestCategory.find_or_create_by(title: value)
   end
 
   def self.types

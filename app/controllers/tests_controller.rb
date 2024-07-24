@@ -19,6 +19,8 @@ class TestsController < ApplicationController
       test_types = params[:test_type].map(&:camelize)
       @tests = @tests.where(type: test_types)
     end
+
+    @tests = @tests.order(:title)
   end
 
   def show
