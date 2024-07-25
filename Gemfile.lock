@@ -291,7 +291,7 @@ DEPENDENCIES
   devise (~> 4.9)
   dotenv-rails
   hashid-rails (~> 1.4)
-  image_processing (~> 1.12)
+  image_processing (~> 1.2)
   jbuilder
   jsbundling-rails
   letter_opener_web
