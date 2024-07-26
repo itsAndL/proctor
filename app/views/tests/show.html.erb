@@ -8,7 +8,9 @@
       </form>
 
       <div class="pt-3 w-fit">
-        <a href="/preview/1" target="_blank" class="secondary-button py-2.5">Preview sample questions</a>
+        <% if @test.preview_questions.any? %>
+          <%= link_to "Preview sample questions", test_preview_question_path(@test.hashid, @test.first_preview_question.hashid), target: "_blank", class: "secondary-button py-2.5" %>
+        <% end %>
       </div>
 
       <div class="mt-7 grid grid-cols-1 lg:grid-cols-2 gap-x-12 xl:gap-x-20 gap-y-7">

@@ -6,6 +6,10 @@ class NavBar::BaseComponent < ViewComponent::Base
     @user = user
   end
 
+  def render?
+    show_navbar?
+  end
+
   def component
     if @user.blank? || active_guest_path
       NavBar::GuestComponent.new
@@ -22,5 +26,9 @@ class NavBar::BaseComponent < ViewComponent::Base
 
   def guest_paths
     [root_path, home_path, contact_path, about_path]
+  end
+
+  def show_navbar?
+    !(helpers.devise_controller? || helpers.controller_name == 'preview_questions')
   end
 end

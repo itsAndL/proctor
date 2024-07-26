@@ -1,3 +1,4 @@
+@import 'actiontext.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -34,4 +35,18 @@
   .primary-form-submit {
     @apply primary-button px-5 py-2.5;
   }
+}
+
+@layer base {
+  ul {
+    @apply list-disc list-inside
+  }
+
+  ol {
+    @apply list-decimal list-inside
+  }
+}
+
+.options:has(.item:checked) {
+  @apply border-2 border-blue-600;
 }

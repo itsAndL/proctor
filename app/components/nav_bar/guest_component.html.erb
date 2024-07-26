@@ -1,64 +1,62 @@
-<% if render? %>
-  <!-- Header -->
-  <header data-controller="toggle" class="bg-white border-b border-zinc-100">
-    <nav class="mx-auto flex max-w-7xl items-center justify-between gap-x-5 px-6 py-5 lg:px-8" aria-label="Global">
-      <div class="flex lg:flex-1">
+<!-- Header -->
+<header data-controller="toggle" class="bg-white border-b border-zinc-100">
+  <nav class="mx-auto flex max-w-7xl items-center justify-between gap-x-5 px-6 py-5 lg:px-8" aria-label="Global">
+    <div class="flex lg:flex-1">
+      <a href="/" class="-m-1.5 p-1.5">
+        <%= helpers.svg_tag "assesskit", class: "h-9 sm:h-10 w-auto" %>
+      </a>
+    </div>
+    <div class="hidden lg:flex lg:gap-x-9">
+      <a href="/#features" class="text-base font-semibold leading-6 text-gray-700">Features</a>
+      <a href="/#pricing" class="text-base font-semibold leading-6 text-gray-700">Pricing</a>
+      <a href="/about" class="text-base font-semibold leading-6 text-gray-700">About Us</a>
+      <a href="/contact" class="text-base font-semibold leading-6 text-gray-700">Contact</a>
+    </div>
+    <div class="flex flex-1 items-center justify-end gap-x-5">
+      <%= link_to "Log in", helpers.new_session_path(User), class: "hidden group lg:inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none ring-slate-700 ring-inset text-slate-700 hover:text-slate-900  active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300" %>
+      <%= link_to helpers.new_registration_path(User), class: "group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-blue-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600" do %>
+        <span>Get started <span class="hidden lg:inline">today</span></span>
+      <% end %>
+    </div>
+    <div class="flex lg:hidden">
+      <button data-action="toggle#toggle" type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+        <span class="sr-only">Open main menu</span>
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+  <!-- Mobile menu, show/hide based on menu open state. -->
+  <div class="hidden lg:hidden" role="dialog" aria-modal="true" data-toggle-target="element">
+    <!-- Background backdrop, show/hide based on slide-over state. -->
+    <div class="fixed inset-0 z-10"></div>
+    <div class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+      <div class="flex items-center justify-between gap-x-6">
         <a href="/" class="-m-1.5 p-1.5">
-          <%= helpers.svg_tag "assesskit", class: "h-9 sm:h-10 w-auto" %>
+          <%= helpers.svg_tag "assesskit", class: "h-10 w-auto" %>
         </a>
-      </div>
-      <div class="hidden lg:flex lg:gap-x-9">
-        <a href="/#features" class="text-base font-semibold leading-6 text-gray-700">Features</a>
-        <a href="/#pricing" class="text-base font-semibold leading-6 text-gray-700">Pricing</a>
-        <a href="/about" class="text-base font-semibold leading-6 text-gray-700">About Us</a>
-        <a href="/contact" class="text-base font-semibold leading-6 text-gray-700">Contact</a>
-      </div>
-      <div class="flex flex-1 items-center justify-end gap-x-5">
-        <%= link_to "Log in", helpers.new_session_path(User), class: "hidden group lg:inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none ring-slate-700 ring-inset text-slate-700 hover:text-slate-900  active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300" %>
-        <%= link_to helpers.new_registration_path(User), class: "group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-blue-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600" do %>
-          <span>Get started <span class="hidden lg:inline">today</span></span>
-        <% end %>
-      </div>
-      <div class="flex lg:hidden">
-        <button data-action="toggle#toggle" type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
-          <span class="sr-only">Open main menu</span>
+        <button data-action="toggle#toggle" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
+          <span class="sr-only">Close menu</span>
           <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
-    </nav>
-    <!-- Mobile menu, show/hide based on menu open state. -->
-    <div class="hidden lg:hidden" role="dialog" aria-modal="true" data-toggle-target="element">
-      <!-- Background backdrop, show/hide based on slide-over state. -->
-      <div class="fixed inset-0 z-10"></div>
-      <div class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-        <div class="flex items-center justify-between gap-x-6">
-          <a href="/" class="-m-1.5 p-1.5">
-            <%= helpers.svg_tag "assesskit", class: "h-10 w-auto" %>
-          </a>
-          <button data-action="toggle#toggle" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
-            <span class="sr-only">Close menu</span>
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-        <div class="mt-6 flow-root">
-          <div class="-my-6 divide-y divide-gray-500/10">
-            <div class="py-6">
-              <a href="/#features" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Features</a>
-              <a href="/#pricing" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Pricing</a>
-              <a href="/about" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">About Us</a>
-              <a href="/contact" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Contact</a>
-            </div>
-            <div class="py-6">
-              <%= link_to "Get started today", helpers.new_registration_path(User), class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
-              <%= link_to "Log in", helpers.new_session_path(User), class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
-            </div>
+      <div class="mt-6 flow-root">
+        <div class="-my-6 divide-y divide-gray-500/10">
+          <div class="py-6">
+            <a href="/#features" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Features</a>
+            <a href="/#pricing" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Pricing</a>
+            <a href="/about" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">About Us</a>
+            <a href="/contact" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Contact</a>
+          </div>
+          <div class="py-6">
+            <%= link_to "Get started today", helpers.new_registration_path(User), class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
+            <%= link_to "Log in", helpers.new_session_path(User), class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
           </div>
         </div>
       </div>
     </div>
-  </header>
-<% end %>
+  </div>
+</header>

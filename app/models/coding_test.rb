@@ -1,3 +1,3 @@
 class CodingTest < Test
-  # Add Coding-specific logic
+  # Add CodingTest-specific logic
 end

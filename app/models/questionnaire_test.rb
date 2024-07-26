@@ -1,3 +1,3 @@
 class QuestionnaireTest < Test
-  # Add Questionnaire-specific logic
+  # Add QuestionnaireTest-specific logic
 end

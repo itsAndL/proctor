@@ -2,9 +2,12 @@ class Test < ApplicationRecord
   include Hashid::Rails
   include PgSearch::Model
 
+  has_many :test_questions, -> { order(position: :asc) }
+  has_many :questions, through: :test_questions
+
   belongs_to :test_category
 
-  validates :title, :overview, :description, :level, :relevancy, presence: true
+  validates :title, :overview, :description, :level, :relevancy, :type, presence: true
 
   enum level: { entry_level: 0, intermediate: 1, advanced: 2 }
 
@@ -22,6 +25,22 @@ class Test < ApplicationRecord
 
   def category=(value)
     self.test_category = TestCategory.find_or_create_by(title: value)
+  end
+
+  def preview_questions
+    questions.preview.order('test_questions.position ASC')
+  end
+
+  def non_preview_questions
+    questions.non_preview.order('test_questions.position ASC')
+  end
+
+  def first_preview_question
+    preview_questions.first
+  end
+
+  def first_non_preview_question
+    non_preview_questions.first
   end
 
   def self.types
