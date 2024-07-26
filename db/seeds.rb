@@ -16,6 +16,5 @@ def seed(file)
 end
 
 puts "Seeding #{Rails.env} database..."
-seed 'multiple_choice_tests'
-seed 'multiple_choice_preview_questions'
+seed 'tests'
 puts 'Seeded database'
