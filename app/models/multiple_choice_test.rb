@@ -1,3 +1,3 @@
 class MultipleChoiceTest < Test
-  # Add MultipleChoice-specific logic
+  # Add MultipleChoiceTest-specific logic
 end

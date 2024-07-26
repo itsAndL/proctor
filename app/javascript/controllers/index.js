@@ -31,5 +31,8 @@ application.register("search", SearchController)
 import SliderController from "./slider_controller"
 application.register("slider", SliderController)
 
+import TabCloserController from "./tab_closer_controller"
+application.register("tab-closer", TabCloserController)
+
 import ToggleController from "./toggle_controller"
 application.register("toggle", ToggleController)

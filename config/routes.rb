@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   resource :role, only: :new
   resources :businesses, only: %i[new create edit update], param: :hashid
   resources :candidates, only: %i[new create edit update], param: :hashid
-  resources :tests, only: %i[index show], param: :hashid
+  resources :tests, only: %i[index show], param: :hashid do
+    resources :preview_questions, only: %i[show], param: :hashid
+  end
 
   # Routes for candidate
   namespace :talent_assessment do
@@ -40,8 +42,6 @@ Rails.application.routes.draw do
 
     get 'profile/team', to: 'profile#team'
   end
-
-  get 'preview/1', to: 'preview#show'
 
   # Routes for general
   get 'contact', to: 'contact#index'

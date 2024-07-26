@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_25_091025) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_25_093605) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,10 +72,27 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_25_091025) do
     t.index ["user_id"], name: "index_candidates_on_user_id"
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.boolean "preview", default: false
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "test_categories", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "test_questions", force: :cascade do |t|
+    t.bigint "test_id", null: false
+    t.bigint "question_id", null: false
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_test_questions_on_question_id"
+    t.index ["test_id"], name: "index_test_questions_on_test_id"
   end
 
   create_table "tests", force: :cascade do |t|
@@ -113,5 +130,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_25_091025) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "businesses", "users"
   add_foreign_key "candidates", "users"
+  add_foreign_key "test_questions", "questions"
+  add_foreign_key "test_questions", "tests"
   add_foreign_key "tests", "test_categories"
 end

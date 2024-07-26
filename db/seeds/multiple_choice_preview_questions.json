@@ -1,0 +1,14 @@
+[
+  {
+    "test_title": "Problem Solving",
+    "question_content": "<p>45 people in a certain company can work together to finish a project in 15 days. For a project of the same workload, the company decided to use 15 people. Assume all people have the same level of productivity.</p><p>&nbsp;</p><p><strong>In how many days can this project be completed?&nbsp;</strong></p>"
+  },
+  {
+    "test_title": "Problem Solving",
+    "question_content": "<p>The following table shows the order in which certain ingredients, labelled A through F, need to be mixed (left goes first, right goes last).</p> <p><br></p> <p>Additionally, we know that:</p> <p><br></p> <ul> <li>Ingredients A and D are added in consecutive steps</li> <li>B is added before A</li> <li>F is not added right before or after C</li> </ul> <p><br></p> <p><strong>Which ingredient needs to be added last?</strong></p>"
+  },
+  {
+    "test_title": "Problem Solving",
+    "question_content": "<p>A customer wants an eggless cake with an organic topping.</p> <p><br></p> <p><img src='https://tgo-assets-production.s3.amazonaws.com/production/eeabc5c8-c5f0-43b8-99aa-ab0f58d89396-57d8c981-d235-4afa-bb92-1307558eae69.png?AWSAccessKeyId=ASIAUJMDFWCP7QDRYL5F&Signature=lTh9OkOUmLKPJOJzN4co6G9U3rk%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEPj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCWV1LXdlc3QtMSJHMEUCIDruVezZsuleUhoWsOHEaYJzmixFfyqEV2MJfZOc5MOjAiEAl0AK2qH1AfqB5J7QHEFLWGQkEhLaFhJHal4lAbPEo2Eq%2FAMI0f%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARACGgwyOTUwMTcyMzA0OTUiDN%2Be1qhTdmonuemGOyrQAyTkaOSe3IuwDAt9aNz4U4FIbRCPa5ygJhqsDOSb22qEna5G3mdYlzKdi%2FgtHGoC3mXN%2Bil6XbvbFHaj%2BKiPxnRbPivCxTjoqJV%2BFdkD%2FzHaV3mc5d6rIZtOEuBBpQy4OOl8vxvsLwOnCFb%2FjJ85e%2FHp80pqNG1pdpgJTD3zlD9isg4UYLc2ZS7Bf9lFyKWWMYsJJvM%2FZrHgt5Oo54PKvsDCrzVFqgHIoJKiYA0k%2FcKXBPHtI%2BjR3v75HUXMuPvAIZLrM0O4hvTLO7x4LfuLdnomNT4QwUdMxHDNkbO9QrwLxmolSVN4NBuSCsukZ5x1yEkI4I9DZrAkBbqIEEwOK8UJZAk2fx604U14dCX5CbMsFrFk8HIrzqU6WIyd8WZ2i%2FIQFD1u88daObM4Whu14U%2BWc1i4p1yU8dsWsfgJba7yg8ODMaoKpTpSrA0Asjvn2rO%2B8nCV%2B%2FvkvYM74LvK1aw0rSvwAoWoGJ%2F%2FwHbxI6Z3AuvvwOEseuHKIn8fyFAikp4D5JzY006F5dm2wRdG9W2FtamktkEgLsoHV%2F%2FM1HzUjUb98OkwkPItMaVFojdKiAtftCyQitdB%2F6H91dMzxqYhDD66ZLUI8KW%2Bg34CG0YCMLCejbUGOqUB3R%2BhPzcJy5ynX4IF3b9sR%2BsKywKFVQwumkN2wVrMQwicf67lmJq3YDgw5XUsuZuHVqccpn%2FmSjwzj0%2Bpq7mjTmujqWK84g7vaZcMSg2njAK0i8zPpjiZeZRLxOS%2FB%2Fm9KQ7zfXNosHfuxW%2B3UKQLLJXT%2FcpXRQy0hxwKF8BdTXkvb9nVMHuSz4irIRFkTtOWPBZ%2B28vrn%2BYxvE9f7FPCrUyC87%2FA&Expires=1722010586'></p> <p><br></p> <p><strong>Which of the following can she order?</strong></p>"
+  }
+]

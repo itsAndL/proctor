@@ -1,0 +1,54 @@
+<header class="border-b border-gray-300">
+  <div class="bg-white py-5 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex justify-between items-center gap-4 flex-wrap">
+    <h1 class="font-bold leading-7 text-gray-800 text-xl tracking-tight"><%= current_user.business.company %></h1>
+
+    <% next_question = @question.next_preview(@test) %>
+    <% if next_question %>
+      <%= link_to test_preview_question_path(@test, next_question), class: "inline-flex gap-x-2.5 items-center rounded-full bg-blue-600 px-7 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600" do %>
+        <span>Next</span>
+        <%= svg_tag "chevron-right", "stroke-width": 3, class: "size-3" %>
+      <% end %>
+    <% else %>
+      <button data-controller="tab-closer" data-action="click->tab-closer#close" type="button" class="inline-flex gap-x-2.5 items-center rounded-full bg-blue-600 px-7 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+        <span>Finish</span>
+        <%= svg_tag "chevron-right", "stroke-width": 3, class: "size-3" %>
+      </button>    
+    <% end %>
+  </div>
+</header>
+
+<main class="bg-zinc-50 h-full pt-10">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
+    <form class="border border-gray-200 bg-white rounded-xl px-6 py-10 md:px-12 md:py-16">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-9">
+        <div>
+          <h2 class="mb-6 font-bold leading-7 text-gray-800 text-xl tracking-tight">Question</h2>
+          <div class="text-sm md:text-base font-medium text-gray-800"> 
+            <%= @question.content %>
+          </div>
+        </div>
+        <div>
+          <h2 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">Select only one answer</h2>
+          <div class="mt-6 space-y-5">
+            <div class="flex items-center border border-gray-300 rounded-md p-4">
+              <input id="option-1" name="selected-option-1" type="radio" class="size-7 border-gray-300 text-blue-600 focus:ring-blue-600">
+              <label for="option-1" class="ml-5 block text-sm md:text-base font-semibold text-gray-800">The sender does not want to work with the recipient.</label>
+            </div>
+            <div class="flex items-center border border-gray-300 rounded-md p-4">
+              <input id="option-2" name="selected-option-1" type="radio" class="size-7 border-gray-300 text-blue-600 focus:ring-blue-600">
+              <label for="option-2" class="ml-5 block text-sm md:text-base font-semibold text-gray-800">The sender is upset that the recipient has delayed things.</label>
+            </div>
+            <div class="flex items-center border border-gray-300 rounded-md p-4">
+              <input id="option-3" name="selected-option-1" type="radio" class="size-7 border-gray-300 text-blue-600 focus:ring-blue-600">
+              <label for="option-3" class="ml-5 block text-sm md:text-base font-semibold text-gray-800">The sender is very busy due to health issues.</label>
+            </div>
+            <div class="flex items-center border border-gray-300 rounded-md p-4">
+              <input id="option-4" name="selected-option-1" type="radio" class="size-7 border-gray-300 text-blue-600 focus:ring-blue-600">
+              <label for="option-4" class="ml-5 block text-sm md:text-base font-semibold text-gray-800">The sender wants to work with the recipient at a later time.</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</main>
