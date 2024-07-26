@@ -30,22 +30,12 @@
         <div>
           <h2 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">Select only one answer</h2>
           <div class="mt-6 space-y-5">
-            <div class="flex items-center border border-gray-300 rounded-md p-4">
-              <input id="option-1" name="selected-option-1" type="radio" class="size-7 border-gray-300 text-blue-600 focus:ring-blue-600">
-              <label for="option-1" class="ml-5 block text-sm md:text-base font-semibold text-gray-800">The sender does not want to work with the recipient.</label>
-            </div>
-            <div class="flex items-center border border-gray-300 rounded-md p-4">
-              <input id="option-2" name="selected-option-1" type="radio" class="size-7 border-gray-300 text-blue-600 focus:ring-blue-600">
-              <label for="option-2" class="ml-5 block text-sm md:text-base font-semibold text-gray-800">The sender is upset that the recipient has delayed things.</label>
-            </div>
-            <div class="flex items-center border border-gray-300 rounded-md p-4">
-              <input id="option-3" name="selected-option-1" type="radio" class="size-7 border-gray-300 text-blue-600 focus:ring-blue-600">
-              <label for="option-3" class="ml-5 block text-sm md:text-base font-semibold text-gray-800">The sender is very busy due to health issues.</label>
-            </div>
-            <div class="flex items-center border border-gray-300 rounded-md p-4">
-              <input id="option-4" name="selected-option-1" type="radio" class="size-7 border-gray-300 text-blue-600 focus:ring-blue-600">
-              <label for="option-4" class="ml-5 block text-sm md:text-base font-semibold text-gray-800">The sender wants to work with the recipient at a later time.</label>
-            </div>
+            <% @question.question_options.each.with_index(1) do |option, i| %>
+              <label for="option-<%= i %>" class="flex items-center border border-gray-300 rounded-md p-4 cursor-pointer options">
+                <input id="option-<%= i %>" name="selected-option" type="radio" class="size-7 border-gray-300 text-blue-600 focus:ring-white item">
+                <span class="ml-5 block text-sm md:text-base font-semibold text-gray-800"><%= option.content %></span>
+              </label>
+            <% end %>
           </div>
         </div>
       </div>

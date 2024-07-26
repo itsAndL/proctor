@@ -46,3 +46,7 @@
     @apply list-decimal list-inside
   }
 }
+
+.options:has(.item:checked) {
+  @apply border-2 border-blue-600;
+}

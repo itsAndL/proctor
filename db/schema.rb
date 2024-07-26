@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_25_093605) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_26_092542) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,6 +72,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_25_093605) do
     t.index ["user_id"], name: "index_candidates_on_user_id"
   end
 
+  create_table "question_options", force: :cascade do |t|
+    t.boolean "correct", default: false
+    t.bigint "question_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_question_options_on_question_id"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.boolean "preview", default: false
     t.string "type"
@@ -130,6 +138,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_25_093605) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "businesses", "users"
   add_foreign_key "candidates", "users"
+  add_foreign_key "question_options", "questions"
   add_foreign_key "test_questions", "questions"
   add_foreign_key "test_questions", "tests"
   add_foreign_key "tests", "test_categories"
