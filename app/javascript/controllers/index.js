@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AssessmentTitleController from "./assessment_title_controller"
+application.register("assessment-title", AssessmentTitleController)
+
 import ClickableRowController from "./clickable_row_controller"
 application.register("clickable-row", ClickableRowController)
 
@@ -15,6 +18,9 @@ application.register("file-upload", FileUploadController)
 
 import FilterController from "./filter_controller"
 application.register("filter", FilterController)
+
+import FormSubmitController from "./form_submit_controller"
+application.register("form-submit", FormSubmitController)
 
 import FullscreenController from "./fullscreen_controller"
 application.register("fullscreen", FullscreenController)

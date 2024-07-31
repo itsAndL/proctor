@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :tests, only: %i[index show], param: :hashid do
     resources :preview_questions, only: %i[show], param: :hashid
   end
+  resources :assessments, only: %i[new create], param: :hashid
 
   # Routes for candidate
   namespace :talent_assessment do

@@ -37,13 +37,13 @@ class NavBar::UserComponent < ViewComponent::Base
 
   def business_navbar_links
     [
-      { title: 'My assessments', path: customer_assessments_path },
-      { title: 'My candidates', path: customer_candidates_path }
+      { title: 'Assessments', path: customer_assessments_path },
+      { title: 'Candidates', path: customer_candidates_path }
     ]
   end
 
   def candidate_navbar_links
-    [{ title: 'My assessments', path: candidate_assessments_path }]
+    [{ title: 'Assessments', path: candidate_assessments_path }]
   end
 
   def user_navbar_links

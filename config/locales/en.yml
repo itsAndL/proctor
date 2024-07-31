@@ -41,6 +41,11 @@ en:
       candidate:
         name: Your name
         avatar: Your profile picture
+    enums:
+      assessment:
+        language:
+          en: "English"
+          fr: "French"
   businesses:
     form:
       avatar: Your company logo

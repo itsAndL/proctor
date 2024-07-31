@@ -21,29 +21,15 @@
   }
 
   .primary-button {
-    @apply cursor-pointer rounded-full bg-blue-600 px-4 py-2 font-semibold text-white text-sm shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600;
+    @apply cursor-pointer inline-flex items-center gap-x-1.5 rounded-full bg-blue-600 px-4 py-2 font-semibold text-white text-sm shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600;
   }
 
   .secondary-button {
-    @apply cursor-pointer ring-1 rounded-full py-2 px-4 text-sm font-semibold hover:bg-zinc-100 ring-slate-900 text-slate-900;
+    @apply cursor-pointer inline-flex items-center gap-x-1.5 ring-1 rounded-full px-4 py-2 text-sm font-semibold hover:bg-zinc-100 ring-slate-900 text-slate-900;
   }
 
   .black-button {
     @apply cursor-pointer rounded-full bg-gray-900 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-700
-  }
-
-  .primary-form-submit {
-    @apply primary-button px-5 py-2.5;
-  }
-}
-
-@layer base {
-  ul {
-    @apply list-disc list-inside
-  }
-
-  ol {
-    @apply list-decimal list-inside
   }
 }
 
