@@ -3,7 +3,7 @@ class Question < ApplicationRecord
 
   has_rich_text :content
 
-  has_many :test_questions, -> { order(position: :asc) }
+  has_many :test_questions, -> { order(position: :asc) }, dependent: :destroy
   has_many :tests, through: :test_question
 
   has_many :question_options, autosave: true, dependent: :destroy

@@ -32,9 +32,10 @@ class AssessmentsController < ApplicationController
 
   def update_tests
     if @assessment.update(test_params)
+      update_assessment_test_positions
       redirect_to add_questions_assessment_path(@assessment.hashid)
     else
-      render :choose_tests
+      render :choose_tests, status: :unprocessable_entity
     end
   end
 
@@ -45,11 +46,17 @@ class AssessmentsController < ApplicationController
     if @assessment.update(question_params)
       redirect_to finalize_assessment_path(@assessment.hashid)
     else
-      render :add_questions
+      render :add_questions, status: :unprocessable_entity
     end
   end
 
   private
+
+  def update_assessment_test_positions
+    params[:assessment][:test_ids].each_with_index do |test_id, index|
+      @assessment.assessment_tests.find_by(test_id:)&.update(position: index + 1)
+    end
+  end
 
   def set_assessment
     @assessment = Assessment.find(params[:hashid])

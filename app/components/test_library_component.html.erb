@@ -160,6 +160,8 @@
     <div class="py-6 lg:pb-10">
       <%= link_to "Clear", @clear_path, class: "black-button" %>
     </div>
+
+    <%= hidden_field_tag("assessment_id", @assessment.hashid) if @assessment.present? %>
   <% end %>
 
   <div class="lg:col-span-3">
@@ -250,7 +252,7 @@
                       <% end %>
                       <%= link_to "Details", test_path(test.hashid), data: { turbo_frame: "modal" }, class: "secondary-button" %>
                       
-                      <% if for_new_assessment? %>
+                      <% if @assessment.present? %>
                         <% if @assessment.tests.include?(test) %>
                           <button type="button" class="remove-test-btn danger-button px-3 ml-auto" data-action="new-assessment#removeTest">
                             <%= helpers.svg_tag "x-mark", class: "size-4 -mb-0.5" %>

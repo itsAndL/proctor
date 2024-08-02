@@ -2,10 +2,10 @@ class Test < ApplicationRecord
   include Hashid::Rails
   include PgSearch::Model
 
-  has_many :test_questions, -> { order(position: :asc) }
+  has_many :test_questions, -> { order(position: :asc) }, dependent: :destroy
   has_many :questions, through: :test_questions
 
-  has_many :assessment_tests, -> { order(position: :asc) }
+  has_many :assessment_tests, -> { order(position: :asc) }, dependent: :destroy
   has_many :assessments, through: :assessment_test
 
   belongs_to :test_category
