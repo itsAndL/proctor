@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_29_084617) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_31_103156) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_29_084617) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "assessment_tests", force: :cascade do |t|
+    t.bigint "assessment_id", null: false
+    t.bigint "test_id", null: false
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assessment_id"], name: "index_assessment_tests_on_assessment_id"
+    t.index ["test_id"], name: "index_assessment_tests_on_test_id"
   end
 
   create_table "assessments", force: :cascade do |t|
@@ -145,6 +155,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_29_084617) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "assessment_tests", "assessments"
+  add_foreign_key "assessment_tests", "tests"
   add_foreign_key "assessments", "businesses"
   add_foreign_key "businesses", "users"
   add_foreign_key "candidates", "users"

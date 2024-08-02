@@ -31,6 +31,9 @@ application.register("hello", HelloController)
 import ModalController from "./modal_controller"
 application.register("modal", ModalController)
 
+import NewAssessmentController from "./new_assessment_controller"
+application.register("new-assessment", NewAssessmentController)
+
 import SearchController from "./search_controller"
 application.register("search", SearchController)
 

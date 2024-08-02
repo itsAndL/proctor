@@ -24,6 +24,6 @@ class TestsController < ApplicationController
   end
 
   def show
-    @test = Test.find_by_hashid(params[:hashid])
+    @test = Test.find(params[:hashid])
   end
 end

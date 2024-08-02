@@ -5,6 +5,9 @@ class Test < ApplicationRecord
   has_many :test_questions, -> { order(position: :asc) }
   has_many :questions, through: :test_questions
 
+  has_many :assessment_tests, -> { order(position: :asc) }
+  has_many :assessments, through: :assessment_test
+
   belongs_to :test_category
 
   validates :title, :overview, :description, :level, :relevancy, :type, presence: true

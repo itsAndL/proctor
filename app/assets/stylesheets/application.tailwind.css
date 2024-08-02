@@ -20,16 +20,24 @@
     @apply mt-1 block w-full rounded-lg border-0 px-3.5 bg-gray-50/20 focus:bg-white py-2 text-gray-800 font-medium ring-1 ring-inset ring-gray-500 disabled:ring-gray-800/20 disabled:text-gray-400/80 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6;
   }
 
+  .button {
+    @apply cursor-pointer inline-flex items-center gap-x-1.5 rounded-full px-4 py-2 text-sm font-semibold ring-1 ring-inset shadow-sm disabled:cursor-not-allowed;
+  }
+
   .primary-button {
-    @apply cursor-pointer inline-flex items-center gap-x-1.5 rounded-full bg-blue-600 px-4 py-2 font-semibold text-white text-sm shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600;
+    @apply button text-white bg-blue-600 hover:bg-blue-500 ring-blue-600 hover:ring-blue-500;
   }
 
   .secondary-button {
-    @apply cursor-pointer inline-flex items-center gap-x-1.5 ring-1 rounded-full px-4 py-2 text-sm font-semibold hover:bg-zinc-100 ring-slate-900 text-slate-900;
+    @apply button text-slate-900 bg-white hover:bg-zinc-100 ring-slate-900;
   }
 
   .black-button {
-    @apply cursor-pointer rounded-full bg-gray-900 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-700
+    @apply button text-white bg-gray-900 hover:bg-gray-700 ring-gray-900 hover:ring-gray-700 disabled:bg-zinc-300/80 disabled:ring-zinc-300/80;
+  }
+
+  .danger-button {
+    @apply button text-red-500 hover:text-white bg-white hover:bg-red-500 ring-red-500;
   }
 }
 
