@@ -33,12 +33,12 @@
         </div>
       </div>
 
-      <a href="/customer/assessments" class="secondary-button px-3">Save and exit</a><!-- Make this work -->
+      <button type="button" class="secondary-button px-3" data-controller="form-submit" data-form-submit-save-and-exit-value="true" data-action="form-submit#submitForm">Save and exit</button>
     </div>
   </div>
 </div>
 
-<main class="bg-zinc-50 h-full relative" data-controller="form-submit">
+<main class="bg-zinc-50 h-full relative">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-16">
     <!-- DRY this and make it works -->
     <nav aria-label="Progress">
@@ -104,7 +104,7 @@
     <div class="mt-10 reltive">
       <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Choose tests</h1>
 
-      <%= form_with(model: @assessment, url: update_tests_assessment_path(@assessment.hashid), method: :patch, class: "pt-5 pb-8 bg-zinc-50 sticky top-0 z-10 px-0.5 -mx-0.5") do |form| %>
+      <%= form_with(model: @assessment, url: update_tests_assessment_path(@assessment.hashid), method: :patch, class: "pt-5 pb-8 bg-zinc-50 sticky top-0 z-10 px-0.5 -mx-0.5", id: "form-to-submit") do |form| %>
         <div id="test-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5" data-controller="sortable">
           <% 5.times do |i| %>
             <% test = @assessment.tests[i] %>
@@ -139,8 +139,6 @@
           <% end %>
         </div>
         <%= render FieldErrorComponent.new(:base, @assessment) %>
-
-        <%= form.submit "Next", class: "primary-button px-5 py-2.5 hidden", data: { form_submit_target: "hiddenSubmit" } %>
       <% end %>
 
       <div>
@@ -155,7 +153,7 @@
         <%= svg_tag "chevron-left", class: "size-3 -mb-0.5", "stroke-width": 3 %>
         Back
       <% end %>
-      <button type="button" class="primary-button px-5 py-3 gap-x-2.5" data-action="click->form-submit#submitForm">
+      <button type="button" class="primary-button px-5 py-3 gap-x-2.5" data-controller="form-submit" data-action="form-submit#submitForm">
         Next
         <%= svg_tag "chevron-right", class: "size-3 -mb-0.5", "stroke-width": 3 %>
       </button>

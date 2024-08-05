@@ -34,12 +34,16 @@
           </div>
         </div>
 
-        <a href="/customer/assessments" class="secondary-button px-6">Exit</a><!-- Make this work -->
+        <% if action_name="edit" %>
+          <button type="button" class="secondary-button px-3" data-controller="form-submit" data-form-submit-save-and-exit-value="true" data-action="form-submit#submitForm">Save and exit</button>
+        <% else %>
+          <%= link_to "Exit", "/customer/assessments", class: "secondary-button px-6" %>
+        <% end %>
       </div>
     </div>
   </div>
 
-  <main class="bg-zinc-50 h-full relative" data-controller="form-submit">
+  <main class="bg-zinc-50 h-full relative">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-16">
       <!-- DRY this and make it works -->
       <nav aria-label="Progress">
@@ -103,7 +107,7 @@
       <div class="mt-10">
         <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Assessment details</h1>
         <div class="mt-6">
-          <%= form_with model: @assessment do |form| %>
+          <%= form_with model: @assessment, id: "form-to-submit" do |form| %>
             <div class="grid grid-cols-1 gap-x-8 gap-y-8 max-w-2xl">
               <div>
                 <%= render LabelExplainerComponent.new(
@@ -137,10 +141,6 @@
                       { required: true, class: "primary-field" } %>
                 <%= render FieldErrorComponent.new(:language, @assessment) %>
               </div>
-
-              <div>
-                <%= form.submit "Next", class: "primary-button px-5 py-2.5 hidden", data: { form_submit_target: "hiddenSubmit" } %>
-              </div>
             </div>
           <% end %>
         </div>
@@ -149,7 +149,7 @@
 
     <div class="fixed bottom-0 w-full">
       <div class="px-6 py-4 border-t border-zinc-200 flex justify-end bg-white">
-        <button type="button" class="primary-button px-5 py-3" data-action="click->form-submit#submitForm">
+        <button type="button" class="primary-button px-5 py-3" data-controller="form-submit" data-action="form-submit#submitForm">
           Next
           <%= svg_tag "chevron-right", class: "size-3 -mb-0.5", "stroke-width": 3 %>
         </button>

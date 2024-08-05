@@ -21,7 +21,7 @@ class AssessmentsController < ApplicationController
 
   def update
     if @assessment.update(assessment_params)
-      redirect_to choose_tests_assessment_path(@assessment.hashid), notice: 'Your assessment was successfully updated.'
+      redirect_to determine_redirect_path(choose_tests_assessment_path(@assessment.hashid)), notice: 'Your assessment was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -33,7 +33,7 @@ class AssessmentsController < ApplicationController
   def update_tests
     if @assessment.update(test_params)
       update_assessment_test_positions
-      redirect_to add_questions_assessment_path(@assessment.hashid)
+      redirect_to determine_redirect_path(add_questions_assessment_path(@assessment.hashid)), notice: 'Your tests were successfully updated.'
     else
       render :choose_tests, status: :unprocessable_entity
     end
@@ -52,12 +52,6 @@ class AssessmentsController < ApplicationController
 
   private
 
-  def update_assessment_test_positions
-    params[:assessment][:test_ids].each_with_index do |test_id, index|
-      @assessment.assessment_tests.find_by(test_id:)&.update(position: index + 1)
-    end
-  end
-
   def set_assessment
     @assessment = Assessment.find(params[:hashid])
   end
@@ -72,5 +66,17 @@ class AssessmentsController < ApplicationController
 
   def question_params
     params.require(:assessment).permit(question_ids: [])
+  end
+
+  def update_assessment_test_positions
+    params[:assessment][:test_ids].each_with_index do |test_id, index|
+      @assessment.assessment_tests.find_by(test_id:)&.update(position: index + 1)
+    end
+  end
+
+  def determine_redirect_path(continue_path)
+    return continue_path unless params[:save_and_exit] == 'true'
+
+    '/customer/assessments/1'
   end
 end
