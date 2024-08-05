@@ -40,6 +40,9 @@ application.register("search", SearchController)
 import SliderController from "./slider_controller"
 application.register("slider", SliderController)
 
+import SortableController from "./sortable_controller"
+application.register("sortable", SortableController)
+
 import TabCloserController from "./tab_closer_controller"
 application.register("tab-closer", TabCloserController)
 
