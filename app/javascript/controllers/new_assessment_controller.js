@@ -101,7 +101,9 @@ export default class extends Controller {
   createInactiveTest(number) {
     const div = document.createElement('div')
     div.className = "inactive-test cursor-pointer rounded-xl px-5 py-3 text-sm font-semibold text-gray-400 border border-dashed border-gray-400 shadow-sm text-center"
-    div.textContent = `Test n˚${number}`
+    div.innerHTML = `
+      <span>Test n˚${number}</span>
+      <input type="hidden" name="assessment[test_ids][]" value="">`
     return div
   }
 

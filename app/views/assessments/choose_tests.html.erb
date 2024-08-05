@@ -132,11 +132,13 @@
               </div>
             <% else %>
               <div class="inactive-test cursor-pointer rounded-xl px-5 py-3 text-sm font-semibold text-gray-400 border border-dashed border-gray-400 shadow-sm text-center">
-                Test n˚<%= i + 1 %>
+                <span>Test n˚<%= i + 1 %></span>
+                <%= hidden_field_tag "assessment[test_ids][]", nil %>
               </div>
             <% end %>
           <% end %>
         </div>
+        <%= render FieldErrorComponent.new(:base, @assessment) %>
 
         <%= form.submit "Next", class: "primary-button px-5 py-2.5 hidden", data: { form_submit_target: "hiddenSubmit" } %>
       <% end %>
