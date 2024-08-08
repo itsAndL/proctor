@@ -1,0 +1,28 @@
+<div class="grid grid-cols-1 gap-x-12 gap-y-8 lg:grid-cols-4">
+  <!-- Filters -->
+  <%= render FilterComponent.new(filter_url: custom_question_library_index_path, clear_path: @clear_path, assessment: @assessment, library: @library) %>
+
+  <div class="lg:col-span-3">
+    <%= tag.turbo_frame id: "filter_section" do %>
+      <p class="text-base text-gray-700 font-bold">
+        <% if filters_applied? %>
+          Results (<%= @custom_questions.count %>)
+        <% else %>
+          <%= pluralize(@custom_questions.count, 'custom question') %> available
+        <% end %>
+      </p>
+
+      <div class="mt-3 pb-16">
+        <% if @custom_questions.empty? %>
+          <%= render NoResultsComponent.new(library: @library, clear_path: @clear_path) %>
+        <% else %>
+          <div class="grid grid-cols-1 gap-6">
+            <% @custom_questions.each do |custom_question| %>
+              <%= render CustomQuestionCardComponent.new(custom_question: custom_question, assessment: @assessment) %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

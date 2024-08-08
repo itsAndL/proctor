@@ -2,7 +2,7 @@
   <div
     data-controller="notification"
     data-notification-delay-value="5000"
-    class="fixed z-50 p-4 w-full sm:w-96 sm:top-0 sm:right-0 bottom-0 sm:bottom-auto flex justify-center sm:justify-end"
+    class="fixed z-50 px-4 py-6 sm:p-4 w-full sm:w-96 sm:top-0 sm:right-0 bottom-0 sm:bottom-auto flex justify-center sm:justify-end"
     data-notification-target="container"
   >
     <div 
@@ -39,7 +39,7 @@
           </div>
         </div>
       </div>
-      <div class="relative bg-gray-100 h-1">
+      <div class="relative  <%= @notice ? 'bg-blue-50' : 'bg-red-50' %> h-1">
         <div
           data-notification-target="progressBar"
           class="absolute top-0 left-0 h-full <%= @notice ? 'bg-blue-600' : 'bg-red-600' %> transition-all duration-[5000ms] ease-linear"
@@ -50,24 +50,24 @@
   </div>
 
   <style>
-    @keyframes slideInFromRight {
+    @keyframes slideInFromTop {
       0% {
-        transform: translateX(100%);
+        transform: translateY(-100%);
         opacity: 0;
       }
       100% {
-        transform: translateX(0);
+        transform: translateY(0);
         opacity: 1;
       }
     }
 
-    @keyframes slideOutToRight {
+    @keyframes slideOutToTop {
       0% {
-        transform: translateX(0);
+        transform: translateY(0);
         opacity: 1;
       }
       100% {
-        transform: translateX(100%);
+        transform: translateY(-100%);
         opacity: 0;
       }
     }
@@ -106,11 +106,11 @@
       .notification-slide {
         width: calc(100% - 1rem);
         margin-right: 1rem;
-        animation: slideInFromRight 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        animation: slideInFromTop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
       }
 
       .notification-slide.hide {
-        animation: slideOutToRight 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+        animation: slideOutToTop 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
       }
     }
   </style>

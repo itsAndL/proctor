@@ -1,4 +1,4 @@
-class TestsController < ApplicationController
+class TestLibraryController < ApplicationController
   def index
     # Initialize @tests with all tests by default
     @tests = Test.all

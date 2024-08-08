@@ -17,4 +17,5 @@ end
 
 puts "Seeding #{Rails.env} database..."
 seed 'tests'
+seed 'custom_questions'
 puts 'Seeded database'

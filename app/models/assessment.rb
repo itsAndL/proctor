@@ -11,6 +11,9 @@ class Assessment < ApplicationRecord
   has_many :assessment_tests, -> { order(position: :asc) }, dependent: :destroy
   has_many :tests, through: :assessment_tests
 
+  has_many :assessment_custom_questions, -> { order(position: :asc) }, dependent: :destroy
+  has_many :custom_questions, through: :assessment_custom_questions
+
   private
 
   def max_five_tests

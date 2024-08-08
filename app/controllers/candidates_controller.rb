@@ -10,7 +10,7 @@ class CandidatesController < ApplicationController
     @candidate.assign_attributes(candidate_params)
 
     if @candidate.save
-      redirect_to edit_candidate_path(@candidate.hashid), notice: 'Your candidate profile was successfully created.'
+      redirect_to edit_candidate_path(@candidate), notice: 'Your candidate profile was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end

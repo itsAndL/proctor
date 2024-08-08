@@ -6,7 +6,7 @@ class Test < ApplicationRecord
   has_many :questions, through: :test_questions
 
   has_many :assessment_tests, -> { order(position: :asc) }, dependent: :destroy
-  has_many :assessments, through: :assessment_test
+  has_many :assessments, through: :assessment_tests
 
   belongs_to :test_category
 
@@ -19,8 +19,6 @@ class Test < ApplicationRecord
                   using: {
                     tsearch: { prefix: true } # Enables prefix matching
                   }
-
-  attribute :category, :string
 
   def category
     test_category&.title

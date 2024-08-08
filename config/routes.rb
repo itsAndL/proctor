@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resource :role, only: :new
   resources :businesses, only: %i[new create edit update], param: :hashid
   resources :candidates, only: %i[new create edit update], param: :hashid
-  resources :tests, only: %i[index show], param: :hashid do
+  resources :test_library, only: %i[index show], param: :hashid do
     resources :preview_questions, only: %i[show], param: :hashid
   end
   resources :assessments, only: %i[new create edit update], param: :hashid do
@@ -18,8 +18,18 @@ Rails.application.routes.draw do
       patch 'update_tests'
       get 'add_questions'
       patch 'update_questions'
+      get 'finalize'
+    end
+
+    resources :custom_questions, only: [], param: :hashid do
+      resources :assessment_custom_questions, only: %i[create destroy], param: :hashid do
+        member do
+          patch 'change_position'
+        end
+      end
     end
   end
+  resources :custom_question_library, only: %i[index], param: :hashid
 
   # Routes for candidate
   namespace :talent_assessment do
@@ -44,7 +54,6 @@ Rails.application.routes.draw do
     get 'candidates/1', to: 'candidates#show'
 
     get 'assessments', to: 'assessments#index'
-    get 'assessments/new', to: 'assessments#new'
     get 'assessments/1', to: 'assessments#show'
     get 'assessments/1/candidates/1', to: 'assessments#candidate'
 

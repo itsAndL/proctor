@@ -7,6 +7,9 @@ import { application } from "./application"
 import AssessmentTitleController from "./assessment_title_controller"
 application.register("assessment-title", AssessmentTitleController)
 
+import ChooseTestsController from "./choose_tests_controller"
+application.register("choose-tests", ChooseTestsController)
+
 import ClickableRowController from "./clickable_row_controller"
 application.register("clickable-row", ClickableRowController)
 
@@ -30,9 +33,6 @@ application.register("hello", HelloController)
 
 import ModalController from "./modal_controller"
 application.register("modal", ModalController)
-
-import NewAssessmentController from "./new_assessment_controller"
-application.register("new-assessment", NewAssessmentController)
 
 import NotificationController from "./notification_controller"
 application.register("notification", NotificationController)

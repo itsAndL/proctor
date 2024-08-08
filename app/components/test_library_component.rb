@@ -7,10 +7,17 @@ class TestLibraryComponent < ViewComponent::Base
     @tests = tests
     @clear_path = clear_path
     @assessment = assessment
+    @library = :test
   end
 
   def before_render
     @assessment ||= find_assessment_from_params if @assessment.nil?
+  end
+
+  def filters_applied?
+    params[:search_query].present? ||
+    params[:test_category].present? ||
+    params[:test_type].present?
   end
 
   private

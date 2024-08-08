@@ -56,7 +56,7 @@ class NavBar::UserComponent < ViewComponent::Base
     [
       { title: 'My account', path: edit_user_registration_path },
       { title: 'My business profile', path: profile_path },
-      { title: 'Test Library', path: tests_path }
+      { title: 'Test Library', path: test_library_index_path }
     ]
   end
 

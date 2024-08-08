@@ -1,0 +1,58 @@
+<div>
+  <%= link_to test_library_path(@test), data: { turbo_frame: "modal" } do %>
+    <div class="rounded-xl ring-1 ring-gray-300 hover:ring-gray-900 bg-white px-6 py-5 shadow-sm h-full">
+      <h2 class="text-lg font-bold leading-7 text-slate-900"><%= @test.title %></h2>
+      <div class="mt-4 flex items-center flex-wrap gap-3">
+        <p class="rounded-full bg-blue-100 px-2 text-xs font-semibold leading-6 text-gray-900"><%= @test.category %></p>
+        <p class="inline-flex gap-x-2 items-center rounded-full bg-gray-200 px-2 text-xs font-semibold leading-6 text-gray-900">
+          <%= helpers.svg_tag "gift", class: "size-4" %>
+          Free
+        </p>
+        <p class="inline-flex gap-x-2 items-center rounded-full bg-gray-200 px-2 text-xs font-semibold leading-6 text-gray-900">
+          <%= helpers.svg_tag "fire", class: "size-4" %>
+          Popular
+        </p>
+      </div>
+
+      <p class="mt-5 text-sm text-gray-800 font-medium"><%= @test.overview %></p>
+    
+      <div class="mt-5 flex gap-x-5 gap-y-1 flex-wrap items-center">
+        <div class="flex gap-x-1.5 items-center text-gray-800 text-sm font-medium">
+          <%= helpers.svg_tag "clock", class: "size-4" %>
+          <p>9 mins</p>
+        </div>
+        <div class="flex gap-x-1.5 items-center text-gray-800 text-sm font-medium">
+          <%= helpers.svg_tag "question-mark-square", class: "size-4" %>
+          <p>15 questions</p>
+        </div>
+        <div class="flex gap-x-1.5 items-center text-gray-800 text-sm font-medium">
+          <%= helpers.svg_tag "shapes", class: "size-4" %>
+          <p><%= t(".types.#{@test.type.underscore}") %></p>
+        </div>
+      </div>
+
+      <div class="mt-7 -ml-4 flex items-center gap-x-4"
+           data-controller="choose-tests"
+           data-choose-tests-test-id-value="<%= @test.id %>"
+           data-choose-tests-test-title-value="<%= @test.title %>"
+           data-choose-tests-preview-questions-path-value="<%= preview_question_path %>">
+
+        <% if preview_question_path %>
+          <%= link_to "Preview", preview_question_path, target: "_blank", class: "secondary-button" %>
+        <% end %>
+        <%= link_to "Details", test_library_path(@test), data: { turbo_frame: "modal" }, class: "secondary-button" %>
+        
+        <% if @assessment.present? %>
+          <% if @assessment.tests.include?(@test) %>
+            <button type="button" class="remove-test-btn danger-button px-3 ml-auto" data-action="choose-tests#removeTest">
+              <%= helpers.svg_tag "x-mark", class: "size-4 -mb-0.5" %>
+              Remove
+            </button>
+          <% else %>
+            <button type="button" class="add-test-btn black-button px-6 ml-auto" data-action="choose-tests#addTest">Add</button>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

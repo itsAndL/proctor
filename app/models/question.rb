@@ -6,8 +6,6 @@ class Question < ApplicationRecord
   has_many :test_questions, -> { order(position: :asc) }, dependent: :destroy
   has_many :tests, through: :test_question
 
-  has_many :question_options, autosave: true, dependent: :destroy
-
   validates :content, :type, presence: true
 
   scope :preview, -> { where(preview: true) }

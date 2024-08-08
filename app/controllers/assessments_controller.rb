@@ -1,5 +1,5 @@
 class AssessmentsController < ApplicationController
-  before_action :set_assessment, only: %i[edit update choose_tests update_tests add_questions update_questions]
+  before_action :set_assessment, only: %i[edit update choose_tests update_tests add_questions update_questions finalize]
 
   def new
     @assessment = Assessment.new
@@ -10,7 +10,10 @@ class AssessmentsController < ApplicationController
     @assessment.business = current_user.business
 
     if @assessment.save
-      redirect_to choose_tests_assessment_path(@assessment.hashid), notice: 'Your assessment was successfully created.'
+      redirect_to(
+        choose_tests_assessment_path(@assessment),
+        notice: 'The assessment was successfully created.'
+      )
     else
       render :new, status: :unprocessable_entity
     end
@@ -21,34 +24,39 @@ class AssessmentsController < ApplicationController
 
   def update
     if @assessment.update(assessment_params)
-      redirect_to determine_redirect_path(choose_tests_assessment_path(@assessment.hashid)), notice: 'Your assessment was successfully updated.'
+      redirect_to(
+        determine_redirect_path(choose_tests_assessment_path(@assessment)),
+        notice: 'The assessment was successfully updated.'
+      )
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
-  def choose_tests
-  end
+  def choose_tests; end
 
   def update_tests
     if @assessment.update(test_params)
       update_assessment_test_positions
-      redirect_to determine_redirect_path(add_questions_assessment_path(@assessment.hashid)), notice: 'Your tests were successfully updated.'
+      redirect_to(
+        determine_redirect_path(add_questions_assessment_path(@assessment)),
+        notice: "The assessment's tests were successfully updated."
+      )
     else
       render :choose_tests, status: :unprocessable_entity
     end
   end
 
-  def add_questions
-  end
+  def add_questions; end
 
   def update_questions
-    if @assessment.update(question_params)
-      redirect_to finalize_assessment_path(@assessment.hashid)
-    else
-      render :add_questions, status: :unprocessable_entity
-    end
+    redirect_to(
+      determine_redirect_path(finalize_assessment_path(@assessment)),
+      notice: "The assessment's questions were successfully updated."
+    )
   end
+
+  def finalize; end
 
   private
 
@@ -62,10 +70,6 @@ class AssessmentsController < ApplicationController
 
   def test_params
     params.require(:assessment).permit(test_ids: [])
-  end
-
-  def question_params
-    params.require(:assessment).permit(question_ids: [])
   end
 
   def update_assessment_test_positions

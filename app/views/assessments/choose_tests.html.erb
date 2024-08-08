@@ -104,7 +104,7 @@
     <div class="mt-10 reltive">
       <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Choose tests</h1>
 
-      <%= form_with(model: @assessment, url: update_tests_assessment_path(@assessment.hashid), method: :patch, class: "pt-5 pb-8 bg-zinc-50 sticky top-0 z-10 px-0.5 -mx-0.5", id: "form-to-submit") do |form| %>
+      <%= form_with(model: @assessment, url: update_tests_assessment_path(@assessment), method: :patch, class: "pt-5 pb-8 bg-zinc-50 sticky top-0 z-10 px-0.5 -mx-0.5", id: "form-to-submit") do |form| %>
         <div id="test-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5" data-controller="sortable">
           <% 5.times do |i| %>
             <% test = @assessment.tests[i] %>
@@ -112,7 +112,7 @@
               <div class="active-test group cursor-move inline-flex justify-between gap-x-2.5 items-center rounded-xl bg-black pl-5 pr-4 py-2 text-sm font-semibold text-white shadow-sm">
                 <span class="py-1 truncate"><%= test.title %></span>
                 <div class="hidden group-hover:flex gap-x-1.5">
-                  <% preview_question_path = test_preview_question_path(test.hashid, test.first_preview_question.hashid) if test.preview_questions.any? %>
+                  <% preview_question_path = test_library_preview_question_path(test, test.first_preview_question) if test.preview_questions.any? %>
                   <% if preview_question_path %>
                     <%= link_to preview_question_path, target: "_blank", class: "text-white p-1 hover:rounded-full hover:bg-white hover:text-white hover:bg-opacity-50 hover:shadow-sm" do %>
                       <%= svg_tag "eye", class: "size-5", "stroke-width": 2 %>
@@ -120,11 +120,11 @@
                   <% end %>
 
                   <button type="button" class="text-white p-1 hover:rounded-full hover:bg-white hover:text-white hover:bg-opacity-50 hover:shadow-sm"
-                          data-controller="new-assessment"
-                          data-action="new-assessment#removeTest"
-                          data-new-assessment-test-id-value="<%= test.id %>"
-                          data-new-assessment-test-title-value="<%= test.title %>"
-                          data-new-assessment-preview-questions-path-value="<%= preview_question_path %>">
+                          data-controller="choose-tests"
+                          data-action="choose-tests#removeTest"
+                          data-choose-tests-test-id-value="<%= test.id %>"
+                          data-choose-tests-test-title-value="<%= test.title %>"
+                          data-choose-tests-preview-questions-path-value="<%= preview_question_path %>">
                     <%= svg_tag "x-mark", class: "size-5", "stroke-width": 2 %>
                   </button>
                 </div>
@@ -142,14 +142,14 @@
       <% end %>
 
       <div>
-        <%= render TestLibraryComponent.new(tests: Test.order(:title), clear_path: choose_tests_assessment_path(@assessment.hashid), assessment: @assessment) %>
+        <%= render TestLibraryComponent.new(tests: Test.order(:title), clear_path: choose_tests_assessment_path(@assessment), assessment: @assessment) %>
       </div>
     </div>
   </div>
 
-  <div class="fixed bottom-0 w-full">
+  <div class="fixed bottom-0 w-full z-20">
     <div class="px-6 py-4 border-t border-zinc-200 flex justify-between bg-white">
-      <%= link_to edit_assessment_path(@assessment.hashid), class: "secondary-button px-5 py-3 gap-x-2.5" do %>
+      <%= link_to edit_assessment_path(@assessment), class: "secondary-button px-5 py-3 gap-x-2.5" do %>
         <%= svg_tag "chevron-left", class: "size-3 -mb-0.5", "stroke-width": 3 %>
         Back
       <% end %>

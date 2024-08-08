@@ -10,7 +10,7 @@ class BusinessesController < ApplicationController
     @business.assign_attributes(business_params)
 
     if @business.save
-      redirect_to edit_business_path(@business.hashid), notice: 'Your business profile was successfully created.'
+      redirect_to edit_business_path(@business), notice: 'Your business profile was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end

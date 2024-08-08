@@ -1,6 +1,8 @@
 class MultipleResponseQuestion < Question
   # Add MultipleResponseQuestion-specific logic
 
+  has_many :question_options, foreign_key: :question_id, dependent: :destroy, autosave: true
+
   validate :at_least_one_correct_option
 
   private

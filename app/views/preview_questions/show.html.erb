@@ -4,7 +4,7 @@
 
     <% next_question = @question.next_preview(@test) %>
     <% if next_question %>
-      <%= link_to test_preview_question_path(@test, next_question), class: "inline-flex gap-x-2.5 items-center rounded-full bg-blue-600 px-7 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600" do %>
+      <%= link_to test_library_preview_question_path(@test, next_question), class: "inline-flex gap-x-2.5 items-center rounded-full bg-blue-600 px-7 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600" do %>
         <span>Next</span>
         <%= svg_tag "chevron-right", "stroke-width": 3, class: "size-3" %>
       <% end %>
@@ -29,12 +29,14 @@
         </div>
         <div>
           <h2 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">Select only one answer</h2>
-          <div class="mt-6 space-y-5">
-            <% @question.question_options.each.with_index(1) do |option, i| %>
-              <label for="option-<%= i %>" class="flex items-center border border-gray-300 rounded-md p-4 cursor-pointer options">
-                <input id="option-<%= i %>" name="selected-option" type="radio" class="size-7 border-gray-300 text-blue-600 focus:ring-white item">
-                <span class="ml-5 block text-sm md:text-base font-semibold text-gray-800"><%= option.content %></span>
-              </label>
+          <div class="mt-6 space-y-5">    
+            <% if @question.type == "MultipleChoiceQuestion" %>
+              <% @question.question_options.each.with_index(1) do |option, i| %>
+                <label for="option-<%= i %>" class="flex items-center border border-gray-300 rounded-md p-4 cursor-pointer options">
+                  <input id="option-<%= i %>" name="selected-option" type="radio" class="size-7 border-gray-300 text-blue-600 focus:ring-white item">
+                  <span class="ml-5 block text-sm md:text-base font-semibold text-gray-800"><%= option.content %></span>
+                </label>
+              <% end %>
             <% end %>
           </div>
         </div>

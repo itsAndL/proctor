@@ -1,6 +1,8 @@
 class MultipleChoiceQuestion < Question
   # Add MultipleChoiceQuestion-specific logic
 
+  has_many :question_options, foreign_key: :question_id, dependent: :destroy, autosave: true
+
   validate :only_one_correct_option
 
   private

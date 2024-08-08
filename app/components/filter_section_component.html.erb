@@ -1,0 +1,32 @@
+<div data-controller="filter" class="border-b border-gray-200 py-6">
+  <h3 class="-my-3 flow-root">
+    <button type="button" class="flex w-full items-center justify-between py-3 text-sm text-gray-600 hover:text-gray-700" data-action="filter#toggle" aria-controls="filter-section-0" aria-expanded="<%= @expanded %>">
+      <span class="font-bold text-gray-900"><%= @title %></span>
+      <span class="ml-6 flex items-center">
+        <%= helpers.svg_tag "chevron-up", class: "lg:hidden size-4", "data-filter-target": "chevronDown", "stroke-width": 2.5 %>
+        <%= helpers.svg_tag "chevron-down", class: "hidden lg:block size-4", "data-filter-target": "chevronUp", "stroke-width": 2.5 %>
+      </span>
+    </button>
+  </h3>
+
+  <div data-filter-target="section" class="<%= @expanded ? '' : 'hidden ' %>lg:block pt-6">
+    <div class="space-y-4">
+      <% @options.each do |option| %>
+        <div class="flex items-center">
+          <%= check_box_tag option[:name],
+                            option[:value],
+                            option[:checked],
+                            id: option[:id],
+                            class: "h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500",
+                            data: option[:data] %>
+          <label for="<%= option[:id] %>" class="ml-3 text-sm font-medium text-gray-800 flex items-center gap-x-2">
+            <% if option[:icon].present? %>
+              <%= option[:icon] %>
+            <% end %>
+            <%= option[:label].html_safe %>
+          </label>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="new-assessment"
+// Connects to data-controller="choose-tests"
 export default class extends Controller {
   static values = {
     testId: Number,
@@ -88,7 +88,7 @@ export default class extends Controller {
 
   findRemoveButton(event) {
     return event.target.closest('.remove-test-btn') ||
-      document.querySelector(`[data-new-assessment-test-id-value="${this.testIdValue}"] .remove-test-btn`)
+      document.querySelector(`[data-choose-tests-test-id-value="${this.testIdValue}"] .remove-test-btn`)
   }
 
   createTestComponent(number) {
@@ -121,7 +121,7 @@ export default class extends Controller {
     button.type = 'button'
     button.className = className
     button.innerHTML = `${iconSvg}${text}`
-    button.setAttribute('data-action', `new-assessment#${text.toLowerCase()}Test`)
+    button.setAttribute('data-action', `choose-tests#${text.toLowerCase()}Test`)
     return button
   }
 
@@ -147,11 +147,11 @@ export default class extends Controller {
   removeButtonTemplate() {
     return `
       <button type="button" class="text-white p-1 hover:rounded-full hover:bg-white hover:text-white hover:bg-opacity-50 hover:shadow-sm"
-              data-controller="new-assessment"
-              data-action="new-assessment#removeTest"
-              data-new-assessment-test-id-value="${this.testIdValue}"
-              data-new-assessment-test-title-value="${this.testTitleValue}"
-              data-new-assessment-preview-questions-path-value="${this.previewQuestionsPathValue}">
+              data-controller="choose-tests"
+              data-action="choose-tests#removeTest"
+              data-choose-tests-test-id-value="${this.testIdValue}"
+              data-choose-tests-test-title-value="${this.testTitleValue}"
+              data-choose-tests-preview-questions-path-value="${this.previewQuestionsPathValue}">
         ${this.closeIconSvg()}
       </button>
     `

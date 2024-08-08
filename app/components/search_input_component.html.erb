@@ -1,0 +1,12 @@
+<div class="relative rounded-md-sm w-full">
+  <%= @form.text_field :search_query,
+                      placeholder: "Search tests",
+                      class: "primary-field rounded-xl py-2.5 pr-5 pl-10 border border-gray-800 focus:border-gray-800 focus:ring-gray-800",
+                      data: {
+                        search_target: "input",
+                        action: "input->search#search"
+                      } %>
+  <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+    <%= helpers.svg_tag "magnifying-glass", class: "size-5 text-gray-400", "stroke-width": 2.5 %>
+  </div>
+</div>
