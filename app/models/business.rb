@@ -4,5 +4,7 @@ class Business < ApplicationRecord
 
   belongs_to :user
 
+  has_many :assessments, dependent: :destroy
+
   validates :contact_name, :company, :bio, presence: true
 end

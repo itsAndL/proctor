@@ -1,0 +1,65 @@
+<div id="custom_question_<%= @custom_question.hashid %>" class="bg-white border border-gray-300 rounded-xl">
+  <details>
+    <summary class="flex rounded-xl flex-col px-6 pt-5 pb-7 shadow-sm hover:bg-gray-50 cursor-pointer">
+      <div class="w-full">
+        <div class="pb-5 flex gap-x-5 justify-between border-b border-gray-300">
+          <div>
+            <h2 class="font-bold text-lg leading-7 text-slate-900"><%= @custom_question.title %></h2>
+            <div class="mt-4 flex gap-x-5 items-center">
+              <div class="flex gap-x-2 items-center text-gray-900">
+                <%= helpers.svg_tag helpers.custom_question_type_icon(@custom_question), class: "size-4 mt-0.5" %>
+                <p class="text-sm font-medium"><%= t(".types.#{@custom_question.type.underscore}") %></p>
+              </div>
+
+              <div class="flex gap-x-2 items-center text-gray-900">
+                <%= helpers.svg_tag "clock", class: "size-4 mt-0.5" %>
+
+                <% if @custom_question.duration_seconds.zero? %>
+                  <%= helpers.svg_tag "minus", class: "size-5 mt-0.5" %>
+                <% else %>
+                  <p class="text-sm font-medium"><%= helpers.format_duration(@custom_question.duration_seconds) %></p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <% if @assessment.present? %>
+              <% if @assessment.custom_questions.include?(@custom_question) %>
+                <%= button_to assessment_custom_question_assessment_custom_question_path(@assessment, @custom_question, @assessment_custom_question),
+                              method: :delete,
+                              class: "danger-button px-3" do %>
+                  <%= helpers.svg_tag "x-mark", class: "size-4 -mb-0.5 inline" %>
+                  Remove
+                <% end %>
+              <% else %>
+                <%= button_to assessment_custom_question_assessment_custom_questions_path(@assessment, @custom_question),
+                              method: :post,
+                              class: "black-button px-6" do %>
+                  Add
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="text-gray-700 font-medium text-sm pt-5">
+          <%= @custom_question.content %>
+        </div>
+      </div>
+    </summary>
+    <div class="rounded-b-xl bg-white shadow-sm pb-8 pt-4 px-4 sm:px-6  font-medium text-gray-700">
+      <div class="min-h-[180px] bg-zinc-100 grid grid-cols-1 md:grid-cols-2 px-4 pt-4 pb-6 gap-x-7">
+        <div>
+          <h2 class="font-bold leading-7 text-gray-900 text-base tracking-tight">Why is this question relevant?</h2>
+          <p class="mt-2 font-medium text-sm text-gray-800"><%= @custom_question.relevancy %></p>
+        </div>
+
+        <div>
+          <h2 class="font-bold leading-7 text-gray-900 text-base tracking-tight">What to look for in the answer?</h2>
+          <div class="mt-2 font-medium text-sm text-gray-800 flex flex-col gap-y-8"><%= simple_format(@custom_question.look_for) %></div>
+        </div>                  
+      </div>
+    </div>
+  </details>
+</div>

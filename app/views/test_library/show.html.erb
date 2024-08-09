@@ -1,0 +1,70 @@
+<%= turbo_frame_tag "modal" do %>
+  <dialog data-controller="modal" data-modal-target="modal" class="modal m-0">
+    <div class="modal-box max-w-[1350px] rounded-xl px-8 sm:px-10 md:px-16 py-12 sm:py-16">
+      <form method="dialog">
+        <button class="btn btn-sm btn-circle btn-ghost absolute right-8 sm:right-10 md:right-16 top-12 sm:top-16">
+          <%= svg_tag "x-mark", class: "size-5", "stroke-width": 2.5 %>
+        </button>
+      </form>
+
+      <div class="pt-3 w-fit">
+        <% if @test.preview_questions.any? %>
+          <%= link_to "Preview sample questions", test_library_preview_question_path(@test, @test.first_preview_question), target: "_blank", class: "secondary-button py-2.5" %>
+        <% end %>
+      </div>
+
+      <div class="mt-7 grid grid-cols-1 lg:grid-cols-2 gap-x-12 xl:gap-x-20 gap-y-7">
+        <div>
+          <h1 class="font-bold leading-7 text-gray-900 text-2xl md:text-3xl tracking-tight"><%= @test.title %></h1>
+
+          <p class="mt-7 font-medium text-sm text-gray-800"><%= @test.overview %></p>
+        
+          <div class="mt-7 flex flex-wrap gap-x-16 gap-y-5">
+            <div class="space-y-1">
+              <%= svg_tag "shapes-collection", class: "size-4" %>
+              <div class="text-sm font-bold">Type</div>
+              <div class="text-xs font-medium"><%= @test.category %></div>
+            </div>
+            <div class="space-y-1">
+              <%= svg_tag "clock", class: "size-4" %>
+              <div class="text-sm font-bold">Time</div>
+              <div class="text-xs font-medium"><%= format_duration(@test.duration_seconds) %></div>
+            </div>
+            <div class="space-y-1">
+              <%= svg_tag "bar-chart", class: "size-4" %>
+              <div class="text-sm font-bold">Level</div>
+              <div class="text-xs font-medium"><%= @test.level.humanize %></div>
+            </div>
+          </div>
+          
+          <% if @test.covered_skills.present? %>
+            <div class="mt-7">
+              <h2 class="font-bold leading-7 text-gray-900 text-lg tracking-tight">Covered skills</h2>
+              <div class="mt-1 space-y-1.5">
+                <% @test.covered_skills.each do |skill| %>
+                  <div class="flex gap-x-2.5 items-center font-medium text-sm text-gray-800">
+                    <%= svg_tag "check", class: "size-4", "stroke-width": 2 %>
+                    <p><%= skill %></p>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+
+          <div class="mt-7">
+            <h2 class="font-bold leading-7 text-gray-900 text-lg tracking-tight">This test is relevant for</h2>
+            <p class="mt-2 font-medium text-sm text-gray-800"><%= @test.relevancy %></p>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="font-bold leading-7 text-gray-900 text-lg tracking-tight">Description</h2>
+          <div class="mt-2 font-medium text-sm text-gray-800 flex flex-col gap-y-4"><%= simple_format(@test.description) %></div>
+        </div>
+      </div>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+      <button>close</button>
+    </form>
+  </dialog>
+<% end %>

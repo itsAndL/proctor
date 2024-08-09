@@ -2,8 +2,11 @@ class Test < ApplicationRecord
   include Hashid::Rails
   include PgSearch::Model
 
-  has_many :test_questions, -> { order(position: :asc) }
+  has_many :test_questions, -> { order(position: :asc) }, dependent: :destroy
   has_many :questions, through: :test_questions
+
+  has_many :assessment_tests, -> { order(position: :asc) }, dependent: :destroy
+  has_many :assessments, through: :assessment_tests
 
   belongs_to :test_category
 
@@ -17,14 +20,16 @@ class Test < ApplicationRecord
                     tsearch: { prefix: true } # Enables prefix matching
                   }
 
-  attribute :category, :string
-
   def category
     test_category&.title
   end
 
   def category=(value)
     self.test_category = TestCategory.find_or_create_by(title: value)
+  end
+
+  def duration_seconds
+    non_preview_questions.sum(:duration_seconds)
   end
 
   def preview_questions

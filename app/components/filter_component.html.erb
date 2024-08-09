@@ -1,0 +1,15 @@
+<%= form_with url: @filter_url, method: :get, data: { controller: "search", search_target: "form", "turbo-frame": "filter_section" } do |form| %>
+  <%= render SearchInputComponent.new(form:) %>
+
+  <h2 class="pt-7 text-xl font-bold text-black">Filters</h2>
+
+  <% filter_sections.each do |section| %>
+    <%= render(FilterSectionComponent.new(title: section[:title], options: section[:options])) %>
+  <% end %>
+
+  <div class="py-6 lg:pb-10">
+    <%= link_to "Clear", @clear_path, class: "black-button" %>
+  </div>
+
+  <%= hidden_field_tag("assessment_id", @assessment.hashid) if @assessment.present? %>
+<% end %>

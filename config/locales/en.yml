@@ -41,6 +41,11 @@ en:
       candidate:
         name: Your name
         avatar: Your profile picture
+    enums:
+      assessment:
+        language:
+          en: "English"
+          fr: "French"
   businesses:
     form:
       avatar: Your company logo
@@ -58,9 +63,3 @@ en:
       attached: is not attached
       content_type_invalid: image format not supported
       max_file_size_invalid: image over %{size}
-  tests:
-    index:
-      types:
-        coding_test: "Coding"
-        multiple_choice_test: "Multiple choice"
-        questionnaire_test: "Questionnaire"

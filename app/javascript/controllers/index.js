@@ -4,6 +4,12 @@
 
 import { application } from "./application"
 
+import AssessmentTitleController from "./assessment_title_controller"
+application.register("assessment-title", AssessmentTitleController)
+
+import ChooseTestsController from "./choose_tests_controller"
+application.register("choose-tests", ChooseTestsController)
+
 import ClickableRowController from "./clickable_row_controller"
 application.register("clickable-row", ClickableRowController)
 
@@ -16,6 +22,9 @@ application.register("file-upload", FileUploadController)
 import FilterController from "./filter_controller"
 application.register("filter", FilterController)
 
+import FormSubmitController from "./form_submit_controller"
+application.register("form-submit", FormSubmitController)
+
 import FullscreenController from "./fullscreen_controller"
 application.register("fullscreen", FullscreenController)
 
@@ -25,11 +34,17 @@ application.register("hello", HelloController)
 import ModalController from "./modal_controller"
 application.register("modal", ModalController)
 
+import NotificationController from "./notification_controller"
+application.register("notification", NotificationController)
+
 import SearchController from "./search_controller"
 application.register("search", SearchController)
 
 import SliderController from "./slider_controller"
 application.register("slider", SliderController)
+
+import SortableController from "./sortable_controller"
+application.register("sortable", SortableController)
 
 import TabCloserController from "./tab_closer_controller"
 application.register("tab-closer", TabCloserController)

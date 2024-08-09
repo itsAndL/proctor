@@ -1,0 +1,74 @@
+<div id="custom_questions_table" class="border border-gray-200 bg-white rounded-xl">
+  <% if @with_title %>
+    <div class="p-5">
+      <h2 class="text-base font-bold text-black">Selected questions</h2>
+    </div>
+  <% end %>
+  <div class="flow-root">
+    <div class="inline-block min-w-full align-middle">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead class="<%= 'border-t border-gray-200' if @with_title %>">
+          <tr>
+            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-bold text-gray-800 sm:pl-6">Question</th>
+            <th scope="col" class="py-3.5 pl-3 pr-4 sm:pr-6 text-left text-sm font-bold text-gray-800 hidden md:table-cell">Duration</th>
+            <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
+              <span class="sr-only">Actions</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+          <% if @custom_questions.empty? %>
+            <tr>
+              <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6">
+                <p>Add questions to capture information critical to your screening process. Dig deeper with additional questions.</p>
+              </td> 
+            </tr>
+          <% else %>
+            <% @custom_questions.each_with_index  do |custom_question, index| %>
+              <tr>
+                <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6 flex items-center gap-x-2">
+                  <div>
+                    <%= helpers.svg_tag helpers.custom_question_type_icon(custom_question), class: "size-6" %>
+                  </div>
+                  <p><%= truncate(custom_question.content.to_plain_text, length: 140, escape: false) %></p>
+                </td>
+                <td class="whitespace-nowrap py-4 pl-3 pr-4 sm:pr-6 text-sm font-medium text-gray-800 hidden md:table-cell">
+                  <div class="flex gap-x-2 items-center text-gray-900">
+                    <%= helpers.svg_tag "clock", class: "size-4" %>
+
+                    <% if custom_question.duration_seconds.zero? %>
+                      <%= helpers.svg_tag "minus", class: "size-5 mt-0.5" %>
+                    <% else %>
+                      <p class="text-sm font-semibold"><%= helpers.format_duration(custom_question.duration_seconds) %></p>
+                    <% end %>
+                  </div>
+                </td>
+                <td class="py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
+                  <% assessment_custom_question = @assessment.assessment_custom_questions.find_by(custom_question: custom_question) %>
+                  <div class="flex justify-end items-center gap-x-1.5 max-md:flex-wrap">
+                    <%= render_position_button(custom_question, :up, index) %>
+                    <%= render_position_button(custom_question, :down, index) %>
+
+                    <div class="dropdown dropdown-hover">
+                      <%= button_to assessment_custom_question_assessment_custom_question_path(@assessment, custom_question, assessment_custom_question),
+                                    method: :delete,
+                                    class: "rounded-full p-2 text-slate-900 hover:bg-zinc-200",
+                                    params: { with_title: @with_title } do %>
+                        <%= helpers.svg_tag "x-mark", class: "size-4", "stroke-width": 3 %>
+                      <% end %>
+
+                      <div class="dropdown-content absolute -right-3 z-10 -mr-1.5 mt-2 origin-top-right">
+                        <div class="triangle triangle-t triangle-h-2 triangle-w-4 ml-auto mr-6 -mb-0.5 text-gray-900"></div>
+                        <div class="rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none py-2 px-3 whitespace-nowrap bg-gray-900 text-sm text-white font-medium">Remove question</div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

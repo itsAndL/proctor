@@ -1,4 +1,4 @@
-class TestsController < ApplicationController
+class TestLibraryController < ApplicationController
   def index
     # Initialize @tests with all tests by default
     @tests = Test.all
@@ -20,10 +20,10 @@ class TestsController < ApplicationController
       @tests = @tests.where(type: test_types)
     end
 
-    @tests = @tests.order(:title)
+    @tests = @tests.order(:position)
   end
 
   def show
-    @test = Test.find_by_hashid(params[:hashid])
+    @test = Test.find(params[:hashid])
   end
 end

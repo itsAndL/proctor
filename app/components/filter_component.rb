@@ -1,0 +1,135 @@
+# frozen_string_literal: true
+
+class FilterComponent < ViewComponent::Base
+  def initialize(filter_url:, clear_path:, library:, assessment: nil)
+    @filter_url = filter_url
+    @clear_path = clear_path
+    @library = library
+    @assessment = assessment
+  end
+
+  def filter_sections
+    case @library
+    when :test
+      [highlights_section, test_focus_section, test_format_section, test_duration_section]
+    when :custom_question
+      [question_type_section, question_category_section]
+    else
+      []
+    end
+  end
+
+  private
+
+  def highlights_section
+    {
+      title: "Highlights",
+      options: [
+        highlight_option("free", "gift", "Free", 60),
+        highlight_option("popular", "fire", "Popular", 10),
+        highlight_option("new", "sparkles", "New", 123)
+      ]
+    }
+  end
+
+  def highlight_option(value, icon, label, count)
+    {
+      name: "highlights[]",
+      value: value,
+      checked: false,
+      id: "highlight-#{value}",
+      icon: helpers.svg_tag(icon, class: "size-4", stroke_width: 2),
+      label: "#{label} #{count_span(count)}"
+    }
+  end
+
+  def test_focus_section
+    {
+      title: "Test focus",
+      options: TestCategory.order(:title).map.with_index(1) do |test_type, index|
+        checkbox_option(
+          "test_category[]",
+          test_type.id,
+          params[:test_category]&.include?(test_type.id.to_s),
+          "test-category-#{index}",
+          "#{test_type.title} #{count_span(test_type.tests.count)}"
+        )
+      end
+    }
+  end
+
+  def test_format_section
+    {
+      title: "Test format",
+      options: Test.types.map.with_index(1) do |type, index|
+        checkbox_option(
+          "test_type[]",
+          type,
+          params[:test_type]&.include?(type),
+          "test-type-#{index}",
+          "#{t(".types.test.#{type}", default: type.humanize)} #{count_span(type.camelize.constantize.count)}"
+        )
+      end
+    }
+  end
+
+  def test_duration_section
+    {
+      title: "Test duration",
+      options: [
+        checkbox_option("test-duration[]", "less_10", false, "test-duration-1", "Up to 10 mins #{count_span(363)}"),
+        checkbox_option("test-duration[]", "11_to_20", false, "test-duration-2", "11-20 mins #{count_span(21)}"),
+        checkbox_option("test-duration[]", "21_to_30", false, "test-duration-3", "21-30 mins #{count_span(19)}"),
+        checkbox_option("test-duration[]", "31_to_60", false, "test-duration-4", "31-60 mins #{count_span(13)}"),
+      ]
+    }
+  end
+
+  def question_type_section
+    {
+      title: "Question type",
+      options: CustomQuestion.types.map.with_index(1) do |type, index|
+        checkbox_option(
+          "question_type[]",
+          type,
+          params[:question_type]&.include?(type),
+          "question-type-#{index}",
+          "#{t(".types.custom_question.#{type}", default: type.humanize)} #{count_span(type.camelize.constantize.count)}"
+        )
+      end
+    }
+  end
+
+  def question_category_section
+    {
+      title: "Question category",
+      options: CustomQuestionCategory.order(:title).map.with_index(1) do |question_type, index|
+        checkbox_option(
+          "question_category[]",
+          question_type.id,
+          params[:question_category]&.include?(question_type.id.to_s),
+          "test-category-#{index}",
+          "#{question_type.title} #{count_span(question_type.custom_questions.count)}"
+        )
+      end
+    }
+  end
+
+  def checkbox_option(name, value, checked, id, label)
+    {
+      name: name,
+      value: value,
+      checked: checked,
+      id: id,
+      label: label,
+      data: {
+        search_target: "checkbox",
+        action: "change->search#submitOnCheck"
+      }
+    }
+  end
+
+  def count_span(count)
+    "<span class='text-gray-500'>(#{count})</span>"
+  end
+end

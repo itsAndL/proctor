@@ -1,0 +1,18 @@
+<div class="flex items-center gap-x-1.5">
+  <div class="relative dropdown dropdown-hover">
+    <button tabindex="0" type="button" class="mt-1">
+      <%= helpers.svg_tag "question-mark-circle", "stroke-width": 2.5, class: "size-5 text-gray-500" %>
+    </button>
+
+    <div tabindex="0" class="dropdown-content absolute left-7 top-1/2 -translate-y-1/2 z-10">
+      <div class="mx-auto w-64">
+        <div class="flex flex-cols items-center">
+          <div class="triangle triangle-l triangle-h-5 triangle-w-3 text-gray-900"></div>
+          <div class="rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none py-2 px-3 bg-gray-900 text-xs text-white font-medium"><%= @message %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= @form.label @name, @options %>
+</div>

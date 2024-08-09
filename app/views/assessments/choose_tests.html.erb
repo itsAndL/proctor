@@ -1,0 +1,54 @@
+<%= render AssessmentHeaderComponent.new(assessment: @assessment, current_action: action_name) %>
+
+<main class="bg-zinc-50 h-full relative">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-16">
+    <%= render AssessmentStepperComponent.new(current_step: 'Choose tests', assessment: @assessment) %>
+
+    <div class="mt-10 reltive">
+      <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Choose tests</h1>
+
+      <%= form_with(model: @assessment, url: update_tests_assessment_path(@assessment), method: :patch, class: "pt-5 pb-8 bg-zinc-50 sticky top-0 z-10 px-0.5 -mx-0.5", id: "form-to-submit") do |form| %>
+        <div id="test-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5" data-controller="sortable">
+          <% 5.times do |i| %>
+            <% test = @assessment.tests[i] %>
+            <% if test %>
+              <div class="active-test group cursor-move inline-flex justify-between gap-x-2.5 items-center rounded-xl bg-black pl-5 pr-4 py-2 text-sm font-semibold text-white shadow-sm">
+                <span class="py-1 truncate"><%= test.title %></span>
+                <div class="hidden group-hover:flex gap-x-1.5">
+                  <% preview_question_path = test_library_preview_question_path(test, test.first_preview_question) if test.preview_questions.any? %>
+                  <% if preview_question_path %>
+                    <%= link_to preview_question_path, target: "_blank", class: "text-white p-1 hover:rounded-full hover:bg-white hover:text-white hover:bg-opacity-50 hover:shadow-sm" do %>
+                      <%= svg_tag "eye", class: "size-5", "stroke-width": 2 %>
+                    <% end %>
+                  <% end %>
+
+                  <button type="button" class="text-white p-1 hover:rounded-full hover:bg-white hover:text-white hover:bg-opacity-50 hover:shadow-sm"
+                          data-controller="choose-tests"
+                          data-action="choose-tests#removeTest"
+                          data-choose-tests-test-id-value="<%= test.id %>"
+                          data-choose-tests-test-title-value="<%= test.title %>"
+                          data-choose-tests-preview-questions-path-value="<%= preview_question_path %>">
+                    <%= svg_tag "x-mark", class: "size-5", "stroke-width": 2 %>
+                  </button>
+                </div>
+                <%= hidden_field_tag "assessment[test_ids][]", test.id %>
+              </div>
+            <% else %>
+              <div class="inactive-test cursor-pointer rounded-xl px-5 py-3 text-sm font-semibold text-gray-400 border border-dashed border-gray-400 shadow-sm text-center">
+                <span>Test n˚<%= i + 1 %></span>
+                <%= hidden_field_tag "assessment[test_ids][]", nil %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <%= render FieldErrorComponent.new(:base, @assessment) %>
+      <% end %>
+
+      <div>
+        <%= render TestLibraryComponent.new(tests: Test.order(:position), clear_path: choose_tests_assessment_path(@assessment), assessment: @assessment) %>
+      </div>
+    </div>
+  </div>
+
+  <%= render AssessmentFooterComponent.new(assessment: @assessment, current_step: action_name) %>
+</main>

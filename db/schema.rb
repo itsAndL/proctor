@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_26_092542) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_09_154937) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,35 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_26_092542) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "assessment_custom_questions", force: :cascade do |t|
+    t.bigint "assessment_id", null: false
+    t.bigint "custom_question_id", null: false
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assessment_id"], name: "index_assessment_custom_questions_on_assessment_id"
+    t.index ["custom_question_id"], name: "index_assessment_custom_questions_on_custom_question_id"
+  end
+
+  create_table "assessment_tests", force: :cascade do |t|
+    t.bigint "assessment_id", null: false
+    t.bigint "test_id", null: false
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assessment_id"], name: "index_assessment_tests_on_assessment_id"
+    t.index ["test_id"], name: "index_assessment_tests_on_test_id"
+  end
+
+  create_table "assessments", force: :cascade do |t|
+    t.string "title"
+    t.integer "language"
+    t.bigint "business_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["business_id"], name: "index_assessments_on_business_id"
+  end
+
   create_table "businesses", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "contact_name"
@@ -72,6 +101,25 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_26_092542) do
     t.index ["user_id"], name: "index_candidates_on_user_id"
   end
 
+  create_table "custom_question_categories", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "custom_questions", force: :cascade do |t|
+    t.string "title"
+    t.text "relevancy"
+    t.text "look_for"
+    t.integer "duration_seconds", default: 0
+    t.string "type"
+    t.integer "position"
+    t.bigint "custom_question_category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["custom_question_category_id"], name: "index_custom_questions_on_custom_question_category_id"
+  end
+
   create_table "question_options", force: :cascade do |t|
     t.boolean "correct", default: false
     t.bigint "question_id", null: false
@@ -85,6 +133,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_26_092542) do
     t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "duration_seconds", default: 0
   end
 
   create_table "test_categories", force: :cascade do |t|
@@ -114,6 +163,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_26_092542) do
     t.bigint "test_category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "position"
     t.index ["test_category_id"], name: "index_tests_on_test_category_id"
     t.index ["title"], name: "index_tests_on_title"
   end
@@ -136,8 +186,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_26_092542) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "assessment_custom_questions", "assessments"
+  add_foreign_key "assessment_custom_questions", "custom_questions"
+  add_foreign_key "assessment_tests", "assessments"
+  add_foreign_key "assessment_tests", "tests"
+  add_foreign_key "assessments", "businesses"
   add_foreign_key "businesses", "users"
   add_foreign_key "candidates", "users"
+  add_foreign_key "custom_questions", "custom_question_categories"
   add_foreign_key "question_options", "questions"
   add_foreign_key "test_questions", "questions"
   add_foreign_key "test_questions", "tests"
