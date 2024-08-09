@@ -1,8 +1,13 @@
 <div id="custom_questions_table" class="border border-gray-200 bg-white rounded-xl">
+  <% if @with_title %>
+    <div class="p-5">
+      <h2 class="text-base font-bold text-black">Selected questions</h2>
+    </div>
+  <% end %>
   <div class="flow-root">
     <div class="inline-block min-w-full align-middle">
       <table class="min-w-full divide-y divide-gray-200">
-        <thead>
+        <thead class="<%= 'border-t border-gray-200' if @with_title %>">
           <tr>
             <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-bold text-gray-800 sm:pl-6">Question</th>
             <th scope="col" class="py-3.5 pl-3 pr-4 sm:pr-6 text-left text-sm font-bold text-gray-800 hidden md:table-cell">Duration</th>
@@ -25,7 +30,7 @@
                   <div>
                     <%= helpers.svg_tag helpers.custom_question_type_icon(custom_question), class: "size-6" %>
                   </div>
-                  <p class="max-w-4xl"><%= truncate(custom_question.content.to_plain_text, length: 140, escape: false) %></p>
+                  <p><%= truncate(custom_question.content.to_plain_text, length: 140, escape: false) %></p>
                 </td>
                 <td class="whitespace-nowrap py-4 pl-3 pr-4 sm:pr-6 text-sm font-medium text-gray-800 hidden md:table-cell">
                   <div class="flex gap-x-2 items-center text-gray-900">
@@ -47,7 +52,8 @@
                     <div class="dropdown dropdown-hover">
                       <%= button_to assessment_custom_question_assessment_custom_question_path(@assessment, custom_question, assessment_custom_question),
                                     method: :delete,
-                                    class: "rounded-full p-2 text-slate-900 hover:bg-zinc-200" do %>
+                                    class: "rounded-full p-2 text-slate-900 hover:bg-zinc-200",
+                                    params: { with_title: @with_title } do %>
                         <%= helpers.svg_tag "x-mark", class: "size-4", "stroke-width": 3 %>
                       <% end %>
 

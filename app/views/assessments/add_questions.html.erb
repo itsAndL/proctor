@@ -1,112 +1,12 @@
-<!-- DRY this -->
-<div class="bg-white border-b border-zinc-200 py-4">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="flex gap-x-4 sm:gap-x-8 items-center justify-between">
-      <div class="min-w-0 flex-1 flex items-center gap-x-2">
-        <a href="/customer/assessments" class="text-gray-900 p-2.5 mr-4 sm:mr-8 border border-gray-900 rounded-full hover:bg-zinc-100 hover:shadow-sm">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-4">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-          </svg>
-        </a>
-
-        <div>
-          <h2 class="line-clamp-1 w-full text-xl font-bold leading-7 text-slate-900"><%= @assessment.title %></h2>
-
-          <div class="mt-1 flex gap-x-6 items-center">
-            <div class="flex gap-x-2 items-center text-gray-600">
-              <svg width="100%" height="100%" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" fit="" preserveAspectRatio="xMidYMid meet" focusable="false" class="size-4">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M4 1.5C3.17157 1.5 2.5 2.17157 2.5 3V11C2.5 11.8284 3.17157 12.5 4 12.5H4.5V13C4.5 13.8284 5.17157 14.5 6 14.5H12C12.8284 14.5 13.5 13.8284 13.5 13V5C13.5 4.17157 12.8284 3.5 12 3.5H11.5V3C11.5 2.17157 10.8284 1.5 10 1.5H4ZM11.5 4.5V11C11.5 11.8284 10.8284 12.5 10 12.5H5.5V13C5.5 13.2761 5.72386 13.5 6 13.5H12C12.2761 13.5 12.5 13.2761 12.5 13V5C12.5 4.72386 12.2761 4.5 12 4.5H11.5ZM3.5 3C3.5 2.72386 3.72386 2.5 4 2.5H10C10.2761 2.5 10.5 2.72386 10.5 3V11C10.5 11.2761 10.2761 11.5 10 11.5H4C3.72386 11.5 3.5 11.2761 3.5 11V3ZM6.5 5.5H5V4.5H9V5.5H7.5V9H6.5V5.5Z" fill="currentColor"></path>
-              </svg>
-              <p id="tests-count" class="font-medium text-sm">
-                <% tests_count = (@assessment.tests.count || 0) %>
-                <%= pluralize(tests_count, 'test', 'tests') %>
-              </p>
-            </div>
-
-            <div class="flex gap-x-2 items-center text-gray-600">
-              <svg width="100%" height="100%" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" fit="" preserveAspectRatio="xMidYMid meet" focusable="false" class="size-4">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M6.16667 2C6.16667 1.72386 6.39052 1.5 6.66667 1.5H9.33333C9.60948 1.5 9.83333 1.72386 9.83333 2C9.83333 2.27614 9.60948 2.5 9.33333 2.5H6.66667C6.39052 2.5 6.16667 2.27614 6.16667 2ZM8.00076 4.5C10.4857 4.50041 12.5 6.51497 12.5 9C12.5 11.4853 10.4853 13.5 8 13.5C5.51472 13.5 3.5 11.4853 3.5 9C3.5 6.51472 5.51472 4.5 8 4.5L8.00076 4.5ZM8 3.5C4.96243 3.5 2.5 5.96243 2.5 9C2.5 12.0376 4.96243 14.5 8 14.5C11.0376 14.5 13.5 12.0376 13.5 9C13.5 5.96243 11.0376 3.5 8 3.5ZM7.77806 4C7.78699 3.71301 8 3.5 8 3.5C7.82635 3.67365 7.77332 3.8473 7.77806 4ZM8.5 6C8.5 5.72386 8.27614 5.5 8 5.5C7.72386 5.5 7.5 5.72386 7.5 6V8.66667C7.5 8.94281 7.72386 9.16667 8 9.16667C8.27614 9.16667 8.5 8.94281 8.5 8.66667V6ZM13.0202 3.64645C12.825 3.45118 12.5084 3.45118 12.3131 3.64645C12.1179 3.84171 12.1179 4.15829 12.3131 4.35355L12.9798 5.02022C13.175 5.21548 13.4916 5.21548 13.6869 5.02022C13.8821 4.82496 13.8821 4.50838 13.6869 4.31311L13.0202 3.64645Z" fill="currentColor"></path>
-              </svg>
-              <p class="font-medium text-sm">0 mins</p><!-- Make this work -->
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <button type="button" class="secondary-button px-3" data-controller="form-submit" data-form-submit-save-and-exit-value="true" data-action="form-submit#submitForm">Save and exit</button>
-    </div>
-  </div>
-</div>
+<%= render AssessmentHeaderComponent.new(assessment: @assessment, current_action: action_name) %>
 
 <main class="bg-zinc-50 h-full relative">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-16">
-    <!-- DRY this and make it works -->
-    <nav aria-label="Progress">
-      <ol role="list" class="divide-y divide-gray-300 rounded-xl md:rounded-full border border-gray-300 md:flex md:divide-y-0">
-        <li class="relative md:flex md:flex-1">
-          <a href="#" class="group flex w-full items-center">
-            <span class="flex items-center px-6 py-4 text-sm font-medium">
-              <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 group-hover:bg-blue-800">
-                <svg class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd" />
-                </svg>
-              </span>
-              <span class="ml-4 text-sm font-medium text-gray-900">Assessment details</span>
-            </span>
-          </a>
-          <div class="absolute right-0 top-0 hidden h-full w-5 md:block" aria-hidden="true">
-            <svg class="h-full w-full text-gray-300" viewBox="0 0 22 80" fill="none" preserveAspectRatio="none">
-              <path d="M0 -2L20 40L0 82" vector-effect="non-scaling-stroke" stroke="currentcolor" stroke-linejoin="round" />
-            </svg>
-          </div>
-        </li>
-        <li class="relative md:flex md:flex-1">
-          <a href="#" class="group flex w-full items-center">
-            <span class="flex items-center px-6 py-4 text-sm font-medium">
-              <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 group-hover:bg-blue-800">
-                <svg class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd" />
-                </svg>
-              </span>
-              <span class="ml-4 text-sm font-medium text-gray-900">Choose tests</span>
-            </span>
-          </a>
-          <div class="absolute right-0 top-0 hidden h-full w-5 md:block" aria-hidden="true">
-            <svg class="h-full w-full text-gray-300" viewBox="0 0 22 80" fill="none" preserveAspectRatio="none">
-              <path d="M0 -2L20 40L0 82" vector-effect="non-scaling-stroke" stroke="currentcolor" stroke-linejoin="round" />
-            </svg>
-          </div>
-        </li>
-        <li class="relative md:flex md:flex-1">
-          <a href="#" class="flex items-center px-6 py-4 text-sm font-medium" aria-current="step">
-            <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border-2 border-blue-600">
-              <span class="text-blue-600">03</span>
-            </span>
-            <span class="ml-4 text-sm font-medium text-blue-600">Add questions</span>
-          </a>
-          <div class="absolute right-0 top-0 hidden h-full w-5 md:block" aria-hidden="true">
-            <svg class="h-full w-full text-gray-300" viewBox="0 0 22 80" fill="none" preserveAspectRatio="none">
-              <path d="M0 -2L20 40L0 82" vector-effect="non-scaling-stroke" stroke="currentcolor" stroke-linejoin="round" />
-            </svg>
-          </div>
-        </li>
-        <li class="relative md:flex md:flex-1">
-          <a href="#" class="group flex items-center">
-            <span class="flex items-center px-6 py-4 text-sm font-medium">
-              <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border-2 border-gray-300 group-hover:border-gray-400">
-                <span class="text-gray-500 group-hover:text-gray-900">04</span>
-              </span>
-              <span class="ml-4 text-sm font-medium text-gray-500 group-hover:text-gray-900">Finalize</span>
-            </span>
-          </a>
-        </li>
-      </ol>
-    </nav>
+    <%= render AssessmentStepperComponent.new(current_step: 'Add questions', assessment: @assessment) %>
 
     <div class="mt-10 reltive">
       <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Add questions</h1>
-      <%= form_with(model: @assessment, url: update_questions_assessment_path(@assessment), method: :patch, id: "form-to-submit") do %>
-      <% end %>
+      <%= form_with(model: @assessment, url: update_questions_assessment_path(@assessment), method: :patch, id: "form-to-submit") {} %>
 
       <div class="mt-6">
         <%= render CustomQuestionsTableComponent.new(assessment: @assessment) %>
@@ -118,16 +18,5 @@
     </div>
   </div>
 
-  <div class="fixed bottom-0 w-full z-20">
-    <div class="px-6 py-4 border-t border-zinc-200 flex justify-between bg-white">
-      <%= link_to choose_tests_assessment_path(@assessment), class: "secondary-button px-5 py-3 gap-x-2.5" do %>
-        <%= svg_tag "chevron-left", class: "size-3 -mb-0.5", "stroke-width": 3 %>
-        Back
-      <% end %>
-      <button type="button" class="primary-button px-5 py-3 gap-x-2.5" data-controller="form-submit" data-action="form-submit#submitForm">
-        Next
-        <%= svg_tag "chevron-right", class: "size-3 -mb-0.5", "stroke-width": 3 %>
-      </button>
-    </div>
-  </div>
+  <%= render AssessmentFooterComponent.new(assessment: @assessment, current_step: action_name) %>
 </main>

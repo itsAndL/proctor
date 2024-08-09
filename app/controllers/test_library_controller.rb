@@ -20,7 +20,7 @@ class TestLibraryController < ApplicationController
       @tests = @tests.where(type: test_types)
     end
 
-    @tests = @tests.order(:title)
+    @tests = @tests.order(:position)
   end
 
   def show

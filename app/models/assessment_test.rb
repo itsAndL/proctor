@@ -1,4 +1,6 @@
 class AssessmentTest < ApplicationRecord
+  include Hashid::Rails
+
   belongs_to :assessment
   belongs_to :test
 

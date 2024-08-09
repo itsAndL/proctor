@@ -19,10 +19,19 @@ Rails.application.routes.draw do
       get 'add_questions'
       patch 'update_questions'
       get 'finalize'
+      patch 'finish'
     end
 
     resources :custom_questions, only: [], param: :hashid do
       resources :assessment_custom_questions, only: %i[create destroy], param: :hashid do
+        member do
+          patch 'change_position'
+        end
+      end
+    end
+
+    resources :tests, only: [], param: :hashid do
+      resources :assessment_tests, only: %i[destroy], param: :hashid do
         member do
           patch 'change_position'
         end

@@ -5,7 +5,7 @@ class CustomQuestion < ApplicationRecord
   belongs_to :custom_question_category
   has_rich_text :content
 
-  validates :title, :content, :relevancy, :look_for, :duration_seconds, :type, presence: true
+  validates :title, :content, :relevancy, :look_for, :type, presence: true
 
   has_many :assessment_custom_questions, -> { order(position: :asc) }, dependent: :destroy
   has_many :assessments, through: :assessment_custom_questions

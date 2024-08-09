@@ -28,6 +28,10 @@ class Test < ApplicationRecord
     self.test_category = TestCategory.find_or_create_by(title: value)
   end
 
+  def duration_seconds
+    non_preview_questions.sum(:duration_seconds)
+  end
+
   def preview_questions
     questions.preview.order('test_questions.position ASC')
   end

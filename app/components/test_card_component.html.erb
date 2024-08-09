@@ -19,11 +19,11 @@
       <div class="mt-5 flex gap-x-5 gap-y-1 flex-wrap items-center">
         <div class="flex gap-x-1.5 items-center text-gray-800 text-sm font-medium">
           <%= helpers.svg_tag "clock", class: "size-4" %>
-          <p>9 mins</p>
+          <p><%= helpers.format_duration(@test.duration_seconds) %></p>
         </div>
         <div class="flex gap-x-1.5 items-center text-gray-800 text-sm font-medium">
           <%= helpers.svg_tag "question-mark-square", class: "size-4" %>
-          <p>15 questions</p>
+          <p><%= pluralize(@test.non_preview_questions.count, 'question') %></p>
         </div>
         <div class="flex gap-x-1.5 items-center text-gray-800 text-sm font-medium">
           <%= helpers.svg_tag "shapes", class: "size-4" %>

@@ -1,5 +1,5 @@
 class AssessmentsController < ApplicationController
-  before_action :set_assessment, only: %i[edit update choose_tests update_tests add_questions update_questions finalize]
+  before_action :set_assessment, only: %i[edit update choose_tests update_tests add_questions update_questions finalize finish]
 
   def new
     @assessment = Assessment.new
@@ -57,6 +57,10 @@ class AssessmentsController < ApplicationController
   end
 
   def finalize; end
+
+  def finish
+    redirect_to '/customer/assessments/1', notice: 'Assessment was successfully finalized.'
+  end
 
   private
 
