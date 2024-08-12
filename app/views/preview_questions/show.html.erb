@@ -6,12 +6,12 @@
     <% if next_question %>
       <%= link_to test_library_preview_question_path(@test, next_question), class: "inline-flex gap-x-2.5 items-center rounded-full bg-blue-600 px-7 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600" do %>
         <span>Next</span>
-        <%= svg_tag "chevron-right", "stroke-width": 3, class: "size-3" %>
+        <%= svg_tag "chevron_right", "stroke-width": 3, class: "size-3" %>
       <% end %>
     <% else %>
       <button data-controller="tab-closer" data-action="click->tab-closer#close" type="button" class="inline-flex gap-x-2.5 items-center rounded-full bg-blue-600 px-7 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
         <span>Finish</span>
-        <%= svg_tag "chevron-right", "stroke-width": 3, class: "size-3" %>
+        <%= svg_tag "chevron_right", "stroke-width": 3, class: "size-3" %>
       </button>    
     <% end %>
   </div>

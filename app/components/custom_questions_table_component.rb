@@ -38,6 +38,6 @@ class CustomQuestionsTableComponent < ViewComponent::Base
   end
 
   def direction_icon(direction)
-    direction == :up ? "chevron-up" : "chevron-down"
+    direction == :up ? "chevron_up" : "chevron_down"
   end
 end

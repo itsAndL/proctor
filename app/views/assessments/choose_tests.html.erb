@@ -28,7 +28,7 @@
                           data-choose-tests-test-id-value="<%= test.id %>"
                           data-choose-tests-test-title-value="<%= test.title %>"
                           data-choose-tests-preview-questions-path-value="<%= preview_question_path %>">
-                    <%= svg_tag "x-mark", class: "size-5", "stroke-width": 2 %>
+                    <%= svg_tag "x_mark", class: "size-5", "stroke-width": 2 %>
                   </button>
                 </div>
                 <%= hidden_field_tag "assessment[test_ids][]", test.id %>

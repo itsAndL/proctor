@@ -3,7 +3,7 @@
     <div class="modal-box max-w-[1350px] rounded-xl px-8 sm:px-10 md:px-16 py-12 sm:py-16">
       <form method="dialog">
         <button class="btn btn-sm btn-circle btn-ghost absolute right-8 sm:right-10 md:right-16 top-12 sm:top-16">
-          <%= svg_tag "x-mark", class: "size-5", "stroke-width": 2.5 %>
+          <%= svg_tag "x_mark", class: "size-5", "stroke-width": 2.5 %>
         </button>
       </form>
 
@@ -21,7 +21,7 @@
         
           <div class="mt-7 flex flex-wrap gap-x-16 gap-y-5">
             <div class="space-y-1">
-              <%= svg_tag "shapes-collection", class: "size-4" %>
+              <%= svg_tag "shapes_collection", class: "size-4" %>
               <div class="text-sm font-bold">Type</div>
               <div class="text-xs font-medium"><%= @test.category %></div>
             </div>
@@ -31,7 +31,7 @@
               <div class="text-xs font-medium"><%= format_duration(@test.duration_seconds) %></div>
             </div>
             <div class="space-y-1">
-              <%= svg_tag "bar-chart", class: "size-4" %>
+              <%= svg_tag "bar_chart", class: "size-4" %>
               <div class="text-sm font-bold">Level</div>
               <div class="text-xs font-medium"><%= @test.level.humanize %></div>
             </div>

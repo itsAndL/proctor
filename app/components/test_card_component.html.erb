@@ -22,7 +22,7 @@
           <p><%= helpers.format_duration(@test.duration_seconds) %></p>
         </div>
         <div class="flex gap-x-1.5 items-center text-gray-800 text-sm font-medium">
-          <%= helpers.svg_tag "question-mark-square", class: "size-4" %>
+          <%= helpers.svg_tag "question_mark_square", class: "size-4" %>
           <p><%= pluralize(@test.non_preview_questions.count, 'question') %></p>
         </div>
         <div class="flex gap-x-1.5 items-center text-gray-800 text-sm font-medium">
@@ -45,7 +45,7 @@
         <% if @assessment.present? %>
           <% if @assessment.tests.include?(@test) %>
             <button type="button" class="remove-test-btn danger-button px-3 ml-auto" data-action="choose-tests#removeTest">
-              <%= helpers.svg_tag "x-mark", class: "size-4 -mb-0.5" %>
+              <%= helpers.svg_tag "x_mark", class: "size-4 -mb-0.5" %>
               Remove
             </button>
           <% else %>
