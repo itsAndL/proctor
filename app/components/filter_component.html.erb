@@ -11,5 +11,5 @@
     <%= link_to "Clear", @clear_path, class: "black-button" %>
   </div>
 
-  <%= hidden_field_tag("assessment_id", @assessment.hashid) if @assessment.present? %>
+  <%= hidden_field_tag("assessment_hashid", @assessment.hashid) if @assessment.present? %>
 <% end %>

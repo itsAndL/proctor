@@ -21,6 +21,6 @@ class CustomQuestionLibraryComponent < ViewComponent::Base
   private
 
   def find_assessment_from_params
-    Assessment.find(params[:assessment_id]) if params[:assessment_id]
+    Assessment.find(params[:assessment_hashid]) if params[:assessment_hashid]
   end
 end

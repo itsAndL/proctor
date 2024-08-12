@@ -6,7 +6,7 @@ class Question < ApplicationRecord
   has_many :test_questions, -> { order(position: :asc) }, dependent: :destroy
   has_many :tests, through: :test_question
 
-  has_many :question_options, dependent: :destroy, autosave: true
+  has_many :options, as: :optionable, dependent: :destroy, autosave: true
 
   validates :content, :type, presence: true
 

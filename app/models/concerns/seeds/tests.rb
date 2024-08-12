@@ -65,7 +65,7 @@ module Seeds
     end
 
     def update_existing_options(question, options)
-      question.question_options.each do |existing_option|
+      question.options.each do |existing_option|
         matching_option = find_matching_option(options, existing_option)
         existing_option.assign_attributes(correct: matching_option['correct']) if matching_option
       end
@@ -75,7 +75,7 @@ module Seeds
       options.each do |option_attrs|
         next if option_exists?(question, option_attrs['content'])
 
-        question.question_options.build(
+        question.options.build(
           content: option_attrs['content'],
           correct: option_attrs['correct']
         )
@@ -83,7 +83,7 @@ module Seeds
     end
 
     def remove_obsolete_options(question, options)
-      question.question_options.each do |option|
+      question.options.each do |option|
         option.mark_for_destruction unless option_in_new_options?(option, options)
       end
     end
@@ -93,7 +93,7 @@ module Seeds
     end
 
     def option_exists?(question, content)
-      question.question_options.any? { |opt| plain_text(opt.content.body) == plain_text(content) }
+      question.options.any? { |opt| plain_text(opt.content.body) == plain_text(content) }
     end
 
     def option_in_new_options?(option, options)
