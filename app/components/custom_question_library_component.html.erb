@@ -1,6 +1,6 @@
 <div class="grid grid-cols-1 gap-x-12 gap-y-8 lg:grid-cols-4">
   <!-- Filters -->
-  <%= render FilterComponent.new(filter_url: custom_question_library_index_path, clear_path: @clear_path, assessment: @assessment, library: @library) %>
+  <%= render FilterComponent.new(clear_path: @clear_path, assessment: @assessment, library: @library) %>
 
   <div class="lg:col-span-3">
     <%= tag.turbo_frame id: "filter_section" do %>
@@ -14,7 +14,9 @@
 
       <div class="mt-3 pb-16">
         <% if @custom_questions.empty? %>
-          <%= render NoResultsComponent.new(library: @library, clear_path: @clear_path) %>
+          <div class="pt-12">
+            <%= render NoResultsComponent.new(try_again: true) %>
+          </div>
         <% else %>
           <div class="grid grid-cols-1 gap-6">
             <% @custom_questions.each do |custom_question| %>

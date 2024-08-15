@@ -17,7 +17,7 @@ class Test < ApplicationRecord
   pg_search_scope :filter_by_search_query,
                   against: :title,
                   using: {
-                    tsearch: { prefix: true } # Enables prefix matching
+                    tsearch: { prefix: true }
                   }
 
   def category

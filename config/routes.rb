@@ -12,8 +12,10 @@ Rails.application.routes.draw do
   resources :test_library, only: %i[index show], param: :hashid do
     resources :preview_questions, only: %i[show], param: :hashid
   end
-  resources :assessments, only: %i[new create edit update], param: :hashid do
+  resources :assessments, only: %i[index new create edit update], param: :hashid do
     member do
+      patch 'archive'
+      patch 'unarchive'
       get 'choose_tests'
       patch 'update_tests'
       get 'add_questions'
@@ -62,7 +64,6 @@ Rails.application.routes.draw do
     get 'candidates', to: 'candidates#index'
     get 'candidates/1', to: 'candidates#show'
 
-    get 'assessments', to: 'assessments#index'
     get 'assessments/1', to: 'assessments#show'
     get 'assessments/1/candidates/1', to: 'assessments#candidate'
 
