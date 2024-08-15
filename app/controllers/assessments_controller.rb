@@ -2,23 +2,14 @@ class AssessmentsController < ApplicationController
   before_action :set_assessment, except: %i[index new create]
 
   def index
-    @assessments = current_user.business.assessments
+    query = AssessmentQuery.new(current_user.business.assessments)
+    @filtered_assessments = query.filter_by_search_query(params[:search_query])
 
-    # Filter by search query if present
-    if params[:search_query].present?
-      @assessments = @filtered_assessments = @assessments.filter_by_search_query(params[:search_query])
-    end
-
-    @filtered_assessments ||= @assessments
-
-    # Filter by state
     @state = params[:state] || 'active'
-    @assessments = @assessments.public_send(@state) if %w[active archived].include?(@state)
+    query.filter_by_state(@state)
 
-    @assessments = @assessments.order(created_at: :desc)
-
-    # Apply pagination
-    @assessments = paginate(@assessments)
+    query.sorted
+    @assessments = paginate(query.relation)
   end
 
   def new
