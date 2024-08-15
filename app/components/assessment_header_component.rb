@@ -18,7 +18,7 @@ class AssessmentHeaderComponent < ViewComponent::Base
   end
 
   def back_link
-    "/customer/assessments"
+    assessments_path
   end
 
   def save_and_exit_button

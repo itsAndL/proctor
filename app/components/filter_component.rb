@@ -1,25 +1,48 @@
 # frozen_string_literal: true
 
 class FilterComponent < ViewComponent::Base
-  def initialize(filter_url:, clear_path:, library:, assessment: nil)
-    @filter_url = filter_url
+  def initialize(clear_path:, library:, assessment: nil)
     @clear_path = clear_path
     @library = library
     @assessment = assessment
   end
 
   def filter_sections
-    case @library
-    when :test
-      [highlights_section, test_focus_section, test_format_section, test_duration_section]
-    when :custom_question
-      [question_type_section, question_category_section]
-    else
-      []
-    end
+    library_config[:sections]
+  end
+
+  def placeholder
+    library_config[:placeholder]
+  end
+
+  def filter_url
+    library_config[:filter_url]
   end
 
   private
+
+  def library_config
+    case @library
+    when :test
+      {
+        sections: [highlights_section, test_focus_section, test_format_section, test_duration_section],
+        placeholder: 'Search tests',
+        filter_url: helpers.test_library_index_path
+      }
+    when :custom_question
+      {
+        sections: [question_type_section, question_category_section],
+        placeholder: 'Search questions',
+        filter_url: helpers.custom_question_library_index_path
+      }
+    else
+      {
+        sections: [],
+        placeholder: '',
+        filter_url: ''
+      }
+    end
+  end
 
   def highlights_section
     {

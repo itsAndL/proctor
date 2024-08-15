@@ -1,0 +1,28 @@
+<nav class="flex items-center flex-wrap justify-end gap-x-8 gap-y-3 border-t border-gray-200 px-4 sm:px-6 py-5">
+  <form action="<%= url_for %>" method="get" class="flex items-center">
+    <label for="per_page" class="mr-2 text-sm text-gray-700 font-semibold">Items per page</label>
+    <select name="per_page" onchange="this.form.submit()" class="block rounded-lg border-gray-500 py-1 text-sm font-semibold focus:border-gray-800 focus:outline-none focus:ring-gray-800">
+      <% per_page_options.each do |option| %>
+        <option value="<%= option %>" <%= 'selected' if option == per_page %>><%= option %></option>
+      <% end %>
+    </select>
+
+    <% additional_params.merge(page: current_page).to_h.each do |key, value| %>
+      <%= hidden_field_tag key, value %>
+    <% end %>
+  </form>
+  
+  <p class="text-sm text-gray-700 font-semibold mr-2">
+    <%= page_info %>
+  </p>
+
+  <div class="flex items-center gap-x-3 -ml-2">
+    <%= link_to page_path(page: previous_page), class: "text-gray-800 hover:bg-gray-200 hover:rounded-full p-2 #{previous_page ? '' : 'pointer-events-none opacity-50'}" do %>
+      <%= helpers.svg_tag "chevron_left", class: "size-4", "stroke-width": 2.5 %>
+    <% end %>
+
+    <%= link_to page_path(page: next_page), class: "text-gray-800 hover:bg-gray-200 hover:rounded-full p-2 #{next_page ? '' : 'pointer-events-none opacity-50'}" do %>
+      <%= helpers.svg_tag "chevron_right", class: "size-4", "stroke-width": 2.5 %>
+    <% end %>
+  </div>
+</nav>

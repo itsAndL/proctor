@@ -1,4 +1,4 @@
-<div class="pt-20 pb-8">
+<div class="py-8">
   <div class="flex justify-center">
     <svg xmlns="http://www.w3.org/2000/svg" width="160" height="125" viewBox="0 0 160 125" fill="none">
       <g clip-path="url(#clip0_1898_13444)">
@@ -12,14 +12,15 @@
     </svg>
   </div>
   <p class="mt-5 font-bold text-black text-base text-center leading-tight">Sorry, no results were found.</p>
-  <% if @library == :test %>
-    <div class="mt-3 text-center">
-      <a class="text-blue-600 text-sm font-semibold hover:underline" href="mailto:contact@assesskit.com">Suggest a new test to AssessKit.</a>
-    </div>
-  <% else %>
-    <div class="mt-3 text-center">
-      <p class="text-black text-sm font-semibold">Try a new search or apply a different filter.</p>
-      <%= link_to "Clear filter", @clear_path, class: "mt-8 black-button px-6 py-3" %>
-    </div>
+  <% if take_action? %>
+    <% if @suggestion %>
+      <div class="mt-3 text-center">
+        <a class="text-blue-600 text-sm font-semibold hover:underline" href="mailto:contact@assesskit.com"><%= @suggestion %></a>
+      </div>
+    <% elsif @try_again %>
+      <div class="mt-3 text-center">
+        <p class="text-black text-sm font-semibold">Try a new search or apply a different filter.</p>
+      </div>
+    <% end %>
   <% end %>
 </div>

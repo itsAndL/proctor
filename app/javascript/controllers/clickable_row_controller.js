@@ -2,14 +2,13 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="clickable-row"
 export default class extends Controller {
-  connect() {
-    this.add_event_listener(this.element)
-  }
+  static values = { url: String }
 
-  add_event_listener(element) {
-    element.addEventListener("click", (event) => {
-      event.preventDefault()
-      Turbo.visit(element.dataset.url)
-    })
+  handleClick(event) {
+    // Don't navigate if the click was on or inside the dropdown
+    if (event.target.closest('.ignore')) return
+
+    // Navigate to the URL
+    window.location.href = this.urlValue
   }
 }

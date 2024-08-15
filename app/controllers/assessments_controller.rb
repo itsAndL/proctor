@@ -1,13 +1,23 @@
 class AssessmentsController < ApplicationController
-  before_action :set_assessment, only: %i[edit update choose_tests update_tests add_questions update_questions finalize finish]
+  before_action :set_assessment, except: %i[index new create]
+
+  def index
+    query = AssessmentQuery.new(current_user.business.assessments)
+    @filtered_assessments = query.filter_by_search_query(params[:search_query])
+
+    @state = params[:state] || 'active'
+    query.filter_by_state(@state)
+
+    query.sorted
+    @assessments = paginate(query.relation)
+  end
 
   def new
     @assessment = Assessment.new
   end
 
   def create
-    @assessment = Assessment.new(assessment_params)
-    @assessment.business = current_user.business
+    @assessment = Assessment.new(assessment_params.merge(business_id: current_user.business.id))
 
     if @assessment.save
       redirect_to(
@@ -31,6 +41,16 @@ class AssessmentsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def archive
+    @assessment.archive!
+    redirect_to assessments_path, notice: 'Assessment was successfully archived.'
+  end
+
+  def unarchive
+    @assessment.unarchive!
+    redirect_to assessments_path, notice: 'Assessment was successfully unarchived.'
   end
 
   def choose_tests; end

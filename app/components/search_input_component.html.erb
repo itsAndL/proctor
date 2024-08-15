@@ -1,7 +1,8 @@
 <div class="relative rounded-md-sm w-full">
   <%= @form.text_field :search_query,
-                      placeholder: "Search tests",
-                      class: "primary-field rounded-xl py-2.5 pr-5 pl-10 border border-gray-800 focus:border-gray-800 focus:ring-gray-800",
+                      placeholder: @placeholder,
+                      class: "primary-field rounded-xl py-2.5 pr-5 pl-10 text-sm bg-white",
+                      value: params[:search_query],
                       data: {
                         search_target: "input",
                         action: "input->search#search"
