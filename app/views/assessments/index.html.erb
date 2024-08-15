@@ -22,14 +22,14 @@
         <% end %>
       </div>
 
-      <span class="md:whitespace-nowrap isolate grid grid-cols-3 rounded-md shadow-sm border border-gray-800 divide-x divide-gray-800 bg-white">
-        <%= link_to assessments_path(params.permit(:page, :per_page, :search_query).merge(state: 'active')), class: "relative rounded-l-md px-5 py-3 text-sm font-#{@state == 'active' ? 'bold' : 'semibold'} text-gray-900 #{@state == 'active' ? 'bg-blue-50' : 'hover:bg-gray-50'} focus:z-10" do %>
+      <span class="md:whitespace-nowrap isolate max-md:grid max-md:grid-cols-3 md:flex rounded-md shadow-sm border border-gray-800 divide-x divide-gray-800 bg-white">
+        <%= link_to assessments_path(params.permit(:page, :per_page, :search_query).merge(state: 'active')), class: "inline-flex justify-center md:w-[120px] relative rounded-l-md px-3 sm:px-5 py-3 text-xs sm:text-sm font-#{@state == 'active' ? 'bold' : 'semibold'} text-gray-900 #{@state == 'active' ? 'bg-blue-50' : 'hover:bg-gray-50'} focus:z-10" do %>
           Active (<%= @filtered_assessments.active.count %>)
         <% end %>
-        <%= link_to assessments_path(state: 'inactive'), class: "relative px-5 py-3 text-sm font-#{@state == 'inactive' ? 'bold' : 'semibold'} text-gray-900 #{@state == 'inactive' ? 'bg-blue-50' : 'hover:bg-gray-50'} focus:z-10" do %>
+        <%= link_to assessments_path(state: 'inactive'), class: "inline-flex justify-center md:w-[124px] relative px-3 sm:px-5 py-3 text-xs sm:text-sm font-#{@state == 'inactive' ? 'bold' : 'semibold'} text-gray-900 #{@state == 'inactive' ? 'bg-blue-50' : 'hover:bg-gray-50'} focus:z-10" do %>
           Inactive (0)
         <% end %>
-        <%= link_to assessments_path(params.permit(:page, :per_page, :search_query).merge(state: 'archived')), class: "relative rounded-r-md px-5 py-3 text-sm font-#{@state == 'archived' ? 'bold' : 'semibold'} text-gray-900 #{@state == 'archived' ? 'bg-blue-50' : 'hover:bg-gray-50'} focus:z-10" do %>
+        <%= link_to assessments_path(params.permit(:page, :per_page, :search_query).merge(state: 'archived')), class: "inline-flex justify-center md:w-[130px] relative rounded-r-md px-3 sm:px-5 py-3 text-xs sm:text-sm font-#{@state == 'archived' ? 'bold' : 'semibold'} text-gray-900 #{@state == 'archived' ? 'bg-blue-50' : 'hover:bg-gray-50'} focus:z-10" do %>
           Archived (<%= @filtered_assessments.archived.count %>)
         <% end %>
       </span>
@@ -43,9 +43,10 @@
               <thead>
                 <tr>
                   <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-bold text-gray-800 sm:pl-6">Name</th>
-                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800">Candidates</th>
+                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden sm:table-cell">Candidates</th>
                   <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden sm:table-cell">Progress</th>
-                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden md:table-cell">Date created</th>
+                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden md:table-cell">Last activity</th>
+                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden lg:table-cell">Date created</th>
                   <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
                     <span class="sr-only">Actions</span>
                   </th>
@@ -62,12 +63,13 @@
                         data-controller="clickable-row"
                         data-clickable-row-url-value="/customer/assessments/1"
                         data-action="click->clickable-row#handleClick">
-                      <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6 truncate"><%= assessment.title %></td>
-                      <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800"><%= assessment.candidates %></td>
+                      <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6 max-w-[240px] sm:max-w-xs truncate"><%= assessment.title %></td>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden sm:table-cell"><%= assessment.candidates %></td>
                       <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden sm:table-cell"><%= assessment.progress %> %</td>
-                      <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell"><%= time_ago_in_words(assessment.created_at) %> ago</td>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell"><%= time_ago_in_words(assessment.updated_at) %> ago</td>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden lg:table-cell"><%= assessment.created_at.strftime("%b %d, %Y") %></td>
                       <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
-                        <div class="dropdown dropdown-hover">
+                        <div class="ignore dropdown dropdown-hover">
                           <button tabindex="<%= index %>" type="button" class="text-gray-800 hover:bg-white hover:rounded-full p-0.5">
                             <%= svg_tag "ellipsis_vertical" %>
                           </button>

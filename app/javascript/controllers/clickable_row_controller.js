@@ -6,7 +6,7 @@ export default class extends Controller {
 
   handleClick(event) {
     // Don't navigate if the click was on or inside the dropdown
-    if (event.target.closest('.dropdown')) return
+    if (event.target.closest('.ignore')) return
 
     // Navigate to the URL
     window.location.href = this.urlValue

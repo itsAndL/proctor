@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def paginate(records)
-    @per_page = (params[:per_page] || 25).to_i
+    @per_page = (params[:per_page] || 10).to_i
     @current_page = (params[:page] || 1).to_i
     @total_items = records.count
 
