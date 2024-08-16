@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CustomQuestionQuery
   attr_reader :relation
 
