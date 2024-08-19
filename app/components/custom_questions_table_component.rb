@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class CustomQuestionsTableComponent < ViewComponent::Base
-  def initialize(assessment:, with_title: false)
+  def initialize(assessment:, with_title: false, with_actions: true)
     @assessment = assessment
     @with_title = with_title
+    @with_actions = with_actions
     @custom_questions = assessment.custom_questions.includes(:assessment_custom_questions)
   end
 

@@ -12,6 +12,8 @@ class AssessmentsController < ApplicationController
     @assessments = paginate(query.relation)
   end
 
+  def show; end
+
   def new
     @assessment = Assessment.new
   end
@@ -29,8 +31,7 @@ class AssessmentsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @assessment.update(assessment_params)
@@ -79,7 +80,28 @@ class AssessmentsController < ApplicationController
   def finalize; end
 
   def finish
-    redirect_to '/customer/assessments/1', notice: 'Assessment was successfully finalized.'
+    redirect_to assessment_path(@assessment), notice: 'Assessment was successfully finalized.'
+  end
+
+  def rename; end
+
+  def update_title
+    if @assessment.update(title: params[:assessment][:title])
+      respond_to do |format|
+        format.turbo_stream do
+          render(turbo_stream:
+            [
+              turbo_stream.replace(
+                'assessment-title', AssessmentTitleComponent.new(assessment: @assessment, current_action: action_name, rename: true)
+              ),
+              turbo_stream.replace('modal', helpers.turbo_frame_tag('modal')),
+              turbo_stream.replace('notification', NotificationComponent.new(notice: "Assessment title was successfully updated."))
+            ])
+        end
+      end
+    else
+      render :rename, status: :unprocessable_entity
+    end
   end
 
   private
@@ -105,6 +127,6 @@ class AssessmentsController < ApplicationController
   def determine_redirect_path(continue_path)
     return continue_path unless params[:save_and_exit] == 'true'
 
-    '/customer/assessments/1'
+    assessment_path(@assessment)
   end
 end

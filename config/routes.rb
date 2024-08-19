@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :test_library, only: %i[index show], param: :hashid do
     resources :preview_questions, only: %i[show], param: :hashid
   end
-  resources :assessments, only: %i[index new create edit update], param: :hashid do
+  resources :assessments, only: %i[index show new create edit update], param: :hashid do
     member do
       patch 'archive'
       patch 'unarchive'
@@ -22,6 +22,8 @@ Rails.application.routes.draw do
       patch 'update_questions'
       get 'finalize'
       patch 'finish'
+      get 'rename'
+      patch 'update_title'
     end
 
     resources :custom_questions, only: [], param: :hashid do
@@ -64,7 +66,6 @@ Rails.application.routes.draw do
     get 'candidates', to: 'candidates#index'
     get 'candidates/1', to: 'candidates#show'
 
-    get 'assessments/1', to: 'assessments#show'
     get 'assessments/1/candidates/1', to: 'assessments#candidate'
 
     get 'profile/team', to: 'profile#team'

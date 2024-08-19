@@ -1,117 +1,119 @@
-<% if @notice.present? || @alert.present? %>
-  <div
-    data-controller="notification"
-    data-notification-delay-value="5000"
-    class="fixed z-50 px-4 py-6 sm:p-4 w-full sm:w-96 sm:top-0 sm:right-0 bottom-0 sm:bottom-auto flex justify-center sm:justify-end"
-    data-notification-target="container"
-  >
-    <div 
-      class="w-full sm:w-auto transform overflow-hidden rounded-lg bg-white shadow-xl ring-1 ring-black ring-opacity-5 transition-all duration-500 ease-out notification-slide"
-      data-notification-target="content"
+<%= tag.turbo_frame id: "notification" do %>
+  <% if @notice.present? || @alert.present? %>
+    <div
+      data-controller="notification"
+      data-notification-delay-value="5000"
+      class="fixed z-50 px-4 py-6 sm:p-4 w-full sm:w-96 sm:top-0 sm:right-0 bottom-0 sm:bottom-auto flex justify-center sm:justify-end"
+      data-notification-target="container"
     >
-      <div class="relative p-4">
-        <div class="absolute inset-0 <%= @notice ? 'bg-blue-600' : 'bg-red-600' %> opacity-10"></div>
-        <div class="relative flex items-center">
-          <div class="flex-shrink-0 mr-3">
-            <% if @notice %>
-              <svg class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            <% else %>
-              <svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            <% end %>
-          </div>
-          <div class="flex-1 pr-3">
-            <p class="text-sm font-medium text-gray-900"><%= @notice || @alert %></p>
-          </div>
-          <div class="flex-shrink-0">
-            <button
-              data-action="notification#hide"
-              class="inline-flex items-center justify-center w-6 h-6 rounded-full <%= @notice ? 'text-blue-600 hover:bg-blue-100' : 'text-red-600 hover:bg-red-100' %> focus:outline-none focus:ring-2 <%= @notice ? 'focus:ring-blue-500' : 'focus:ring-red-500' %> focus:ring-offset-2 transition-colors duration-200"
-            >
-              <span class="sr-only">Close</span>
-              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
-              </svg>
-            </button>
+      <div 
+        class="w-full sm:w-auto transform overflow-hidden rounded-lg bg-white shadow-xl ring-1 ring-black ring-opacity-5 transition-all duration-500 ease-out notification-slide"
+        data-notification-target="content"
+      >
+        <div class="relative p-4">
+          <div class="absolute inset-0 <%= @notice ? 'bg-blue-600' : 'bg-red-600' %> opacity-10"></div>
+          <div class="relative flex items-center">
+            <div class="flex-shrink-0 mr-3">
+              <% if @notice %>
+                <svg class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              <% else %>
+                <svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              <% end %>
+            </div>
+            <div class="flex-1 pr-3">
+              <p class="text-sm font-medium text-gray-900"><%= @notice || @alert %></p>
+            </div>
+            <div class="flex-shrink-0">
+              <button
+                data-action="notification#hide"
+                class="inline-flex items-center justify-center w-6 h-6 rounded-full <%= @notice ? 'text-blue-600 hover:bg-blue-100' : 'text-red-600 hover:bg-red-100' %> focus:outline-none focus:ring-2 <%= @notice ? 'focus:ring-blue-500' : 'focus:ring-red-500' %> focus:ring-offset-2 transition-colors duration-200"
+              >
+                <span class="sr-only">Close</span>
+                <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="relative  <%= @notice ? 'bg-blue-50' : 'bg-red-50' %> h-1">
-        <div
-          data-notification-target="progressBar"
-          class="absolute top-0 left-0 h-full <%= @notice ? 'bg-blue-600' : 'bg-red-600' %> transition-all duration-[5000ms] ease-linear"
-          style="width: 100%;"
-        ></div>
+        <div class="relative  <%= @notice ? 'bg-blue-50' : 'bg-red-50' %> h-1">
+          <div
+            data-notification-target="progressBar"
+            class="absolute top-0 left-0 h-full <%= @notice ? 'bg-blue-600' : 'bg-red-600' %> transition-all duration-[5000ms] ease-linear"
+            style="width: 100%;"
+          ></div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <style>
-    @keyframes slideInFromTop {
-      0% {
-        transform: translateY(-100%);
-        opacity: 0;
+    <style>
+      @keyframes slideInFromTop {
+        0% {
+          transform: translateY(-100%);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
       }
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
 
-    @keyframes slideOutToTop {
-      0% {
-        transform: translateY(0);
-        opacity: 1;
+      @keyframes slideOutToTop {
+        0% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100%);
+          opacity: 0;
+        }
       }
-      100% {
-        transform: translateY(-100%);
-        opacity: 0;
-      }
-    }
 
-    @keyframes slideInFromBottom {
-      0% {
-        transform: translateY(100%);
-        opacity: 0;
+      @keyframes slideInFromBottom {
+        0% {
+          transform: translateY(100%);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
       }
-      100% {
-        transform: translateY(0);
-        opacity: 1;
+
+      @keyframes slideOutToBottom {
+        0% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100%);
+          opacity: 0;
+        }
       }
-    }
 
-    @keyframes slideOutToBottom {
-      0% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100%);
-        opacity: 0;
-      }
-    }
-
-    .notification-slide {
-      animation: slideInFromBottom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-    }
-
-    .notification-slide.hide {
-      animation: slideOutToBottom 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
-    }
-
-    @media (min-width: 640px) {
       .notification-slide {
-        width: calc(100% - 1rem);
-        margin-right: 1rem;
-        animation: slideInFromTop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        animation: slideInFromBottom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
       }
 
       .notification-slide.hide {
-        animation: slideOutToTop 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+        animation: slideOutToBottom 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
       }
-    }
-  </style>
+
+      @media (min-width: 640px) {
+        .notification-slide {
+          width: calc(100% - 1rem);
+          margin-right: 1rem;
+          animation: slideInFromTop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .notification-slide.hide {
+          animation: slideOutToTop 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+        }
+      }
+    </style>
+  <% end %>
 <% end %>
