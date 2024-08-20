@@ -14,7 +14,7 @@ class AssessmentQuery
   end
 
   def filter_by_state(state = 'active')
-    return relation unless %w[active archived].include?(state)
+    return relation unless %w[active inactive archived].include?(state)
 
     @relation = relation.public_send(state)
   end

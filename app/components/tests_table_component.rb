@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class TestsTableComponent < ViewComponent::Base
-  def initialize(assessment:, with_title: false)
+  def initialize(assessment:, with_title: false, with_actions: true)
     @assessment = assessment
     @with_title = with_title
+    @with_actions = with_actions
     @tests = assessment.tests.includes(:assessment_tests)
   end
 

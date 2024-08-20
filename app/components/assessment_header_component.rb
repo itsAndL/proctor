@@ -8,22 +8,9 @@ class AssessmentHeaderComponent < ViewComponent::Base
 
   private
 
-  def title
-    @current_action == 'new' ? 'Untitled assessment' : @assessment.title
-  end
-
-  def tests_count
-    count = @assessment.tests.count
-    "#{count} #{count == 1 ? 'test' : 'tests'}"
-  end
-
-  def back_link
-    assessments_path
-  end
-
   def save_and_exit_button
     if @current_action == 'new'
-      link_to "Exit", back_link, class: "secondary-button px-6"
+      link_to "Exit", assessments_path, class: "secondary-button px-6"
     else
       button_tag "Save and exit",
                  type: "button",

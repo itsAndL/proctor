@@ -3,7 +3,7 @@
 class PaginationComponent < ViewComponent::Base
   attr_reader :current_page, :total_items, :per_page, :additional_params, :per_page_options
 
-  def initialize(current_page:, total_items:, per_page:, additional_params:, per_page_options: [10, 25, 50])
+  def initialize(current_page:, total_items:, per_page:, additional_params: {}, per_page_options: [10, 25, 50])
     @current_page = [current_page.to_i, 1].max
     @total_items = [total_items.to_i, 0].max
     @per_page = per_page.to_i

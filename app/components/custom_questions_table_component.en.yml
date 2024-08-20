@@ -1,0 +1,5 @@
+en:
+  types:
+    essay_custom_question: "Essay"
+    file_upload_custom_question: "File"
+    video_custom_question: "Video"

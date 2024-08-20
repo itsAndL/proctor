@@ -1,0 +1,30 @@
+<div id="assessment-title" class="min-w-0 flex-1 flex items-center gap-x-2">
+  <%= link_to assessments_path, class: "secondary-button p-2.5 mr-4 sm:mr-8" do %>
+    <%= helpers.svg_tag "chevron_left", class: "size-4", "stroke-width": 3 %>
+  <% end %>
+
+  <div>
+    
+    <div class="flex items-center gap-x-2">
+      <h2 class="line-clamp-1 w-full text-xl font-bold leading-7 text-slate-900" data-assessment-title-target="display"><%= title %></h2>
+      
+      <% if @rename %>
+        <%= link_to rename_assessment_path(@assessment), class: 'hover:bg-gray-200 hover:rounded-full p-2', data: { turbo_frame: "modal" } do %>
+          <%= helpers.svg_tag "pen", class: "size-4", "stroke-width": 2.5 %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="mt-1 flex gap-x-6 items-center">
+      <div class="flex gap-x-2 items-center text-gray-600">
+        <%= helpers.svg_tag "test_document", class: "size-4" %>
+        <p id="tests-count" class="font-medium text-sm"><%= tests_count %></p>
+      </div>
+
+      <div class="flex gap-x-2 items-center text-gray-600">
+        <%= helpers.svg_tag "clock", class: "size-4" %>
+        <p class="font-medium text-sm"><%= helpers.format_duration(@assessment.duration_seconds) %></p>
+      </div>
+    </div>
+  </div>
+</div>

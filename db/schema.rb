@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_12_112919) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_19_141243) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -60,6 +60,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_12_112919) do
     t.datetime "updated_at", null: false
     t.index ["assessment_id"], name: "index_assessment_custom_questions_on_assessment_id"
     t.index ["custom_question_id"], name: "index_assessment_custom_questions_on_custom_question_id"
+  end
+
+  create_table "assessment_participations", force: :cascade do |t|
+    t.bigint "assessment_id", null: false
+    t.bigint "temp_candidate_id"
+    t.bigint "candidate_id"
+    t.integer "status"
+    t.integer "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assessment_id"], name: "index_assessment_participations_on_assessment_id"
+    t.index ["candidate_id"], name: "index_assessment_participations_on_candidate_id"
+    t.index ["temp_candidate_id"], name: "index_assessment_participations_on_temp_candidate_id"
   end
 
   create_table "assessment_tests", force: :cascade do |t|
@@ -138,6 +151,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_12_112919) do
     t.integer "duration_seconds", default: 0
   end
 
+  create_table "temp_candidates", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "test_categories", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
@@ -190,6 +210,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_12_112919) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "assessment_custom_questions", "assessments"
   add_foreign_key "assessment_custom_questions", "custom_questions"
+  add_foreign_key "assessment_participations", "assessments"
+  add_foreign_key "assessment_participations", "candidates"
+  add_foreign_key "assessment_participations", "temp_candidates"
   add_foreign_key "assessment_tests", "assessments"
   add_foreign_key "assessment_tests", "tests"
   add_foreign_key "assessments", "businesses"
