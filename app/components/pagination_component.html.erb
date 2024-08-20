@@ -1,9 +1,10 @@
 <nav class="flex items-center flex-wrap justify-end gap-x-8 gap-y-3 border-t border-gray-200 px-4 sm:px-6 py-5">
   <form action="<%= url_for %>" method="get" class="flex items-center">
     <label for="per_page" class="mr-2 text-sm text-gray-700 font-semibold">Items per page</label>
-    <select name="per_page" onchange="this.form.submit()" class="block rounded-lg border-gray-500 py-1 text-sm font-semibold focus:border-gray-800 focus:outline-none focus:ring-gray-800">
+    <select name="per_page" onchange="this.form.submit()" class="select-field py-1">
       <% per_page_options.each do |option| %>
-        <option value="<%= option %>" <%= 'selected' if option == per_page %>><%= option %></option>
+        <% active_option = option == per_page %>
+        <option class="font-medium <%= 'bg-zinc-200' if active_option %>" value="<%= option %>" <%= 'selected' if active_option %>><%= option %></option>
       <% end %>
     </select>
 

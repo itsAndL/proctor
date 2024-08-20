@@ -66,23 +66,23 @@
       <div class="p-5 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
         <h2 class="text-base font-bold text-black">Candidates</h2>
 
-        <div class="flex flex-row gap-x-3 sm:gap-x-5">
-          <div class="relative rounded-md-sm w-full max-w-sm">
-            <input type="text" name="candidate" id="candidate" class="block w-full rounded-full py-2 pl-5 pr-10 text-gray-800 border border-gray-800 placeholder:text-gray-400 font-medium focus:border focus:border-gray-800 focus:ring-1 focus:ring-inset focus:ring-gray-800 sm:text-sm sm:leading-6" placeholder="Search candidates">
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-              <%= svg_tag "magnifying_glass", class: "size-5 text-gray-400" %>
-            </div>
-          </div>
+        <%= form_with url: assessment_path(@assessment), method: :get, data: { controller: "search", search_target: "form" } do |form| %>
+          <div class="flex flex-col sm:flex-row items-center gap-y-3 sm:gap-x-5">
+            <%= render SearchInputComponent.new(form:, placeholder: "Search candidates") %>
 
-          <div class="relative rounded-md-sm w-60">
-            <select id="location" name="location" class="block w-full rounded-full py-2 pl-5 pr-10 text-gray-800 border border-gray-800 placeholder:text-gray-400 font-medium focus:border focus:border-gray-800 focus:ring-1 focus:ring-inset focus:ring-gray-800 sm:text-sm sm:leading-6">
-              <option class="font-medium" value="" disabled selected>Status</option>
-              <option class="font-medium">Invited</option>
-              <option class="font-medium">Started</option>
-              <option class="font-medium">Completed</option>
+            <select name="status" onchange="this.form.submit()" class="select-field w-full sm:w-60 py-2.5 pl-5 pr-10 rounded-xl">
+              <option class="font-medium text-gray-400" value="" selected>Status</option>
+              <% AssessmentParticipation.statuses.keys.each do |status| %>
+                <% active_option = status == params[:status] %>
+                <option class="font-medium <%= 'bg-zinc-200' if active_option %>" value="<%= status %>" <%= 'selected' if active_option %>><%= status.humanize %></option>
+              <% end %>
             </select>
           </div>
-        </div>
+
+          <% params.permit(:page, :per_page).to_h.each do |key, value| %>
+            <%= form.hidden_field key, value: value %>
+          <% end %>
+        <% end %>
       </div>
 
       <div class="flow-root">
@@ -101,110 +101,52 @@
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
-              <tr class="hover:bg-blue-50 cursor-pointer" data-controller="clickable-row" data-clickable-row-url-value="/customer/assessments/1/candidates/1" data-action="click->clickable-row#handleClick">
-                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6 truncate">Shan Puri</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
-                  </svg>
-                </td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800">Started</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell">Jun 14, 2024</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell">
-                  <div class="flex items-center">
-                    <!-- Active: "text-yellow-400", Inactive: "text-gray-200" -->
-                    <svg class="h-5 w-5 flex-shrink-0 text-gray-200" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                    </svg>
-                    <svg class="h-5 w-5 flex-shrink-0 text-gray-200" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                    </svg>
-                    <svg class="h-5 w-5 flex-shrink-0 text-gray-200" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                    </svg>
-                    <svg class="h-5 w-5 flex-shrink-0 text-gray-200" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                    </svg>
-                    <svg class="h-5 w-5 flex-shrink-0 text-gray-200" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                    </svg>
-                  </div>
-                </td>
-                <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
-                  <button type="button" class="text-gray-800">
-                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-                      <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-                    </svg>
-                  </button>
-                </td>
-              </tr>
-              
-              <tr class="hover:bg-blue-50 cursor-pointer" data-controller="clickable-row" data-clickable-row-url-value="/customer/assessments/1/candidates/1" data-action="click->clickable-row#handleClick">
-                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6 truncate">Sam Parr</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800">85%</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800">Completed</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell">Jun 17, 2024</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell">
-                  <div class="flex items-center">
-                    <!-- Active: "text-yellow-400", Inactive: "text-gray-200" -->
-                    <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                    </svg>
-                    <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                    </svg>
-                    <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                    </svg>
-                    <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                    </svg>
-                    <svg class="h-5 w-5 flex-shrink-0 text-gray-200" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                    </svg>
-                  </div>
-                </td>
-                <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
-                  <button type="button" class="text-gray-800">
-                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-                      <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-                    </svg>
-                  </button>
-                </td>
-              </tr>
+              <% if @assessment_participations.empty? %>             
+                <tr>
+                  <td colspan="6"><%= render NoResultsComponent.new %></td>
+                </tr>
+              <% else %>
+                <% @assessment_participations.each do |assessment_participation| %>  
+                  <tr class="hover:bg-blue-50 cursor-pointer" data-controller="clickable-row" data-clickable-row-url-value="/customer/assessments/1/candidates/1" data-action="click->clickable-row#handleClick">
+                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6 truncate"><%= assessment_participation.participant.name %></td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800">
+                      <% avg_score = assessment_participation.avg_score %>
+                      <% if avg_score.zero? %>
+                        <%= svg_tag "minus" %>
+                      <% else %>
+                        <p><%= avg_score %> %</p>
+                      <% end %>
+                    </td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800"><%= assessment_participation.status.humanize %></td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell"><%= assessment_participation.created_at.strftime("%b %d, %Y") %></td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell">
+                      <div class="flex items-center">
+                        <% rating = assessment_participation.rating || 0 %>
+                        <% 5.times do |i| %>
+                          <%= svg_tag "star", class: "h-5 w-5 flex-shrink-0 #{i < rating ? 'text-yellow-400' : 'text-gray-200'}" %>
+                        <% end %>
+                      </div>
+                    </td>
+                    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
+                      <button type="button" class="text-gray-800">
+                        <%= svg_tag "chevron_right", "stroke-width": 2.5, class: "size-3.5" %>
+                      </button>
+                    </td>
+                  </tr>
+                <% end %>
+              <% end %>
             </tbody>
           </table>
         </div>
       </div>
 
       <!-- Pagination -->
-      <nav class="pb-5 px-5 border-t border-gray-200 flex items-center justify-between" aria-label="Pagination">
-        <div class="-mt-px flex w-0 flex-1">
-          <a href="#" class="inline-flex items-center pr-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-200 hover:text-gray-700">
-            <svg class="mr-3 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-              <path fill-rule="evenodd" d="M18 10a.75.75 0 0 1-.75.75H4.66l2.1 1.95a.75.75 0 1 1-1.02 1.1l-3.5-3.25a.75.75 0 0 1 0-1.1l3.5-3.25a.75.75 0 1 1 1.02 1.1l-2.1 1.95h12.59A.75.75 0 0 1 18 10Z" clip-rule="evenodd" />
-            </svg>
-            Previous
-          </a>
-        </div>
-        <div class="hidden md:-mt-px md:flex">
-          <a href="#" class="inline-flex items-center px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-200 hover:text-gray-700">1</a>
-          <!-- Current: "text-blue-600", Default: "text-gray-500 hover:text-gray-700" -->
-          <a href="#" class="inline-flex items-center px-4 pt-4 text-sm font-medium text-blue-600" aria-current="page">2</a>
-          <a href="#" class="inline-flex items-center px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-200 hover:text-gray-700">3</a>
-          <a href="#" class="inline-flex items-center px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-200 hover:text-gray-700">4</a>
-          <a href="#" class="inline-flex items-center px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-200 hover:text-gray-700">5</a>
-          <a href="#" class="inline-flex items-center px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-200 hover:text-gray-700">6</a>
-        </div>
-        <div class="-mt-px flex w-0 flex-1 justify-end">
-          <a href="#" class="inline-flex items-center pl-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-200 hover:text-gray-700">
-            Next
-            <svg class="ml-3 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-              <path fill-rule="evenodd" d="M2 10a.75.75 0 0 1 .75-.75h12.59l-2.1-1.95a.75.75 0 1 1 1.02-1.1l3.5 3.25a.75.75 0 0 1 0 1.1l-3.5 3.25a.75.75 0 1 1-1.02-1.1l2.1-1.95H2.75A.75.75 0 0 1 2 10Z" clip-rule="evenodd" />
-            </svg>
-          </a>
-        </div>
-      </nav>
+      <%= render PaginationComponent.new(
+        current_page: @current_page,
+        total_items: @total_items,
+        per_page: @per_page,
+        additional_params: { search_query: params[:search_query], status: params[:status] }
+      ) %>
     </div>
 
     <div class="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6 pb-16">

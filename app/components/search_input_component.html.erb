@@ -1,13 +1,15 @@
-<div class="relative rounded-md-sm w-full">
-  <%= @form.text_field :search_query,
-                      placeholder: @placeholder,
-                      class: "primary-field rounded-xl py-2.5 pr-5 pl-10 text-sm bg-white",
-                      value: params[:search_query],
-                      data: {
-                        search_target: "input",
-                        action: "input->search#search"
-                      } %>
-  <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-    <%= helpers.svg_tag "magnifying_glass", class: "size-5 text-gray-400", "stroke-width": 2.5 %>
+<div class="w-full">
+  <div class="relative">
+    <%= @form.text_field :search_query,
+                        placeholder: @placeholder,
+                        class: "primary-field rounded-xl py-2.5 pr-5 pl-10 text-sm bg-white mt-0",
+                        value: params[:search_query],
+                        data: {
+                          search_target: "input",
+                          action: "input->search#search"
+                        } %>
+    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+      <%= helpers.svg_tag "magnifying_glass", class: "size-5 text-gray-400", "stroke-width": 2.5 %>
+    </div>
   </div>
 </div>

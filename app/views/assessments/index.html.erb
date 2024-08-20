@@ -27,7 +27,7 @@
           Active (<%= @filtered_assessments.active.count %>)
         <% end %>
         <%= link_to assessments_path(state: 'inactive'), class: "inline-flex justify-center md:w-[124px] relative px-3 sm:px-5 py-3 text-xs sm:text-sm font-#{@state == 'inactive' ? 'bold' : 'semibold'} text-gray-900 #{@state == 'inactive' ? 'bg-blue-50' : 'hover:bg-gray-50'} focus:z-10" do %>
-          Inactive (0)
+          Inactive (<%= @filtered_assessments.inactive.count %>)
         <% end %>
         <%= link_to assessments_path(params.permit(:page, :per_page, :search_query).merge(state: 'archived')), class: "inline-flex justify-center md:w-[130px] relative rounded-r-md px-3 sm:px-5 py-3 text-xs sm:text-sm font-#{@state == 'archived' ? 'bold' : 'semibold'} text-gray-900 #{@state == 'archived' ? 'bg-blue-50' : 'hover:bg-gray-50'} focus:z-10" do %>
           Archived (<%= @filtered_assessments.archived.count %>)
@@ -64,7 +64,7 @@
                         data-clickable-row-url-value="<%= assessment_path(assessment) %>"
                         data-action="click->clickable-row#handleClick">
                       <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6 max-w-[240px] sm:max-w-xs truncate"><%= assessment.title %></td>
-                      <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden sm:table-cell"><%= assessment.candidates %></td>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden sm:table-cell"><%= assessment.assessment_participations.count %></td>
                       <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden sm:table-cell"><%= assessment.progress %> %</td>
                       <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell"><%= time_ago_in_words(assessment.updated_at) %> ago</td>
                       <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden lg:table-cell"><%= assessment.created_at.strftime("%b %d, %Y") %></td>

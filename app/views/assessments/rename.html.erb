@@ -17,7 +17,7 @@
             <%= render FieldErrorComponent.new(:title, @assessment) %>
 
             <div class="mt-9 flex items-center justify-end gap-x-5">
-              <button type="button" class="secondary-button">Cancel</button>
+              <button type="button" class="secondary-button" onclick="this.closest('dialog').close()">Cancel</button>
               <%= form.submit "Save", class: "primary-button px-6 py-2.5" %>
             </div>
           </div>

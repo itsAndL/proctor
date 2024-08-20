@@ -5,7 +5,20 @@ class Assessment < ApplicationRecord
   belongs_to :business
 
   scope :archived, -> { where.not(archived_at: nil) }
-  scope :active, -> { where(archived_at: nil) }
+
+  scope :active, lambda {
+    where(archived_at: nil)
+      .where(
+        id: AssessmentParticipation.select(:assessment_id).distinct
+      )
+  }
+
+  scope :inactive, lambda {
+    where(archived_at: nil)
+      .where.not(
+        id: AssessmentParticipation.select(:assessment_id).distinct
+      )
+  }
 
   validates :title, :language, presence: true
   validate :max_five_tests
@@ -17,6 +30,10 @@ class Assessment < ApplicationRecord
 
   has_many :assessment_custom_questions, -> { order(position: :asc) }, dependent: :destroy
   has_many :custom_questions, through: :assessment_custom_questions
+
+  has_many :assessment_participations, dependent: :destroy
+  has_many :temp_candidates, through: :assessment_participations
+  has_many :candidates, through: :assessment_participations
 
   pg_search_scope :filter_by_search_query,
                   against: :title,
@@ -42,10 +59,6 @@ class Assessment < ApplicationRecord
 
   def progress
     rand(0..100)
-  end
-
-  def candidates
-    rand(1..15)
   end
 
   private

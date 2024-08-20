@@ -12,7 +12,11 @@ class AssessmentsController < ApplicationController
     @assessments = paginate(query.relation)
   end
 
-  def show; end
+  def show
+    query = AssessmentParticipationQuery.new(@assessment.assessment_participations)
+    @assessment_participations = query.execute(search_query: params[:search_query], status: params[:status])
+    @assessment_participations = paginate(query.relation)
+  end
 
   def new
     @assessment = Assessment.new
