@@ -7,4 +7,12 @@ class User < ApplicationRecord
 
   has_one :business, dependent: :destroy
   has_one :candidate, dependent: :destroy
+
+  def business?
+    business.present?
+  end
+
+  def candidate?
+    candidate.present?
+  end
 end

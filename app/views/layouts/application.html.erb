@@ -13,7 +13,7 @@
 
   <body class="bg-white flex flex-col h-screen">
     <%= render NotificationComponent.new(notice:, alert:) %>
-    <%= render NavBar::BaseComponent.new(request:, user: current_user) %>
+    <%= render NavBar::BaseComponent.new(current_path: request.path, user: current_user, hide_navbar: @hide_navbar) %>
     <%= yield %>
     <%= render FooterComponent.new(request:) %>
     <%= turbo_frame_tag "modal" %>

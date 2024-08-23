@@ -4,9 +4,9 @@ module SecondaryRootPath
   def secondary_root_path
     return root_path unless helpers.current_user
 
-    if helpers.current_user.business&.persisted?
+    if helpers.current_business&.persisted?
       assessments_path
-    elsif helpers.current_user.candidate&.persisted?
+    elsif helpers.current_candidate&.persisted?
       candidate_assessments_path
     else
       new_role_path

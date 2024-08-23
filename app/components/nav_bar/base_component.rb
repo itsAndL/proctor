@@ -1,17 +1,25 @@
 # frozen_string_literal: true
 
 class NavBar::BaseComponent < ViewComponent::Base
-  def initialize(request:, user:)
-    @request = request
+  def initialize(current_path:, user:, hide_navbar: false)
+    @current_path = current_path
     @user = user
+    @hide_navbar = hide_navbar
+  end
+
+  def call
+    render component
   end
 
   def render?
-    show_navbar?
+    return false if @hide_navbar
+    return false if helpers.devise_controller? && !on_edit_user_registration_page?
+
+    true
   end
 
   def component
-    if @user.blank? || active_guest_path
+    if guest_page? || @user.blank?
       NavBar::GuestComponent.new
     else
       NavBar::UserComponent.new(@user)
@@ -20,15 +28,11 @@ class NavBar::BaseComponent < ViewComponent::Base
 
   private
 
-  def active_guest_path
-    guest_paths.include?(@request.path)
+  def guest_page?
+    [root_path, home_path, contact_path, about_path].include?(@current_path)
   end
 
-  def guest_paths
-    [root_path, home_path, contact_path, about_path]
-  end
-
-  def show_navbar?
-    !(helpers.devise_controller? || helpers.controller_name == 'preview_questions')
+  def on_edit_user_registration_page?
+    helpers.current_page?(helpers.edit_user_registration_path)
   end
 end

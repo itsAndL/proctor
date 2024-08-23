@@ -1,6 +1,8 @@
 class AssessmentCustomQuestionsController < ApplicationController
   include AssessmentItemManagement
 
+  before_action :authenticate_business!
+
   private
 
   def association_name

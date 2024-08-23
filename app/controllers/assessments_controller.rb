@@ -1,8 +1,9 @@
 class AssessmentsController < ApplicationController
+  before_action :authenticate_business!
   before_action :set_assessment, except: %i[index new create]
 
   def index
-    query = AssessmentQuery.new(current_user.business.assessments)
+    query = AssessmentQuery.new(current_business.assessments)
     @filtered_assessments = query.filter_by_search_query(params[:search_query])
 
     @state = params[:state] || 'active'
@@ -23,7 +24,7 @@ class AssessmentsController < ApplicationController
   end
 
   def create
-    @assessment = Assessment.new(assessment_params.merge(business_id: current_user.business.id))
+    @assessment = Assessment.new(assessment_params.merge(business_id: current_business.id))
 
     if @assessment.save
       redirect_to(
@@ -105,6 +106,32 @@ class AssessmentsController < ApplicationController
       end
     else
       render :rename, status: :unprocessable_entity
+    end
+  end
+
+  def activate_public_link
+    @assessment.activate_public_link!
+
+    respond_to do |format|
+      format.turbo_stream do
+        render(turbo_stream:
+        [
+          turbo_stream.replace('share-link', ShareLinkComponent.new(assessment: @assessment))
+        ])
+      end
+    end
+  end
+
+  def deactivate_public_link
+    @assessment.deactivate_public_link!
+
+    respond_to do |format|
+      format.turbo_stream do
+        render(turbo_stream:
+        [
+          turbo_stream.replace('share-link', ShareLinkComponent.new(assessment: @assessment))
+        ])
+      end
     end
   end
 

@@ -16,14 +16,10 @@
                 <%= svg_tag "eye", class: "size-5 group-hover:text-gray-500", "stroke-width": 2 %>
                 Try yourself
               </a>
-              <div class="sm:hidden">
-                <button onclick="my_modal_3.showModal()" type="button" class="group flex items-center gap-x-3 px-4 py-2 text-sm text-gray-700 font-medium" role="menuitem" tabindex="-1" id="menu-item-0">
-                  <%= svg_tag "envelope", class: "size-5 group-hover:text-gray-500", "stroke-width": 2 %>
-                  Invite
-                </button>
-                <%= render partial: "customer/assessments/invite_candidates", locals: {id: 3, first_slide: 4} %>
-              </div>
-
+              <%= link_to share_assessment_path(@assessment), class: 'group flex items-center gap-x-3 px-4 py-2 text-sm text-gray-700 font-medium sm:hidden', data: { turbo_frame: "modal" } do %>
+                <%= svg_tag "envelope", class: "size-5 group-hover:text-gray-500", "stroke-width": 2 %>
+                Invite
+              <% end %>
               <%= link_to edit_assessment_path(@assessment), class: "group flex items-center gap-x-3 px-4 py-2 text-sm text-gray-700 font-medium" do %>
                 <%= svg_tag "pencil_square", class: "size-5 group-hover:text-gray-500" %>
                 Edit
@@ -47,14 +43,10 @@
           </div>
         </div>
 
-        <div>
-          <button type="button" onclick="my_modal_2.showModal()" class="hidden sm:inline-flex items-center gap-x-1.5 rounded-full bg-blue-600 px-4 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
-            <%= svg_tag "envelope", class: "size-5" %>
-            Invite
-          </button>
-
-          <%= render partial: "customer/assessments/invite_candidates", locals: {id: 2, first_slide: 1} %>
-        </div>
+        <%= link_to share_assessment_path(@assessment), class: 'primary-button hidden sm:inline-flex', data: { turbo_frame: "modal" } do %>
+          <%= svg_tag "envelope", class: "size-5" %>
+          Invite
+        <% end %>
       </div>
     </div>
   </div>
@@ -108,7 +100,7 @@
               <% else %>
                 <% @assessment_participations.each do |assessment_participation| %>  
                   <tr class="hover:bg-blue-50 cursor-pointer" data-controller="clickable-row" data-clickable-row-url-value="/customer/assessments/1/candidates/1" data-action="click->clickable-row#handleClick">
-                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6 truncate"><%= assessment_participation.participant.name %></td>
+                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6 truncate"><%= assessment_participation.participant.name || assessment_participation.participant.email %></td>
                     <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800">
                       <% avg_score = assessment_participation.avg_score %>
                       <% if avg_score.zero? %>

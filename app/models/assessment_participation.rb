@@ -10,8 +10,8 @@ class AssessmentParticipation < ApplicationRecord
   validates :status, presence: true
   validates :rating, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }, allow_nil: true
 
-  # You might want to add a validation to ensure either temp_candidate or candidate is present
-  validate :temp_candidate_or_candidate_present
+  validate :candidate_or_temp_candidate_present
+  validates :assessment_id, uniqueness: { scope: [:candidate_id, :temp_candidate_id] }
 
   pg_search_scope :filter_by_search_query,
                   associated_against: {
@@ -32,9 +32,9 @@ class AssessmentParticipation < ApplicationRecord
 
   private
 
-  def temp_candidate_or_candidate_present
-    return unless temp_candidate.blank? && candidate.blank?
+  def candidate_or_temp_candidate_present
+    return unless candidate.blank? && temp_candidate.blank?
 
-    errors.add(:base, "Either temp candidate or candidate must be present")
+    errors.add(:base, "Either candidate or temp candidate must be present")
   end
 end

@@ -13,6 +13,9 @@ application.register("choose-tests", ChooseTestsController)
 import ClickableRowController from "./clickable_row_controller"
 application.register("clickable-row", ClickableRowController)
 
+import CopyController from "./copy_controller"
+application.register("copy", CopyController)
+
 import CountdownController from "./countdown_controller"
 application.register("countdown", CountdownController)
 

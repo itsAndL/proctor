@@ -1,0 +1,18 @@
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+  <div class="w-full max-w-md px-10 py-16 bg-white rounded-lg shadow-md">
+    <h1 class="text-3xl font-bold text-center mb-8"><%= @assessment.business.company %></h1>
+
+    <h2 class="text-xl font-semibold mb-4">Take our assessment</h2>
+
+    <p class="text-gray-900 text-sm font-semibold mb-6">Thanks for your interest in this assessment! Please provide your email address and we'll send you more information with a link to begin.</p>
+
+    <%= form_with url: invite_public_assessment_path(@assessment), method: :post, local: true, class: "space-y-6" do |form| %>
+      <div>
+        <%= form.label :email, class: "required-label" %>
+        <%= form.email_field :email, required: true, autocomplete: "email", class: "primary-field" %>
+      </div>
+
+      <%= form.submit "Please invite me", class: "w-full primary-button py-2.5" %>
+    <% end %>
+  </div>
+</div>

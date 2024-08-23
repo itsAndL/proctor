@@ -8,4 +8,8 @@ module ApplicationHelper
 
     doc.to_html.html_safe
   end
+
+  def assesskit_url
+    "https://www.assesskit.com"
+  end
 end

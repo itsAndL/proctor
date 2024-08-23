@@ -1,4 +1,6 @@
 class TestLibraryController < ApplicationController
+  before_action :authenticate_business!
+
   def index
     query = TestQuery.new
 

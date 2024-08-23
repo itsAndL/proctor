@@ -1,0 +1,31 @@
+<%= tag.turbo_frame id: "modal" do %>
+  <dialog data-controller="modal" data-modal-target="modal" class="modal px-6">
+    <div class="modal-box max-w-4xl rounded-xl pt-10 pb-8 px-8 bg-white relative h-full">
+      <form method="dialog">
+        <button class="btn btn-sm btn-circle btn-ghost absolute right-6 top-6">
+          <%= helpers.svg_tag "x_mark", "stroke-width": 2 %>
+        </button>
+      </form>
+
+      <h1 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">Invite candidates</h1>
+      
+      <%= tag.turbo_frame id: "modal-content" do %>
+        <div class="mt-8 sm:mt-10">
+          <div class="border-b border-gray-300">
+            <nav class="-mb-px flex overflow-x-auto" aria-label="Tabs">
+              <button type="button" class="" aria-current="page"></button>
+              <%= link_to "Share link", share_assessment_path(@assessment), class: tab_class('share'), data: { turbo_frame: "modal-content" } %>
+              <%= link_to "Invite by email", invite_assessment_path(@assessment), class: tab_class('invite'), data: { turbo_frame: "modal-content" } %>
+              <%= link_to "Invite in bulk", bulk_invite_assessment_path(@assessment), class: tab_class('bulk_invite'), data: { turbo_frame: "modal-content" } %>
+            </nav>
+          </div>
+
+          <%= content %>
+        </div>
+      <% end %>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+      <button>close</button>
+    </form>
+  </dialog>
+<% end %>

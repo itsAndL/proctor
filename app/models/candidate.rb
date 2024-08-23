@@ -8,4 +8,6 @@ class Candidate < ApplicationRecord
   has_many :assessments, through: :assessment_participations
 
   validates :name, presence: true
+
+  delegate :email, to: :user
 end
