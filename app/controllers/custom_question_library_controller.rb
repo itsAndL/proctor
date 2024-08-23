@@ -1,4 +1,6 @@
 class CustomQuestionLibraryController < ApplicationController
+  before_action :authenticate_business!
+
   def index
     query = CustomQuestionQuery.new
 

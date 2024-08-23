@@ -27,7 +27,7 @@ class PublicAssessmentsController < ApplicationController
   end
 
   def handle_signed_in_user
-    if current_user.candidate
+    if current_candidate
       create_participation
     else
       redirect_to new_candidate_path, notice: "Please complete your candidate profile to start the assessment."
@@ -37,7 +37,7 @@ class PublicAssessmentsController < ApplicationController
   def create_participation
     participation = AssessmentParticipation.create!(
       assessment: @assessment,
-      candidate: current_user.candidate,
+      candidate: current_candidate,
       status: :invitation_clicked
     )
     redirect_to "/candidate/assessments/1?status=invited", notice: "Assessment started successfully."

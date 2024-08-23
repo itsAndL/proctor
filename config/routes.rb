@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :test_library, only: %i[index show], param: :hashid do
     resources :preview_questions, only: %i[show], param: :hashid
   end
+  resources :custom_question_library, only: %i[index], param: :hashid
 
   get '/a/:public_link_token', to: 'public_assessments#show', as: :public_assessment
   post '/a/:public_link_token/start', to: 'public_assessments#start', as: :start_public_assessment
@@ -51,7 +52,6 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :custom_question_library, only: %i[index], param: :hashid
 
   # Routes for candidate
   namespace :talent_assessment do

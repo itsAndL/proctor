@@ -1,4 +1,6 @@
 class CandidatesController < ApplicationController
+  before_action :authenticate_user!, only: %i[new create]
+  before_action :authenticate_candidate!, only: %i[edit update]
   before_action :require_new_candidate!, only: %i[new create]
 
   def new
@@ -17,11 +19,11 @@ class CandidatesController < ApplicationController
   end
 
   def edit
-    @candidate = current_user.candidate
+    @candidate = current_candidate
   end
 
   def update
-    @candidate = current_user.candidate
+    @candidate = current_candidate
 
     if @candidate.update(candidate_params)
       redirect_to secondary_root_path, notice: 'Your candidate profile was successfully updated.'
@@ -33,9 +35,9 @@ class CandidatesController < ApplicationController
   private
 
   def require_new_candidate!
-    return if current_user.candidate.blank?
+    return if current_candidate.blank?
 
-    redirect_to edit_candidate_path(current_user.candidate)
+    redirect_to edit_candidate_path(current_candidate)
   end
 
   def candidate_params
