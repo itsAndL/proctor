@@ -108,6 +108,32 @@ class AssessmentsController < ApplicationController
     end
   end
 
+  def activate_public_link
+    @assessment.activate_public_link!
+
+    respond_to do |format|
+      format.turbo_stream do
+        render(turbo_stream:
+        [
+          turbo_stream.replace('share-link', ShareLinkComponent.new(assessment: @assessment))
+        ])
+      end
+    end
+  end
+
+  def deactivate_public_link
+    @assessment.deactivate_public_link!
+
+    respond_to do |format|
+      format.turbo_stream do
+        render(turbo_stream:
+        [
+          turbo_stream.replace('share-link', ShareLinkComponent.new(assessment: @assessment))
+        ])
+      end
+    end
+  end
+
   private
 
   def set_assessment

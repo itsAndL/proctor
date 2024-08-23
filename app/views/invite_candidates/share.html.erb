@@ -1,0 +1,3 @@
+<%= render(InviteModalComponent.new(assessment: @assessment, active_tab: 'share')) do %>
+  <%= render(ShareLinkComponent.new(assessment: @assessment)) %>
+<% end %>

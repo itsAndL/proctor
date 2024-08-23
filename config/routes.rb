@@ -12,24 +12,33 @@ Rails.application.routes.draw do
   resources :test_library, only: %i[index show], param: :hashid do
     resources :preview_questions, only: %i[show], param: :hashid
   end
+
+  get '/a/:public_link_token', to: 'public_assessments#show', as: :public_assessment
+  post '/a/:public_link_token/start', to: 'public_assessments#start', as: :start_public_assessment
+
   resources :assessments, only: %i[index show new create edit update], param: :hashid do
     member do
-      patch 'archive'
-      patch 'unarchive'
-      get 'choose_tests'
-      patch 'update_tests'
-      get 'add_questions'
-      patch 'update_questions'
-      get 'finalize'
-      patch 'finish'
-      get 'rename'
-      patch 'update_title'
+      patch :archive
+      patch :unarchive
+      get :choose_tests
+      patch :update_tests
+      get :add_questions
+      patch :update_questions
+      get :finalize
+      patch :finish
+      get :rename
+      patch :update_title
+      patch :activate_public_link
+      patch :deactivate_public_link
+      get :share, to: 'invite_candidates#share'
+      get :invite, to: 'invite_candidates#invite'
+      get :bulk_invite, to: 'invite_candidates#bulk_invite'
     end
 
     resources :custom_questions, only: [], param: :hashid do
       resources :assessment_custom_questions, only: %i[create destroy], param: :hashid do
         member do
-          patch 'change_position'
+          patch :change_position
         end
       end
     end
@@ -37,7 +46,7 @@ Rails.application.routes.draw do
     resources :tests, only: [], param: :hashid do
       resources :assessment_tests, only: %i[destroy], param: :hashid do
         member do
-          patch 'change_position'
+          patch :change_position
         end
       end
     end

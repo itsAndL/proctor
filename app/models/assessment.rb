@@ -41,6 +41,8 @@ class Assessment < ApplicationRecord
                     tsearch: { prefix: true }
                   }
 
+  before_create :set_public_link_token
+
   def duration_seconds
     tests_duration + custom_questions_duration
   end
@@ -57,8 +59,24 @@ class Assessment < ApplicationRecord
     update!(archived_at: nil)
   end
 
+  def activate_public_link!
+    update!(public_link_active: true)
+  end
+
+  def deactivate_public_link!
+    update!(public_link_active: false)
+  end
+
+  def public_link_active?
+    public_link_active
+  end
+
   def progress
     rand(0..100)
+  end
+
+  def set_public_link_token
+    self.public_link_token = generate_unique_token
   end
 
   private
@@ -75,5 +93,12 @@ class Assessment < ApplicationRecord
 
   def custom_questions_duration
     custom_questions.sum(:duration_seconds)
+  end
+
+  def generate_unique_token
+    loop do
+      token = SecureRandom.urlsafe_base64(8)
+      break token unless Assessment.exists?(public_link_token: token)
+    end
   end
 end

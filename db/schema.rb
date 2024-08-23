@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_19_141243) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_20_155523) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -92,7 +92,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_19_141243) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "archived_at"
+    t.string "public_link_token"
+    t.boolean "public_link_active", default: false
     t.index ["business_id"], name: "index_assessments_on_business_id"
+    t.index ["public_link_token"], name: "index_assessments_on_public_link_token", unique: true
   end
 
   create_table "businesses", force: :cascade do |t|
