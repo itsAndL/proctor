@@ -75,10 +75,6 @@ class Assessment < ApplicationRecord
     rand(0..100)
   end
 
-  def set_public_link_token
-    self.public_link_token = generate_unique_token
-  end
-
   private
 
   def max_five_tests
@@ -93,6 +89,10 @@ class Assessment < ApplicationRecord
 
   def custom_questions_duration
     custom_questions.sum(:duration_seconds)
+  end
+
+  def set_public_link_token
+    self.public_link_token = generate_unique_token
   end
 
   def generate_unique_token

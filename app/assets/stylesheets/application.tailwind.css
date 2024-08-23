@@ -25,7 +25,7 @@
   }
 
   .button {
-    @apply cursor-pointer inline-flex items-center gap-x-1.5 rounded-full px-4 py-2 text-sm font-semibold ring-1 ring-inset shadow-sm disabled:cursor-not-allowed;
+    @apply cursor-pointer inline-flex items-center gap-x-1.5 rounded-full px-4 py-2 text-sm font-semibold transition duration-300 ring-1 ring-inset shadow-sm disabled:cursor-not-allowed;
   }
 
   .primary-button {

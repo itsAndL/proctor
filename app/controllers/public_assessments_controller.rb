@@ -1,45 +1,37 @@
 class PublicAssessmentsController < ApplicationController
-  before_action :set_assessment
+  before_action :hide_navbar
 
   def show
-    unless @assessment.public_link_active?
-      render :link_inactive and return
-    end
+    @assessment = Assessment.find_by!(public_link_token: params[:public_link_token])
+    render :link_inactive unless @assessment.public_link_active?
   end
 
-  def start
-    unless @assessment.public_link_active?
-      render :link_inactive and return
+  def invite
+    @assessment = Assessment.find(params[:hashid])
+    email = params[:email]
+    participant = find_or_create_participant(email)
+
+    participation = AssessmentParticipation.find_or_create_by!(
+      assessment: @assessment,
+      candidate: participant.is_a?(Candidate) ? participant : nil,
+      temp_candidate: participant.is_a?(TempCandidate) ? participant : nil
+    ) do |p|
+      p.status = :invited if p.new_record?
     end
 
-    if user_signed_in?
-      handle_signed_in_user
+    if participation.persisted?
+      AssessmentMailer.invite_email(participation).deliver_now
+      redirect_to public_assessment_path(@assessment.public_link_token), notice: "Invitation sent successfully!"
     else
-      store_location_for(:user, request.fullpath)
-      redirect_to new_user_session_path, alert: "Please sign in or sign up to start the assessment."
+      redirect_to public_assessment_path(@assessment.public_link_token), alert: "Failed to create invitation. #{participation.errors.full_messages.join(', ')}"
     end
   end
 
   private
 
-  def set_assessment
-    @assessment = Assessment.find_by!(public_link_token: params[:public_link_token])
-  end
-
-  def handle_signed_in_user
-    if current_candidate
-      create_participation
-    else
-      redirect_to new_candidate_path, notice: "Please complete your candidate profile to start the assessment."
-    end
-  end
-
-  def create_participation
-    participation = AssessmentParticipation.create!(
-      assessment: @assessment,
-      candidate: current_candidate,
-      status: :invitation_clicked
-    )
-    redirect_to "/candidate/assessments/1?status=invited", notice: "Assessment started successfully."
+  def find_or_create_participant(email)
+    Candidate.joins(:user).find_by(users: { email: email }) ||
+      TempCandidate.find_by(email: email) ||
+      TempCandidate.create!(email: email)
   end
 end

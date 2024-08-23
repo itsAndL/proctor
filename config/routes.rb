@@ -15,7 +15,11 @@ Rails.application.routes.draw do
   resources :custom_question_library, only: %i[index], param: :hashid
 
   get '/a/:public_link_token', to: 'public_assessments#show', as: :public_assessment
-  post '/a/:public_link_token/start', to: 'public_assessments#start', as: :start_public_assessment
+  resources :public_assessments, only: [], param: :hashid do
+    member do
+      post :invite
+    end
+  end
 
   resources :assessments, only: %i[index show new create edit update], param: :hashid do
     member do

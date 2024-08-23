@@ -1,21 +1,18 @@
-<!-- app/views/public_assessments/show.html.erb -->
-<div class="max-w-2xl mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
-  <h1 class="text-3xl font-bold mb-4"><%= @assessment.title %></h1>
-  
-  <div class="mb-6">
-    <h2 class="text-xl font-semibold mb-2">Details:</h2>
-    <ul class="list-disc list-inside text-gray-700">
-      <li>Duration: <%= format_duration(@assessment.duration_seconds) %></li>
-      <li>Number of tests: <%= @assessment.tests.count %></li>
-      <li>Number of custom questions: <%= @assessment.custom_questions.count %></li>
-      <!-- Add any other relevant details -->
-    </ul>
-  </div>
-  
-  <%= button_to "Start Assessment", start_public_assessment_path(@assessment.public_link_token), method: :post, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
-</div>
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+  <div class="w-full max-w-md px-10 py-16 bg-white rounded-lg shadow-md">
+    <h1 class="text-3xl font-bold text-center mb-8"><%= @assessment.business.company %></h1>
 
-<!-- You might want to add a modal or additional content to explain the process -->
-<div class="mt-4 text-center text-sm text-gray-600">
-  By starting this assessment, you agree to our terms and conditions.
+    <h2 class="text-xl font-semibold mb-4">Take our assessment</h2>
+
+    <p class="text-gray-900 text-sm font-semibold mb-6">Thanks for your interest in this assessment! Please provide your email address and we'll send you more information with a link to begin.</p>
+
+    <%= form_with url: invite_public_assessment_path(@assessment), method: :post, local: true, class: "space-y-6" do |form| %>
+      <div>
+        <%= form.label :email, class: "required-label" %>
+        <%= form.email_field :email, required: true, autocomplete: "email", class: "primary-field" %>
+      </div>
+
+      <%= form.submit "Please invite me", class: "w-full primary-button py-2.5" %>
+    <% end %>
+  </div>
 </div>
