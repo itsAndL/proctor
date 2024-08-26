@@ -100,7 +100,7 @@
               <% else %>
                 <% @assessment_participations.each do |assessment_participation| %>  
                   <tr class="hover:bg-blue-50 cursor-pointer" data-controller="clickable-row" data-clickable-row-url-value="/customer/assessments/1/candidates/1" data-action="click->clickable-row#handleClick">
-                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6 truncate"><%= assessment_participation.participant.name || assessment_participation.participant.email %></td>
+                    <td class="max-w-24 py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6 truncate"><%= assessment_participation.participant.name || assessment_participation.participant.email %></td>
                     <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800">
                       <% avg_score = assessment_participation.avg_score %>
                       <% if avg_score.zero? %>
