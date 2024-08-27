@@ -19,6 +19,9 @@ application.register("copy", CopyController)
 import CountdownController from "./countdown_controller"
 application.register("countdown", CountdownController)
 
+import EmailInvitingController from "./email_inviting_controller"
+application.register("email-inviting", EmailInvitingController)
+
 import FileUploadController from "./file_upload_controller"
 application.register("file-upload", FileUploadController)
 

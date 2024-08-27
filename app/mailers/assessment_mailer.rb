@@ -3,8 +3,8 @@ class AssessmentMailer < ApplicationMailer
 
   def invite_email(assessment_participation)
     @assessment_participation = assessment_participation
-    @assessment = assessment_participation.assessment
-    @recipient = assessment_participation.participant
+    @assessment = @assessment_participation.assessment
+    @recipient = @assessment_participation.participant
 
     mail(
       to: @recipient.email,

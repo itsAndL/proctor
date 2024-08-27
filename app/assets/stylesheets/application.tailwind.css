@@ -17,7 +17,7 @@
   }
 
   .primary-field {
-    @apply mt-1 block w-full rounded-lg border-0 px-3.5 bg-gray-50/20 focus:bg-white py-2 text-gray-800 font-medium ring-1 ring-inset ring-gray-500 disabled:ring-gray-800/20 disabled:text-gray-400/80 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6;
+    @apply mt-1 block w-full rounded-lg border-0 px-3.5 bg-gray-50/20 focus:bg-white py-2 text-gray-800 font-medium ring-1 ring-inset ring-gray-500 disabled:ring-gray-800/20 disabled:text-gray-400/80 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 text-sm sm:leading-6;
   }
 
   .select-field {
