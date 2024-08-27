@@ -1,5 +1,5 @@
 <%= tag.turbo_frame id: "email-inviting" do %>
-  <%= form_with url: post_invite_assessment_path(@assessment), method: :post, data: { controller: "email-inviting", action: "submit->email-inviting#inviteCandidates" } do |form| %>
+  <%= form_with url: post_invite_assessment_path(@assessment), method: :post, data: { controller: "email-inviting", email_inviting_check_candidate_path_value: check_candidate_assessment_path(@assessment), action: "submit->email-inviting#inviteCandidates" } do |form| %>
     <p class="mt-5 text-gray-800 font-medium text-sm">Send an invitation email to candidates.</p>
 
     <div class="mt-4 border border-gray-200 bg-white rounded-xl">

@@ -1,22 +1,18 @@
-# app/services/invitation_service.rb
-
 class InvitationService
   class << self
     def invite_participant(assessment, email, name = nil)
       participant = find_or_create_participant(email, name)
-      participation = create_assessment_participation(assessment, participant)
+      participation, is_new = find_or_create_assessment_participation(assessment, participant)
 
-      if participation.persisted? && participation.invited?
-        AssessmentMailerJob.perform_async(participation.id)
-      end
+      AssessmentMailerJob.perform_async(participation.id) if is_new
 
-      participation
+      [participation, is_new]
     end
 
     private
 
     def find_or_create_participant(email, name = nil)
-      candidate = Candidate.joins(:user).find_by(users: { email: email })
+      candidate = Candidate.find_by_email(email)
       return candidate if candidate
 
       temp_candidate = TempCandidate.find_or_create_by!(email: email) do |tc|
@@ -30,13 +26,23 @@ class InvitationService
       temp_candidate
     end
 
-    def create_assessment_participation(assessment, participant)
-      AssessmentParticipation.find_or_create_by!(
+    def find_or_create_assessment_participation(assessment, participant)
+      participation = AssessmentParticipation.find_by(
         assessment: assessment,
         candidate: participant.is_a?(Candidate) ? participant : nil,
         temp_candidate: participant.is_a?(TempCandidate) ? participant : nil
-      ) do |p|
-        p.status = :invited if p.new_record?
+      )
+
+      if participation
+        return [participation, false]
+      else
+        new_participation = AssessmentParticipation.create!(
+          assessment: assessment,
+          candidate: participant.is_a?(Candidate) ? participant : nil,
+          temp_candidate: participant.is_a?(TempCandidate) ? participant : nil,
+          status: :invited
+        )
+        return [new_participation, true]
       end
     end
   end

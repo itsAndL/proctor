@@ -34,6 +34,7 @@ Rails.application.routes.draw do
       post :invite_me, to: 'invite_candidates#invite_me'
       get :invite, to: 'invite_candidates#invite'
       post :post_invite, to: 'invite_candidates#post_invite'
+      post :check_candidate, to: 'invite_candidates#check_candidate'
       get :bulk_invite, to: 'invite_candidates#bulk_invite'
     end
 

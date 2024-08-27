@@ -27,16 +27,30 @@ class InviteCandidatesController < ApplicationController
   end
 
   def invite_me
-    participation = InvitationService.invite_participant(@assessment, params[:email])
+    participation, is_new = InvitationService.invite_participant(@assessment, params[:email])
 
-    if participation.persisted?
+    if is_new
       redirect_to public_assessment_path(@assessment.public_link_token), notice: "Invitation sent successfully!"
     else
-      redirect_to public_assessment_path(@assessment.public_link_token), alert: "Failed to create invitation. #{participation.errors.full_messages.join(', ')}"
+      redirect_to public_assessment_path(@assessment.public_link_token), alert: "This candidate has already been added to this assessment"
     end
   end
 
   def invite; end
+
+  def check_candidate
+    email = params[:email]
+
+    exists = AssessmentParticipation.exists?(
+      assessment: @assessment,
+      candidate: Candidate.with_email(email)
+    ) || AssessmentParticipation.exists?(
+      assessment: @assessment,
+      temp_candidate: TempCandidate.where(email: email)
+    )
+
+    render json: { exists: exists }
+  end
 
   def post_invite
     candidates = JSON.parse(params[:candidates])

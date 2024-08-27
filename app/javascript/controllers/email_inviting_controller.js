@@ -3,26 +3,46 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="email-inviting"
 export default class extends Controller {
   static targets = ["list", "nameInput", "emailInput", "inviteButton", "addButton", "errorMessage"]
-  static values = { candidates: Array }
+  static values = { candidates: Array, checkCandidatePath: String }
 
   connect() {
     this.candidatesValue = []
     this.updateInviteButton()
   }
 
-  addCandidate(event) {
+  async addCandidate(event) {
     event.preventDefault()
     const name = this.nameInputTarget.value.trim()
     const email = this.emailInputTarget.value.trim()
 
     if (this.validateEmail(email)) {
-      this.candidatesValue = [...this.candidatesValue, { name, email }]
-      this.renderCandidates()
-      this.clearForm()
-      this.hideErrorMessage()
+      const exists = await this.checkCandidateEmail(email)
+      if (exists) {
+        this.showErrorMessage("This candidate has already been invited.")
+      } else {
+        this.candidatesValue = [...this.candidatesValue, { name, email }]
+        this.renderCandidates()
+        this.clearForm()
+        this.hideErrorMessage()
+      }
     } else {
       this.showErrorMessage("Please enter a valid email address.")
     }
+  }
+
+  async checkCandidateEmail(email) {
+    const response = await fetch(this.checkCandidatePathValue, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
+      },
+      body: JSON.stringify({
+        email: email
+      })
+    })
+    const data = await response.json()
+    return data.exists
   }
 
   removeCandidate(event) {
