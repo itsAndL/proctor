@@ -74,3 +74,4 @@ gem "view_component", "~> 3.12"
 gem "rexml", "~> 3.3"
 gem "pg_search", "~> 2.3"
 gem 'acts_as_list'
+gem "sucker_punch", "~> 3.2"

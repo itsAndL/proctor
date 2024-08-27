@@ -6,7 +6,7 @@
 
     <p class="text-gray-900 text-sm font-semibold mb-6">Thanks for your interest in this assessment! Please provide your email address and we'll send you more information with a link to begin.</p>
 
-    <%= form_with url: invite_public_assessment_path(@assessment), method: :post, local: true, class: "space-y-6" do |form| %>
+    <%= form_with url: invite_me_assessment_path(@assessment), method: :post, local: true, class: "space-y-6" do |form| %>
       <div>
         <%= form.label :email, class: "required-label" %>
         <%= form.email_field :email, required: true, autocomplete: "email", class: "primary-field" %>

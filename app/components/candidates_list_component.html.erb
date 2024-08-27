@@ -1,0 +1,88 @@
+<%= tag.turbo_frame id: "candidates-list" do %>
+  <div class="border border-gray-200 bg-white rounded-xl">
+    <div class="p-5 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+      <h2 class="text-base font-bold text-black">Candidates</h2>
+
+      <%= form_with url: assessment_path(@assessment), method: :get, data: { controller: "search", search_target: "form" } do |form| %>
+        <div class="flex flex-col sm:flex-row items-center gap-y-3 sm:gap-x-5">
+          <%= render SearchInputComponent.new(form:, placeholder: "Search candidates") %>
+
+          <select name="status" onchange="this.form.submit()" class="select-field w-full sm:w-60 py-2.5 pl-5 pr-10 rounded-xl">
+            <option class="font-medium text-gray-400" value="" selected>Status</option>
+            <% AssessmentParticipation.statuses.keys.each do |status| %>
+              <% active_option = status == params[:status] %>
+              <option class="font-medium <%= 'bg-zinc-200' if active_option %>" value="<%= status %>" <%= 'selected' if active_option %>><%= status.humanize %></option>
+            <% end %>
+          </select>
+        </div>
+
+        <% params.permit(:page, :per_page).to_h.each do |key, value| %>
+          <%= form.hidden_field key, value: value %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="flow-root">
+      <div class="inline-block min-w-full align-middle">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="border-t border-gray-200">
+              <tr>
+                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-bold text-gray-800 sm:pl-6">Name</th>
+                <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800">Avg. % score</th>
+                <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800">Status</th>
+                <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden md:table-cell">Invited on</th>
+                <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden md:table-cell">Overall rating</th>
+                <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
+                  <span class="sr-only">Actions</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <% if @assessment_participations.empty? %>             
+                <tr>
+                  <td colspan="6"><%= render NoResultsComponent.new %></td>
+                </tr>
+              <% else %>
+                <% @assessment_participations.each do |assessment_participation| %>  
+                  <tr class="hover:bg-blue-50 cursor-pointer" data-controller="clickable-row" data-clickable-row-url-value="/customer/assessments/1/candidates/1" data-action="click->clickable-row#handleClick">
+                    <td class="max-w-24 py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6 truncate"><%= assessment_participation.participant.name || assessment_participation.participant.email %></td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800">
+                      <% avg_score = assessment_participation.avg_score %>
+                      <% if avg_score.zero? %>
+                        <%= helpers.svg_tag "minus" %>
+                      <% else %>
+                        <p><%= avg_score %> %</p>
+                      <% end %>
+                    </td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800"><%= assessment_participation.status.humanize %></td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell"><%= assessment_participation.created_at.strftime("%b %d, %Y") %></td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell">
+                      <div class="flex items-center">
+                        <% rating = assessment_participation.rating || 0 %>
+                        <% 5.times do |i| %>
+                          <%= helpers.svg_tag "star", class: "h-5 w-5 flex-shrink-0 #{i < rating ? 'text-yellow-400' : 'text-gray-200'}" %>
+                        <% end %>
+                      </div>
+                    </td>
+                    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
+                      <button type="button" class="text-gray-800">
+                        <%= helpers.svg_tag "chevron_right", "stroke-width": 2.5, class: "size-3.5" %>
+                      </button>
+                    </td>
+                  </tr>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <%= render PaginationComponent.new(
+      current_page: @current_page,
+      total_items: @total_items,
+      per_page: @per_page,
+      additional_params: { search_query: params[:search_query], status: params[:status] }
+    ) %>
+  </div>
+<% end %>

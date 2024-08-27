@@ -14,12 +14,7 @@ Rails.application.routes.draw do
   end
   resources :custom_question_library, only: %i[index], param: :hashid
 
-  get '/a/:public_link_token', to: 'public_assessments#show', as: :public_assessment
-  resources :public_assessments, only: [], param: :hashid do
-    member do
-      post :invite
-    end
-  end
+  get '/a/:public_link_token', to: 'invite_candidates#public_link', as: :public_assessment
 
   resources :assessments, only: %i[index show new create edit update], param: :hashid do
     member do
@@ -33,10 +28,13 @@ Rails.application.routes.draw do
       patch :finish
       get :rename
       patch :update_title
-      patch :activate_public_link
-      patch :deactivate_public_link
       get :share, to: 'invite_candidates#share'
+      patch :activate_public_link, to: 'invite_candidates#activate_public_link'
+      patch :deactivate_public_link, to: 'invite_candidates#deactivate_public_link'
+      post :invite_me, to: 'invite_candidates#invite_me'
       get :invite, to: 'invite_candidates#invite'
+      post :post_invite, to: 'invite_candidates#post_invite'
+      post :check_candidate, to: 'invite_candidates#check_candidate'
       get :bulk_invite, to: 'invite_candidates#bulk_invite'
     end
 

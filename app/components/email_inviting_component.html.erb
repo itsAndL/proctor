@@ -1,0 +1,51 @@
+<%= tag.turbo_frame id: "email-inviting" do %>
+  <%= form_with url: post_invite_assessment_path(@assessment), method: :post, data: { controller: "email-inviting", email_inviting_check_candidate_path_value: check_candidate_assessment_path(@assessment), action: "submit->email-inviting#inviteCandidates" } do |form| %>
+    <p class="mt-5 text-gray-800 font-medium text-sm">Send an invitation email to candidates.</p>
+
+    <div class="mt-4 border border-gray-200 bg-white rounded-xl">
+      <div class="flow-root overflow-x-auto">
+        <div class="inline-block min-w-full align-middle">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead>
+              <tr>
+                <th scope="col" class="bg-zinc-50 rounded-s-xl py-3.5 pl-4 pr-3 text-left text-sm font-bold text-gray-800 sm:pl-6">Name</th>
+                <th scope="col" class="bg-zinc-50 px-3 py-3.5 text-left text-sm font-bold text-gray-800">Email</th>
+                <th scope="col" class="bg-zinc-50 rounded-e-xl relative py-3.5 pl-3 pr-4 sm:pr-6">
+                  <span class="sr-only">Actions</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody data-email-inviting-target="list" class="divide-y divide-gray-200">
+              <!-- Candidates will be dynamically inserted here -->
+            </tbody>
+            <tfoot>
+              <tr>
+                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6">
+                  <input data-email-inviting-target="nameInput" type="text" class="primary-field min-w-40" placeholder="Name">
+                </td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800">
+                  <input data-email-inviting-target="emailInput" type="email" class="primary-field min-w-40" placeholder="Email *">
+                </td>
+                <td class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
+                  <button type="button" data-email-inviting-target="addButton" data-action="click->email-inviting#addCandidate" class="secondary-button gap-x-2 px-2.5 py-1.5">
+                    <%= helpers.svg_tag "plus", class: "size-4", "stroke-width": 2 %>
+                    <span>Add</span>
+                  </button>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div data-email-inviting-target="errorMessage" class="mt-2 flex items-center gap-x-1.5 text-xs font-semibold text-red-500 hidden">
+      <div><%= helpers.svg_tag "exclamation_circle", "stroke-width": 2, class: "size-4" %></div>
+      <p></p>
+    </div>
+
+    <div class="mt-12 lg:mt-20 flex justify-end">
+      <button data-email-inviting-target="inviteButton" type="submit" class="primary-button px-6 py-2.5">Invite candidates</button>
+    </div>
+  <% end %>
+<% end %>

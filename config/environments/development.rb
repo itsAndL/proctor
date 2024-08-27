@@ -82,4 +82,8 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+
+  # Ensure Sucker Punch runs inline in development
+  config.active_job.queue_adapter = :sucker_punch
+  SuckerPunch.exception_handler = ->(ex, klass, args) { Rails.logger.error("#{klass} failed to process with args #{args}: #{ex.message}") }
 end

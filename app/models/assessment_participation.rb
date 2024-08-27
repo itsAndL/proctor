@@ -9,9 +9,12 @@ class AssessmentParticipation < ApplicationRecord
 
   validates :status, presence: true
   validates :rating, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }, allow_nil: true
+  validates :assessment_id, uniqueness: {
+    scope: [:candidate_id, :temp_candidate_id],
+    message: "Candidate has already been invited to this assessment"
+  }
 
   validate :candidate_or_temp_candidate_present
-  validates :assessment_id, uniqueness: { scope: [:candidate_id, :temp_candidate_id] }
 
   pg_search_scope :filter_by_search_query,
                   associated_against: {
