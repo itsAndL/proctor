@@ -31,19 +31,29 @@
         </div>
       </div>
       <div class="col-span-4">
-        <%= form_tag bulk_invite_upload_assessment_path(@assessment), method: :post, multipart: true, class: "flex justify-center rounded-lg border border-dashed border-gray-800 px-6 py-10", data: { bulk_invite_target: "form" } do %>
-          <div class="text-center">
+        <%= form_tag bulk_invite_upload_assessment_path(@assessment), method: :post, multipart: true, class: "flex justify-center rounded-lg border border-dashed border-gray-800 px-6 py-10 cursor-pointer", data: { 
+          bulk_invite_target: "form", 
+          action: "click->bulk-invite#triggerFileInput dragover->bulk-invite#preventDefault dragenter->bulk-invite#preventDefault drop->bulk-invite#handleDrop"
+        } do %>
+          <div class="text-center w-full">
             <%= helpers.svg_tag "arrow_up_tray", class: "mx-auto size-6 text-gray-800", "stroke-width": 2.5 %>
 
-            <div class="mt-4 flex text-sm leading-6 text-gray-700 font-medium gap-y-3 gap-x-1 flex-wrap justify-center">
-              <p>Drag and drop file here or</p>
-              <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-semibold text-blue-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-600 focus-within:ring-offset-2 hover:text-blue-500">
-                <span>click to upload</span>
-                <%= file_field_tag 'file', id: 'file-upload', class: 'sr-only', accept: '.csv,.xls,.xlsx', data: { bulk_invite_target: "fileInput", action: "change->bulk-invite#updateSubmitButton" } %>
-              </label>
+            <div class="mt-4 text-sm leading-6 text-gray-700 font-medium gap-y-3 gap-x-1">
+              <p>Drag and drop file here or click to upload</p>
               <p>10MB max file size.</p>
             </div>
+
+            <div class="mt-4 hidden" data-bulk-invite-target="fileInfo">
+              <p class="text-blue-600 text-xs font-medium overflow-hidden overflow-ellipsis">
+                File selected: <span data-bulk-invite-target="fileName" class="inline-block max-w-[calc(100%-85px)] align-bottom truncate"></span>
+              </p>
+            </div>
           </div>
+
+          <%= file_field_tag 'file', class: 'hidden', accept: '.csv,.xls,.xlsx', data: { 
+            bulk_invite_target: "fileInput", 
+            action: "change->bulk-invite#handleFileSelect" 
+          } %>
         <% end %>
 
         <div class="mt-2 text-gray-800 font-medium text-xs"><strong>Supported file types:</strong> .csv,.xls,.xlsx</div>

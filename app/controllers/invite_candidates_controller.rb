@@ -86,7 +86,7 @@ class InviteCandidatesController < ApplicationController
         total_items: @total_items,
         per_page: @per_page
       },
-      notice: options[:notice] || "Invitation was successfully sent.",
+      notice: options[:notice],
       update_email_inviting: options[:update_email_inviting],
       update_bulk_inviting: options[:update_bulk_inviting]
     )
