@@ -14,6 +14,12 @@ Rails.application.routes.draw do
   end
   resources :custom_question_library, only: %i[index], param: :hashid
 
+  resources :assessment_participations, only: [:destroy], param: :hashid do
+    member do
+      get :delete_confirmation
+    end
+  end
+
   get '/a/:public_link_token', to: 'invite_candidates#public_link', as: :public_assessment
 
   resources :assessments, only: %i[index show new create edit update], param: :hashid do

@@ -12,19 +12,19 @@
 
           <div tabindex="0" class="dropdown-content absolute right-0 z-10 -mr-1 mt-2 w-40 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div class="py-1" role="none">
-              <a href="#" class="sm:hidden group flex items-center gap-x-3 px-4 py-2 text-sm text-gray-700 font-medium" role="menuitem" tabindex="-1" id="menu-item-0">
+              <a href="#" class="sm:hidden group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium" role="menuitem" tabindex="-1" id="menu-item-0">
                 <%= svg_tag "eye", class: "size-5 group-hover:text-gray-500", "stroke-width": 2 %>
                 Try yourself
               </a>
-              <%= link_to share_assessment_path(@assessment), class: 'group flex items-center gap-x-3 px-4 py-2 text-sm text-gray-700 font-medium sm:hidden', data: { turbo_frame: "modal" } do %>
+              <%= link_to share_assessment_path(@assessment), class: 'group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium sm:hidden', data: { turbo_frame: "modal" } do %>
                 <%= svg_tag "envelope", class: "size-5 group-hover:text-gray-500", "stroke-width": 2 %>
                 Invite
               <% end %>
-              <%= link_to edit_assessment_path(@assessment), class: "group flex items-center gap-x-3 px-4 py-2 text-sm text-gray-700 font-medium" do %>
+              <%= link_to edit_assessment_path(@assessment), class: "group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium" do %>
                 <%= svg_tag "pencil_square", class: "size-5 group-hover:text-gray-500" %>
                 Edit
               <% end %>
-              <%= button_to @assessment.archived? ? unarchive_assessment_path(@assessment) : archive_assessment_path(@assessment), method: :patch, class: "group flex items-center gap-x-3 px-4 py-2 text-sm text-gray-700 font-medium" do %>
+              <%= button_to @assessment.archived? ? unarchive_assessment_path(@assessment) : archive_assessment_path(@assessment), method: :patch, class: "group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium" do %>
                 <%= svg_tag "archive_box", class: "size-5 group-hover:text-gray-500" %>
                 <%= @assessment.archived? ? "Unarchive" : "Archive" %>
               <% end %>

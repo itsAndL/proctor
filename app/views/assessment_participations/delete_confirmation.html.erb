@@ -1,0 +1,24 @@
+<%= turbo_frame_tag "modal" do %>
+  <dialog data-controller="modal" data-modal-target="modal" class="modal px-6">
+    <div class="modal-box max-w-xl rounded-xl p-8 bg-white">
+      <form method="dialog">
+        <button class="btn btn-sm btn-circle btn-ghost absolute right-6 top-6">
+          <%= svg_tag "x_mark", "stroke-width": 2 %>
+        </button>
+      </form>
+
+      <div>
+        <h1 class="font-bold leading-7 text-gray-800 text-xl">Delete candidate</h1>
+        <p class="mt-4 text-gray-800 text-sm font-semibold">Are you sure you want to permanently delete this candidate? Access to the assessment will be revoked if the candidate hasn't completed their assessment. After deleting, you can re-invite the candidate.</p>
+        
+        <div class="mt-9 flex items-center justify-end gap-x-4">
+          <button type="button" class="secondary-button px-6 py-2.5" onclick="this.closest('dialog').close()">Cancel</button>
+          <%= button_to "Delete", assessment_participation_path(@assessment_participation), method: :delete, class: "danger-button text-white bg-red-500 hover:bg-red-600 px-6 py-2.5" %>
+        </div>
+      </div>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+      <button>close</button>
+    </form>
+  </dialog>
+<% end %>

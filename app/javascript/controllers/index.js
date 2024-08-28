@@ -19,6 +19,9 @@ application.register("clickable-row", ClickableRowController)
 import CopyController from "./copy_controller"
 application.register("copy", CopyController)
 
+import CopyLinkController from "./copy_link_controller"
+application.register("copy-link", CopyLinkController)
+
 import CountdownController from "./countdown_controller"
 application.register("countdown", CountdownController)
 

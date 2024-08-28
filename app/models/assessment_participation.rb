@@ -1,4 +1,5 @@
 class AssessmentParticipation < ApplicationRecord
+  include Hashid::Rails
   include PgSearch::Model
 
   belongs_to :assessment

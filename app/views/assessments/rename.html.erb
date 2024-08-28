@@ -16,8 +16,8 @@
             <%= form.text_field :title, required: true, autocomplete: "organization", class: "primary-field" %>
             <%= render FieldErrorComponent.new(:title, @assessment) %>
 
-            <div class="mt-9 flex items-center justify-end gap-x-5">
-              <button type="button" class="secondary-button" onclick="this.closest('dialog').close()">Cancel</button>
+            <div class="mt-9 flex items-center justify-end gap-x-4">
+              <button type="button" class="secondary-button px-6 py-2.5" onclick="this.closest('dialog').close()">Cancel</button>
               <%= form.submit "Save", class: "primary-button px-6 py-2.5" %>
             </div>
           </div>

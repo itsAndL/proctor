@@ -55,8 +55,8 @@ class InviteCandidatesController < ApplicationController
 
   def bulk_invite_template
     respond_to do |format|
-      format.csv { send_data TemplateGenerationService.generate_csv, filename: "bulk_invite_template.csv", type: "text/csv" }
-      format.xlsx { send_data TemplateGenerationService.generate_xlsx, filename: "bulk_invite_template.xlsx", type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }
+      format.csv { send_data TemplateGenerationService.generate_csv, filename: "template.csv", type: "text/csv" }
+      format.xlsx { send_data TemplateGenerationService.generate_xlsx, filename: "template.xlsx", type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }
     end
   end
 
