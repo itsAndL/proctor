@@ -50,7 +50,7 @@ Ready to get started? Click the link below:
 
 <%= public_assessment_url(@assessment.public_link_token) %>">
 
-            <p>We want to ensure that everyone has a fair and equal chance, so we're using a AssessKit assessment (<%= @assessment.public_link_active? ? link_to(root_url, root_path, class: "text-blue-600 underline", data: {turbo: false}, target: :_blank) : content_tag(:span, root_url, class: "underline") %>). This helps maintain fairness and integrity in our process.</p>
+            <p>We want to ensure that everyone has a fair and equal chance, so we're using a AssessKit assessment (<%= @assessment.public_link_active? ? link_to(root_url, root_path, class: "text-blue-600 break-words underline", data: {turbo: false}, target: :_blank) : content_tag(:span, root_url, class: "break-words underline") %>). This helps maintain fairness and integrity in our process.</p>
             <p class="mt-5">Ready to get started? Click the link below:</p>
             <% if @assessment.public_link_active? %>
               <%= link_to public_assessment_url(@assessment.public_link_token), public_assessment_path(@assessment.public_link_token), class: "text-blue-600 underline break-words mt-1", data: {turbo: false}, target: :_blank %>

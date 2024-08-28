@@ -1,0 +1,18 @@
+<div class="overflow-x-auto">
+  <table class="min-w-full bg-white rounded-lg overflow-hidden">
+    <thead class="bg-blue-600 text-white text-xs">
+      <tr>
+        <th class="py-2 px-4 text-left">Name</th>
+        <th class="py-2 px-4 text-left">Email</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-200 text-xs font-semibold">
+      <% @sample_candidates.each do |candidate| %>
+        <tr>
+          <td class="py-2 px-4"><%= candidate[:name] %></td>
+          <td class="py-2 px-4"><%= candidate[:email] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
