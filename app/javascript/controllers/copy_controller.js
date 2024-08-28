@@ -32,8 +32,6 @@ export default class extends Controller {
   updateButtonState() {
     this.buttonTargets.forEach(button => {
       button.disabled = !this.activeValue
-      button.classList.toggle('opacity-50', !this.activeValue)
-      button.classList.toggle('pointer-events-none', !this.activeValue)
     })
   }
 

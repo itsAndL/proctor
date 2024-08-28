@@ -36,6 +36,8 @@ Rails.application.routes.draw do
       post :post_invite, to: 'invite_candidates#post_invite'
       post :check_candidate, to: 'invite_candidates#check_candidate'
       get :bulk_invite, to: 'invite_candidates#bulk_invite'
+      get :bulk_invite_template, to: 'invite_candidates#bulk_invite_template'
+      post :bulk_invite_upload, to: 'invite_candidates#bulk_invite_upload'
     end
 
     resources :custom_questions, only: [], param: :hashid do

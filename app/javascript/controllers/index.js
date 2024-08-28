@@ -7,6 +7,9 @@ import { application } from "./application"
 import AssessmentTitleController from "./assessment_title_controller"
 application.register("assessment-title", AssessmentTitleController)
 
+import BulkInviteController from "./bulk_invite_controller"
+application.register("bulk-invite", BulkInviteController)
+
 import ChooseTestsController from "./choose_tests_controller"
 application.register("choose-tests", ChooseTestsController)
 

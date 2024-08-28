@@ -6,10 +6,33 @@ class InvitationService
 
       AssessmentMailerJob.perform_async(participation.id) if is_new
 
-      [participation, is_new]
+      OpenStruct.new(success?: true, participation: participation, is_new: is_new)
+    rescue => e
+      OpenStruct.new(success?: false, error_message: "Failed to invite participant: #{e.message}")
+    end
+
+    def bulk_invite(assessment, candidates)
+      candidates.each do |candidate|
+        invite_participant(assessment, candidate[:email] || candidate['email'], candidate[:name] || candidate['name'])
+      end
+    end
+
+    def candidate_exists?(assessment, email)
+      participant = find_participant(email)
+      return false unless participant
+
+      AssessmentParticipation.exists?(
+        assessment: assessment,
+        candidate: participant.is_a?(Candidate) ? participant : nil,
+        temp_candidate: participant.is_a?(TempCandidate) ? participant : nil
+      )
     end
 
     private
+
+    def find_participant(email)
+      Candidate.find_by_email(email) || TempCandidate.find_by(email: email)
+    end
 
     def find_or_create_participant(email, name = nil)
       candidate = Candidate.find_by_email(email)
@@ -34,7 +57,7 @@ class InvitationService
       )
 
       if participation
-        return [participation, false]
+        [participation, false]
       else
         new_participation = AssessmentParticipation.create!(
           assessment: assessment,
@@ -42,7 +65,7 @@ class InvitationService
           temp_candidate: participant.is_a?(TempCandidate) ? participant : nil,
           status: :invited
         )
-        return [new_participation, true]
+        [new_participation, true]
       end
     end
   end
