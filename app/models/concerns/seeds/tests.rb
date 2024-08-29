@@ -11,12 +11,17 @@ module Seeds
       raise
     end
 
-    def create_multiple_choice_preview_question!(test_title, question_content, options)
+    def create_multiple_choice_question!(test_title, question_attributes, options)
       ActiveRecord::Base.transaction do
         test = find_test(test_title)
         return unless test
 
-        question = find_or_build_question(test, question_content)
+        question = find_or_build_question(
+          test,
+          question_attributes['type'],
+          question_attributes['content'],
+          question_attributes['preview']
+        )
         associate_question_with_test(question, test)
         update_options(question, options)
 
@@ -35,22 +40,22 @@ module Seeds
       end
     end
 
-    def find_or_build_question(test, question_content)
-      find_similar_question(question_content) || build_new_question(test, question_content)
+    def find_or_build_question(test, type, content, preview)
+      find_similar_question(type, content) || build_new_question(test, type, content, preview)
     end
 
-    def find_similar_question(content)
+    def find_similar_question(type, content)
       plain_content = plain_text(content)
       Question.joins(:rich_text_content)
-              .where(type: 'MultipleChoiceQuestion')
+              .where(type: "#{type.camelcase}Question")
               .find { |question| plain_text(question.content.body) == plain_content }
     end
 
-    def build_new_question(test, question_content)
+    def build_new_question(test, type, content, preview)
       test.questions.build(
-        content: question_content,
-        type: 'MultipleChoiceQuestion',
-        preview: true
+        content: content,
+        type: "#{type.camelcase}Question",
+        preview: preview
       )
     end
 

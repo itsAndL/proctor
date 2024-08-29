@@ -82,12 +82,14 @@
                               </button>
                             </div>
 
-                            <%= button_to send_reminder_assessment_participation_path(assessment_participation),
-                                          method: :post,
-                                          class: "group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium",
-                                          data: { turbo_stream: true } do %>
-                              <%= helpers.svg_tag "bell", class: "size-5 group-hover:text-gray-500", "stroke-width": 2 %>
-                              <span>Send reminder</span>
+                            <% unless assessment_participation.completed? %>
+                              <%= button_to send_reminder_assessment_participation_path(assessment_participation),
+                                            method: :post,
+                                            class: "group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium",
+                                            data: { turbo_stream: true } do %>
+                                <%= helpers.svg_tag "bell", class: "size-5 group-hover:text-gray-500", "stroke-width": 2 %>
+                                <span>Send reminder</span>
+                              <% end %>
                             <% end %>
 
                             <%= button_to delete_confirmation_assessment_participation_path(assessment_participation),
