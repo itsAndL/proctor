@@ -1,4 +1,5 @@
 class AssessmentParticipationsController < ApplicationController
+  before_action :authenticate_business!
   before_action :set_assessment_participation
 
   def delete_confirmation; end
