@@ -28,6 +28,16 @@ class AssessmentParticipationsController < ApplicationController
     )
   end
 
+  def send_reminder
+    result = InvitationService.send_reminder(@assessment_participation)
+
+    if result.success?
+      render turbo_stream: turbo_stream.replace('notification', NotificationComponent.new(notice: 'Reminder sent successfully.'))
+    else
+      render turbo_stream: turbo_stream.replace('notification', NotificationComponent.new(alert: result.error_message))
+    end
+  end
+
   private
 
   def set_assessment_participation

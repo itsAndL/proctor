@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :assessment_participations, only: [:destroy], param: :hashid do
     member do
       get :delete_confirmation
+      post :send_reminder
     end
   end
 

@@ -4,7 +4,7 @@ class InvitationService
       participant = find_or_create_participant(email, name)
       participation, is_new = find_or_create_assessment_participation(assessment, participant)
 
-      AssessmentMailerJob.perform_async(participation.id) if is_new
+      AssessmentMailerJob.perform_async(participation.id, :invite) if is_new
 
       OpenStruct.new(success?: true, participation: participation, is_new: is_new)
     rescue => e
@@ -26,6 +26,13 @@ class InvitationService
         candidate: participant.is_a?(Candidate) ? participant : nil,
         temp_candidate: participant.is_a?(TempCandidate) ? participant : nil
       )
+    end
+
+    def send_reminder(assessment_participation)
+      AssessmentMailerJob.perform_async(assessment_participation.id, :reminder)
+      OpenStruct.new(success?: true)
+    rescue => e
+      OpenStruct.new(success?: false, error_message: "Failed to send reminder: #{e.message}")
     end
 
     private

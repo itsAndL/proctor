@@ -1,4 +1,3 @@
-# app/controllers/application_controller.rb
 class ApplicationController < ActionController::Base
   include AuthenticationConcern
   include SecondaryRootPath
