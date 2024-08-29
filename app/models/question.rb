@@ -9,6 +9,7 @@ class Question < ApplicationRecord
   has_many :options, as: :optionable, dependent: :destroy, autosave: true
 
   validates :content, :type, presence: true
+  validate :validate_duration_seconds
 
   scope :preview, -> { where(preview: true) }
   scope :non_preview, -> { where(preview: false) }
@@ -30,6 +31,14 @@ class Question < ApplicationRecord
   end
 
   private
+
+  def validate_duration_seconds
+    return if preview # Skip validation for preview questions
+
+    if duration_seconds.nil? || duration_seconds.to_i <= 0
+      errors.add(:duration_seconds, "must be greater than 0 for non-preview questions")
+    end
+  end
 
   def next_question_of_type(test, is_preview)
     test_question = test_questions.find_by(test:)
