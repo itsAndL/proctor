@@ -75,11 +75,19 @@
                           </button>
 
                           <div tabindex="<%= index %>" class="dropdown-content absolute right-8 -top-4 z-10 mt-2 w-40 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-                            <div class="py-1" role="none">
-                              <%= link_to edit_assessment_path(assessment), class: "group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium" do %>
-                                <%= svg_tag "pencil_square", class: "size-5 group-hover:text-gray-500" %>
-                                Edit
+                            <div class="py-1" role="none">  
+                              <% if assessment.assessment_participations.any? %>
+                                <button type="button" class="group flex items-center gap-x-2.5 px-4 py-2 text-sm text-zinc-400 font-medium">
+                                  <%= svg_tag "pencil_square", class: "size-5" %>
+                                  Edit
+                                </button>
+                              <% else %>
+                                <%= link_to edit_assessment_path(assessment), class: "group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium" do %>
+                                  <%= svg_tag "pencil_square", class: "size-5 group-hover:text-gray-500" %>
+                                  Edit
+                                <% end %>
                               <% end %>
+                              
                               <%= button_to assessment.archived? ? unarchive_assessment_path(assessment) : archive_assessment_path(assessment), method: :patch, class: "group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium" do %>
                                 <%= svg_tag "archive_box", class: "size-5 group-hover:text-gray-500" %>
                                 <%= assessment.archived? ? "Unarchive" : "Archive" %>
