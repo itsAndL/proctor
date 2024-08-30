@@ -3,8 +3,8 @@
 
 <main class="bg-zinc-50 pt-10 pb-16">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="divide-y-2 divide-zinc-200">
-      <div class="bg-white py-6 sm:p-8 rounded-t-xl shadow">
+    <div class="divide-y-2 divide-zinc-200 bg-white shadow rounded-xl">
+      <div class="py-6 sm:p-8">
         <div class="max-sm:px-4 flex flex-col sm:flex-row sm:justify-between sm:items-center sm:gap-x-7 max-sm:gap-y-8">
           <div>
             <div class="flex items-center gap-x-5">
@@ -20,9 +20,7 @@
           </div>
           <div class="dropdown dropdown-hover">
             <button type="button" class="inline-flex gap-x-2 items-center ring-1 rounded-full p-2.5 text-sm font-semibold focus:outline-none ring-slate-700 text-slate-700 hover:text-slate-900  active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-              </svg>
+              <%= svg_tag "envelope", class: "size-5" %>
             </button>
 
             <div class="dropdown-content absolute max-sm:-left-2 sm:-right-2 z-10 -mr-1 mt-2 origin-top-right">
@@ -63,7 +61,7 @@
           <%= render AntiCheatingMonitorComponent.new(assessment_participation: @assessment_participation) %>
         </div>
       </div>
-      <div class="bg-white py-6 px-4 sm:p-8 shadow">
+      <div class="py-6 px-4 sm:p-8 ">
         <div class="border border-gray-200 bg-white rounded-xl h-fit">
           <div class="p-5">
             <h2 class="text-base font-bold text-black">Custom questions</h2>
@@ -165,21 +163,7 @@
           </div>
         </div>
       </div>
-      <div class="bg-white py-6 px-4 sm:p-8 rounded-b-xl shadow">
-        <div class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
-          <div>
-            <div class="font-semibold text-gray-800">Your rating</div>
-            <div class="mt-1 text-gray-600 text-sm">Give your personal overall rating of this candidate based on your impressions and interactions with him or her.</div>
-            <div class="mt-6 flex items-center">
-              <% rating = @assessment_participation.rating || 0 %>
-              <% 5.times do |i| %>
-                <%= svg_tag "star", class: "h-5 w-5 flex-shrink-0 #{i < rating ? 'text-yellow-400' : 'text-gray-200'}" %>
-              <% end %>
-            </div>
-          </div>
-          <textarea placeholder="Add your private notes here (auto-saved)... " rows="3" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"></textarea>
-        </div>
-      </div>
+      <%= render CandidateRatingComponent.new(assessment_participation: @assessment_participation) %>
     </div>
   </div>
 </main>

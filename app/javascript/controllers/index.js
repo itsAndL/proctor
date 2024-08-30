@@ -10,6 +10,9 @@ application.register("assessment-title", AssessmentTitleController)
 import BulkInviteController from "./bulk_invite_controller"
 application.register("bulk-invite", BulkInviteController)
 
+import CandidateRatingController from "./candidate_rating_controller"
+application.register("candidate-rating", CandidateRatingController)
+
 import ChooseTestsController from "./choose_tests_controller"
 application.register("choose-tests", ChooseTestsController)
 

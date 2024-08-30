@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       get :delete_confirmation
       post :send_reminder
       get :report
+      patch :rate
     end
   end
 

@@ -41,9 +41,25 @@ class AssessmentParticipationsController < ApplicationController
 
   def report; end
 
+  def rate
+    if @assessment_participation.update(assessment_participation_params)
+      render turbo_stream: turbo_stream.replace('notification',
+        NotificationComponent.new(notice: 'Rating updated successfully.')
+      )
+    else
+      render turbo_stream: turbo_stream.replace('notification',
+        NotificationComponent.new(alert: @assessment_participation.errors.full_messages.join(', '))
+      ), status: :unprocessable_entity
+    end
+  end
+
   private
 
   def set_assessment_participation
     @assessment_participation = AssessmentParticipation.find(params[:hashid])
+  end
+
+  def assessment_participation_params
+    params.require(:assessment_participation).permit(:rating, :notes)
   end
 end
