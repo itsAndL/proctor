@@ -4,6 +4,7 @@ class Assessment < ApplicationRecord
 
   belongs_to :business
 
+  scope :completed, -> { where(status: :completed) }
   scope :archived, -> { where.not(archived_at: nil) }
 
   scope :active, lambda {
@@ -42,6 +43,31 @@ class Assessment < ApplicationRecord
                   }
 
   before_create :set_public_link_token
+
+  def best_candidate_score
+    completed_participations = assessment_participations.completed
+
+    return nil if completed_participations.empty?
+
+    best_score = completed_participations.map do |participation|
+      participation.evaluate_full_assessment.overall_score_percentage
+    end.max
+
+    best_score.round(2)
+  end
+
+  def candidate_pool_average
+    completed_participations = assessment_participations.completed
+
+    return nil if completed_participations.empty?
+
+    total_score = completed_participations.sum do |participation|
+      participation.evaluate_full_assessment.overall_score_percentage
+    end
+
+    average_score = total_score / completed_participations.count
+    average_score.round(2)
+  end
 
   def duration_seconds
     tests_duration + custom_questions_duration

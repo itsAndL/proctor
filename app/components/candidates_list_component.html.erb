@@ -44,14 +44,14 @@
                 </tr>
               <% else %>
                 <% @assessment_participations.each_with_index do |assessment_participation, index| %>  
-                  <tr class="hover:bg-blue-50 cursor-pointer" data-controller="clickable-row" data-clickable-row-url-value="/customer/assessments/1/candidates/1" data-action="click->clickable-row#handleClick">
+                  <tr class="hover:bg-blue-50 cursor-pointer" data-controller="clickable-row" data-clickable-row-url-value="<%= report_assessment_participation_path(assessment_participation) %>" data-action="click->clickable-row#handleClick">
                     <td class="max-w-24 py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6 truncate"><%= assessment_participation.participant.name || assessment_participation.participant.email %></td>
                     <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800">
-                      <% avg_score = assessment_participation.avg_score %>
-                      <% if avg_score.zero? %>
+                      <% overall_score_percentage = assessment_participation.evaluate_full_assessment.overall_score_percentage %>
+                      <% if overall_score_percentage.nil? %>
                         <%= helpers.svg_tag "minus" %>
                       <% else %>
-                        <p><%= avg_score %> %</p>
+                        <p><%= overall_score_percentage %> %</p>
                       <% end %>
                     </td>
                     <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800"><%= assessment_participation.status.humanize %></td>

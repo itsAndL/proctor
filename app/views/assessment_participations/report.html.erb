@@ -1,0 +1,169 @@
+<!-- Page heading -->
+<%= render AssessmentParticipationHeaderComponent.new(assessment_participation: @assessment_participation) %>
+
+<main class="bg-zinc-50 pt-10 pb-16">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="divide-y-2 divide-zinc-200 bg-white shadow rounded-xl">
+      <div class="py-6 sm:p-8">
+        <div class="max-sm:px-4 flex flex-col sm:flex-row sm:justify-between sm:items-center sm:gap-x-7 max-sm:gap-y-8">
+          <div>
+            <div class="flex items-center gap-x-5">
+              <h3 class="text-xl font-bold text-gray-700">Assessment</h3>
+              <p class="text-xl font-semibold text-gray-600"><%= @assessment_participation.assessment.title %></p>
+            </div>
+            <div class="mt-2 flex items-center">
+              <% rating = @assessment_participation.rating || 0 %>
+              <% 5.times do |i| %>
+                <%= svg_tag "star", class: "h-5 w-5 flex-shrink-0 #{i < rating ? 'text-yellow-400' : 'text-gray-200'}" %>
+              <% end %>
+            </div>
+          </div>
+          <div class="dropdown dropdown-hover">
+            <button type="button" class="inline-flex gap-x-2 items-center ring-1 rounded-full p-2.5 text-sm font-semibold focus:outline-none ring-slate-700 text-slate-700 hover:text-slate-900  active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300">
+              <%= svg_tag "envelope", class: "size-5" %>
+            </button>
+
+            <div class="dropdown-content absolute max-sm:-left-2 sm:-right-2 z-10 -mr-1 mt-2 origin-top-right">
+              <div class="triangle triangle-t triangle-h-2 triangle-w-4 sm:ml-auto max-sm:ml-6 sm:mr-6 -mb-0.5 text-gray-900"></div>
+              <div class="rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none py-2 px-3 whitespace-nowrap bg-gray-900 text-sm text-white font-medium">Send results to candidate</div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-x-10 divide-y-2 sm:divide-y-0 divide-gray-300 sm:gap-y-8">
+          <dl class="max-sm:px-4 order-1 grid grid-cols-2 gap-x-4 gap-y-7 sm:grid-cols-1 h-fit pb-7 sm:pb-0 max-sm:-mt-3">
+            <div>
+              <dt class="font-bold text-gray-800">Invited</dt>
+              <dd class="mt-1 text-gray-800 font-medium text-sm"><%= @assessment_participation.created_at.strftime("%b %d, %Y") %></dd>
+            </div>
+            <div>
+              <dt class="font-bold text-gray-800">Average score</dt>
+              <dd class="mt-1 text-gray-800 font-medium text-sm">
+                <% overall_score_percentage = @assessment_participation.evaluate_full_assessment.overall_score_percentage %>
+                <% if overall_score_percentage.nil? %>
+                  <%= svg_tag "minus" %>
+                <% else %>
+                  <p><%= overall_score_percentage %> %</p>
+                <% end %>
+              </dd>
+            </div>
+            <div>
+              <dt class="font-bold text-gray-800">Status</dt>
+              <dd class="mt-1 text-gray-800 font-medium text-sm"><%=  @assessment_participation.status.humanize %></dd>
+            </div>
+          </dl>
+          <div class="max-sm:px-4 order-3 lg:order-2 col-span-full lg:col-span-2 h-fit pt-7 sm:pt-0">
+            <% if @assessment_participation.started? || @assessment_participation.completed? %>
+              <%= render AssessmentResultsComponent.new(assessment_participation: @assessment_participation) %>
+            <% else %>
+              <%= render NotStartedComponent.new %>
+            <% end %>
+          </div>
+          <%= render AntiCheatingMonitorComponent.new(assessment_participation: @assessment_participation) %>
+        </div>
+      </div>
+      <div class="py-6 px-4 sm:p-8 ">
+        <div class="border border-gray-200 bg-white rounded-xl h-fit">
+          <div class="p-5">
+            <h2 class="text-base font-bold text-black">Custom questions</h2>
+          </div>
+
+          <div class="flow-root">
+            <div class="inline-block min-w-full align-middle">
+              <table class="min-w-full divide-y divide-gray-200">
+                <thead class="border-t border-gray-200">
+                  <tr>
+                    <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-bold text-gray-800 sm:pl-6">Question</th>
+                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800">View answer</th>
+                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden sm:table-cell">Avg. rating</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                  <tr>
+                    <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6 flex items-center gap-x-2">
+                      <div>
+                        <svg class="size-6" width="100%" height="100%" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">
+                          <path d="M5 19.5465H19V10.3715L14.175 5.54651H5V19.5465ZM3 21.5465V3.54651H15L21 9.54651V21.5465H3ZM7 17.5465H17V15.5465H7V17.5465ZM7 13.5465H17V11.5465H7V13.5465ZM7 9.54651H14V7.54651H7V9.54651Z" fill="currentColor"></path>
+                        </svg>
+                      </div>
+                      <p class="max-w-2xl">Tell us about yourself, what attracts you to this opportunity, and why you are a great candidate for this role. Pro tip: it might be helpful to pretend you are writing this to a new friend and just be yourself. We want to get to know you better.</p>
+                    </td>
+                    <td class="px-3 py-4 text-sm font-medium text-gray-800">
+                      <button onclick="my_modal_1.showModal()" type="button" class="inline-flex gap-x-2 items-center ring-1 rounded-full py-2 px-3 text-sm font-semibold focus:outline-none ring-slate-700 text-slate-700 hover:text-slate-900  active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-4">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        </svg>
+                        <span>Read</span>
+                      </button>
+                      <%= render partial: "question_answer", locals: {id: 1} %>
+                    </td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden sm:table-cell">
+                      <div class="flex items-center">
+                        <!-- Active: "text-yellow-400", Inactive: "text-gray-200" -->
+                        <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                        </svg>
+                        <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                        </svg>
+                        <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                        </svg>
+                        <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                        </svg>
+                        <svg class="h-5 w-5 flex-shrink-0 text-gray-200" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                        </svg>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6 flex items-center gap-x-2">
+                      <div>
+                        <svg class="size-6" width="100%" height="100%" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">
+                          <path d="M11 16.5465V8.39651L8.4 10.9965L7 9.54651L12 4.54651L17 9.54651L15.6 10.9965L13 8.39651V16.5465H11ZM4 20.5465V15.5465H6V18.5465H18V15.5465H20V20.5465H4Z" fill="currentColor"></path>
+                        </svg>
+                      </div>
+                      <p class="max-w-2xl">Please feel welcome to upload your resume/CV or portfolio (if you have one). Leave blank if you do not have one. For this question, you can exit full-screen mode.</p>
+                    </td>
+                    <td class="px-3 py-4 text-sm font-medium text-gray-800">
+                      <button onclick="my_modal_2.showModal()" type="button" class="inline-flex gap-x-2 items-center ring-1 rounded-full py-2 px-3 text-sm font-semibold focus:outline-none ring-slate-700 text-slate-700 hover:text-slate-900  active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-4">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                        </svg>
+                        <span>Download</span>
+                      </button>
+                       <%= render partial: "question_answer", locals: {id: 2} %>
+                    </td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden sm:table-cell">
+                      <div class="flex items-center">
+                        <!-- Active: "text-yellow-400", Inactive: "text-gray-200" -->
+                        <svg class="h-5 w-5 flex-shrink-0 text-gray-200" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                        </svg>
+                        <svg class="h-5 w-5 flex-shrink-0 text-gray-200" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                        </svg>
+                        <svg class="h-5 w-5 flex-shrink-0 text-gray-200" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                        </svg>
+                        <svg class="h-5 w-5 flex-shrink-0 text-gray-200" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                        </svg>
+                        <svg class="h-5 w-5 flex-shrink-0 text-gray-200" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                        </svg>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%= render CandidateRatingComponent.new(assessment_participation: @assessment_participation) %>
+    </div>
+  </div>
+</main>
