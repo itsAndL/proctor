@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_27_180012) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_30_110856) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
@@ -71,6 +71,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_27_180012) do
     t.integer "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "device_used"
+    t.string "location"
+    t.boolean "single_ip_address"
+    t.boolean "webcam_enabled"
+    t.boolean "fullscreen_always_active"
+    t.boolean "mouse_always_in_window"
     t.index ["assessment_id", "candidate_id"], name: "index_on_assessment_and_candidate", unique: true
     t.index ["assessment_id", "temp_candidate_id"], name: "index_on_assessment_and_temp_candidate", unique: true
     t.index ["assessment_id"], name: "index_assessment_participations_on_assessment_id"
@@ -147,6 +153,21 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_27_180012) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["optionable_type", "optionable_id"], name: "index_options_on_optionable"
+  end
+
+  create_table "question_answers", force: :cascade do |t|
+    t.bigint "assessment_participation_id", null: false
+    t.bigint "question_id", null: false
+    t.bigint "test_id", null: false
+    t.jsonb "content", default: {}, null: false
+    t.boolean "is_correct"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assessment_participation_id", "question_id", "test_id"], name: "index_question_answers_on_participation_question_and_test", unique: true
+    t.index ["assessment_participation_id"], name: "index_question_answers_on_assessment_participation_id"
+    t.index ["content"], name: "index_question_answers_on_content", using: :gin
+    t.index ["question_id"], name: "index_question_answers_on_question_id"
+    t.index ["test_id"], name: "index_question_answers_on_test_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -226,6 +247,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_27_180012) do
   add_foreign_key "businesses", "users"
   add_foreign_key "candidates", "users"
   add_foreign_key "custom_questions", "custom_question_categories"
+  add_foreign_key "question_answers", "assessment_participations"
+  add_foreign_key "question_answers", "questions"
+  add_foreign_key "question_answers", "tests"
   add_foreign_key "test_questions", "questions"
   add_foreign_key "test_questions", "tests"
   add_foreign_key "tests", "test_categories"

@@ -39,6 +39,8 @@ class AssessmentParticipationsController < ApplicationController
     end
   end
 
+  def report; end
+
   private
 
   def set_assessment_participation

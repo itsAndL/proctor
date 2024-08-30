@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     member do
       get :delete_confirmation
       post :send_reminder
+      get :report
     end
   end
 
@@ -85,8 +86,6 @@ Rails.application.routes.draw do
   namespace :customer do
     get 'candidates', to: 'candidates#index'
     get 'candidates/1', to: 'candidates#show'
-
-    get 'assessments/1/candidates/1', to: 'assessments#candidate'
 
     get 'profile/team', to: 'profile#team'
   end
