@@ -1,4 +1,5 @@
 class Candidate::AssessmentParticipationsController < ApplicationController
+  before_action :authenticate_candidate!
   before_action :set_assessment_participation, only: [:show, :overview, :setup, :intro]
   before_action :hide_navbar, only: [:overview, :setup, :intro]
 

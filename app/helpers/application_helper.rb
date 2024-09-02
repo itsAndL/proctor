@@ -12,17 +12,4 @@ module ApplicationHelper
   def assesskit_url
     "https://www.assesskit.com"
   end
-
-  def human_date(date)
-    date.strftime("%B %d, %Y")
-  end
-
-  def status_style(status)
-    case status
-    when 'active'
-      'text-lime-900 bg-lime-200'
-    else
-      'text-blue-900 bg-blue-200'
-    end
-  end
 end
