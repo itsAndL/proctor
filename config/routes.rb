@@ -66,6 +66,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :candidate do
+    resources :assessment_participations, only: %i[index show], path: '/assessments', param: :hashid
+  end
+
   # Routes for candidate
   namespace :talent_assessment do
     get 'checkout', to: 'checkout#show'
@@ -76,11 +80,6 @@ Rails.application.routes.draw do
     get 'practice_test/1/questions', to: 'practice_test#questions'
     get 'overview', to: 'overview#show'
     get 'setup', to: 'setup#show'
-  end
-
-  namespace :candidate do
-    get 'assessments', to: 'assessments#index'
-    get 'assessments/1', to: 'assessments#show'
   end
 
   # Routes for customer
@@ -100,8 +99,8 @@ Rails.application.routes.draw do
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  get 'up' => 'rails/health#show', as: :rails_health_check
 
   # Defines the root path route ("/")
-  root "home#index"
+  root 'home#index'
 end
