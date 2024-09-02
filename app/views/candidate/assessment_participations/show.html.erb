@@ -10,7 +10,9 @@
 
         <div>
           <div class="flex items-center">
-            <h2 class="truncate text-xl font-bold leading-7 text-slate-900">Business Manager</h2>
+            <h2 class="truncate text-xl font-bold leading-7 text-slate-900">
+              <%= @assessment_participation.assessment.title %>
+            </h2>
             <p class="ml-3 whitespace-nowrap rounded-full bg-blue-200 px-2 text-xs font-semibold leading-6 text-blue-900">Invited</p>
           </div>
 
@@ -32,7 +34,7 @@
       </div>
 
         <% if @assessment_participation.status != :completed %>
-            <%= link_to "/talent_assessment/overview",target:"_blank", class:"inline-flex gap-x-2.5 justify-center items-center rounded-full bg-blue-600 px-7 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600" do %>
+            <%= link_to overview_candidate_assessment_participation_path(@assessment_participation),target:"_blank", class:"inline-flex gap-x-2.5 justify-center items-center rounded-full bg-blue-600 px-7 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600" do %>
                 <span>Start assessment</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-3">
                 <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />

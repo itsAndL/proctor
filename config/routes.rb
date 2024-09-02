@@ -67,7 +67,13 @@ Rails.application.routes.draw do
   end
 
   namespace :candidate do
-    resources :assessment_participations, only: %i[index show], path: '/assessments', param: :hashid
+    resources :assessment_participations, only: %i[index show], path: '/assessments', param: :hashid do
+      member do
+        get :overview
+        get :setup
+        get :intro
+      end
+    end
   end
 
   # Routes for candidate

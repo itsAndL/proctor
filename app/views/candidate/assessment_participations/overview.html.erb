@@ -1,0 +1,47 @@
+<header class="border-b border-gray-300">
+  <div class="bg-white py-5 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex justify-center md:justify-start">
+    <h1 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">
+        <%= @assessment_participation.assessment.business.company %>
+    </h1>
+  </div>
+</header>
+
+<main class="bg-zinc-50 h-full pt-10">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
+    <div class="border border-gray-200 bg-white rounded-xl px-6 py-10 md:px-12 md:py-16">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-9">
+        <div> 
+          <h1 class="font-extrabold leading-7 text-gray-800 text-2xl">Hello <%= @assessment_participation.candidate.name %>,</h1>
+          <div class="mt-6 text-gray-800 space-y-3 font-medium">
+            <p>Welcome to our assessment</p>
+            <p>Completing this assessment will help you showcase your skills and knowledge.</p>
+            <p>Good luck!</p>
+          </div>
+        </div>
+        <div>
+          <h1 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">A few things before you start:</h1>
+          <ul class="mt-6 space-y-3.5 list-disc font-medium text-base ml-7">
+            <li>This assessment consists of <strong>
+                <%= @assessment_participation.assessment.tests.count %> parts</strong>
+            </strong> test. It will take approximately <strong><%= format_duration(@assessment_participation.assessment.duration_seconds)%></strong> to complete.</li>
+            <li>The assessment is timed. A timer is shown per test or per question.</li>
+            <li>Before each test there may be preview questions, <strong>be aware the timer for the test will have already started.</strong></li>
+            <li>Please allow the use of your camera/webcam and do not leave full-screen mode. Snapshots will be taken of you periodically during the assessment. These measures are taken to ensure fairness for everyone.</li>
+            <li>You are free to use a calculator, pen and paper.</li>
+            <li>We recommend completing the assessment in one go.</li>
+          </ul>
+        </div>
+      </div>
+
+    <div class="mt-12 flex justify-end">
+        <%= link_to setup_candidate_assessment_participation_path(@assessment_participation), class: "inline-flex gap-x-2.5 items-center rounded-full bg-blue-600 px-7 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600" do %>
+            <span>Get started</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+        <% end %>
+    </div>
+      </div>
+    </div>
+  </div>
+</main>
