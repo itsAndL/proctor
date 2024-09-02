@@ -15,7 +15,7 @@
         <%= render AntiCheatingMonitor::ItemComponent.new(icon: "fullscreen", label: "Full-screen mode always active?", value: fullscreen_active) %>
         <%= render AntiCheatingMonitor::ItemComponent.new(icon: "mouse", label: "Mouse always in assessment window?", value: mouse_in_window) %>
       </div>
-      <% if started_or_completed? %>
+      <% if @assessment_participation.completed? %>
         <div class="mt-7">
           <%= image_tag "candidate.jpg", class: "rounded-lg" %>
           <div class="relative h-0.5 bg-gray-300 mt-5 mx-1.5">

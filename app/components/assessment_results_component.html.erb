@@ -1,22 +1,24 @@
-<dl class="rounded-xl bg-white border border-gray-300 divide divide-gray-100">
-  <div class="p-6">
-    <dd class="text-5xl font-bold tracking-tight text-gray-800"><%= overall_score %>%</dd>
-    <dt class="mt-2 text-sm font-bold leading-6 text-gray-800"><%= @assessment_participation.participant.name %> Average score</dt>
-  </div>
-
-  <div class="grid grid-cols-1 gap-0.5 overflow-hidden sm:grid-cols-2 rounded-b-xl">
-    <div class="flex flex-col bg-zinc-100 p-6">
-      <dt class="text-xs font-semibold mt-1 text-gray-600">Your best candidate score</dt>
-      <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900"><%= best_candidate_score %>%</dd>
+<% if @assessment_participation.completed? %>
+  <dl class="rounded-xl bg-white border border-gray-300 divide divide-gray-100 mb-7">
+    <div class="p-6">
+      <dd class="text-5xl font-bold tracking-tight text-gray-800"><%= overall_score %>%</dd>
+      <dt class="mt-2 text-sm font-bold leading-6 text-gray-800"><%= @assessment_participation.participant.name %> Average score</dt>
     </div>
-    <div class="flex flex-col bg-zinc-100 p-6">
-      <dt class="text-xs font-semibold mt-1 text-gray-600">Your candidate pool average</dt>
-      <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900"><%= candidate_pool_average %>%</dd>
-    </div>
-  </div>
-</dl>
 
-<div class="p-6 bg-zinc-100 rounded-xl mt-7">
+    <div class="grid grid-cols-1 gap-0.5 overflow-hidden sm:grid-cols-2 rounded-b-xl">
+      <div class="flex flex-col bg-zinc-100 p-6">
+        <dt class="text-xs font-semibold mt-1 text-gray-600">Your best candidate score</dt>
+        <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900"><%= best_candidate_score %>%</dd>
+      </div>
+      <div class="flex flex-col bg-zinc-100 p-6">
+        <dt class="text-xs font-semibold mt-1 text-gray-600">Your candidate pool average</dt>
+        <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900"><%= candidate_pool_average %>%</dd>
+      </div>
+    </div>
+  </dl>
+<% end %>
+
+<div class="p-6 bg-zinc-100 rounded-xl">
   <h5 class="font-bold text-gray-900 leading-6">Tests included in scoring</h5>
   <div class="mt-4 space-y-3">
     <% test_results.each do |result| %>
