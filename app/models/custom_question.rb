@@ -10,6 +10,8 @@ class CustomQuestion < ApplicationRecord
   has_many :assessment_custom_questions, -> { order(position: :asc) }, dependent: :destroy
   has_many :assessments, through: :assessment_custom_questions
 
+  has_many :custom_question_responses, dependent: :destroy
+
   pg_search_scope :filter_by_search_query,
                   against: :title,
                   using: {

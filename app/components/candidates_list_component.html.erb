@@ -57,12 +57,7 @@
                     <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800"><%= assessment_participation.status.humanize %></td>
                     <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell"><%= assessment_participation.created_at.strftime("%b %d, %Y") %></td>
                     <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell">
-                      <div class="flex items-center">
-                        <% rating = assessment_participation.rating || 0 %>
-                        <% 5.times do |i| %>
-                          <%= helpers.svg_tag "star", class: "h-5 w-5 flex-shrink-0 #{i < rating ? 'text-yellow-400' : 'text-gray-200'}" %>
-                        <% end %>
-                      </div>
+                      <%= render(StarRatingComponent.new(rating: assessment_participation.rating)) %>
                     </td>
 
                     <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">

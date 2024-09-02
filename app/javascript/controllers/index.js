@@ -28,6 +28,9 @@ application.register("copy-link", CopyLinkController)
 import CountdownController from "./countdown_controller"
 application.register("countdown", CountdownController)
 
+import CustomQuestionRatingController from "./custom_question_rating_controller"
+application.register("custom-question-rating", CustomQuestionRatingController)
+
 import EmailInvitingController from "./email_inviting_controller"
 application.register("email-inviting", EmailInvitingController)
 

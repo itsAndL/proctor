@@ -13,7 +13,11 @@ Rails.application.routes.draw do
     resources :preview_questions, only: %i[show], param: :hashid
   end
   resources :custom_question_library, only: %i[index], param: :hashid
-
+  resources :custom_question_responses, only: %i[edit update], param: :hashid do
+    member do
+      get :download
+    end
+  end
   resources :assessment_participations, only: [:destroy], param: :hashid do
     member do
       get :delete_confirmation
