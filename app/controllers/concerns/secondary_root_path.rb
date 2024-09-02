@@ -7,7 +7,7 @@ module SecondaryRootPath
     if helpers.current_business&.persisted?
       assessments_path
     elsif helpers.current_candidate&.persisted?
-      candidate_assessments_path
+      candidate_assessment_participations_path
     else
       new_role_path
     end
