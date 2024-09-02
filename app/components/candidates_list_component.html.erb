@@ -73,7 +73,7 @@
 
                         <div tabindex="<%= index %>" class="dropdown-content absolute right-8 -top-4 z-10 mt-2 w-68 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                           <div class="py-1" role="none">
-                            <div data-controller="copy-link" data-copy-link-link-value="<%= "#{candidate_assessments_1_url}?status=invited" %>">
+                            <div data-controller="copy-link" data-copy-link-link-value="<%= candidate_assessment_participation_path(assessment_participation) %>">
                               <button type="button"
                                       data-action="click->copy-link#copy"
                                       class="group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium">
