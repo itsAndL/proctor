@@ -1,0 +1,50 @@
+<%= tag.turbo_frame id: "report-custom-questions" do %>
+  <div class="py-6 px-4 sm:p-8">
+    <div class="border border-gray-200 bg-white rounded-xl h-fit">
+      <div class="p-5">
+        <h2 class="text-base font-bold text-black">Custom questions</h2>
+      </div>
+
+      <div class="flow-root">
+        <div class="inline-block min-w-full align-middle">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="border-t border-gray-200">
+              <tr>
+                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-bold text-gray-800 sm:pl-6">Question</th>
+                <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800">View answer</th>
+                <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden sm:table-cell">Avg. rating</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <% @assessment_participation.custom_question_responses.each do |custom_question_response| %>
+                <tr>
+                  <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6 flex items-center gap-x-2">
+                    <div>
+                      <%= helpers.svg_tag helpers.custom_question_type_icon(custom_question_response.custom_question), class: "size-6" %>
+                    </div>
+                    <p><%= truncate(custom_question_response.custom_question.content.to_plain_text, length: 135, escape: false) %></p>
+                  </td>
+                  <td class="px-3 py-4 text-sm font-medium text-gray-800">
+                    <%= link_to edit_custom_question_response_path(custom_question_response), class: 'secondary-button gap-x-2 px-3', data: { turbo_frame: "modal" } do %>
+                      <% case custom_question_response.custom_question.type %>
+                      <% when "EssayCustomQuestion" %>
+                        <%= helpers.svg_tag "eye", class: "size-4", "stroke-width": 2 %>
+                        <span>Read</span>
+                      <% when "FileUploadCustomQuestion" %>
+                        <%= helpers.svg_tag "arrow_down_tray", class: "size-4", "stroke-width": 2 %>
+                        <span>Download</span>
+                      <% end %>
+                    <% end %>
+                  </td>
+                  <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden sm:table-cell">
+                    <%= render(StarRatingComponent.new(rating: custom_question_response.rating)) %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
