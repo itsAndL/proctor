@@ -85,6 +85,7 @@ Rails.application.routes.draw do
     get 'checkout', to: 'checkout#show'
     get 'test/1/feedback', to: 'test#feedback'
     get 'test/1/questions', to: 'test#questions'
+    get 'test/1/intro', to: 'test#intro'
     get 'practice_test/1/intro', to: 'practice_test#intro'
     get 'practice_test/1/questions', to: 'practice_test#questions'
   end
