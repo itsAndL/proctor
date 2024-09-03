@@ -8,8 +8,6 @@ class Test < ApplicationRecord
   has_many :assessment_tests, -> { order(position: :asc) }, dependent: :destroy
   has_many :assessments, through: :assessment_tests
 
-  has_many :question_answers, dependent: :destroy
-
   belongs_to :test_category
 
   validates :title, :overview, :description, :level, :relevancy, :type, presence: true

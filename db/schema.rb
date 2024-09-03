@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_30_120011) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_03_081903) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
@@ -134,6 +134,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_30_120011) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "custom_question_responses", force: :cascade do |t|
+    t.bigint "assessment_participation_id", null: false
+    t.bigint "custom_question_id", null: false
+    t.integer "rating"
+    t.integer "duration_seconds", default: 0
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assessment_participation_id", "custom_question_id"], name: "index_custom_question_responses_uniqueness", unique: true
+    t.index ["assessment_participation_id"], name: "index_custom_question_responses_on_assessment_participation_id"
+    t.index ["custom_question_id"], name: "index_custom_question_responses_on_custom_question_id"
+  end
+
   create_table "custom_questions", force: :cascade do |t|
     t.string "title"
     t.text "relevancy"
@@ -158,17 +171,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_30_120011) do
 
   create_table "question_answers", force: :cascade do |t|
     t.bigint "assessment_participation_id", null: false
-    t.bigint "question_id", null: false
-    t.bigint "test_id", null: false
     t.jsonb "content", default: {}, null: false
     t.boolean "is_correct"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["assessment_participation_id", "question_id", "test_id"], name: "index_question_answers_on_participation_question_and_test", unique: true
+    t.bigint "test_question_id", null: false
+    t.index ["assessment_participation_id", "test_question_id"], name: "index_question_answers_on_participation_and_test_question", unique: true
     t.index ["assessment_participation_id"], name: "index_question_answers_on_assessment_participation_id"
     t.index ["content"], name: "index_question_answers_on_content", using: :gin
-    t.index ["question_id"], name: "index_question_answers_on_question_id"
-    t.index ["test_id"], name: "index_question_answers_on_test_id"
+    t.index ["test_question_id"], name: "index_question_answers_on_test_question_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -247,10 +258,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_30_120011) do
   add_foreign_key "assessments", "businesses"
   add_foreign_key "businesses", "users"
   add_foreign_key "candidates", "users"
+  add_foreign_key "custom_question_responses", "assessment_participations"
+  add_foreign_key "custom_question_responses", "custom_questions"
   add_foreign_key "custom_questions", "custom_question_categories"
   add_foreign_key "question_answers", "assessment_participations"
-  add_foreign_key "question_answers", "questions"
-  add_foreign_key "question_answers", "tests"
+  add_foreign_key "question_answers", "test_questions"
   add_foreign_key "test_questions", "questions"
   add_foreign_key "test_questions", "tests"
   add_foreign_key "tests", "test_categories"

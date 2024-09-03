@@ -7,7 +7,6 @@ class Question < ApplicationRecord
   has_many :tests, through: :test_question
 
   has_many :options, as: :optionable, dependent: :destroy, autosave: true
-  has_many :question_answers, dependent: :destroy
 
   validates :content, :type, presence: true
   validate :validate_duration_seconds

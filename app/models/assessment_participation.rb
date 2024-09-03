@@ -7,6 +7,7 @@ class AssessmentParticipation < ApplicationRecord
   belongs_to :candidate, optional: true
 
   has_many :question_answers, dependent: :destroy
+  has_many :custom_question_responses, dependent: :destroy
 
   enum status: { invited: 0, invitation_clicked: 1, started: 2, completed: 3 }
 
@@ -29,14 +30,14 @@ class AssessmentParticipation < ApplicationRecord
                   }
 
   def compute_test_result(test)
-    total_questions = test.questions.count
-    answered_questions = question_answers.where(test: test).count
-    correct_answers = question_answers.where(test: test, is_correct: true).count
+    total_questions = test.test_questions.count
+    answered_questions = question_answers.joins(:test_question).where(test_questions: { test_id: test.id }).count
+    correct_answers = question_answers.joins(:test_question).where(test_questions: { test_id: test.id }, is_correct: true).count
 
     is_test_completed = (answered_questions == total_questions)
     score_percentage = if is_test_completed && total_questions > 0
-                        (correct_answers.to_f / total_questions * 100).round(2)
-                      end
+                         (correct_answers.to_f / total_questions * 100).round(2)
+                       end
 
     OpenStruct.new(
       test_id: test.id,
