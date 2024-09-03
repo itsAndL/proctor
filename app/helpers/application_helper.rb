@@ -9,6 +9,10 @@ module ApplicationHelper
     doc.to_html.html_safe
   end
 
+  def human_date(date)
+    date.strftime('%B %d, %Y')
+  end
+
   def assesskit_url
     "https://www.assesskit.com"
   end

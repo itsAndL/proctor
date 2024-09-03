@@ -1,35 +1,24 @@
-<header class="border-b border-gray-300">
-  <div class="bg-white py-5 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex justify-center md:justify-start">
-    <h1 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">Milk Road</h1>
-  </div>
-</header>
-
+<%= render ParticipationHeaderComponent.new(company: @assessment_participation.assessment.business.company) %>
 <main class="bg-zinc-50 h-full pt-10">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
     <div class="border border-gray-200 bg-white rounded-xl px-6 py-10 md:px-12 md:py-16">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-9">
-        <div> 
+        <div>
           <h1 class="font-extrabold leading-7 text-gray-800 text-2xl pb-2 border-b-2 border-gray-900">Camera setup</h1>
           <p class="my-5 text-gray-800 space-y-3 font-medium">We use camera images to ensure fairness for everyone. Make sure that you are in front of your camera.</p>
           <div class="border-t border-gray-300 pt-5 pr-2">
             <div class="flex justify-between">
               <div>
                 <dt class="font-bold text-gray-900 flex items-center gap-x-1.5">
-                  <svg class="size-4" width="100%" height="100%" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">
-                    <path d="M2 20.5465V4.54651H18V11.0465L22 7.04651V18.0465L18 14.0465V20.5465H2ZM4 18.5465H16V6.54651H4V18.5465Z" fill="currentColor"></path>
-                  </svg>
+                  <%= svg_tag "webcam", class: "size-4" %>
                   Camera:
                 </dt>
                 <dd class="mt-2 text-gray-900 font-medium text-sm">Integrated Webcam (0c45:6730)</dd>
               </div>
-
               <div class="dropdown dropdown-hover">
                 <button type="button" class="rounded-full p-2 text-blue-600 hover:bg-zinc-100">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
-                  </svg>
+                  <%= svg_tag "ellipsis_vertical" %>
                 </button>
-
                 <div class="dropdown-content absolute -right-6 z-10 -mr-3.5 mt-2 origin-top-right">
                   <div class="triangle triangle-t triangle-h-2 triangle-w-4 mx-auto -mb-0.5 text-gray-900"></div>
                   <div class="rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none py-2 px-3 whitespace-nowrap bg-gray-900 text-sm text-white font-medium">Select camera</div>
@@ -51,15 +40,11 @@
           </div>
         </div>
       </div>
-
       <div data-controller="fullscreen" class="mt-12 flex justify-end">
-        <button data-action="fullscreen#enterFullscreen" type="button" class="inline-flex gap-x-2.5 items-center rounded-full bg-blue-600 px-7 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+        <button data-action="fullscreen#enterFullscreen" type="button" class="px-7 py-3 primary-button gap-x-2.5">
           <span>Next</span>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-3">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-          </svg>
+          <%= svg_tag "chevron_right", class: "size-3 -mb-0.5", "stroke-width": 3 %>
         </button>
-
         <a href="/talent_assessment/practice_test/1/intro" data-fullscreen-target="nextPage" class="hidden"></a>
       </div>
     </div>
