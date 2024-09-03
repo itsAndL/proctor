@@ -3,11 +3,11 @@
     <div
       data-controller="notification"
       data-notification-delay-value="5000"
-      class="fixed z-50 px-4 py-6 sm:p-4 w-full sm:w-96 sm:top-0 sm:right-0 bottom-0 sm:bottom-auto flex justify-center sm:justify-end"
+      class="fixed z-50 px-4 py-6 w-full bottom-0 flex justify-center"
       data-notification-target="container"
     >
       <div 
-        class="w-full sm:w-auto transform overflow-hidden rounded-lg bg-white shadow-xl ring-1 ring-black ring-opacity-5 transition-all duration-500 ease-out notification-slide"
+        class="w-full max-w-sm transform overflow-hidden rounded-lg bg-white shadow-xl ring-1 ring-black ring-opacity-5 transition-all duration-500 ease-out notification-slide"
         data-notification-target="content"
       >
         <div class="relative p-4">
@@ -51,28 +51,6 @@
     </div>
 
     <style>
-      @keyframes slideInFromTop {
-        0% {
-          transform: translateY(-100%);
-          opacity: 0;
-        }
-        100% {
-          transform: translateY(0);
-          opacity: 1;
-        }
-      }
-
-      @keyframes slideOutToTop {
-        0% {
-          transform: translateY(0);
-          opacity: 1;
-        }
-        100% {
-          transform: translateY(-100%);
-          opacity: 0;
-        }
-      }
-
       @keyframes slideInFromBottom {
         0% {
           transform: translateY(100%);
@@ -105,13 +83,7 @@
 
       @media (min-width: 640px) {
         .notification-slide {
-          width: calc(100% - 1rem);
-          margin-right: 1rem;
-          animation: slideInFromTop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        }
-
-        .notification-slide.hide {
-          animation: slideOutToTop 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+          margin-bottom: 1rem;
         }
       }
     </style>
