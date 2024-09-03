@@ -1,4 +1,4 @@
-<%= render AssessmentParticipationHeaderComponent.new(company: @assessment_participation.assessment.business.company) %>
+<%= render ParticipationHeaderComponent.new(company: @assessment_participation.assessment.business.company) %>
 <main class="bg-zinc-50 h-full pt-10">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
     <div class="border border-gray-200 bg-white rounded-xl px-6 py-10 md:px-12 md:py-16">
@@ -14,9 +14,7 @@
         <div>
           <h1 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">A few things before you start:</h1>
           <ul class="mt-6 space-y-3.5 list-disc font-medium text-base ml-7">
-            <li>This assessment consists of <strong>
-                <%= @assessment_participation.assessment.tests.count %> parts</strong>
-            </strong> test. It will take approximately <strong><%= format_duration(@assessment_participation.assessment.duration_seconds)%></strong> to complete.</li>
+            <li>This assessment consists of <strong><%= pluralize(@assessment_participation.assessment.parts_count, "part") %></strong>. It will take approximately <strong><%= format_duration(@assessment_participation.assessment.duration_seconds)%></strong> to complete.</li>
           <li>The assessment is timed. A timer is shown per test or per question.</li>
           <li>Before each test there may be preview questions, <strong>be aware the timer for the test will have already started.</strong></li>
           <li>Please allow the use of your camera/webcam and do not leave full-screen mode. Snapshots will be taken of you periodically during the assessment. These measures are taken to ensure fairness for everyone.</li>
@@ -32,6 +30,4 @@
       <% end %>
     </div>
   </div>
-</div>
-</div>
 </main>

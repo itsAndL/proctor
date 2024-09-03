@@ -3,14 +3,16 @@
     <div class="flex flex-col sm:flex-row gap-x-4 gap-y-8 sm:items-center sm:justify-between">
       <div class="min-w-0 flex-1 flex items-center gap-x-2">
         <%= link_to candidate_assessment_participations_path(), class: "secondary-button p-2.5 mr-4 sm:mr-8" do %>
-          <%= svg_tag "chevron_right", class: "size-3 -mb-0.5", "stroke-width": 3 %>
+          <%= svg_tag "chevron_left", class: "size-3 -mb-0.5", "stroke-width": 3 %>
         <% end %>
         <div>
           <div class="flex items-center">
             <h2 class="truncate text-xl font-bold leading-7 text-slate-900">
               <%= @assessment_participation.assessment.title %>
             </h2>
-            <p class="ml-3 whitespace-nowrap rounded-full bg-blue-200 px-2 text-xs font-semibold leading-6 text-blue-900">Invited</p>
+            <p class="ml-3 whitespace-nowrap rounded-full px-2 text-xs font-semibold leading-6 <%= status_style(@assessment_participation.status) %>">
+              <%= @assessment_participation.status.capitalize %>
+            </p>
           </div>
           <div class="mt-4 flex flex-col md:flex-row gap-y-3 md:gap-y-0 md:gap-x-8">
             <div class="flex gap-x-1 items-center col-span-2">
@@ -38,38 +40,71 @@
   </div>
 </div>
 <main class="bg-zinc-50 h-full">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-16 space-y-12">
-    <div>
-      <h2 class="font-bold leading-7 text-gray-900 text-xl">About</h2>
-      <div class="bg-white py-5 px-6 rounded-xl border mt-3">
-        <dl class="grid sm:grid-cols-2 gap-x-8 gap-y-6 max-w-3xl">
-          <div>
-            <dt class="font-bold text-gray-800">Tests</dt>
-            <dd class="mt-2 text-gray-800 font-medium text-sm">
-              <%= @assessment_participation.assessment.tests.count %>
-            </dd>
-          </div>
-          <div>
-            <dt class="font-bold text-gray-800">Approximate time to complete assessment:</dt>
-            <dd class="mt-2 text-gray-800 font-medium text-sm">
-              <%= format_duration(@assessment_participation.assessment.duration_seconds) %>
-            </dd>
-          </div>
-        </dl>
+  <% unless @assessment_participation.completed? %>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-16 space-y-12">
+      <div>
+        <h2 class="font-bold leading-7 text-gray-900 text-xl">About</h2>
+        <div class="bg-white py-5 px-6 rounded-xl border mt-3">
+          <dl class="grid sm:grid-cols-2 gap-x-8 gap-y-6 max-w-3xl">
+            <div>
+              <dt class="font-bold text-gray-800">Tests</dt>
+              <dd class="mt-2 text-gray-800 font-medium text-sm">
+                <%= @assessment_participation.assessment.parts_count %>
+              </dd>
+            </div>
+            <div>
+              <dt class="font-bold text-gray-800">Approximate time to complete assessment:</dt>
+              <dd class="mt-2 text-gray-800 font-medium text-sm">
+                <%= format_duration(@assessment_participation.assessment.duration_seconds) %>
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+      <div>
+        <h2 class="font-bold leading-7 text-gray-900 text-xl">A few things before you start</h2>
+        <div class="bg-white py-5 pl-12 pr-6 rounded-xl border mt-3">
+          <ul class="list-disc font-medium text-sm marker:text-blue-600 marker:text-lg space-y-1.5">
+            <li>The assessment is timed. A timer is shown per test or per question.</li>
+            <li>Before each test there may be preview questions, <strong>be aware the timer for the test will have already started.</strong></li>
+            <li>Please allow the use of your camera/webcam and do not leave full-screen mode. Snapshots will be taken of you periodically during the assessment. These measures are taken to ensure fairness for everyone.</li>
+            <li>Turn on your speakers or headphones (to play audio).</li>
+            <li>You are free to use a calculator, pen and paper.</li>
+            <li>We recommend completing the assessment in one go.</li>
+          </ul>
+        </div>
       </div>
     </div>
-    <div>
-      <h2 class="font-bold leading-7 text-gray-900 text-xl">A few things before you start</h2>
-      <div class="bg-white py-5 pl-12 pr-6 rounded-xl border mt-3">
-        <ul class="list-disc font-medium text-sm marker:text-blue-600 marker:text-lg space-y-1.5">
-          <li>The assessment is timed. A timer is shown per test or per question.</li>
-          <li>Before each test there may be preview questions, <strong>be aware the timer for the test will have already started.</strong></li>
-          <li>Please allow the use of your camera/webcam and do not leave full-screen mode. Snapshots will be taken of you periodically during the assessment. These measures are taken to ensure fairness for everyone.</li>
-          <li>Turn on your speakers or headphones (to play audio).</li>
-          <li>You are free to use a calculator, pen and paper.</li>
-          <li>We recommend completing the assessment in one go.</li>
-        </ul>
+  <% end %>
+  <% if @assessment_participation.completed? %>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-16">
+      <h2 class="font-bold leading-7 text-gray-800 text-xl">Tests</h2>
+      <div class="mt-4 border border-gray-200 bg-white rounded-xl">
+        <div class="flow-root">
+          <div class="inline-block min-w-full align-middle">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead>
+                <tr>
+                  <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-bold text-gray-800 sm:pl-6">Name</th>
+                  <th scope="col" class="py-3.5 pl-3 pr-4 sm:pr-6 text-left text-sm font-bold text-gray-800 hidden sm:table-cell">Time Taken</th>
+                  <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-right">Score</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                <% @assessment_participation.assessment.tests.each do |test| %>
+                  <tr>
+                    <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6"><%= test.title %></td>
+                    <td class="whitespace-nowrap py-4 pl-3 pr-4 sm:pr-6 text-sm font-medium text-gray-800 hidden sm:table-cell"><%= format_duration(0) %> out of <%= format_duration(test.duration_seconds) %></td>
+                    <td class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-bold text-gray-800 sm:pr-6"><%= @assessment_participation.compute_test_result(test).score_percentage || 0 %>%</td>
+                  </tr>
+                  </tr>
+                <% end %>
+              </tbody>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 </main>

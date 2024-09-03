@@ -101,6 +101,10 @@ class Assessment < ApplicationRecord
     rand(0..100)
   end
 
+  def parts_count
+    tests.count + custom_questions.count
+  end
+
   private
 
   def max_five_tests
