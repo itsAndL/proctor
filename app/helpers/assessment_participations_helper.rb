@@ -1,8 +1,4 @@
 module AssessmentParticipationsHelper
-  def human_date(date)
-    date.strftime('%B %d, %Y')
-  end
-
   def status_style(status)
     case status
     when 'completed'
