@@ -1,7 +1,7 @@
 class Candidate::AssessmentParticipationsController < ApplicationController
   before_action :authenticate_candidate!
-  before_action :set_assessment_participation, only: [:show, :overview, :setup, :intro]
-  before_action :hide_navbar, only: [:overview, :setup, :intro]
+  before_action :set_assessment_participation, only: [:show, :overview, :setup]
+  before_action :hide_navbar, only: [:overview, :setup]
 
   def index
     @assessment_participations = current_candidate.assessment_participations
@@ -11,7 +11,6 @@ class Candidate::AssessmentParticipationsController < ApplicationController
 
   def overview; end
   def setup; end
-  def intro; end
 
   private
 
