@@ -15,12 +15,24 @@
         <%= render AntiCheatingMonitor::ItemComponent.new(icon: "fullscreen", label: "Full-screen mode always active?", value: fullscreen_active) %>
         <%= render AntiCheatingMonitor::ItemComponent.new(icon: "mouse", label: "Mouse always in assessment window?", value: mouse_in_window) %>
       </div>
-      <% if @assessment_participation.completed? %>
-        <div class="mt-7">
-          <%= image_tag "candidate.jpg", class: "rounded-lg" %>
-          <div class="relative h-0.5 bg-gray-300 mt-5 mx-1.5">
-            <div class="absolute h-full w-20 bg-blue-600 flex items-center justify-end">
-              <button type="button" class="rounded-full size-4 bg-blue-600 shadow"></button>
+
+      <% if @assessment_participation.completed? && @screenshots.any? %>
+        <div class="mt-7" data-controller="screenshot-slider" data-screenshot-slider-screenshots-value="<%= screenshots_json %>">
+          <div class="aspect-w-16 aspect-h-9 relative overflow-hidden rounded-lg">
+            <%= image_tag @screenshots.first.image, class: "absolute inset-0 w-full h-full object-cover", data: { screenshot_slider_target: "image" } %>
+          </div>
+          <div class="relative h-0.5 bg-gray-300 mt-5 mx-1.5" 
+              data-screenshot-slider-target="sliderContainer"
+              data-action="click->screenshot-slider#handleBarClick">
+            <div class="absolute left-0 top-0 h-full bg-blue-600" data-screenshot-slider-target="progress"></div>
+            <input type="range" min="0" max="<%= @screenshots.count - 1 %>" value="0"
+                  class="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
+                  data-screenshot-slider-target="slider"
+                  data-action="input->screenshot-slider#updateScreenshot">
+            <div class="absolute top-1/2 -translate-y-1/2 cursor-pointer" 
+                data-screenshot-slider-target="handle"
+                data-action="mousedown->screenshot-slider#startDragging touchstart->screenshot-slider#startDragging">
+              <div class="w-4 h-4 bg-blue-600 rounded-full shadow-md"></div>
             </div>
           </div>
         </div>

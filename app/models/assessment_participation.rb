@@ -8,6 +8,7 @@ class AssessmentParticipation < ApplicationRecord
 
   has_many :question_answers, dependent: :destroy
   has_many :custom_question_responses, dependent: :destroy
+  has_many :screenshots, dependent: :destroy
 
   enum status: { invited: 0, invitation_clicked: 1, started: 2, completed: 3 }
 

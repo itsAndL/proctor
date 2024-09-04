@@ -3,6 +3,7 @@
 class AntiCheatingMonitorComponent < ViewComponent::Base
   def initialize(assessment_participation:)
     @assessment_participation = assessment_participation
+    @screenshots = @assessment_participation.screenshots.order(:created_at)
   end
 
   def device_used
@@ -29,15 +30,19 @@ class AntiCheatingMonitorComponent < ViewComponent::Base
     check_status(:mouse_always_in_window)
   end
 
-  def started_or_completed?
-    @assessment_participation.started? || @assessment_participation.completed?
+  def screenshots_json
+    @screenshots.map do |screenshot|
+      {
+        id: screenshot.id,
+        url: rails_blob_url(screenshot.image),
+        timestamp: screenshot.created_at.to_i
+      }
+    end.to_json
   end
 
   private
 
   def check_status(attribute)
-    return "N/A" unless started_or_completed?
-
     value = @assessment_participation.send(attribute)
     case value
     when true

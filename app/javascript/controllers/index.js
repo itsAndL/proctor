@@ -55,6 +55,9 @@ application.register("modal", ModalController)
 import NotificationController from "./notification_controller"
 application.register("notification", NotificationController)
 
+import ScreenshotSliderController from "./screenshot_slider_controller"
+application.register("screenshot-slider", ScreenshotSliderController)
+
 import SearchController from "./search_controller"
 application.register("search", SearchController)
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_03_081903) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_04_143625) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
@@ -190,6 +190,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_03_081903) do
     t.integer "duration_seconds", default: 0
   end
 
+  create_table "screenshots", force: :cascade do |t|
+    t.bigint "assessment_participation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assessment_participation_id"], name: "index_screenshots_on_assessment_participation_id"
+  end
+
   create_table "temp_candidates", force: :cascade do |t|
     t.string "name"
     t.citext "email"
@@ -263,6 +270,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_03_081903) do
   add_foreign_key "custom_questions", "custom_question_categories"
   add_foreign_key "question_answers", "assessment_participations"
   add_foreign_key "question_answers", "test_questions"
+  add_foreign_key "screenshots", "assessment_participations"
   add_foreign_key "test_questions", "questions"
   add_foreign_key "test_questions", "tests"
   add_foreign_key "tests", "test_categories"
