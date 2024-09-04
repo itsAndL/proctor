@@ -92,8 +92,7 @@ Rails.application.routes.draw do
 
   # Routes for customer
   namespace :customer do
-    get 'candidates', to: 'candidates#index'
-    get 'candidates/1', to: 'candidates#show'
+    resources :candidates, only: %i[index show], param: :hashid
 
     get 'profile/team', to: 'profile#team'
   end

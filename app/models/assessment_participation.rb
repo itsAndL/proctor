@@ -75,6 +75,14 @@ class AssessmentParticipation < ApplicationRecord
     candidate || temp_candidate
   end
 
+  def last_activity
+    [
+      question_answers.maximum(:updated_at),
+      custom_question_responses.maximum(:updated_at),
+      updated_at
+    ].compact.max
+  end
+
   private
 
   def candidate_or_temp_candidate_present

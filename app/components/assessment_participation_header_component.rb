@@ -7,6 +7,20 @@ class AssessmentParticipationHeaderComponent < ViewComponent::Base
     @participants = @assessment.assessment_participations.order(created_at: :desc)
   end
 
+  def call
+    render(EntityHeaderComponent.new(
+      entity: @assessment_participation,
+      back_path: assessment_path(@assessment),
+      show_navigation: true,
+      prev_path: prev_participant_path,
+      next_path: next_participant_path,
+      current_index: current_index,
+      total_count: total_participants
+    ))
+  end
+
+  private
+
   def total_participants
     @participants.count
   end

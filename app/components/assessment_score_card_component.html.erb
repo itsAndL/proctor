@@ -1,0 +1,60 @@
+<div class="divide-y-2 divide-zinc-200 bg-white shadow rounded-xl">
+  <div class="py-6 sm:py-9 px-8">
+    <div class="max-sm:px-4 flex flex-col sm:flex-row sm:justify-between sm:items-center sm:gap-x-7 max-sm:gap-y-8">
+      <div>
+        <div class="flex items-center gap-x-5 mb-2">
+          <h3 class="text-xl font-bold text-gray-700">Assessment</h3>
+          <p class="text-xl font-semibold text-gray-600"><%= assessment.title %></p>
+        </div>
+        <%= render(StarRatingComponent.new(assessment_participation)) %>
+      </div>
+      <div class="dropdown dropdown-hover">
+        <button type="button" class="inline-flex gap-x-2 items-center ring-1 rounded-full p-2.5 text-sm font-semibold focus:outline-none ring-slate-700 text-slate-700 hover:text-slate-900  active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300">
+          <%= helpers.svg_tag "envelope", class: "size-5" %>
+        </button>
+
+        <div class="dropdown-content absolute max-sm:-left-2 sm:-right-2 z-10 -mr-1 mt-2 origin-top-right">
+          <div class="triangle triangle-t triangle-h-2 triangle-w-4 sm:ml-auto max-sm:ml-6 sm:mr-6 -mb-0.5 text-gray-900"></div>
+          <div class="rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none py-2 px-3 whitespace-nowrap bg-gray-900 text-sm text-white font-medium">Send results to candidate</div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-x-10 divide-y-2 sm:divide-y-0 divide-gray-300 sm:gap-y-8">
+      <dl class="max-sm:px-4 order-1 grid grid-cols-2 gap-x-4 gap-y-7 sm:grid-cols-1 h-fit pb-7 sm:pb-0 max-sm:-mt-3">
+        <div>
+          <dt class="font-bold text-gray-800">Invited</dt>
+          <dd class="mt-1 text-gray-800 font-medium text-sm"><%= invited_date %></dd>
+        </div>
+        <div>
+          <dt class="font-bold text-gray-800">Average score</dt>
+          <dd class="mt-1 text-gray-800 font-medium text-sm">
+            <% if overall_score_percentage.nil? %>
+              <%= helpers.svg_tag "minus" %>
+            <% else %>
+              <p><%= overall_score_percentage %> %</p>
+            <% end %>
+          </dd>
+        </div>
+        <div>
+          <dt class="font-bold text-gray-800">Status</dt>
+          <dd class="mt-1 text-gray-800 font-medium text-sm"><%= status %></dd>
+        </div>
+      </dl>
+      <div class="max-sm:px-4 order-3 lg:order-2 col-span-full lg:col-span-2 h-fit pt-7 sm:pt-0">
+      <% if tests_present? %>
+        <% if assessment_in_progress? %>
+          <%= render AssessmentResultsComponent.new(assessment_participation: assessment_participation) %>
+        <% else %>
+          <%= render NotStartedComponent.new %>
+        <% end %>
+      <% else %>
+        <%= render EmptyTestResultsComponent.new %>
+      <% end %>
+      </div>
+      <%= render AntiCheatingMonitorComponent.new(assessment_participation: assessment_participation) %>
+    </div>
+  </div>
+  
+  <%= render ReportCustomQuestionsComponent.new(assessment_participation: assessment_participation) %>
+  <%= render CandidateRatingComponent.new(assessment_participation: assessment_participation) %>
+</div>

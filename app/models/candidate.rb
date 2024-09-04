@@ -1,6 +1,7 @@
 class Candidate < ApplicationRecord
   include Avatarable
   include Hashid::Rails
+  include PgSearch::Model
 
   belongs_to :user
 
@@ -15,7 +16,17 @@ class Candidate < ApplicationRecord
     joins(:user).where("LOWER(users.email) = LOWER(?)", email)
   }
 
+  pg_search_scope :filter_by_search_query,
+                  against: :name,
+                  using: {
+                    tsearch: { prefix: true }
+                  }
+
   def self.find_by_email(email)
     with_email(email).first
+  end
+
+  def last_activity
+    assessment_participations.map(&:last_activity).max
   end
 end

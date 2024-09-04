@@ -55,9 +55,9 @@
                       <% end %>
                     </td>
                     <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800"><%= assessment_participation.status.humanize %></td>
-                    <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell"><%= assessment_participation.created_at.strftime("%b %d, %Y") %></td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell"><%= helpers.human_date assessment_participation.created_at %></td>
                     <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell">
-                      <%= render(StarRatingComponent.new(rating: assessment_participation.rating)) %>
+                      <%= render(StarRatingComponent.new(assessment_participation)) %>
                     </td>
 
                     <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
@@ -86,6 +86,11 @@
                                 <span>Send reminder</span>
                               <% end %>
                             <% end %>
+
+                            <button type="button" class="group flex items-center gap-x-2.5 px-4 py-2 text-sm <%= started_or_completed?(assessment_participation) ? "text-gray-700" : "text-gray-400 pointer-events-none" %> font-medium">
+                              <%= helpers.svg_tag "envelope", class: "size-5 group-hover:text-gray-500", "stroke-width": 2 %>
+                              <span data-copy-link-target="text">Send results</span>
+                            </button>
 
                             <%= button_to delete_confirmation_assessment_participation_path(assessment_participation),
                                 method: :get,

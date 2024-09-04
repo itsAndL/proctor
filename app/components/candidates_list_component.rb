@@ -8,4 +8,8 @@ class CandidatesListComponent < ViewComponent::Base
     @total_items = total_items
     @per_page = per_page
   end
+
+  def started_or_completed?(assessment_participation)
+    assessment_participation.started? || assessment_participation.completed?
+  end
 end
