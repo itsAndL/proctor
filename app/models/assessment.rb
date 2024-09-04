@@ -35,6 +35,8 @@ class Assessment < ApplicationRecord
   has_many :assessment_participations, dependent: :destroy
   has_many :temp_candidates, through: :assessment_participations
   has_many :candidates, through: :assessment_participations
+  has_many :question_answers, through: :assessment_participations
+  has_many :custom_question_responses, through: :assessment_participations
 
   pg_search_scope :filter_by_search_query,
                   against: :title,
@@ -103,6 +105,15 @@ class Assessment < ApplicationRecord
 
   def parts_count
     tests.count + custom_questions.count
+  end
+
+  def last_activity
+    [
+      assessment_participations.maximum(:updated_at),
+      question_answers.maximum(:updated_at),
+      custom_question_responses.maximum(:updated_at),
+      updated_at
+    ].compact.max
   end
 
   private

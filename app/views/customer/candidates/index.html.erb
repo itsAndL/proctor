@@ -11,24 +11,27 @@
       </div>
     </div>
 
-    <div class="pt-2 sm:pt-5 pb-5 flex flex-row gap-x-3 sm:gap-x-5">
-      <div class="relative rounded-md-sm w-full max-w-xs">
-        <input type="text" name="candidate" id="candidate" class="block w-full rounded-full py-2.5 pl-5 pr-10 text-gray-800 border border-gray-800 placeholder:text-gray-400 font-medium focus:border focus:border-gray-800 focus:ring-1 focus:ring-inset focus:ring-gray-800 sm:text-sm sm:leading-6" placeholder="Search candidates">
-        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="h-5 w-5 text-gray-400">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-          </svg>
+    <%= form_with url: customer_candidates_path, method: :get, data: { controller: "search", search_target: "form" } do |form| %>
+      <div class="pt-2 sm:pt-5 pb-5 flex flex-col sm:flex-row items-center gap-y-4 sm:gap-x-5">
+        <div class="w-full sm:max-w-xs">
+          <%= render SearchInputComponent.new(form:, placeholder: "Search candidates") %>
         </div>
-      </div>
 
-      <div class="relative rounded-md-sm w-60">
-        <select id="location" name="location" class="block w-full rounded-full py-2.5 pl-5 pr-10 text-gray-800 border border-gray-800 placeholder:text-gray-400 font-medium focus:border focus:border-gray-800 focus:ring-1 focus:ring-inset focus:ring-gray-800 sm:text-sm sm:leading-6">
-          <option class="font-medium" value="" disabled selected>Assessment</option>
-          <option class="font-medium">Sales Manager</option>
-          <option class="font-medium">Business Manager</option>
+        <select name="assessment_id" onchange="this.form.submit()" class="select-field w-full sm:w-60 py-2.5 sm:py-2 pl-5 pr-10 rounded-xl text-gray-800 border border-gray-800 placeholder:text-gray-400 font-medium focus:border focus:border-gray-800 focus:ring-1 focus:ring-inset focus:ring-gray-800 sm:text-sm sm:leading-6">
+          <option class="font-medium text-gray-400" value="" selected>Assessment</option>
+          <% current_business.assessments.each do |assessment| %>
+            <% active_option = assessment.id.to_s == params[:assessment_id] %>
+            <option class="font-medium <%= 'bg-zinc-200' if active_option %>" value="<%= assessment.id %>" <%= 'selected' if active_option %>>
+              <%= truncate(assessment.title, length: 28) %>
+            </option>
+          <% end %>
         </select>
       </div>
-    </div>
+
+      <% params.permit(:page, :per_page).to_h.each do |key, value| %>
+        <%= form.hidden_field key, value: value %>
+      <% end %>
+    <% end %>
 
     <div class="pb-16">
       <div class="border border-gray-200 bg-white rounded-xl">
@@ -47,66 +50,34 @@
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-200">
-                <tr data-controller="clickable-row" data-clickable-row-url-value="/customer/candidates/1" data-action="click->clickable-row#handleClick" class="hover:bg-blue-50 cursor-pointer">
-                  <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6 truncate">Shan Puri</td>
-                  <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden sm:table-cell">shan@example.com</td>
-                  <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800">1</td>
-                  <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell">Jun 19, 2024</td>
-                  <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
-                    <button type="button" class="text-gray-800">
-                      <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-                        <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-                      </svg>
-                    </button>
-                  </td>
-                </tr>
-    
-                <tr data-controller="clickable-row" data-clickable-row-url-value="/customer/candidates/1" data-action="click->clickable-row#handleClick" class="hover:bg-blue-50 cursor-pointer">
-                  <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6 truncate">Sam Parr</td>
-                  <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden sm:table-cell">sam@example.com</td>
-                  <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800">2</td>
-                  <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell">Jun 14, 2024</td>
-                  <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
-                    <button type="button" class="text-gray-800">
-                      <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-                        <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-                      </svg>
-                    </button>
-                  </td>
-                </tr>
+                <% @candidates.each do |candidate| %>
+                  <tr class="hover:bg-blue-50 cursor-pointer" 
+                      data-controller="clickable-row"
+                      data-clickable-row-url-value="<%= customer_candidate_path(candidate) %>"
+                      data-action="click->clickable-row#handleClick">
+                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6 truncate"><%= candidate.name %></td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden sm:table-cell"><%= candidate.email %></td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800"><%= candidate.assessments.count %></td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell"><%= human_date(candidate.last_activity) %></td>
+                    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
+                      <button type="button" class="text-gray-800 my-1">
+                        <%= svg_tag "chevron_right", class: "size-3.5", "stroke-width": 2.5 %>
+                      </button>
+                    </td>
+                  </tr>
+                <% end %>
               </tbody>
             </table>
           </div>
         </div>
 
         <!-- Pagination -->
-        <nav class="pb-5 px-5 border-t border-gray-200 flex items-center justify-between" aria-label="Pagination">
-          <div class="-mt-px flex w-0 flex-1">
-            <a href="#" class="inline-flex items-center pr-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-200 hover:text-gray-700">
-              <svg class="mr-3 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-                <path fill-rule="evenodd" d="M18 10a.75.75 0 0 1-.75.75H4.66l2.1 1.95a.75.75 0 1 1-1.02 1.1l-3.5-3.25a.75.75 0 0 1 0-1.1l3.5-3.25a.75.75 0 1 1 1.02 1.1l-2.1 1.95h12.59A.75.75 0 0 1 18 10Z" clip-rule="evenodd" />
-              </svg>
-              Previous
-            </a>
-          </div>
-          <div class="hidden md:-mt-px md:flex">
-            <a href="#" class="inline-flex items-center px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-200 hover:text-gray-700">1</a>
-            <!-- Current: "text-blue-600", Default: "text-gray-500 hover:text-gray-700" -->
-            <a href="#" class="inline-flex items-center px-4 pt-4 text-sm font-medium text-blue-600" aria-current="page">2</a>
-            <a href="#" class="inline-flex items-center px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-200 hover:text-gray-700">3</a>
-            <a href="#" class="inline-flex items-center px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-200 hover:text-gray-700">4</a>
-            <a href="#" class="inline-flex items-center px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-200 hover:text-gray-700">5</a>
-            <a href="#" class="inline-flex items-center px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-200 hover:text-gray-700">6</a>
-          </div>
-          <div class="-mt-px flex w-0 flex-1 justify-end">
-            <a href="#" class="inline-flex items-center pl-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-200 hover:text-gray-700">
-              Next
-              <svg class="ml-3 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-                <path fill-rule="evenodd" d="M2 10a.75.75 0 0 1 .75-.75h12.59l-2.1-1.95a.75.75 0 1 1 1.02-1.1l3.5 3.25a.75.75 0 0 1 0 1.1l-3.5 3.25a.75.75 0 1 1-1.02-1.1l2.1-1.95H2.75A.75.75 0 0 1 2 10Z" clip-rule="evenodd" />
-              </svg>
-            </a>
-          </div>
-        </nav>
+        <%= render PaginationComponent.new(
+          current_page: @current_page,
+          total_items: @total_items,
+          per_page: @per_page,
+          additional_params: { search_query: params[:search_query], assessment_id: params[:assessment_id] }
+        ) %>
       </div>
     </div>
   </div>
