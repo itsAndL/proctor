@@ -13,9 +13,18 @@ export default class extends Controller {
   }
 
   setRating(event) {
-    const rating = parseInt(event.currentTarget.dataset.rating)
-    this.updateStars(rating)
-    this.ratingInputTarget.value = rating
+    const clickedRating = parseInt(event.currentTarget.dataset.rating)
+    const currentRating = parseInt(this.ratingInputTarget.value) || 0
+
+    if (clickedRating === currentRating) {
+      // Deactivate all stars and set rating to nil
+      this.updateStars(0)
+      this.ratingInputTarget.value = ''
+    } else {
+      // Set new rating
+      this.updateStars(clickedRating)
+      this.ratingInputTarget.value = clickedRating
+    }
   }
 
   updateStars(rating) {

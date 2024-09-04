@@ -43,9 +43,12 @@ class AssessmentParticipationsController < ApplicationController
 
   def rate
     if @assessment_participation.update(assessment_participation_params)
-      render turbo_stream: turbo_stream.replace('notification',
-        NotificationComponent.new(notice: 'Rating updated successfully.')
-      )
+      render turbo_stream: [
+        turbo_stream.replace('notification',
+          NotificationComponent.new(notice: 'Rating updated successfully.')
+        ),
+        turbo_stream.replace(star_rating_identifier, StarRatingComponent.new(@assessment_participation))
+      ]
     else
       render turbo_stream: turbo_stream.replace('notification',
         NotificationComponent.new(alert: @assessment_participation.errors.full_messages.join(', '))
@@ -61,5 +64,9 @@ class AssessmentParticipationsController < ApplicationController
 
   def assessment_participation_params
     params.require(:assessment_participation).permit(:rating, :notes)
+  end
+
+  def star_rating_identifier
+    "star-rating-assessment_participation-#{@assessment_participation.hashid}"
   end
 end

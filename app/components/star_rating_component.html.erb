@@ -1,5 +1,7 @@
-<div class="flex items-center">
-  <% 5.times do |i| %>
-    <%= helpers.svg_tag "star", class: "h-5 w-5 flex-shrink-0 #{i < @rating ? 'text-yellow-400' : 'text-gray-200'}" %>
-  <% end %>
-</div>
+<%= tag.turbo_frame id: identifier do %>
+  <div class="flex items-center">
+    <% 5.times do |i| %>
+      <%= helpers.svg_tag "star", class: "h-5 w-5 flex-shrink-0 #{i < @rating ? 'text-yellow-400' : 'text-gray-200'}" %>
+    <% end %>
+  </div>
+<% end %>

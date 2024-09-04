@@ -14,7 +14,7 @@ class AssessmentScoreCardComponent < ViewComponent::Base
   end
 
   def invited_date
-    assessment_participation.created_at.strftime("%b %d, %Y")
+    helpers.human_date(assessment_participation.created_at)
   end
 
   def overall_score_percentage

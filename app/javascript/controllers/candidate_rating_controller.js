@@ -10,14 +10,27 @@ export default class extends Controller {
   }
 
   connect() {
-    this.updateStars(this.initialRatingValue)
+    this.updateStars(this.initialRatingValue || 0)
     this.debounceTimer = null
   }
 
   setRating(event) {
-    const rating = parseInt(event.currentTarget.dataset.rating)
-    this.updateStars(rating)
-    this.saveRating(rating)
+    const clickedRating = parseInt(event.currentTarget.dataset.rating)
+    const currentRating = this.getCurrentRating()
+
+    if (clickedRating === currentRating) {
+      // Deactivate rating
+      this.updateStars(0)
+      this.saveRating(null)
+    } else {
+      // Set new rating
+      this.updateStars(clickedRating)
+      this.saveRating(clickedRating)
+    }
+  }
+
+  getCurrentRating() {
+    return this.starTargets.filter(star => star.classList.contains("text-yellow-400")).length
   }
 
   updateStars(rating) {

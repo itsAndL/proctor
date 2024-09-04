@@ -50,21 +50,27 @@
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-200">
-                <% @candidates.each do |candidate| %>
-                  <tr class="hover:bg-blue-50 cursor-pointer" 
-                      data-controller="clickable-row"
-                      data-clickable-row-url-value="<%= customer_candidate_path(candidate) %>"
-                      data-action="click->clickable-row#handleClick">
-                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6 truncate"><%= candidate.name %></td>
-                    <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden sm:table-cell"><%= candidate.email %></td>
-                    <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800"><%= candidate.assessments.count %></td>
-                    <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell"><%= human_date(candidate.last_activity) %></td>
-                    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
-                      <button type="button" class="text-gray-800 my-1">
-                        <%= svg_tag "chevron_right", class: "size-3.5", "stroke-width": 2.5 %>
-                      </button>
-                    </td>
+                <% if @candidates.empty? %>             
+                  <tr>
+                    <td colspan="5"><%= render NoResultsComponent.new %></td>
                   </tr>
+                <% else %>
+                  <% @candidates.each do |candidate| %>
+                    <tr class="hover:bg-blue-50 cursor-pointer" 
+                        data-controller="clickable-row"
+                        data-clickable-row-url-value="<%= customer_candidate_path(candidate) %>"
+                        data-action="click->clickable-row#handleClick">
+                      <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6 truncate"><%= candidate.name %></td>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden sm:table-cell"><%= candidate.email %></td>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800"><%= candidate.assessments.count %></td>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell"><%= human_date(candidate.last_activity) %></td>
+                      <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
+                        <button type="button" class="text-gray-800 my-1">
+                          <%= svg_tag "chevron_right", class: "size-3.5", "stroke-width": 2.5 %>
+                        </button>
+                      </td>
+                    </tr>
+                  <% end %>
                 <% end %>
               </tbody>
             </table>

@@ -67,7 +67,7 @@
                       <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden sm:table-cell"><%= assessment.assessment_participations.count %></td>
                       <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden sm:table-cell"><%= assessment.progress %> %</td>
                       <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell"><%= time_ago_in_words(assessment.last_activity) %> ago</td>
-                      <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden lg:table-cell"><%= assessment.created_at.strftime("%b %d, %Y") %></td>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden lg:table-cell"><%= human_date assessment.created_at %></td>
                       <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
                         <div class="ignore dropdown dropdown-hover">
                           <button tabindex="<%= index %>" type="button" class="text-gray-800 hover:bg-white hover:rounded-full p-0.5">
