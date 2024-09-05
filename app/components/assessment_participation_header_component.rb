@@ -8,8 +8,8 @@ class AssessmentParticipationHeaderComponent < ViewComponent::Base
   end
 
   def call
-    render(EntityHeaderComponent.new(
-      entity: @assessment_participation,
+    render(ParticipantHeaderComponent.new(
+      participant: @assessment_participation.participant,
       back_path: assessment_path(@assessment),
       show_navigation: true,
       prev_path: prev_participant_path,
