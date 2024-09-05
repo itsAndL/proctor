@@ -34,7 +34,9 @@ class AntiCheatingMonitorComponent < ViewComponent::Base
     @screenshots.map do |screenshot|
       {
         id: screenshot.id,
-        url: rails_blob_url(screenshot.image),
+        thumb_url: screenshot.thumb_url,
+        preview_url: screenshot.preview_url,
+        full_url: screenshot.full_url,
         timestamp: screenshot.created_at.to_i
       }
     end.to_json

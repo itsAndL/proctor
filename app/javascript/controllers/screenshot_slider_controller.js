@@ -6,6 +6,8 @@ export default class extends Controller {
 
   connect() {
     if (this.hasScreenshotsValue) {
+      this.imageCache = new Map()
+      this.preloadThumbnails()
       this.updateScreenshot()
     }
     this.isDragging = false
@@ -48,13 +50,33 @@ export default class extends Controller {
     this.updateScreenshot()
   }
 
-  updateScreenshot() {
+  preloadThumbnails() {
+    this.screenshotsValue.forEach(screenshot => {
+      const img = new Image()
+      img.src = screenshot.thumb_url
+    })
+  }
+
+  async updateScreenshot() {
     const value = this.sliderTarget.value
     const index = Math.round(parseFloat(value))
     const screenshot = this.screenshotsValue[index]
 
-    this.imageTarget.src = screenshot.url
+    // Immediately show thumbnail
+    this.imageTarget.src = screenshot.thumb_url
 
+    // Load preview if not in cache
+    if (!this.imageCache.has(index)) {
+      const img = new Image()
+      img.src = screenshot.preview_url
+      await img.decode()
+      this.imageCache.set(index, img)
+    }
+
+    // Show preview
+    this.imageTarget.src = screenshot.preview_url
+
+    // Update progress and handle
     const progressPercentage = (value / (this.screenshotsValue.length - 1)) * 100
     this.progressTarget.style.width = `${progressPercentage}%`
     this.handleTarget.style.left = `calc(${progressPercentage}% - 8px)`
