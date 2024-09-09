@@ -28,11 +28,7 @@
         <div>
           <dt class="font-bold text-gray-800">Average score</dt>
           <dd class="mt-1 text-gray-800 font-medium text-sm">
-            <% if overall_score_percentage.nil? %>
-              <%= helpers.svg_tag "minus" %>
-            <% else %>
-              <p><%= overall_score_percentage %> %</p>
-            <% end %>
+            <%= helpers.display_percentage_or_minus(overall_score_percentage) %>
           </dd>
         </div>
         <div>

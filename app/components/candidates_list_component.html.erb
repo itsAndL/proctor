@@ -47,12 +47,7 @@
                   <tr class="hover:bg-blue-50 cursor-pointer" data-controller="clickable-row" data-clickable-row-url-value="<%= report_assessment_participation_path(assessment_participation) %>" data-action="click->clickable-row#handleClick">
                     <td class="max-w-24 py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6 truncate"><%= assessment_participation.participant.name || assessment_participation.participant.email %></td>
                     <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800">
-                      <% overall_score_percentage = assessment_participation.evaluate_full_assessment.overall_score_percentage %>
-                      <% if overall_score_percentage.nil? %>
-                        <%= helpers.svg_tag "minus" %>
-                      <% else %>
-                        <p><%= overall_score_percentage %> %</p>
-                      <% end %>
+                      <%= helpers.display_percentage_or_minus(assessment_participation.evaluate_full_assessment.overall_score_percentage) %>
                     </td>
                     <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800"><%= assessment_participation.status.humanize %></td>
                     <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell"><%= helpers.human_date assessment_participation.created_at %></td>

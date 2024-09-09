@@ -11,14 +11,10 @@
                 <p class="text-sm font-medium"><%= t(".types.#{@custom_question.type.underscore}") %></p>
               </div>
 
-              <div class="flex gap-x-2 items-center text-gray-900">
+              <div class="flex gap-x-2 items-center text-gray-900 text-sm font-medium">
                 <%= helpers.svg_tag "clock", class: "size-4 mt-0.5" %>
 
-                <% if @custom_question.duration_seconds.zero? %>
-                  <%= helpers.svg_tag "minus", class: "size-5 mt-0.5" %>
-                <% else %>
-                  <p class="text-sm font-medium"><%= helpers.format_duration(@custom_question.duration_seconds) %></p>
-                <% end %>
+                <%= helpers.display_duration_or_minus(@custom_question.duration_seconds) %>
               </div>
             </div>
           </div>
