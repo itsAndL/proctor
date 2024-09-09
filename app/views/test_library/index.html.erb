@@ -10,7 +10,7 @@
     </div>
 
     <div class="mt-8">
-      <%= render TestLibraryComponent.new(tests: @tests, clear_path: test_library_index_path) %>
+      <%= render TestLibraryComponent.new(tests: @tests, clear_path: test_library_index_path, business: current_business) %>
     </div>
   </div>
 </main>

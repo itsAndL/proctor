@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_04_143625) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_09_083444) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
@@ -157,6 +157,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_04_143625) do
     t.bigint "custom_question_category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "business_id"
+    t.index ["business_id"], name: "index_custom_questions_on_business_id"
     t.index ["custom_question_category_id"], name: "index_custom_questions_on_custom_question_category_id"
   end
 
@@ -188,6 +190,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_04_143625) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "duration_seconds", default: 0
+    t.boolean "active", default: true
+    t.boolean "is_correct"
   end
 
   create_table "screenshots", force: :cascade do |t|
@@ -233,6 +237,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_04_143625) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "position"
+    t.boolean "active", default: true
+    t.bigint "business_id"
+    t.index ["business_id"], name: "index_tests_on_business_id"
     t.index ["test_category_id"], name: "index_tests_on_test_category_id"
     t.index ["title"], name: "index_tests_on_title"
   end
@@ -267,11 +274,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_04_143625) do
   add_foreign_key "candidates", "users"
   add_foreign_key "custom_question_responses", "assessment_participations"
   add_foreign_key "custom_question_responses", "custom_questions"
+  add_foreign_key "custom_questions", "businesses"
   add_foreign_key "custom_questions", "custom_question_categories"
   add_foreign_key "question_answers", "assessment_participations"
   add_foreign_key "question_answers", "test_questions"
   add_foreign_key "screenshots", "assessment_participations"
   add_foreign_key "test_questions", "questions"
   add_foreign_key "test_questions", "tests"
+  add_foreign_key "tests", "businesses"
   add_foreign_key "tests", "test_categories"
 end

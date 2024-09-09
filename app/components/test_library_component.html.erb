@@ -1,6 +1,6 @@
 <div class="grid grid-cols-1 gap-x-12 gap-y-8 lg:grid-cols-4">
   <!-- Filters -->
-  <%= render FilterComponent.new(clear_path: @clear_path, assessment: @assessment, library: @library) %>
+  <%= render FilterComponent.new(clear_path: @clear_path, assessment: @assessment, library: @library, business: @business) %>
 
   <div class="lg:col-span-3">
     <%= tag.turbo_frame id: "filter_section" do %>

@@ -6,4 +6,8 @@ class FilterSectionComponent < ViewComponent::Base
     @options = options
     @expanded = expanded
   end
+
+  def input_type(option)
+    option[:name].end_with?('[]') ? 'checkbox' : 'radio'
+  end
 end

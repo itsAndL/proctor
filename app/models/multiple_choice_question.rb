@@ -1,7 +1,11 @@
 class MultipleChoiceQuestion < Question
-  # Add MultipleChoiceQuestion-specific logic
+  include OptionValidatable
 
   validate :only_one_correct_option
+
+  def self.min_options
+    2
+  end
 
   private
 

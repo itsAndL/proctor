@@ -25,14 +25,34 @@ class TestQuery
     @relation = relation.where(type: types.map(&:camelize))
   end
 
-  def sorted
-    @relation = relation.order(:position)
+  def filter_by_business(business, only_system: false, only_business: false)
+    @relation = if business.present?
+                  if (only_system && only_business) || (!only_system && !only_business)
+                    relation.accessible_by_business(business)
+                  elsif only_business
+                    relation.only_business(business)
+                  elsif only_system
+                    relation.only_system
+                  end
+                else
+                  relation.only_system
+                end
   end
 
-  def execute(search_query: nil, category_ids: nil, types: nil)
+  def active
+    @relation = relation.active
+  end
+
+  def sorted
+    @relation = relation.sorted
+  end
+
+  def execute(search_query: nil, category_ids: nil, types: nil, business: nil, only_system: false, only_business: false)
     filter_by_search_query(search_query)
     filter_by_categories(category_ids)
     filter_by_types(types)
+    filter_by_business(business, only_system:, only_business:)
+    active
     sorted
     @relation
   end
