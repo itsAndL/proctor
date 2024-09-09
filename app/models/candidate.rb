@@ -3,6 +3,8 @@ class Candidate < ApplicationRecord
   include Hashid::Rails
   include PgSearch::Model
 
+  after_create :update_assessment_participations
+
   belongs_to :user
 
   has_many :assessment_participations, dependent: :destroy
@@ -19,7 +21,7 @@ class Candidate < ApplicationRecord
   pg_search_scope :filter_by_search_query,
                   against: :name,
                   using: {
-                    tsearch: { prefix: true }
+                    tsearch: { prefix: true },
                   }
 
   def self.find_by_email(email)
@@ -28,5 +30,15 @@ class Candidate < ApplicationRecord
 
   def last_activity
     assessment_participations.map(&:last_activity).max
+  end
+
+  private
+
+  def update_assessment_participations
+    temp_candidate = TempCandidate.find_by(email:)
+    return unless temp_candidate
+
+    temp_candidate.assessment_participations.update_all(candidate_id: id, temp_candidate_id: nil)
+    temp_candidate.destroy
   end
 end
