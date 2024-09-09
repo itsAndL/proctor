@@ -1,14 +1,10 @@
 class Question < ApplicationRecord
-  include Hashid::Rails
-
-  has_rich_text :content
+  include Questionable
 
   has_many :test_questions, -> { order(position: :asc) }, dependent: :destroy
   has_many :tests, through: :test_question
 
-  has_many :options, as: :optionable, dependent: :destroy, autosave: true
-
-  validates :content, :type, :active, presence: true
+  validates :active, presence: true
   validate :validate_duration_seconds
 
   scope :preview, -> { where(preview: true) }
