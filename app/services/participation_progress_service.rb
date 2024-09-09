@@ -14,7 +14,7 @@ class ParticipationProgressService
   end
 
   def assessment_participation
-    @assessment_participation ||= AssessmentParticipation.find(get_progress["current_assessment_participation_id"]) if get_progress["current_assessment_participation_id"]
+    @assessment_participation ||= AssessmentParticipation.find(get_progress["current_assessment_participation_id"]) if get_progress && get_progress["current_assessment_participation_id"]
   end
 
   def current_business
@@ -30,19 +30,19 @@ class ParticipationProgressService
   end
 
   def custom_question
-    assessment_participation&.unanswered_custom_questions[get_progress["custom_question_id"]] if get_progress["custom_question_id"]
+    assessment_participation&.unanswered_custom_questions[get_progress["custom_question_id"]] if get_progress && get_progress["custom_question_id"]
   end
 
   def question
     if preview
-      test.preview_questions[get_progress["question_index"]] if get_progress["question_index"]
+      test.preview_questions[get_progress["question_index"]] if get_progress && get_progress["question_index"]
     else
-      test.non_preview_questions[get_progress["question_index"]] if get_progress["question_index"]
+      test.non_preview_questions[get_progress["question_index"]] if get_progress && get_progress["question_index"]
     end
   end
 
   def test
-    assessment_participation&.assessment&.tests&.find(get_progress["test_id"]) if get_progress["test_id"]
+    assessment_participation&.assessment&.tests&.find(get_progress["test_id"]) if get_progress && get_progress["test_id"]
   end
 
   def preview
