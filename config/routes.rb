@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
-  devise_for :users, path: '/auth', controllers: {
-    registrations: 'users/registrations',
-    confirmations: 'users/confirmations'
-  }
+  devise_for :users, path: "/auth", controllers: {
+                       registrations: "users/registrations",
+                       confirmations: "users/confirmations",
+                     }
 
   resource :role, only: :new
   resources :businesses, only: %i[new create edit update], param: :hashid
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/a/:public_link_token', to: 'invite_candidates#public_link', as: :public_assessment
+  get "/a/:public_link_token", to: "invite_candidates#public_link", as: :public_assessment
 
   resources :assessments, only: %i[index show new create edit update], param: :hashid do
     member do
@@ -41,16 +41,16 @@ Rails.application.routes.draw do
       patch :finish
       get :rename
       patch :update_title
-      get :share, to: 'invite_candidates#share'
-      patch :activate_public_link, to: 'invite_candidates#activate_public_link'
-      patch :deactivate_public_link, to: 'invite_candidates#deactivate_public_link'
-      post :invite_me, to: 'invite_candidates#invite_me'
-      get :invite, to: 'invite_candidates#invite'
-      post :post_invite, to: 'invite_candidates#post_invite'
-      post :check_candidate, to: 'invite_candidates#check_candidate'
-      get :bulk_invite, to: 'invite_candidates#bulk_invite'
-      get :bulk_invite_template, to: 'invite_candidates#bulk_invite_template'
-      post :bulk_invite_upload, to: 'invite_candidates#bulk_invite_upload'
+      get :share, to: "invite_candidates#share"
+      patch :activate_public_link, to: "invite_candidates#activate_public_link"
+      patch :deactivate_public_link, to: "invite_candidates#deactivate_public_link"
+      post :invite_me, to: "invite_candidates#invite_me"
+      get :invite, to: "invite_candidates#invite"
+      post :post_invite, to: "invite_candidates#post_invite"
+      post :check_candidate, to: "invite_candidates#check_candidate"
+      get :bulk_invite, to: "invite_candidates#bulk_invite"
+      get :bulk_invite_template, to: "invite_candidates#bulk_invite_template"
+      post :bulk_invite_upload, to: "invite_candidates#bulk_invite_upload"
     end
 
     resources :custom_questions, only: [], param: :hashid do
@@ -71,43 +71,43 @@ Rails.application.routes.draw do
   end
 
   namespace :candidate do
-    resources :assessment_participations, only: %i[index show], path: '/assessments', param: :hashid do
+    resources :tests, only: %i[index show], param: :hashid do
+      member do
+        get :feedback
+        get :practice_questions
+        get :questions
+        get :intro
+        get :start
+        post :save_answer
+      end
+    end
+    resources :assessment_participations, only: %i[index show], path: "/assessments", param: :hashid do
       member do
         get :overview
         get :setup
-        get :intro
+        get :checkout
       end
     end
-  end
-
-  # Routes for candidate
-  namespace :talent_assessment do
-    get 'checkout', to: 'checkout#show'
-    get 'test/1/feedback', to: 'test#feedback'
-    get 'test/1/questions', to: 'test#questions'
-    get 'test/1/intro', to: 'test#intro'
-    get 'practice_test/1/intro', to: 'practice_test#intro'
-    get 'practice_test/1/questions', to: 'practice_test#questions'
   end
 
   # Routes for customer
   namespace :customer do
     resources :candidates, only: %i[index show], param: :hashid
 
-    get 'profile/team', to: 'profile#team'
+    get "profile/team", to: "profile#team"
   end
 
   # Routes for general
-  get 'contact', to: 'contact#index'
-  get 'about', to: 'about#index'
-  get 'home', to: 'home#index'
+  get "contact", to: "contact#index"
+  get "about", to: "about#index"
+  get "home", to: "home#index"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get 'up' => 'rails/health#show', as: :rails_health_check
+  get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  root 'home#index'
+  root "home#index"
 end
