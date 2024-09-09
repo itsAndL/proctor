@@ -15,30 +15,30 @@ class AssessmentParticipation < ApplicationRecord
   validates :status, presence: true
   validates :rating, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }, allow_nil: true
   validates :assessment_id, uniqueness: {
-    scope: [:candidate_id, :temp_candidate_id],
-    message: "Candidate has already been invited to this assessment"
-  }
+                              scope: [:candidate_id, :temp_candidate_id],
+                              message: "Candidate has already been invited to this assessment",
+                            }
 
   validate :candidate_or_temp_candidate_present
 
   pg_search_scope :filter_by_search_query,
                   associated_against: {
                     candidate: :name,
-                    temp_candidate: :name
+                    temp_candidate: :name,
                   },
                   using: {
-                    tsearch: { prefix: true }
+                    tsearch: { prefix: true },
                   }
 
   def compute_test_result(test)
-    total_questions = test.test_questions.count
+    total_questions = test.non_preview_questions.count
     answered_questions = question_answers.joins(:test_question).where(test_questions: { test_id: test.id }).count
     correct_answers = question_answers.joins(:test_question).where(test_questions: { test_id: test.id }, is_correct: true).count
 
     is_test_completed = (answered_questions == total_questions)
     score_percentage = if is_test_completed && total_questions > 0
-                         (correct_answers.to_f / total_questions * 100).round(2)
-                       end
+        (correct_answers.to_f / total_questions * 100).round(2)
+      end
 
     OpenStruct.new(
       test_id: test.id,
@@ -47,7 +47,7 @@ class AssessmentParticipation < ApplicationRecord
       answered_questions: answered_questions,
       correct_answers: correct_answers,
       score_percentage: score_percentage,
-      is_completed: is_test_completed
+      is_completed: is_test_completed,
     )
   end
 
@@ -59,8 +59,8 @@ class AssessmentParticipation < ApplicationRecord
 
     is_assessment_completed = (total_answered == total_questions)
     overall_percentage = if is_assessment_completed && total_questions > 0
-                           (total_correct.to_f / total_questions * 100).round(2)
-                         end
+        (total_correct.to_f / total_questions * 100).round(2)
+      end
 
     OpenStruct.new(
       test_scores: test_scores,
@@ -68,7 +68,7 @@ class AssessmentParticipation < ApplicationRecord
       total_answered_questions: total_answered,
       total_correct_answers: total_correct,
       overall_score_percentage: overall_percentage,
-      is_completed: is_assessment_completed
+      is_completed: is_assessment_completed,
     )
   end
 
@@ -82,6 +82,31 @@ class AssessmentParticipation < ApplicationRecord
       custom_question_responses.maximum(:updated_at),
       updated_at
     ].compact.max
+  end
+
+  def questions_answered_count(test)
+    question_answers.joins(:test_question).where(test_questions: { test_id: test.id }).count
+  end
+
+  def unanswered_tests
+    # Collect the IDs of tests with unanswered questions
+    test_ids = assessment.tests.select do |test|
+      total_questions = test.non_preview_questions.count
+      answered_questions = questions_answered_count(test)
+      answered_questions < total_questions
+    end.map(&:id) # Extract IDs from the test objects
+
+    # Fetch tests with the collected IDs
+    Test.where(id: test_ids)
+  end
+
+
+  def unanswered_custom_questions
+    assessment.custom_questions
+  end
+
+  def first_unanswered_test
+    unanswered_tests&.first
   end
 
   private
