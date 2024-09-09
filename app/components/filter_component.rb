@@ -87,7 +87,7 @@ class FilterComponent < ViewComponent::Base
           test_type.id,
           params[:test_category]&.include?(test_type.id.to_s),
           "test-category-#{index}",
-          "#{test_type.title} #{count_span(test_type.tests.accessible_by_business(@business).active.sorted.count)}"
+          "#{test_type.title} #{count_span(test_type.tests.accessible_by_business(@business).active.count)}"
         )
       end
     }
@@ -102,7 +102,7 @@ class FilterComponent < ViewComponent::Base
           type,
           params[:test_type]&.include?(type),
           "test-type-#{index}",
-          "#{t(".types.test.#{type}", default: type.humanize)} #{count_span(type.camelize.constantize.count)}"
+          "#{t(".types.test.#{type}", default: type.humanize)} #{count_span(type.camelize.constantize.accessible_by_business(@business).count)}"
         )
       end
     }
@@ -140,7 +140,7 @@ class FilterComponent < ViewComponent::Base
           type,
           params[:question_type]&.include?(type),
           "question-type-#{index}",
-          "#{t(".types.custom_question.#{type}", default: type.humanize)} #{count_span(type.camelize.constantize.count)}"
+          "#{t(".types.custom_question.#{type}", default: type.humanize)} #{count_span(type.camelize.constantize.accessible_by_business(@business).count)}"
         )
       end
     }
@@ -155,7 +155,7 @@ class FilterComponent < ViewComponent::Base
           question_type.id,
           params[:question_category]&.include?(question_type.id.to_s),
           "test-category-#{index}",
-          "#{question_type.title} #{count_span(question_type.custom_questions.count)}"
+          "#{question_type.title} #{count_span(question_type.custom_questions.accessible_by_business(@business).count)}"
         )
       end
     }
