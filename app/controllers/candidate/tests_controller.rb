@@ -52,8 +52,6 @@ class Candidate::TestsController < ApplicationController
     if !@test_service.preview
       selected_options_ids = if params[:selected_options].is_a?(Array)
           params[:selected_options]
-        else
-          raise "Invalid selected options"
         end
     end
     @test_service.save_answer(selected_options_ids)
