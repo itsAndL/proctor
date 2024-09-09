@@ -73,7 +73,7 @@ class AssessmentParticipation < ApplicationRecord
   end
 
   def participant
-    candidate || temp_candidate
+    candidate || Candidate.find_by_email(temp_candidate.email) || temp_candidate
   end
 
   def last_activity
