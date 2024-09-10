@@ -80,7 +80,7 @@ class AssessmentParticipation < ApplicationRecord
     [
       question_answers.maximum(:updated_at),
       custom_question_responses.maximum(:updated_at),
-      updated_at
+      updated_at,
     ].compact.max
   end
 
@@ -100,6 +100,9 @@ class AssessmentParticipation < ApplicationRecord
     Test.where(id: test_ids)
   end
 
+  def answered_tests
+    Test.where(id: assessment.tests.map(&:id) - unanswered_tests.map(&:id))
+  end
 
   def unanswered_custom_questions
     assessment.custom_questions
