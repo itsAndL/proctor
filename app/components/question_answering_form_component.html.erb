@@ -2,14 +2,14 @@
   <header class="border-b border-gray-300">
     <div class="bg-white py-5 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex justify-between items-center gap-x-4 gap-y-5 flex-wrap">
       <h1 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">
-        <%= @session_service.current_business.company %>
+        <%= @current_business.company %>
       </h1>
       <div class="space-y-2 max-sm:order-3">
-        <div class="grid grid-cols-12 gap-x-4 font-bold text-xs text-gray-900 max-w-sm" data-controller="timer" data-timer-time-value="<%= @session_service.calculate_duration_left %>">
+        <div class="grid grid-cols-12 gap-x-4 font-bold text-xs text-gray-900 max-w-sm" data-controller="timer" data-timer-time-value="<%= @calculate_duration_left %>">
           <div class="flex items-center gap-x-1 col-span-3">
             <%= helpers.svg_tag "clock", class: "size-4" %>
             <span data-timer-target="container" class="w-14">
-              <%= helpers.format_duration_hms(@session_service.calculate_duration_left)%>
+              <%= helpers.format_duration_hms(calculate_duration_left)%>
             </span>
           </div>
           <div class="mt-1 col-span-9 w-full bg-gray-200 rounded-full h-2.5">
@@ -19,10 +19,10 @@
         <div class="grid grid-cols-12 gap-x-4 font-bold text-xs text-gray-900 max-w-sm">
           <div class="flex items-center gap-x-1 col-span-3">
             <%= helpers.svg_tag "test_document", class: "size-4" %>
-            <p><%= @session_service.passed_questions_count %>/<%= @session_service.questions_count %></p>
+            <p><%= @passed_questions_count %>/<%= @questions_count %></p>
           </div>
           <div class="mt-1 col-span-9 w-full bg-gray-200 rounded-full h-2">
-            <div class="bg-blue-600 h-2.5 rounded-l-full" style="width: <%= (@session_service.passed_questions_count.to_f / @session_service.questions_count) * 100 %>%"></div>
+            <div class="bg-blue-600 h-2.5 rounded-l-full" style="width: <%= (@passed_questions_count.to_f / @questions_count) * 100 %>%"></div>
           </div>
         </div>
       </div>
@@ -40,23 +40,23 @@
           <div>
             <h2 class="mb-6 font-bold leading-7 text-gray-800 text-xl tracking-tight">Question</h2>
             <div class="text-sm md:text-base font-medium text-gray-800">
-              <%= @session_service.question.content %>
+              <%= @question.content %>
             </div>
           </div>
           <!-- Answer Options -->
           <div>
-            <% if @session_service.test %>
+            <% if @test %>
               <h2 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">
-                <%= @session_service.question.type == "MultipleChoiceQuestion" ? "Select only one answer" : "Select all that apply" %>
+                <%= @question.type == "MultipleChoiceQuestion" ? "Select only one answer" : "Select all that apply" %>
               </h2>
               <div class="mt-6 space-y-5">
-                <% if @session_service.question.type == "MultipleChoiceQuestion" || @session_service.question.type == "MultipleResponseQuestion" %>
-                  <% @session_service.question.options.each.with_index(1) do |option, i| %>
+                <% if @question.type == "MultipleChoiceQuestion" || @question.type == "MultipleResponseQuestion" %>
+                  <% @question.options.each.with_index(1) do |option, i| %>
                     <label for="option-<%= i %>" class="flex items-center border border-gray-300 rounded-md p-4 cursor-pointer options hover:bg-blue-50 transition-colors duration-200">
                       <input 
                         id="option-<%= i %>" 
                         name="selected_options[]" 
-                        type="<%= @session_service.question.type == "MultipleChoiceQuestion" ? "radio" : "checkbox" %>" 
+                        type="<%= @question.type == "MultipleChoiceQuestion" ? "radio" : "checkbox" %>" 
                         value="<%= option.id %>"
                         class="size-7 border-gray-300 text-blue-600 focus:ring-blue-200 focus:ring-offset-2 focus:ring-2 item">
                       <span class="ml-5 block text-sm md:text-base font-semibold text-gray-800"><%= option.content %></span>
@@ -65,7 +65,7 @@
                 <% end %>
               </div>
             <% else %>
-              <% case @session_service.question.type %>
+              <% case @question.type %>
               <% when 'EssayCustomQuestion' %>
                 <h2 class="font-bold leading-7 text-gray-800 text-xl tracking-tight mb-4">Enter your essay here</h2>
                 <%= form.text_area :essay_content, class: "w-full rounded-md border border-gray-300 p-4 text-gray-800 focus:ring-blue-200 focus:ring-offset-2 focus:ring-2", rows: 6 %>
@@ -83,7 +83,7 @@
       <% end %>
     </div>
   </main>
-  <% unless @session_service.preview %>
+  <% unless @preview %>
     <dialog data-question-target="modal" class="modal px-6">
       <div class="modal-box max-w-xl rounded-xl p-8 bg-white">
         <form method="dialog">
