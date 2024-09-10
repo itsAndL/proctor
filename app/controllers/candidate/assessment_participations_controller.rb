@@ -35,6 +35,5 @@ class Candidate::AssessmentParticipationsController < ApplicationController
   def set_assessment_participation
     @assessment_participation = AssessmentParticipation.find_by_hashid(params[:hashid])
     @assessment = @assessment_participation.assessment
-    @participation_progress = ParticipationProgressService.new(session)
   end
 end

@@ -14,8 +14,10 @@ class QuestionAnsweringFormComponent < ViewComponent::Base
 
   def calculate_duration_left
     return unless @question_started_at
-
-    duration_left = @question.duration_seconds - (Time.zone.now - Time.zone.parse(@question_started_at))
+    if @preview
+      return 60
+    end
+    duration_left = @question.duration_seconds - (Time.now.to_i - Time.parse(@question_started_at).to_i)
     duration_left.positive? ? duration_left : 0
   end
 end

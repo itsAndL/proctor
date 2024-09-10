@@ -3,9 +3,10 @@ class ParticipationTestService
     @set_session_key = set_session_key
     @get_session_key = get_session_key
     @assessment_participation = assessment_participation
+    @test = test
+    raise ActiveRecord::RecordNotFound, "Test not found" unless @test
     @assessment_test = AssessmentTest.find_by(test: test, assessment: assessment_participation.assessment)
     raise ActiveRecord::RecordNotFound, "AssessmentTest not found" unless @assessment_test
-    @test = test
   end
 
   def reset

@@ -5,7 +5,7 @@
         <%= @current_business.company %>
       </h1>
       <div class="space-y-2 max-sm:order-3">
-        <div class="grid grid-cols-12 gap-x-4 font-bold text-xs text-gray-900 max-w-sm" data-controller="timer" data-timer-time-value="<%= @calculate_duration_left %>">
+        <div class="grid grid-cols-12 gap-x-4 font-bold text-xs text-gray-900 max-w-sm" data-controller="timer" data-timer-time-value="<%= calculate_duration_left %>">
           <div class="flex items-center gap-x-1 col-span-3">
             <%= helpers.svg_tag "clock", class: "size-4" %>
             <span data-timer-target="container" class="w-14">
