@@ -11,18 +11,19 @@ class Candidate::AssessmentParticipationsController < ApplicationController
   end
 
   def overview
-    @assessment_participation.started! if @assessment_participation.invited?
-    @participation_progress.reset
-    @participation_progress.set_property("current_assessment_participation_id", @assessment_participation.id)
+    @assessment_participation.invitation_clicked! if @assessment_participation.invited?
   end
 
   def setup
+    @assessment_participation.started! if @assessment_participation.invited? || @assessment_participation.invitation_clicked?
+    session["participation_progress"] = {}
+    session["participation_progress"]["current_assessment_participation_id"] = @assessment_participation.id
     @next_url = if @assessment_participation.unanswered_tests.any?
         candidate_test_path(@assessment_participation.unanswered_tests.first.hashid)
       elsif @assessment_participation.unanswered_custom_questions.any?
         candidate_custom_question_path(@assessment_participation.unanswered_custom_questions.first.hashid)
       else
-        assert(false, "Assessment must have tests or custom questions or marked as completed")
+        redirect_to checkout_candidate_assessment_participation_path(@assessment_participation.hashid)
       end
   end
 
