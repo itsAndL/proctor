@@ -9,10 +9,20 @@ class Test < ApplicationRecord
   has_many :assessments, through: :assessment_tests
 
   belongs_to :test_category
+  belongs_to :business, optional: true
 
-  validates :title, :overview, :description, :level, :relevancy, :type, presence: true
+  validates :title, presence: true, length: { maximum: 60 }
+  validates :overview, :relevancy, length: { maximum: 255 }
+  validates :description, :level, :type, :active, presence: true
 
   enum level: { entry_level: 0, intermediate: 1, advanced: 2 }
+
+  scope :active, -> { where(active: true) }
+  scope :inactive, -> { where(active: false) }
+  scope :accessible_by_business, ->(business) { where(business_id: [nil, business.id]) }
+  scope :only_system, -> { where(business_id: nil) }
+  scope :only_business, ->(business) { where(business:) }
+  scope :sorted, -> { order(position: :asc) }
 
   pg_search_scope :filter_by_search_query,
                   against: :title,
@@ -33,11 +43,11 @@ class Test < ApplicationRecord
   end
 
   def preview_questions
-    questions.preview.order('test_questions.position ASC')
+    questions.preview.active.order('test_questions.position ASC')
   end
 
   def non_preview_questions
-    questions.non_preview.order('test_questions.position ASC')
+    questions.non_preview.active.order('test_questions.position ASC')
   end
 
   def first_preview_question

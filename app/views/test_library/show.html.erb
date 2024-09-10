@@ -17,8 +17,10 @@
         <div>
           <h1 class="font-bold leading-7 text-gray-900 text-2xl md:text-3xl tracking-tight"><%= @test.title %></h1>
 
-          <p class="mt-7 font-medium text-sm text-gray-800"><%= @test.overview %></p>
-        
+          <% if @test.overview.present? %>
+            <p class="mt-7 font-medium text-sm text-gray-800"><%= @test.overview %></p>
+          <% end %>
+
           <div class="mt-7 flex flex-wrap gap-x-16 gap-y-5">
             <div class="space-y-1">
               <%= svg_tag "shapes_collection", class: "size-4" %>
@@ -51,10 +53,12 @@
             </div>
           <% end %>
 
-          <div class="mt-7">
-            <h2 class="font-bold leading-7 text-gray-900 text-lg tracking-tight">This test is relevant for</h2>
-            <p class="mt-2 font-medium text-sm text-gray-800"><%= @test.relevancy %></p>
-          </div>
+          <% if @test.relevancy.present? %>
+            <div class="mt-7">
+              <h2 class="font-bold leading-7 text-gray-900 text-lg tracking-tight">This test is relevant for</h2>
+              <p class="mt-2 font-medium text-sm text-gray-800"><%= @test.relevancy %></p>
+            </div>
+          <% end %>
         </div>
 
         <div>

@@ -3,10 +3,11 @@
 class TestLibraryComponent < ViewComponent::Base
   attr_reader :tests, :clear_path, :assessment
 
-  def initialize(tests:, clear_path:, assessment: nil)
+  def initialize(tests:, clear_path:, assessment: nil, business: nil)
     @tests = tests
     @clear_path = clear_path
     @assessment = assessment
+    @business = business
     @library = :test
   end
 
@@ -15,6 +16,7 @@ class TestLibraryComponent < ViewComponent::Base
   end
 
   def filters_applied?
+    params[:test_source].present? ||
     params[:search_query].present? ||
     params[:test_category].present? ||
     params[:test_type].present?
