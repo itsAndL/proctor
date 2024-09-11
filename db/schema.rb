@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_11_094700) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_11_142403) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
@@ -242,6 +242,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_11_094700) do
     t.boolean "active", default: true
     t.bigint "business_id"
     t.integer "language", default: 0
+    t.integer "questions_to_answer"
     t.index ["business_id"], name: "index_tests_on_business_id"
     t.index ["language"], name: "index_tests_on_language"
     t.index ["test_category_id"], name: "index_tests_on_test_category_id"

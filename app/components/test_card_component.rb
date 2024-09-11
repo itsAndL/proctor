@@ -9,6 +9,6 @@ class TestCardComponent < ViewComponent::Base
   private
 
   def preview_question_path
-    test_library_preview_question_path(@test, @test.first_preview_question) if @test.preview_questions.any?
+    test_library_preview_question_path(@test, @test.preview_questions.first) if @test.preview_questions.any?
   end
 end
