@@ -12,21 +12,28 @@
   <div data-filter-target="section" class="<%= @expanded ? '' : 'hidden ' %>lg:block pt-6">
     <div class="space-y-4">
       <% @options.each do |option| %>
-        <div class="flex items-center">
-          <%= tag.input type: input_type(option),
-                        name: option[:name],
-                        value: option[:value],
-                        checked: option[:checked],
-                        id: option[:id],
-                        class: "h-4 w-4 #{input_type(option) == 'radio' ? 'rounded-full' : 'rounded'} border-gray-300 text-blue-600 focus:ring-blue-500",
-                        data: option[:data] %>
-          <label for="<%= option[:id] %>" class="ml-3 text-sm font-medium text-gray-800 flex items-center gap-x-2">
-            <% if option[:icon].present? %>
-              <%= option[:icon] %>
-            <% end %>
-            <%= option[:label].html_safe %>
-          </label>
-        </div>
+        <% if input_type(option) == 'select' %>
+          <%= select_tag option[:name], 
+                          options_for_select(option[:options], option[:selected]),
+                          class: "primary-field",
+                          data: option[:data] %>
+        <% else %>
+          <div class="flex items-center">
+            <%= tag.input type: input_type(option),
+                          name: option[:name],
+                          value: option[:value],
+                          checked: option[:checked],
+                          id: option[:id],
+                          class: "h-4 w-4 #{input_type(option) == 'radio' ? 'rounded-full' : 'rounded'} border-gray-300 text-blue-600 focus:ring-blue-500",
+                          data: option[:data] %>
+            <label for="<%= option[:id] %>" class="ml-3 text-sm font-medium text-gray-800 flex items-center gap-x-2">
+              <% if option[:icon].present? %>
+                <%= option[:icon] %>
+              <% end %>
+              <%= option[:label].html_safe %>
+            </label>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>

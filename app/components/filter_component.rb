@@ -26,13 +26,23 @@ class FilterComponent < ViewComponent::Base
     case @library
     when :test
       {
-        sections: [show_tests_from_section, highlights_section, test_focus_section, test_format_section, test_duration_section],
+        sections: [
+          show_tests_from_section,
+          highlights_section,
+          test_focus_section,
+          test_format_section,
+          test_duration_section
+        ].tap { |sections| sections << language_section unless @assessment },
         placeholder: 'Search tests',
         filter_url: helpers.test_library_index_path
       }
     when :custom_question
       {
-        sections: [show_questions_from_section, question_type_section, question_category_section],
+        sections: [
+          show_questions_from_section,
+          question_type_section,
+          question_category_section
+        ].tap { |sections| sections << language_section unless @assessment },
         placeholder: 'Search questions',
         filter_url: helpers.custom_question_library_index_path
       }
@@ -161,6 +171,15 @@ class FilterComponent < ViewComponent::Base
     }
   end
 
+  def language_section
+    {
+      title: "Language",
+      options: [
+        select_option("language", Assessment.languages.keys.map { |lang| [lang.titleize, lang] }, params[:language])
+      ]
+    }
+  end
+
   def radio_option(name, value, checked, id, label)
     {
       name: name,
@@ -185,6 +204,19 @@ class FilterComponent < ViewComponent::Base
       data: {
         search_target: "checkbox",
         action: "change->search#submitOnCheck"
+      }
+    }
+  end
+
+  def select_option(name, options, selected)
+    {
+      name: name,
+      options: options,
+      selected: selected,
+      id: "language-select",
+      data: {
+        search_target: "select",
+        action: "change->search#submitOnChange"
       }
     }
   end

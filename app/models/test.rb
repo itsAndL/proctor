@@ -1,6 +1,7 @@
 class Test < ApplicationRecord
   include Hashid::Rails
   include PgSearch::Model
+  include LanguageEnum
 
   has_many :test_questions, -> { order(position: :asc) }, dependent: :destroy
   has_many :questions, through: :test_questions
@@ -12,8 +13,8 @@ class Test < ApplicationRecord
   belongs_to :business, optional: true
 
   validates :title, presence: true, length: { maximum: 60 }
-  validates :overview, :relevancy, length: { maximum: 255 }
-  validates :description, :level, :type, :active, presence: true
+  # validates :overview, :relevancy, length: { maximum: 255 }
+  validates :description, :level, :type, :active, :language, presence: true
 
   enum level: { entry_level: 0, intermediate: 1, advanced: 2 }
 
