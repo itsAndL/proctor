@@ -11,7 +11,7 @@ class PreviewQuestionsController < ApplicationController
       question: @question,
       test: @test,
       is_preview: true,
-      is_business_previw: true
+      show_progress: false
     )
   end
 end

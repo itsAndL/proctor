@@ -2,7 +2,7 @@
 
 class QuestionAnsweringFormComponent < ViewComponent::Base
   def initialize(business:, passed_questions_count: nil, questions_count: nil, question:, test:, is_preview: nil,
-                 question_started_at: nil, save_answer_path: nil, show_progress: false)
+                 question_started_at: nil, save_answer_path: nil, show_progress: true)
     @current_business = business
     @passed_questions_count = passed_questions_count
     @questions_count = questions_count
