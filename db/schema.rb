@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_09_083444) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_11_094700) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
@@ -158,8 +158,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_09_083444) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "business_id"
+    t.integer "language", default: 0
     t.index ["business_id"], name: "index_custom_questions_on_business_id"
     t.index ["custom_question_category_id"], name: "index_custom_questions_on_custom_question_category_id"
+    t.index ["language"], name: "index_custom_questions_on_language"
   end
 
   create_table "options", force: :cascade do |t|
@@ -239,7 +241,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_09_083444) do
     t.integer "position"
     t.boolean "active", default: true
     t.bigint "business_id"
+    t.integer "language", default: 0
     t.index ["business_id"], name: "index_tests_on_business_id"
+    t.index ["language"], name: "index_tests_on_language"
     t.index ["test_category_id"], name: "index_tests_on_test_category_id"
     t.index ["title"], name: "index_tests_on_title"
   end

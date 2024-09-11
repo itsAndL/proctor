@@ -39,15 +39,22 @@ class CustomQuestionQuery
                 end
   end
 
+  def filter_by_language(language)
+    return relation if language.blank?
+
+    @relation = relation.where(language: language)
+  end
+
   def sorted
     @relation = relation.sorted
   end
 
-  def execute(search_query: nil, category_ids: nil, types: nil, business: nil, only_system: false, only_business: false)
+  def execute(search_query: nil, category_ids: nil, types: nil, business: nil, only_system: false, only_business: false, language: nil)
     filter_by_search_query(search_query)
     filter_by_categories(category_ids)
     filter_by_types(types)
     filter_by_business(business, only_system:, only_business:)
+    filter_by_language(language)
     sorted
     @relation
   end

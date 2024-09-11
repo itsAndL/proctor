@@ -1,11 +1,13 @@
 class CustomQuestion < ApplicationRecord
   include Questionable
   include PgSearch::Model
+  include LanguageEnum
 
   belongs_to :custom_question_category
   belongs_to :business, optional: true
 
   validates :title, presence: true, length: { maximum: 60 }
+  validates :language, presence: true
 
   has_many :assessment_custom_questions, -> { order(position: :asc) }, dependent: :destroy
   has_many :assessments, through: :assessment_custom_questions

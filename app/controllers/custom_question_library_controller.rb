@@ -10,7 +10,8 @@ class CustomQuestionLibraryController < ApplicationController
       types: params[:question_type],
       business: current_business,
       only_system: params[:question_source]&.include?('assesskit'),
-      only_business: params[:question_source]&.include?('my_company')
+      only_business: params[:question_source]&.include?('my_company'),
+      language: params[:language] || :english
     )
   end
 end

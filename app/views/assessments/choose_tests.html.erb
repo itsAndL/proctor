@@ -45,7 +45,7 @@
       <% end %>
 
       <div>
-        <%= render TestLibraryComponent.new(tests: Test.only_system.active.sorted, clear_path: choose_tests_assessment_path(@assessment), assessment: @assessment, business: current_business) %>
+        <%= render TestLibraryComponent.new(tests: Test.send(@assessment.language).only_system.active.sorted, clear_path: choose_tests_assessment_path(@assessment), assessment: @assessment, business: current_business) %>
       </div>
     </div>
   </div>

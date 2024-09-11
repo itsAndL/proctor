@@ -42,10 +42,20 @@ en:
         name: Your name
         avatar: Your profile picture
     enums:
+      language: &languages
+        english: "English"
+        spanish: "Spanish"
+        french: "French"
+        german: "German"
       assessment:
         language:
-          en: "English"
-          fr: "French"
+          <<: *languages
+      test:
+        language:
+          <<: *languages
+      custom_question:
+        language:
+          <<: *languages
   businesses:
     form:
       avatar: Your company logo
