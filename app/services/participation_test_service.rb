@@ -1,42 +1,71 @@
 class ParticipationTestService
+  include ParticipationTestErrors
+
   def initialize(get_session_key, set_session_key, test, assessment_participation)
     @set_session_key = set_session_key
     @get_session_key = get_session_key
     @assessment_participation = assessment_participation
     @test = test
-    raise ActiveRecord::RecordNotFound, "Test not found" unless @test
-    @assessment_test = AssessmentTest.find_by(test: test, assessment: assessment_participation.assessment)
-    raise ActiveRecord::RecordNotFound, "AssessmentTest not found" unless @assessment_test
+    raise TestNotFoundError unless @test
   end
 
-  def reset
-    @set_session_key.call("preview", false)
-    @set_session_key.call("question_index", 0)
-    @set_session_key.call("passed_questions_count", 0)
-    @set_session_key.call("question_started_at", nil)
-  end
+  def start_test
+    raise InvalidTestSetupError unless valid_test?
 
-  def start_test(test)
     reset
-    @set_session_key.call("preview", false)
   end
 
-  def start_practice_test(test)
+  def start_practice_test
+    raise InvalidTestSetupError unless valid_test?
+
     reset
-    @set_session_key.call("preview", true)
-    @set_session_key.call("question_index", 0)
-    @set_session_key.call("passed_questions_count", 0)
+    @set_session_key.call('preview', true)
+    @set_session_key.call('question_index', 0)
+    @set_session_key.call('passed_questions_count', 0)
   end
 
-  def passed_questions_count
+  def current_question
+    raise InvalidTestSetupError unless valid_test?
+
+    question = if preview
+                 @test.preview_questions[@get_session_key.call('question_index')]
+               else
+                 @assessment_participation.unanswered_questions(@test).first
+               end
+
+    raise QuestionNotFoundError.new(@test.id, question.id) if question.nil?
+
+    question
+  end
+
+  def answere_question(args)
+    params = args[:params]
+    selected_options_ids = params[:selected_options]
+    question_id = params[:question_id]
+    raise QuestionNotFoundError unless question_id.present?
+    raise InvalidTestSetupError unless valid_test?
+
+    question = Question.find(question_id)
     if preview
-      (@get_session_key.call("passed_questions_count") || 0) + 1
+      next_question
     else
-      @assessment_test.answered_questions(@assessment_participation.id).count
+      save_question_answer(question, find_selected_options(question, selected_options_ids))
+    end
+  end
+
+  def more_questions?
+    raise InvalidTestSetupError unless valid_test?
+
+    if preview
+      @get_session_key.call('question_index') < questions_count
+    else
+      @assessment_participation.unanswered_questions(@test).any?
     end
   end
 
   def questions_count
+    raise InvalidTestSetupError unless valid_test?
+
     if preview
       @test.preview_questions.count
     else
@@ -44,69 +73,88 @@ class ParticipationTestService
     end
   end
 
-  def current_question
+  def passed_questions_count
+    raise InvalidTestSetupError unless valid_test?
+
     if preview
-      question = @test.preview_questions[@get_session_key.call("question_index")]
+      (@get_session_key.call('passed_questions_count') || 0) + 1
     else
-      question = @assessment_test.unanswered_questions(@assessment_participation.id).first
+      @assessment_participation.answered_questions(@test).count + 1
     end
-    raise ActiveRecord::RecordNotFound, "Question not found" unless question
-    question
-  end
-
-  def question_started_at
-    @get_session_key.call("question_started_at")
-  end
-
-  def preview
-    @get_session_key.call("preview") || false
-  end
-
-  def start_question
-    question = current_question
-    @set_session_key.call("question_started_at", Time.zone.now.to_s)
-    # Save empty answer in case the user skips the question or closes the browser
-    save_answer([], question: question)
-  end
-
-  def start_question_preview
-    @set_session_key.call("question_started_at", Time.zone.now.to_s)
   end
 
   def next_question
-    @set_session_key.call("question_index", 1 + (@get_session_key.call("question_index") || 0))
-    @set_session_key.call("passed_questions_count", 1 + (@get_session_key.call("passed_questions_count") || 0))
+    raise InvalidTestSetupError unless valid_test?
+
+    @set_session_key.call('question_index', 1 + (@get_session_key.call('question_index') || 0))
+    @set_session_key.call('passed_questions_count', 1 + (@get_session_key.call('passed_questions_count') || 0))
   end
 
-  def has_more_questions?
-    if preview
-      @get_session_key["question_index"] < questions_count
+  def start_question
+    raise InvalidTestSetupError unless valid_test?
+
+    set_question_started_at_now
+  end
+
+  def start_question_preview
+    set_question_started_at_now if valid_test?
+  end
+
+  def question_started_at
+    @get_session_key.call('question_started_at')
+  end
+
+  def preview
+    @get_session_key.call('preview') || false
+  end
+
+  private
+
+  def set_question_started_at_now
+    @set_session_key.call('question_started_at', Time.zone.now.to_s)
+  end
+
+  def valid_test?
+    @test.present?
+  end
+
+  def find_selected_options(question, selected_options_ids)
+    return nil unless selected_options_ids
+
+    if question.is_a?(MultipleResponseQuestion)
+      question.options.where(id: selected_options_ids)
     else
-      @assessment_test.unanswered_questions(@assessment_participation.id).any?
+      question.options.where(id: selected_options_ids.first)
     end
   end
 
-  def save_answer(selected_options_ids, question: nil)
-    if !preview
-      current_question = question || self.current_question
-      selected_options = if current_question.is_a?(MultipleResponseQuestion)
-          current_question.options.where(id: selected_options_ids)
-        else
-          current_question.options.where(id: selected_options_ids.first)
-        end
-      current_test_question = TestQuestion.find_by(test: @test, question: current_question)
-      raise ActiveRecord::RecordNotFound, "TestQuestion not found" unless current_test_question
+  def save_question_answer(question, selected_options)
+    current_test_question = TestQuestion.find_by(test: @test, question:)
+    raise TestQuestionNotFoundError.new(@test.id, question.id) unless current_test_question
 
-      question_answer = QuestionAnswer.find_or_initialize_by(
-        test_question: current_test_question,
-        assessment_participation: @assessment_participation,
-      )
+    question_answer = QuestionAnswer.find_or_initialize_by(
+      test_question: current_test_question,
+      assessment_participation: @assessment_participation
+    )
 
-      question_answer.content = { selected_options_ids: selected_options&.map(&:id) }
-      duration_left = Time.zone.now - Time.zone.parse(question_started_at)
-      is_correct = selected_options.all?(&:correct) && selected_options.count.positive?
-      question_answer.is_correct = is_correct && (duration_left || -1).positive?
-      question_answer.save
-    end
+    question_answer.content = { selected_options_ids: selected_options&.map(&:id) }
+    question_answer.is_correct = correct_answer?(selected_options) && question_has_more_time?
+    question_answer.save
+  end
+
+  def correct_answer?(selected_options)
+    selected_options&.all?(&:correct) && selected_options&.any?
+  end
+
+  def question_has_more_time?
+    duration_left = Time.zone.now - Time.zone.parse(question_started_at)
+    duration_left.positive?
+  end
+
+  def reset
+    @set_session_key.call('preview', false)
+    @set_session_key.call('question_index', 0)
+    @set_session_key.call('passed_questions_count', 0)
+    @set_session_key.call('question_started_at', nil)
   end
 end

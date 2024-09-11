@@ -4,37 +4,55 @@
       <h1 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">
         <%= @current_business.company %>
       </h1>
-      <div class="space-y-2 max-sm:order-3">
-        <div class="grid grid-cols-12 gap-x-4 font-bold text-xs text-gray-900 max-w-sm" data-controller="timer" data-timer-time-value="<%= calculate_duration_left %>">
-          <div class="flex items-center gap-x-1 col-span-3">
-            <%= helpers.svg_tag "clock", class: "size-4" %>
-            <span data-timer-target="container" class="w-14">
-              <%= helpers.format_duration_hms(calculate_duration_left)%>
-            </span>
+      <% if @show_progress %>
+        <div class="space-y-2 max-sm:order-3">
+          <div class="grid grid-cols-12 gap-x-4 font-bold text-xs text-gray-900 max-w-sm" data-controller="timer" data-timer-time-value="<%= calculate_duration_left %>">
+            <div class="flex items-center gap-x-1 col-span-3">
+              <%= helpers.svg_tag "clock", class: "size-4" %>
+              <span data-timer-target="container" class="w-14">
+                <%= helpers.format_duration_hms(calculate_duration_left)%>
+              </span>
+            </div>
+            <div class="mt-1 col-span-9 w-full bg-gray-200 rounded-full h-2.5">
+              <div class="bg-blue-600 h-2.5 rounded-full" data-timer-target="progress"></div>
+            </div>
           </div>
-          <div class="mt-1 col-span-9 w-full bg-gray-200 rounded-full h-2.5">
-            <div class="bg-blue-600 h-2.5 rounded-full" data-timer-target="progress"></div>
+          <div class="grid grid-cols-12 gap-x-4 font-bold text-xs text-gray-900 max-w-sm">
+            <div class="flex items-center gap-x-1 col-span-3">
+              <%= helpers.svg_tag "test_document", class: "size-4" %>
+              <p><%= @passed_questions_count %>/<%= @questions_count %></p>
+            </div>
+            <div class="mt-1 col-span-9 w-full bg-gray-200 rounded-full h-2">
+              <div class="bg-blue-600 h-2.5 rounded-l-full" style="width: <%= (@passed_questions_count.to_f / @questions_count) * 100 %>%"></div>
+            </div>
           </div>
         </div>
-        <div class="grid grid-cols-12 gap-x-4 font-bold text-xs text-gray-900 max-w-sm">
-          <div class="flex items-center gap-x-1 col-span-3">
-            <%= helpers.svg_tag "test_document", class: "size-4" %>
-            <p><%= @passed_questions_count %>/<%= @questions_count %></p>
-          </div>
-          <div class="mt-1 col-span-9 w-full bg-gray-200 rounded-full h-2">
-            <div class="bg-blue-600 h-2.5 rounded-l-full" style="width: <%= (@passed_questions_count.to_f / @questions_count) * 100 %>%"></div>
-          </div>
-        </div>
-      </div>
-      <button data-question-target="trigger" type="button" class="primary-button gap-x-2.5 px-7 py-3">
-        <span>Next</span>
-        <%= helpers.svg_tag "chevron_right", class: "size-3" %>
-      </button>
+        <button data-question-target="trigger" type="button" class="primary-button gap-x-2.5 px-7 py-3">
+          <span>
+            <%=  @passed_questions_count == @questions_count ? "Finish": "Next"  %>
+          </span>
+          <%= helpers.svg_tag "chevron_right", class: "size-3" %>
+        </button>
+      <% else %>
+        <% next_question = @question.next_preview(@test) %>
+        <% if next_question %>
+          <%= link_to test_library_preview_question_path(@test, next_question), class: "inline-flex gap-x-2.5 items-center rounded-full bg-blue-600 px-7 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600" do %>
+            <span>Next</span>
+            <%= helpers.svg_tag "chevron_right", "stroke-width": 3, class: "size-3" %>
+          <% end %>
+        <% else %>
+          <button data-controller="tab-closer" data-action="click->tab-closer#close" type="button" class="inline-flex gap-x-2.5 items-center rounded-full bg-blue-600 px-7 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+            <span>Finish</span>
+            <%= helpers.svg_tag "chevron_right", "stroke-width": 3, class: "size-3" %>
+          </button>
+        <% end %>
+      <% end %>
     </div>
   </header>
   <main class="bg-zinc-50 h-full pt-10">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
       <%= form_with(url: @save_answer_path, class: "border border-gray-200 bg-white rounded-xl px-6 py-10 md:px-12 md:py-16", data: { question_target: "form" }) do |form| %>
+        <%= form.hidden_field :question_id, value: @question.id %>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-9">
           <!-- Question Content -->
           <div>
@@ -64,18 +82,6 @@
                   <% end %>
                 <% end %>
               </div>
-            <% else %>
-              <% case @question.type %>
-              <% when 'EssayCustomQuestion' %>
-                <h2 class="font-bold leading-7 text-gray-800 text-xl tracking-tight mb-4">Enter your essay here</h2>
-                <%= form.text_area :essay_content, class: "w-full rounded-md border border-gray-300 p-4 text-gray-800 focus:ring-blue-200 focus:ring-offset-2 focus:ring-2", rows: 6 %>
-              <% when 'FileUploadCustomQuestion' %>
-                <h2 class="font-bold leading-7 text-gray-800 text-xl tracking-tight mb-4">Upload your file</h2>
-                <%= form.file_field :file_upload, class: "w-full rounded-md border border-gray-300 p-4 text-gray-800 focus:ring-blue-200 focus:ring-offset-2 focus:ring-2" %>
-              <% when 'VideoCustomQuestion' %>
-                <h2 class="font-bold leading-7 text-gray-800 text-xl tracking-tight mb-4">Upload your video</h2>
-                <%= form.file_field :video, class: "w-full rounded-md border border-gray-300 p-4 text-gray-800 focus:ring-blue-200 focus:ring-offset-2 focus:ring-2" %>
-              <% end %>
             <% end %>
           </div>
           <%= form.submit class: "hidden", data: { question_target: "formSubmit" } %>

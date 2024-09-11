@@ -97,14 +97,13 @@
                     <td class="whitespace-nowrap py-4 pl-3 pr-4 sm:pr-6 text-sm font-medium text-gray-800 hidden sm:table-cell"><%= format_duration(0) %> out of <%= format_duration(test.duration_seconds) %></td>
                     <td class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-bold text-gray-800 sm:pr-6"><%= @assessment_participation.compute_test_result(test).score_percentage || 0 %>%</td>
                   </tr>
-                </tr>
-              <% end %>
+                <% end %>
+              </tbody>
             </tbody>
-          </tbody>
-        </table>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-</div>
 <% end %>
 </main>

@@ -30,10 +30,6 @@ class Question < ApplicationRecord
     previous_question_of_type(test, false)
   end
 
-  def correct_answer
-    options.find_by(correct: true)
-  end
-
   private
 
   def validate_duration_seconds
