@@ -1,4 +1,4 @@
-<div data-controller="question" id="question-form">
+<div data-controller="question-answer" id="question-form">
   <header class="border-b border-gray-300">
     <div class="bg-white py-5 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex justify-between items-center gap-x-4 gap-y-5 flex-wrap">
       <h1 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">
@@ -27,7 +27,7 @@
             </div>
           </div>
         </div>
-        <button data-question-target="trigger" type="button" class="primary-button gap-x-2.5 px-7 py-3">
+        <button data-question-answer-target="trigger" type="button" class="primary-button gap-x-2.5 px-7 py-3">
           <span>
             <%=  @passed_questions_count == @questions_count ? "Finish": "Next"  %>
           </span>
@@ -84,13 +84,13 @@
               </div>
             <% end %>
           </div>
-          <%= form.submit class: "hidden", data: { question_target: "formSubmit" } %>
+          <%= form.submit class: "hidden", data: { question_answer_target: "formSubmit" } %>
         </div>
       <% end %>
     </div>
   </main>
   <% unless @preview %>
-    <dialog data-question-target="modal" class="modal px-6">
+    <dialog data-question-answer-target="modal" class="modal px-6">
       <div class="modal-box max-w-xl rounded-xl p-8 bg-white">
         <form method="dialog">
           <button class="btn btn-sm btn-circle btn-ghost absolute right-6 top-6">
@@ -103,8 +103,8 @@
             You cannot come back to this question later. Even if you don't know the answer, just pick the answer you feel best about. You might get it right!
           </p>
           <div class="mt-9 flex items-center justify-end gap-x-4">
-            <button type="button" class="secondary-button px-6 py-2.5" data-action="click->question#skip">Skip Question</button>
-            <button type="button" class="primary-button px-6 py-2.5" data-action="click->question#close">Choose Answer</button>
+            <button type="button" class="secondary-button px-6 py-2.5" data-action="click->question-answer#skip">Skip Question</button>
+            <button type="button" class="primary-button px-6 py-2.5" data-action="click->question-answer#close">Choose Answer</button>
           </div>
         </div>
       </div>

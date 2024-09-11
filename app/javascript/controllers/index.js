@@ -58,8 +58,8 @@ application.register("notification", NotificationController)
 import ScreenshotSliderController from "./screenshot_slider_controller"
 application.register("screenshot-slider", ScreenshotSliderController)
 
-import QuestionController from "./question_controller"
-application.register("question", QuestionController)
+import QuestionController from "./question_answer_controller"
+application.register("question-answer", QuestionController)
 
 import SearchController from "./search_controller"
 application.register("search", SearchController)
