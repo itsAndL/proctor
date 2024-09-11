@@ -16,8 +16,6 @@ module Candidate::AssessmentParticipationsHelper
   def determine_next_url(assessment_participation)
     if assessment_participation.unanswered_tests.any?
       candidate_test_path(assessment_participation.unanswered_tests.first)
-    elsif assessment_participation.unanswered_custom_questions.any?
-      candidate_custom_question_path(assessment_participation.unanswered_custom_questions.first)
     else
       checkout_candidate_assessment_participation_path(assessment_participation)
     end
