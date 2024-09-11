@@ -14,6 +14,7 @@ class Test < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 60 }
   # validates :overview, :relevancy, length: { maximum: 255 }
+  validates :questions_to_answer, presence: true, numericality: { greater_than: 0, only_integer: true }
   validates :description, :level, :type, :active, :language, presence: true
 
   enum level: { entry_level: 0, intermediate: 1, advanced: 2 }
@@ -40,26 +41,30 @@ class Test < ApplicationRecord
   end
 
   def duration_seconds
-    non_preview_questions.sum(:duration_seconds)
+    return 0 if active_non_preview_questions.empty?
+
+    avg_question_duration = active_non_preview_questions.average(:duration_seconds).to_f
+    total_questions = [questions_to_answer, active_non_preview_questions.count].compact.min
+    (avg_question_duration * total_questions).round
+  end
+
+  def selected_questions
+    available_count = active_non_preview_questions.count
+    limit = [questions_to_answer, available_count].compact.min
+    active_non_preview_questions.order('RANDOM()').limit(limit)
   end
 
   def preview_questions
     questions.preview.active.order('test_questions.position ASC')
   end
 
-  def non_preview_questions
-    questions.non_preview.active.order('test_questions.position ASC')
-  end
-
-  def first_preview_question
-    preview_questions.first
-  end
-
-  def first_non_preview_question
-    non_preview_questions.first
-  end
-
   def self.types
     %w[coding_test multiple_choice_test questionnaire_test]
+  end
+
+  private
+
+  def active_non_preview_questions
+    @active_non_preview_questions ||= questions.non_preview.active
   end
 end
