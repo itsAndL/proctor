@@ -42,6 +42,7 @@ class ParticipationTestService
     else
       save_question_answer(question, find_selected_options(question, selected_options_ids))
     end
+    set_question_started_at_now
   end
 
   def more_questions?
@@ -74,7 +75,7 @@ class ParticipationTestService
   end
 
   def start_question
-    set_question_started_at_now
+    set_question_started_at_now unless question_started_at
   end
 
   def start_question_preview
