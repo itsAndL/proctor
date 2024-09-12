@@ -12,8 +12,4 @@ module ApplicationHelper
   def human_date(date)
     date.strftime('%B %d, %Y')
   end
-
-  def assesskit_url
-    "https://www.assesskit.com"
-  end
 end
