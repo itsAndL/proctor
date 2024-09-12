@@ -6,7 +6,7 @@ class Candidate::AssessmentParticipationsController < ApplicationController
   before_action :set_assessment_participation, except: %i[index]
 
   def index
-    @assessment_participations = current_candidate.assessment_participations
+    @assessment_participations = current_candidate.assessment_participations.order(created_at: :desc)
   end
 
   def show; end
