@@ -55,11 +55,11 @@ application.register("modal", ModalController)
 import NotificationController from "./notification_controller"
 application.register("notification", NotificationController)
 
+import QuestionAnswerController from "./question_answer_controller"
+application.register("question-answer", QuestionAnswerController)
+
 import ScreenshotSliderController from "./screenshot_slider_controller"
 application.register("screenshot-slider", ScreenshotSliderController)
-
-import QuestionController from "./question_answer_controller"
-application.register("question-answer", QuestionController)
 
 import SearchController from "./search_controller"
 application.register("search", SearchController)

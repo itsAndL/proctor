@@ -1,5 +1,6 @@
 class Candidate::AssessmentParticipationsController < ApplicationController
   include Candidate::AssessmentParticipationsHelper
+  include AssessmentParticipationConcern
 
   before_action :authenticate_candidate!
   before_action :hide_navbar, except: %i[show index]
@@ -21,7 +22,7 @@ class Candidate::AssessmentParticipationsController < ApplicationController
   end
 
   def checkout
-    @assessment_participation.completed!
+    @assessment_participation.completed! if @assessment_participation.started?
     @next_url = candidate_assessment_participation_path(@assessment_participation)
   end
 

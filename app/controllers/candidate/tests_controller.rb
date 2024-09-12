@@ -1,5 +1,5 @@
 class Candidate::TestsController < ApplicationController
-  include TestConcern
+  include TestParticipationConcern
 
   before_action :authenticate_candidate!
   before_action :hide_navbar

@@ -1,4 +1,4 @@
-module TestConcern
+module TestParticipationConcern
   extend ActiveSupport::Concern
   include Candidate::AssessmentParticipationsHelper
 
