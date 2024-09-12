@@ -133,6 +133,6 @@ class ParticipationTestService
     @set_session_key.call('preview', false)
     @set_session_key.call('question_index', 0)
     @set_session_key.call('passed_questions_count', 0)
-    @set_session_key.call('question_started_at', nil)
+    # @set_session_key.call('question_started_at', nil)
   end
 end
