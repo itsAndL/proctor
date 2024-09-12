@@ -1,7 +1,7 @@
 <div id="assessment_header" class="bg-white border-b border-zinc-200 py-4">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex gap-x-4 sm:gap-x-8 items-center justify-between">
-      <%= render AssessmentTitleComponent.new(assessment: @assessment, current_action: @current_action) %>
+      <%= render AssessmentTitleComponent.new(assessment: @assessment) %>
       <%= save_and_exit_button %>
     </div>
   </div>
