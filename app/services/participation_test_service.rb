@@ -10,23 +10,15 @@ class ParticipationTestService
   end
 
   def start_test
-    raise InvalidTestSetupError unless valid_test?
-
     reset
   end
 
   def start_practice_test
-    raise InvalidTestSetupError unless valid_test?
-
     reset
     @set_session_key.call('preview', true)
-    @set_session_key.call('question_index', 0)
-    @set_session_key.call('passed_questions_count', 0)
   end
 
   def current_question
-    raise InvalidTestSetupError unless valid_test?
-
     question = if preview
                  @test.preview_questions[@get_session_key.call('question_index')]
                else
@@ -43,8 +35,7 @@ class ParticipationTestService
     selected_options_ids = params[:selected_options]
     question_id = params[:question_id]
     raise QuestionNotFoundError unless question_id.present?
-    raise InvalidTestSetupError unless valid_test?
-
+    
     question = Question.find(question_id)
     if preview
       next_question
@@ -54,8 +45,6 @@ class ParticipationTestService
   end
 
   def more_questions?
-    raise InvalidTestSetupError unless valid_test?
-
     if preview
       @get_session_key.call('question_index') < questions_count
     else
@@ -64,8 +53,6 @@ class ParticipationTestService
   end
 
   def questions_count
-    raise InvalidTestSetupError unless valid_test?
-
     if preview
       @test.preview_questions.count
     else
@@ -74,8 +61,6 @@ class ParticipationTestService
   end
 
   def passed_questions_count
-    raise InvalidTestSetupError unless valid_test?
-
     if preview
       (@get_session_key.call('passed_questions_count') || 0) + 1
     else
@@ -84,20 +69,16 @@ class ParticipationTestService
   end
 
   def next_question
-    raise InvalidTestSetupError unless valid_test?
-
     @set_session_key.call('question_index', 1 + (@get_session_key.call('question_index') || 0))
     @set_session_key.call('passed_questions_count', 1 + (@get_session_key.call('passed_questions_count') || 0))
   end
 
   def start_question
-    raise InvalidTestSetupError unless valid_test?
-
     set_question_started_at_now
   end
 
   def start_question_preview
-    set_question_started_at_now if valid_test?
+    set_question_started_at_now
   end
 
   def question_started_at
@@ -112,10 +93,6 @@ class ParticipationTestService
 
   def set_question_started_at_now
     @set_session_key.call('question_started_at', Time.zone.now.to_s)
-  end
-
-  def valid_test?
-    @test.present?
   end
 
   def find_selected_options(question, selected_options_ids)
@@ -138,8 +115,8 @@ class ParticipationTestService
     )
 
     question_answer.content = { selected_options_ids: selected_options&.map(&:id) }
-    question_answer.is_correct = correct_answer?(selected_options) && question_has_more_time?
-    question_answer.save
+    question_answer.is_correct = correct_answer?(selected_options) && question_has_more_time? || false
+    question_answer.save!
   end
 
   def correct_answer?(selected_options)

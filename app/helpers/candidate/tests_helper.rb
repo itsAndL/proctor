@@ -10,6 +10,9 @@ module Candidate::TestsHelper
 
   def find_current_test
     @assessment_participation.unanswered_tests.find(params[:hashid])
+    rescue ActiveRecord::RecordNotFound => e
+      log_error(e.message)
+      nil
   end
 
   def question_form_component
@@ -26,15 +29,11 @@ module Candidate::TestsHelper
   end
 
   def redirect_based_on_test_status(current_test, assessment_participation)
-    if current_test
-      next_test = assessment_participation.unanswered_tests.first
-      if next_test.present?
-        candidate_test_path(next_test)
-      else
-        checkout_candidate_assessment_participation_path(assessment_participation)
-      end
+    next_test = assessment_participation.unanswered_tests.first
+    if current_test && next_test.present?
+      candidate_test_path(next_test)
     else
-      candidate_assessment_participations_path(assessment_participation.id)
+      checkout_candidate_assessment_participation_path(assessment_participation)
     end
   end
 
@@ -48,17 +47,11 @@ module Candidate::TestsHelper
     yield if block_given?
   rescue ParticipationTestErrors::TestNotFoundError,
          ParticipationTestErrors::TestQuestionNotFoundError => e
-    dd
     log_error(e.message)
-    redirect_to start_candidate_test_path(@current_test)
-  rescue ParticipationTestErrors::QuestionNotFoundError,
-         ParticipationTestErrors::NoCurrentQuestionError,
-         ParticipationTestErrors::InvalidTestSetupError => e
+    redirect_to candidate_assessment_participation_path(@assessment_participation), alert: e.message
+  rescue ParticipationTestErrors::QuestionNotFoundError => e
     log_error(e.message)
-    redirect_to candidate_test_path(@current_test)
-    # rescue StandardError => e
-    #   log_error("An unexpected error occurred: #{e.message}")
-    #   redirect_to candidate_assessment_participations_path
+    redirect_to candidate_test_path(@current_test), alert: e.message
   end
 
   def log_error(message)

@@ -22,8 +22,7 @@ class Candidate::AssessmentParticipationsController < ApplicationController
 
   def checkout
     @assessment_participation.completed!
-    @next_url = candidate_assessment_participations_path(@assessment_participation)
-    redirect_to @next_url
+    @next_url = candidate_assessment_participation_path(@assessment_participation)
   end
 
   private

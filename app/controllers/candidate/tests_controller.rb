@@ -25,7 +25,7 @@ class Candidate::TestsController < ApplicationController
   end
 
   def feedback
-    @current_test = @assessment_participation.assessment.test.find(params[:test_id])
+    @current_test = @assessment_participation.assessment.tests.find(params[:hashid])
     @next_url = redirect_based_on_test_status(@current_test, @assessment_participation)
   end
 
@@ -73,7 +73,6 @@ class Candidate::TestsController < ApplicationController
 
   def set_current_test
     @current_test = find_current_test
-    dd unless @current_test
     redirect_to candidate_assessment_participation_path(@assessment_participation) unless @current_test
   end
 
