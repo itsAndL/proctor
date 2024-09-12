@@ -1,0 +1,116 @@
+<div data-controller="question-answer" id="question-form">
+  <header class="border-b border-gray-300">
+    <div class="bg-white py-5 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex justify-between items-center gap-x-4 gap-y-5 flex-wrap">
+      <h1 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">
+        <%= @current_business.company %>
+      </h1>
+      <% if @show_progress %>
+        <div class="space-y-2 max-sm:order-3">
+          <div class="grid grid-cols-12 gap-x-4 font-bold text-xs text-gray-900 max-w-sm" data-controller="timer" data-timer-time-value="<%= calculate_duration_left %>">
+            <div class="flex items-center gap-x-1 col-span-3">
+              <%= helpers.svg_tag "clock", class: "size-4" %>
+              <span data-timer-target="container" class="w-14">
+                <%= helpers.format_duration_hms(calculate_duration_left)%>
+              </span>
+            </div>
+            <div class="mt-1 col-span-9 w-full bg-gray-200 rounded-full h-2.5">
+              <div class="bg-blue-600 h-2.5 rounded-full" data-timer-target="progress"></div>
+            </div>
+          </div>
+          <div class="grid grid-cols-12 gap-x-4 font-bold text-xs text-gray-900 max-w-sm">
+            <div class="flex items-center gap-x-1 col-span-3">
+              <%= helpers.svg_tag "test_document", class: "size-4" %>
+              <p><%= @passed_questions_count %>/<%= @questions_count %></p>
+            </div>
+            <div class="mt-1 col-span-9 w-full bg-gray-200 rounded-full h-2">
+              <div class="bg-blue-600 h-2.5 rounded-l-full" style="width: <%= (@passed_questions_count.to_f / @questions_count) * 100 %>%"></div>
+            </div>
+          </div>
+        </div>
+        <button data-question-answer-target="trigger" type="button" class="primary-button gap-x-2.5 px-7 py-3">
+          <span>
+            <%=  @passed_questions_count == @questions_count ? "Finish": "Next"  %>
+          </span>
+          <%= helpers.svg_tag "chevron_right", class: "size-3" %>
+        </button>
+      <% else %>
+        <% next_question = @question.next_preview(@test) %>
+        <% if next_question %>
+          <%= link_to test_library_preview_question_path(@test, next_question), class: "inline-flex gap-x-2.5 items-center rounded-full bg-blue-600 px-7 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600" do %>
+            <span>Next</span>
+            <%= helpers.svg_tag "chevron_right", "stroke-width": 3, class: "size-3" %>
+          <% end %>
+        <% else %>
+          <button data-controller="tab-closer" data-action="click->tab-closer#close" type="button" class="inline-flex gap-x-2.5 items-center rounded-full bg-blue-600 px-7 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+            <span>Finish</span>
+            <%= helpers.svg_tag "chevron_right", "stroke-width": 3, class: "size-3" %>
+          </button>
+        <% end %>
+      <% end %>
+    </div>
+  </header>
+  <main class="bg-zinc-50 h-full pt-10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
+      <%= form_with(url: @save_answer_path, class: "border border-gray-200 bg-white rounded-xl px-6 py-10 md:px-12 md:py-16", data: { question_answer_target: "form" }) do |form| %>
+        <%= form.hidden_field :question_id, value: @question.id %>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-9">
+          <!-- Question Content -->
+          <div>
+            <h2 class="mb-6 font-bold leading-7 text-gray-800 text-xl tracking-tight">Question</h2>
+            <div class="text-sm md:text-base font-medium text-gray-800">
+              <%= @question.content %>
+            </div>
+          </div>
+          <!-- Answer Options -->
+          <div>
+            <% if @test %>
+              <h2 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">
+                <%= @question.type == "MultipleChoiceQuestion" ? "Select only one answer" : "Select all that apply" %>
+              </h2>
+              <div class="mt-6 space-y-5">
+                <% if @question.type == "MultipleChoiceQuestion" || @question.type == "MultipleResponseQuestion" %>
+                  <% @question.options.each.with_index(1) do |option, i| %>
+                    <label for="option-<%= i %>" class="flex items-center border border-gray-300 rounded-md p-4 cursor-pointer options hover:bg-blue-50 transition-colors duration-200">
+                      <input 
+                        id="option-<%= i %>" 
+                        name="selected_options[]" 
+                        type="<%= @question.type == "MultipleChoiceQuestion" ? "radio" : "checkbox" %>" 
+                        value="<%= option.id %>"
+                        class="size-7 border-gray-300 text-blue-600 focus:ring-blue-200 focus:ring-offset-2 focus:ring-2 item">
+                      <span class="ml-5 block text-sm md:text-base font-semibold text-gray-800"><%= option.content %></span>
+                    </label>
+                  <% end %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+          <%= form.submit class: "hidden", data: { question_answer_target: "formSubmit" } %>
+        </div>
+      <% end %>
+    </div>
+  </main>
+  <% unless @preview %>
+    <dialog data-question-answer-target="modal" class="modal px-6">
+      <div class="modal-box max-w-xl rounded-xl p-8 bg-white">
+        <form method="dialog">
+          <button class="btn btn-sm btn-circle btn-ghost absolute right-6 top-6">
+            <%= helpers.svg_tag "x_mark", "stroke-width": 2 %>
+          </button>
+        </form>
+        <div>
+          <h1 class="font-bold leading-7 text-gray-800 text-xl">Are you sure you want to skip this question?</h1>
+          <p class="mt-4 text-gray-800 text-sm font-semibold">
+            You cannot come back to this question later. Even if you don't know the answer, just pick the answer you feel best about. You might get it right!
+          </p>
+          <div class="mt-9 flex items-center justify-end gap-x-4">
+            <button type="button" class="secondary-button px-6 py-2.5" data-action="click->question-answer#skip">Skip Question</button>
+            <button type="button" class="primary-button px-6 py-2.5" data-action="click->question-answer#close">Choose Answer</button>
+          </div>
+        </div>
+      </div>
+      <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>
+  <% end %>
+</div>

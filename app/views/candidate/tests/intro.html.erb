@@ -1,24 +1,23 @@
-<header class="border-b border-gray-300">
-  <div class="bg-white py-5 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex justify-center md:justify-start">
-    <h1 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">Milk Road</h1>
-  </div>
-</header>
-
+<%= render ParticipationHeaderComponent.new(company: @assessment_participation.assessment.business.company) %>
 <main data-controller="countdown" class="bg-zinc-50 h-full pt-10">
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 pb-16">
     <div class="border border-gray-200 bg-white rounded-xl px-6 py-10 md:px-12 md:py-16">
       <div>
-        <p class="text-gray-800 space-y-3 font-medium">This is the next test:</p> 
-        <h1 class="mt-3 font-extrabold leading-7 text-gray-800 text-xl">Problem Solving</h1>
+        <p class="text-gray-800 space-y-3 font-medium">This is the next test:</p>
+        <h1 class="mt-3 font-extrabold leading-7 text-gray-800 text-xl">
+          <%= @current_test.title %>
+        </h1>
         <p class="mt-3.5 w-fit whitespace-nowrap rounded-full bg-blue-100 px-2 text-xs font-semibold leading-6 text-gray-900">Practice questions</p>
-
-        <p class="my-5 text-gray-800 space-y-3 font-medium">You will first see <strong>4 practice questions</strong> for this test to get a sense of what to expect. After that, your actual tests will begin.</p>
+        <p class="my-5 text-gray-800 space-y-3 font-medium">You will first see <strong>
+            <%= pluralize(@current_test.preview_questions.count, 'practice question') %>
+          </strong> for this test to get a sense of what to expect. After that, your actual tests will begin.</p>
         <div class="border-t border-gray-300 pt-5 pr-2">
           <p class="text-gray-800 space-y-3 font-medium">Practice questions will start in <strong data-countdown-target="timer">10</strong> seconds</p>
           <p class="mt-4 text-gray-800 space-y-3 font-medium">Please stay on this screen. The timer for your next test has <strong>started</strong> and <strong>cannot be paused</strong>. The timer continues even when you close the browser.</p>
         </div>
-
-        <a href="/talent_assessment/practice_test/1/questions" data-countdown-target="nextPage" class="hidden"></a>
+        <%= link_to practice_questions_candidate_test_path(@current_test), data: { countdown_target: "nextPage" }, class: "hidden" do %>
+          Next page
+        <% end %>
       </div>
     </div>
   </div>

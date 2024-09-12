@@ -13,10 +13,11 @@ class AssessmentParticipation < ApplicationRecord
   enum status: { invited: 0, invitation_clicked: 1, started: 2, completed: 3 }
 
   validates :status, presence: true
-  validates :rating, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }, allow_nil: true
+  validates :rating, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5 },
+                     allow_nil: true
   validates :assessment_id, uniqueness: {
-    scope: [:candidate_id, :temp_candidate_id],
-    message: "Candidate has already been invited to this assessment"
+    scope: %i[candidate_id temp_candidate_id],
+    message: 'Candidate has already been invited to this assessment'
   }
 
   validate :candidate_or_temp_candidate_present
@@ -31,11 +32,12 @@ class AssessmentParticipation < ApplicationRecord
                   }
 
   def compute_test_result(test)
-    total_questions = test.test_questions.count
-    answered_questions = question_answers.joins(:test_question).where(test_questions: { test_id: test.id }).count
-    correct_answers = question_answers.joins(:test_question).where(test_questions: { test_id: test.id }, is_correct: true).count
+    total_questions = test.selected_questions.count
 
-    is_test_completed = (answered_questions == total_questions)
+    correct_answers = question_answers.joins(:test_question).where(test_questions: { test_id: test.id },
+                                                                   is_correct: true).count
+
+    is_test_completed = (questions_answered_count(test) == total_questions)
     score_percentage = if is_test_completed && total_questions > 0
                          (correct_answers.to_f / total_questions * 100).round(2)
                        end
@@ -43,10 +45,10 @@ class AssessmentParticipation < ApplicationRecord
     OpenStruct.new(
       test_id: test.id,
       test_name: test.title,
-      total_questions: total_questions,
-      answered_questions: answered_questions,
-      correct_answers: correct_answers,
-      score_percentage: score_percentage,
+      total_questions:,
+      answered_questions: questions_answered_count(test),
+      correct_answers:,
+      score_percentage:,
       is_completed: is_test_completed
     )
   end
@@ -63,8 +65,8 @@ class AssessmentParticipation < ApplicationRecord
                          end
 
     OpenStruct.new(
-      test_scores: test_scores,
-      total_questions: total_questions,
+      test_scores:,
+      total_questions:,
       total_answered_questions: total_answered,
       total_correct_answers: total_correct,
       overall_score_percentage: overall_percentage,
@@ -84,11 +86,42 @@ class AssessmentParticipation < ApplicationRecord
     ].compact.max
   end
 
+  def questions_answered_count(test)
+    question_answers.joins(:test_question).where(test_questions: { test_id: test.id }).count
+  end
+
+  def unanswered_tests
+    # Collect the IDs of tests with unanswered questions
+    test_ids = assessment.tests.select do |test|
+      total_questions = test.selected_questions.count
+      answered_questions = questions_answered_count(test)
+      answered_questions < total_questions
+    end.map(&:id) # Extract IDs from the test objects
+
+    # Fetch tests with the collected IDs
+    Test.where(id: test_ids)
+  end
+
+  def answered_tests
+    Test.where(id: assessment.tests.map(&:id) - unanswered_tests.map(&:id))
+  end
+
+  def answered_questions(test)
+    test.questions.select do |question|
+      test_question = test.test_questions.find_by(question_id: question.id)
+      QuestionAnswer.exists?(test_question_id: test_question.id, assessment_participation_id: id)
+    end
+  end
+
+  def unanswered_questions(test)
+    test.selected_questions - answered_questions(test)
+  end
+
   private
 
   def candidate_or_temp_candidate_present
     return unless candidate.blank? && temp_candidate.blank?
 
-    errors.add(:base, "Either candidate or temp candidate must be present")
+    errors.add(:base, 'Either candidate or temp candidate must be present')
   end
 end

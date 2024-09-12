@@ -71,23 +71,23 @@ Rails.application.routes.draw do
   end
 
   namespace :candidate do
+    resources :tests, only: %i[index show], param: :hashid do
+      member do
+        get :feedback
+        get :practice_questions
+        get :questions
+        get :intro
+        get :start
+        post :save_answer
+      end
+    end
     resources :assessment_participations, only: %i[index show], path: '/assessments', param: :hashid do
       member do
         get :overview
         get :setup
-        get :intro
+        get :checkout
       end
     end
-  end
-
-  # Routes for candidate
-  namespace :talent_assessment do
-    get 'checkout', to: 'checkout#show'
-    get 'test/1/feedback', to: 'test#feedback'
-    get 'test/1/questions', to: 'test#questions'
-    get 'test/1/intro', to: 'test#intro'
-    get 'practice_test/1/intro', to: 'practice_test#intro'
-    get 'practice_test/1/questions', to: 'practice_test#questions'
   end
 
   # Routes for customer

@@ -2,7 +2,7 @@
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col sm:flex-row gap-x-4 gap-y-8 sm:items-center sm:justify-between">
       <div class="min-w-0 flex-1 flex items-center gap-x-2">
-        <%= link_to candidate_assessment_participations_path(), class: "secondary-button p-2.5 mr-4 sm:mr-8 gap-x-2.5" do %>
+        <%= link_to candidate_assessment_participations_path, class: "secondary-button p-2.5 mr-4 sm:mr-8 gap-x-2.5" do %>
           <%= svg_tag "chevron_left", class: "size-4", "stroke-width": 2 %>
         <% end %>
         <div>
@@ -11,7 +11,7 @@
               <%= @assessment_participation.assessment.title %>
             </h2>
             <p class="ml-3 whitespace-nowrap rounded-full px-2 text-xs font-semibold leading-6 <%= status_style(@assessment_participation.status) %>">
-              <%= @assessment_participation.status.capitalize %>
+              <%= @assessment_participation.status.humanize %>
             </p>
           </div>
           <div class="mt-4 flex flex-col md:flex-row gap-y-3 md:gap-y-0 md:gap-x-8">
@@ -97,14 +97,13 @@
                     <td class="whitespace-nowrap py-4 pl-3 pr-4 sm:pr-6 text-sm font-medium text-gray-800 hidden sm:table-cell"><%= format_duration(0) %> out of <%= format_duration(test.duration_seconds) %></td>
                     <td class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-bold text-gray-800 sm:pr-6"><%= @assessment_participation.compute_test_result(test).score_percentage || 0 %>%</td>
                   </tr>
-                  </tr>
                 <% end %>
               </tbody>
-              </tbody>
-            </table>
-          </div>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
-  <% end %>
+  </div>
+<% end %>
 </main>

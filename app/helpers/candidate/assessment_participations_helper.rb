@@ -1,4 +1,4 @@
-module AssessmentParticipationsHelper
+module Candidate::AssessmentParticipationsHelper
   def status_style(status)
     case status
     when 'completed'
