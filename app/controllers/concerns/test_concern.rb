@@ -1,4 +1,7 @@
-module Candidate::TestsHelper
+module TestConcern
+  extend ActiveSupport::Concern
+  include Candidate::AssessmentParticipationsHelper
+
   def find_assessment_test(test, assessment)
     AssessmentTest.find_by(test:, assessment:)
   end
@@ -10,9 +13,9 @@ module Candidate::TestsHelper
 
   def find_current_test
     @assessment_participation.unanswered_tests.find(params[:hashid])
-    rescue ActiveRecord::RecordNotFound => e
-      log_error(e.message)
-      nil
+  rescue ActiveRecord::RecordNotFound => e
+    log_error(e.message)
+    redirect_to determine_next_url(@assessment_participation), alert: 'Test already completed'
   end
 
   def question_form_component
@@ -48,7 +51,7 @@ module Candidate::TestsHelper
   rescue ParticipationTestErrors::TestNotFoundError,
          ParticipationTestErrors::TestQuestionNotFoundError => e
     log_error(e.message)
-    redirect_to candidate_assessment_participation_path(@assessment_participation), alert: e.message
+    redirect_to determine_next_url(@assessment_participation), alert: e.message
   rescue ParticipationTestErrors::QuestionNotFoundError => e
     log_error(e.message)
     redirect_to candidate_test_path(@current_test), alert: e.message

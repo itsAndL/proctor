@@ -1,5 +1,5 @@
 class Candidate::TestsController < ApplicationController
-  include Candidate::TestsHelper
+  include TestConcern
 
   before_action :authenticate_candidate!
   before_action :hide_navbar
@@ -33,7 +33,8 @@ class Candidate::TestsController < ApplicationController
     handle_service_action(:start_question, @test_service) do
       render question_form_component
       # to have always default answer
-      # @test_service.answere_question({ selected_options: [], question_id: @test_service.current_question.id })
+      @test_service.answere_question({ params: { selected_options: [],
+                                                 question_id: @test_service.current_question.id } })
     end
   end
 
