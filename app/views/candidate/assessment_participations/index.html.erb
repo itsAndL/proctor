@@ -13,7 +13,7 @@
                   <%= assessment_participation.assessment.title %>
                 </h2>
                 <p class="ml-3 whitespace-nowrap rounded-full px-2 text-xs font-semibold leading-6 <%= status_style(assessment_participation.status)%>">
-                  <%= assessment_participation.status.capitalize %>
+                  <%= assessment_participation.status.humanize %>
                 </p>
               </div>
               <div class="mt-6 grid grid-cols-2 gap-4">

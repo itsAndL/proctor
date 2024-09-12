@@ -35,7 +35,7 @@ class ParticipationTestService
     selected_options_ids = params[:selected_options]
     question_id = params[:question_id]
     raise QuestionNotFoundError unless question_id.present?
-    
+
     question = Question.find(question_id)
     if preview
       next_question
@@ -75,7 +75,7 @@ class ParticipationTestService
   end
 
   def start_question
-    set_question_started_at_now unless question_started_at
+    set_question_started_at_now
   end
 
   def start_question_preview
@@ -116,16 +116,20 @@ class ParticipationTestService
     )
 
     question_answer.content = { selected_options_ids: selected_options&.map(&:id) }
-    question_answer.is_correct = correct_answer?(selected_options) && question_has_more_time? || false
+    question_answer.is_correct = question_has_more_time? && correct_answer?(selected_options)
     question_answer.save!
   end
 
   def correct_answer?(selected_options)
-    selected_options&.all?(&:correct) && selected_options&.any?
+    return false if selected_options.nil?
+
+    selected_options.all?(&:correct) && selected_options.any?
   end
 
   def question_has_more_time?
-    duration_left = Time.zone.now - Time.zone.parse(question_started_at)
+    return false if question_started_at.nil?
+
+    duration_left = (current_question.duration_seconds || 0) - (Time.zone.now - Time.zone.parse(question_started_at))
     duration_left.positive?
   end
 
@@ -133,6 +137,6 @@ class ParticipationTestService
     @set_session_key.call('preview', false)
     @set_session_key.call('question_index', 0)
     @set_session_key.call('passed_questions_count', 0)
-    # @set_session_key.call('question_started_at', nil)
+    @set_session_key.call('question_started_at', nil)
   end
 end
