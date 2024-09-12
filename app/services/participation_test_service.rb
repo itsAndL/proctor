@@ -56,7 +56,7 @@ class ParticipationTestService
     if preview
       @test.preview_questions.count
     else
-      @test.non_preview_questions.count
+      @test.selected_questions.count
     end
   end
 

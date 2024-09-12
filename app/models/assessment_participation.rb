@@ -32,7 +32,7 @@ class AssessmentParticipation < ApplicationRecord
                   }
 
   def compute_test_result(test)
-    total_questions = test.non_preview_questions.count
+    total_questions = test.selected_questions.count
 
     correct_answers = question_answers.joins(:test_question).where(test_questions: { test_id: test.id },
                                                                    is_correct: true).count
@@ -93,7 +93,7 @@ class AssessmentParticipation < ApplicationRecord
   def unanswered_tests
     # Collect the IDs of tests with unanswered questions
     test_ids = assessment.tests.select do |test|
-      total_questions = test.non_preview_questions.count
+      total_questions = test.selected_questions.count
       answered_questions = questions_answered_count(test)
       answered_questions < total_questions
     end.map(&:id) # Extract IDs from the test objects
@@ -114,7 +114,7 @@ class AssessmentParticipation < ApplicationRecord
   end
 
   def unanswered_questions(test)
-    test.non_preview_questions - answered_questions(test)
+    test.selected_questions - answered_questions(test)
   end
 
   private
