@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class CustomQuestionLibraryComponent < ViewComponent::Base
-  def initialize(custom_questions:, clear_path:, assessment: nil)
+  def initialize(custom_questions:, clear_path:, assessment: nil, business: nil)
     @custom_questions = custom_questions
     @clear_path = clear_path
     @assessment = assessment
+    @business = business
     @library = :custom_question
   end
 
@@ -13,9 +14,11 @@ class CustomQuestionLibraryComponent < ViewComponent::Base
   end
 
   def filters_applied?
+    params[:question_source].present? ||
     params[:search_query].present? ||
     params[:question_category].present? ||
-    params[:question_type].present?
+    params[:question_type].present? ||
+    params[:language].present?
   end
 
   private

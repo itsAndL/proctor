@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="search"
 export default class extends Controller {
-  static targets = ["form", "input"]
+  static targets = ["form", "input", "radio", "checkbox", "select"]
 
   connect() {
     this.timeout = null
@@ -16,6 +16,10 @@ export default class extends Controller {
   }
 
   submitOnCheck() {
+    this.formTarget.requestSubmit()
+  }
+
+  submitOnChange() {
     this.formTarget.requestSubmit()
   }
 }

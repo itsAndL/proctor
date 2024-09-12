@@ -1,9 +1,9 @@
 <div class="divide-y-2 divide-zinc-200 bg-white shadow rounded-xl">
-  <div class="py-6 sm:py-9 px-8">
+  <div class="py-6 sm:py-9 px-4 sm:px-8">
     <div class="max-sm:px-4 flex flex-col sm:flex-row sm:justify-between sm:items-center sm:gap-x-7 max-sm:gap-y-8">
       <div>
         <div class="flex items-center gap-x-5 mb-2">
-          <h3 class="text-xl font-bold text-gray-700">Assessment</h3>
+          <h3 class="hidden md:block text-xl font-bold text-gray-700">Assessment</h3>
           <p class="text-xl font-semibold text-gray-600"><%= assessment.title %></p>
         </div>
         <%= render(StarRatingComponent.new(assessment_participation)) %>
@@ -28,11 +28,7 @@
         <div>
           <dt class="font-bold text-gray-800">Average score</dt>
           <dd class="mt-1 text-gray-800 font-medium text-sm">
-            <% if overall_score_percentage.nil? %>
-              <%= helpers.svg_tag "minus" %>
-            <% else %>
-              <p><%= overall_score_percentage %> %</p>
-            <% end %>
+            <%= helpers.display_percentage_or_minus(overall_score_percentage) %>
           </dd>
         </div>
         <div>

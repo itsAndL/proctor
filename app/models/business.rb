@@ -4,6 +4,8 @@ class Business < ApplicationRecord
 
   belongs_to :user
 
+  has_many :tests, dependent: :destroy
+  has_many :custom_questions, dependent: :destroy
   has_many :assessments, dependent: :destroy
   has_many :assessment_participations, through: :assessments
   has_many :candidates, -> { distinct }, through: :assessment_participations

@@ -65,7 +65,7 @@
                         data-action="click->clickable-row#handleClick">
                       <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6 max-w-[240px] sm:max-w-xs truncate"><%= assessment.title %></td>
                       <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden sm:table-cell"><%= assessment.assessment_participations.count %></td>
-                      <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden sm:table-cell"><%= assessment.progress %> %</td>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden sm:table-cell"><%= assessment.progress %>%</td>
                       <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell"><%= time_ago_in_words(assessment.last_activity) %> ago</td>
                       <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden lg:table-cell"><%= human_date assessment.created_at %></td>
                       <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">

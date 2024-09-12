@@ -23,7 +23,7 @@
         </div>
         <div class="flex gap-x-1.5 items-center text-gray-800 text-sm font-medium">
           <%= helpers.svg_tag "question_mark_square", class: "size-4" %>
-          <p><%= pluralize(@test.non_preview_questions.count, 'question') %></p>
+          <p><%= pluralize(@test.selected_questions.count, 'question') %></p>
         </div>
         <div class="flex gap-x-1.5 items-center text-gray-800 text-sm font-medium">
           <%= helpers.svg_tag "shapes", class: "size-4" %>

@@ -1,18 +1,24 @@
 <% if @assessment_participation.completed? %>
   <dl class="rounded-xl bg-white border border-gray-300 divide divide-gray-100 mb-7">
     <div class="p-6">
-      <dd class="text-5xl font-bold tracking-tight text-gray-800"><%= overall_score %>%</dd>
+      <dd class="text-5xl font-bold tracking-tight text-gray-800">
+        <%= helpers.display_percentage_or_minus(overall_score) %>
+      </dd>
       <dt class="mt-2 text-sm font-bold leading-6 text-gray-800"><%= @assessment_participation.participant.name %> Average score</dt>
     </div>
 
     <div class="grid grid-cols-1 gap-0.5 overflow-hidden sm:grid-cols-2 rounded-b-xl">
       <div class="flex flex-col bg-zinc-100 p-6">
         <dt class="text-xs font-semibold mt-1 text-gray-600">Your best candidate score</dt>
-        <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900"><%= best_candidate_score %>%</dd>
+        <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900">
+          <%= helpers.display_percentage_or_minus(best_candidate_score) %>
+        </dd>
       </div>
       <div class="flex flex-col bg-zinc-100 p-6">
         <dt class="text-xs font-semibold mt-1 text-gray-600">Your candidate pool average</dt>
-        <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900"><%= candidate_pool_average %>%</dd>
+        <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900">
+          <%= helpers.display_percentage_or_minus(candidate_pool_average) %>
+        </dd>
       </div>
     </div>
   </dl>
@@ -25,7 +31,7 @@
       <% if result.is_completed %>
         <div class="flex justify-between px-4 py-3 bg-white border border-gray-400 rounded-lg text-sm">
           <p class="font-semibold"><%= result.test_name %></p>
-          <p class="font-semibold"><%= result.score_percentage %> %</p>
+          <p class="font-semibold"><%= result.score_percentage %>%</p>
         </div>
       <% else %>
         <div class="flex justify-between px-4 py-3 bg-white border border-gray-400 rounded-lg text-sm">

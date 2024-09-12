@@ -1,6 +1,7 @@
 class Assessment < ApplicationRecord
   include Hashid::Rails
   include PgSearch::Model
+  include LanguageEnum
 
   belongs_to :business
 
@@ -23,8 +24,6 @@ class Assessment < ApplicationRecord
 
   validates :title, :language, presence: true
   validate :max_five_tests
-
-  enum language: { en: 0, fr: 1 }
 
   has_many :assessment_tests, -> { order(position: :asc) }, dependent: :destroy
   has_many :tests, through: :assessment_tests
@@ -53,9 +52,9 @@ class Assessment < ApplicationRecord
 
     best_score = completed_participations.map do |participation|
       participation.evaluate_full_assessment.overall_score_percentage
-    end.max
+    end.compact.max
 
-    best_score.round(2)
+    best_score&.round(2)
   end
 
   def candidate_pool_average
@@ -64,7 +63,8 @@ class Assessment < ApplicationRecord
     return nil if completed_participations.empty?
 
     total_score = completed_participations.sum do |participation|
-      participation.evaluate_full_assessment.overall_score_percentage
+      score = participation.evaluate_full_assessment.overall_score_percentage
+      score.to_f # Convert nil to 0.0 and ensure float division
     end
 
     average_score = total_score / completed_participations.count

@@ -10,7 +10,7 @@
     </div>
 
     <div class="mt-8">
-      <%= render CustomQuestionLibraryComponent.new(custom_questions: @custom_questions, clear_path: custom_question_library_index_path) %>
+      <%= render CustomQuestionLibraryComponent.new(custom_questions: @custom_questions, clear_path: custom_question_library_index_path, business: current_business) %>
     </div>
   </div>
 </main>

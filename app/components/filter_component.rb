@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class FilterComponent < ViewComponent::Base
-  def initialize(clear_path:, library:, assessment: nil)
+  def initialize(clear_path:, library:, business: nil, assessment: nil)
     @clear_path = clear_path
     @library = library
+    @business = business
     @assessment = assessment
   end
 
@@ -25,13 +26,23 @@ class FilterComponent < ViewComponent::Base
     case @library
     when :test
       {
-        sections: [highlights_section, test_focus_section, test_format_section, test_duration_section],
+        sections: [
+          show_tests_from_section,
+          highlights_section,
+          test_focus_section,
+          test_format_section,
+          test_duration_section
+        ].tap { |sections| sections << language_section unless @assessment },
         placeholder: 'Search tests',
         filter_url: helpers.test_library_index_path
       }
     when :custom_question
       {
-        sections: [question_type_section, question_category_section],
+        sections: [
+          show_questions_from_section,
+          question_type_section,
+          question_category_section
+        ].tap { |sections| sections << language_section unless @assessment },
         placeholder: 'Search questions',
         filter_url: helpers.custom_question_library_index_path
       }
@@ -42,6 +53,17 @@ class FilterComponent < ViewComponent::Base
         filter_url: ''
       }
     end
+  end
+
+  def show_tests_from_section
+    {
+      title: "Show tests from",
+      options: [
+        radio_option("test_source", "assesskit", params[:test_source] != "my_company", "test-source-assesskit", "AssessKit"),
+        radio_option("test_source", "my_company", params[:test_source] == "my_company", "test-source-my-company", "My company")
+      ],
+      expanded: true
+    }
   end
 
   def highlights_section
@@ -75,7 +97,7 @@ class FilterComponent < ViewComponent::Base
           test_type.id,
           params[:test_category]&.include?(test_type.id.to_s),
           "test-category-#{index}",
-          "#{test_type.title} #{count_span(test_type.tests.count)}"
+          "#{test_type.title} #{count_span(test_type.tests.accessible_by_business(@business).active.count)}"
         )
       end
     }
@@ -90,7 +112,7 @@ class FilterComponent < ViewComponent::Base
           type,
           params[:test_type]&.include?(type),
           "test-type-#{index}",
-          "#{t(".types.test.#{type}", default: type.humanize)} #{count_span(type.camelize.constantize.count)}"
+          "#{t(".types.test.#{type}", default: type.humanize)} #{count_span(type.camelize.constantize.accessible_by_business(@business).count)}"
         )
       end
     }
@@ -108,6 +130,17 @@ class FilterComponent < ViewComponent::Base
     }
   end
 
+  def show_questions_from_section
+    {
+      title: "Show questions from",
+      options: [
+        checkbox_option("question_source[]", "assesskit", params[:question_source]&.include?("assesskit"), "question-source-assesskit", "AssessKit"),
+        checkbox_option("question_source[]", "my_company", params[:question_source]&.include?("my_company"), "question-source-my-company", "My company")
+      ],
+      expanded: true
+    }
+  end
+
   def question_type_section
     {
       title: "Question type",
@@ -117,7 +150,7 @@ class FilterComponent < ViewComponent::Base
           type,
           params[:question_type]&.include?(type),
           "question-type-#{index}",
-          "#{t(".types.custom_question.#{type}", default: type.humanize)} #{count_span(type.camelize.constantize.count)}"
+          "#{t(".types.custom_question.#{type}", default: type.humanize)} #{count_span(type.camelize.constantize.accessible_by_business(@business).count)}"
         )
       end
     }
@@ -132,9 +165,32 @@ class FilterComponent < ViewComponent::Base
           question_type.id,
           params[:question_category]&.include?(question_type.id.to_s),
           "test-category-#{index}",
-          "#{question_type.title} #{count_span(question_type.custom_questions.count)}"
+          "#{question_type.title} #{count_span(question_type.custom_questions.accessible_by_business(@business).count)}"
         )
       end
+    }
+  end
+
+  def language_section
+    {
+      title: "Language",
+      options: [
+        select_option("language", Assessment.languages.keys.map { |lang| [lang.titleize, lang] }, params[:language])
+      ]
+    }
+  end
+
+  def radio_option(name, value, checked, id, label)
+    {
+      name: name,
+      value: value,
+      checked: checked,
+      id: id,
+      label: label,
+      data: {
+        search_target: "radio",
+        action: "change->search#submitOnCheck"
+      }
     }
   end
 
@@ -148,6 +204,19 @@ class FilterComponent < ViewComponent::Base
       data: {
         search_target: "checkbox",
         action: "change->search#submitOnCheck"
+      }
+    }
+  end
+
+  def select_option(name, options, selected)
+    {
+      name: name,
+      options: options,
+      selected: selected,
+      id: "language-select",
+      data: {
+        search_target: "select",
+        action: "change->search#submitOnChange"
       }
     }
   end

@@ -1,7 +1,11 @@
 class MultipleResponseQuestion < Question
-  # Add MultipleResponseQuestion-specific logic
+  include OptionValidatable
 
   validate :at_least_one_correct_option
+
+  def self.min_options
+    2
+  end
 
   private
 

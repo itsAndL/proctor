@@ -11,14 +11,10 @@
                 <p class="text-sm font-medium"><%= t(".types.#{@custom_question.type.underscore}") %></p>
               </div>
 
-              <div class="flex gap-x-2 items-center text-gray-900">
+              <div class="flex gap-x-2 items-center text-gray-900 text-sm font-medium">
                 <%= helpers.svg_tag "clock", class: "size-4 mt-0.5" %>
 
-                <% if @custom_question.duration_seconds.zero? %>
-                  <%= helpers.svg_tag "minus", class: "size-5 mt-0.5" %>
-                <% else %>
-                  <p class="text-sm font-medium"><%= helpers.format_duration(@custom_question.duration_seconds) %></p>
-                <% end %>
+                <%= helpers.display_duration_or_minus(@custom_question.duration_seconds) %>
               </div>
             </div>
           </div>
@@ -48,18 +44,24 @@
         </div>
       </div>
     </summary>
-    <div class="rounded-b-xl bg-white shadow-sm pb-8 pt-4 px-4 sm:px-6  font-medium text-gray-700">
-      <div class="min-h-[180px] bg-zinc-100 grid grid-cols-1 md:grid-cols-2 px-4 pt-4 pb-6 gap-x-7">
-        <div>
-          <h2 class="font-bold leading-7 text-gray-900 text-base tracking-tight">Why is this question relevant?</h2>
-          <p class="mt-2 font-medium text-sm text-gray-800"><%= @custom_question.relevancy %></p>
-        </div>
+    <% if @custom_question.relevancy.present? || @custom_question.look_for.present? %>
+      <div class="rounded-b-xl bg-white shadow-sm pb-8 pt-4 px-4 sm:px-6  font-medium text-gray-700">
+        <div class="min-h-[180px] bg-zinc-100 grid grid-cols-1 <%= "md:grid-cols-2" if @custom_question.relevancy.present? && @custom_question.look_for.present? %> px-4 pt-4 pb-6 gap-x-7">
+          <% if @custom_question.relevancy.present? %>
+            <div>
+              <h2 class="font-bold leading-7 text-gray-900 text-base tracking-tight">Why is this question relevant?</h2>
+              <p class="mt-2 font-medium text-sm text-gray-800"><%= @custom_question.relevancy %></p>
+            </div>
+          <% end %>
 
-        <div>
-          <h2 class="font-bold leading-7 text-gray-900 text-base tracking-tight">What to look for in the answer?</h2>
-          <div class="mt-2 font-medium text-sm text-gray-800 flex flex-col gap-y-8"><%= simple_format(@custom_question.look_for) %></div>
-        </div>                  
+          <% if @custom_question.look_for.present? %>
+            <div>
+              <h2 class="font-bold leading-7 text-gray-900 text-base tracking-tight">What to look for in the answer?</h2>
+              <div class="mt-2 font-medium text-sm text-gray-800 flex flex-col gap-y-8"><%= simple_format(@custom_question.look_for) %></div>
+            </div> 
+          <% end %>                 
+        </div>
       </div>
-    </div>
+    <% end %>
   </details>
 </div>

@@ -14,15 +14,20 @@
       <% end %>
     </div>
 
-    <div class="mt-1 flex gap-x-6 items-center">
-      <div class="flex gap-x-2 items-center text-gray-600">
+    <div class="mt-1 flex gap-x-5 items-center">
+      <div class="flex gap-x-1.5 items-center text-gray-600">
         <%= helpers.svg_tag "test_document", class: "size-4" %>
         <p id="tests-count" class="font-medium text-sm"><%= tests_count %></p>
       </div>
 
-      <div class="flex gap-x-2 items-center text-gray-600">
+      <div class="flex gap-x-1.5 items-center text-gray-600">
         <%= helpers.svg_tag "clock", class: "size-4" %>
         <p class="font-medium text-sm"><%= helpers.format_duration(@assessment.duration_seconds) %></p>
+      </div>
+
+      <div class="flex gap-x-1.5 items-center text-gray-600">
+        <%= helpers.svg_tag "language", class: "size-4", "stroke-width": 2 %>
+        <p class="font-medium text-sm"><%= Assessment.human_enum_name(:language, @assessment.language) %></p>
       </div>
     </div>
   </div>

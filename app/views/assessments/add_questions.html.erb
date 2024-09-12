@@ -13,7 +13,7 @@
       </div>
 
       <div class="mt-10">
-        <%= render CustomQuestionLibraryComponent.new(custom_questions: CustomQuestion.order(:position), clear_path: add_questions_assessment_path(@assessment), assessment: @assessment) %>
+        <%= render CustomQuestionLibraryComponent.new(custom_questions: CustomQuestion.send(@assessment.language).accessible_by_business(current_business).sorted, clear_path: add_questions_assessment_path(@assessment), assessment: @assessment, business: current_business) %>
       </div>
     </div>
   </div>
