@@ -97,7 +97,7 @@ class AssessmentsController < ApplicationController
           render(turbo_stream:
             [
               turbo_stream.replace(
-                'assessment-title', AssessmentTitleComponent.new(assessment: @assessment, current_action: action_name, rename: true)
+                'assessment-title', AssessmentTitleComponent.new(assessment: @assessment, rename: true)
               ),
               turbo_stream.replace('modal', helpers.turbo_frame_tag('modal')),
               turbo_stream.replace('notification', NotificationComponent.new(notice: "Assessment title was successfully updated."))

@@ -55,7 +55,7 @@ module AssessmentItemManagement
   end
 
   def render_header
-    AssessmentHeaderComponent.new(assessment: @assessment, current_action: action_name)
+    AssessmentHeaderComponent.new(assessment: @assessment)
   end
 
   def string_to_boolean(string)
