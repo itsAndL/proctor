@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     member do
       patch :archive
       patch :unarchive
+      get :require_edit
       get :choose_tests
       patch :update_tests
       get :add_questions
