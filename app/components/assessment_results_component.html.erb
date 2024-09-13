@@ -29,14 +29,14 @@
   <div class="mt-4 space-y-3">
     <% test_results.each do |result| %>
       <% if result.is_completed %>
-        <div class="flex justify-between px-4 py-3 bg-white border border-gray-400 rounded-lg text-sm">
-          <p class="font-semibold"><%= result.test_name %></p>
-          <p class="font-semibold"><%= result.score_percentage %>%</p>
+        <div class="flex justify-between px-4 py-3 bg-white border border-gray-400 rounded-lg text-sm font-semibold">
+          <p><%= result.test_name %></p>
+          <%= helpers.display_percentage_or_minus(result.score_percentage) %>
         </div>
       <% else %>
-        <div class="flex justify-between px-4 py-3 bg-white border border-gray-400 rounded-lg text-sm">
-          <p class="font-semibold"><%= result.test_name %></p>
-          <p class="font-semibold text-gray-400">Pending</p>
+        <div class="flex justify-between px-4 py-3 bg-white border border-gray-400 rounded-lg text-sm font-semibold">
+          <p><%= result.test_name %></p>
+          <p class="text-gray-400">Pending</p>
         </div>
       <% end %>
     <% end %>

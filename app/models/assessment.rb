@@ -98,9 +98,37 @@ class Assessment < ApplicationRecord
   def public_link_active?
     public_link_active
   end
-
   def progress
-    rand(0..100)
+    participations = assessment_participations
+    return 0 if participations.empty?
+
+    # Return 100% only if all participations are completed
+    return 100 if participations.all?(&:completed?)
+
+    total_parts = tests.count + custom_questions.count
+    return 0 if total_parts.zero?
+
+    total_completed_parts = 0
+
+    participations.each do |participation|
+      completed_parts = 0
+
+      # Check completed tests
+      tests.each do |test|
+        test_result = participation.compute_test_result(test)
+        completed_parts += 1 if test_result.is_completed
+      end
+
+      # Check completed custom questions
+      custom_questions.each do |custom_question|
+        completed_parts += 1 if participation.custom_question_completed?(custom_question)
+      end
+
+      total_completed_parts += completed_parts
+    end
+
+    completion_percentage = (total_completed_parts.to_f / (total_parts * participations.count)) * 100
+    completion_percentage.round(2)
   end
 
   def parts_count
