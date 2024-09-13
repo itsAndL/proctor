@@ -87,7 +87,11 @@ class AssessmentParticipation < ApplicationRecord
   end
 
   def questions_answered_count(test)
-    question_answers.joins(:test_question).where(test_questions: { test_id: test.id }).count
+    questions_answeres(test).count
+  end
+
+  def questions_answeres(test)
+    question_answers.joins(:test_question).where(test_questions: { test_id: test.id })
   end
 
   def unanswered_tests
@@ -115,6 +119,11 @@ class AssessmentParticipation < ApplicationRecord
 
   def unanswered_questions(test)
     test.selected_questions - answered_questions(test)
+  end
+
+  def time_left
+    # TODO: add also calculation of time left for custom questions
+    unanswered_tests.sum { |test| test.unanswered_questions.sum(&:duration_seconds) }
   end
 
   private
