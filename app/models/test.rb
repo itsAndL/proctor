@@ -14,6 +14,7 @@ class Test < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 60 }
   # validates :overview, :relevancy, length: { maximum: 255 }
+  validate :validate_duration_seconds
   validates :questions_to_answer, presence: true, numericality: { greater_than: 0, only_integer: true }
   validates :description, :level, :type, :active, :language, presence: true
 
@@ -40,14 +41,6 @@ class Test < ApplicationRecord
     self.test_category = TestCategory.find_or_create_by(title: value)
   end
 
-  def duration_seconds
-    return 0 if active_non_preview_questions.empty?
-
-    avg_question_duration = active_non_preview_questions.average(:duration_seconds).to_f
-    total_questions = [questions_to_answer, active_non_preview_questions.count].compact.min
-    (avg_question_duration * total_questions).round
-  end
-
   def selected_questions
     available_count = active_non_preview_questions.count
     limit = [questions_to_answer, available_count].compact.min
@@ -63,6 +56,14 @@ class Test < ApplicationRecord
   end
 
   private
+
+  def validate_duration_seconds
+    return if preview # Skip validation for preview questions
+
+    return unless duration_seconds.nil? || duration_seconds.to_i <= 0
+    
+    errors.add(:duration_seconds, 'must be greater than 0 for non-preview questions')
+  end
 
   def active_non_preview_questions
     @active_non_preview_questions ||= questions.non_preview.active
