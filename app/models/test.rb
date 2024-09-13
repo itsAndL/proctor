@@ -58,6 +58,11 @@ class Test < ApplicationRecord
     questions.preview.active.order('test_questions.position ASC')
   end
 
+  def unanswered_questions
+    # return question that dont have answers
+    active_non_preview_questions.where.not(id: test_questions.joins(:question_answers).select('questions.id'))
+  end
+
   def self.types
     %w[coding_test multiple_choice_test questionnaire_test]
   end
