@@ -6,8 +6,15 @@
         <div>
           <h1 class="font-extrabold leading-7 text-gray-800 text-2xl">Hello <%= @assessment_participation.candidate.name %>,</h1>
           <div class="mt-6 text-gray-800 space-y-3 font-medium">
-            <p>Welcome to our assessment</p>
-            <p>Completing this assessment will help you showcase your skills and knowledge.</p>
+            <% if @assessment_participation.started? %>
+              <p>You have completed 
+                <%= @assessment_participation.answered_tests.count %> out of <%= @assessment_participation.assessment.parts_count %> tests.
+              </p>
+              <p>Click <strong>Get started</strong> button when you are ready to continue your assessment.</p>
+            <% else %>
+              <p>Welcome to our assessment</p>
+              <p>Completing this assessment will help you showcase your skills and knowledge.</p>
+            <% end %>
             <p>Good luck!</p>
           </div>
         </div>
@@ -15,19 +22,19 @@
           <h1 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">A few things before you start:</h1>
           <ul class="mt-6 space-y-3.5 list-disc font-medium text-base ml-7">
             <li>This assessment consists of <strong><%= pluralize(@assessment_participation.assessment.parts_count, "part") %></strong>. It will take approximately <strong><%= format_duration(@assessment_participation.assessment.duration_seconds)%></strong> to complete.</li>
-          <li>The assessment is timed. A timer is shown per test or per question.</li>
-          <li>Before each test there may be preview questions, <strong>be aware the timer for the test will have already started.</strong></li>
-          <li>Please allow the use of your camera/webcam and do not leave full-screen mode. Snapshots will be taken of you periodically during the assessment. These measures are taken to ensure fairness for everyone.</li>
-          <li>You are free to use a calculator, pen and paper.</li>
-          <li>We recommend completing the assessment in one go.</li>
-        </ul>
+            <li>The assessment is timed. A timer is shown per test or per question.</li>
+            <li>Before each test there may be preview questions, <strong>be aware the timer for the test will have already started.</strong></li>
+            <li>Please allow the use of your camera/webcam and do not leave full-screen mode. Snapshots will be taken of you periodically during the assessment. These measures are taken to ensure fairness for everyone.</li>
+            <li>You are free to use a calculator, pen and paper.</li>
+            <li>We recommend completing the assessment in one go.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-12 flex justify-end">
+        <%= link_to setup_candidate_assessment_participation_path(@assessment_participation), class: "primary-button gap-x-2.5 px-7 py-3" do %>
+          <span>Get started</span>
+          <%= svg_tag "chevron_right", class: "size-3 -mb-0.5", "stroke-width": 3 %>
+        <% end %>
       </div>
     </div>
-    <div class="mt-12 flex justify-end">
-      <%= link_to setup_candidate_assessment_participation_path(@assessment_participation), class: "primary-button gap-x-2.5 px-7 py-3" do %>
-        <span>Get started</span>
-        <%= svg_tag "chevron_right", class: "size-3 -mb-0.5", "stroke-width": 3 %>
-      <% end %>
-    </div>
-  </div>
-</main>
+  </main>
