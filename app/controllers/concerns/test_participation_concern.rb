@@ -1,6 +1,6 @@
 module TestParticipationConcern
   extend ActiveSupport::Concern
-  include Candidate::AssessmentParticipationsHelper
+  include AssessmentParticipationConcern
 
   def find_assessment_test(test, assessment)
     AssessmentTest.find_by(test:, assessment:)
