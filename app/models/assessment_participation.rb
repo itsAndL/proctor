@@ -106,6 +106,10 @@ class AssessmentParticipation < ApplicationRecord
     Test.where(id: test_ids)
   end
 
+  def unanswered_custom_questions
+    assessment.custom_questions - custom_question_responses.map(&:custom_question)
+  end
+
   def answered_tests
     Test.where(id: assessment.tests.map(&:id) - unanswered_tests.map(&:id))
   end
@@ -123,7 +127,8 @@ class AssessmentParticipation < ApplicationRecord
 
   def time_left
     # TODO: add also calculation of time left for custom questions
-    unanswered_tests.sum { |test| test.unanswered_questions.sum(&:duration_seconds) }
+    custom_question_time_lef = unanswered_custom_questions.sum(&:duration_seconds)
+    unanswered_tests.sum { |test| test.unanswered_questions.sum(&:duration_seconds) } + custom_question_time_lef
   end
 
   private
