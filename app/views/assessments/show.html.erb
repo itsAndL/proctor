@@ -17,7 +17,7 @@
                   <%= svg_tag "eye", class: "size-5 group-hover:text-gray-500", "stroke-width": 2 %>
                   Try yourself
                 </a>
-                <%= link_to share_assessment_path(@assessment), class: 'group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium sm:hidden', data: { turbo_frame: "modal" } do %>
+                <%= link_to assessment_invite_eligibility_path(@assessment), class: 'group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium sm:hidden', data: { turbo_frame: "modal" } do %>
                   <%= svg_tag "envelope", class: "size-5 group-hover:text-gray-500", "stroke-width": 2 %>
                   Invite
                 <% end %>
@@ -55,7 +55,7 @@
             </div>
           </div>
 
-          <%= link_to share_assessment_path(@assessment), class: 'primary-button hidden sm:inline-flex', data: { turbo_frame: "modal" } do %>
+          <%= link_to assessment_invite_eligibility_path(@assessment), class: 'primary-button hidden sm:inline-flex', data: { turbo_frame: "modal" } do %>
             <%= svg_tag "envelope", class: "size-5" %>
             Invite
           <% end %>

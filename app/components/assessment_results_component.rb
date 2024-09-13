@@ -20,8 +20,6 @@ class AssessmentResultsComponent < ViewComponent::Base
   end
 
   def test_results
-    @test_results ||= @assessment_participation.assessment.tests.map do |test|
-      @assessment_participation.compute_test_result(test)
-    end
+    @test_results ||= @assessment_participation.evaluate_full_assessment.test_scores
   end
 end
