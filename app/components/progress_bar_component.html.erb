@@ -1,0 +1,7 @@
+<div class="<%= @classes %>">
+  <%= tag.div(
+    class: "bg-blue-600 h-2.5 rounded-l-full #{'rounded-full' if percent.to_i >= 100}", 
+    data: @data,
+    style: "width: #{percent}%"
+  ) %>
+</div>
