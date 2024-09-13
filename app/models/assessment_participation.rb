@@ -10,6 +10,9 @@ class AssessmentParticipation < ApplicationRecord
   has_many :custom_question_responses, dependent: :destroy
   has_many :screenshots, dependent: :destroy
 
+  delegate :tests, to: :assessment
+  delegate :custom_questions, to: :assessment
+
   enum status: { invited: 0, invitation_clicked: 1, started: 2, completed: 3 }
 
   validates :status, presence: true
@@ -30,6 +33,10 @@ class AssessmentParticipation < ApplicationRecord
                   using: {
                     tsearch: { prefix: true }
                   }
+
+  def custom_question_completed?(custom_question)
+    custom_question_responses.exists?(custom_question_id: custom_question.id)
+  end
 
   def compute_test_result(test)
     total_questions = test.selected_questions.count
@@ -54,21 +61,19 @@ class AssessmentParticipation < ApplicationRecord
   end
 
   def evaluate_full_assessment
-    test_scores = assessment.tests.map { |test| compute_test_result(test) }
-    total_questions = test_scores.sum(&:total_questions)
-    total_answered = test_scores.sum(&:answered_questions)
-    total_correct = test_scores.sum(&:correct_answers)
+    test_scores = tests.map { |test| compute_test_result(test) }
 
-    is_assessment_completed = (total_answered == total_questions)
-    overall_percentage = if is_assessment_completed && total_questions > 0
-                           (total_correct.to_f / total_questions * 100).round(2)
+    is_assessment_completed = test_scores.all?(&:is_completed)
+
+    overall_percentage = if is_assessment_completed
+                           valid_scores = test_scores.map(&:score_percentage).compact
+                           if valid_scores.any?
+                             (valid_scores.sum / valid_scores.size).round(2)
+                           end
                          end
 
     OpenStruct.new(
       test_scores:,
-      total_questions:,
-      total_answered_questions: total_answered,
-      total_correct_answers: total_correct,
       overall_score_percentage: overall_percentage,
       is_completed: is_assessment_completed
     )
@@ -92,7 +97,7 @@ class AssessmentParticipation < ApplicationRecord
 
   def unanswered_tests
     # Collect the IDs of tests with unanswered questions
-    test_ids = assessment.tests.select do |test|
+    test_ids = tests.select do |test|
       total_questions = test.selected_questions.count
       answered_questions = questions_answered_count(test)
       answered_questions < total_questions
@@ -103,7 +108,7 @@ class AssessmentParticipation < ApplicationRecord
   end
 
   def answered_tests
-    Test.where(id: assessment.tests.map(&:id) - unanswered_tests.map(&:id))
+    Test.where(id: tests.map(&:id) - unanswered_tests.map(&:id))
   end
 
   def answered_questions(test)
