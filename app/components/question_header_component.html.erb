@@ -1,0 +1,30 @@
+<header class="border-b border-gray-300">
+  <div class="bg-white py-5 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex justify-between items-center gap-x-4 gap-y-5 flex-wrap">
+    <h1 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">
+      <%= @current_business.company %>
+    </h1>
+    <% if @show_progress %>
+        <%= render(ParticipationProgressIndicatorsComponent.new(duration_left: calculate_duration_left, answered_count: @answered_questions_count, questions_count: @questions_count)) %>
+      <div class="space-y-2 max-sm:order-3">
+        <button data-question-answer-target="trigger" type="button" class="primary-button gap-x-2.5 px-7 py-3">
+          <span>
+            <%= @answered_questions_count == @questions_count ? "Finish" : "Next" %>
+          </span>
+          <%= helpers.svg_tag "chevron_right", class: "size-3" %>
+        </button>
+      </div>
+    <% else %>
+      <% if @save_path %>
+        <%= link_to @save_path, class: "gap-x-2.5 px-7 py-3 primary-button" do %>
+          <span>Next</span>
+          <%= helpers.svg_tag "chevron_right", "stroke-width": 3, class: "size-3" %>
+        <% end %>
+      <% else %>
+        <button data-controller="tab-closer" data-action="click->tab-closer#close" type="button" class="gap-x-2.5 px-7 py-3 primary-button">
+          <span>Finish</span>
+          <%= helpers.svg_tag "chevron_right", "stroke-width": 3, class: "size-3" %>
+        </button>
+      <% end %>
+    <% end %>
+  </div>
+</header>

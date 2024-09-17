@@ -1,0 +1,60 @@
+<%= form_with(url: @save_path, class: "border border-gray-200 bg-white rounded-xl px-6 py-10 md:px-12 md:py-16", data: { question_answer_target: "form" }) do |form| %>
+  <%= form.hidden_field :question_id, value: @question.id %>
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-9">
+    <!-- Question Content -->
+    <div>
+      <h2 class="mb-6 font-bold leading-7 text-gray-800 text-xl tracking-tight">Question</h2>
+      <div class="text-sm md:text-base font-medium text-gray-800">
+        <%= @question.content %>
+      </div>
+    </div>
+    <!-- Answer Options -->
+    <div>
+      <% if @test %>
+        <h2 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">
+          <%= @question.type == "MultipleChoiceQuestion" ? "Select only one answer" : "Select all that apply" %>
+        </h2>
+        <div class="mt-6 space-y-5">
+          <% if @question.type == "MultipleChoiceQuestion" || @question.type == "MultipleResponseQuestion" %>
+            <% @question.options.each.with_index(1) do |option, i| %>
+              <label for="option-<%= i %>" class="flex items-center border border-gray-300 rounded-md p-4 cursor-pointer options hover:bg-blue-50 transition-colors duration-200">
+                <input 
+                  id="option-<%= i %>" 
+                  name="selected_options[]" 
+                  type="<%= @question.type == "MultipleChoiceQuestion" ? "radio" : "checkbox" %>" 
+                  value="<%= option.id %>"
+                  class="size-7 border-gray-300 text-blue-600 focus:ring-blue-200 focus:ring-offset-2 focus:ring-2 item">
+                <span class="ml-5 block text-sm md:text-base font-semibold text-gray-800"><%= option.content %></span>
+              </label>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <%= form.submit class: "hidden", data: { question_answer_target: "formSubmit" } %>
+  </div>
+<% end %>
+<% unless @question.preview  %>
+    <dialog data-question-answer-target="modal" class="modal px-6">
+      <div class="modal-box max-w-xl rounded-xl p-8 bg-white">
+        <form method="dialog">
+          <button class="btn btn-sm btn-circle btn-ghost absolute right-6 top-6">
+            <%= helpers.svg_tag "x_mark", "stroke-width": 2 %>
+          </button>
+        </form>
+        <div>
+          <h1 class="font-bold leading-7 text-gray-800 text-xl">Are you sure you want to skip this question?</h1>
+          <p class="mt-4 text-gray-800 text-sm font-semibold">
+            You cannot come back to this question later. Even if you don't know the answer, just pick the answer you feel best about. You might get it right!
+          </p>
+          <div class="mt-9 flex items-center justify-end gap-x-4">
+            <button type="button" class="secondary-button px-6 py-2.5" data-action="click->question-answer#skip">Skip Question</button>
+            <button type="button" class="primary-button px-6 py-2.5" data-action="click->question-answer#close">Choose Answer</button>
+          </div>
+        </div>
+      </div>
+      <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>
+  <% end %>
