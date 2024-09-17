@@ -12,7 +12,7 @@ class Question < ApplicationRecord
   scope :inactive, -> { where(active: false) }
 
   def next_preview(test)
-    next_question_of_type(test, true, true)
+    next_question_of_type(test, true)
   end
 
   def next_non_preview(test)

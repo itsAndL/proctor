@@ -94,7 +94,7 @@
                 <% @assessment_participation.tests.each do |test| %>
                   <tr>
                     <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6"><%= test.title %></td>
-                    <td class="whitespace-nowrap py-4 pl-3 pr-4 sm:pr-6 text-sm font-medium text-gray-800 hidden sm:table-cell"><%= format_duration(0) %> out of <%= format_duration(test.duration_seconds) %></td>
+                    <td class="whitespace-nowrap py-4 pl-3 pr-4 sm:pr-6 text-sm font-medium text-gray-800 hidden sm:table-cell"><%= format_duration(@assessment_participation.compute_test_result(test).time_taken) %> out of <%= format_duration(test.duration_seconds) %></td>
                     <td class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-bold text-gray-800 sm:pr-6"><%= @assessment_participation.compute_test_result(test).score_percentage || 0 %>%</td>
                   </tr>
                 <% end %>

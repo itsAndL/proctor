@@ -74,7 +74,7 @@ Rails.application.routes.draw do
     resources :tests, only: %i[index show], param: :hashid do
       member do
         get :feedback
-        get :practice_questions
+        get 'practice_questions/:question_id', to: 'tests#practice_questions', as: :practice_questions
         get :questions
         get :intro
         get :start

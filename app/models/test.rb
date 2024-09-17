@@ -58,10 +58,8 @@ class Test < ApplicationRecord
   private
 
   def validate_duration_seconds
-    return if preview # Skip validation for preview questions
-
     return unless duration_seconds.nil? || duration_seconds.to_i <= 0
-    
+
     errors.add(:duration_seconds, 'must be greater than 0 for non-preview questions')
   end
 

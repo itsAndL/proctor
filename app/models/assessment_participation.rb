@@ -9,6 +9,7 @@ class AssessmentParticipation < ApplicationRecord
   has_many :question_answers, dependent: :destroy
   has_many :custom_question_responses, dependent: :destroy
   has_many :screenshots, dependent: :destroy
+  has_many :participation_tests, dependent: :destroy
 
   delegate :tests, to: :assessment
   delegate :custom_questions, to: :assessment
@@ -40,23 +41,24 @@ class AssessmentParticipation < ApplicationRecord
 
   def compute_test_result(test)
     total_questions = test.selected_questions.count
-
+    participation_test = participation_tests.find_by(test:)
     correct_answers = question_answers.joins(:test_question).where(test_questions: { test_id: test.id },
                                                                    is_correct: true).count
+    questions_answered_count = participation_test&.questions_answered_count || 0
 
-    is_test_completed = (questions_answered_count(test) == total_questions)
-    score_percentage = if is_test_completed && total_questions > 0
+    is_test_completed = (questions_answered_count == total_questions)
+    score_percentage = if is_test_completed && total_questions.positive?
                          (correct_answers.to_f / total_questions * 100).round(2)
                        end
-
     OpenStruct.new(
       test_id: test.id,
       test_name: test.title,
       total_questions:,
-      answered_questions: questions_answered_count(test),
+      answered_questions: questions_answered_count,
       correct_answers:,
       score_percentage:,
-      is_completed: is_test_completed
+      is_completed: is_test_completed,
+      time_taken: (participation_test&.completed_at.to_i - participation_test&.started_at.to_i)
     )
   end
 
@@ -67,9 +69,7 @@ class AssessmentParticipation < ApplicationRecord
 
     overall_percentage = if is_assessment_completed
                            valid_scores = test_scores.map(&:score_percentage).compact
-                           if valid_scores.any?
-                             (valid_scores.sum / valid_scores.size).round(2)
-                           end
+                           (valid_scores.sum / valid_scores.size).round(2) if valid_scores.any?
                          end
 
     OpenStruct.new(
@@ -91,35 +91,13 @@ class AssessmentParticipation < ApplicationRecord
     ].compact.max
   end
 
-  def questions_answered_count(test)
-    question_answers.joins(:test_question).where(test_questions: { test_id: test.id }).count
-  end
-
   def unanswered_tests
-    # Collect the IDs of tests with unanswered questions
-    test_ids = tests.select do |test|
-      total_questions = test.selected_questions.count
-      answered_questions = questions_answered_count(test)
-      answered_questions < total_questions
-    end.map(&:id) # Extract IDs from the test objects
+    incomplete_test_ids = ParticipationTest
+                          .where(assessment_participation_id: id)
+                          .where.not(status: :completed)
+                          .pluck(:test_id)
 
-    # Fetch tests with the collected IDs
-    Test.where(id: test_ids)
-  end
-
-  def answered_tests
-    Test.where(id: tests.map(&:id) - unanswered_tests.map(&:id))
-  end
-
-  def answered_questions(test)
-    test.questions.select do |question|
-      test_question = test.test_questions.find_by(question_id: question.id)
-      QuestionAnswer.exists?(test_question_id: test_question.id, assessment_participation_id: id)
-    end
-  end
-
-  def unanswered_questions(test)
-    test.selected_questions - answered_questions(test)
+    tests.select { |test| incomplete_test_ids.include?(test.id) }
   end
 
   private
