@@ -31,7 +31,7 @@ class AssessmentParticipationService
 
   def start_test(test)
     participation_test = @assessment_participation.participation_tests.find_by(test:)
-    return if started?(test)
+    return if participation_test.started? || participation_test.completed?
 
     participation_test.started_at = Time.zone.now
     participation_test.status = :started
@@ -139,10 +139,5 @@ class AssessmentParticipationService
     else
       question.options.where(id: selected_options_ids.first)
     end
-  end
-
-  def started?(test)
-    participation_test = @assessment_participation.participation_tests.find_by(test:)
-    participation_test.started_at.present? && participation_test.status == 'started'
   end
 end

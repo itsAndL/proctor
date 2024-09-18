@@ -17,9 +17,7 @@ class Candidate::TestsController < ApplicationController
     end
   end
 
-  def start
-    @participation_service.start_test(@current_test)
-  end
+  def start; end
 
   def intro
     @current_question = @current_test.preview_questions.first
@@ -31,12 +29,8 @@ class Candidate::TestsController < ApplicationController
   end
 
   def questions
+    @participation_service.start_test(@current_test)
     @current_question = @participation_service.first_unanswered_question(@current_test)
-    participation_test = @assessment_participation.participation_tests.find_by(test: @current_test)
-    if !@current_question.present? || participation_test.completed?
-      return redirect_to feedback_candidate_test_path(@current_test)
-    end
-
     render question_form_component
   end
 
@@ -46,8 +40,10 @@ class Candidate::TestsController < ApplicationController
   end
 
   def save_answer
-    @current_question = @participation_service.create_question_answer(@current_test, @question, params)
+    participation_test = @assessment_participation.participation_tests.find_by(test: @current_test)
+    return redirect_to feedback_candidate_test_path(@current_test) if participation_test.completed?
 
+    @current_question = @participation_service.create_question_answer(@current_test, @question, params)
     if @question.preview
       if @current_test.preview_questions.last != @question && @current_test.present?
         render turbo_stream: turbo_stream.replace('question-form', question_form_component)

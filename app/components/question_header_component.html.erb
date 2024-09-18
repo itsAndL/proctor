@@ -4,11 +4,15 @@
       <%= @current_business.company %>
     </h1>
     <% if @show_progress %>
-        <%= render(ParticipationProgressIndicatorsComponent.new(duration_left: calculate_duration_left, answered_count: @answered_questions_count, questions_count: @questions_count)) %>
+        <%= render(ParticipationProgressIndicatorsComponent.new(duration: @test.duration_seconds ,duration_left: calculate_duration_left, answered_count: @answered_questions_count, questions_count: @questions_count)) %>
       <div class="space-y-2 max-sm:order-3">
         <button data-question-answer-target="trigger" type="button" class="primary-button gap-x-2.5 px-7 py-3">
           <span>
-            <%= @answered_questions_count == @questions_count ? "Finish" : "Next" %>
+            <% if @answered_questions_count == @questions_count %>
+                <%= @question.preview ? "Start test": "Finish" %>
+            <% else %>
+              Next
+            <% end %>
           </span>
           <%= helpers.svg_tag "chevron_right", class: "size-3" %>
         </button>

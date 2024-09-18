@@ -3,19 +3,18 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="question_answer"
 export default class extends Controller {
 
-  static targets = [ "form","formSubmit", "trigger", "modal", "timerLabel", "timerProgress" ]
-  static values = { duration: Number }
+  static targets = ["form", "formSubmit", "trigger", "modal", "timerLabel", "timerProgress"]
+  static values = { durationleft: Number, duration: Number }
+
 
   connect() {
     if (this.hasModalTarget) {
       this.triggerTarget.addEventListener("click", this.sendForm.bind(this))
     } else {
       this.triggerTarget.addEventListener("click", () => this.formSubmitTarget.click())
-    }
-    console.log('Connected!', this.durationValue, this.timerLabelTarget, this.timerProgressTarget);
-    this.start()
+    } this.start()
   }
-  
+
   sendForm() {
     if (this.isFormValid()) {
       this.formSubmitTarget.click()
@@ -40,50 +39,50 @@ export default class extends Controller {
     // Handle radio buttons
     const selectedRadio = this.formTarget.querySelector('input[name="selected_option"]:checked');
     const isRadioValid = selectedRadio !== null;
-  
+
     // Handle checkboxes
     const selectedCheckboxes = Array.from(this.formTarget.querySelectorAll('input[name="selected_options[]"]:checked'));
     const isCheckboxValid = selectedCheckboxes.length > 0;
-  
+
     // Check overall validity
     const isValid = isRadioValid || isCheckboxValid;
-    
-    console.log('Selected Radio:', selectedRadio ? selectedRadio.value : 'None');
-    console.log('Selected Checkboxes:', selectedCheckboxes.map(option => option.value));
-  
+
     return isValid;
   }
 
   start() {
-    this.initialTime = this.durationValue
-    let startTime = null;
+    this.initialTime = this.durationValue;
+    let remainingTime = this.durationleftValue * 1000;
 
+    if (remainingTime <= 0) {
+      remainingTime = this.initialTime * 1000;
+    }
+
+    const startTime = performance.now();
+    const endTime = startTime + remainingTime;
     const animate = (timestamp) => {
-      if (!startTime) startTime = timestamp;
       const elapsedTime = timestamp - startTime;
-      const remainingTime = Math.max(this.initialTime - Math.floor(elapsedTime / 1000), 0);
+      let timeLeft = Math.max(endTime - timestamp, 0);
+      if (isNaN(timeLeft)) {
+        timeLeft = 0;
+      }
+      this.timerLabelTarget.textContent = this.formatTime(Math.floor(timeLeft / 1000));
+      this.timerProgressTarget.style.width = `${(timeLeft / (this.initialTime * 1000)) * 100}%`;
 
-      this.timerLabelTarget.textContent = this.formatTime(remainingTime);
-      this.timerProgressTarget.style.width = `${(remainingTime / this.initialTime) * 100}%`;
-
-      if (remainingTime <= 0) {
+      if (timeLeft <= 0) {
         this.stop();
-        // show alert when clicking okay it will submit the form
-        this.formSubmitTarget.click()
+        this.formSubmitTarget.click();
+        return;
       }
 
-      if ((remainingTime / this.initialTime) * 100 == 100) {
+      if ((timeLeft / (this.initialTime * 1000)) * 100 === 100) {
         this.timerProgressTarget.classList.add('rounded-full');
-      }
-
-      if ((remainingTime / this.initialTime) * 100 <= 99) {
+      } else {
         this.timerProgressTarget.classList.remove('rounded-full');
         this.timerProgressTarget.classList.add('rounded-l-full');
       }
 
-      if (remainingTime > 0) {
-        requestAnimationFrame(animate);
-      }
+      requestAnimationFrame(animate);
     };
 
     requestAnimationFrame(animate);
@@ -99,5 +98,5 @@ export default class extends Controller {
     const secs = String(seconds % 60).padStart(2, '0')
     return `${hrs}:${mins}:${secs}`
   }
-    
+
 }

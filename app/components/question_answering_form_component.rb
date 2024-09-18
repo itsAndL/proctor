@@ -23,7 +23,12 @@ class QuestionAnsweringFormComponent < ViewComponent::Base
 
   def question_header
     QuestionHeaderComponent.new(current_business: @current_business, show_progress: @show_progress,
-                                question: @question, participation_test: @participation_test, save_path: @save_path)
+                                question: @question, participation_test: @participation_test, save_path: @save_path, test: @test)
+  end
+
+  def duration
+    return 60 if @question.preview
+    @test&.duration_seconds || 0
   end
 
   def question_form

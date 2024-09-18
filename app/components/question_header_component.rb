@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class QuestionHeaderComponent < ViewComponent::Base
-  def initialize(current_business:, show_progress:, question:, participation_test:, save_path: nil)
+  def initialize(current_business:, show_progress:, question:, participation_test:, save_path: nil, test: nil)
     super
     @current_business = current_business
     @show_progress = show_progress
@@ -17,6 +17,7 @@ class QuestionHeaderComponent < ViewComponent::Base
       @participant_test = participation_test
     end
     @question = question
+    @test = test
     @save_path = save_path
   end
 
