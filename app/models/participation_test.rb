@@ -43,7 +43,7 @@ class ParticipationTest < ApplicationRecord
   def set_completed_if_time_exceeded
     return if pending? || completed? || calculate_time_taken < test.duration_seconds
 
-    status.completed!
+    completed!
   end
 
   def set_timestamps
