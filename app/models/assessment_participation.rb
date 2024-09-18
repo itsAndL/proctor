@@ -100,6 +100,11 @@ class AssessmentParticipation < ApplicationRecord
     tests.select { |test| incomplete_test_ids.include?(test.id) }
   end
 
+  def answered_tests
+    test_ids = participation_tests.where(status: :completed).pluck(:test_id)
+    tests.select { |test| test_ids.include?(test.id) }
+  end
+
   private
 
   def candidate_or_temp_candidate_present

@@ -10,13 +10,14 @@ class QuestionAnsweringFormComponent < ViewComponent::Base
     @show_progress = show_progress
     @participation_test = assessment_participation&.participation_tests&.find_by(test:)
     @save_path = save_path
+    @test_started_at = @participation_test&.started_at
   end
 
   def calculate_duration_left
-    return 0 unless @test_started_at
     return 60 if @question.preview
+    return 0 unless @test_started_at
     
-    duration_left = @question.duration_seconds - (Time.now.to_i - Time.parse(@test_started_at).to_i)
+    duration_left = @test.duration_seconds - (Time.now - @test_started_at).to_i
     duration_left.positive? ? duration_left : 0
   end
 

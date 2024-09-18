@@ -112,6 +112,14 @@ class AssessmentParticipationService
     selected_options.all?(&:correct)
   end
 
+  def time_left(test)
+    participation_test = @assessment_participation.participation_tests.find_by(test:)
+    test.duration_seconds - (Time.zone.now - (participation_test.started_at || Time.zone.now))
+  end
+
+  def time_left_overall
+    @assessment_participation.unanswered_tests.sum { |test| time_left(test) }
+  end
   private
 
   def determine_next_url
@@ -135,10 +143,5 @@ class AssessmentParticipationService
   def started?(test)
     participation_test = @assessment_participation.participation_tests.find_by(test:)
     participation_test.started_at.present? && participation_test.status == 'started'
-  end
-
-  def time_left(test)
-    participation_test = @assessment_participation.participation_tests.find_by(test:)
-    test.duration - (Time.zone.now - participation_test.started_at)
   end
 end

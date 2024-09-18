@@ -32,7 +32,7 @@
       </div>
       <% unless @assessment_participation.completed? %>
         <%= link_to overview_candidate_assessment_participation_path(@assessment_participation),target:"_blank", class:"primary-button px-7 py-3 gap-x-2.5" do %>
-          <span>Start assessment</span>
+          <span><%= @assessment_participation.started? ? "Resume assessment" : "Start assessment" %></span>
           <%= svg_tag "chevron_right", class: "size-3 -mb-0.5", "stroke-width": 3 %>
         <%end %>
       <% end %>
@@ -42,27 +42,60 @@
 <main class="bg-zinc-50 h-full">
   <% unless @assessment_participation.completed? %>
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-16 space-y-12">
-      <div>
-        <h2 class="font-bold leading-7 text-gray-900 text-xl">About</h2>
-        <div class="bg-white py-5 px-6 rounded-xl border mt-3">
-          <dl class="grid sm:grid-cols-2 gap-x-8 gap-y-6 max-w-3xl">
-            <div>
-              <dt class="font-bold text-gray-800">Tests</dt>
-              <dd class="mt-2 text-gray-800 font-medium text-sm">
-                <%= @assessment_participation.assessment.parts_count %>
-              </dd>
-            </div>
-            <div>
-              <dt class="font-bold text-gray-800">Approximate time to complete assessment:</dt>
-              <dd class="mt-2 text-gray-800 font-medium text-sm">
-                <%= format_duration(@assessment_participation.assessment.duration_seconds) %>
-              </dd>
-            </div>
-          </dl>
+      <% if @assessment_participation.started? %>
+        <div>
+          <h2 class="font-bold leading-7 text-gray-900 text-xl">Your progress</h2>
+          <div class="bg-white py-5 px-6 rounded-xl border mt-3 ">
+            <dl class="grid sm:grid-cols-4 gap-8 gap-y-6">
+              <div class="">
+                <dt class="font-bold text-gray-800">Tests:</dt>
+                <dd class="mt-2 text-gray-800 font-medium text-sm">
+                  <%= render(ProgressBarComponent.new(total: @assessment_participation.assessment.parts_count, progress: @assessment_participation.answered_tests.count))%>
+                </dd>
+                <dd>
+                  <span class="text-gray-800 font-medium text-sm">
+                    <%= @assessment_participation.answered_tests.count %> out of <%= @assessment_participation.assessment.parts_count %>
+                  </span>
+                </dd>
+              </div>
+              <div></div>
+              <div class="">
+                <dt class="font-bold text-gray-800">Time left:</dt>
+                <dd class="mt-2 text-gray-800 font-medium text-sm">
+                  <%= render(ProgressBarComponent.new(total: @assessment_participation.assessment.duration_seconds, progress: @participation_service.time_left_overall))%>
+                </dd>
+                <dd>
+                  <span class="text-gray-800 font-medium text-sm">
+                    <%= format_duration(@participation_service.time_left_overall) %>
+                  </span>
+                </dd>
+              </div>
+            </dl>
+          </div>
         </div>
-      </div>
+      <% else %>
+        <div>
+          <h2 class="font-bold leading-7 text-gray-900 text-xl">About</h2>
+          <div class="bg-white py-5 px-6 rounded-xl border mt-3">
+            <dl class="grid sm:grid-cols-2 gap-x-8 gap-y-6 max-w-3xl">
+              <div>
+                <dt class="font-bold text-gray-800">Tests</dt>
+                <dd class="mt-2 text-gray-800 font-medium text-sm">
+                  <%= @assessment_participation.assessment.parts_count %>
+                </dd>
+              </div>
+              <div>
+                <dt class="font-bold text-gray-800">Approximate time to complete assessment:</dt>
+                <dd class="mt-2 text-gray-800 font-medium text-sm">
+                  <%= format_duration(@assessment_participation.assessment.duration_seconds) %>
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      <% end %>
       <div>
-        <h2 class="font-bold leading-7 text-gray-900 text-xl">A few things before you start</h2>
+        <h2 class="font-bold leading-7 text-gray-900 text-xl">A few <%= @assessment_participation.started? ? "things before you start": "important things" %></h2>
         <div class="bg-white py-5 pl-12 pr-6 rounded-xl border mt-3">
           <ul class="list-disc font-medium text-sm marker:text-blue-600 marker:text-lg space-y-1.5">
             <li>The assessment is timed. A timer is shown per test or per question.</li>
@@ -94,8 +127,9 @@
                 <% @assessment_participation.tests.each do |test| %>
                   <tr>
                     <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6"><%= test.title %></td>
-                    <td class="whitespace-nowrap py-4 pl-3 pr-4 sm:pr-6 text-sm font-medium text-gray-800 hidden sm:table-cell"><%= format_duration(@assessment_participation.compute_test_result(test).time_taken) %> out of <%= format_duration(test.duration_seconds) %></td>
-                    <td class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-bold text-gray-800 sm:pr-6"><%= @assessment_participation.compute_test_result(test).score_percentage || 0 %>%</td>
+                    <% result = @assessment_participation.compute_test_result(test) %>
+                    <td class="whitespace-nowrap py-4 pl-3 pr-4 sm:pr-6 text-sm font-medium text-gray-800 hidden sm:table-cell"><%= format_duration(result.time_taken) %> out of <%= format_duration(test.duration_seconds) %></td>
+                    <td class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-bold text-gray-800 sm:pr-6"><%= result.score_percentage || 0 %>%</td>
                   </tr>
                 <% end %>
               </tbody>
