@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_11_142403) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_13_154242) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
@@ -173,6 +173,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_11_142403) do
     t.index ["optionable_type", "optionable_id"], name: "index_options_on_optionable"
   end
 
+  create_table "participation_tests", force: :cascade do |t|
+    t.datetime "started_at"
+    t.datetime "completed_at"
+    t.integer "status", default: 0
+    t.bigint "assessment_participation_id", null: false
+    t.bigint "test_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assessment_participation_id", "test_id"], name: "index_participation_tests_on_assessment_participation_and_test", unique: true
+    t.index ["assessment_participation_id"], name: "index_participation_tests_on_assessment_participation_id"
+    t.index ["test_id"], name: "index_participation_tests_on_test_id"
+  end
+
   create_table "question_answers", force: :cascade do |t|
     t.bigint "assessment_participation_id", null: false
     t.jsonb "content", default: {}, null: false
@@ -191,7 +204,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_11_142403) do
     t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "duration_seconds", default: 0
     t.boolean "active", default: true
     t.boolean "is_correct"
   end
@@ -243,6 +255,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_11_142403) do
     t.bigint "business_id"
     t.integer "language", default: 0
     t.integer "questions_to_answer"
+    t.integer "duration_seconds", default: 0, null: false
     t.index ["business_id"], name: "index_tests_on_business_id"
     t.index ["language"], name: "index_tests_on_language"
     t.index ["test_category_id"], name: "index_tests_on_test_category_id"
@@ -281,6 +294,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_11_142403) do
   add_foreign_key "custom_question_responses", "custom_questions"
   add_foreign_key "custom_questions", "businesses"
   add_foreign_key "custom_questions", "custom_question_categories"
+  add_foreign_key "participation_tests", "assessment_participations"
+  add_foreign_key "participation_tests", "tests"
   add_foreign_key "question_answers", "assessment_participations"
   add_foreign_key "question_answers", "test_questions"
   add_foreign_key "screenshots", "assessment_participations"
