@@ -15,7 +15,7 @@
           <p class="text-gray-800 space-y-3 font-medium">Practice questions will start in <strong data-countdown-target="timer">10</strong> seconds</p>
           <p class="mt-4 text-gray-800 space-y-3 font-medium">Please stay on this screen. The timer for your next test has <strong>started</strong> and <strong>cannot be paused</strong>. The timer continues even when you close the browser.</p>
         </div>
-        <%= link_to practice_questions_candidate_test_path(@current_test), data: { countdown_target: "nextPage" }, class: "hidden" do %>
+        <%= link_to practice_questions_candidate_test_path(@current_test, @current_question), data: { countdown_target: "nextPage" }, class: "hidden" do %>
           Next page
         <% end %>
       </div>

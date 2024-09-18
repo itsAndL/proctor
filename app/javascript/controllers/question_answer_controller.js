@@ -2,16 +2,19 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="question_answer"
 export default class extends Controller {
-  static targets = [ "form","formSubmit", "trigger", "modal" ]
+
+  static targets = ["form", "formSubmit", "trigger", "modal", "timerLabel", "timerProgress"]
+  static values = { durationleft: Number, duration: Number }
+
 
   connect() {
     if (this.hasModalTarget) {
       this.triggerTarget.addEventListener("click", this.sendForm.bind(this))
     } else {
       this.triggerTarget.addEventListener("click", () => this.formSubmitTarget.click())
-    }
+    } this.start()
   }
-  
+
   sendForm() {
     if (this.isFormValid()) {
       this.formSubmitTarget.click()
@@ -36,18 +39,64 @@ export default class extends Controller {
     // Handle radio buttons
     const selectedRadio = this.formTarget.querySelector('input[name="selected_option"]:checked');
     const isRadioValid = selectedRadio !== null;
-  
+
     // Handle checkboxes
     const selectedCheckboxes = Array.from(this.formTarget.querySelectorAll('input[name="selected_options[]"]:checked'));
     const isCheckboxValid = selectedCheckboxes.length > 0;
-  
+
     // Check overall validity
     const isValid = isRadioValid || isCheckboxValid;
-    
-    console.log('Selected Radio:', selectedRadio ? selectedRadio.value : 'None');
-    console.log('Selected Checkboxes:', selectedCheckboxes.map(option => option.value));
-  
+
     return isValid;
   }
-    
+
+  start() {
+    this.initialTime = this.durationValue;
+    let remainingTime = this.durationleftValue * 1000;
+
+    if (remainingTime <= 0) {
+      remainingTime = this.initialTime * 1000;
+    }
+
+    const startTime = performance.now();
+    const endTime = startTime + remainingTime;
+    const animate = (timestamp) => {
+      const elapsedTime = timestamp - startTime;
+      let timeLeft = Math.max(endTime - timestamp, 0);
+      if (isNaN(timeLeft)) {
+        timeLeft = 0;
+      }
+      this.timerLabelTarget.textContent = this.formatTime(Math.floor(timeLeft / 1000));
+      this.timerProgressTarget.style.width = `${(timeLeft / (this.initialTime * 1000)) * 100}%`;
+
+      if (timeLeft <= 0) {
+        this.stop();
+        this.formSubmitTarget.click();
+        return;
+      }
+
+      if ((timeLeft / (this.initialTime * 1000)) * 100 === 100) {
+        this.timerProgressTarget.classList.add('rounded-full');
+      } else {
+        this.timerProgressTarget.classList.remove('rounded-full');
+        this.timerProgressTarget.classList.add('rounded-l-full');
+      }
+
+      requestAnimationFrame(animate);
+    };
+
+    requestAnimationFrame(animate);
+  }
+
+  stop() {
+    clearInterval(this.timer)
+  }
+
+  formatTime(seconds) {
+    const hrs = String(Math.floor(seconds / 3600)).padStart(2, '0')
+    const mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0')
+    const secs = String(seconds % 60).padStart(2, '0')
+    return `${hrs}:${mins}:${secs}`
+  }
+
 }

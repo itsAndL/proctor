@@ -4,6 +4,7 @@ module DurationHelper
 
     hours, remaining = secs.divmod(3600)
     mins, secs = remaining.divmod(60)
+    secs = secs.round(2)  # Round seconds to 2 decimal places
 
     if hours > 0
       pluralize(hours, 'hour')

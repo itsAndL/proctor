@@ -10,8 +10,11 @@ class PreviewQuestionsController < ApplicationController
       business: current_business,
       question: @question,
       test: @test,
-      is_preview: true,
-      show_progress: false
+      show_progress: false,
+      save_path: if @question.next_preview(@test)
+                   test_library_preview_question_path(@test,
+                                                      @question.next_preview(@test))
+                 end
     )
   end
 end

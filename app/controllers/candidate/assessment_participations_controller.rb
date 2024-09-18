@@ -1,6 +1,5 @@
 class Candidate::AssessmentParticipationsController < ApplicationController
   include Candidate::AssessmentParticipationsHelper
-  include AssessmentParticipationConcern
 
   before_action :authenticate_candidate!
   before_action :hide_navbar, except: %i[show index]
@@ -13,17 +12,15 @@ class Candidate::AssessmentParticipationsController < ApplicationController
   def show; end
 
   def overview
-    @assessment_participation.invitation_clicked! if @assessment_participation.invited?
+    @participation_service.invitataion_clicked
   end
 
   def setup
-    handle_setup_for_assessment_participation(@assessment_participation)
-    @next_url = determine_next_url(@assessment_participation)
+    @next_url = @participation_service.start
   end
 
   def checkout
-    @assessment_participation.completed! if @assessment_participation.started?
-    @next_url = candidate_assessment_participation_path(@assessment_participation)
+    @next_url = @participation_service.complete
   end
 
   private
@@ -31,5 +28,9 @@ class Candidate::AssessmentParticipationsController < ApplicationController
   def set_assessment_participation
     @assessment_participation = AssessmentParticipation.find(params[:hashid])
     @assessment = @assessment_participation.assessment
+    @participation_service = AssessmentParticipationService.new(@assessment_participation)
+    session[:participants] = {
+      assessment_participation_id: @assessment_participation.id
+    }
   end
 end
