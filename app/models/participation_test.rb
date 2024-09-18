@@ -43,5 +43,6 @@ class ParticipationTest < ApplicationRecord
     return if pending? || calculate_time_taken < test.duration_seconds
 
     self.status = 'completed'
+    save
   end
 end
