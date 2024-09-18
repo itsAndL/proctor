@@ -1,8 +1,9 @@
 <div data-controller="question-answer" id="question-form"  data-question-answer-durationleft-value="<%= calculate_duration_left %>" data-question-answer-duration-value="<%= duration %>">
-  <%= render question_header %>
+  <%= render QuestionHeaderComponent.new(current_business: @current_business, show_progress: @show_progress,
+                                question: @question, participation_test: @participation_test, save_path: @save_path, test: @test) %>
   <main class="bg-zinc-50 h-full pt-10">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
-      <%= render question_form %>
+      <%= render QuestionFormComponent.new(question: @question, test: @test, save_path: @save_path) %>
     </div>
   </main>
 </div>
