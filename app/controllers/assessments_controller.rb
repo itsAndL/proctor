@@ -59,6 +59,8 @@ class AssessmentsController < ApplicationController
     redirect_to assessments_path, notice: 'Assessment was successfully unarchived.'
   end
 
+  def require_edit; end
+
   def choose_tests; end
 
   def update_tests

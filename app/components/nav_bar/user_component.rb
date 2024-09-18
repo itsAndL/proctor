@@ -43,7 +43,7 @@ class NavBar::UserComponent < ViewComponent::Base
   end
 
   def candidate_navbar_links
-    [{ title: 'Assessments', path: candidate_assessment_participations_path }]
+    [{ title: 'My assessments', path: candidate_assessment_participations_path }]
   end
 
   def user_navbar_links

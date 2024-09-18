@@ -1,0 +1,20 @@
+<%= turbo_frame_tag "modal" do %>
+  <dialog data-controller="modal" data-modal-target="modal" class="modal px-6">
+    <div class="modal-box max-w-xl rounded-xl p-8 bg-white">
+      <div>
+        <h2 class="font-bold leading-7 text-gray-800 text-xl">Assessment edit required</h2>
+        <p class="mt-5 text-gray-800 text-sm font-semibold">
+          Before inviting candidates, please include at least one skill test or custom question.
+        </p>
+
+        <div class="mt-8 flex items-center justify-end gap-x-4">
+          <button type="button" class="secondary-button px-6 py-2.5" onclick="this.closest('dialog').close()">Cancel</button>
+          <%= link_to "Edit assessment", edit_assessment_path(@assessment), class: "primary-button px-6 py-2.5", data: {turbo: false} %>
+        </div>
+      </div>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+      <button>close</button>
+    </form>
+  </dialog>
+<% end %>
