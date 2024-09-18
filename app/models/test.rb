@@ -14,8 +14,7 @@ class Test < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 60 }
   # validates :overview, :relevancy, length: { maximum: 255 }
-  validate :validate_duration_seconds
-  validates :questions_to_answer, presence: true, numericality: { greater_than: 0, only_integer: true }
+  validates :questions_to_answer, :duration_seconds, presence: true, numericality: { greater_than: 0, only_integer: true }
   validates :description, :level, :type, :active, :language, presence: true
 
   enum level: { entry_level: 0, intermediate: 1, advanced: 2 }
@@ -56,12 +55,6 @@ class Test < ApplicationRecord
   end
 
   private
-
-  def validate_duration_seconds
-    return unless duration_seconds.nil? || duration_seconds.to_i <= 0
-
-    errors.add(:duration_seconds, 'must be greater than 0 for non-preview questions')
-  end
 
   def active_non_preview_questions
     @active_non_preview_questions ||= questions.non_preview.active
