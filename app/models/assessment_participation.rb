@@ -92,8 +92,7 @@ class AssessmentParticipation < ApplicationRecord
   end
 
   def unanswered_tests
-    incomplete_test_ids = ParticipationTest
-                          .where(assessment_participation_id: id)
+    incomplete_test_ids = participation_tests
                           .where.not(status: :completed)
                           .pluck(:test_id)
 

@@ -9,12 +9,16 @@ class Test < ApplicationRecord
   has_many :assessment_tests, -> { order(position: :asc) }, dependent: :destroy
   has_many :assessments, through: :assessment_tests
 
+  has_many :participation_tests, dependent: :destroy
+  has_many :assessment_participations, through: :participation_tests
+
   belongs_to :test_category
   belongs_to :business, optional: true
 
   validates :title, presence: true, length: { maximum: 60 }
   # validates :overview, :relevancy, length: { maximum: 255 }
-  validates :questions_to_answer, :duration_seconds, presence: true, numericality: { greater_than: 0, only_integer: true }
+  validates :questions_to_answer, :duration_seconds, presence: true,
+                                                     numericality: { greater_than: 0, only_integer: true }
   validates :description, :level, :type, :active, :language, presence: true
 
   enum level: { entry_level: 0, intermediate: 1, advanced: 2 }
