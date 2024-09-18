@@ -1,6 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
+  static targets = ["cameraSelect", "cameraStream", "cameraError"]
   static values = {
     fullscreen: { type: Boolean, default: false },
     webcam: { type: Boolean, default: false },
@@ -10,7 +11,7 @@ export default class extends Controller {
     periodicWebcamCapture: { type: Boolean, default: false },
     trackFullscreen: { type: Boolean, default: false },
     trackMouse: { type: Boolean, default: false },
-    assessmentParticipationId: String
+    assessmentParticipationHashId: String
   }
 
   connect() {
@@ -19,7 +20,7 @@ export default class extends Controller {
     } else {
       this.exitFullscreen()
     }
-    if (this.webcamValue) this.startWebcam()
+    if (this.webcamValue) this.initializeWebcam()
     if (this.deviceValue) this.trackDevice()
     if (this.locationValue) this.trackLocation()
     if (this.ipValue) this.trackIp()
@@ -57,13 +58,79 @@ export default class extends Controller {
     }
   }
 
-  startWebcam() {
-    navigator.mediaDevices.getUserMedia({ video: true })
-      .then(stream => {
-        this.webcamStream = stream
-        this.sendUpdate({ webcam_enabled: true })
-      })
-      .catch(() => this.sendUpdate({ webcam_enabled: false }))
+  async initializeWebcam() {
+    try {
+      const devices = await navigator.mediaDevices.enumerateDevices()
+      const videoDevices = devices.filter(device => device.kind === 'videoinput')
+
+      if (videoDevices.length === 0) {
+        this.showCameraError()
+        return
+      }
+
+      this.populateCameraSelect(videoDevices)
+      await this.startWebcam(videoDevices[0].deviceId)
+    } catch (error) {
+      console.error('Error initializing webcam:', error)
+      this.showCameraError()
+    }
+  }
+
+  populateCameraSelect(videoDevices) {
+    if (!this.hasCameraSelectTarget) return
+
+    this.cameraSelectTarget.innerHTML = videoDevices.map(device =>
+      `<option value="${device.deviceId}">${device.label || `Camera ${device.deviceId.slice(0, 5)}`}</option>`
+    ).join('')
+
+    this.cameraSelectTarget.addEventListener('change', this.handleCameraChange.bind(this))
+  }
+
+  async startWebcam(deviceId) {
+    try {
+      this.webcamStream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: deviceId } })
+      if (this.hasCameraStreamTarget) {
+        this.cameraStreamTarget.srcObject = this.webcamStream
+        this.cameraStreamTarget.onloadedmetadata = () => {
+          this.cameraStreamTarget.play()
+          this.hideCameraError()
+        }
+        this.cameraStreamTarget.onerror = () => {
+          this.showCameraError()
+        }
+      }
+      this.sendUpdate({ webcam_enabled: true })
+    } catch (error) {
+      console.error('Error starting webcam:', error)
+      this.showCameraError()
+    }
+  }
+
+  async handleCameraChange(event) {
+    const newDeviceId = event.target.value
+    if (this.webcamStream) {
+      this.webcamStream.getTracks().forEach(track => track.stop())
+    }
+    await this.startWebcam(newDeviceId)
+  }
+
+  showCameraError() {
+    if (this.hasCameraErrorTarget) {
+      this.cameraErrorTarget.classList.remove('hidden')
+    }
+    if (this.hasCameraStreamTarget) {
+      this.cameraStreamTarget.classList.add('hidden')
+    }
+    this.sendUpdate({ webcam_enabled: false })
+  }
+
+  hideCameraError() {
+    if (this.hasCameraErrorTarget) {
+      this.cameraErrorTarget.classList.add('hidden')
+    }
+    if (this.hasCameraStreamTarget) {
+      this.cameraStreamTarget.classList.remove('hidden')
+    }
   }
 
   startPeriodicWebcamCapture() {
@@ -92,7 +159,7 @@ export default class extends Controller {
   }
 
   captureWebcamImage() {
-    if (this.webcamStream) {
+    if (this.webcamStream && this.webcamStream.active) {
       const video = document.createElement('video')
       video.srcObject = this.webcamStream
       video.play()
@@ -176,7 +243,7 @@ export default class extends Controller {
   }
 
   sendUpdate(data) {
-    const url = `/api/monitoring/${this.assessmentParticipationIdValue}`
+    const url = `/api/monitoring/${this.assessmentParticipationHashIdValue}`
     fetch(url, {
       method: 'PATCH',
       headers: {

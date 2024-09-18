@@ -1,9 +1,10 @@
 <div data-controller="monitoring"
-     data-monitoring-webcam-value="true"
      data-monitoring-device-value="true"
      data-monitoring-location-value="true"
      data-monitoring-ip-value="true"
-     data-monitoring-assessment-participation-id-value="<%= @assessment_participation.id %>">
+     data-monitoring-webcam-value="true"
+     data-monitoring-periodic-webcam-capture-value="true"
+     data-monitoring-assessment-participation-hash-id-value="<%= @assessment_participation.hashid %>">
   <%= render ParticipationHeaderComponent.new(company: @assessment_participation.assessment.business.company) %>
   <main class="bg-zinc-50 h-full pt-10">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
@@ -13,38 +14,22 @@
             <h1 class="font-extrabold leading-7 text-gray-800 text-2xl pb-2 border-b-2 border-gray-900">Camera setup</h1>
             <p class="my-5 text-gray-800 space-y-3 font-medium">We use camera images to ensure fairness for everyone. Make sure that you are in front of your camera.</p>
             <div class="border-t border-gray-300 pt-5 pr-2">
-              <div class="flex justify-between">
-                <div>
-                  <dt class="font-bold text-gray-900 flex items-center gap-x-1.5">
-                    <%= svg_tag "webcam", class: "size-4" %>
-                    Camera:
-                  </dt>
-                  <dd class="mt-2 text-gray-900 font-medium text-sm">Integrated Webcam (0c45:6730)</dd>
-                </div>
-                <div class="dropdown dropdown-end relative">
-                  <div class="relative group">
-                    <button type="button" class="rounded-full p-2 text-blue-600 hover:bg-zinc-100">
-                      <%= svg_tag "ellipsis_vertical" %>
-                    </button>
-                    <div class="-right-9 z-10 mt-2 absolute hidden md:group-hover:block">
-                      <div class="triangle triangle-t triangle-h-2 triangle-w-4 mx-auto -mb-0.5 text-gray-900"></div>
-                      <div class="rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none py-2 px-3 whitespace-nowrap bg-gray-900 text-sm text-white font-medium">Select camera</div>
-                    </div>
-                  </div>
-                  <div class="dropdown-content absolute right-0 z-10 mt-2 w-fit origin-top-right divide-y divide-gray-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <div class="w-full">
-                      <button type="button" class="rounded-t-lg whitespace-nowrap block px-4 py-2 text-sm font-medium text-gray-800">UVC Camera (fefe:4321)</button>
-                      <button type="button" class="rounded-b-lg whitespace-nowrap block px-4 py-2 text-sm font-medium text-gray-800 bg-zinc-100">Integrated Webcam (0c45:6730)</button>
-                    </div>
-                  </div>
-                </div>
+              <div class="flex gap-x-5 gap-y-1.5 flex-wrap justify-between">
+                <dt class="font-bold text-gray-900 flex items-center gap-x-1.5">
+                  <%= svg_tag "webcam", class: "size-4" %>
+                  Camera:
+                </dt>
+                <dd class="mt-2 text-gray-900 font-medium text-sm">
+                  <select data-monitoring-target="cameraSelect" class="select-field pl-5 pr-10 rounded-xl">
+                    <option>Loading cameras...</option>
+                  </select>
+                </dd>
               </div>
             </div>
           </div>
           <div class="space-y-6">
-            <!-- here we'll show the candidate the webcam stream (when he activate the webcam will see himself) -->
-            <%= image_tag "candidate.jpg", class: "rounded-lg aspect-[3/2] object-cover" %>
-            <div class="hidden p-4 bg-[#fae0b4] rounded-xl flex items-center gap-x-4">
+            <video data-monitoring-target="cameraStream" class="rounded-lg aspect-[3/2] object-cover" autoplay playsinline></video>
+            <div data-monitoring-target="cameraError" class="hidden p-4 bg-[#fae0b4] rounded-xl flex items-center gap-x-4">
               <div>
                 <%= svg_tag "exclamation_triangle", "stroke-width": 2 %>
               </div>

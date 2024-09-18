@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
   namespace :api do
-    resources :monitoring, only: [:update]
+    resources :monitoring, only: [:update], param: :hashid
   end
 
   devise_for :users, path: '/auth', controllers: {

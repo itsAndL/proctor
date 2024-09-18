@@ -1,5 +1,5 @@
 <div data-controller="monitoring"
-     data-monitoring-assessment-participation-id-value="<%= @assessment_participation.id %>">
+     data-monitoring-assessment-participation-hash-id-value="<%= @assessment_participation.hashid %>">
   <%= render ParticipationHeaderComponent.new(company: @assessment_participation.assessment.business.company) %>
   <main class="bg-zinc-50 h-full pt-10">
     <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pb-16">

@@ -61,7 +61,7 @@ class AssessmentParticipation < ApplicationRecord
                                                                    is_correct: true).count
     questions_answered_count = participation_test&.questions_answered_count || 0
 
-    is_test_completed = (questions_answered_count == total_questions)
+    is_test_completed = participation_test&.completed?
     score_percentage = if is_test_completed && total_questions.positive?
                          (correct_answers.to_f / total_questions * 100).round(2)
                        end

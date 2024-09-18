@@ -1,10 +1,13 @@
 <div data-controller="monitoring"
-     data-monitoring-fullscreen-value="true"
-     data-monitoring-webcam-value="true"
      data-monitoring-device-value="true"
      data-monitoring-location-value="true"
      data-monitoring-ip-value="true"
-     data-monitoring-assessment-participation-id-value="<%= @assessment_participation.id %>">
+     data-monitoring-webcam-value="true"
+     data-monitoring-periodic-webcam-capture-value="true"
+     data-monitoring-fullscreen-value="true"
+     data-monitoring-track-fullscreen-value="true"
+     data-monitoring-track-mouse-value="true"
+     data-monitoring-assessment-participation-hash-id-value="<%= @assessment_participation.hashid %>">
   <%= render ParticipationHeaderComponent.new(company: @assessment_participation.assessment.business.company) %>
   <main data-controller="countdown" class="bg-zinc-50 h-full pt-10">
     <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 pb-16">
