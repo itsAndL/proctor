@@ -20,8 +20,8 @@ module Seeds
           test,
           question_attributes['type'],
           question_attributes['content'],
-          question_attributes['preview'],
-          question_attributes['duration_seconds']
+          question_attributes['preview']
+          # question_attributes['duration_seconds']
         )
         associate_question_with_test(question, test)
         update_options(question, options)
@@ -41,8 +41,8 @@ module Seeds
       end
     end
 
-    def find_or_build_question(test, type, content, preview, duration_seconds)
-      find_similar_question(type, content) || build_new_question(test, type, content, preview, duration_seconds)
+    def find_or_build_question(test, type, content, preview)
+      find_similar_question(type, content) || build_new_question(test, type, content, preview)
     end
 
     def find_similar_question(type, content)
@@ -52,12 +52,11 @@ module Seeds
               .find { |question| plain_text(question.content.body) == plain_content }
     end
 
-    def build_new_question(test, type, content, preview, duration_seconds)
+    def build_new_question(test, type, content, preview)
       test.questions.build(
         content: content,
         type: "#{type.camelcase}Question",
         preview: preview,
-        duration_seconds: duration_seconds
       )
     end
 

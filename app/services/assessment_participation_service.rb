@@ -120,6 +120,7 @@ class AssessmentParticipationService
   def time_left_overall
     @assessment_participation.unanswered_tests.sum { |test| time_left(test) }
   end
+
   private
 
   def determine_next_url
