@@ -1,52 +1,78 @@
-<%= render ParticipationHeaderComponent.new(company: @assessment_participation.assessment.business.company) %>
-<main class="bg-zinc-50 h-full pt-10">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
-    <div class="border border-gray-200 bg-white rounded-xl px-6 py-10 md:px-12 md:py-16">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-9">
-        <div>
-          <h1 class="font-extrabold leading-7 text-gray-800 text-2xl pb-2 border-b-2 border-gray-900">Camera setup</h1>
-          <p class="my-5 text-gray-800 space-y-3 font-medium">We use camera images to ensure fairness for everyone. Make sure that you are in front of your camera.</p>
-          <div class="border-t border-gray-300 pt-5 pr-2">
-            <div class="flex justify-between">
-              <div>
-                <dt class="font-bold text-gray-900 flex items-center gap-x-1.5">
-                  <%= svg_tag "webcam", class: "size-4" %>
-                  Camera:
-                </dt>
-                <dd class="mt-2 text-gray-900 font-medium text-sm">Integrated Webcam (0c45:6730)</dd>
-              </div>
-              <div class="dropdown dropdown-hover">
-                <button type="button" class="rounded-full p-2 text-blue-600 hover:bg-zinc-100">
-                  <%= svg_tag "ellipsis_vertical" %>
-                </button>
-                <div class="dropdown-content absolute -right-6 z-10 -mr-3.5 mt-2 origin-top-right">
-                  <div class="triangle triangle-t triangle-h-2 triangle-w-4 mx-auto -mb-0.5 text-gray-900"></div>
-                  <div class="rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none py-2 px-3 whitespace-nowrap bg-gray-900 text-sm text-white font-medium">Select camera</div>
+<div data-controller="monitoring"
+     data-monitoring-webcam-value="true"
+     data-monitoring-device-value="true"
+     data-monitoring-location-value="true"
+     data-monitoring-ip-value="true"
+     data-monitoring-assessment-participation-id-value="<%= @assessment_participation.id %>">
+  <%= render ParticipationHeaderComponent.new(company: @assessment_participation.assessment.business.company) %>
+  <main class="bg-zinc-50 h-full pt-10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
+      <div class="border border-gray-200 bg-white rounded-xl px-6 py-10 md:px-12 md:py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-9">
+          <div>
+            <h1 class="font-extrabold leading-7 text-gray-800 text-2xl pb-2 border-b-2 border-gray-900">Camera setup</h1>
+            <p class="my-5 text-gray-800 space-y-3 font-medium">We use camera images to ensure fairness for everyone. Make sure that you are in front of your camera.</p>
+            <div class="border-t border-gray-300 pt-5 pr-2">
+              <div class="flex justify-between">
+                <div>
+                  <dt class="font-bold text-gray-900 flex items-center gap-x-1.5">
+                    <%= svg_tag "webcam", class: "size-4" %>
+                    Camera:
+                  </dt>
+                  <dd class="mt-2 text-gray-900 font-medium text-sm">Integrated Webcam (0c45:6730)</dd>
+                </div>
+                <div class="dropdown dropdown-end relative">
+                  <div class="relative group">
+                    <button type="button" class="rounded-full p-2 text-blue-600 hover:bg-zinc-100">
+                      <%= svg_tag "ellipsis_vertical" %>
+                    </button>
+                    <div class="-right-9 z-10 mt-2 absolute hidden md:group-hover:block">
+                      <div class="triangle triangle-t triangle-h-2 triangle-w-4 mx-auto -mb-0.5 text-gray-900"></div>
+                      <div class="rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none py-2 px-3 whitespace-nowrap bg-gray-900 text-sm text-white font-medium">Select camera</div>
+                    </div>
+                  </div>
+                  <div class="dropdown-content absolute right-0 z-10 mt-2 w-fit origin-top-right divide-y divide-gray-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <div class="w-full">
+                      <button type="button" class="rounded-t-lg whitespace-nowrap block px-4 py-2 text-sm font-medium text-gray-800">UVC Camera (fefe:4321)</button>
+                      <button type="button" class="rounded-b-lg whitespace-nowrap block px-4 py-2 text-sm font-medium text-gray-800 bg-zinc-100">Integrated Webcam (0c45:6730)</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="space-y-8">
-          <%= image_tag "candidate.jpg", class: "rounded-lg aspect-[3/2] object-cover" %>
-          <div class="p-6 bg-zinc-100 rounded-lg">
-            <h2 class="font-bold text-gray-900 text-lg">Trouble with your webcam?</h2>
-            <div class="mt-6 space-y-3 font-medium text-sm">
-              <p>Ensure you have granted permission for your browser to access your camera.</p>
-              <p>Ensure you are using a <a target="_blank" href="https://candidates.testgorilla.com/hc/en-us/articles/19091812295323-Tools-for-taking-an-assessment" class="underline"><strong>supported browser.</strong></a></p>
-              <p>If you have multiple camera devices, ensure you have given your browser and our website permission to use the right device.</p>
-              <p>Ensure your camera drivers and web browser are up to date.</p>
+          <div class="space-y-6">
+            <!-- here we'll show the candidate the webcam stream (when he activate the webcam will see himself) -->
+            <%= image_tag "candidate.jpg", class: "rounded-lg aspect-[3/2] object-cover" %>
+            <div class="hidden p-4 bg-[#fae0b4] rounded-xl flex items-center gap-x-4">
+              <div>
+                <%= svg_tag "exclamation_triangle", "stroke-width": 2 %>
+              </div>
+              <p class="font-medium text-sm">
+                It seems you don't have a camera or mic connected to your computer or they are blocked. To enable the camera and mic, click on the <strong>camera blocked</strong> icon in your browser's address bar and reload the page. If you don't enable a camera, you can still take the assessment, but then <%= @assessment_participation.assessment.business.company %> cannot verify fair play.
+              </p>
+            </div>
+
+            <div class="p-6 bg-[#dce8ff] rounded-xl">
+              <h2 class="font-bold text-gray-900 text-lg">Trouble with your webcam?</h2>
+              <div class="mt-6 space-y-3 font-medium text-sm">
+                <p>Ensure you have granted permission for your browser to access your camera.</p>
+                <p>Ensure you are using a <a target="_blank" href="https://candidates.testgorilla.com/hc/en-us/articles/19091812295323-Tools-for-taking-an-assessment" class="underline"><strong>supported browser.</strong></a></p>
+                <p>If you have multiple camera devices, ensure you have given your browser and our website permission to use the right device.</p>
+                <p>Try launching the assessment in incognito mode or in a private window.</p>
+                <p>Ensure your camera drivers and web browser are up to date.</p>
+                <p>Restart your device and try accessing the assessment again using the link in the invitation email.</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div data-controller="fullscreen" class="mt-12 flex justify-end">
-        <button data-action="fullscreen#enterFullscreen" type="button" class="px-7 py-3 primary-button gap-x-2.5">
-          <span>Next</span>
-          <%= svg_tag "chevron_right", class: "size-3 -mb-0.5", "stroke-width": 3 %>
-        </button>
-        <a href="<%= @next_url %>" data-fullscreen-target="nextPage" class="hidden"></a>
+        <div class="mt-12 flex justify-end">
+          <%= link_to @next_url, class: "px-7 py-3 primary-button gap-x-2.5" do %>
+            <span>Next</span>
+            <%= svg_tag "chevron_right", class: "size-3 -mb-0.5", "stroke-width": 3 %>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
-</main>
+  </main>
+</div>

@@ -1,16 +1,19 @@
-<%= render ParticipationHeaderComponent.new(company: @assessment_participation.assessment.business.company) %>
-<main class="bg-zinc-50 h-full pt-10">
-  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pb-16">
-    <div class="border border-gray-200 bg-white rounded-xl px-6 py-10 md:px-12 md:py-16">
-      <h1 class="font-extrabold leading-7 text-gray-800 text-2xl pb-2 border-b-2 border-gray-900">Great job! You've completed your assessment</h1>
-      <p class="mt-5 text-gray-800 space-y-3 font-medium">Would you like to see your results now? We will automatically redirect you to view your assessment outcome</p>
-      <div data-controller="countdown" class="mt-12 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
-        <p class="text-gray-800 space-y-3 font-medium text-sm">Redirecting in <strong><span data-countdown-target="timer">10</span> seconds</strong></p>
-        <a data-countdown-target="nextPage" href="<%= @next_url %>" class="gap-x-2.5  px-7 py-3 primary-button">
-          <span>Go there now</span>
-          <%= svg_tag "chevron_right", class: "size-3" %>
-        </a>
+<div data-controller="monitoring"
+     data-monitoring-assessment-participation-id-value="<%= @assessment_participation.id %>">
+  <%= render ParticipationHeaderComponent.new(company: @assessment_participation.assessment.business.company) %>
+  <main class="bg-zinc-50 h-full pt-10">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pb-16">
+      <div class="border border-gray-200 bg-white rounded-xl px-6 py-10 md:px-12 md:py-16">
+        <h1 class="font-extrabold leading-7 text-gray-800 text-2xl pb-2 border-b-2 border-gray-900">Great job! You've completed your assessment</h1>
+        <p class="mt-5 text-gray-800 space-y-3 font-medium">Would you like to see your results now? We will automatically redirect you to view your assessment outcome</p>
+        <div data-controller="countdown" class="mt-12 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+          <p class="text-gray-800 space-y-3 font-medium text-sm">Redirecting in <strong><span data-countdown-target="timer">10</span> seconds</strong></p>
+          <a data-countdown-target="nextPage" href="<%= @next_url %>" class="gap-x-2.5  px-7 py-3 primary-button">
+            <span>Go there now</span>
+            <%= svg_tag "chevron_right", class: "size-3" %>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-</main>
+  </main>
+</div>

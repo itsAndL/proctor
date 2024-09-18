@@ -1,5 +1,6 @@
 class Candidate::TestsController < ApplicationController
   include TestParticipationConcern
+  helper_method :question_form_component
 
   before_action :authenticate_candidate!
   before_action :hide_navbar
@@ -31,12 +32,10 @@ class Candidate::TestsController < ApplicationController
   def questions
     @participation_service.start_test(@current_test)
     @current_question = @participation_service.first_unanswered_question(@current_test)
-    render question_form_component
   end
 
   def practice_questions
     @current_question = @current_test.preview_questions.find(params[:question_id])
-    render question_form_component
   end
 
   def save_answer
