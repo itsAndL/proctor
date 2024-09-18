@@ -16,15 +16,15 @@ class Question < ApplicationRecord
   end
 
   def next_non_preview(test)
-    next_question_of_type(test, false, true)
+    next_question_of_type(test, false)
   end
 
   def previous_preview(test)
-    previous_question_of_type(test, true, true)
+    previous_question_of_type(test, true)
   end
 
   def previous_non_preview(test)
-    previous_question_of_type(test, false, true)
+    previous_question_of_type(test, false)
   end
 
   private

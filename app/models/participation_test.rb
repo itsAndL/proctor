@@ -4,6 +4,7 @@ class ParticipationTest < ApplicationRecord
   enum status: { pending: 0, started: 1, completed: 2 }
 
   after_find :set_completed_if_time_exceeded
+  before_save :set_timestamps
 
   def calculate_time_taken
     (Time.current.to_i - (started_at || 0).to_i)
@@ -40,8 +41,15 @@ class ParticipationTest < ApplicationRecord
   private
 
   def set_completed_if_time_exceeded
-    return if pending? || calculate_time_taken < test.duration_seconds
+    return if pending? || completed? || calculate_time_taken < test.duration_seconds
 
     status.completed!
+  end
+
+  def set_timestamps
+    return unless status_changed?
+
+    self.started_at = Time.current if status == 'started' && started_at.nil?
+    self.completed_at = Time.current if status == 'completed' && completed_at.nil?
   end
 end

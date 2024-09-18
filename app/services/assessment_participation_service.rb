@@ -72,38 +72,9 @@ class AssessmentParticipationService
     first_unanswered_question(test)
   end
 
-  def first_unanswered_custom_question
-    @assessment_participation.custom_questions.non_answered.first
-  end
-
-  def create_custom_question_response(custom_question, essay_content: nil, file_upload: nil, video: nil)
-    custom_question_response = CustomQuestionResponse.new(custom_question:,
-                                                          assessment_participation: @assessment_participation)
-    custom_question_response.essay_content = essay_content if essay_content
-    custom_question_response.file_upload = file_upload if file_upload
-    custom_question_response.video = video if video
-    custom_question_response.save!
-  end
-
-  def complete_custom_question(custom_question_response)
-    custom_question_response.completed_at = Time.zone.now
-    custom_question_response.status = 'completed'
-    custom_question_response.save!
-  end
-
-  def start_custom_question(custom_question_response)
-    custom_question_response.started_at = Time.zone.now
-    custom_question_response.status = 'started'
-    custom_question_response.save!
-  end
-
   def more_questions?(test)
     participation_test = @assessment_participation.participation_tests.find_by(test:)
     participation_test.unanswered_questions.any?
-  end
-
-  def answere_questions(test)
-    @assessment_participation.answered_questions(test)
   end
 
   def correct_answer?(selected_options)
