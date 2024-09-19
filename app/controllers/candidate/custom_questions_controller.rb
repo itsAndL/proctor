@@ -4,10 +4,10 @@ class Candidate::CustomQuestionsController < ApplicationController
   before_action :authenticate_candidate!
   before_action :hide_navbar
   before_action :set_assessment_participation
-  before_action :set_current_custom_question, except: %i[show feedback]
+  before_action :set_current_custom_question, except: %i[feedback]
   before_action :validate_save_answer_params, only: %i[save_answer]
 
-  def show; end
+  def start; end
 
   def feedback
     @current_custom_question = @assessment_participation.custom_questions.find(params[:hashid])
@@ -43,15 +43,11 @@ class Candidate::CustomQuestionsController < ApplicationController
 
   def set_current_custom_question
     @current_custom_question = @assessment_participation.unanswered_custom_questions.find(params[:hashid])
-    if @current_custom_question.nil?
-      if @participation_service.more_custom_questions?
-        return redirect_to candidate_custom_question_path(first_unanswered_custom_question)
-      end
-
-      return redirect_to checkout_candidate_assessment_participation_path(@assessment_participation)
+  rescue ActiveRecord::RecordNotFound
+    next_unanswered_custom_question = @participation_service.first_unanswered_custom_question
+    if next_unanswered_custom_question.present?
+      return redirect_to questions_candidate_custom_question_path(next_unanswered_custom_question)
     end
-
-    return if @current_custom_question
 
     redirect_to checkout_candidate_assessment_participation_path(@assessment_participation)
   end
