@@ -80,15 +80,10 @@ export default class extends Controller {
       const videoDevices = devices.filter(device => device.kind === 'videoinput');
       console.log('Video devices:', videoDevices);
 
-      if (videoDevices.length === 0) {
-        throw new Error('No video devices found');
-      }
-
       const selectedDeviceId = await this.selectCamera()
       if (!selectedDeviceId) {
         throw new Error('No camera selected');
       }
-
       console.log('Selected device ID:', selectedDeviceId);
 
       this.populateCameraSelect(videoDevices)
@@ -131,16 +126,32 @@ export default class extends Controller {
 
     if (!selectedDevice) {
       if (/Mobile|Android|webOS|iPhone|iPad|iPod|BlackBerry|Windows Phone/i.test(navigator.userAgent)) {
-        // For mobile devices, try to select the front-facing camera
         selectedDevice = videoDevices.find(device => device.label.toLowerCase().includes('front')) || videoDevices[0]
       } else {
-        // For desktop, just select the first camera
         selectedDevice = videoDevices[0]
       }
       console.log('Selected default camera:', selectedDevice);
     }
 
-    return selectedDevice.deviceId
+    // If the deviceId is empty, we need to request permissions first
+    if (!selectedDevice.deviceId) {
+      console.log('Empty deviceId, requesting permissions...');
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        stream.getTracks().forEach(track => track.stop()); // Stop the stream immediately
+        // Re-enumerate devices after getting permissions
+        const updatedDevices = await navigator.mediaDevices.enumerateDevices();
+        const updatedVideoDevices = updatedDevices.filter(device => device.kind === 'videoinput');
+        selectedDevice = updatedVideoDevices[0];
+        console.log('Updated selected device after permissions:', selectedDevice);
+      } catch (error) {
+        console.error('Error requesting camera permissions:', error);
+        this.showCameraError('Failed to get camera permissions. Please allow camera access and try again.');
+        return null;
+      }
+    }
+
+    return selectedDevice.deviceId;
   }
 
   populateCameraSelect(videoDevices) {
