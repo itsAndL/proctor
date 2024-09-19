@@ -5,8 +5,24 @@ class CustomQuestionResponse < ApplicationRecord
   belongs_to :custom_question
 
   has_rich_text :essay_content
-  has_one_attached :file_upload, service: :local, size: { less_than: 400.megabytes }
-  has_one_attached :video, service: :local, size: { less_than: 400.megabytes }
+  has_one_attached :file_upload, service:, max_file_size: 400.megabytes, content_type: %w[
+    text/csv
+    application/vnd.ms-excel
+    application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+    application/msword
+    text/plain
+    application/vnd.ms-powerpoint
+    application/vnd.openxmlformats-officedocument.presentationml.presentation
+    application/vnd.oasis.opendocument.presentation
+    application/vnd.apple.keynote
+    application/pdf
+    image/png
+    image/jpeg
+    image/vnd.adobe.photoshop
+    image/bmp
+    image/gif
+  ]
+  has_one_attached :video, service:, max_file_size: 400.megabytes 
 
   validate :content_matches_question_type
   validates :rating, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5 },
