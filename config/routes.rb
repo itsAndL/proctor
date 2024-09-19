@@ -82,6 +82,15 @@ Rails.application.routes.draw do
         post :save_answer
       end
     end
+    resources :custom_questions, only: %i[index show], param: :hashid do
+      member do
+        get :feedback
+        # get 'practice_questions/:question_id', to: 'tests#practice_questions', as: :practice_questions
+        get :questions
+        get :start
+        post :save_answer
+      end
+    end
     resources :assessment_participations, only: %i[index show], path: '/assessments', param: :hashid do
       member do
         get :overview
