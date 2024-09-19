@@ -100,33 +100,28 @@ class AssessmentParticipationService
     custom_question_response = @assessment_participation.custom_question_responses.find_or_initialize_by(custom_question:)
     custom_question_response.started! if custom_question_response.pending?
   end
+
   def create_custom_question_answer(custom_question, params)
-    skip = ActiveModel::Type::Boolean.new.cast(params[:skip])
-    response = CustomQuestionResponse.find_or_initialize_by(assessment_participation: @assessment_participation, custom_question:)
-  
+    response = @assessment_participation.custom_question_responses.find_or_initialize_by(custom_question:)
     case custom_question
     when EssayCustomQuestion
-      response.essay_content = skip ? nil : params[:essay_content]
+      response.essay_content = params[:essay_content]
     when FileUploadCustomQuestion
-      response.file_upload = skip ? nil : params[:file_upload]
+      response.file_upload = params[:file_upload]
     when VideoCustomQuestion
-      response.video = skip ? nil : params[:video]
+      response.video = params[:video]
     end
     response.status = :completed
-    if skip
-      response.save!(validate: false)
-    else
-      response.save!
-    end
+    response.save!
   end
-  
+
   private
 
   def determine_next_url
     if @assessment_participation.unanswered_tests.any?
       candidate_test_path(first_unanswered_test)
     elsif @assessment_participation.unanswered_custom_questions.any?
-      candidate_custom_question_path(first_unanswered_custom_question)
+      start_candidate_custom_question_path(first_unanswered_custom_question)
     else
       checkout_candidate_assessment_participation_path(@assessment_participation)
     end
