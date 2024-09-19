@@ -1,8 +1,11 @@
 class CustomQuestionResponse < ApplicationRecord
   include Hashid::Rails
+  include TimeTracking
 
   belongs_to :assessment_participation
   belongs_to :custom_question
+
+  delegate :duration_seconds, to: :custom_question
 
   has_rich_text :essay_content
   has_one_attached :file_upload
@@ -29,52 +32,4 @@ class CustomQuestionResponse < ApplicationRecord
   ]
 
   enum status: { pending: 0, started: 1, completed: 2 }
-
-  after_find :set_completed_if_time_exceeded
-  before_save :set_timestamps
-
-  def calculate_time_taken
-    return -1 if infinite_time?
-
-    (Time.current.to_i - (started_at || 0).to_i)
-  end
-
-  def total_time_taken
-    return 0 if infinite_time? || started_at.nil? || completed_at.nil?
-
-    (completed_at - started_at).to_i
-  end
-
-  def more_time?
-    custom_question.duration_seconds > calculate_time_taken
-  end
-
-  def duration_seconds
-    custom_question.duration_seconds
-  end
-
-  def infinite_time?
-    custom_question.duration_seconds.nil? || custom_question.duration_seconds.zero?
-  end
-
-  def duration_left
-    return 0 if infinite_time?
-
-    duration_seconds - calculate_time_taken
-  end
-
-  private
-
-  def set_completed_if_time_exceeded
-    return if infinite_time? || pending? || completed? || duration_left.positive?
-
-    completed!
-  end
-
-  def set_timestamps
-    return unless status_changed?
-
-    self.started_at = Time.current if started? && started_at.nil?
-    self.completed_at = Time.current if completed? && completed_at.nil?
-  end
 end
