@@ -55,7 +55,7 @@
                     <% if @custom_question_response.infinite_time? %>
                       No Time Limited
                     <% else %>
-                      Finished in <%= format_duration_hms(@custom_question_response.duration_seconds) %> out of <%= format_duration_hms(@custom_question_response.custom_question.duration_seconds) %>
+                      Finished in <%= format_duration_hms(@custom_question_response.total_time_taken) %> out of <%= format_duration_hms(@custom_question_response.custom_question.duration_seconds) %>
                     <% end %>
                   </p>
                 </div>
