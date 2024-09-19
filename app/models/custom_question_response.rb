@@ -5,7 +5,13 @@ class CustomQuestionResponse < ApplicationRecord
   belongs_to :custom_question
 
   has_rich_text :essay_content
-  has_one_attached :file_upload, service:, max_file_size: 400.megabytes, content_type: %w[
+  has_one_attached :file_upload
+  has_one_attached :video
+
+  validate :content_matches_question_type
+  validates :rating, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5 },
+                     allow_nil: true
+  validates :file_upload, max_file_size: 400.megabytes, content_type: %w[
     text/csv
     application/vnd.ms-excel
     application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
@@ -22,13 +28,10 @@ class CustomQuestionResponse < ApplicationRecord
     image/bmp
     image/gif
   ]
-  has_one_attached :video, service:, max_file_size: 400.megabytes 
-
-  validate :content_matches_question_type
-  validates :rating, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5 },
-                     allow_nil: true
 
   enum status: { pending: 0, started: 1, completed: 2 }
+
+
   after_find :set_completed_if_time_exceeded
   before_save :set_timestamps
 
