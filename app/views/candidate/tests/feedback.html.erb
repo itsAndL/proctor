@@ -1,33 +1,36 @@
-<%= render ParticipationHeaderComponent.new(company: @assessment_participation.assessment.business.company) %>
-<main class="bg-zinc-50 h-full pt-10">
-  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pb-16">
-    <div class="border border-gray-200 bg-white rounded-xl px-6 py-10 md:px-12 md:py-16">
-      <h1 class="font-extrabold leading-7 text-gray-800 text-2xl pb-2 border-b-2 border-gray-900">You have now finished the first test</h1>
-      <p class="mt-5 text-gray-800 space-y-3 font-medium">Help us improve this test by providing anonymous feedback. Your answer will only be available to AssessKit, not your assesser.</p>
-      <p class="mt-4 text-gray-800 space-y-3 font-medium">In your opinion, did the test accurately measure your skills in <strong>Problem Solving?</strong></p>
-      <form class="mt-4">
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-5 gap-y-4">
-          <div class="flex items-center border border-gray-400 rounded-lg p-3">
-            <input id="option-1" name="selected-option-3" type="radio" class="size-4 border-gray-800 text-blue-600 focus:ring-blue-600">
-            <label for="option-1" class="ml-4 block text-sm font-semibold text-gray-800">Yes</label>
+<div data-controller="monitoring"
+     data-monitoring-assessment-participation-hash-id-value="<%= @assessment_participation.hashid %>">
+  <%= render ParticipationHeaderComponent.new(company: @assessment_participation.assessment.business.company) %>
+  <main class="bg-zinc-50 h-full pt-10">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pb-16">
+      <div class="border border-gray-200 bg-white rounded-xl px-6 py-10 md:px-12 md:py-16">
+        <h1 class="font-extrabold leading-7 text-gray-800 text-2xl pb-2 border-b-2 border-gray-900">You have now finished the first test</h1>
+        <p class="mt-5 text-gray-800 space-y-3 font-medium">Help us improve this test by providing anonymous feedback. Your answer will only be available to AssessKit, not your assesser.</p>
+        <p class="mt-4 text-gray-800 space-y-3 font-medium">In your opinion, did the test accurately measure your skills in <strong>Problem Solving?</strong></p>
+        <form class="mt-4">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-5 gap-y-4">
+            <div class="flex items-center border border-gray-400 rounded-lg p-3">
+              <input id="option-1" name="selected-option-3" type="radio" class="size-4 border-gray-800 text-blue-600 focus:ring-blue-600">
+              <label for="option-1" class="ml-4 block text-sm font-semibold text-gray-800">Yes</label>
+            </div>
+            <div class="flex items-center border border-gray-400 rounded-lg p-3">
+              <input id="option-2" name="selected-option-3" type="radio" class="size-4 border-gray-800 text-blue-600 focus:ring-blue-600">
+              <label for="option-2" class="ml-4 block text-sm font-semibold text-gray-800">Somewhat</label>
+            </div>
+            <div class="flex items-center border border-gray-400 rounded-lg p-3">
+              <input id="option-3" name="selected-option-3" type="radio" class="size-4 border-gray-800 text-blue-600 focus:ring-blue-600">
+              <label for="option-3" class="ml-4 block text-sm font-semibold text-gray-800">No</label>
+            </div>
           </div>
-          <div class="flex items-center border border-gray-400 rounded-lg p-3">
-            <input id="option-2" name="selected-option-3" type="radio" class="size-4 border-gray-800 text-blue-600 focus:ring-blue-600">
-            <label for="option-2" class="ml-4 block text-sm font-semibold text-gray-800">Somewhat</label>
-          </div>
-          <div class="flex items-center border border-gray-400 rounded-lg p-3">
-            <input id="option-3" name="selected-option-3" type="radio" class="size-4 border-gray-800 text-blue-600 focus:ring-blue-600">
-            <label for="option-3" class="ml-4 block text-sm font-semibold text-gray-800">No</label>
-          </div>
+          <textarea placeholder="Please tell us more about your answer..." rows="4" class="mt-8 sm:mt-5 block w-full rounded-lg border-0 py-2.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 font-medium focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"></textarea>
+        </form>
+        <div class="mt-12 flex justify-end">
+          <%= link_to @next_url, class: " gap-x-2.5 px-7 py-3 primary-button" do %>
+            <span>Finish</span>
+            <%= svg_tag "chevron_right", class:"size-3" %>
+          <% end %>
         </div>
-        <textarea placeholder="Please tell us more about your answer..." rows="4" class="mt-8 sm:mt-5 block w-full rounded-lg border-0 py-2.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 font-medium focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"></textarea>
-      </form>
-      <div class="mt-12 flex justify-end">
-        <%= link_to @next_url, class: " gap-x-2.5 px-7 py-3 primary-button" do %>
-          <span>Finish</span>
-          <%= svg_tag "chevron_right", class:"size-3" %>
-        <% end %>
       </div>
     </div>
-  </div>
-</main>
+  </main>
+</div>

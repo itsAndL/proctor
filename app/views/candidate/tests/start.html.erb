@@ -1,21 +1,32 @@
-<%= render ParticipationHeaderComponent.new(company: @assessment_participation.assessment.business.company) %>
-<main data-controller="countdown" class="bg-zinc-50 h-full pt-10">
-  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 pb-16">
-    <div class="border border-gray-200 bg-white rounded-xl px-6 py-10 md:px-12 md:py-16">
-      <div>
-        <p class="text-gray-800 space-y-3 font-medium">This is the next test:</p>
-        <h1 class="mt-3 font-extrabold leading-7 text-gray-800 text-xl">
-          <%= @current_test.title %>
-        </h1>
-        <p class="mt-4 text-gray-800 space-y-3 font-medium">The actual test starts now. Good luck!</p>
-        <div class="mt-5 border-t border-gray-300 pt-5 pr-2">
-          <p class="text-gray-800 space-y-3 font-medium">Questions will start in <strong data-countdown-target="timer">10</strong> seconds</p>
-          <p class="mt-4 text-gray-800 space-y-3 font-medium">Please stay on this screen. The timer for your next test has <strong>started</strong> and <strong>cannot be paused</strong>. The timer continues even when you close the browser.</p>
+<div data-controller="monitoring"
+     data-monitoring-device-value="true"
+     data-monitoring-location-value="true"
+     data-monitoring-ip-value="true"
+     data-monitoring-webcam-value="true"
+     data-monitoring-periodic-webcam-capture-value="true"
+     data-monitoring-fullscreen-value="true"
+     data-monitoring-track-fullscreen-value="true"
+     data-monitoring-track-mouse-value="true"
+     data-monitoring-assessment-participation-hash-id-value="<%= @assessment_participation.hashid %>">
+  <%= render ParticipationHeaderComponent.new(company: @assessment_participation.assessment.business.company) %>
+  <main data-controller="countdown" class="bg-zinc-50 h-full pt-10">
+    <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 pb-16">
+      <div class="border border-gray-200 bg-white rounded-xl px-6 py-10 md:px-12 md:py-16">
+        <div>
+          <p class="text-gray-800 space-y-3 font-medium">This is the next test:</p>
+          <h1 class="mt-3 font-extrabold leading-7 text-gray-800 text-xl">
+            <%= @current_test.title %>
+          </h1>
+          <p class="mt-4 text-gray-800 space-y-3 font-medium">The actual test starts now. Good luck!</p>
+          <div class="mt-5 border-t border-gray-300 pt-5 pr-2">
+            <p class="text-gray-800 space-y-3 font-medium">Questions will start in <strong data-countdown-target="timer">10</strong> seconds</p>
+            <p class="mt-4 text-gray-800 space-y-3 font-medium">Please stay on this screen. The timer for your next test has <strong>started</strong> and <strong>cannot be paused</strong>. The timer continues even when you close the browser.</p>
+          </div>
+          <%= link_to questions_candidate_test_path(@current_test), data: { countdown_target: "nextPage" }, class: "hidden" do %>
+            Next page
+          <% end %>
         </div>
-        <%= link_to questions_candidate_test_path(@current_test), data: { countdown_target: "nextPage" }, class: "hidden" do %>
-          Next page
-        <% end %>
       </div>
     </div>
-  </div>
-</main>
+  </main>
+</div>

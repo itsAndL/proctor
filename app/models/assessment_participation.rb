@@ -1,6 +1,7 @@
 class AssessmentParticipation < ApplicationRecord
   include Hashid::Rails
   include PgSearch::Model
+  include Monitorable
 
   belongs_to :assessment
   belongs_to :temp_candidate, optional: true
@@ -39,6 +40,20 @@ class AssessmentParticipation < ApplicationRecord
     custom_question_responses.exists?(custom_question_id: custom_question.id)
   end
 
+  def device_used
+    devices.last
+  end
+
+  def location
+    locations.last
+  end
+
+  def single_ip_address
+    return if ips.blank?
+
+    ips.uniq.count == 1
+  end
+
   def compute_test_result(test)
     total_questions = test.selected_questions.count
     participation_test = participation_tests.find_by(test:)
@@ -46,7 +61,7 @@ class AssessmentParticipation < ApplicationRecord
                                                                    is_correct: true).count
     questions_answered_count = participation_test&.questions_answered_count || 0
 
-    is_test_completed = (questions_answered_count == total_questions)
+    is_test_completed = participation_test&.completed?
     score_percentage = if is_test_completed && total_questions.positive?
                          (correct_answers.to_f / total_questions * 100).round(2)
                        end
