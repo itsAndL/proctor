@@ -18,9 +18,7 @@
 
       <% if @assessment_participation.completed? && @screenshots.any? %>
         <div class="mt-7" data-controller="screenshot-slider" data-screenshot-slider-screenshots-value="<%= screenshots_json %>">
-          <div class="aspect-w-16 aspect-h-9 relative overflow-hidden rounded-lg">
-            <%= image_tag @screenshots.first.image, class: "absolute inset-0 w-full h-full object-cover", data: { screenshot_slider_target: "image" } %>
-          </div>
+          <%= image_tag @screenshots.first.image, class: "rounded-lg w-full h-full object-cover", data: { screenshot_slider_target: "image" } %>
           <div class="relative h-0.5 bg-gray-300 mt-5 mx-1.5" 
               data-screenshot-slider-target="sliderContainer"
               data-action="click->screenshot-slider#handleBarClick">
