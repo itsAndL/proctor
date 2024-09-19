@@ -74,10 +74,10 @@ export default class extends Controller {
       }
 
       console.log('Enumerating devices...');
-      const devices = await navigator.mediaDevices.enumerateDevices();
+      let devices = await navigator.mediaDevices.enumerateDevices();
       console.log('All devices:', devices);
 
-      const videoDevices = devices.filter(device => device.kind === 'videoinput');
+      let videoDevices = devices.filter(device => device.kind === 'videoinput');
       console.log('Video devices:', videoDevices);
 
       const selectedDeviceId = await this.selectCamera()
@@ -85,6 +85,11 @@ export default class extends Controller {
         throw new Error('No camera selected');
       }
       console.log('Selected device ID:', selectedDeviceId);
+
+      // Re-enumerate devices after permissions have been granted
+      devices = await navigator.mediaDevices.enumerateDevices();
+      videoDevices = devices.filter(device => device.kind === 'videoinput');
+      console.log('Updated video devices:', videoDevices);
 
       this.populateCameraSelect(videoDevices)
       await this.startWebcam(selectedDeviceId)
@@ -157,9 +162,13 @@ export default class extends Controller {
   populateCameraSelect(videoDevices) {
     if (!this.hasCameraSelectTarget) return
 
+    console.log('Populating camera select with devices:', videoDevices);
+
     this.cameraSelectTarget.innerHTML = videoDevices.map(device =>
       `<option value="${device.deviceId}">${device.label || `Camera ${device.deviceId.slice(0, 5)}`}</option>`
     ).join('')
+
+    console.log('Camera select populated:', this.cameraSelectTarget.innerHTML);
 
     this.cameraSelectTarget.addEventListener('change', this.handleCameraChange.bind(this))
   }
