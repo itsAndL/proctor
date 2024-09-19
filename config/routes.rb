@@ -89,7 +89,6 @@ Rails.application.routes.draw do
     resources :custom_questions, only: %i[index show], param: :hashid do
       member do
         get :feedback
-        # get 'practice_questions/:question_id', to: 'tests#practice_questions', as: :practice_questions
         get :questions
         get :start
         post :save_answer

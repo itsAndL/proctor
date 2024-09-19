@@ -8,7 +8,6 @@ class CustomQuestionResponse < ApplicationRecord
   has_one_attached :file_upload
   has_one_attached :video
 
-  validate :content_matches_question_type
   validates :rating, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5 },
                      allow_nil: true
   validates :file_upload, max_file_size: 400.megabytes, content_type: %w[
@@ -30,7 +29,6 @@ class CustomQuestionResponse < ApplicationRecord
   ]
 
   enum status: { pending: 0, started: 1, completed: 2 }
-
 
   after_find :set_completed_if_time_exceeded
   before_save :set_timestamps
@@ -69,27 +67,14 @@ class CustomQuestionResponse < ApplicationRecord
 
   def set_completed_if_time_exceeded
     return if infinite_time? || pending? || completed? || duration_left.positive?
-    
-    update_column(:status, 'completed') # it's important to use update_column to skip validations
+
+    completed!
   end
 
   def set_timestamps
     return unless status_changed?
 
-    self.started_at = Time.current if status == 'started' && started_at.nil?
-    self.completed_at = Time.current if status == 'completed' && completed_at.nil?
-  end
-
-  def content_matches_question_type
-    return unless status == 'completed'
-
-    case custom_question.type
-    when 'EssayCustomQuestion'
-      errors.add(:essay_content, 'must be present for essay questions') if essay_content.blank?
-    when 'FileUploadCustomQuestion'
-      errors.add(:file_upload, 'must be present for file upload questions') if file_upload.blank?
-    when 'VideoCustomQuestion'
-      errors.add(:video, 'must be present for video questions') if video.blank?
-    end
+    self.started_at = Time.current if started? && started_at.nil?
+    self.completed_at = Time.current if completed? && completed_at.nil?
   end
 end
