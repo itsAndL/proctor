@@ -28,7 +28,12 @@ export default class extends Controller {
   }
 
   skip() {
-    this.formSubmitTarget.click()
+    const skipInput = document.createElement('input');
+    skipInput.type = 'hidden';
+    skipInput.name = 'skip';
+    skipInput.value = 'true';
+    this.formTarget.appendChild(skipInput);
+    this.formSubmitTarget.click();
   }
 
   close() {
@@ -44,8 +49,15 @@ export default class extends Controller {
     const selectedCheckboxes = Array.from(this.formTarget.querySelectorAll('input[name="selected_options[]"]:checked'));
     const isCheckboxValid = selectedCheckboxes.length > 0;
 
-    // Check overall validity
-    const isValid = isRadioValid || isCheckboxValid;
+
+    // hanlde text inputs
+    // Handle text inputs with name "essay_content"
+    const textInput = this.formTarget.querySelector('input[name="essay_content"]');
+    const isTextValid = textInput ? textInput.value.length > 0 : false;
+    // file_upload
+    const fileInput = this.formTarget.querySelector('input[name="file_upload"]');
+    const isFileValid = fileInput ? fileInput.files.length > 0 : false; 
+    const isValid = isRadioValid || isCheckboxValid || isTextValid  || isFileValid;
 
     return isValid;
   }
@@ -55,13 +67,12 @@ export default class extends Controller {
     let remainingTime = this.durationleftValue * 1000;
 
     if (remainingTime <= 0) {
-      remainingTime = this.initialTime * 1000;
+      // remainingTime = this.initialTime * 1000;
     }
 
     const startTime = performance.now();
     const endTime = startTime + remainingTime;
     const animate = (timestamp) => {
-      const elapsedTime = timestamp - startTime;
       let timeLeft = Math.max(endTime - timestamp, 0);
       if (isNaN(timeLeft)) {
         timeLeft = 0;
@@ -71,7 +82,7 @@ export default class extends Controller {
 
       if (timeLeft <= 0) {
         this.stop();
-        this.formSubmitTarget.click();
+        // this.formSubmitTarget.click(); TODO: activate this line
         return;
       }
 
