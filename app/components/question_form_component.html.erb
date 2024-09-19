@@ -15,7 +15,7 @@
           <%= @question.is_a?(MultipleChoiceQuestion) ? "Select only one answer" : "Select all that apply" %>
         </h2>
         <div class="mt-6 space-y-5">
-          <% if @question.is_a?(MultipleChoiceQuestion) || @question.is_a?(MultipleChoiceQuestion) %>
+          <% if @question.is_a?(MultipleChoiceQuestion) || @question.is_a?(MultipleResponseQuestion) %>
             <% @question.options.each.with_index(1) do |option, i| %>
               <label for="option-<%= i %>" class="flex items-center border border-gray-300 rounded-md p-4 cursor-pointer options hover:bg-blue-50 transition-colors duration-200">
                 <input 
