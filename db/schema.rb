@@ -71,13 +71,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_19_102957) do
     t.integer "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "device_used"
-    t.string "location"
-    t.boolean "single_ip_address"
     t.boolean "webcam_enabled"
     t.boolean "fullscreen_always_active"
     t.boolean "mouse_always_in_window"
     t.text "notes"
+    t.jsonb "devices", default: [], null: false
+    t.jsonb "locations", default: [], null: false
+    t.jsonb "ips", default: [], null: false
     t.index ["assessment_id", "candidate_id"], name: "index_on_assessment_and_candidate", unique: true
     t.index ["assessment_id", "temp_candidate_id"], name: "index_on_assessment_and_temp_candidate", unique: true
     t.index ["assessment_id"], name: "index_assessment_participations_on_assessment_id"

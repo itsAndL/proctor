@@ -1,6 +1,7 @@
 class AssessmentParticipation < ApplicationRecord
   include Hashid::Rails
   include PgSearch::Model
+  include Monitorable
 
   belongs_to :assessment
   belongs_to :temp_candidate, optional: true
@@ -37,6 +38,20 @@ class AssessmentParticipation < ApplicationRecord
 
   def custom_question_completed?(custom_question)
     custom_question_responses.exists?(custom_question_id: custom_question.id)
+  end
+
+  def device_used
+    devices.last
+  end
+
+  def location
+    locations.last
+  end
+
+  def single_ip_address
+    return if ips.blank?
+
+    ips.uniq.count == 1
   end
 
   def compute_test_result(test)

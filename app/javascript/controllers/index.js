@@ -46,14 +46,14 @@ application.register("filter", FilterController)
 import FormSubmitController from "./form_submit_controller"
 application.register("form-submit", FormSubmitController)
 
-import FullscreenController from "./fullscreen_controller"
-application.register("fullscreen", FullscreenController)
-
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
 import ModalController from "./modal_controller"
 application.register("modal", ModalController)
+
+import MonitoringController from "./monitoring_controller"
+application.register("monitoring", MonitoringController)
 
 import NotificationController from "./notification_controller"
 application.register("notification", NotificationController)
