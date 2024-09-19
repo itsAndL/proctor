@@ -5,8 +5,8 @@ class CustomQuestionResponse < ApplicationRecord
   belongs_to :custom_question
 
   has_rich_text :essay_content
-  has_one_attached :file_upload
-  has_one_attached :video
+  has_one_attached :file_upload, service: :local, size: { less_than: 400.megabytes }
+  has_one_attached :video, service: :local, size: { less_than: 400.megabytes }
 
   validate :content_matches_question_type
   validates :rating, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5 },
@@ -20,6 +20,12 @@ class CustomQuestionResponse < ApplicationRecord
     return -1 if infinite_time?
 
     (Time.current.to_i - (started_at || 0).to_i)
+  end
+
+  def total_time_taken
+    return 0 if infinite_time? || started_at.nil? || completed_at.nil?
+
+    (completed_at - started_at).to_i
   end
 
   def more_time?
