@@ -46,7 +46,7 @@ class AssessmentParticipation < ApplicationRecord
                                                                    is_correct: true).count
     questions_answered_count = participation_test&.questions_answered_count || 0
 
-    is_test_completed = (questions_answered_count == total_questions)
+    is_test_completed = participation_test&.completed?
     score_percentage = if is_test_completed && total_questions.positive?
                          (correct_answers.to_f / total_questions * 100).round(2)
                        end
@@ -92,16 +92,33 @@ class AssessmentParticipation < ApplicationRecord
   end
 
   def unanswered_tests
-    incomplete_test_ids = participation_tests
-                          .where.not(status: :completed)
-                          .pluck(:test_id)
-
-    tests.select { |test| incomplete_test_ids.include?(test.id) }
+    tests.joins(:participation_tests)
+         .where(participation_tests: { status: %i[pending started] })
+         .select('tests.*')
   end
 
   def answered_tests
-    test_ids = participation_tests.where(status: :completed).pluck(:test_id)
-    tests.select { |test| test_ids.include?(test.id) }
+    tests.joins(:participation_tests)
+         .where(participation_tests: { status: :completed })
+         .select('tests.*')
+  end
+
+  def answered_custom_questions
+    custom_questions.joins(:custom_question_responses)
+                    .where(custom_question_responses: { status: :completed })
+                    .select('custom_questions.*')
+  end
+
+  def unanswered_custom_questions
+    unanswered = custom_questions
+                 .left_joins(:custom_question_responses)
+                 .where(custom_question_responses: { id: nil })
+
+    pending_or_started = custom_questions
+                         .left_joins(:custom_question_responses)
+                         .where(custom_question_responses: { status: %i[pending started] })
+
+    unanswered.or(pending_or_started).select('custom_questions.*')
   end
 
   private
