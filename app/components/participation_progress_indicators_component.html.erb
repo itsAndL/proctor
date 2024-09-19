@@ -1,18 +1,44 @@
-<div class="flex flex-col  gap-2">
-  <div class="grid grid-cols-12 gap-x-4 font-bold text-xs text-gray-900 max-w-sm">
-    <div class="flex items-center gap-x-1 col-span-3">
-      <%= helpers.svg_tag "clock", class: "size-4" %>
-      <span data-question-answer-target="timerLabel" class="w-14">
-        <%= helpers.format_duration_hms(@duration_left) %>
-      </span>
+<% if @custom_question %>
+  <div class="flex flex-col  gap-2">
+    <div class="grid grid-cols-12 gap-x-4 font-bold text-xs text-gray-900 max-w-sm">
+      <p class="flex items-center justify-center gap-x-1 col-span-12">Time for question <%= @answered_count %> of <%= @questions_count %>:</p>
     </div>
-    <%= render(ProgressBarComponent.new(data:{question_answer_target: "timerProgress"}))%>
-  </div>
-  <div class="grid grid-cols-12 gap-x-4 font-bold text-xs text-gray-900 max-w-sm">
-    <div class="flex items-center gap-x-1 col-span-3">
-      <%= helpers.svg_tag "test_document", class: "size-4" %>
-      <p><%= @answered_count %>/<%= @questions_count %></p>
+    <div class="grid grid-cols-12 gap-x-4 font-bold text-xs text-gray-900 max-w-sm">
+      <% if infinite_time %>
+        <div class="flex items-center justify-center gap-x-1 col-span-12">
+          <%= helpers.svg_tag "clock", class: "size-4" %>
+          <span class="w-14">
+            No Limit
+          </span>
+        </div>
+      <% else %>
+        <div class="flex items-center gap-x-1 col-span-3">
+          <%= helpers.svg_tag "clock", class: "size-4" %>
+          <span data-question-answer-target="timerLabel" class="w-14">
+            <%= helpers.format_duration_hms(@duration_left) %>
+          </span>
+        </div>
+        <%= render(ProgressBarComponent.new(data:{question_answer_target: "timerProgress"}))%>
+      <% end %>
     </div>
-    <%= render(ProgressBarComponent.new(progress: @answered_count, total: @questions_count))%>
   </div>
-</div>
+<% else %>
+  <div class="flex flex-col  gap-2">
+    <div class="grid grid-cols-12 gap-x-4 font-bold text-xs text-gray-900 max-w-sm">
+      <div class="flex items-center gap-x-1 col-span-3">
+        <%= helpers.svg_tag "clock", class: "size-4" %>
+        <span data-question-answer-target="timerLabel" class="w-14">
+          <%= helpers.format_duration_hms(@duration_left) %>
+        </span>
+      </div>
+      <%= render(ProgressBarComponent.new(data:{question_answer_target: "timerProgress"}))%>
+    </div>
+    <div class="grid grid-cols-12 gap-x-4 font-bold text-xs text-gray-900 max-w-sm">
+      <div class="flex items-center gap-x-1 col-span-3">
+        <%= helpers.svg_tag "test_document", class: "size-4" %>
+        <p><%= @answered_count %>/<%= @questions_count %></p>
+      </div>
+      <%= render(ProgressBarComponent.new(progress: @answered_count, total: @questions_count))%>
+    </div>
+  </div>
+<% end %>
