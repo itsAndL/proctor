@@ -110,10 +110,13 @@ export default class extends Controller {
   }
 
   async selectCamera() {
+    console.log('Selecting camera...');
     const devices = await navigator.mediaDevices.enumerateDevices()
     const videoDevices = devices.filter(device => device.kind === 'videoinput')
+    console.log('Available video devices:', videoDevices);
 
     if (videoDevices.length === 0) {
+      console.error('No video devices found');
       this.showCameraError()
       return null
     }
@@ -123,6 +126,7 @@ export default class extends Controller {
 
     if (storedCameraId) {
       selectedDevice = videoDevices.find(device => device.deviceId === storedCameraId)
+      console.log('Stored camera found:', selectedDevice);
     }
 
     if (!selectedDevice) {
@@ -133,6 +137,7 @@ export default class extends Controller {
         // For desktop, just select the first camera
         selectedDevice = videoDevices[0]
       }
+      console.log('Selected default camera:', selectedDevice);
     }
 
     return selectedDevice.deviceId
@@ -151,7 +156,11 @@ export default class extends Controller {
   async startWebcam(deviceId) {
     console.log('Starting webcam with device ID:', deviceId);
     try {
-      this.webcamStream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: deviceId } });
+      const constraints = {
+        video: { deviceId: { exact: deviceId } }
+      };
+      console.log('Using constraints:', constraints);
+      this.webcamStream = await navigator.mediaDevices.getUserMedia(constraints);
       console.log('Webcam stream obtained:', this.webcamStream);
 
       if (this.hasCameraStreamTarget) {
