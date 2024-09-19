@@ -67,7 +67,7 @@ export default class extends Controller {
     let remainingTime = this.durationleftValue * 1000;
 
     if (remainingTime <= 0) {
-      // remainingTime = this.initialTime * 1000;
+      remainingTime = 0;
     }
 
     const startTime = performance.now();
@@ -82,7 +82,7 @@ export default class extends Controller {
 
       if (timeLeft <= 0) {
         this.stop();
-        // this.formSubmitTarget.click(); TODO: activate this line
+        this.formSubmitTarget.click(); 
         return;
       }
 
