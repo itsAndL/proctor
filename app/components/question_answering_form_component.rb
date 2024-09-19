@@ -2,7 +2,7 @@
 
 #
 class QuestionAnsweringFormComponent < ViewComponent::Base
-  def initialize(question:, save_path:, test: nil, assessment_participation: nil, business: nil, show_progress: true) # rubocop:disable Metrics/ParameterLists
+  def initialize(question:, save_path:, test: nil, assessment_participation: nil, business: nil, show_progress: true, monitoring: true) # rubocop:disable Metrics/ParameterLists
     super()
     @current_business = business || assessment_participation.assessment.business
     @assessment_participation = assessment_participation
@@ -12,6 +12,7 @@ class QuestionAnsweringFormComponent < ViewComponent::Base
     @participation_test = assessment_participation&.participation_tests&.find_by(test:)
     @save_path = save_path
     @test_started_at = @participation_test&.started_at
+    @monitoring = monitoring
   end
 
   def self.with_custom_question(question:, save_path:, assessment_participation: nil)
