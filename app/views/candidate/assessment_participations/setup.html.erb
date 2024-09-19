@@ -3,6 +3,7 @@
      data-monitoring-location-value="true"
      data-monitoring-ip-value="true"
      data-monitoring-webcam-value="true"
+     data-monitoring-report-webcam-value="false"
      data-monitoring-assessment-participation-hash-id-value="<%= @assessment_participation.hashid %>">
   <%= render ParticipationHeaderComponent.new(company: @assessment_participation.assessment.business.company) %>
   <main class="bg-zinc-50 h-full pt-10">
@@ -28,11 +29,11 @@
           </div>
           <div class="space-y-6">
             <video data-monitoring-target="cameraStream" class="rounded-lg aspect-[3/2] object-cover" autoplay playsinline></video>
-            <div data-monitoring-target="cameraError" class="hidden p-4 bg-[#fae0b4] rounded-xl flex items-center gap-x-4">
+            <div data-monitoring-target="cameraError" class="hidden p-4 bg-[#fae0b4] rounded-xl flex items-center gap-x-4 font-medium text-sm">
               <div>
                 <%= svg_tag "exclamation_triangle", "stroke-width": 2 %>
               </div>
-              <p class="font-medium text-sm">
+              <p>
                 It seems you don't have a camera or mic connected to your computer or they are blocked. To enable the camera and mic, click on the <strong>camera blocked</strong> icon in your browser's address bar and reload the page. If you don't enable a camera, you can still take the assessment, but then <%= @assessment_participation.assessment.business.company %> cannot verify fair play.
               </p>
             </div>
