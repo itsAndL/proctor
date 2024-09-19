@@ -11,6 +11,6 @@ class ParticipationProgressIndicatorsComponent < ViewComponent::Base
   end
 
   def infinite_time
-    @duration.zero? && @duration_left.negative?
+    @duration.zero? || @duration_left.negative?
   end
 end

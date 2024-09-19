@@ -1,4 +1,4 @@
-module TestParticipationConcern
+module CustomQuestionParticipationConcern
   extend ActiveSupport::Concern
 
   def question_form_component

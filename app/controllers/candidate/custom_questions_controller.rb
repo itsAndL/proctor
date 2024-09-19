@@ -1,5 +1,5 @@
 class Candidate::CustomQuestionsController < ApplicationController
-  include CandidateAssessmentParticipationConcern
+  include CustomQuestionParticipationConcern
 
   before_action :authenticate_candidate!
   before_action :hide_navbar
