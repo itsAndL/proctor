@@ -11,6 +11,7 @@ export default class extends Controller {
     periodicWebcamCapture: { type: Boolean, default: false },
     trackFullscreen: { type: Boolean, default: false },
     trackMouse: { type: Boolean, default: false },
+    reportWebcam: { type: Boolean, default: true },
     assessmentParticipationHashId: String
   }
 
@@ -199,7 +200,9 @@ export default class extends Controller {
         // Add event listener for unexpected stream end
         this.webcamStream.getVideoTracks()[0].addEventListener('ended', this.handleWebcamEnded.bind(this));
       }
-      this.debouncedSendUpdate({ webcam_enabled: true });
+      if (this.reportWebcamValue) {
+        this.debouncedSendUpdate({ webcam_enabled: true });
+      }
     } catch (error) {
       console.error('Error starting webcam:', error);
       this.logError('webcam', error, { deviceId });
@@ -225,14 +228,15 @@ export default class extends Controller {
 
   showCameraError(message = "Camera access is required for this assessment. Please enable your camera and refresh the page.") {
     if (this.hasCameraErrorTarget) {
-      // this.cameraErrorTarget.textContent = message;
       this.cameraErrorTarget.classList.remove('hidden');
       console.warn(message);
     }
     if (this.hasCameraStreamTarget) {
       this.cameraStreamTarget.classList.add('hidden');
     }
-    this.debouncedSendUpdate({ webcam_enabled: false });
+    if (this.reportWebcamValue) {
+      this.debouncedSendUpdate({ webcam_enabled: false });
+    }
   }
 
   hideCameraError() {
@@ -244,76 +248,103 @@ export default class extends Controller {
     }
   }
 
-  startPeriodicWebcamCapture() {
-    // Capture image immediately
-    this.captureWebcamImage()
+  async startPeriodicWebcamCapture() {
+    console.log('Starting periodic webcam capture...');
+
+    // Ensure webcam is initialized
+    if (!this.webcamStream || !this.webcamStream.active) {
+      console.log('Webcam not ready, initializing...');
+      await this.initializeWebcam();
+    }
+
+    // Capture image immediately and wait for it to complete
+    try {
+      console.log('Capturing initial image...');
+      await this.captureWebcamImage();
+      console.log('Initial image captured successfully');
+    } catch (error) {
+      console.error('Failed to capture initial image:', error);
+    }
 
     // Function to set a random interval
     const setRandomInterval = () => {
       // Generate a random number between 20000 and 30000 milliseconds (20 to 30 seconds)
-      const randomInterval = Math.floor(Math.random() * (30000 - 20000 + 1) + 20000)
+      const randomInterval = Math.floor(Math.random() * (30000 - 20000 + 1) + 20000);
 
       // Clear any existing interval
       if (this.webcamCaptureInterval) {
-        clearTimeout(this.webcamCaptureInterval)
+        clearTimeout(this.webcamCaptureInterval);
       }
 
       // Set a new timeout with the random interval
-      this.webcamCaptureInterval = setTimeout(() => {
-        this.captureWebcamImage()
-        setRandomInterval() // Set the next interval after capturing
-      }, randomInterval)
-    }
+      this.webcamCaptureInterval = setTimeout(async () => {
+        try {
+          await this.captureWebcamImage();
+          console.log('Periodic image captured successfully');
+        } catch (error) {
+          console.error('Failed to capture periodic image:', error);
+        }
+        setRandomInterval(); // Set the next interval after capturing
+      }, randomInterval);
+    };
 
     // Start the random interval process
-    setRandomInterval()
+    setRandomInterval();
   }
 
   captureWebcamImage() {
-    console.log('Attempting to capture webcam image...');
-    console.log('Webcam stream:', this.webcamStream);
-    console.log('Webcam stream active:', this.webcamStream && this.webcamStream.active);
+    return new Promise((resolve, reject) => {
+      console.log('Attempting to capture webcam image...');
+      console.log('Webcam stream:', this.webcamStream);
+      console.log('Webcam stream active:', this.webcamStream && this.webcamStream.active);
 
-    if (this.webcamStream && this.webcamStream.active) {
-      const videoTrack = this.webcamStream.getVideoTracks()[0];
-      console.log('Video track:', videoTrack);
-      console.log('Video track enabled:', videoTrack && videoTrack.enabled);
+      if (this.webcamStream && this.webcamStream.active) {
+        const videoTrack = this.webcamStream.getVideoTracks()[0];
+        console.log('Video track:', videoTrack);
+        console.log('Video track enabled:', videoTrack && videoTrack.enabled);
 
-      if (!videoTrack || !videoTrack.enabled) {
-        console.warn('Video track is not available or not enabled');
-        this.debouncedSendUpdate({ webcam_enabled: false });
-        return;
+        if (!videoTrack || !videoTrack.enabled) {
+          console.warn('Video track is not available or not enabled');
+          if (this.reportWebcamValue) {
+            this.debouncedSendUpdate({ webcam_enabled: false });
+          }
+          return;
+        }
+
+        const video = document.createElement('video');
+        video.srcObject = this.webcamStream;
+        video.play();
+
+        video.onloadedmetadata = () => {
+          console.log('Video metadata loaded, attempting to capture frame...');
+          const canvas = document.createElement('canvas');
+          canvas.width = video.videoWidth;
+          canvas.height = video.videoHeight;
+          canvas.getContext('2d').drawImage(video, 0, 0);
+          const imageDataUrl = canvas.toDataURL('image/jpeg');
+          this.debouncedSendUpdate({ webcam_image: imageDataUrl });
+          video.pause();
+          video.srcObject = null;
+          console.log('Webcam image captured and sent');
+          resolve();
+        };
+
+        video.onerror = (error) => {
+          console.error('Error occurred while setting up video for capture:', error);
+          this.logError('webcam', error, { context: 'image capture' });
+          reject(error);
+        };
+      } else {
+        console.warn('Webcam stream not available for capture');
+        if (this.reportWebcamValue) {
+          this.debouncedSendUpdate({ webcam_enabled: false });
+        }
+
+        // Attempt to reinitialize the webcam
+        console.log('Attempting to reinitialize webcam...');
+        this.initializeWebcam().then(resolve).catch(reject);
       }
-
-      const video = document.createElement('video');
-      video.srcObject = this.webcamStream;
-      video.play();
-
-      video.onloadedmetadata = () => {
-        console.log('Video metadata loaded, attempting to capture frame...');
-        const canvas = document.createElement('canvas');
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-        canvas.getContext('2d').drawImage(video, 0, 0);
-        const imageDataUrl = canvas.toDataURL('image/jpeg');
-        this.debouncedSendUpdate({ webcam_image: imageDataUrl });
-        video.pause();
-        video.srcObject = null;
-        console.log('Webcam image captured and sent');
-      };
-
-      video.onerror = (error) => {
-        console.error('Error occurred while setting up video for capture:', error);
-        this.logError('webcam', error, { context: 'image capture' });
-      };
-    } else {
-      console.warn('Webcam stream not available for capture');
-      this.debouncedSendUpdate({ webcam_enabled: false });
-
-      // Attempt to reinitialize the webcam
-      console.log('Attempting to reinitialize webcam...');
-      this.initializeWebcam();
-    }
+    });
   }
 
   trackDevice() {
