@@ -1,5 +1,5 @@
 class Candidate::TestsController < ApplicationController
-  include TestParticipationConcern
+  include AssessmentFormConcern
 
   before_action :authenticate_candidate!
   before_action :hide_navbar
@@ -31,12 +31,12 @@ class Candidate::TestsController < ApplicationController
   def questions
     @participation_service.start_test(@current_test)
     @current_question = @participation_service.first_unanswered_question(@current_test)
-    render question_form_component
+    render question_form
   end
 
   def practice_questions
     @current_question = @current_test.preview_questions.find(params[:question_id])
-    render question_form_component
+    render question_form
   end
 
   def save_answer
@@ -46,12 +46,12 @@ class Candidate::TestsController < ApplicationController
     @current_question = @participation_service.create_question_answer(@current_test, @question, params)
     if @question.preview
       if @current_test.preview_questions.last != @question && @current_test.present?
-        render turbo_stream: turbo_stream.replace('question-form', question_form_component)
+        render turbo_stream: turbo_stream.replace('question-form', question_form)
       else
         redirect_to start_candidate_test_path(@current_test)
       end
     elsif @participation_service.more_questions?(@current_test) && @current_test.present?
-      render turbo_stream: turbo_stream.replace('question-form', question_form_component)
+      render turbo_stream: turbo_stream.replace('question-form', question_form)
     else
       redirect_to feedback_candidate_test_path(@current_test)
     end

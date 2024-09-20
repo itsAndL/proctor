@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
 
   static targets = ["form", "formSubmit", "trigger", "modal", "timerLabel", "timerProgress"]
-  static values = { durationleft: Number, duration: Number }
+  static values = { durationLeft: Number, duration: Number }
 
 
   connect() {
@@ -49,22 +49,21 @@ export default class extends Controller {
     const selectedCheckboxes = Array.from(this.formTarget.querySelectorAll('input[name="selected_options[]"]:checked'));
     const isCheckboxValid = selectedCheckboxes.length > 0;
 
-
-    // hanlde text inputs
     // Handle text inputs with name "essay_content"
     const textInput = this.formTarget.querySelector('input[name="essay_content"]');
     const isTextValid = textInput ? textInput.value.length > 0 : false;
-    // file_upload
+
+    // Handle file upload input with name "file_upload"
     const fileInput = this.formTarget.querySelector('input[name="file_upload"]');
-    const isFileValid = fileInput ? fileInput.files.length > 0 : false; 
-    const isValid = isRadioValid || isCheckboxValid || isTextValid  || isFileValid;
+    const isFileValid = fileInput ? fileInput.files.length > 0 : false;
+    const isValid = isRadioValid || isCheckboxValid || isTextValid || isFileValid;
 
     return isValid;
   }
 
   start() {
     this.initialTime = this.durationValue;
-    let remainingTime = this.durationleftValue * 1000;
+    let remainingTime = this.durationLeftValue * 1000;
 
     if (remainingTime <= 0) {
       remainingTime = 0;

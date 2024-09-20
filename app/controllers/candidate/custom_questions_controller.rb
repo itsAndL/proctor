@@ -1,5 +1,5 @@
 class Candidate::CustomQuestionsController < ApplicationController
-  include CustomQuestionParticipationConcern
+  include AssessmentFormConcern
 
   before_action :authenticate_candidate!
   before_action :hide_navbar
@@ -21,7 +21,7 @@ class Candidate::CustomQuestionsController < ApplicationController
   def questions
     @participation_service.start_custom_question(@current_custom_question)
 
-    render question_form_component
+    render custom_question_form
   end
 
   def save_answer

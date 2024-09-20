@@ -1,25 +1,11 @@
-    
 <div data-controller="question-answer" id="question-form" data-question-answer-durationleft-value="<%= calculate_duration_left %>" data-question-answer-duration-value="<%= duration %>">
-  <% if @monitoring %>
-    <div data-controller="monitoring"
-       data-monitoring-device-value="true"
-       data-monitoring-location-value="true"
-       data-monitoring-ip-value="true"
-       data-monitoring-webcam-value="true"
-       data-monitoring-periodic-webcam-capture-value="true"
-       data-monitoring-fullscreen-value="true"
-       data-monitoring-track-fullscreen-value="true"
-       data-monitoring-track-mouse-value="true"
-       data-monitoring-assessment-participation-hash-id-value="<%= @assessment_participation.hashid %>">
-    <% else %>
-      <div>
-      <% end %>
-      <%= render QuestionHeaderComponent.new(current_business: @current_business, show_progress: @show_progress,
-                                question: @question, participation_test: @participation_test, save_path: @save_path, test: @test, assessment_participation: @assessment_participation) %>
-      <main class="bg-zinc-50 h-full pt-10">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
-          <%= render QuestionFormComponent.new(question: @question, test: @test, save_path: @save_path) %>
-        </div>
-      </main>
-    </div>
+  <div <%= monitoring_attributes.map { |k, v| "#{k}=\"#{v}\"" }.join(' ').html_safe %>>
+    <%= render QuestionHeaderComponent.new(current_business: @current_business, show_progress: @show_progress,
+                              question: @question, participation_test: @participation_test, save_path: @save_path, test: @test, assessment_participation: @assessment_participation) %>
+    <main class="bg-zinc-50 h-full pt-10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
+        <%= render QuestionFormComponent.new(question: @question, test: @test, save_path: @save_path) %>
+      </div>
+    </main>
   </div>
+</div>

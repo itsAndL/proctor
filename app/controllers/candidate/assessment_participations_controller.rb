@@ -1,6 +1,4 @@
 class Candidate::AssessmentParticipationsController < ApplicationController
-  include Candidate::AssessmentParticipationsHelper
-
   before_action :authenticate_candidate!
   before_action :hide_navbar, except: %i[show index]
   before_action :set_assessment_participation, except: %i[index]

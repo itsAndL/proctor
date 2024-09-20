@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-#
 class QuestionAnsweringFormComponent < ViewComponent::Base
-  def initialize(question:, save_path:, test: nil, assessment_participation: nil, business: nil, show_progress: true, monitoring: true) # rubocop:disable Metrics/ParameterLists
+  def initialize(question:, save_path:, test: nil, assessment_participation: nil, business: nil, show_progress: true, monitoring: true)
     super()
     @current_business = business || assessment_participation.assessment.business
     @assessment_participation = assessment_participation
@@ -17,10 +16,6 @@ class QuestionAnsweringFormComponent < ViewComponent::Base
 
   def self.with_custom_question(question:, save_path:, assessment_participation: nil)
     new(question:, save_path:, assessment_participation:)
-  end
-
-  def custom_question?
-    @question.is_a?(CustomQuestion)
   end
 
   def calculate_duration_left
@@ -39,10 +34,31 @@ class QuestionAnsweringFormComponent < ViewComponent::Base
     @test&.duration_seconds || 0
   end
 
+  def monitoring_attributes
+    return {} unless @monitoring
+
+    {
+      'data-controller': 'monitoring',
+      'data-monitoring-device-value': 'true',
+      'data-monitoring-location-value': 'true',
+      'data-monitoring-ip-value': 'true',
+      'data-monitoring-webcam-value': 'true',
+      'data-monitoring-periodic-webcam-capture-value': 'true',
+      'data-monitoring-fullscreen-value': 'true',
+      'data-monitoring-track-fullscreen-value': 'true',
+      'data-monitoring-track-mouse-value': 'true',
+      'data-monitoring-assessment-participation-hash-id-value': @assessment_participation&.hashid
+    }
+  end
+
   private
 
   def custom_question_time_left
     custom_question_response = @assessment_participation.custom_question_responses.find_by(custom_question: @question)
     custom_question_response.duration_left
+  end
+
+  def custom_question?
+    @question.is_a?(CustomQuestion)
   end
 end

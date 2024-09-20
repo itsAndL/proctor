@@ -30,7 +30,7 @@
           <% end %>
         </div>
       <% elsif @question.is_a?(CustomQuestion) %>
-        <% if  @question.is_a?(FileUploadCustomQuestion) %>
+        <% if @question.is_a?(FileUploadCustomQuestion) %>
           <label class="block font-bold leading-7 text-gray-800 text-xl tracking-tight pb-4">Upload your file</label>
           <div class="mt-2" data-controller="file-selector">
             <label class="block w-full text-sm text-gray-900 border-gray-300 rounded-md cursor-pointer border p-8">
@@ -53,12 +53,12 @@
             <%= helpers.rich_text_area_tag :essay_content, nil, rows: 5, attachments: false, placeholder: "Write your answer here..." %>
           </div>
         <% end %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
+    <%= form.submit class: "hidden", data: { question_answer_target: "formSubmit" } %>
   </div>
-  <%= form.submit class: "hidden", data: { question_answer_target: "formSubmit" } %>
-</div>
 <% end %>
+
 <% unless (!@question.is_a?(CustomQuestion) &&  @question.preview )  %>
   <dialog data-question-answer-target="modal" class="modal px-6">
     <div class="modal-box max-w-xl rounded-xl p-8 bg-white">
