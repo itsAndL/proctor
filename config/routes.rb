@@ -88,7 +88,6 @@ Rails.application.routes.draw do
     end
     resources :custom_questions, only: [], param: :hashid do
       member do
-        get :feedback
         get :questions
         get :start
         post :save_answer

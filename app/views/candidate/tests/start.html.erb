@@ -1,1 +1,1 @@
-<%= render ParticipationSetupComponent.new(assessment_participation: @assessment_participation, title: 'Custom Questions', next_url: questions_candidate_test_path(@current_test)) %>
+<%= render ParticipationSetupComponent.new(assessment_participation: @assessment_participation, title: @current_test.title, next_url: questions_candidate_test_path(@current_test)) %>
