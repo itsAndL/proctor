@@ -41,6 +41,7 @@ class AssessmentParticipationService
     participation_test.save!
 
     return candidate_test_path(first_unanswered_test) if first_unanswered_test
+    return start_candidate_custom_question_path(first_unanswered_custom_question) if first_unanswered_custom_question
 
     checkout_candidate_assessment_participation_path(@assessment_participation)
   end
@@ -99,6 +100,8 @@ class AssessmentParticipationService
   def start_custom_question(custom_question)
     custom_question_response = @assessment_participation.custom_question_responses.find_or_initialize_by(custom_question:)
     custom_question_response.started! if custom_question_response.pending?
+    custom_question_response.save! if custom_question_response.changed?
+    
   end
 
   def create_custom_question_answer(custom_question, params)
