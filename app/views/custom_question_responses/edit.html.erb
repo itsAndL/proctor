@@ -25,7 +25,7 @@
             <h2 class="font-bold leading-7 text-gray-900 text-base tracking-tight">Answer</h2>
             <% case @custom_question_response.custom_question.type %>
               <% when "EssayCustomQuestion" %>
-                <div class="mt-4 mb-9">
+                <div class="mt-4">
                   <% if @custom_question_response.essay_content.presence %>
                     <div class="border border-gray-300 py-2 px-3 rounded-md text-gray-900 text-sm font-medium">
                       <%= @custom_question_response.essay_content %>
@@ -37,9 +37,9 @@
                   <% end %>
                 </div>
               <% when "FileUploadCustomQuestion" %>
-                <div class="mt-5 mb-7">
+                <div class="mt-5">
                   <% if @custom_question_response.file_upload.attached? %>
-                    <%= link_to download_custom_question_response_path(@custom_question_response), class: "secondary-button gap-x-3 py-3 px-6", data: { turbo: false } do %>
+                    <%= link_to download_custom_question_response_path(@custom_question_response), class: "secondary-button gap-x-3 py-3 px-6 mb-5", data: { turbo: false } do %>
                       <%= svg_tag "arrow_down_tray", class: "size-5", "stroke-width": 2 %>
                       <span>Download file</span>
                     <% end %>

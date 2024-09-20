@@ -1,4 +1,4 @@
-<div data-controller="question-answer" id="question-form" data-question-answer-durationleft-value="<%= calculate_duration_left %>" data-question-answer-duration-value="<%= duration %>">
+<div data-controller="question-answer" id="question-form" data-question-answer-duration-left-value="<%= calculate_duration_left %>" data-question-answer-duration-value="<%= duration %>">
   <div <%= monitoring_attributes.map { |k, v| "#{k}=\"#{v}\"" }.join(' ').html_safe %>>
     <%= render QuestionHeaderComponent.new(current_business: @current_business, show_progress: @show_progress,
                               question: @question, participation_test: @participation_test, save_path: @save_path, test: @test, assessment_participation: @assessment_participation) %>
