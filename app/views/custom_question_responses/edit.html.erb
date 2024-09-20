@@ -8,7 +8,7 @@
       </form>
       <h1 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">Review answer</h1>
       <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-x-12">
-        <div>
+        <div class="row-span-2">
           <h2 class="font-bold leading-7 text-gray-800 text-base tracking-tight">Question</h2>
           <div class="mt-5 font-medium text-base text-gray-900 pb-7">
             <%= @custom_question_response.custom_question.content %>
@@ -27,69 +27,69 @@
             <% when "EssayCustomQuestion" %>
               <div class="mt-4 mb-9">
                 <% if @custom_question_response.essay_content.presence %>
-                <div class="border border-gray-300 py-2 px-3 rounded-md text-gray-900 text-sm font-medium">
+                  <div class="border border-gray-300 py-2 px-3 rounded-md text-gray-900 text-sm font-medium">
                     <%= @custom_question_response.essay_content %>
-                </div>
+                  </div>
                 <% else %>
-                <div class="py-2 px-3 rounded-md text-gray-900 text-sm font-medium">
+                  <div class="py-2 px-3 rounded-md text-gray-900 text-sm font-medium">
                     The candidate has not written any answer.
                   </div>
                 <% end %>
               <% when "FileUploadCustomQuestion" %>
                 <div class="mt-5 mb-7">
                   <% if @custom_question_response.file_upload.attached? %>
-                  <%= link_to download_custom_question_response_path(@custom_question_response), class: "secondary-button gap-x-3 py-3 px-6", data: { turbo: false } do %>
-                    <%= svg_tag "arrow_down_tray", class: "size-5", "stroke-width": 2 %>
-                    <span>Download file</span>
-                  <% end %>
-                  <% else %>
-                  <div class="py-2 px-3 rounded-md text-gray-900 text-sm font-medium">
-                    The candidate has not uploaded any files.
-                  </div>
-                  <% end %>
-                </div>
-                <% end %>
-                <div class="mt-3 mb-9 flex items-center gap-x-1">
-                  <%= svg_tag "clock", class: "size-5" %>
-                  <p class="text-gray-900 text-sm font-medium">
-                    <% if @custom_question_response.infinite_time? %>
-                      No Time Limited
-                    <% else %>
-                      Finished in <%= format_duration_hms(@custom_question_response.total_time_taken) %> out of <%= format_duration_hms(@custom_question_response.custom_question.duration_seconds) %>
+                    <%= link_to download_custom_question_response_path(@custom_question_response), class: "secondary-button gap-x-3 py-3 px-6", data: { turbo: false } do %>
+                      <%= svg_tag "arrow_down_tray", class: "size-5", "stroke-width": 2 %>
+                      <span>Download file</span>
                     <% end %>
-                  </p>
+                  <% else %>
+                    <div class="py-2 px-3 rounded-md text-gray-900 text-sm font-medium">
+                      The candidate has not uploaded any files.
+                    </div>
+                  <% end %>
                 </div>
+              <% end %>
+              <div class="mt-3 mb-9 flex items-center gap-x-1">
+                <%= svg_tag "clock", class: "size-5" %>
+                <p class="text-gray-900 text-sm font-medium">
+                  <% if @custom_question_response.infinite_time? %>
+                    No Time Limited
+                  <% else %>
+                    Finished in <%= format_duration_hms(@custom_question_response.total_time_taken) %> out of <%= format_duration_hms(@custom_question_response.custom_question.duration_seconds) %>
+                  <% end %>
+                </p>
               </div>
             </div>
-            <%= form_with(model: @custom_question_response, local: true) do |form| %>
-              <div data-controller="custom-question-rating" data-custom-question-rating-initial-rating-value="<%= @custom_question_response.rating.to_i %>">
-                <h2 class="font-bold leading-7 text-gray-900 text-sm tracking-tight">Rate answer</h2>
-                <div class="mt-1 mb-4 flex items-center">
-                  <% 5.times do |i| %>
-                    <svg class="h-5 w-5 flex-shrink-0 cursor-pointer" 
+          </div>
+          <%= form_with(model: @custom_question_response, local: true) do |form| %>
+            <div data-controller="custom-question-rating" data-custom-question-rating-initial-rating-value="<%= @custom_question_response.rating.to_i %>">
+              <h2 class="font-bold leading-7 text-gray-900 text-sm tracking-tight">Rate answer</h2>
+              <div class="mt-1 mb-4 flex items-center">
+                <% 5.times do |i| %>
+                  <svg class="h-5 w-5 flex-shrink-0 cursor-pointer" 
                       viewBox="0 0 20 20" 
                       fill="currentColor" 
                       aria-hidden="true"
                       data-custom-question-rating-target="star"
                       data-action="click->custom-question-rating#setRating"
-                      data-rating="<%= i + 1 %>">
-                      <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                    </svg>
-                  <% end %>
-                </div>
-                <%= form.hidden_field :rating, data: { custom_question_rating_target: "ratingInput" }, value: @custom_question_response.rating.to_i %>
-                <%= form.text_area :comment, placeholder: "Comment", rows: 4, class: "primary-field" %>
+                    data-rating="<%= i + 1 %>">
+                    <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                  </svg>
+                <% end %>
               </div>
-              <div class="mt-12 flex items-center justify-end gap-x-4 bg-white">
-                <button type="button" class="secondary-button px-6 py-2.5" onclick="this.closest('dialog').close()">Cancel</button>
-                <%= form.submit "Confirm", class: "primary-button px-6 py-2.5" %>
-              </div>
-            <% end %>
-          </div>
+              <%= form.hidden_field :rating, data: { custom_question_rating_target: "ratingInput" }, value: @custom_question_response.rating.to_i %>
+              <%= form.text_area :comment, placeholder: "Comment", rows: 4, class: "primary-field" %>
+            </div>
+            <div class="mt-12 flex items-center justify-end gap-x-4 bg-white">
+              <button type="button" class="secondary-button px-6 py-2.5" onclick="this.closest('dialog').close()">Cancel</button>
+              <%= form.submit "Confirm", class: "primary-button px-6 py-2.5" %>
+            </div>
+          <% end %>
         </div>
       </div>
-      <form method="dialog" class="modal-backdrop">
-        <button>close</button>
-      </form>
-    </dialog>
-  <% end %>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+      <button>close</button>
+    </form>
+  </dialog>
+<% end %>
