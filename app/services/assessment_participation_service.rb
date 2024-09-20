@@ -101,7 +101,6 @@ class AssessmentParticipationService
     custom_question_response = @assessment_participation.custom_question_responses.find_or_initialize_by(custom_question:)
     custom_question_response.started! if custom_question_response.pending?
     custom_question_response.save! if custom_question_response.changed?
-    
   end
 
   def create_custom_question_answer(custom_question, params)

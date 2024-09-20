@@ -1,15 +1,5 @@
-<div 
-    data-controller="monitoring"
-    data-monitoring-device-value="true"
-    data-monitoring-location-value="true"
-    data-monitoring-ip-value="true"
-    data-monitoring-webcam-value="true"
-    data-monitoring-periodic-webcam-capture-value="true"
-    data-monitoring-fullscreen-value="false"
-    data-monitoring-track-fullscreen-value="false"
-    data-monitoring-track-mouse-value="true"
-    data-monitoring-assessment-participation-hash-id-value="<%= @assessment_participation&.hashid %>"
->
+<div data-controller="monitoring"
+     data-monitoring-assessment-participation-hash-id-value="<%= @assessment_participation.hashid %>">
   <%= render ParticipationHeaderComponent.new(company: @assessment_participation.assessment.business.company) %>
   <main class="bg-zinc-50 h-full pt-10">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pb-16">
@@ -37,7 +27,7 @@
         <div class="mt-12 flex justify-end">
           <%= link_to @next_url, class: " gap-x-2.5 px-7 py-3 primary-button" do %>
             <span>Finish</span>
-            <%= helpers.svg_tag "chevron_right", class:"size-3" %>
+            <%= svg_tag "chevron_right", class:"size-3" %>
           <% end %>
         </div>
       </div>
