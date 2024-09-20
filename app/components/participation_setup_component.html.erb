@@ -1,10 +1,4 @@
-<%= tag.div(
-    data: {
-        controller: ("monitoring" if @monitoring),
-        **(@monitoring_data&.transform_keys { |key| "monitoring-#{key.dasherize}-value" } || {}),
-        "monitoring-assessment-participation-hash-id-value" => @assessment_participation.hashid
-    }
-) do %>
+<div <%= monitoring_attributes.map { |k, v| "#{k}=\"#{v}\"" }.join(' ').html_safe %>>
         <%= render ParticipationHeaderComponent.new(company: @assessment_participation.assessment.business.company) %>
         <main data-controller="countdown" class="bg-zinc-50 h-full pt-10">
             <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 pb-16">
@@ -33,4 +27,4 @@
              </div>
             </div>
         </main>
-<% end %>
+<div>

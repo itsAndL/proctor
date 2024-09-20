@@ -14,18 +14,20 @@ class ParticipationSetupComponent < ViewComponent::Base
     10
   end
 
-  def monitoring_data
+  def monitoring_attributes
+    return {} unless @monitoring
+
     {
-      'device': true,
-      'location': true,
-      'ip': true,
-      'webcam': true,
-      'periodic-webcam-capture': true,
-      'fullscreen': true,
-      'track-fullscreen': true,
-      'track-mouse': true,
-      'assessment-participation-hash-id': @assessment_participation.hashid
-    }.freeze
+      'data-controller': 'monitoring',
+      'data-monitoring-device-value': 'true',
+      'data-monitoring-location-value': 'true',
+      'data-monitoring-ip-value': 'true',
+      'data-monitoring-webcam-value': 'true',
+      'data-monitoring-periodic-webcam-capture-value': 'true',
+      'data-monitoring-fullscreen-value': 'true',
+      'data-monitoring-track-fullscreen-value': 'true',
+      'data-monitoring-track-mouse-value': 'true',
+      'data-monitoring-assessment-participation-hash-id-value': @assessment_participation&.hashid
+    }
   end
 end
-
