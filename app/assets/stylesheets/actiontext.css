@@ -40,3 +40,37 @@
   list-style-type: decimal;
   list-style-position: inside;
 }
+
+.trix-button-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start !important;
+  border: none !important;
+  margin-bottom: 0.5em;
+  overflow: hidden !important; /* Hide scroll bar by default */
+}
+
+.trix-button-row:hover {
+  overflow: auto !important; /* Show scroll bar on hover */
+}
+.trix-button-group {
+  border: none !important;
+  margin: 0 !important;
+  padding: .5em 0 !important;
+}
+.trix-button {
+  border: none !important;
+  height: 1.3em !important;
+}
+.trix-button-row {
+  border: 1px solid black !important;
+  margin: 0 !important;
+}
+trix-editor {
+  border-left: 1px solid black !important;
+  border-right: 1px solid black !important;
+  border-bottom: 1px solid black !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  font-weight: 500 !important;
+}

@@ -76,12 +76,19 @@ Rails.application.routes.draw do
   end
 
   namespace :candidate do
-    resources :tests, only: %i[index show], param: :hashid do
+    resources :tests, only: %i[show], param: :hashid do
       member do
         get :feedback
         get 'practice_questions/:question_id', to: 'tests#practice_questions', as: :practice_questions
         get :questions
         get :intro
+        get :start
+        post :save_answer
+      end
+    end
+    resources :custom_questions, only: [], param: :hashid do
+      member do
+        get :questions
         get :start
         post :save_answer
       end

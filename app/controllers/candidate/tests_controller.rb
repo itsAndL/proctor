@@ -1,5 +1,5 @@
 class Candidate::TestsController < ApplicationController
-  include TestParticipationConcern
+  include AssessmentFormConcern
 
   before_action :authenticate_candidate!
   before_action :hide_navbar
@@ -31,12 +31,12 @@ class Candidate::TestsController < ApplicationController
   def questions
     @participation_service.start_test(@current_test)
     @current_question = @participation_service.first_unanswered_question(@current_test)
-    render question_form_component
+    render question_form
   end
 
   def practice_questions
     @current_question = @current_test.preview_questions.find(params[:question_id])
-    render question_form_component
+    render question_form
   end
 
   def save_answer
@@ -46,12 +46,12 @@ class Candidate::TestsController < ApplicationController
     @current_question = @participation_service.create_question_answer(@current_test, @question, params)
     if @question.preview
       if @current_test.preview_questions.last != @question && @current_test.present?
-        render turbo_stream: turbo_stream.replace('question-form', question_form_component)
+        render turbo_stream: turbo_stream.replace('question-form', question_form)
       else
         redirect_to start_candidate_test_path(@current_test)
       end
     elsif @participation_service.more_questions?(@current_test) && @current_test.present?
-      render turbo_stream: turbo_stream.replace('question-form', question_form_component)
+      render turbo_stream: turbo_stream.replace('question-form', question_form)
     else
       redirect_to feedback_candidate_test_path(@current_test)
     end
@@ -70,10 +70,15 @@ class Candidate::TestsController < ApplicationController
   end
 
   def set_current_test
-    @current_test = @assessment_participation.tests.find(params[:hashid])
-    raise 'undefined behavior' if @current_test.nil?
-
-    redirect_to checkout_candidate_assessment_participation_path(@assessment_participation) unless @current_test
+    @current_test = @assessment_participation.unanswered_tests.find(params[:hashid])
+  rescue ActiveRecord::RecordNotFound
+    if @participation_service.first_unanswered_test.present?
+      redirect_to candidate_test_path(@participation_service.first_unanswered_test)
+    elsif @participation_service.more_custom_questions?
+      redirect_to start_candidate_custom_question_path(@participation_service.first_unanswered_custom_question)
+    else
+      redirect_to checkout_candidate_assessment_participation_path(@assessment_participation)
+    end
   end
 
   def set_current_question

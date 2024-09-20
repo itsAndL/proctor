@@ -34,6 +34,9 @@ application.register("custom-question-rating", CustomQuestionRatingController)
 import EmailInvitingController from "./email_inviting_controller"
 application.register("email-inviting", EmailInvitingController)
 
+import FileSelectorController from "./file_selector_controller"
+application.register("file-selector", FileSelectorController)
+
 import FileUploadController from "./file_upload_controller"
 application.register("file-upload", FileUploadController)
 

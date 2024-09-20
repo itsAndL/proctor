@@ -4,12 +4,16 @@
       <%= @current_business.company %>
     </h1>
     <% if @show_progress %>
+      <% if custom_question? %>
+        <%= render(ParticipationProgressIndicatorsComponent.new(duration: @question.duration_seconds,duration_left: calculate_duration_left, answered_count: @answered_questions_count, questions_count: @questions_count, custom_question: true)) %>
+      <% else %>
         <%= render(ParticipationProgressIndicatorsComponent.new(duration: @test.duration_seconds ,duration_left: calculate_duration_left, answered_count: @answered_questions_count, questions_count: @questions_count)) %>
+      <% end %>
       <div class="space-y-2 max-sm:order-3">
         <button data-question-answer-target="trigger" type="button" class="primary-button gap-x-2.5 px-7 py-3">
           <span>
             <% if @answered_questions_count == @questions_count %>
-                <%= @question.preview ? "Start test": "Finish" %>
+                <%= (!custom_question? && @question&.preview) ? "Start test": "Finish" %>
             <% else %>
               Next
             <% end %>

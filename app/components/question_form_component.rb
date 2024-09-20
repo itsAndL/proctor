@@ -1,4 +1,5 @@
-# app/components/question_form_component.rb
+# frozen_string_literal: true
+
 class QuestionFormComponent < ViewComponent::Base
   def initialize(save_path:, question:, test:)
     super

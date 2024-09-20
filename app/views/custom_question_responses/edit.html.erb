@@ -1,22 +1,18 @@
 <%= turbo_frame_tag "modal" do %>
-  <dialog data-controller="modal custom-question-rating" data-modal-target="modal" class="modal px-6">
+  <dialog data-controller="modal" data-modal-target="modal" class="modal px-6">
     <div class="modal-box max-w-5xl rounded-xl pt-10 pb-8 px-8 bg-white relative max-h-[700px]">
       <form method="dialog">
         <button class="btn btn-sm btn-circle btn-ghost absolute right-6 top-6">
           <%= svg_tag "x_mark", "stroke-width": 2 %>
         </button>
       </form>
-
       <h1 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">Review answer</h1>
-
       <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-x-12">
-        <div>
+        <div class="row-span-2">
           <h2 class="font-bold leading-7 text-gray-800 text-base tracking-tight">Question</h2>
-
           <div class="mt-5 font-medium text-base text-gray-900 pb-7">
             <%= @custom_question_response.custom_question.content %>
           </div>
-
           <div class="pt-7 border-t border-gray-300 max-lg:pb-7">
             <h2 class="font-bold leading-7 text-gray-900 text-base tracking-tight">What to look for in the answer?</h2>
             <div class="mt-2 font-medium text-sm text-gray-800 flex flex-col gap-y-8">
@@ -24,32 +20,47 @@
             </div>
           </div>
         </div>
-
         <div class="max-lg:pt-7 max-lg:border-t max-lg:border-gray-300">
           <div>
             <h2 class="font-bold leading-7 text-gray-900 text-base tracking-tight">Answer</h2>
             <% case @custom_question_response.custom_question.type %>
-            <% when "EssayCustomQuestion" %>
-              <div class="mt-4 mb-9">
-                <div class="border border-gray-300 py-2 px-3 rounded-md text-gray-900 text-sm font-medium">
-                  <%= @custom_question_response.essay_content %>
+              <% when "EssayCustomQuestion" %>
+                <div class="mt-4">
+                  <% if @custom_question_response.essay_content.presence %>
+                    <div class="border border-gray-300 py-2 px-3 rounded-md text-gray-900 text-sm font-medium">
+                      <%= @custom_question_response.essay_content %>
+                    </div>
+                  <% else %>
+                    <div class="py-2 rounded-md text-gray-900 text-sm font-medium">
+                      The candidate has not written any answer.
+                    </div>
+                  <% end %>
                 </div>
-                <div class="mt-3 mb-9 flex items-center gap-x-1">
-                  <%= svg_tag "clock", clas: "size-3" %>
-                  <p class="text-gray-900 text-sm font-medium">Finished in <%= format_duration_hms(@custom_question_response.duration_seconds) %> out of <%= format_duration_hms(@custom_question_response.custom_question.duration_seconds) %></p>
+              <% when "FileUploadCustomQuestion" %>
+                <div class="mt-5">
+                  <% if @custom_question_response.file_upload.attached? %>
+                    <%= link_to download_custom_question_response_path(@custom_question_response), class: "secondary-button gap-x-3 py-3 px-6 mb-5", data: { turbo: false } do %>
+                      <%= svg_tag "arrow_down_tray", class: "size-5", "stroke-width": 2 %>
+                      <span>Download file</span>
+                    <% end %>
+                  <% else %>
+                    <div class="py-2 rounded-md text-gray-900 text-sm font-medium">
+                      The candidate has not uploaded any files.
+                    </div>
+                  <% end %>
                 </div>
-              </div>
-            <% when "FileUploadCustomQuestion" %>
-              <div class="mt-5 mb-7">
-                <%= link_to download_custom_question_response_path(@custom_question_response), class: "secondary-button gap-x-3 py-3 px-6", data: { turbo: false } do %>
-                  <%= svg_tag "arrow_down_tray", class: "size-5", "stroke-width": 2 %>
-                  <span>Download file</span>
-                <% end %>
-                <p class="mt-5 text-gray-900 text-sm font-medium">Time expired</p>
-              </div>
             <% end %>
+            <div class="mt-3 mb-9 flex items-center gap-x-1">
+              <%= svg_tag "clock", class: "size-5" %>
+              <p class="text-gray-900 text-sm font-medium">
+                <% if @custom_question_response.infinite_time? %>
+                  No Time Limited
+                <% else %>
+                  Finished in <%= format_duration_hms(@custom_question_response.total_time_taken) %> out of <%= format_duration_hms(@custom_question_response.custom_question.duration_seconds) %>
+                <% end %>
+              </p>
+            </div>
           </div>
-
           <%= form_with(model: @custom_question_response, local: true) do |form| %>
             <div data-controller="custom-question-rating" data-custom-question-rating-initial-rating-value="<%= @custom_question_response.rating.to_i %>">
               <h2 class="font-bold leading-7 text-gray-900 text-sm tracking-tight">Rate answer</h2>

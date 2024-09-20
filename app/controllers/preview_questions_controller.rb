@@ -11,6 +11,7 @@ class PreviewQuestionsController < ApplicationController
       question: @question,
       test: @test,
       show_progress: false,
+      monitoring: false,
       save_path: if @question.next_preview(@test)
                    test_library_preview_question_path(@test,
                                                       @question.next_preview(@test))

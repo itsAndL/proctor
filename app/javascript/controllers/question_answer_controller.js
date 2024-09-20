@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
 
   static targets = ["form", "formSubmit", "trigger", "modal", "timerLabel", "timerProgress"]
-  static values = { durationleft: Number, duration: Number }
+  static values = { durationLeft: Number, duration: Number }
 
 
   connect() {
@@ -28,7 +28,12 @@ export default class extends Controller {
   }
 
   skip() {
-    this.formSubmitTarget.click()
+    const skipInput = document.createElement('input');
+    skipInput.type = 'hidden';
+    skipInput.name = 'skip';
+    skipInput.value = 'true';
+    this.formTarget.appendChild(skipInput);
+    this.formSubmitTarget.click();
   }
 
   close() {
@@ -44,24 +49,29 @@ export default class extends Controller {
     const selectedCheckboxes = Array.from(this.formTarget.querySelectorAll('input[name="selected_options[]"]:checked'));
     const isCheckboxValid = selectedCheckboxes.length > 0;
 
-    // Check overall validity
-    const isValid = isRadioValid || isCheckboxValid;
+    // Handle text inputs with name "essay_content"
+    const textInput = this.formTarget.querySelector('input[name="essay_content"]');
+    const isTextValid = textInput ? textInput.value.length > 0 : false;
+
+    // Handle file upload input with name "file_upload"
+    const fileInput = this.formTarget.querySelector('input[name="file_upload"]');
+    const isFileValid = fileInput ? fileInput.files.length > 0 : false;
+    const isValid = isRadioValid || isCheckboxValid || isTextValid || isFileValid;
 
     return isValid;
   }
 
   start() {
     this.initialTime = this.durationValue;
-    let remainingTime = this.durationleftValue * 1000;
+    let remainingTime = this.durationLeftValue * 1000;
 
     if (remainingTime <= 0) {
-      remainingTime = this.initialTime * 1000;
+      remainingTime = 0;
     }
 
     const startTime = performance.now();
     const endTime = startTime + remainingTime;
     const animate = (timestamp) => {
-      const elapsedTime = timestamp - startTime;
       let timeLeft = Math.max(endTime - timestamp, 0);
       if (isNaN(timeLeft)) {
         timeLeft = 0;
@@ -71,7 +81,7 @@ export default class extends Controller {
 
       if (timeLeft <= 0) {
         this.stop();
-        this.formSubmitTarget.click();
+        this.formSubmitTarget.click(); 
         return;
       }
 

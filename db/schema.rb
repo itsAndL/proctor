@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_16_060848) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_19_102957) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
@@ -138,10 +138,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_16_060848) do
     t.bigint "assessment_participation_id", null: false
     t.bigint "custom_question_id", null: false
     t.integer "rating"
-    t.integer "duration_seconds", default: 0
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "started_at"
+    t.datetime "completed_at"
+    t.integer "status", default: 0
     t.index ["assessment_participation_id", "custom_question_id"], name: "index_custom_question_responses_uniqueness", unique: true
     t.index ["assessment_participation_id"], name: "index_custom_question_responses_on_assessment_participation_id"
     t.index ["custom_question_id"], name: "index_custom_question_responses_on_custom_question_id"
