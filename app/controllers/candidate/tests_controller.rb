@@ -70,11 +70,11 @@ class Candidate::TestsController < ApplicationController
   end
 
   def set_current_test
-    @current_test = @assessment_participation.tests.find(params[:hashid])
+    @current_test = @assessment_participation.unanswered_tests.find(params[:hashid])
   rescue ActiveRecord::RecordNotFound
     if @participation_service.first_unanswered_test.present?
       redirect_to candidate_test_path(@participation_service.first_unanswered_test)
-    elsif @participation_service.first_unanswered_custom_question.present?
+    elsif @participation_service.more_custom_questions?
       redirect_to start_candidate_custom_question_path(@participation_service.first_unanswered_custom_question)
     else
       redirect_to checkout_candidate_assessment_participation_path(@assessment_participation)
