@@ -5,7 +5,7 @@ class AssessmentMailer < ApplicationMailer
     setup_email_variables(assessment_participation)
     mail(
       to: @recipient.email,
-      subject: "You've been invited to take an assessment for #{@assessment.business.company}"
+      subject: t('.invite_subject', company: @assessment.business.company)
     )
   end
 
@@ -13,7 +13,7 @@ class AssessmentMailer < ApplicationMailer
     setup_email_variables(assessment_participation)
     mail(
       to: @recipient.email,
-      subject: "Reminder: Complete your assessment for #{@assessment.business.company}"
+      subject: t('.reminder_subject', company: @assessment.business.company)
     )
   end
 

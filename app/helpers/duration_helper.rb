@@ -1,19 +1,19 @@
 module DurationHelper
   def format_duration(secs, long_format = false)
-    return "0 min" if secs.nil?
+    return t('duration.zero_min') if secs.nil?
 
     hours, remaining = secs.divmod(3600)
     mins, secs = remaining.divmod(60)
     secs = secs.round(2)  # Round seconds to 2 decimal places
 
     if hours > 0
-      pluralize(hours, 'hour')
+      pluralize(hours, t('duration.hour'))
     elsif mins > 0
-      format_unit(mins, 'minute', 'min', long_format)
+      format_unit(mins, t('duration.minute'), t('duration.min'), long_format)
     elsif secs > 0
-      format_unit(secs, 'second', 'sec', long_format)
+      format_unit(secs, t('duration.second'), t('duration.sec'), long_format)
     else
-      format_unit(0, 'minute', 'min', long_format)
+      format_unit(0, t('duration.minute'), t('duration.min'), long_format)
     end
   end
 
