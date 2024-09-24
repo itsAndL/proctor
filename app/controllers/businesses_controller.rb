@@ -12,7 +12,7 @@ class BusinessesController < ApplicationController
     @business.assign_attributes(business_params)
 
     if @business.save
-      redirect_to edit_business_path(@business), notice: 'Your business profile was successfully created.'
+      redirect_to edit_business_path(@business), notice: t('flash.create_success')
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,7 +26,7 @@ class BusinessesController < ApplicationController
     @business = current_business
 
     if @business.update(business_params)
-      redirect_to secondary_root_path, notice: 'Your business profile was successfully updated.'
+      redirect_to secondary_root_path, notice: t('flash.update_success')
     else
       render :edit, status: :unprocessable_entity
     end

@@ -12,7 +12,7 @@ class CandidatesController < ApplicationController
     @candidate.assign_attributes(candidate_params)
 
     if @candidate.save
-      redirect_to edit_candidate_path(@candidate), notice: 'Your candidate profile was successfully created.'
+      redirect_to edit_candidate_path(@candidate), notice: t('flash.create_success')
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,7 +26,7 @@ class CandidatesController < ApplicationController
     @candidate = current_candidate
 
     if @candidate.update(candidate_params)
-      redirect_to secondary_root_path, notice: 'Your candidate profile was successfully updated.'
+      redirect_to secondary_root_path, notice: t('flash.update_success')
     else
       render :edit, status: :unprocessable_entity
     end

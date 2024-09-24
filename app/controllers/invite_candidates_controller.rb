@@ -10,12 +10,12 @@ class InviteCandidatesController < ApplicationController
 
   def activate_public_link
     @assessment.activate_public_link!
-    render_turbo_stream_update(update_share_link: true, notice: "Assessment public link was successfully activated.")
+    render_turbo_stream_update(update_share_link: true, notice: t('flash.activate_success'))
   end
 
   def deactivate_public_link
     @assessment.deactivate_public_link!
-    render_turbo_stream_update(update_share_link: true, notice: "Assessment public link was successfully deactivated.")
+    render_turbo_stream_update(update_share_link: true, notice: t('flash.deactivate_success'))
   end
 
   def public_link
@@ -38,7 +38,7 @@ class InviteCandidatesController < ApplicationController
   def post_invite
     candidates = JSON.parse(params[:candidates])
     InvitationService.bulk_invite(@assessment, candidates)
-    update_candidates_list(update_email_inviting:true, notice: "Invitation was successfully sent.")
+    update_candidates_list(update_email_inviting: true, notice: t('flash.invite_success'))
   end
 
   def bulk_invite; end
@@ -47,9 +47,9 @@ class InviteCandidatesController < ApplicationController
     if params[:file].present?
       candidates = FileParsingService.parse_bulk_invite_file(params[:file])
       InvitationService.bulk_invite(@assessment, candidates)
-      update_candidates_list(update_bulk_inviting: true, notice: "Bulk invitation sent successfully!")
+      update_candidates_list(update_bulk_inviting: true, notice: t('flash.bulk_invite_success'))
     else
-      render_turbo_stream_update(update_bulk_inviting: true, alert: "Please select a file to upload.")
+      render_turbo_stream_update(update_bulk_inviting: true, alert: t('flash.select_file'))
     end
   end
 
@@ -65,14 +65,13 @@ class InviteCandidatesController < ApplicationController
   def handle_invite_me_result(result)
     notice_type = result.success? && result.is_new ? :notice : :alert
     message = if result.success?
-                result.is_new ? "Invitation sent successfully!" : "This candidate has already been added to this assessment"
+                result.is_new ? t('flash.invite_me_success') : t('flash.already_added')
               else
                 result.error_message
               end
 
     redirect_to public_assessment_path(@assessment.public_link_token), notice_type => message
   end
-
 
   def update_candidates_list(options = {})
     query = AssessmentParticipationQuery.new(@assessment.assessment_participations)
