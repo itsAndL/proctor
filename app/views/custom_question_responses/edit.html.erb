@@ -6,33 +6,36 @@
           <%= svg_tag "x_mark", "stroke-width": 2 %>
         </button>
       </form>
-      <h1 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">Review answer</h1>
+
+      <h1 class="font-bold leading-7 text-gray-800 text-xl tracking-tight"><%= t('.review_answer') %></h1>
+
       <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-x-12">
         <div class="row-span-2">
-          <h2 class="font-bold leading-7 text-gray-800 text-base tracking-tight">Question</h2>
+          <h2 class="font-bold leading-7 text-gray-800 text-base tracking-tight"><%= t('.question') %></h2>
           <div class="mt-5 font-medium text-base text-gray-900 pb-7">
             <%= @custom_question_response.custom_question.content %>
           </div>
           <div class="pt-7 border-t border-gray-300 max-lg:pb-7">
-            <h2 class="font-bold leading-7 text-gray-900 text-base tracking-tight">What to look for in the answer?</h2>
+            <h2 class="font-bold leading-7 text-gray-900 text-base tracking-tight"><%= t('.what_to_look_for') %></h2>
             <div class="mt-2 font-medium text-sm text-gray-800 flex flex-col gap-y-8">
               <%= simple_format(@custom_question_response.custom_question.look_for) %>
             </div>
           </div>
         </div>
+
         <div class="max-lg:pt-7 max-lg:border-t max-lg:border-gray-300">
           <div>
-            <h2 class="font-bold leading-7 text-gray-900 text-base tracking-tight">Answer</h2>
+            <h2 class="font-bold leading-7 text-gray-900 text-base tracking-tight"><%= t('.answer') %></h2>
             <% case @custom_question_response.custom_question.type %>
               <% when "EssayCustomQuestion" %>
                 <div class="mt-4">
-                  <% if @custom_question_response.essay_content.presence %>
+                  <% if @custom_question_response.essay_content.present? %>
                     <div class="border border-gray-300 py-2 px-3 rounded-md text-gray-900 text-sm font-medium">
                       <%= @custom_question_response.essay_content %>
                     </div>
                   <% else %>
                     <div class="py-2 rounded-md text-gray-900 text-sm font-medium">
-                      The candidate has not written any answer.
+                      <%= t('.no_answer') %>
                     </div>
                   <% end %>
                 </div>
@@ -41,34 +44,36 @@
                   <% if @custom_question_response.file_upload.attached? %>
                     <%= link_to download_custom_question_response_path(@custom_question_response), class: "secondary-button gap-x-3 py-3 px-6 mb-5", data: { turbo: false } do %>
                       <%= svg_tag "arrow_down_tray", class: "size-5", "stroke-width": 2 %>
-                      <span>Download file</span>
+                      <span><%= t('.download_file') %></span>
                     <% end %>
                   <% else %>
                     <div class="py-2 rounded-md text-gray-900 text-sm font-medium">
-                      The candidate has not uploaded any files.
+                      <%= t('.no_file_uploaded') %>
                     </div>
                   <% end %>
                 </div>
             <% end %>
+
             <div class="mt-3 mb-9 flex items-center gap-x-1">
               <%= svg_tag "clock", class: "size-5" %>
               <p class="text-gray-900 text-sm font-medium">
                 <% if @custom_question_response.infinite_time? %>
-                  No Time Limited
+                  <%= t('.no_time_limit') %>
                 <% else %>
-                  Finished in <%= format_duration_hms(@custom_question_response.total_time_taken) %> out of <%= format_duration_hms(@custom_question_response.custom_question.duration_seconds) %>
+                  <%= t('.finished_in', duration: format_duration_hms(@custom_question_response.total_time_taken), total_duration: format_duration_hms(@custom_question_response.custom_question.duration_seconds)) %>
                 <% end %>
               </p>
             </div>
           </div>
+
           <%= form_with(model: @custom_question_response, local: true) do |form| %>
             <div data-controller="custom-question-rating" data-custom-question-rating-initial-rating-value="<%= @custom_question_response.rating.to_i %>">
-              <h2 class="font-bold leading-7 text-gray-900 text-sm tracking-tight">Rate answer</h2>
+              <h2 class="font-bold leading-7 text-gray-900 text-sm tracking-tight"><%= t('.rate_answer') %></h2>
               <div class="mt-1 mb-4 flex items-center">
                 <% 5.times do |i| %>
-                  <svg class="h-5 w-5 flex-shrink-0 cursor-pointer" 
-                      viewBox="0 0 20 20" 
-                      fill="currentColor" 
+                  <svg class="h-5 w-5 flex-shrink-0 cursor-pointer"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
                       aria-hidden="true"
                       data-custom-question-rating-target="star"
                       data-action="click->custom-question-rating#setRating"
@@ -78,18 +83,20 @@
                 <% end %>
               </div>
               <%= form.hidden_field :rating, data: { custom_question_rating_target: "ratingInput" }, value: @custom_question_response.rating.to_i %>
-              <%= form.text_area :comment, placeholder: "Comment", rows: 4, class: "primary-field" %>
+              <%= form.text_area :comment, placeholder: "<%= t('.comment_placeholder') %>", rows: 4, class: "primary-field" %>
             </div>
+
             <div class="mt-12 flex items-center justify-end gap-x-4 bg-white">
-              <button type="button" class="secondary-button px-6 py-2.5" onclick="this.closest('dialog').close()">Cancel</button>
-              <%= form.submit "Confirm", class: "primary-button px-6 py-2.5" %>
+              <button type="button" class="secondary-button px-6 py-2.5" onclick="this.closest('dialog').close()"><%= t('.cancel') %></button>
+              <%= form.submit t('.confirm'), class: "primary-button px-6 py-2.5" %>
             </div>
           <% end %>
         </div>
       </div>
     </div>
+
     <form method="dialog" class="modal-backdrop">
-      <button>close</button>
+      <button><%= t('.close') %></button>
     </form>
   </dialog>
 <% end %>

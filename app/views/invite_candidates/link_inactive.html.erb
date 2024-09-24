@@ -1,25 +1,20 @@
 <div class="flex items-center justify-center min-h-screen bg-gray-100 px-4 sm:px-6">
   <div class="w-full max-w-md px-10 py-16 bg-white rounded-xl shadow-md text-center">
     <%= svg_tag "lock", class: "mx-auto h-12 w-12 text-gray-400", "stroke-width": 2 %>
-
-    <h2 class="mt-6 text-2xl sm:text-3xl font-extrabold text-gray-900">Assessment Unavailable</h2>
-    
+    <h2 class="mt-6 text-2xl sm:text-3xl font-extrabold text-gray-900"><%= t('.title') %></h2>
     <p class="mt-6 text-sm font-medium text-gray-600">
-      We apologize, but this assessment is currently not active.
+      <%= t('.apology') %>
     </p>
-    
     <p class="mt-4 text-sm font-medium text-gray-500">
-      The assessment you're trying to access may have been completed, expired, or temporarily disabled by the administrator.
+      <%= t('.explanation') %>
     </p>
-    
     <div class="mt-6">
       <p class="text-sm font-medium text-blue-600">
-        If you believe this is an error, please contact the assessment administrator or the organization that provided you with this link.
+        <%= t('.contact_info') %>
       </p>
     </div>
-
     <div class="mt-8">
-      <%= link_to "Return to Home", root_path, class: "primary-button" %>
+      <%= link_to t('.return_home'), root_path, class: "primary-button" %>
     </div>
   </div>
 </div>

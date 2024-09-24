@@ -4,37 +4,44 @@
     <div class="border border-gray-200 bg-white rounded-xl px-6 py-10 md:px-12 md:py-16">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-9">
         <div>
-          <h1 class="font-extrabold leading-7 text-gray-800 text-2xl">Hello <%= @assessment_participation.candidate.name %>,</h1>
+          <h1 class="font-extrabold leading-7 text-gray-800 text-2xl">
+            <%= t('.greeting', name: @assessment_participation.candidate.name) %>
+          </h1>
           <div class="mt-6 text-gray-800 space-y-3 font-medium">
             <% if @assessment_participation.started? %>
-              <p>You have completed 
-                <%= @assessment_participation.answered_tests.count %> out of <%= @assessment_participation.assessment.parts_count %> tests.
+              <p>
+                <%= t('.completion_status', completed: @assessment_participation.answered_tests.count, total: @assessment_participation.assessment.parts_count) %>
               </p>
-              <p>Click <strong>Get started</strong> button when you are ready to continue your assessment.</p>
+              <p><%= t('.get_started_prompt').html_safe %></p>
             <% else %>
-              <p>Welcome to our assessment</p>
-              <p>Completing this assessment will help you showcase your skills and knowledge.</p>
+              <p><%= t('.welcome_message') %></p>
+              <p><%= t('.assessment_value') %></p>
             <% end %>
-            <p>Good luck!</p>
+            <p><%= t('.good_luck') %></p>
           </div>
         </div>
         <div>
-          <h1 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">A few things before you start:</h1>
+          <h1 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">
+            <%= t('.before_you_start') %>
+          </h1>
           <ul class="mt-6 space-y-3.5 list-disc font-medium text-base ml-7">
-            <li>This assessment consists of <strong><%= pluralize(@assessment_participation.assessment.parts_count, "part") %></strong>. It will take approximately <strong><%= format_duration(@assessment_participation.assessment.duration_seconds)%></strong> to complete.</li>
-            <li>The assessment is timed. A timer is shown per test or per question.</li>
-            <li>Before each test there may be preview questions, <strong>be aware the timer for the test will have already started.</strong></li>
-            <li>Please allow the use of your camera/webcam and do not leave full-screen mode. Snapshots will be taken of you periodically during the assessment. These measures are taken to ensure fairness for everyone.</li>
-            <li>You are free to use a calculator, pen and paper.</li>
-            <li>We recommend completing the assessment in one go.</li>
+            <li>
+              <%= t('.assessment_structure', parts: pluralize(@assessment_participation.assessment.parts_count, "part"), duration: format_duration(@assessment_participation.assessment.duration_seconds)).html_safe %>
+            </li>
+            <li><%= t('.timed_assessment') %></li>
+            <li><%= t('.preview_questions').html_safe %></li>
+            <li><%= t('.camera_usage') %></li>
+            <li><%= t('.calculator_use') %></li>
+            <li><%= t('.recommendation') %></li>
           </ul>
         </div>
       </div>
       <div class="mt-12 flex justify-end">
         <%= link_to setup_candidate_assessment_participation_path(@assessment_participation), class: "primary-button gap-x-2.5 px-7 py-3" do %>
-          <span>Get started</span>
+          <span><%= t('.get_started') %></span>
           <%= svg_tag "chevron_right", class: "size-3 -mb-0.5", "stroke-width": 3 %>
         <% end %>
       </div>
     </div>
-  </main>
+  </div>
+</main>

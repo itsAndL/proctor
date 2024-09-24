@@ -1,90 +1,83 @@
 <main class="bg-zinc-50 h-full">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="py-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-y-5 gap-x-4">
-      <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Candidates</h1>
-  
+      <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight"><%= t('.candidates') %></h1>
       <div>
-        <%= link_to new_assessment_path, class: "primary-button" do %>
+        <%= link_to t('.create_assessment'), new_assessment_path, class: "primary-button" do %>
           <%= svg_tag "plus_circle" %>
-          Create assessment
         <% end %>
       </div>
     </div>
-
     <%= form_with url: customer_candidates_path, method: :get, data: { controller: "search", search_target: "form" } do |form| %>
       <div class="pt-2 sm:pt-5 pb-5 flex flex-col sm:flex-row items-center gap-y-4 sm:gap-x-5">
         <div class="w-full sm:max-w-xs">
-          <%= render SearchInputComponent.new(form:, placeholder: "Search candidates") %>
+          <%= render SearchInputComponent.new(form:, placeholder: t('.search_candidates')) %>
         </div>
-
         <select name="assessment_id" onchange="this.form.submit()" class="select-field w-full sm:w-60 py-2.5 sm:py-2 pl-5 pr-10 rounded-xl text-gray-800 border border-gray-800 placeholder:text-gray-400 font-medium focus:border focus:border-gray-800 focus:ring-1 focus:ring-inset focus:ring-gray-800 sm:text-sm sm:leading-6">
-          <option class="font-medium text-gray-400" value="" selected>Assessment</option>
+          <option class="font-medium text-gray-400" value="" selected><%= t('.assessment') %></option>
           <% current_business.assessments.each do |assessment| %>
             <% active_option = assessment.id.to_s == params[:assessment_id] %>
             <option class="font-medium <%= 'bg-zinc-200' if active_option %>" value="<%= assessment.id %>" <%= 'selected' if active_option %>>
               <%= truncate(assessment.title, length: 28) %>
             </option>
-          <% end %>
-        </select>
-      </div>
-
-      <% params.permit(:page, :per_page).to_h.each do |key, value| %>
-        <%= form.hidden_field key, value: value %>
+            <% end %>
+          </select>
+        </div>
+        <% params.permit(:page, :per_page).to_h.each do |key, value| %>
+          <%= form.hidden_field key, value: value %>
+        <% end %>
       <% end %>
-    <% end %>
-
-    <div class="pb-16">
-      <div class="border border-gray-200 bg-white rounded-xl">
-        <div class="flow-root">
-          <div class="inline-block min-w-full align-middle">
-            <table class="min-w-full divide-y divide-gray-200">
-              <thead>
-                <tr>
-                  <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-bold text-gray-800 sm:pl-6">Name</th>
-                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden sm:table-cell">Email</th>
-                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800">Assessments</th>
-                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden md:table-cell">Last activity</th>
-                  <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                    <span class="sr-only">Actions</span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-gray-200">
-                <% if @candidates.empty? %>             
+      <div class="pb-16">
+        <div class="border border-gray-200 bg-white rounded-xl">
+          <div class="flow-root">
+            <div class="inline-block min-w-full align-middle">
+              <table class="min-w-full divide-y divide-gray-200">
+                <thead>
                   <tr>
-                    <td colspan="5"><%= render NoResultsComponent.new %></td>
+                    <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-bold text-gray-800 sm:pl-6"><%= t('.name') %></th>
+                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden sm:table-cell"><%= t('.email') %></th>
+                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800"><%= t('.assessments') %></th>
+                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden md:table-cell"><%= t('.last_activity') %></th>
+                    <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
+                      <span class="sr-only"><%= t('.actions') %></span>
+                    </th>
                   </tr>
-                <% else %>
-                  <% @candidates.each do |candidate| %>
-                    <tr class="hover:bg-blue-50 cursor-pointer" 
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                  <% if @candidates.empty? %>
+                    <tr>
+                      <td colspan="5"><%= render NoResultsComponent.new %></td>
+                    </tr>
+                  <% else %>
+                    <% @candidates.each do |candidate| %>
+                      <tr class="hover:bg-blue-50 cursor-pointer" 
                         data-controller="clickable-row"
                         data-clickable-row-url-value="<%= customer_candidate_path(candidate) %>"
                         data-action="click->clickable-row#handleClick">
-                      <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6 truncate"><%= candidate.name %></td>
-                      <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden sm:table-cell"><%= candidate.email %></td>
-                      <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800"><%= candidate.assessments.count %></td>
-                      <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell"><%= human_date(candidate.last_activity) %></td>
-                      <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
-                        <button type="button" class="text-gray-800 my-1">
-                          <%= svg_tag "chevron_right", class: "size-3.5", "stroke-width": 2.5 %>
-                        </button>
-                      </td>
-                    </tr>
+                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6 truncate"><%= candidate.name %></td>
+                        <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden sm:table-cell"><%= candidate.email %></td>
+                        <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800"><%= candidate.assessments.count %></td>
+                        <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell"><%= human_date(candidate.last_activity) %></td>
+                        <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
+                          <button type="button" class="text-gray-800 my-1">
+                            <%= svg_tag "chevron_right", class: "size-3.5", "stroke-width": 2.5 %>
+                          </button>
+                        </td>
+                      </tr>
+                    <% end %>
                   <% end %>
-                <% end %>
-              </tbody>
-            </table>
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
-
-        <!-- Pagination -->
-        <%= render PaginationComponent.new(
+          <!-- Pagination -->
+          <%= render PaginationComponent.new(
           current_page: @current_page,
           total_items: @total_items,
           per_page: @per_page,
           additional_params: { search_query: params[:search_query], assessment_id: params[:assessment_id] }
         ) %>
+        </div>
       </div>
     </div>
-  </div>
-</main>
+  </main>

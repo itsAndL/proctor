@@ -3,68 +3,60 @@
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex gap-x-4 items-center justify-between">
       <%= render AssessmentTitleComponent.new(assessment: @assessment, rename: true) %>
-
       <div class="flex gap-x-3">
         <div class="relative dropdown">
           <button tabindex="actions" type="button" class="rounded-full bg-zinc-100 p-2 text-gray-600 shadow-sm hover:bg-zinc-200">
             <%= svg_tag "ellipsis_vertical", class: "size-5" %>
           </button>
-
           <div tabindex="actions" class="dropdown-content absolute right-0 z-10 -mr-1 mt-2 w-44 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div class="py-1" role="none">
               <% unless @assessment.archived? %>
                 <a href="#" class="sm:hidden group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium" role="menuitem" id="menu-item-0">
                   <%= svg_tag "eye", class: "size-5 group-hover:text-gray-500", "stroke-width": 2 %>
-                  Try yourself
+                  <%= t('.try_yourself') %>
                 </a>
-                <%= link_to assessment_invite_eligibility_path(@assessment), class: 'group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium sm:hidden', data: { turbo_frame: "modal" } do %>
+                <%= link_to t('.invite'), assessment_invite_eligibility_path(@assessment), class: 'group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium sm:hidden', data: { turbo_frame: "modal" } do %>
                   <%= svg_tag "envelope", class: "size-5 group-hover:text-gray-500", "stroke-width": 2 %>
-                  Invite
+                  <%= t('.invite') %>
                 <% end %>
               <% end %>
-
               <% if @assessment.assessment_participations.any? %>
                 <button type="button" class="group flex items-center gap-x-2.5 px-4 py-2 text-sm text-zinc-400 font-medium">
                   <%= svg_tag "pencil_square", class: "size-5" %>
-                  Edit assessment
+                  <%= t('.edit_assessment') %>
                 </button>
               <% else %>
-                <%= link_to edit_assessment_path(@assessment), class: "group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium" do %>
+                <%= link_to t('.edit_assessment'), edit_assessment_path(@assessment), class: "group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium" do %>
                   <%= svg_tag "pencil_square", class: "size-5 group-hover:text-gray-500" %>
-                  Edit assessment
+                  <%= t('.edit_assessment') %>
                 <% end %>
               <% end %>
-
               <%= button_to @assessment.archived? ? unarchive_assessment_path(@assessment) : archive_assessment_path(@assessment), method: :patch, class: "group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium" do %>
                 <%= svg_tag "archive_box", class: "size-5 group-hover:text-gray-500" %>
-                <%= @assessment.archived? ? "Unarchive" : "Archive" %>
+                <%= @assessment.archived? ? t('.unarchive') : t('.archive') %>
               <% end %>
             </div>
           </div>
         </div>
-
         <% unless @assessment.archived? %>
           <div class="relative dropdown dropdown-hover hidden sm:block">
             <button tabindex="try_yourself" type="button" class="rounded-full bg-zinc-100 p-2 text-gray-600 shadow-sm hover:bg-zinc-200">
-            <%= svg_tag "eye", class: "size-5", "stroke-width": 2 %>
+              <%= svg_tag "eye", class: "size-5", "stroke-width": 2 %>
             </button>
-
             <div tabindex="try_yourself" class="dropdown-content absolute -right-6 z-10 -mr-1 mt-2 origin-top-right">
               <div class="triangle triangle-t triangle-h-2 triangle-w-4 mx-auto -mb-0.5 text-gray-900"></div>
-              <div class="rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none py-2 px-3 whitespace-nowrap bg-gray-900 text-sm text-white font-medium">Try yourself</div>
+              <div class="rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none py-2 px-3 whitespace-nowrap bg-gray-900 text-sm text-white font-medium"><%= t('.try_yourself') %></div>
             </div>
           </div>
-
-          <%= link_to assessment_invite_eligibility_path(@assessment), class: 'primary-button hidden sm:inline-flex', data: { turbo_frame: "modal" } do %>
+          <%= link_to t('.invite'), assessment_invite_eligibility_path(@assessment), class: 'primary-button hidden sm:inline-flex', data: { turbo_frame: "modal" } do %>
             <%= svg_tag "envelope", class: "size-5" %>
-            Invite
+            <%= t('.invite') %>
           <% end %>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-
 <main class="bg-zinc-50 h-full pb-16 pt-10">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <%= render CandidatesListComponent.new(
@@ -74,7 +66,6 @@
       total_items: @total_items,
       per_page: @per_page
     ) %>
-
     <div class="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6 pb-16">
       <%= render TestsTableComponent.new(assessment: @assessment, with_title: true, with_actions: false) %>
       <%= render CustomQuestionsTableComponent.new(assessment: @assessment, with_title: true, with_actions: false) %>

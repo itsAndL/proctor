@@ -1,12 +1,12 @@
 <div data-controller="assessment-title">
   <%= render AssessmentHeaderComponent.new(assessment: @assessment) %>
-
   <main class="bg-zinc-50 h-full relative">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-16">
-      <%= render AssessmentStepperComponent.new(current_step: 'Assessment details', assessment: @assessment) %>
-
+      <%= render AssessmentStepperComponent.new(current_step: t('.title'), assessment: @assessment) %>
       <div class="mt-10">
-        <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Assessment details</h1>
+        <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+          <%= t('.title') %>
+        </h1>
         <div class="mt-6">
           <%= form_with model: @assessment, id: "form-to-submit" do |form| %>
             <div class="grid grid-cols-1 gap-x-8 gap-y-8 max-w-2xl">
@@ -14,7 +14,7 @@
                 <%= render LabelExplainerComponent.new(
                   form: form,
                   name: :title,
-                  message: "Enter a clear and concise title for your assessment. This will be visible to candidates.",
+                  message: t('.title_message'),
                   class: "required-label"
                 ) %>
                 <div>
@@ -28,17 +28,16 @@
                   <%= render FieldErrorComponent.new(:title, @assessment) %>
                 </div>
               </div>
-
               <div>
                 <%= render LabelExplainerComponent.new(
                   form: form,
                   name: :language,
-                  message: "This is the language in which your candidates will take your assessment. Any tests you add to this assessment must be in the same language.",
+                  message: t('.language_message'),
                   class: "required-label"
                 ) %>
                 <%= form.select :language, 
                       Assessment.languages.map { |k, v| [Assessment.human_enum_name(:language, k), k] },
-                      { prompt: t('assessments.form.language_prompt') }, 
+                      { prompt: t('.language_prompt') }, 
                       { required: true, class: "primary-field" } %>
                 <%= render FieldErrorComponent.new(:language, @assessment) %>
               </div>
@@ -47,7 +46,6 @@
         </div>
       </div>
     </div>
-
     <%= render AssessmentFooterComponent.new(assessment: @assessment, current_step: action_name) %>
   </main>
 </div>

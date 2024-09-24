@@ -11,15 +11,31 @@
                     <tr>
                       <td class="r15-c nl2go-default-textstyle" align="left" style="color: #3b3f44; font-family: Arial; font-size: 15px; line-height: 1.5; word-break: break-word; text-align: left; valign: top;">
                         <div>
-                          <h2 class="default-heading2" style="margin: 0; color: #1f2d3d; font-family: Poppins,arial; font-size: 32px; word-break: break-word; line-height: 34px"><span style="color: #242424; font-family: Arial, helvetica, sans-serif; font-size: 27px;">Hello <%= @recipient.name || @recipient.email %>!</span></h2>
+                          <h2 class="default-heading2" style="margin: 0; color: #1f2d3d; font-family: Poppins,arial; font-size: 32px; word-break: break-word; line-height: 34px">
+                            <span style="color: #242424; font-family: Arial, helvetica, sans-serif; font-size: 27px;">
+                              <%= t('.greeting', name: @recipient.name || @recipient.email) %>
+                            </span>
+                          </h2>
                           <p style="margin: 0;">&nbsp;</p>
-                          <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;">This is a friendly reminder that you have an assessment to complete for <%= @assessment.business.company %>.</span></p>
+                          <p style="margin: 0;">
+                            <span style="color: #242424; font-family: Arial, helvetica, sans-serif;">
+                              <%= t('.reminder', company: @assessment.business.company) %>
+                            </span>
+                          </p>
                           <p style="margin: 0;">&nbsp;</p>
-                          <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;">The assessment will take approximately <%= format_duration(@assessment.duration_seconds, true) %> to complete. Your participation is important, and we encourage you to complete it at your earliest convenience.</span></p>
+                          <p style="margin: 0;">
+                            <span style="color: #242424; font-family: Arial, helvetica, sans-serif;">
+                              <%= t('.duration', duration: format_duration(@assessment.duration_seconds, true)) %>
+                            </span>
+                          </p>
                           <p style="margin: 0;">&nbsp;</p>
                           <ul style="color: #242424; font-family: Arial, helvetica, sans-serif;">
-                            <li>If you need any assistance, please refer to our <a href="#" style="color: #2563eb;">troubleshooting guide</a></li>
-                            <li>For technical requirements, check out our <a href="#" style="color: #2563eb;">system requirements</a></li>
+                            <li>
+                              <%= t('.assistance') %> <a href="#" style="color: #2563eb;"><%= t('.troubleshooting_guide') %></a>
+                            </li>
+                            <li>
+                              <%= t('.technical_requirements') %> <a href="#" style="color: #2563eb;"><%= t('.system_requirements') %></a>
+                            </li>
                           </ul>
                         </div>
                       </td>
@@ -59,8 +75,8 @@
                                     </tr>
                                     <tr>
                                       <td height="18" align="center" valign="top" class="r22-i nl2go-default-textstyle" style="color: #3b3f44; font-family: Arial; font-size: 15px; line-height: 1.5; word-break: break-word;">
-                                        <%= link_to  overview_candidate_assessment_participation_url(@assessment_participation), title: "Start Assessment", data: {btn: 1}, sib_link_id: 0, class: "r23-r default-button", style: "font-style: normal; font-weight: normal; line-height: 1.15; text-decoration: none; word-break: break-word; border-style: solid; word-wrap: break-word; display: block; -webkit-text-size-adjust: none; background-color: #2563eb; border-color: #000000; border-radius: 50px; border-width: 0px; color: #000000; font-family: open sans,arial,helvetica,sans-serif; font-size: 16px; height: 18px; mso-hide: all; padding-bottom: 12px; padding-left: 5px; padding-right: 5px; padding-top: 12px; width: 190px;" do %>
-                                          <span style="color: #ffffff; font-size: 15px;">Start Assessment</span>
+                                        <%= link_to t('.start_assessment'), overview_candidate_assessment_participation_url(@assessment_participation), title: "Start Assessment", data: {btn: 1}, sib_link_id: 0, class: "r23-r default-button", style: "font-style: normal; font-weight: normal; line-height: 1.15; text-decoration: none; word-break: break-word; border-style: solid; word-wrap: break-word; display: block; -webkit-text-size-adjust: none; background-color: #2563eb; border-color: #000000; border-radius: 50px; border-width: 0px; color: #000000; font-family: open sans,arial,helvetica,sans-serif; font-size: 16px; height: 18px; mso-hide: all; padding-bottom: 12px; padding-left: 5px; padding-right: 5px; padding-top: 12px; width: 190px;" do %>
+                                          <span style="color: #ffffff; font-size: 15px;"><%= t('.start_assessment_button') %></span>
                                         <% end %>
                                       </td>
                                     </tr>

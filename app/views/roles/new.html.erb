@@ -1,7 +1,7 @@
 <main class="bg-zinc-50 h-full">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="py-12">
-      <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">What brings you to AssessKit?</h1>
+      <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight"><%= t('.title') %></h1>
     </div>
 
     <div class="pb-16">
@@ -14,13 +14,12 @@
           </div>
           <div class="mt-7">
             <h3 class="text-lg font-bold leading-6 text-gray-900">
-              <%= link_to new_business_path do %>
-                <!-- Extend touch target to entire panel -->
+              <%= link_to t('.business.link_text') do %>
                 <span class="absolute inset-0" aria-hidden="true"></span>
-                I'm a Business
+                <%= t('.business.link_text') %>
               <% end %>
             </h3>
-            <p class="mt-2 text-base text-gray-500 leading-tight">You're here to create and manage assessments to evaluate candidates, students, or team members for hiring, educational purposes, or skill development.</p>
+            <p class="mt-2 text-base text-gray-500 leading-tight"><%= t('.business.description') %></p>
           </div>
           <span class="pointer-events-none absolute right-6 top-6 text-gray-300 group-hover:text-gray-400" aria-hidden="true">
             <%= svg_tag "arrow_right", class: "size-6", "stroke-width": 2 %>
@@ -34,13 +33,12 @@
           </div>
           <div class="mt-7">
             <h3 class="text-lg font-bold leading-6 text-gray-900">
-              <%= link_to new_candidate_path do %>
-                <!-- Extend touch target to entire panel -->
+              <%= link_to t('.candidate.link_text') do %>
                 <span class="absolute inset-0" aria-hidden="true"></span>
-                I'm a Candidate
+                <%= t('.candidate.link_text') %>
               <% end %>
             </h3>
-            <p class="mt-2 text-base text-gray-500 leading-tight">You're here to take assessments and showcase your skills for job opportunities, school evaluations, or personal growth.</p>
+            <p class="mt-2 text-base text-gray-500 leading-tight"><%= t('.candidate.description') %></p>
           </div>
           <span class="pointer-events-none absolute right-6 top-6 text-gray-300 group-hover:text-gray-400" aria-hidden="true">
             <%= svg_tag "arrow_right", class: "size-6", "stroke-width": 2 %>
