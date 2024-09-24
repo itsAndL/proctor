@@ -1,0 +1,27 @@
+require:
+  - standard
+  # - rubocop-rails
+  # - rubocop-rspec
+
+inherit_gem:
+  standard: config/base.yml
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'db/**/*'
+    - 'bin/**/*'
+    - 'spec/**/*'
+    - 'vendor/bundle/**/*'
+
+Rails:
+  Enabled: true # enable rubocop-rails cops
+
+RSpec:
+  Enabled: true # enable rubocop-rspec cops
+  DescribeClass:
+    Enabled: false # ignore missing comments on classes
+
+Bundler:
+  DuplicatedGem:
+    Enabled: false # ignore duplicated gem errors because we will have duplicated gems when dual booting

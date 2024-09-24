@@ -1,14 +1,14 @@
 <%= tag.turbo_frame id: "candidates-list" do %>
   <div class="border border-gray-200 bg-white rounded-xl">
     <div class="p-5 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
-      <h2 class="text-base font-bold text-black">Candidates</h2>
+      <h2 class="text-base font-bold text-black"><%= t('.candidates') %></h2>
 
       <%= form_with url: assessment_path(@assessment), method: :get, data: { controller: "search", search_target: "form" } do |form| %>
         <div class="flex flex-col sm:flex-row items-center gap-y-3 sm:gap-x-5">
-          <%= render SearchInputComponent.new(form:, placeholder: "Search candidates") %>
+          <%= render SearchInputComponent.new(form:, placeholder: t('.search_candidates')) %>
 
           <select name="status" onchange="this.form.submit()" class="select-field w-full sm:w-60 py-2.5 pl-5 pr-10 rounded-xl">
-            <option class="font-medium text-gray-400" value="" selected>Status</option>
+            <option class="font-medium text-gray-400" value="" selected><%= t('.status') %></option>
             <% AssessmentParticipation.statuses.keys.each do |status| %>
               <% active_option = status == params[:status] %>
               <option class="font-medium <%= 'bg-zinc-200' if active_option %>" value="<%= status %>" <%= 'selected' if active_option %>><%= status.humanize %></option>
@@ -27,13 +27,13 @@
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="border-t border-gray-200">
               <tr>
-                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-bold text-gray-800 sm:pl-6">Name</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800">Avg. % score</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800">Status</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden md:table-cell">Invited on</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden md:table-cell">Overall rating</th>
+                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-bold text-gray-800 sm:pl-6"><%= t('.name') %></th>
+                <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800"><%= t('.avg_score') %></th>
+                <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800"><%= t('.status') %></th>
+                <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden md:table-cell"><%= t('.invited_on') %></th>
+                <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden md:table-cell"><%= t('.overall_rating') %></th>
                 <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                  <span class="sr-only">Actions</span>
+                  <span class="sr-only"><%= t('.actions') %></span>
                 </th>
               </tr>
             </thead>
@@ -49,7 +49,7 @@
                     <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800">
                       <%= helpers.display_percentage_or_minus(assessment_participation.evaluate_full_assessment.overall_score_percentage) %>
                     </td>
-                    <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800"><%= assessment_participation.status.humanize %></td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800"><%= assessment_participation.humanized_status %></td>
                     <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell"><%= helpers.human_date assessment_participation.created_at %></td>
                     <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell">
                       <%= render(StarRatingComponent.new(assessment_participation)) %>
@@ -68,7 +68,7 @@
                                       data-action="click->copy-link#copy"
                                       class="group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium">
                                 <%= helpers.svg_tag "clipboard", class: "size-5 group-hover:text-gray-500" %>
-                                <span data-copy-link-target="text">Copy candidate assessment link</span>
+                                <span data-copy-link-target="text"><%= t('.copy_link') %></span>
                               </button>
                             </div>
 
@@ -78,13 +78,13 @@
                                             class: "group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium",
                                             data: { turbo_stream: true } do %>
                                 <%= helpers.svg_tag "bell", class: "size-5 group-hover:text-gray-500", "stroke-width": 2 %>
-                                <span>Send reminder</span>
+                                <span><%= t('.send_reminder') %></span>
                               <% end %>
                             <% end %>
 
                             <button type="button" class="group flex items-center gap-x-2.5 px-4 py-2 text-sm <%= started_or_completed?(assessment_participation) ? "text-gray-700" : "text-gray-400 pointer-events-none" %> font-medium">
                               <%= helpers.svg_tag "envelope", class: "size-5 group-hover:text-gray-500", "stroke-width": 2 %>
-                              <span data-copy-link-target="text">Send results</span>
+                              <span data-copy-link-target="text"><%= t('.send_results') %></span>
                             </button>
 
                             <%= button_to delete_confirmation_assessment_participation_path(assessment_participation),
@@ -92,7 +92,7 @@
                                 class: "group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium",
                                 data: { turbo_frame: "modal" } do %>
                               <%= helpers.svg_tag "trash", class: "size-5 group-hover:text-gray-500" %>
-                              <span>Delete candidate</span>
+                              <span><%= t('.delete_candidate') %></span>
                             <% end %>
                           </div>
                         </div>

@@ -1,7 +1,7 @@
 <div id="custom_questions_table" class="border border-gray-200 bg-white rounded-xl h-fit">
   <% if @with_title %>
     <div class="p-5">
-      <h2 class="text-base font-bold text-black">Selected questions</h2>
+      <h2 class="text-base font-bold text-black"><%= t('.selected_questions') %></h2>
     </div>
   <% end %>
   <div class="flow-root">
@@ -9,12 +9,12 @@
       <table class="min-w-full divide-y divide-gray-200">
         <thead class="<%= 'border-t border-gray-200' if @with_title %>">
           <tr>
-            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-bold text-gray-800 sm:pl-6">Question</th>
-            <th scope="col" class="py-3.5 pl-3 pr-4 sm:pr-6 text-left text-sm font-bold text-gray-800 hidden md:table-cell">Type</th>
-            <th scope="col" class="py-3.5 pl-3 pr-4 sm:pr-6 text-left text-sm font-bold text-gray-800 hidden md:table-cell">Duration</th>
+            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-bold text-gray-800 sm:pl-6"><%= t('.question') %></th>
+            <th scope="col" class="py-3.5 pl-3 pr-4 sm:pr-6 text-left text-sm font-bold text-gray-800 hidden md:table-cell"><%= t('.type') %></th>
+            <th scope="col" class="py-3.5 pl-3 pr-4 sm:pr-6 text-left text-sm font-bold text-gray-800 hidden md:table-cell"><%= t('.duration') %></th>
             <% if @with_actions %>
               <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                <span class="sr-only">Actions</span>
+                <span class="sr-only"><%= t('.actions') %></span>
               </th>
             <% end %>
           </tr>
@@ -23,11 +23,11 @@
           <% if @custom_questions.empty? %>
             <tr>
               <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6">
-                <p>Add questions to capture information critical to your screening process. Dig deeper with additional questions.</p>
+                <p><%= t('.no_questions_message') %></p>
               </td> 
             </tr>
           <% else %>
-            <% @custom_questions.each_with_index  do |custom_question, index| %>
+            <% @custom_questions.each_with_index do |custom_question, index| %>
               <tr>
                 <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6 flex items-center gap-x-2">
                   <div class="md:hidden">
@@ -62,7 +62,7 @@
 
                         <div class="dropdown-content absolute -right-3 z-10 -mr-1.5 mt-2 origin-top-right">
                           <div class="triangle triangle-t triangle-h-2 triangle-w-4 ml-auto mr-6 -mb-0.5 text-gray-900"></div>
-                          <div class="rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none py-2 px-3 whitespace-nowrap bg-gray-900 text-sm text-white font-medium">Remove question</div>
+                          <div class="rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none py-2 px-3 whitespace-nowrap bg-gray-900 text-sm text-white font-medium"><%= t('.remove_question') %></div>
                         </div>
                       </div>
                     </div>

@@ -8,10 +8,10 @@ class AssessmentStepperComponent < ViewComponent::Base
 
   def steps
     [
-      { name: 'Assessment details', path: assessment_details_path },
-      { name: 'Choose tests', path: choose_tests_path },
-      { name: 'Add questions', path: add_questions_path },
-      { name: 'Finalize', path: finalize_path }
+      { name: t('.assessment_details'), path: assessment_details_path },
+      { name: t('.choose_tests'), path: choose_tests_path },
+      { name: t('.add_questions'), path: add_questions_path },
+      { name: t('.finalize'), path: finalize_path }
     ]
   end
 

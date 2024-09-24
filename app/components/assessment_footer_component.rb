@@ -22,7 +22,7 @@ class AssessmentFooterComponent < ViewComponent::Base
   end
 
   def next_button_text
-    @current_step == 'finalize' ? 'Finish' : 'Next'
+    @current_step == 'finalize' ? t('.finish') : t('.next')
   end
 
   def show_back_button?

@@ -9,14 +9,14 @@ class AssessmentParticipationHeaderComponent < ViewComponent::Base
 
   def call
     render(ParticipantHeaderComponent.new(
-      participant: @assessment_participation.participant,
-      back_path: assessment_path(@assessment),
-      show_navigation: true,
-      prev_path: prev_participant_path,
-      next_path: next_participant_path,
-      current_index: current_index,
-      total_count: total_participants
-    ))
+             participant: @assessment_participation.participant,
+             back_path: assessment_path(@assessment),
+             show_navigation: true,
+             prev_path: prev_participant_path,
+             next_path: next_participant_path,
+             current_index:,
+             total_count: total_participants
+           ))
   end
 
   private
@@ -31,11 +31,13 @@ class AssessmentParticipationHeaderComponent < ViewComponent::Base
 
   def prev_participant_path
     return nil if current_index == 1
+
     report_assessment_participation_path(@participants[current_index - 2])
   end
 
   def next_participant_path
     return nil if current_index == total_participants
+
     report_assessment_participation_path(@participants[current_index])
   end
 end

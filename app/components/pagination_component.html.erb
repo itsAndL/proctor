@@ -1,6 +1,6 @@
 <nav class="flex items-center flex-wrap justify-end gap-x-8 gap-y-3 border-t border-gray-200 px-4 sm:px-6 py-5">
   <form action="<%= url_for %>" method="get" class="flex items-center">
-    <label for="per_page" class="mr-2 text-sm text-gray-700 font-semibold">Items per page</label>
+    <label for="per_page" class="mr-2 text-sm text-gray-700 font-semibold"><%= t('.items_per_page') %></label>
     <select name="per_page" onchange="this.form.submit()" class="select-field py-1">
       <% per_page_options.each do |option| %>
         <% active_option = option == per_page %>

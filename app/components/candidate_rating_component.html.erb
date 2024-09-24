@@ -5,8 +5,8 @@
      class="py-6 px-4 sm:p-8">
   <div class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
     <div>
-      <div class="font-bold text-gray-800">Your rating</div>
-      <div class="mt-1.5 text-gray-600 text-sm font-medium">Give your personal overall rating of this candidate based on your impressions and interactions with him or her.</div>
+      <div class="font-bold text-gray-800"><%= t('.your_rating') %></div>
+      <div class="mt-1.5 text-gray-600 text-sm font-medium"><%= t('.rating_description') %></div>
       <div class="mt-6 flex items-center">
         <% 5.times do |i| %>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
@@ -23,7 +23,7 @@
     <textarea 
       data-candidate-rating-target="notes"
       data-action="input->candidate-rating#autoSave"
-      placeholder="Add your private notes here (auto-saved)... " 
+      placeholder="<%= t('.notes_placeholder') %>" 
       rows="3" 
       class="primary-field"
     ><%= @assessment_participation.notes %></textarea>

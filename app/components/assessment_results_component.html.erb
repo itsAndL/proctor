@@ -4,18 +4,18 @@
       <dd class="text-5xl font-bold tracking-tight text-gray-800">
         <%= helpers.display_percentage_or_minus(overall_score) %>
       </dd>
-      <dt class="mt-2 text-sm font-bold leading-6 text-gray-800"><%= @assessment_participation.participant.name %> Average score</dt>
+      <dt class="mt-2 text-sm font-bold leading-6 text-gray-800"><%= @assessment_participation.participant.name %> <%= t('.average_score') %></dt>
     </div>
 
     <div class="grid grid-cols-1 gap-0.5 overflow-hidden sm:grid-cols-2 rounded-b-xl">
       <div class="flex flex-col bg-zinc-100 p-6">
-        <dt class="text-xs font-semibold mt-1 text-gray-600">Your best candidate score</dt>
+        <dt class="text-xs font-semibold mt-1 text-gray-600"><%= t('.best_candidate_score') %></dt>
         <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900">
           <%= helpers.display_percentage_or_minus(best_candidate_score) %>
         </dd>
       </div>
       <div class="flex flex-col bg-zinc-100 p-6">
-        <dt class="text-xs font-semibold mt-1 text-gray-600">Your candidate pool average</dt>
+        <dt class="text-xs font-semibold mt-1 text-gray-600"><%= t('.candidate_pool_average') %></dt>
         <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900">
           <%= helpers.display_percentage_or_minus(candidate_pool_average) %>
         </dd>
@@ -25,7 +25,7 @@
 <% end %>
 
 <div class="p-6 bg-zinc-100 rounded-xl">
-  <h5 class="font-bold text-gray-900 leading-6">Tests included in scoring</h5>
+  <h5 class="font-bold text-gray-900 leading-6"><%= t('.tests_included_in_scoring') %></h5>
   <div class="mt-4 space-y-3">
     <% test_results.each do |result| %>
       <% if result.is_completed %>
@@ -36,7 +36,7 @@
       <% else %>
         <div class="flex justify-between px-4 py-3 bg-white border border-gray-400 rounded-lg text-sm font-semibold">
           <p><%= result.test_name %></p>
-          <p class="text-gray-400">Pending</p>
+          <p class="text-gray-400"><%= t('.pending') %></p>
         </div>
       <% end %>
     <% end %>

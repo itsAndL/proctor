@@ -9,15 +9,15 @@ class AssessmentHeaderComponent < ViewComponent::Base
 
   def save_and_exit_button
     if @assessment.new_record?
-      link_to "Exit", assessments_path, class: "secondary-button px-6"
+      link_to t('.exit'), assessments_path, class: 'secondary-button px-6'
     else
-      button_tag "Save and exit",
-                 type: "button",
-                 class: "secondary-button px-3",
+      button_tag t('.save_and_exit'),
+                 type: 'button',
+                 class: 'secondary-button px-3',
                  data: {
-                   controller: "form-submit",
-                   form_submit_save_and_exit_value: "true",
-                   action: "form-submit#submitForm"
+                   controller: 'form-submit',
+                   form_submit_save_and_exit_value: 'true',
+                   action: 'form-submit#submitForm'
                  }
     end
   end

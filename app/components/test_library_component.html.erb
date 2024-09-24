@@ -6,16 +6,16 @@
     <%= tag.turbo_frame id: "filter_section" do %>
       <p class="text-base text-gray-700 font-bold">
         <% if filters_applied? %>
-          Results (<%= @tests.count %>)
+          <%= t('.results_count', count: @tests.count) %>
         <% else %>
-          <%= pluralize(@tests.count, 'test') %> available
+          <%= t('.tests_available', count: @tests.count) %>
         <% end %>
       </p>
 
       <div class="mt-3 pb-16">
         <% if @tests.empty? %>
           <div class="pt-12">
-            <%= render NoResultsComponent.new(message: "Suggest a new test to AssessKit.", linkeable: true) %>
+            <%= render NoResultsComponent.new(message: t('.suggest_new_test'), linkeable: true) %>
           </div>
         <% else %>
           <div class="grid grid-cols-1 gap-6 md:grid-cols-2">

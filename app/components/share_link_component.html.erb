@@ -1,9 +1,9 @@
 <%= tag.turbo_frame id: "share-link" do %>
-  <p class="mt-5 text-gray-800 font-medium text-sm">Invite candidates by sharing a public link. This link will direct them to the assessment and capture their name and email for tracking purposes.</p>
+  <p class="mt-5 text-gray-800 font-medium text-sm"><%= t('.invite_candidates') %></p>
 
   <div class="mt-6 px-4 py-4 bg-zinc-50 rounded-lg w-full">
     <div class="flex gap-x-2">
-      <h3 class="text-gray-900 font-bold text-sm">Active source</h3>
+      <h3 class="text-gray-900 font-bold text-sm"><%= t('.active_source') %></h3>
       <% if @assessment.public_link_active? %>
         <%= button_to deactivate_public_link_assessment_path(@assessment), method: :patch do %>
           <div class="relative inline-flex h-5 w-9 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-blue-600 transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2" role="switch" aria-checked="false">
@@ -32,7 +32,7 @@
       <div>
         <button type="button" class="hidden sm:inline-flex secondary-button px-5 whitespace-nowrap" data-action="click->copy#copy" data-copy-target="button">
           <%= helpers.svg_tag "clipboard", class: "size-4" %>
-          <span>Copy link</span>
+          <span><%= t('.copy_link') %></span>
         </button>
         <button type="button" class="-mr-3 sm:hidden text-gray-900 p-2 hover:rounded-full hover:bg-gray-200 hover:shadow-sm text-sm font-semibold" data-action="click->copy#copy" data-copy-target="button">
           <%= helpers.svg_tag "clipboard", class: "size-5" %>
@@ -41,17 +41,12 @@
     </div>
 
     <div class="mt-7" data-controller="copy" data-copy-active-value="<%= @assessment.public_link_active? %>">
-      <h3 class="text-gray-900 font-bold text-sm">Copy and add this text to your invitation:</h3>
+      <h3 class="text-gray-900 font-bold text-sm"><%= t('.copy_invitation_text') %></h3>
       <div class="mt-3 flex gap-x-1.5 items-end -mr-3 ">
         <div class="overflow-x-auto">
-          <div class=" border border-gray-200 p-4 rounded-lg bg-white <%= @assessment.public_link_active? ? 'text-gray-900' : 'text-gray-400 pointer-events-none' %> font-medium text-sm" data-copy-target="source" data-copy-text="We want to ensure that everyone has a fair and equal chance, so we're using a AssessKit assessment (<%= root_url %>). This helps maintain fairness and integrity in our process.
-
-Ready to get started? Click the link below:
-
-<%= public_assessment_url(@assessment.public_link_token) %>">
-
-            <p>We want to ensure that everyone has a fair and equal chance, so we're using a AssessKit assessment (<%= @assessment.public_link_active? ? link_to(root_url, root_path, class: "text-blue-600 break-words underline", data: {turbo: false}, target: :_blank) : content_tag(:span, root_url, class: "break-words underline") %>). This helps maintain fairness and integrity in our process.</p>
-            <p class="mt-5">Ready to get started? Click the link below:</p>
+          <div class="border border-gray-200 p-4 rounded-lg bg-white <%= @assessment.public_link_active? ? 'text-gray-900' : 'text-gray-400 pointer-events-none' %> font-medium text-sm" data-copy-target="source" data-copy-text="<%= t('.invitation_text', root_url: root_url, public_assessment_url: public_assessment_url(@assessment.public_link_token)) %>">
+            <p><%= t('.invitation_text_html', root_url: @assessment.public_link_active? ? link_to(root_url, root_path, class: "text-blue-600 break-words underline", data: {turbo: false}, target: :_blank) : content_tag(:span, root_url, class: "break-words underline")) %></p>
+            <p class="mt-5"><%= t('.ready_to_start') %></p>
             <% if @assessment.public_link_active? %>
               <%= link_to public_assessment_url(@assessment.public_link_token), public_assessment_path(@assessment.public_link_token), class: "text-blue-600 underline break-words mt-1", data: {turbo: false}, target: :_blank %>
             <% else %>

@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class AvatarComponent < ViewComponent::Base
-  DEFAULT_AVATAR = "avatar.png"
+  DEFAULT_AVATAR = 'avatar.png'
   MAX_FILE_SIZE = 2.megabytes
-  VALID_CONTENT_TYPES = ["image/png", "image/jpeg", "image/jpg"].freeze
+  VALID_CONTENT_TYPES = ['image/png', 'image/jpeg', 'image/jpg'].freeze
 
   attr_reader :avatarable, :variant, :data
 
@@ -16,8 +16,8 @@ class AvatarComponent < ViewComponent::Base
 
   def classes
     [
-      (@classes || "h-24 w-24 sm:h-32 sm:w-32 ring-4 ring-white"),
-      "object-cover rounded-full bg-gray-300"
+      @classes || 'h-24 w-24 sm:h-32 sm:w-32 ring-4 ring-white',
+      'object-cover rounded-full bg-gray-300'
     ]
   end
 
