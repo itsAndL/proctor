@@ -1,34 +1,388 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  shared:
+    languages:
+      fr: "French"
+      en: "English"
+  footer_component:
+    features: "Features"
+    pricing:  "Pricing"
+    about_us: "About Us"
+    contact: "Contact"
+    all_rights_reserved: "All rights reserved" 
+  invite_candidates:
+    link_inacitve:
+      title: "Assessment Unavailable"
+      apology: "We apologize, but this assessment is currently not active."
+      explanation: "The assessment you're trying to access may have been completed, expired, or temporarily disabled by the administrator."
+      contact_info: "If you believe this is an error, please contact the assessment administrator or the organization that provided you with this link."
+      return_home: "Return to Home"
+    public_link:
+      title: "Take our assessment"
+      introduction: "Thanks for your interest in this assessment! Please provide your email address and we'll send you more information with a link to begin."
+      email_label: "Email"
+      submit_button: "Please invite me"
+  roles:
+    new:
+      title: "What brings you to AssessKit?"
+      business:
+        link_text: "I'm a Business"
+        description: "You're here to create and manage assessments to evaluate candidates, students, or team members for hiring, educational purposes, or skill development."
+      candidate:
+        link_text: "I'm a Candidate"
+        description: "You're here to take assessments and showcase your skills for job opportunities, school evaluations, or personal growth."
+  test_library:
+    index:
+      title: "Tests"
+      create_assessment: "Create assessment"
+    show:
+      get_in_touch: "Get in touch"
+      preview_sample_questions: "Preview sample questions"
+      type: "Type"
+      time: "Time"
+      level: "Level"
+      covered_skills: "Covered skills"
+      relevant_for: "This test is relevant for"
+      description: "Description"
+      close: "close"
+  home:
+    index:
+      ensuring: "Ensuring"
+      integrit: "Integrity"
+      in_remote_testing: "in remote testing" 
+      hero_description: "Secure, monitor, and manage remote assessments with confidence and ease, providing a fair testing environment for all."
+      start_free_trial: "Start free trial"
+      features_title: "Comprehensive Remote Testing Features"
+      secure_test_environment: "Secure Test Environment"
+      secure_test_environment_description: "Monitor all screen activities to prevent unauthorized access."
+      webcam_monitoring: "Webcam Monitoring"
+      webcam_monitoring_description: "Use the candidate's webcam to ensure a cheat-free environment."
+      full_screen_mode: "Full-Screen Mode"
+      full_screen_mode_description: "Enforce full-screen mode to prevent switching between applications."
+      copy_paste_blocking: "Copy-Paste Blocking"
+      copy_paste_blocking_description: "Disable copy-paste functions to maintain test integrity."
+      customizable_tests: "Customizable Tests"
+      customizable_tests_description: "Select from our test library with a variety of predefined tests."
+      anti_cheating_statistics: "Anti-Cheating Statistics"
+      anti_cheating_statistics_description: "Detailed reports on potential cheating behaviors."
+      benefits: "Benefits"
+      why_choose_assesskit: "Why Choose AssessKit?" 
+      increased_security: "Increased Security"
+      increased_security_description: "Ensure the integrity of your testing process with advanced monitoring tools."
+      convenience_and_flexibility: "Convenience and Flexibility"
+      convenience_and_flexibility_description: "Conduct tests remotely, saving time and resources."
+      reliable_results: "Reliable Results"
+      reliable_results_description: "Trust the scores and statistics provided, reflecting genuine perfomance."
+      user_friendly_interface: "User-Friendly Interface"
+      user_friendly_interface_description: "Easily create, manage, and monitor assessments with an intuitive platform design."
+      how_it_works: "How It Works"
+      simple_and_effective: "Simple and Effective"
+      create_tests: "Create tests"
+      create_tests_description: "Select and customize predefined tests from our extensive test library to fit your needs."
+      invite_test_takers: "Invite Test-Takers"
+      invite_test_takers_description: "Send secure invitations to candidates."
+      monitor_exams: "Monitor exams"
+      monitor_exams_description: "Use our monitoring tools to ensure a fair testing environment."
+      analyze_results: "Analyze results"
+      analyze_results_description: "Get instant scores and detailed reports."
+      simple_pricing: "Simple Pricing"
+      for_everyone: "for everyone"
+      pricing_description: "Our pricing plans are designed to be straightforward and affordable, catering to businesses of all sizes."
+      basic: "Basic"
+      basic_description: "Good for individuals and small teams that are just getting started."
+      basic_price: "$29"
+      per_month: "/month"
+      secure_test_environment: "Secure Test Environment"
+      webcam_monitoring: "Webcam Monitoring"
+      full_screen_mode: "Full-Screen Mode"
+      copy_paste_blocking: "Copy-Paste Blocking"
+      customizable_tests_basic: "Customizable Tests"
+      anti_cheating_statistics: "Anti-Cheating Statistics"
+      get_started: "Get started"
+      pro: "Pro"
+      pro_description: "Perfect for small / medium sized businesses."
+      pro_price: "$49"
+      per_month: "/month"
+      all_basic_features: "All Basic Plan features"
+      customizable_tests_pro: "Customizable Tests (up to 100 tests/month)"
+      priority_support: "Priority Support"
+      enhanced_reporting: "Enhanced Reporting"
+      time_limits: "Time Limits"
+      get_started: "Get started"
+      enterprise: "Enterprise"
+      enterprise_description: "Designed for large enterprises and organizations with extensive testing needs."
+      enterprise_price: "$79"
+      per_month: "/month"
+      all_pro_features: "All Pro Plan features"
+      unlimited_customizable_tests: "Unlimited Customizable Tests"
+      advanced_security_options: "Advanced Security Options"
+      cta_title: "Ready to Secure Your Tests?"
+      cta_description: "Start today and see the difference AssessKit can make."
+      cta_button: "Get Started Today"
+  customer:
+    profile:
+      team:
+        manage_team_members: "Manage team members"
+        add_user: "Add user"
+        name: "Name"
+        email: "Email"
+        role: "Role"
+        actions: "Actions"
+        owner: "Owner"
+        reset_pass: "Reset password"
+        edit: "Edit"
+        archive: "Archive"
+    candidates:
+      index:
+        candidates: "Candidates"
+        create_assessment: "Create assessment"
+        search_candidates: "Search candidates"
+        assessment: "Assessment"
+        name: "Name"
+        email: "Email"
+        assessments: "Assessments"
+        last_activity: "Last activity"
+        actions: "Actions"
+  custom_question_responses:
+    edit:
+      review_answer: "Review Answer"
+      question: "Question"
+      what_to_look_for: "What to Look For in the Answer?"
+      answer: "Answer"
+      no_answer: "The candidate has not written any answer."
+      download_file: "Download File"
+      no_file_uploaded: "The candidate has not uploaded any files."
+      no_time_limit: "No Time Limit"
+      finished_in: "Finished in %{duration} out of %{total_duration}"
+      rate_answer: "Rate Answer"
+      comment_placeholder: "Comment"
+      cancel: "Cancel"
+      confirm: "Confirm"
+      close: "Close"
+  custom_question_library:
+    index:
+      custom_questions: "Custom Questions"
+      create_assessment: "Create Assessment"
+  contact:
+    index:
+      get_in_touch: "Get in touch"
+      help_message: "Have questions or need more information? We're here to help. Contact us using the information below or fill out the form and we'll get back to you as soon as possible."
+      address: "Address"
+      telephone: "Telephone"
+      email: "Email"
+      first_name: "First name"
+      last_name: "Last name"
+      phone_number: "Phone number"
+      message: "Message"
+      send_message: "Send message"
+  candidates:
+    form:
+      candidate_profile: "Your candidate profile"
+      profile: "Profile"
+      profile_info_warning: "This information will be displayed publicly so be careful what you share."
+      avatar: "Avatar"
+      change_avatar: "Change Avatar"
+      file_format_warning: "JPG, JPEG or PNG. 2MB max."
+      something_went_wrong: "Something went wrong while uploading the file."
+      loading: "Loading..."
+      save: "Save"
+  candidate:
+    tests:
+      feedback:
+        first_test: "You have now finished the first test"
+        intro: "Help us improve this test by providing anonymous feedback. Your answer will only be available to AssessKit, not your assessor."
+        measurement_opinion: "In your opinion, did the test accurately measure your skills in %{skill}?"
+        yes: "Yes"
+        somewhat: "Somewhat"
+        no: "No"
+        placeholder: "Please tell us more about your answer..."
+        finish: "Finish"
+    custom_questions:
+      start:
+        title: "Custom questions"
+    assessment_participations:
+      checkout:
+        great_job: "Great job! You've completed your assessment."
+        see_results_prompt: "Would you like to see your results now? We will automatically redirect you to view your assessment outcome."
+        redirecting_message: "Redirecting in %{seconds} seconds."
+        go_now: "Go there now"
+      index:
+        my_assessments: "My assessments"
+        no_assessments_title: "No assessments yet"
+        no_assessments_message: "You haven't been invited to any assessments yet."
+        company_name: "Company name"
+        invited_on: "Invited on"
+        last_activity: "Last activity"
+      overview:
+        greeting: "Hello %{name},"
+        completion_status: "You have completed %{completed} out of %{total} tests."
+        get_started_prompt: "Click <strong>Get started</strong> button when you are ready to continue your assessment."
+        welcome_message: "Welcome to our assessment."
+        assessment_value: "Completing this assessment will help you showcase your skills and knowledge."
+        good_luck: "Good luck!"
+        before_you_start: "A few things before you start:"
+        assessment_structure: "This assessment consists of <strong>%{parts}</strong>. It will take approximately <strong>%{duration}</strong> to complete."
+        timed_assessment: "The assessment is timed. A timer is shown per test or per question."
+        preview_questions: "Before each test there may be preview questions, <strong>be aware the timer for the test will have already started.</strong>"
+        camera_usage: "Please allow the use of your camera/webcam and do not leave full-screen mode. Snapshots will be taken of you periodically during the assessment. These measures are taken to ensure fairness for everyone."
+        calculator_use: "You are free to use a calculator, pen and paper."
+        recommendation: "We recommend completing the assessment in one go."
+        get_started: "Get started"
+      setup:
+        camera_setup: "Camera setup"
+        camera_info: "We use camera images to ensure fairness for everyone. Make sure that you are in front of your camera."
+        camera_label: "Camera"
+        loading_cameras: "Loading cameras..."
+        camera_error_message: "It seems you don't have a camera or mic connected to your computer or they are blocked. To enable the camera and mic, click on the <strong>camera blocked</strong> icon in your browser's address bar and reload the page. If you don't enable a camera, you can still take the assessment, but then %{company} cannot verify fair play."
+        webcam_troubleshoot: "Trouble with your webcam?"
+        camera_permission: "Ensure you have granted permission for your browser to access your camera."
+        supported_browser: "Ensure you are using a <a target='_blank' href='%{url}' class='underline'><strong>supported browser.</strong></a>"
+        multiple_camera_devices: "If you have multiple camera devices, ensure you have given your browser and our website permission to use the right device."
+        incognito_mode: "Try launching the assessment in incognito mode or in a private window."
+        drivers_update: "Ensure your camera drivers and web browser are up to date."
+        restart_device: "Restart your device and try accessing the assessment again using the link in the invitation email."
+        next: "Next"
+      show:
+        company_name: "Company name"
+        invited_on: "Invited on"
+        resume_assessment: "Resume assessment"
+        start_assessment: "Start assessment"
+        your_progress: "Your progress"
+        tests: "Tests"
+        out_of: "out of"
+        time_left: "Time left"
+        about: "About"
+        approx_time: "Approximate time to complete assessment"
+        before_you_start: "A few things before you start"
+        important_things: "Important things"
+        timed_assessment: "The assessment is timed. A timer is shown per test or per question."
+        preview_questions: "Before each test there may be preview questions, <strong>be aware the timer for the test will have already started.</strong>"
+        camera_webcam_info: "Please allow the use of your camera/webcam and do not leave full-screen mode. Snapshots will be taken of you periodically during the assessment."
+        audio_info: "Turn on your speakers or headphones (to play audio)."
+        calculator_info: "You are free to use a calculator, pen and paper."
+        completion_recommendation: "We recommend completing the assessment in one go."
+        name: "Name"
+        time_taken: "Time Taken"
+        score: "Score"
+  businesses:
+    form:
+      your_business_profile: "Your business profile"
+      business_details: "Business details"
+      business_info: "Information about your business."
+      bio_placeholder: "Write a few sentences about your company."
+      avatar: "Avatar"
+      change_avatar: "Change avatar"
+      avatar_info: "JPG, JPEG or PNG. 2MB max."
+      something_went_wrong: "Something went wrong."
+      personal_details: "Personal details"
+      personal_info: "Information about you, the contact point for your business on AssessKit."
+      save: "Save"
+  assessments:
+    form:
+      title: Assessment details
+      title_message: "Enter a clear and concise title for your assessment. This will be visible to candidates."
+      language_message: "This is the language in which your candidates will take your assessment. Any tests you add to this assessment must be in the same language."
+      language_prompt: "Select a language"
+    add_questions:
+      title: Add questions
+    choose_tests:
+      title: Choose tests
+    finalize:
+      title: Finalize
+      tip: You can configure and make changes to your assessment until you invite the first candidate.
+    index:
+      title: Assessments 
+      create_assessment: "Create Assessment"
+      search_placeholder: "Search assessments"
+      active: "Active (%{count})"
+      inactive: "Inactive (%{count})"
+      archived: "Archived (%{count})"
+      name: "Name"
+      candidates: "Candidates"
+      progress: "Progress"
+      last_activity: "Last activity"
+      date_created: "Date created"
+      actions: "Actions"
+      edit: "Edit"
+      archive: "Archive"
+      unarchive: "Unarchive"
+    rename:
+      rename_assessment: "Rename assessment"
+      cancel: "Cancel"
+      save: "Save"
+      close: "Close"
+    require_edit:
+      assessment_edit_required: "Assessment edit required"
+      edit_instructions: "Before inviting candidates, please include at least one skill test or custom question."
+      cancel: "Cancel"
+      edit_assessment: "Edit assessment"
+      close: "Close"
+    show:
+      try_yourself: "Try yourself"
+      invite: "Invite"
+      edit_assessment: "Edit assessment"
+      archive: "Archive"
+      unarchive: "Unarchive"
+  assessment_participations:
+    delete_confirmation:
+      delete_candidate: "Delete candidate"
+      confirm_delete: "Are you sure you want to permanently delete this candidate? Access to the assessment will be revoked if the candidate hasn't completed their assessment. After deleting, you can re-invite the candidate."
+      cancel: "Cancel"
+      delete: "Delete"
+      close: "Close"
+  assessment_mailer:
+    assessment_invitation:
+      greeting: "Hello %{name}!"
+      invitation: "You've been invited to take an assessment by %{company}."
+      description: "This assessment is designed to evaluate your skills and knowledge in a specific area. It's an opportunity to demonstrate your abilities in a fair and unbiased manner. The assessment will take approximately %{duration} to complete."
+      new_to_assesskit: "New to AssessKit? Here's a"
+      step_by_step_guide: "step-by-step guide on what to expect"
+      system_requirements: "For technical requirements and device compatibility, check out our"
+      requirements_link: "system requirements"
+      troubleshooting: "If you encounter any issues, please refer to our"
+      troubleshooting_guide: "troubleshooting guide"
+      start_assessment: "Start Assessment"
+      start_assessment_button: "Start Assessment"
+      support_contact: "If you have any questions or need assistance, please don't hesitate to contact our support team."
+    reminder_email:
+      greeting: "Hello %{name}!"
+      reminder: "This is a friendly reminder that you have an assessment to complete for %{company}."
+      duration: "The assessment will take approximately %{duration} to complete. Your participation is important, and we encourage you to complete it at your earliest convenience."
+      assistance: "If you need any assistance, please refer to our"
+      troubleshooting_guide: "troubleshooting guide"
+      technical_requirements: "For technical requirements, check out our"
+      system_requirements: "system requirements"
+      start_assessment: "Start Assessment"
+      start_assessment_button: "Start Assessment"
+  about:
+    index:
+      mission:
+        title: "Our Mission"
+        description: "Our mission is to revolutionize the way remote testing is conducted. We strive to create a secure and user-friendly platform that upholds the highest standards of exam integrity and fairness. By leveraging cutting-edge technology, we empower organizations to conduct remote assessments with confidence."
+      vision:
+        title: "Our Vision"
+        description: "To be the leading provider of remote testing solutions, recognized for our commitment to security, reliability, and user experience. We envision a world where remote exams are as trustworthy and valid as traditional in-person assessments."
+      values:
+        title: "Our Values"
+        description: "At AssessKit, our values guide everything we do. They reflect our commitment to excellence and integrity in providing remote testing solutions."
+        integrity:
+          title: "Integrity"
+          description: "We ensure that all tests conducted through our platform are secure and cheat-free."
+        innovation:
+          title: "Innovation"
+          description: "We continuously improve our technology to provide the best possible testing experience."
+        reliability:
+          title: "Reliability"
+          description: "We deliver consistent and accurate results that organizations can trust."
+        user_centricity:
+          title: "User-Centricity"
+          description: "We design our platform with the user in mind, making it intuitive and easy to use."
+        transparency:
+          title: "Transparency"
+          description: "We maintain open and clear communication, providing detailed reports and insights."
+        support:
+          title: "Support"
+          description: "We offer dedicated customer support to assist users and address any concerns promptly."
+
   activerecord:
     attributes:
       business:
@@ -56,6 +410,13 @@ en:
       custom_question:
         language:
           <<: *languages
+      assessment_participation:
+        status:
+          pending: "Pending"
+          started: "Started"
+          completed: "Completed"
+          expired: "Expired"
+          archived: "Archived"
   businesses:
     form:
       avatar: Your company logo
