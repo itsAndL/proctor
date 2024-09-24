@@ -1,4 +1,41 @@
 fr:
+  assessment_mailer:
+    invite_email:
+      invite_subject: "Vous avez été invité à passer une évaluation pour %{company}"
+    reminder_email:
+      reminder_subject: "Rappel : Complétez votre évaluation pour %{company}"
+  duration:
+    zero_min: "0 min"
+    hour: "heure"
+    minute: "minute"
+    min: "min"
+    second: "seconde"
+    sec: "sec"
+  flash:
+    create_success: "L'évaluation a été créée avec succès."
+    update_success: "L'évaluation a été mise à jour avec succès."
+    archive_success: "L'évaluation a été archivée avec succès."
+    unarchive_success: "L'évaluation a été désarchivée avec succès."
+    update_tests_success: "Les tests de l'évaluation ont été mis à jour avec succès."
+    update_questions_success: "Les questions de l'évaluation ont été mises à jour avec succès."
+    finish_success: "L'évaluation a été finalisée avec succès."
+    update_title_success: "Le titre de l'évaluation a été mis à jour avec succès."
+    create_success: "Votre profil d'entreprise a été créé avec succès."
+    update_success: "Votre profil d'entreprise a été mis à jour avec succès."
+    create_success: "Votre profil de candidat a été créé avec succès."
+    update_success: "Votre profil de candidat a été mis à jour avec succès."
+    update_success: "L'évaluation a été mise à jour avec succès."
+    no_file_attached: "Aucun fichier joint à cette réponse."
+    activate_success: "Le lien public de l'évaluation a été activé avec succès."
+    deactivate_success: "Le lien public de l'évaluation a été désactivé avec succès."
+    invite_success: "L'invitation a été envoyée avec succès."
+    bulk_invite_success: "L'invitation en masse a été envoyée avec succès !"
+    select_file: "Veuillez sélectionner un fichier à télécharger."
+    invite_me_success: "L'invitation a été envoyée avec succès !"
+    already_added: "Ce candidat a déjà été ajouté à cette évaluation."
+  alert:
+    business_required: "Vous devez être connecté en tant qu'entreprise pour accéder à cette page."
+    candidate_required: "Vous devez être connecté en tant que candidat pour accéder à cette page."
   shared:
     languages:
       fr: "Français"

@@ -3,6 +3,43 @@ en:
     languages:
       fr: "French"
       en: "English"
+  assessment_mailer:
+    invite_email:
+      invite_subject: "You've been invited to take an assessment for %{company}"
+    reminder_email:
+      reminder_subject: "Reminder: Complete your assessment for %{company}"
+  duration:
+    zero_min: "0 min"
+    hour: "hour"
+    minute: "minute"
+    min: "min"
+    second: "second"
+    sec: "sec"
+  flash:
+    create_success: "The assessment was successfully created."
+    update_success: "The assessment was successfully updated."
+    archive_success: "Assessment was successfully archived."
+    unarchive_success: "Assessment was successfully unarchived."
+    update_tests_success: "The assessment's tests were successfully updated."
+    update_questions_success: "The assessment's questions were successfully updated."
+    finish_success: "Assessment was successfully finalized."
+    update_title_success: "Assessment title was successfully updated."
+    create_success: "Your business profile was successfully created."
+    update_success: "Your business profile was successfully updated."
+    create_success: "Your candidate profile was successfully created."
+    update_success: "Your candidate profile was successfully updated."
+    update_success: "Rating was successfully updated."
+    no_file_attached: "No file attached to this response."
+    activate_success: "Assessment public link was successfully activated."
+    deactivate_success: "Assessment public link was successfully deactivated."
+    invite_success: "Invitation was successfully sent."
+    bulk_invite_success: "Bulk invitation sent successfully!"
+    select_file: "Please select a file to upload."
+    invite_me_success: "Invitation sent successfully!"
+    already_added: "This candidate has already been added to this assessment."
+  alert:
+    business_required: "You need to be logged in as a business to access this page."
+    candidate_required: "You need to be logged in as a candidate to access this page."
   footer_component:
     features: "Features"
     pricing:  "Pricing"
