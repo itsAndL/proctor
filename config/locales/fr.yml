@@ -448,11 +448,11 @@ fr:
           <<: *languages
       assessment_participation:
         status:
-          pending: "En attente"
-          started: "Démarré"
+          started: "Commencé"
           completed: "Terminé"
-          expired: "Expiré"
           archived: "Archivé"
+          invited: "Invité"
+          invitation_clicked: "Invitation cliquée"
   businesses:
     form:
       avatar: Logo de votre entreprise

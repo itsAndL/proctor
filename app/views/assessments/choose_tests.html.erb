@@ -1,7 +1,7 @@
 <%= render AssessmentHeaderComponent.new(assessment: @assessment) %>
 <main class="bg-zinc-50 h-full relative">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-16">
-    <%= render AssessmentStepperComponent.new(current_step: t('.title'), assessment: @assessment) %>
+    <%= render AssessmentStepperComponent.new(current_step: :choose_tests, assessment: @assessment) %>
     <div class="mt-10 reltive">
       <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight"><%= t('.title') %></h1>
       <%= form_with(model: @assessment, url: update_tests_assessment_path(@assessment), method: :patch, class: "pt-5 pb-8 bg-zinc-50 sticky top-0 z-10 px-0.5 -mx-0.5", id: "form-to-submit") do |form| %>

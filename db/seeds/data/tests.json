@@ -1,0 +1,2122 @@
+[
+  {
+    "title": "Communication",
+    "attributes": {
+      "overview": "This Communication test evaluates candidates' skills in communicating clearly and effectively using professional etiquette. The test assesses candidates in both written and verbal communication, as well as non-verbal cues and active listening.",
+      "level": "entry_level",
+      "covered_skills": [
+        "Understanding and interpreting written communication",
+        "Listening actively and interpreting non-verbal cues",
+        "Communicating clearly in business contexts",
+        "Using professional communication etiquette"
+      ],
+      "relevancy": "Any role that requires good communication skills to facilitate effective collaboration with others.",
+      "description": "Good communication is the foundation of good relationships. And good relationships are key to building A-teams that will take your organization from good to great. Good communication among the members of a team builds trust, resolves (and even prevents) problems, provides clarity and direction, improves productivity, and increases engagement.\n\nThis Communication test evaluates candidates' skills in understanding, using, and interpreting written communication and assesses their verbal communication skills (both in an in-person and virtual environment) along ability to clarify next steps, summarize messages effectively, and use professional communication etiquette.\n\nCandidates who perform well on this screening test can listen attentively to others, communicate with confidence and open-mindedness, and can offer both empathy and feedback in the appropriate scenarios and in the appropriate manner.",
+      "category": "Situational judgment",
+      "language": "english",
+      "questions_to_answer": 15,
+      "duration_seconds": 540,
+      "position": 1
+    },
+    "questions": [
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": true,
+          "content": "<p>In a professional email, which of the following is the most appropriate way to start?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Hey there!</p>"
+          },
+          {
+            "content": "<p>Dear Sir/Madam,</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Yo!</p>"
+          },
+          {
+            "content": "<p>What's up?</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_response",
+          "preview": true,
+          "content": "<p>Which of the following are effective active listening techniques?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Maintaining eye contact</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Interrupting to share your own experiences</p>"
+          },
+          {
+            "content": "<p>Nodding and using verbal affirmations</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Paraphrasing to confirm understanding</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Checking your phone while someone is speaking</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_response",
+          "preview": true,
+          "content": "<p>Which of the following are effective active listening techniques?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Maintaining eye contact</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Interrupting to share your own experiences</p>"
+          },
+          {
+            "content": "<p>Nodding and using verbal affirmations</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Paraphrasing to confirm understanding</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Checking your phone while someone is speaking</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": true,
+          "content": "<p>When giving a presentation, what is the best way to handle a question you don't know the answer to?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Make up an answer to avoid looking uninformed</p>"
+          },
+          {
+            "content": "<p>Ignore the question and move on</p>"
+          },
+          {
+            "content": "<p>Admit you don't know and offer to find out</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Deflect by asking the audience to answer</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>Which communication channel is most appropriate for delivering sensitive feedback to a team member?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Email</p>"
+          },
+          {
+            "content": "<p>Face-to-face meeting</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Group chat</p>"
+          },
+          {
+            "content": "<p>Company-wide announcement</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_response",
+          "preview": false,
+          "content": "<p>Which of the following are characteristics of effective written communication?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Clarity and conciseness</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Use of jargon and complex language</p>"
+          },
+          {
+            "content": "<p>Proper grammar and punctuation</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Consideration of the audience</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Including irrelevant information</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>What is the best way to address a misunderstanding with a colleague?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Ignore it and hope it resolves itself</p>"
+          },
+          {
+            "content": "<p>Discuss it privately with other team members</p>"
+          },
+          {
+            "content": "<p>Address it directly with the colleague in a respectful manner</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Escalate the issue to management immediately</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>In a virtual meeting, what is the best way to indicate that you want to speak?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Interrupt the current speaker</p>"
+          },
+          {
+            "content": "<p>Use the 'raise hand' feature</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Send a private message to the host</p>"
+          },
+          {
+            "content": "<p>Turn your video on and off repeatedly</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_response",
+          "preview": false,
+          "content": "<p>Which of the following are effective strategies for improving communication in a diverse workplace?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Encourage open dialogue</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Assume everyone has the same communication style</p>"
+          },
+          {
+            "content": "<p>Provide cultural sensitivity training</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Use inclusive language</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Ignore cultural differences to avoid conflict</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>When giving a presentation, what is the recommended ratio of text to visual elements on slides?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>80% text, 20% visuals</p>"
+          },
+          {
+            "content": "<p>50% text, 50% visuals</p>"
+          },
+          {
+            "content": "<p>20% text, 80% visuals</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>100% text, 0% visuals</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>What is the primary purpose of a project status report?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>To assign blame for project delays</p>"
+          },
+          {
+            "content": "<p>To impress senior management</p>"
+          },
+          {
+            "content": "<p>To provide a clear update on progress, issues, and next steps</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>To document every detail of the project</p>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Problem Solving",
+    "attributes": {
+      "overview": "This Problem Solving test evaluates candidates' ability to define problems and analyze data and textual information to make correct decisions. This test helps you identify candidates who use analytical skills to evaluate and respond to complex situations.",
+      "level": "intermediate",
+      "covered_skills": [
+        "Creating and adjusting schedules",
+        "Interpreting data and applying logic to make decisions",
+        "Prioritizing and applying order based on a given set of rules",
+        "Analyzing textual and numerical information to draw conclusions"
+      ],
+      "relevancy": "Any role that involves managing constantly shifting variables with tight deadlines. This may include administrative assistants, project managers, planners, and people working in hospitality or sales.",
+      "description": "Effective problem-solving requires a broad skill set that enables individuals, teams, and businesses to advance towards stated objectives. It involves the ability to define a problem, to break it down into manageable parts, to develop approaches to solve the (sub)problem using creativity and analytical thinking, and to execute flawlessly.\n\nThis Problem Solving test allows you to identify candidates who display these abilities. The test presents candidates with typical problem-solving scenarios like scheduling on the basis of a diverse set of conditions, identifying the right sequence of actions based on a number of business rules, and drawing conclusions based on textual and numerical information.\n\nThe test requires candidates to identify the right answers to the questions in a limited amount of time. Successful candidates can quickly identify the key elements of the problem and work through the problem at speed without making mistakes. This is a great test to include to check candidates' overall analytical skills.",
+      "category": "Cognitive ability",
+      "language": "english",
+      "questions_to_answer": 12,
+      "duration_seconds": 540,
+      "position": 2
+    },
+    "questions": [
+      {
+        "question_attributes": { 
+          "type": "multiple_choice",
+          "preview": true,
+          "content": "<p>45 people in a certain company can work together to finish a project in 15 days. For a project of the same workload, the company decided to use 15 people. Assume all people have the same level of productivity.</p><p>&nbsp;</p><p><strong>In how many days can this project be completed?&nbsp;</strong></p>"
+        },
+          "options": [
+          {
+            "content": "<p>5 days</p>"
+          },
+          {
+            "content": "<p>10 days</p>"
+          },
+          {
+            "content": "<p>22.5 days</p>"
+          },
+          {
+            "content": "<p>45 days</p>",
+            "correct": true
+          }
+        ]
+      },
+      {
+        "question_attributes": { 
+          "type": "multiple_choice",
+          "preview": true,
+          "content": "<p>The following table shows the order in which certain ingredients, labelled A through F, need to be mixed (left goes first, right goes last).</p> <p><br></p> <p>Additionally, we know that:</p> <p><br></p> <ul> <li>Ingredients A and D are added in consecutive steps</li> <li>B is added before A</li> <li>F is not added right before or after C</li> </ul> <p><br></p> <p><strong>Which ingredient needs to be added last?</strong></p>"
+        },
+        "options": [
+          {
+            "content": "<p>B</p>"
+          },
+          {
+            "content": "<p>D</p>"
+          },
+          {
+            "content": "<p>E</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>F</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": { 
+          "type": "multiple_choice",
+          "preview": true,
+          "content": "<p>A customer wants an eggless cake with an organic topping.</p> <p><br></p> <p><img src='https://tgo-assets-production.s3.amazonaws.com/production/eeabc5c8-c5f0-43b8-99aa-ab0f58d89396-57d8c981-d235-4afa-bb92-1307558eae69.png?AWSAccessKeyId=ASIAUJMDFWCP7QDRYL5F&Signature=lTh9OkOUmLKPJOJzN4co6G9U3rk%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEPj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCWV1LXdlc3QtMSJHMEUCIDruVezZsuleUhoWsOHEaYJzmixFfyqEV2MJfZOc5MOjAiEAl0AK2qH1AfqB5J7QHEFLWGQkEhLaFhJHal4lAbPEo2Eq%2FAMI0f%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARACGgwyOTUwMTcyMzA0OTUiDN%2Be1qhTdmonuemGOyrQAyTkaOSe3IuwDAt9aNz4U4FIbRCPa5ygJhqsDOSb22qEna5G3mdYlzKdi%2FgtHGoC3mXN%2Bil6XbvbFHaj%2BKiPxnRbPivCxTjoqJV%2BFdkD%2FzHaV3mc5d6rIZtOEuBBpQy4OOl8vxvsLwOnCFb%2FjJ85e%2FHp80pqNG1pdpgJTD3zlD9isg4UYLc2ZS7Bf9lFyKWWMYsJJvM%2FZrHgt5Oo54PKvsDCrzVFqgHIoJKiYA0k%2FcKXBPHtI%2BjR3v75HUXMuPvAIZLrM0O4hvTLO7x4LfuLdnomNT4QwUdMxHDNkbO9QrwLxmolSVN4NBuSCsukZ5x1yEkI4I9DZrAkBbqIEEwOK8UJZAk2fx604U14dCX5CbMsFrFk8HIrzqU6WIyd8WZ2i%2FIQFD1u88daObM4Whu14U%2BWc1i4p1yU8dsWsfgJba7yg8ODMaoKpTpSrA0Asjvn2rO%2B8nCV%2B%2FvkvYM74LvK1aw0rSvwAoWoGJ%2F%2FwHbxI6Z3AuvvwOEseuHKIn8fyFAikp4D5JzY006F5dm2wRdG9W2FtamktkEgLsoHV%2F%2FM1HzUjUb98OkwkPItMaVFojdKiAtftCyQitdB%2F6H91dMzxqYhDD66ZLUI8KW%2Bg34CG0YCMLCejbUGOqUB3R%2BhPzcJy5ynX4IF3b9sR%2BsKywKFVQwumkN2wVrMQwicf67lmJq3YDgw5XUsuZuHVqccpn%2FmSjwzj0%2Bpq7mjTmujqWK84g7vaZcMSg2njAK0i8zPpjiZeZRLxOS%2FB%2Fm9KQ7zfXNosHfuxW%2B3UKQLLJXT%2FcpXRQy0hxwKF8BdTXkvb9nVMHuSz4irIRFkTtOWPBZ%2B28vrn%2BYxvE9f7FPCrUyC87%2FA&Expires=1722010586'></p> <p><br></p> <p><strong>Which of the following can she order?</strong></p>"
+        },
+        "options": [
+          {
+            "content": "<p>Pound cake with pear and strawberry toppings.</p>"
+          },
+          {
+            "content": "<p>Butter cake with orange and kiwi toppings.</p>"
+          },
+          {
+            "content": "<p>Sponge cake with apple and cherry toppings.</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Carrot cake with strawberry and kiwi toppings.</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_response",
+          "preview": true,
+          "content": "<p>Which of the following are prime numbers?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>2</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>3</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>4</p>"
+          },
+          {
+            "content": "<p>5</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>6</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_response",
+          "preview": true,
+          "content": "<p>Which of the following are correct about problem-solving skills?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>They involve analytical thinking</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>They are only useful in mathematics</p>"
+          },
+          {
+            "content": "<p>They include the ability to break down complex problems</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>They are not important in the workplace</p>"
+          },
+          {
+            "content": "<p>They can involve creative thinking</p>",
+            "correct": true
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>A train travels at a speed of 60 km/h for 2 hours, then at 80 km/h for 1 hour. What is the average speed of the train for the entire journey?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>60 km/h</p>"
+          },
+          {
+            "content": "<p>66.67 km/h</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>70 km/h</p>"
+          },
+          {
+            "content": "<p>80 km/h</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>If it takes 6 people 12 days to complete a project working 8 hours per day, how many days would it take 8 people working 6 hours per day to complete the same project?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>9 days</p>"
+          },
+          {
+            "content": "<p>12 days</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>15 days</p>"
+          },
+          {
+            "content": "<p>18 days</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>In a group of 100 people, 70 like coffee, 80 like tea, and 10 like neither. How many people like both coffee and tea?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>40</p>"
+          },
+          {
+            "content": "<p>50</p>"
+          },
+          {
+            "content": "<p>60</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>70</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_response",
+          "preview": false,
+          "content": "<p>Which of the following are effective problem-solving techniques? (Select all that apply)</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Brainstorming</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Root cause analysis</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Avoiding the problem</p>"
+          },
+          {
+            "content": "<p>SWOT analysis</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Blaming others</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_response",
+          "preview": false,
+          "content": "<p>Which of the following statements about critical thinking are true? (Select all that apply)</p>"
+        },
+        "options": [
+          {
+            "content": "<p>It involves analyzing information objectively</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>It's only useful in academic settings</p>"
+          },
+          {
+            "content": "<p>It helps in making informed decisions</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>It requires considering multiple perspectives</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>It's the same as memorizing facts</p>"
+          }
+        ]
+      }  
+    ]
+  },
+  {
+    "title": "Time Management",
+    "attributes": {
+      "overview": "The Time Management test evaluates candidates' ability to manage their time in a professional environment. Through typical workplace scenarios, this test assesses how well candidates can prioritize, execute, cooperate, and reflect on tasks and projects.",
+      "level": "intermediate",
+      "covered_skills": [
+        "Priority and planning",
+        "Execution",
+        "Communication and cooperation",
+        "Mindset"
+      ],
+      "relevancy": "Any role that requires good time management skills.",
+      "description": "Employees who manage their time well also manage their work well. Good time management allows employees to work more efficiently and become more productive by focusing on what's important and will have the greatest impact on the business without getting lost in the busyness that brings no results. It also leads to better decision-making, less procrastination, and higher quality work overall.\n\nThis Time Management test evaluates candidates' skills to prioritize tasks according to deadlines, importance, and impact; to execute tasks effectively; and to collaborate and communicate with colleagues and supervisors about tasks. It also assesses candidates' ability to reflect on their own attitudes toward their work, including monitoring outcomes and developing positive time management habits. The test provides candidates with real-life workplace scenarios and asks them to make the best decision to solve each situation in the most efficient and productive way.\n\nCandidates who perform well on this test can separate urgent from important tasks and how each impacts their goals and the business goals to prioritize work for the greatest results. They can communicate progress and needs with internal and external stakeholders effectively and coordinate with others well to achieve more without expending unnecessary effort. They can manage distractions to stay focused on their work and manage the quality of its outcome. Finally, they're capable of reviewing their own work as well as the work of their peers and making any adjustments necessary to their workflow.",
+      "category": "Situational judgment",
+      "language": "english",
+      "questions_to_answer": 16,
+      "duration_seconds": 540,
+      "position": 3
+    },
+    "questions": [
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": true,
+          "content": "<p>You have three tasks due today: a high-priority report for your boss, a medium-priority client email, and a low-priority team meeting. In what order should you complete these tasks?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Team meeting, client email, boss's report</p>"
+          },
+          {
+            "content": "<p>Boss's report, client email, team meeting</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Client email, team meeting, boss's report</p>"
+          },
+          {
+            "content": "<p>Complete them in the order they were assigned</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_response",
+          "preview": true,
+          "content": "<p>Which of the following are effective strategies for managing your time? (Select all that apply)</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Using a to-do list</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Multitasking constantly</p>"
+          },
+          {
+            "content": "<p>Setting specific goals</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Taking regular breaks</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Saying yes to every request</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": true,
+          "content": "<p>What is the Pomodoro Technique?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>A method of prioritizing tasks</p>"
+          },
+          {
+            "content": "<p>A way of organizing your email inbox</p>"
+          },
+          {
+            "content": "<p>A time management method using 25-minute work intervals</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>A technique for delegating tasks</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": true,
+          "content": "<p>Which of the following is an example of the Pareto Principle (80/20 rule) in time management?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Spending 80% of your time on breaks and 20% on work</p>"
+          },
+          {
+            "content": "<p>20% of your efforts produce 80% of your results</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Working on 80 tasks simultaneously to complete 20</p>"
+          },
+          {
+            "content": "<p>Spending 80% of your time planning and 20% executing</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>You're working on a project and realize it's going to take longer than expected. What's the best course of action?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Work overtime without informing anyone</p>"
+          },
+          {
+            "content": "<p>Inform your supervisor and discuss adjusting the timeline or resources</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Rush to finish it, potentially compromising quality</p>"
+          },
+          {
+            "content": "<p>Delegate the entire project to a colleague</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_response",
+          "preview": false,
+          "content": "<p>Which of the following are characteristics of SMART goals? (Select all that apply)</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Specific</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Measurable</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Achievable</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Relevant</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Time-bound</p>",
+            "correct": true
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>What is the primary purpose of a Gantt chart?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>To track employee attendance</p>"
+          },
+          {
+            "content": "<p>To visualize project schedules and tasks</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>To calculate project budgets</p>"
+          },
+          {
+            "content": "<p>To assign tasks to team members</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>What is the best way to handle frequent interruptions during your workday?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Ignore all interruptions and focus solely on your task</p>"
+          },
+          {
+            "content": "<p>Address each interruption immediately as it occurs</p>"
+          },
+          {
+            "content": "<p>Set specific times for handling interruptions and communicate this to others</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Work from home to avoid all interruptions</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_response",
+          "preview": false,
+          "content": "<p>Which of the following are effective strategies for overcoming procrastination? (Select all that apply)</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Break large tasks into smaller, manageable steps</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Set clear deadlines for yourself</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Reward yourself for completing tasks</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Wait for motivation to strike before starting</p>"
+          },
+          {
+            "content": "<p>Eliminate distractions in your work environment</p>",
+            "correct": true
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>What is the '2-Minute Rule' in time management?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Take a 2-minute break every hour</p>"
+          },
+          {
+            "content": "<p>Spend 2 minutes planning before starting any task</p>"
+          },
+          {
+            "content": "<p>If a task takes less than 2 minutes, do it immediately</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Limit meetings to 2 minutes</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>What is the primary benefit of time blocking?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>It eliminates the need for breaks</p>"
+          },
+          {
+            "content": "<p>It allows for better focus and productivity on specific tasks</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>It reduces the total number of tasks you need to complete</p>"
+          },
+          {
+            "content": "<p>It automatically prioritizes your tasks for you</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>When is multitasking most effective?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>When working on high-priority tasks</p>"
+          },
+          {
+            "content": "<p>When trying to meet tight deadlines</p>"
+          },
+          {
+            "content": "<p>When combining a cognitive task with a physical task</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>When working on complex problems</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>What is the main purpose of conducting a time audit?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>To track employee work hours</p>"
+          },
+          {
+            "content": "<p>To identify how you're currently spending your time</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>To determine the fastest way to complete tasks</p>"
+          },
+          {
+            "content": "<p>To set deadlines for projects</p>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Fundamentals of Electricity",
+    "attributes": {
+      "overview": "This Fundamentals of Electricity test evaluates candidates' knowledge of the basic principles and topics of electricity. The test helps you identify candidates who can approach electrical circuits and equipment to troubleshoot or perform maintenance.",
+      "level": "entry_level",
+      "covered_skills": [
+        "Basic electric knowledge",
+        "Electronic circuits",
+        "Digital logic design",
+        "Electric power"
+      ],
+      "relevancy": "Electricians, construction workers, electrical maintenance personnel, line installers and repairers, power plant operators, and any other roles requiring a knowledge of the fundamentals of electricity.",
+      "description": "Basic knowledge of electricity and electrical circuits, including series and parallel circuits and alternating and direct currents is fundamental. An understanding of these fundamentals of electricity can ensure that an electrician, technician, maintenance person, or electrical plant worker can safely and successfully operate or maintain electrical equipment, perform tests on machines, and troubleshoot electrical setups and equipment in a variety of settings.\n\nThis Fundamentals of Electricity test assesses candidates' understanding of basic electrical principles, including basic electrical knowledge, electric circuits, digital logic, and electric power. \n\nCandidates who perform well on this test will be able to operate and work on virtually any electrical machine and domain, as the underlying principles of electricity are the same. From household systems to industrial-level machinery to laboratory work, this test will ensure that candidates have the basic competency and electrical skills to carry out necessary operations and maintenance effectively.",
+      "category": "Role specific skills",
+      "language": "english",
+      "questions_to_answer": 15,
+      "duration_seconds": 540,
+      "position": 4
+    },
+    "questions": [
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": true,
+          "content": "<p>What is the unit of electrical resistance?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Volt</p>"
+          },
+          {
+            "content": "<p>Ampere</p>"
+          },
+          {
+            "content": "<p>Ohm</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Watt</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": true,
+          "content": "<p>Which of the following is a good conductor of electricity?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Rubber</p>"
+          },
+          {
+            "content": "<p>Glass</p>"
+          },
+          {
+            "content": "<p>Copper</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Plastic</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": true,
+          "content": "<p>What does AC stand for in electrical terms?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Alternating Current</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Amplified Current</p>"
+          },
+          {
+            "content": "<p>Accumulated Charge</p>"
+          },
+          {
+            "content": "<p>Active Conductor</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_response",
+          "preview": true,
+          "content": "<p>Which of the following are components of a basic electrical circuit? (Select all that apply)</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Power source</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Conductor</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Load</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Switch</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Transformer</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>In a series circuit, how does the total resistance compare to the individual resistances?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>It's equal to the lowest individual resistance</p>"
+          },
+          {
+            "content": "<p>It's equal to the highest individual resistance</p>"
+          },
+          {
+            "content": "<p>It's the sum of all individual resistances</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>It's the average of all individual resistances</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>What is the relationship between voltage, current, and resistance in an electrical circuit?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Ohm's Law: V = I * R</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Kirchhoff's Law: V = I + R</p>"
+          },
+          {
+            "content": "<p>Faraday's Law: V = I / R</p>"
+          },
+          {
+            "content": "<p>Coulomb's Law: V = I - R</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>What is the function of a transformer in an electrical system?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>To convert AC to DC</p>"
+          },
+          {
+            "content": "<p>To increase or decrease voltage</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>To store electrical energy</p>"
+          },
+          {
+            "content": "<p>To measure electrical current</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>What does the color of a wire typically indicate in electrical wiring?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>The wire's length</p>"
+          },
+          {
+            "content": "<p>The wire's thickness</p>"
+          },
+          {
+            "content": "<p>The wire's function (e.g., live, neutral, ground)</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>The wire's manufacturer</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>What is the purpose of a fuse in an electrical circuit?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>To increase current flow</p>"
+          },
+          {
+            "content": "<p>To store electrical energy</p>"
+          },
+          {
+            "content": "<p>To protect against overcurrent by breaking the circuit</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>To convert AC to DC</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_response",
+          "preview": false,
+          "content": "<p>Which of the following are true about parallel circuits? (Select all that apply)</p>"
+        },
+        "options": [
+          {
+            "content": "<p>The voltage across each component is the same</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>The current through each component is the same</p>"
+          },
+          {
+            "content": "<p>The total resistance is less than the smallest individual resistance</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>If one component fails, the others will continue to work</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>The total current is equal to the sum of currents through each branch</p>",
+            "correct": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Intermediate Math",
+    "attributes": {
+      "overview": "The Intermediate Math test evaluates candidates’ ability to solve math equations and problems involving fractions, decimals, percentages, ratios, and time calculations. This test will help you identify candidates who can work well with numbers.",
+      "level": "intermediate",
+      "covered_skills": [
+        "Fractions",
+        "Decimals",
+        "Ratios & Percentages",
+        "Time Estimates"
+      ],
+      "relevancy": "Any job role that requires an intermediate level of math skills involving fractions, decimals, ratios, rates, and percentages.",
+      "description": "Whether calculating salaries, projecting growth, or evaluating ROI, in today’s data-driven business world, many professions require good math skills. Employees who can easily understand and work with numbers take better business decisions based on facts and data. They can develop plans, allocate budgets, and distribute resources efficiently to support growth.\n\nThis Intermediate Math test evaluates candidate’s ability to perform math operations (additions, subtractions, multiplications, and divisions) using fractions and decimals. It also assesses candidate’s ability to calculate rate and percentages, estimate ratios, and calculate time duration.\n\nCandidates who do well on this test understand the relationship between different types of numbers and know how to manipulate different numbers and equations to arrive at a solution. Unlike our elementary math tests that focus on double- and triple-digit whole numbers, one-half of this Intermediate Math test centers around fractions and decimals, while the other half requires the ability to work with percentages, rates, ratios, and durations.",
+      "category": "Cognitive ability",
+      "language": "english",
+      "questions_to_answer": 15,
+      "duration_seconds": 540,
+      "position": 5
+    },
+    "questions": [
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": true,
+          "content": "<p>What is 25% of 80?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>15</p>"
+          },
+          {
+            "content": "<p>20</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>25</p>"
+          },
+          {
+            "content": "<p>30</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": true,
+          "content": "<p>If a recipe calls for 3/4 cup of sugar and you want to double the recipe, how much sugar do you need?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>1 cup</p>"
+          },
+          {
+            "content": "<p>1 1/4 cups</p>"
+          },
+          {
+            "content": "<p>1 1/2 cups</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>2 cups</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>A store is offering a 15% discount on all items. If a shirt originally costs $40, what is the sale price?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>$32</p>"
+          },
+          {
+            "content": "<p>$34</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>$36</p>"
+          },
+          {
+            "content": "<p>$38</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>If it takes 6 hours to paint 2/3 of a room, how long will it take to paint the entire room at the same rate?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>7 hours</p>"
+          },
+          {
+            "content": "<p>8 hours</p>"
+          },
+          {
+            "content": "<p>9 hours</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>10 hours</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>A car travels 240 miles in 4 hours. What is its average speed in miles per hour?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>55 mph</p>"
+          },
+          {
+            "content": "<p>60 mph</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>65 mph</p>"
+          },
+          {
+            "content": "<p>70 mph</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>If 3/5 of a number is 24, what is the number?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>36</p>"
+          },
+          {
+            "content": "<p>38</p>"
+          },
+          {
+            "content": "<p>40</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>42</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>What is 2.5 × 0.04?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>0.1</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>0.01</p>"
+          },
+          {
+            "content": "<p>1</p>"
+          },
+          {
+            "content": "<p>10</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>If the ratio of boys to girls in a class is 3:5 and there are 24 girls, how many students are in the class in total?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>32</p>"
+          },
+          {
+            "content": "<p>38</p>"
+          },
+          {
+            "content": "<p>40</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>42</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>A project that normally takes 10 days to complete is finished 2 days early. What percentage of time was saved?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>15%</p>"
+          },
+          {
+            "content": "<p>18%</p>"
+          },
+          {
+            "content": "<p>20%</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>22%</p>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Understanding Instructions",
+    "attributes": {
+      "overview": "The Understanding Instructions (previously Following Instructions) test evaluates a candidate’s ability to understand instructions in different forms and contexts. This test helps you identify candidates who can process  instructions correctly.",
+      "level": "entry_level",
+      "covered_skills": [
+        "Understanding written instructions",
+        "Understanding visual instructions",
+        "Understanding verbal instructions"
+      ],
+      "relevancy": "Any role that involves reading, viewing, or listening to instructions of varying complexity, including entry- to mid-level workers in a variety of sectors like manufacturing, services, construction, and maintenance.",
+      "description": "(Note that this test was previously titled Following Instructions. This updated version evaluates the same skills as did the Following Instructions test.)\n\nUnderstanding and following instructions is an important ability in making tasks simpler, ensuring things are done effectively and safely, eliminating confusion, and saving time. When instructions are properly understood and followed, things work well in the workplace.\n\nThis Understanding Instructions test allows you to identify candidates who possess the ability to process and understand instructions in a variety of different forms, Including written, visual, and verb instructions, and then execute them correctly in real-life, workplace contexts. To answer the questions in the test successfully, candidates must process instructions, understand their meaning, and make connections between the instructions given and the correct course of action that should follow.\n\nThe test requires candidates to identify the right answers to the questions in a limited amount of time. Successful candidates can understand and interpret instructions quickly and accurately, including written, visual, and oral instructions. This is a great test to include in evaluating candidates' analytical and cognitive skills.",
+      "category": "Cognitive ability",
+      "language": "english",
+      "questions_to_answer": 15,
+      "duration_seconds": 540,
+      "position": 6
+    },
+    "questions":[
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>Read the following instruction: 'To reset the device, press and hold the power button for 10 seconds, then release it and wait for 30 seconds before turning it on again.' What is the correct sequence of actions?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Hold power button for 10 seconds, release, wait 30 seconds, turn on</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Hold power button for 30 seconds, release, wait 10 seconds, turn on</p>"
+          },
+          {
+            "content": "<p>Wait 30 seconds, hold power button for 10 seconds, release, turn on</p>"
+          },
+          {
+            "content": "<p>Turn on, hold power button for 10 seconds, release, wait 30 seconds</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_response",
+          "preview": false,
+          "content": "<p>You are given the following safety instructions for operating a machine:<br>1. Wear protective goggles<br>2. Use ear protection<br>3. Ensure the safety guard is in place<br>4. Keep hands away from moving parts<br>Which of these instructions must be followed at all times? (Select all that apply)</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Wear protective goggles</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Use ear protection</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Ensure the safety guard is in place</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Keep hands away from moving parts</p>",
+            "correct": true
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>Following the recipe: 'Add 2 cups of flour, then mix in 1 teaspoon of salt.' What should you do first?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Mix in salt</p>"
+          },
+          {
+            "content": "<p>Add flour</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Add salt</p>"
+          },
+          {
+            "content": "<p>Mix flour and salt together</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>Given the instruction: 'File all documents alphabetically by last name, except for those marked 'Urgent', which should be placed on top.' Where would you file a non-urgent document for 'John Smith'?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Under 'J' for John</p>"
+          },
+          {
+            "content": "<p>Under 'S' for Smith</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>On top of the pile</p>"
+          },
+          {
+            "content": "<p>In a separate 'Non-urgent' pile</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>If the instructions say: 'Turn left at the second traffic light, then take the third right,' how many turns will you make in total?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>1</p>"
+          },
+          {
+            "content": "<p>2</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>3</p>"
+          },
+          {
+            "content": "<p>5</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_response",
+          "preview": false,
+          "content": "<p>According to the following instructions for sending a package, which steps must be completed? (Select all that apply)<br>1. Weigh the package<br>2. Address the package<br>3. Choose a shipping method<br>4. Pay for postage<br>5. Request a signature upon delivery</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Weigh the package</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Address the package</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Choose a shipping method</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Pay for postage</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Request a signature upon delivery</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>If a sign reads: 'Push to Open', what action should you take to enter?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Pull the door</p>"
+          },
+          {
+            "content": "<p>Push the door</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Slide the door</p>"
+          },
+          {
+            "content": "<p>Wait for the door to open automatically</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>Given the instruction: 'In case of fire, use stairs, not elevator.' What should you do if you're on the 10th floor and there's a fire alarm?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Use the elevator to exit quickly</p>"
+          },
+          {
+            "content": "<p>Use the stairs to exit the building</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Stay in your room and wait for help</p>"
+          },
+          {
+            "content": "<p>Call the fire department and wait</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>If a product label says: 'Store in a cool, dry place away from direct sunlight,' which of the following storage locations would be most appropriate?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>On a windowsill</p>"
+          },
+          {
+            "content": "<p>In a refrigerator</p>"
+          },
+          {
+            "content": "<p>In a closed cupboard</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>In a damp basement</p>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Comunicación",
+    "attributes": {
+      "overview": "Esta prueba de Comunicación evalúa las habilidades de los candidatos para comunicarse de manera clara y efectiva utilizando la etiqueta profesional. La prueba evalúa a los candidatos tanto en comunicación escrita como verbal, así como en señales no verbales y escucha activa.",
+      "level": "entry_level",
+      "covered_skills": [
+        "Comprender e interpretar la comunicación escrita",
+        "Escuchar activamente e interpretar señales no verbales",
+        "Comunicarse claramente en contextos empresariales",
+        "Utilizar la etiqueta de comunicación profesional"
+      ],
+      "relevancy": "Cualquier rol que requiera buenas habilidades de comunicación para facilitar una colaboración efectiva con otros.",
+      "description": "La buena comunicación es la base de las buenas relaciones. Y las buenas relaciones son clave para construir equipos A que llevarán a tu organización de buena a excelente. La buena comunicación entre los miembros de un equipo construye confianza, resuelve (e incluso previene) problemas, proporciona claridad y dirección, mejora la productividad y aumenta el compromiso.\n\nEsta prueba de Comunicación evalúa las habilidades de los candidatos para comprender, utilizar e interpretar la comunicación escrita y evalúa sus habilidades de comunicación verbal (tanto en un entorno presencial como virtual) junto con la capacidad de aclarar los siguientes pasos, resumir mensajes de manera efectiva y utilizar la etiqueta de comunicación profesional.\n\nLos candidatos que se desempeñan bien en esta prueba de selección pueden escuchar atentamente a los demás, comunicarse con confianza y mentalidad abierta, y pueden ofrecer tanto empatía como retroalimentación en los escenarios apropiados y de la manera apropiada.",
+      "category": "Situational judgment",
+      "language": "spanish",
+      "questions_to_answer": 15,
+      "duration_seconds": 540,
+      "position": 7
+    },
+    "questions": [
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": true,
+          "content": "<p>En un correo electrónico profesional, ¿cuál de las siguientes es la forma más apropiada de comenzar?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>¡Hola!</p>"
+          },
+          {
+            "content": "<p>Estimado/a Señor/Señora,</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>¡Ey!</p>"
+          },
+          {
+            "content": "<p>¿Qué tal?</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_response",
+          "preview": true,
+          "content": "<p>¿Cuáles de las siguientes son técnicas efectivas de escucha activa?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Mantener contacto visual</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Interrumpir para compartir tus propias experiencias</p>"
+          },
+          {
+            "content": "<p>Asentir y usar afirmaciones verbales</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Parafrasear para confirmar la comprensión</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Revisar tu teléfono mientras alguien está hablando</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_response",
+          "preview": true,
+          "content": "<p>¿Cuáles de las siguientes son técnicas efectivas de escucha activa?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Mantener contacto visual</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Interrumpir para compartir tus propias experiencias</p>"
+          },
+          {
+            "content": "<p>Asentir y usar afirmaciones verbales</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Parafrasear para confirmar la comprensión</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Revisar tu teléfono mientras alguien está hablando</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": true,
+          "content": "<p>Al dar una presentación, ¿cuál es la mejor manera de manejar una pregunta para la que no tienes la respuesta?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Inventar una respuesta para evitar parecer desinformado</p>"
+          },
+          {
+            "content": "<p>Ignorar la pregunta y seguir adelante</p>"
+          },
+          {
+            "content": "<p>Admitir que no lo sabes y ofrecer investigarlo</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Desviar la pregunta pidiéndole a la audiencia que responda</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>¿Qué canal de comunicación es más apropiado para dar retroalimentación sensible a un miembro del equipo?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Correo electrónico</p>"
+          },
+          {
+            "content": "<p>Reunión cara a cara</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Chat grupal</p>"
+          },
+          {
+            "content": "<p>Anuncio a toda la empresa</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_response",
+          "preview": false,
+          "content": "<p>¿Cuáles de las siguientes son características de una comunicación escrita efectiva?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Claridad y concisión</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Uso de jerga y lenguaje complejo</p>"
+          },
+          {
+            "content": "<p>Gramática y puntuación correctas</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Consideración de la audiencia</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Incluir información irrelevante</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>¿Cuál es la mejor manera de abordar un malentendido con un colega?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Ignorarlo y esperar que se resuelva solo</p>"
+          },
+          {
+            "content": "<p>Discutirlo en privado con otros miembros del equipo</p>"
+          },
+          {
+            "content": "<p>Abordarlo directamente con el colega de manera respetuosa</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Escalar el problema a la gerencia inmediatamente</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>En una reunión virtual, ¿cuál es la mejor manera de indicar que quieres hablar?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Interrumpir al orador actual</p>"
+          },
+          {
+            "content": "<p>Usar la función de 'levantar la mano'</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Enviar un mensaje privado al anfitrión</p>"
+          },
+          {
+            "content": "<p>Encender y apagar tu video repetidamente</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_response",
+          "preview": false,
+          "content": "<p>¿Cuáles de las siguientes son estrategias efectivas para mejorar la comunicación en un lugar de trabajo diverso?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Fomentar el diálogo abierto</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Asumir que todos tienen el mismo estilo de comunicación</p>"
+          },
+          {
+            "content": "<p>Proporcionar capacitación en sensibilidad cultural</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Usar lenguaje inclusivo</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Ignorar las diferencias culturales para evitar conflictos</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>Al dar una presentación, ¿cuál es la proporción recomendada de texto a elementos visuales en las diapositivas?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>80% texto, 20% visuales</p>"
+          },
+          {
+            "content": "<p>50% texto, 50% visuales</p>"
+          },
+          {
+            "content": "<p>20% texto, 80% visuales</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>100% texto, 0% visuales</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>¿Cuál es el propósito principal de un informe de estado del proyecto?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Asignar culpa por los retrasos del proyecto</p>"
+          },
+          {
+            "content": "<p>Impresionar a la alta dirección</p>"
+          },
+          {
+            "content": "<p>Proporcionar una actualización clara sobre el progreso, problemas y próximos pasos</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Documentar cada detalle del proyecto</p>"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Resolución de Problemas",
+    "attributes": {
+      "overview": "Esta prueba de Resolución de Problemas evalúa la capacidad de los candidatos para definir problemas y analizar datos e información textual para tomar decisiones correctas. Esta prueba te ayuda a identificar candidatos que utilizan habilidades analíticas para evaluar y responder a situaciones complejas.",
+      "level": "intermediate",
+      "covered_skills": [
+        "Crear y ajustar horarios",
+        "Interpretar datos y aplicar lógica para tomar decisiones",
+        "Priorizar y aplicar orden basado en un conjunto de reglas dado",
+        "Analizar información textual y numérica para sacar conclusiones"
+      ],
+      "relevancy": "Cualquier rol que implique manejar variables en constante cambio con plazos ajustados. Esto puede incluir asistentes administrativos, gerentes de proyectos, planificadores y personas que trabajan en hotelería o ventas.",
+      "description": "La resolución efectiva de problemas requiere un amplio conjunto de habilidades que permite a individuos, equipos y empresas avanzar hacia objetivos establecidos. Implica la capacidad de definir un problema, descomponerlo en partes manejables, desarrollar enfoques para resolver el (sub)problema utilizando creatividad y pensamiento analítico, y ejecutar sin errores.\n\nEsta prueba de Resolución de Problemas te permite identificar candidatos que muestran estas habilidades. La prueba presenta a los candidatos escenarios típicos de resolución de problemas como programación basada en un conjunto diverso de condiciones, identificación de la secuencia correcta de acciones basada en una serie de reglas de negocio, y sacar conclusiones basadas en información textual y numérica.\n\nLa prueba requiere que los candidatos identifiquen las respuestas correctas a las preguntas en un tiempo limitado. Los candidatos exitosos pueden identificar rápidamente los elementos clave del problema y trabajar en él a velocidad sin cometer errores. Esta es una excelente prueba para incluir para verificar las habilidades analíticas generales de los candidatos.",
+      "category": "Cognitive ability",
+      "language": "spanish",
+      "questions_to_answer": 12,
+      "duration_seconds": 540,
+      "position": 8
+    },
+    "questions": [
+      {
+        "question_attributes": { 
+          "type": "multiple_choice",
+          "preview": true,
+          "content": "<p>45 personas en cierta empresa pueden trabajar juntas para terminar un proyecto en 15 días. Para un proyecto de la misma carga de trabajo, la empresa decidió usar 15 personas. Asume que todas las personas tienen el mismo nivel de productividad.</p><p>&nbsp;</p><p><strong>¿En cuántos días se puede completar este proyecto?&nbsp;</strong></p>"
+        },
+          "options": [
+          {
+            "content": "<p>5 días</p>"
+          },
+          {
+            "content": "<p>10 días</p>"
+          },
+          {
+            "content": "<p>22.5 días</p>"
+          },
+          {
+            "content": "<p>45 días</p>",
+            "correct": true
+          }
+        ]
+      },
+      {
+        "question_attributes": { 
+          "type": "multiple_choice",
+          "preview": true,
+          "content": "<p>La siguiente tabla muestra el orden en que ciertos ingredientes, etiquetados de A a F, necesitan ser mezclados (izquierda va primero, derecha va último).</p> <p><br></p> <p>Además, sabemos que:</p> <p><br></p> <ul> <li>Los ingredientes A y D se añaden en pasos consecutivos</li> <li>B se añade antes que A</li> <li>F no se añade justo antes o después de C</li> </ul> <p><br></p> <p><strong>¿Qué ingrediente necesita ser añadido último?</strong></p>"
+        },
+        "options": [
+          {
+            "content": "<p>B</p>"
+          },
+          {
+            "content": "<p>D</p>"
+          },
+          {
+            "content": "<p>E</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>F</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": { 
+          "type": "multiple_choice",
+          "preview": true,
+          "content": "<p>Un cliente quiere un pastel sin huevo con una cobertura orgánica.</p> <p><br></p> <p>[Imagen de una tabla con tipos de pasteles y coberturas]</p> <p><br></p> <p><strong>¿Cuál de los siguientes puede pedir?</strong></p>"
+        },
+        "options": [
+          {
+            "content": "<p>Pastel de libra con coberturas de pera y fresa.</p>"
+          },
+          {
+            "content": "<p>Pastel de mantequilla con coberturas de naranja y kiwi.</p>"
+          },
+          {
+            "content": "<p>Bizcocho con coberturas de manzana y cereza.</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Pastel de zanahoria con coberturas de fresa y kiwi.</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_response",
+          "preview": true,
+          "content": "<p>¿Cuáles de los siguientes son números primos?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>2</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>3</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>4</p>"
+          },
+          {
+            "content": "<p>5</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>6</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_response",
+          "preview": true,
+          "content": "<p>¿Cuáles de las siguientes afirmaciones son correctas sobre las habilidades de resolución de problemas?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Involucran pensamiento analítico</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Solo son útiles en matemáticas</p>"
+          },
+          {
+            "content": "<p>Incluyen la capacidad de desglosar problemas complejos</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>No son importantes en el lugar de trabajo</p>"
+          },
+          {
+            "content": "<p>Pueden involucrar pensamiento creativo</p>",
+            "correct": true
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>Un tren viaja a una velocidad de 60 km/h durante 2 horas, luego a 80 km/h durante 1 hora. ¿Cuál es la velocidad promedio del tren para todo el viaje?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>60 km/h</p>"
+          },
+          {
+            "content": "<p>66.67 km/h</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>70 km/h</p>"
+          },
+          {
+            "content": "<p>80 km/h</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>Si se necesitan 6 personas 12 días para completar un proyecto trabajando 8 horas por día, ¿cuántos días tomaría a 8 personas trabajando 6 horas por día completar el mismo proyecto?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>9 días</p>"
+          },
+          {
+            "content": "<p>12 días</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>15 días</p>"
+          },
+          {
+            "content": "<p>18 días</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_choice",
+          "preview": false,
+          "content": "<p>En un grupo de 100 personas, a 70 les gusta el café, a 80 les gusta el té, y a 10 no les gusta ninguno. ¿A cuántas personas les gustan tanto el café como el té?</p>"
+        },
+        "options": [
+          {
+            "content": "<p>40</p>"
+          },
+          {
+            "content": "<p>50</p>"
+          },
+          {
+            "content": "<p>60</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>70</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_response",
+          "preview": false,
+          "content": "<p>¿Cuáles de las siguientes son técnicas efectivas de resolución de problemas? (Selecciona todas las que apliquen)</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Lluvia de ideas</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Análisis de causa raíz</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Evitar el problema</p>"
+          },
+          {
+            "content": "<p>Análisis FODA</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Culpar a otros</p>"
+          }
+        ]
+      },
+      {
+        "question_attributes": {
+          "type": "multiple_response",
+          "preview": false,
+          "content": "<p>¿Cuáles de las siguientes afirmaciones sobre el pensamiento crítico son verdaderas? (Selecciona todas las que apliquen)</p>"
+        },
+        "options": [
+          {
+            "content": "<p>Implica analizar información objetivamente</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Solo es útil en entornos académicos</p>"
+          },
+          {
+            "content": "<p>Ayuda a tomar decisiones informadas</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Requiere considerar múltiples perspectivas</p>",
+            "correct": true
+          },
+          {
+            "content": "<p>Es lo mismo que memorizar hechos</p>"
+          }
+        ]
+      }  
+    ]
+  }
+]

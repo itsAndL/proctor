@@ -84,7 +84,7 @@ en:
     send_reminder: "Send reminder"
     send_results: "Send results"
     delete_candidate: "Delete candidate"
-   custom_question_component:
+  custom_question_component:
     types:
       multiple_choice: "Multiple Choice"
       short_answer: "Short Answer"
@@ -238,7 +238,7 @@ en:
     skip_question_button: "Skip Question"
     choose_answer_button: "Choose Answer"
     close: "Close"
-   report_custom_questions_component:
+  report_custom_questions_component:
     custom_questions: "Custom questions"
     question: "Question"
     view_answer: "View answer"

@@ -213,14 +213,14 @@ en:
       send_message: "Send message"
   candidates:
     form:
+      avatar: Your profile picture
+      loading: Loading...
       candidate_profile: "Your candidate profile"
       profile: "Profile"
       profile_info_warning: "This information will be displayed publicly so be careful what you share."
-      avatar: "Avatar"
       change_avatar: "Change Avatar"
       file_format_warning: "JPG, JPEG or PNG. 2MB max."
       something_went_wrong: "Something went wrong while uploading the file."
-      loading: "Loading..."
       save: "Save"
   candidate:
     tests:
@@ -312,6 +312,10 @@ en:
       something_went_wrong: "Something went wrong."
       personal_details: "Personal details"
       personal_info: "Information about you, the contact point for your business on AssessKit."
+      avatar: Your company logo
+      loading: Loading...
+      change_avatar: Upload
+      something_went_wrong: Something went wrong uploading your image, please try again.
       save: "Save"
   assessments:
     form:
@@ -449,23 +453,11 @@ en:
           <<: *languages
       assessment_participation:
         status:
-          pending: "Pending"
           started: "Started"
           completed: "Completed"
-          expired: "Expired"
           archived: "Archived"
-  businesses:
-    form:
-      avatar: Your company logo
-      loading: Loading...
-      change_avatar: Upload
-      something_went_wrong: Something went wrong uploading your image, please try again.
-  candidates:
-    form:
-      avatar: Your profile picture
-      loading: Loading...
-      change_avatar: Upload
-      something_went_wrong: Something went wrong uploading your image, please try again.
+          invited: "Invited"
+          invitation_clicked: "Invitation clicked"
   errors:
     messages:
       attached: is not attached

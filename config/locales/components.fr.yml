@@ -50,6 +50,7 @@ fr:
   assessment_title_component:
     untitled: "Sans titre"
     tests: "Tests"
+    test: "Test"
   bulk_inviting_component:
     invite_multiple_candidates: "Invitez plusieurs candidats à la fois via un téléchargement de fichier CSV ou XLSX."
     keep_in_mind: "Gardez à l'esprit..."

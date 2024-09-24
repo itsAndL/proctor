@@ -15,7 +15,7 @@
                   <%= svg_tag "eye", class: "size-5 group-hover:text-gray-500", "stroke-width": 2 %>
                   <%= t('.try_yourself') %>
                 </a>
-                <%= link_to t('.invite'), assessment_invite_eligibility_path(@assessment), class: 'group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium sm:hidden', data: { turbo_frame: "modal" } do %>
+                <%= link_to assessment_invite_eligibility_path(@assessment), class: 'group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium sm:hidden', data: { turbo_frame: "modal" } do %>
                   <%= svg_tag "envelope", class: "size-5 group-hover:text-gray-500", "stroke-width": 2 %>
                   <%= t('.invite') %>
                 <% end %>
@@ -26,7 +26,7 @@
                   <%= t('.edit_assessment') %>
                 </button>
               <% else %>
-                <%= link_to t('.edit_assessment'), edit_assessment_path(@assessment), class: "group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium" do %>
+                <%= link_to edit_assessment_path(@assessment), class: "group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium" do %>
                   <%= svg_tag "pencil_square", class: "size-5 group-hover:text-gray-500" %>
                   <%= t('.edit_assessment') %>
                 <% end %>
@@ -48,7 +48,7 @@
               <div class="rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none py-2 px-3 whitespace-nowrap bg-gray-900 text-sm text-white font-medium"><%= t('.try_yourself') %></div>
             </div>
           </div>
-          <%= link_to t('.invite'), assessment_invite_eligibility_path(@assessment), class: 'primary-button hidden sm:inline-flex', data: { turbo_frame: "modal" } do %>
+          <%= link_to assessment_invite_eligibility_path(@assessment), class: 'primary-button hidden sm:inline-flex', data: { turbo_frame: "modal" } do %>
             <%= svg_tag "envelope", class: "size-5" %>
             <%= t('.invite') %>
           <% end %>

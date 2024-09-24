@@ -11,7 +11,7 @@
             <option class="font-medium text-gray-400" value="" selected><%= t('.status') %></option>
             <% AssessmentParticipation.statuses.keys.each do |status| %>
               <% active_option = status == params[:status] %>
-              <option class="font-medium <%= 'bg-zinc-200' if active_option %>" value="<%= status %>" <%= 'selected' if active_option %>><%= status.humanize %></option>
+              <option class="font-medium <%= 'bg-zinc-200' if active_option %>" value="<%= status %>" <%= 'selected' if active_option %>><%= AssessmentParticipation.human_enum_name(:status,status) %></option>
             <% end %>
           </select>
         </div>

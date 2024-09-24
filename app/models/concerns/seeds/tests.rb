@@ -21,7 +21,6 @@ module Seeds
           question_attributes['type'],
           question_attributes['content'],
           question_attributes['preview']
-          # question_attributes['duration_seconds']
         )
         associate_question_with_test(question, test)
         update_options(question, options)

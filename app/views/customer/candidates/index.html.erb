@@ -3,8 +3,9 @@
     <div class="py-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-y-5 gap-x-4">
       <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight"><%= t('.candidates') %></h1>
       <div>
-        <%= link_to t('.create_assessment'), new_assessment_path, class: "primary-button" do %>
+        <%= link_to new_assessment_path, class: "primary-button" do %>
           <%= svg_tag "plus_circle" %>
+          <span><%= t('.create_assessment')%> </span>
         <% end %>
       </div>
     </div>

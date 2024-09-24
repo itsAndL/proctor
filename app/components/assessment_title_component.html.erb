@@ -5,8 +5,10 @@
 
   <div>
     <div class="flex items-center gap-x-2">
-      <h2 class="line-clamp-1 w-full text-xl font-bold leading-7 text-slate-900" data-assessment-title-target="display"><%= title %></h2>
-      
+      <h2 class="line-clamp-1 w-full text-xl font-bold leading-7 text-slate-900" data-assessment-title-target="display">
+        <%= title %>
+      </h2>
+
       <% if @rename %>
         <%= link_to rename_assessment_path(@assessment), class: 'hover:bg-gray-200 hover:rounded-full p-2', data: { turbo_frame: "modal" } do %>
           <%= helpers.svg_tag "pen", class: "size-4", "stroke-width": 2.5 %>
@@ -17,18 +19,24 @@
     <div class="mt-1 flex gap-x-5 gap-y-1.5 items-center flex-wrap">
       <div class="flex gap-x-1.5 items-center text-gray-600">
         <%= helpers.svg_tag "test_document", class: "size-4" %>
-        <p id="tests-count" class="font-medium text-sm"><%= t('.tests_count', count: tests_count) %></p>
+        <p id="tests-count" class="font-medium text-sm">
+          <%= t('.tests_count', count: tests_count) %>
+        </p>
       </div>
 
       <div class="flex gap-x-1.5 items-center text-gray-600">
         <%= helpers.svg_tag "clock", class: "size-4" %>
-        <p class="font-medium text-sm"><%= t('.duration', duration: helpers.format_duration(@assessment.duration_seconds)) %></p>
+        <p class="font-medium text-sm">
+          <%= t('.duration', duration: helpers.format_duration(@assessment.duration_seconds)) %>
+        </p>
       </div>
 
       <% if show_language %>
         <div class="flex gap-x-1.5 items-center text-gray-600">
           <%= helpers.svg_tag "language", class: "size-4", "stroke-width": 2 %>
-          <p class="font-medium text-sm"><%= t('.language', language: Assessment.human_enum_name(:language, @assessment.language)) %></p>
+          <p class="font-medium text-sm">
+            <%= t('.language', language: Assessment.human_enum_name(:language, @assessment.language)) %>
+          </p>
         </div>
       <% end %>
     </div>
