@@ -40,6 +40,10 @@ class AssessmentParticipation < ApplicationRecord
     custom_question_responses.exists?(custom_question_id: custom_question.id)
   end
 
+  def humanized_status
+    self.class.human_enum_name(:status, status)
+  end
+
   def device_used
     devices.last
   end
