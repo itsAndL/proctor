@@ -8,12 +8,10 @@ class CustomQuestionResponsesController < ApplicationController
       render(turbo_stream:
       [
         turbo_stream.replace('report-custom-questions',
-          ReportCustomQuestionsComponent.new(assessment_participation: @custom_question_response.assessment_participation)
-        ),
+                             ReportCustomQuestionsComponent.new(assessment_participation: @custom_question_response.assessment_participation)),
         turbo_stream.replace('modal', helpers.turbo_frame_tag('modal')),
         turbo_stream.replace('notification', NotificationComponent.new(notice: t('flash.update_success')))
-      ]
-    )
+      ])
     else
       render :edit, status: :unprocessable_entity
     end

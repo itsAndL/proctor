@@ -66,9 +66,7 @@ class AssessmentParticipation < ApplicationRecord
     questions_answered_count = participation_test&.questions_answered_count || 0
 
     is_test_completed = participation_test&.completed?
-    score_percentage = if is_test_completed && total_questions.positive?
-                         (correct_answers.to_f / total_questions * 100).round(2)
-                       end
+    score_percentage = ((correct_answers.to_f / total_questions * 100).round(2) if is_test_completed && total_questions.positive?)
     OpenStruct.new(
       test_id: test.id,
       test_name: test.title,

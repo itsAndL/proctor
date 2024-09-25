@@ -4,13 +4,13 @@ module DurationHelper
 
     hours, remaining = secs.divmod(3600)
     mins, secs = remaining.divmod(60)
-    secs = secs.round(2)  # Round seconds to 2 decimal places
+    secs = secs.round(2) # Round seconds to 2 decimal places
 
-    if hours > 0
+    if hours.positive?
       pluralize(hours, t('duration.hour'))
-    elsif mins > 0
+    elsif mins.positive?
       format_unit(mins, t('duration.minute'), t('duration.min'), long_format)
-    elsif secs > 0
+    elsif secs.positive?
       format_unit(secs, t('duration.second'), t('duration.sec'), long_format)
     else
       format_unit(0, t('duration.minute'), t('duration.min'), long_format)
@@ -18,11 +18,11 @@ module DurationHelper
   end
 
   def format_duration_hms(seconds)
-    return "00:00:00" if seconds.nil?
+    return '00:00:00' if seconds.nil?
 
     hours, remaining = seconds.divmod(3600)
     minutes, seconds = remaining.divmod(60)
-    format("%02d:%02d:%02d", hours, minutes, seconds)
+    format('%02d:%02d:%02d', hours, minutes, seconds)
   end
 
   private

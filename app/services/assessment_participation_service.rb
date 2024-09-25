@@ -9,9 +9,7 @@ class AssessmentParticipationService
   end
 
   def start
-    if @assessment_participation.invited? || @assessment_participation.invitation_clicked?
-      @assessment_participation.started!
-    end
+    @assessment_participation.started! if @assessment_participation.invited? || @assessment_participation.invitation_clicked?
     create_participation_tests
     determine_next_url
   end
@@ -141,9 +139,7 @@ class AssessmentParticipationService
 
   def create_participation_tests
     @assessment.tests.each do |test|
-      unless @assessment_participation.participation_tests.exists?(test:)
-        @assessment_participation.participation_tests.create(test:, status: :pending)
-      end
+      @assessment_participation.participation_tests.create(test:, status: :pending) unless @assessment_participation.participation_tests.exists?(test:)
     end
   end
 end

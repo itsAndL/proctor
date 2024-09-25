@@ -16,8 +16,6 @@ class AssessmentFooterComponent < ViewComponent::Base
       choose_tests_assessment_path(@assessment)
     when 'finalize'
       add_questions_assessment_path(@assessment)
-    else
-      nil
     end
   end
 

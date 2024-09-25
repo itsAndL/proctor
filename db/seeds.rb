@@ -8,7 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-require "seeds_helper"
+require 'seeds_helper'
 
 def seed(file)
   load Rails.root.join('db', 'seeds', "#{file}.rb")

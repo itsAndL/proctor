@@ -53,9 +53,9 @@ module Seeds
 
     def build_new_question(test, type, content, preview)
       test.questions.build(
-        content: content,
+        content:,
         type: "#{type.camelcase}Question",
-        preview: preview,
+        preview:
       )
     end
 

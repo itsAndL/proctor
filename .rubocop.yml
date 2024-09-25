@@ -1,27 +1,47 @@
-require:
-  - standard
-  # - rubocop-rails
-  # - rubocop-rspec
-
-inherit_gem:
-  standard: config/base.yml
-
 AllCops:
   NewCops: enable
-  Exclude:
-    - 'db/**/*'
-    - 'bin/**/*'
-    - 'spec/**/*'
-    - 'vendor/bundle/**/*'
+  TargetRubyVersion: 3.3.0
 
-Rails:
-  Enabled: true # enable rubocop-rails cops
+# Disable the Style/Documentation cop
+Style/Documentation:
+  Enabled: false
+Layout/LineLength:
+  Enabled: false
 
-RSpec:
-  Enabled: true # enable rubocop-rspec cops
-  DescribeClass:
-    Enabled: false # ignore missing comments on classes
+Metrics/AbcSize:
+  Enabled: false
 
-Bundler:
-  DuplicatedGem:
-    Enabled: false # ignore duplicated gem errors because we will have duplicated gems when dual booting
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Style/OpenStructUse:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/ParameterLists:
+  Enabled: false
+Style/FormatStringToken:
+  Enabled: false
+
+Style/OptionalBooleanParameter:
+  Enabled: false
+
+Lint/MissingSuper:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
