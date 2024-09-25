@@ -18,6 +18,11 @@ en:
       custom_questions_library: "Custom Questions Library"
       my_candidate_profile: "My candidate profile"
       get_started: "Get started"
+      assessments: "Assessments"
+      candidates: "Candidates"
+  not_started_component:
+    default_title: "Assessment not started"
+    default_message: "This assessment has not been started yet."
   anti_cheating_monitor_component:
     yes: "Yes"
     no: "No"
@@ -223,6 +228,10 @@ en:
     seconds: "seconds"
     stay_on_screen_message: "Please stay on this screen. The timer for your next test has started and cannot be paused. The timer continues even when you close the browser."
     next_page: "Next page"
+  question_header_component:
+    start_test: "Start test"
+    finish: "Finish"
+    next: "Next"
   question_form_component:
     question: "Question"
     select_one_answer: "Select only one answer"

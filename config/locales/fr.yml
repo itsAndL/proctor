@@ -470,3 +470,4 @@ fr:
       attached: n'est pas attaché
       content_type_invalid: format d'image non supporté
       max_file_size_invalid: image supérieure à %{size}
+      blank: ne peut pas être vide      

@@ -31,12 +31,39 @@ en:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
     passwords:
+      new:
+        forgot_your_password: "Forgot your password?"
+        email_address: "Email address"
+        send_reset_link: "Send reset link"
+        log_in_to_your_account: "Log in to your account"
+        didnt_receive_confirmation_instructions: "Didn't receive confirmation instructions?"
+      edit: 
+        change_your_password: "Change your password"
+        new_password: "New password"
+        confirm_password: "Confirm password"
+        change_my_password: "Change my password"
+        dont_have_account: "Don’t have an account?"
+        create_one: "Create one"
+        already_have_account: "Already have an account?"
+        log_in: "Log in"
       no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
       send_instructions: "You will receive an email with instructions on how to reset your password in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
       updated: "Your password has been changed successfully. You are now signed in."
       updated_not_active: "Your password has been changed successfully."
     registrations:
+      edit:
+        your_account: "Your account"
+        change_email_address: "Change email address"
+        enter_current_password_to_change_email: "Enter your current password to change your email."
+        current_email: "Current email"
+        new_email: "New email"
+        current_password: "Current password"
+        change_email: "Change email"
+        change_password: "Change password"
+        enter_current_password_to_change_password: "Enter your current password to change your password."
+        new_password: "New password"
+        confirm_password: "Confirm password"
       new:
         get_started_title: "Get started with AssessKit for free"
         already_registered: "Already registered?"
@@ -71,6 +98,14 @@ en:
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+  shared:
+    links:
+      log_in: "Log in"
+      sign_up: "Sign up"
+      forgot_your_password: "Forgot your password?"
+      didnt_receive_confirmation_instructions: "Didn't receive confirmation instructions?"
+      didnt_receive_unlock_instructions: "Didn't receive unlock instructions?"
+      sign_in_with: "Sign in with %{provider}"
   errors:
     messages:
       already_confirmed: "was already confirmed, please try signing in"

@@ -18,6 +18,11 @@ fr:
       custom_questions_library: "Bibliothèque de questions personnalisées"
       my_candidate_profile: "Mon profil de candidat"
       get_started: "Commencer"
+      assessments: "Évaluations"
+      candidates: "Candidats"
+  not_started_component:
+    default_title: "Votre évaluation n'a pas encore commencé."
+    default_message: "Veuillez patienter jusqu'à ce que l'évaluation commence."
   anti_cheating_monitor_component:
     yes: "Oui"
     no: "Non"
@@ -224,6 +229,10 @@ fr:
     seconds: "secondes"
     stay_on_screen_message: "Veuillez rester sur cet écran. Le minuteur de votre prochain test a commencé et ne peut pas être mis en pause. Le minuteur continue même lorsque vous fermez le navigateur."
     next_page: "Page suivante"
+  question_header_component:
+    start_test: "Commencer le test"
+    finish: "Terminer"
+    next: "Suivant"
   question_form_component:
     question: "Question"
     select_one_answer: "Sélectionnez une seule réponse"
