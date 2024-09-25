@@ -5,9 +5,9 @@ class MaxFileSizeValidator < ActiveModel::EachValidator
     return unless value.attached?
 
     max_file_size = options[:with]
-    if record.send(attribute).blob.byte_size > max_file_size
-      size = number_to_human_size(max_file_size)
-      record.errors.add(attribute, :max_file_size_invalid, size:)
-    end
+    return unless record.send(attribute).blob.byte_size > max_file_size
+
+    size = number_to_human_size(max_file_size)
+    record.errors.add(attribute, :max_file_size_invalid, size:)
   end
 end

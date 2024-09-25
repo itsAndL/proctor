@@ -5,6 +5,6 @@ class QuestionAnswer < ApplicationRecord
   validates :content, presence: true
   validates :is_correct, inclusion: {
     in: [true, false],
-    message: "can only be set to true or false"
+    message: 'can only be set to true or false'
   }
 end

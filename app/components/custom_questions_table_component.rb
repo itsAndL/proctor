@@ -22,23 +22,23 @@ class CustomQuestionsTableComponent < ViewComponent::Base
         class: 'rounded-full p-2 text-slate-900 hover:bg-zinc-200',
         params: { direction:, with_title: @with_title }
       ) do
-        helpers.svg_tag(direction_icon(direction), class: "size-4", "stroke-width": 3)
+        helpers.svg_tag(direction_icon(direction), class: 'size-4', 'stroke-width': 3)
       end
     else
       content_tag(:div, class: 'p-2 text-gray-300') do
-        helpers.svg_tag(direction_icon(direction), class: "size-4", "stroke-width": 3)
+        helpers.svg_tag(direction_icon(direction), class: 'size-4', 'stroke-width': 3)
       end
     end
   end
 
   def can_move?(direction, index)
     case direction
-    when :up then index > 0
+    when :up then index.positive?
     when :down then index < @custom_questions.size - 1
     end
   end
 
   def direction_icon(direction)
-    direction == :up ? "chevron_up" : "chevron_down"
+    direction == :up ? 'chevron_up' : 'chevron_down'
   end
 end

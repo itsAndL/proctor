@@ -30,6 +30,7 @@ class PaginationComponent < ViewComponent::Base
 
   def start_item
     return 0 if total_items.zero?
+
     ((current_page - 1) * per_page) + 1
   end
 

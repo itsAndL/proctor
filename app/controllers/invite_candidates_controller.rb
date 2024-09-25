@@ -32,7 +32,7 @@ class InviteCandidatesController < ApplicationController
 
   def check_candidate
     exists = InvitationService.candidate_exists?(@assessment, params[:email])
-    render json: { exists: exists }
+    render json: { exists: }
   end
 
   def post_invite
@@ -55,8 +55,8 @@ class InviteCandidatesController < ApplicationController
 
   def bulk_invite_template
     respond_to do |format|
-      format.csv { send_data TemplateGenerationService.generate_csv, filename: "template.csv", type: "text/csv" }
-      format.xlsx { send_data TemplateGenerationService.generate_xlsx, filename: "template.xlsx", type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }
+      format.csv { send_data TemplateGenerationService.generate_csv, filename: 'template.csv', type: 'text/csv' }
+      format.xlsx { send_data TemplateGenerationService.generate_xlsx, filename: 'template.xlsx', type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }
     end
   end
 
@@ -75,12 +75,12 @@ class InviteCandidatesController < ApplicationController
 
   def update_candidates_list(options = {})
     query = AssessmentParticipationQuery.new(@assessment.assessment_participations)
-    assessment_participations = query.execute
+    query.execute
     assessment_participations = paginate(query.relation)
 
     render_turbo_stream_update(
       update_candidates_list: {
-        assessment_participations: assessment_participations,
+        assessment_participations:,
         current_page: @current_page,
         total_items: @total_items,
         per_page: @per_page

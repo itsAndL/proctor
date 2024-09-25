@@ -29,8 +29,6 @@ class Question < ApplicationRecord
 
   private
 
- 
-
   def next_question_of_type(test, is_preview, is_active: true)
     test_question = test_questions.find_by(test:)
     return nil unless test_question

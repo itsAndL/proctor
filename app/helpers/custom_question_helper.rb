@@ -3,7 +3,7 @@ module CustomQuestionHelper
     EssayCustomQuestion => 'essay',
     FileUploadCustomQuestion => 'upload',
     VideoCustomQuestion => 'video',
-    MultipleChoiceCustomQuestion => 'checklist',
+    MultipleChoiceCustomQuestion => 'checklist'
   }.freeze
 
   def custom_question_type_icon(custom_question)

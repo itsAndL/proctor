@@ -11,6 +11,6 @@ class CreateQuestionAnswers < ActiveRecord::Migration[7.1]
     end
 
     add_index :question_answers, :content, using: :gin
-    add_index :question_answers, [:assessment_participation_id, :question_id, :test_id], unique: true, name: 'index_question_answers_on_participation_question_and_test'
+    add_index :question_answers, %i[assessment_participation_id question_id test_id], unique: true, name: 'index_question_answers_on_participation_question_and_test'
   end
 end

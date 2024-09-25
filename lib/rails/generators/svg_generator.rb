@@ -7,22 +7,22 @@ module Rails
     class SvgGenerator < Rails::Generators::NamedBase
       source_root File.expand_path('templates', __dir__)
 
-      desc "Generates an SVG file in the app/assets/images/icons directory"
+      desc 'Generates an SVG file in the app/assets/images/icons directory'
 
       def self.help(shell)
-        shell.say "Usage:"
-        shell.say "  rails generate svg NAME"
-        shell.say ""
-        shell.say "Description:"
-        shell.say "  This generator creates a new SVG file in the app/assets/images/icons directory."
+        shell.say 'Usage:'
+        shell.say '  rails generate svg NAME'
+        shell.say ''
+        shell.say 'Description:'
+        shell.say '  This generator creates a new SVG file in the app/assets/images/icons directory.'
         shell.say "  It generates a basic SVG structure with a 24x24 viewBox and 'size-6' class."
-        shell.say ""
-        shell.say "Example:"
-        shell.say "  rails generate svg arrow"
-        shell.say "    This will create: app/assets/images/icons/arrow.svg"
-        shell.say ""
-        shell.say "Note:"
-        shell.say "  Remember to add your specific SVG content inside the generated file."
+        shell.say ''
+        shell.say 'Example:'
+        shell.say '  rails generate svg arrow'
+        shell.say '    This will create: app/assets/images/icons/arrow.svg'
+        shell.say ''
+        shell.say 'Note:'
+        shell.say '  Remember to add your specific SVG content inside the generated file.'
       end
 
       def create_svg_file
