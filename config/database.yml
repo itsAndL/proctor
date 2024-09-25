@@ -1,23 +1,17 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
   database: proctor_development
-  host: localhost
-  username: postgres
-  password: postgres
-  port: 5432
 
 test:
   <<: *default
   database: proctor_test
-  host: localhost
-  username: postgres
-  password: postgres
-  port: 5432
 
 production:
   <<: *default
