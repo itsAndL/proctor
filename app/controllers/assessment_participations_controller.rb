@@ -1,6 +1,7 @@
 class AssessmentParticipationsController < ApplicationController
-  before_action :authenticate_business!
+  before_action :authenticate_user!
   before_action :set_assessment_participation
+  before_action :authorize_record
 
   def delete_confirmation; end
 
@@ -8,7 +9,7 @@ class AssessmentParticipationsController < ApplicationController
     @assessment = @assessment_participation.assessment
     @assessment_participation.destroy
 
-    query = AssessmentParticipationQuery.new(@assessment.assessment_participations)
+    query = AssessmentParticipationQuery.new(user: current_user, relation: @assessment.assessment_participations)
     query.execute
     assessment_participations = paginate(query.relation)
 
@@ -64,5 +65,9 @@ class AssessmentParticipationsController < ApplicationController
 
   def star_rating_identifier
     "star-rating-assessment_participation-#{@assessment_participation.hashid}"
+  end
+
+  def authorize_record
+    authorize @assessment_participation
   end
 end

@@ -1,10 +1,13 @@
 class Candidate::AssessmentParticipationsController < ApplicationController
-  before_action :authenticate_candidate!
+  before_action :authenticate_user!
   before_action :hide_navbar, except: %i[show index]
   before_action :set_assessment_participation, except: %i[index]
+  before_action :authorized_record, except: %i[index]
 
   def index
-    @assessment_participations = current_candidate.assessment_participations.order(created_at: :desc)
+    authorize!
+    query = AssessmentParticipationQuery.new(user: current_user)
+    @assessment_participations = query.sorted
   end
 
   def show; end
@@ -30,5 +33,9 @@ class Candidate::AssessmentParticipationsController < ApplicationController
     session[:participants] = {
       assessment_participation_id: @assessment_participation.id
     }
+  end
+
+  def authorized_record
+    authorize! @assessment_participation
   end
 end
