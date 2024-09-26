@@ -1,8 +1,9 @@
 class Customer::CandidatesController < ApplicationController
-  before_action :authenticate_business!
+  before_action :authenticate_user!
 
   def index
-    query = CandidateQuery.new(current_business.candidates_for_search)
+    authorize!
+    query = CandidateQuery.new(user: current_user)
     @candidates = query.execute(
       search_query: params[:search_query],
       assessment_id: params[:assessment_id]
@@ -11,6 +12,7 @@ class Customer::CandidatesController < ApplicationController
   end
 
   def show
-    @candidate = Candidate.find(params[:hashid])
+    @candidate = current_business.candidates.find(params[:hashid])
+    authorize! @candidate
   end
 end
