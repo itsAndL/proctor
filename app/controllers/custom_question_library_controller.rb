@@ -1,7 +1,8 @@
 class CustomQuestionLibraryController < ApplicationController
-  before_action :authenticate_business!
+  before_action :authenticate_user!
 
   def index
+    authorize! with: CustomQuestionPolicy
     query = CustomQuestionQuery.new
 
     @custom_questions = query.execute(
