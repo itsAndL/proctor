@@ -5,9 +5,11 @@
         <%= t('.title') %>
       </h1>
       <div>
-        <%= link_to new_assessment_path, class: "primary-button" do %>
-          <%= svg_tag "plus_circle" %>
-          <%= t('.create_assessment') %>
+        <% if allowed_to?(:create?) %>
+          <%= link_to new_assessment_path, class: "primary-button" do %>
+            <%= svg_tag "plus_circle" %>
+            <%= t('.create_assessment') %>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -72,21 +74,18 @@
                           </button>
                           <div tabindex="<%= index %>" class="dropdown-content absolute right-8 -top-4 z-10 mt-2 w-40 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                             <div class="py-1" role="none">
-                              <% if assessment.assessment_participations.any? %>
-                                <button type="button" class="group flex items-center gap-x-2.5 px-4 py-2 text-sm text-zinc-400 font-medium">
-                                  <%= svg_tag "pencil_square", class: "size-5" %>
-                                  <%= t('.edit') %>
-                                </button>
-                              <% else %>
-                                <%= link_to edit_assessment_path(assessment), class: "group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium" do %>
+                                <% if allowed_to?(:edit?, assessment) %>
+                                <%= link_to edit_assessment_path(assessment), class: "group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium #{'disabled' if assessment_started(assessment)}" do %>
                                   <%= svg_tag "pencil_square", class: "size-5 group-hover:text-gray-500" %>
                                   <%= t('.edit') %>
                                 <% end %>
-                              <% end %>
-                              <%= button_to assessment.archived? ? unarchive_assessment_path(assessment) : archive_assessment_path(assessment), method: :patch, class: "group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium" do %>
-                                <%= svg_tag "archive_box", class: "size-5 group-hover:text-gray-500" %>
-                                <%= t(assessment.archived? ? '.unarchive' : '.archive') %>
-                              <% end %>
+                                <% end %>
+                                <% if allowed_to?(:archive?, assessment) %>
+                                <%= button_to assessment.archived? ? unarchive_assessment_path(assessment) : archive_assessment_path(assessment), method: :patch, class: "group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium" do %>
+                                  <%= svg_tag "archive_box", class: "size-5 group-hover:text-gray-500" %>
+                                  <%= t(assessment.archived? ? '.unarchive' : '.archive') %>
+                                <% end %>
+                                <% end %>
                             </div>
                           </div>
                         </div>

@@ -1,9 +1,12 @@
 class AssessmentsController < ApplicationController
-  before_action :authenticate_business!
+  # # TODO: remove before_action :authenticate_business!
+  before_action :authenticate_user!
   before_action :set_assessment, except: %i[index new create]
+  before_action :authorize_record, except: %i[index new create]
 
   def index
-    query = AssessmentQuery.new(current_business.assessments)
+    authorize!
+    query = AssessmentQuery.new
     @filtered_assessments = query.filter_by_search_query(params[:search_query])
 
     @state = params[:state] || 'active'
@@ -14,7 +17,7 @@ class AssessmentsController < ApplicationController
   end
 
   def show
-    query = AssessmentParticipationQuery.new(@assessment.assessment_participations)
+    query = AssessmentParticipationQuery.new(user: current_user, relation: @assessment.assessment_participations)
     @assessment_participations = query.execute(search_query: params[:search_query], status: params[:status])
     @assessment_participations = paginate(query.relation)
   end
@@ -135,5 +138,9 @@ class AssessmentsController < ApplicationController
     return continue_path unless params[:save_and_exit] == 'true'
 
     assessment_path(@assessment)
+  end
+
+  def authorize_record
+    authorize! @assessment
   end
 end

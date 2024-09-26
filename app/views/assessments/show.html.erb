@@ -20,20 +20,17 @@
                   <%= t('.invite') %>
                 <% end %>
               <% end %>
-              <% if @assessment.assessment_participations.any? %>
-                <button type="button" class="group flex items-center gap-x-2.5 px-4 py-2 text-sm text-zinc-400 font-medium">
-                  <%= svg_tag "pencil_square", class: "size-5" %>
-                  <%= t('.edit_assessment') %>
-                </button>
-              <% else %>
-                <%= link_to edit_assessment_path(@assessment), class: "group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium" do %>
+              <% if allowed_to?(:edit?, @assessment) %>
+                <%= link_to edit_assessment_path(@assessment), class: "group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium #{assessment_started(@assessment) ? 'disabled' : ''}" do %>
                   <%= svg_tag "pencil_square", class: "size-5 group-hover:text-gray-500" %>
                   <%= t('.edit_assessment') %>
                 <% end %>
               <% end %>
-              <%= button_to @assessment.archived? ? unarchive_assessment_path(@assessment) : archive_assessment_path(@assessment), method: :patch, class: "group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium" do %>
-                <%= svg_tag "archive_box", class: "size-5 group-hover:text-gray-500" %>
-                <%= @assessment.archived? ? t('.unarchive') : t('.archive') %>
+              <% if allowed_to?(:archive?, @assessment) %>
+                <%= button_to @assessment.archived? ? unarchive_assessment_path(@assessment) : archive_assessment_path(@assessment), method: :patch, class: "group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium" do %>
+                  <%= svg_tag "archive_box", class: "size-5 group-hover:text-gray-500" %>
+                  <%= @assessment.archived? ? t('.unarchive') : t('.archive') %>
+                <% end %>
               <% end %>
             </div>
           </div>

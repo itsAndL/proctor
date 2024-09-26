@@ -4,7 +4,7 @@ class UserQuery
   attr_reader :relation
 
   def initialize(relation = User.all)
-    @relation = relation
+    @relation = UserPolicy.new(user: current_user).relation_scope(relation)
   end
 
   def filter_by_search_query(search_query)

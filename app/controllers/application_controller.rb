@@ -4,11 +4,11 @@ class ApplicationController < ActionController::Base
   include PaginationConcern
   include NavbarVisibilityConcern
 
-  around_action :switch_locale
+  before_action :switch_locale
 
-  def switch_locale(&)
+  def switch_locale
     locale = params[:locale] || I18n.default_locale
-    I18n.with_locale(locale, &)
+    I18n.locale = locale
   end
 
   def default_url_options
