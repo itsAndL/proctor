@@ -3,8 +3,9 @@
 class CandidateQuery
   attr_reader :relation
 
-  def initialize(relation = Candidate.all)
-    @relation = relation
+  def initialize(relation: Candidate.all, user: current_)
+    policy = CandidatePolicy.new(user:)
+    @relation = policy.authorized_scope(relation)
   end
 
   def filter_by_search_query(search_query)

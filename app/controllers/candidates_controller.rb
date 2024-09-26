@@ -1,13 +1,15 @@
 class CandidatesController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
-  before_action :authenticate_candidate!, only: %i[edit update]
+  before_action :authenticate_user!, only: %i[edit update]
   before_action :require_new_candidate!, only: %i[new create]
 
   def new
+    authorize!
     @candidate = current_user.build_candidate
   end
 
   def create
+    authorize!
     @candidate = current_user.build_candidate
     @candidate.assign_attributes(candidate_params)
 

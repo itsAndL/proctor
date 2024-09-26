@@ -30,7 +30,7 @@
           </div>
         </div>
       </div>
-      <% unless @assessment_participation.completed? %>
+      <% if allowed_to?(:start?, @assessment_participation) && !@assessment_participation.completed? %>
         <%= link_to overview_candidate_assessment_participation_path(@assessment_participation), target: "_blank", class: "primary-button px-7 py-3 gap-x-2.5" do %>
           <span><%= @assessment_participation.started? ? t('.resume_assessment') : t('.start_assessment') %></span>
           <%= svg_tag "chevron_right", class: "size-3 -mb-0.5", "stroke-width": 3 %>

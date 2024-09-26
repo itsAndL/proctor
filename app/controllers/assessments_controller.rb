@@ -22,10 +22,12 @@ class AssessmentsController < ApplicationController
   end
 
   def new
+    authorize!
     @assessment = Assessment.new
   end
 
   def create
+    authorize!
     @assessment = Assessment.new(assessment_params.merge(business_id: current_business.id))
 
     if @assessment.save

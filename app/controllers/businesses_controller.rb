@@ -1,13 +1,15 @@
 class BusinessesController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
-  before_action :authenticate_business!, only: %i[edit update]
+  before_action :authenticate_user!, only: %i[edit update]
   before_action :require_new_business!, only: %i[new create]
 
   def new
+    authorize!
     @business = current_user.build_business
   end
 
   def create
+    authorize!
     @business = current_user.build_business
     @business.assign_attributes(business_params)
 

@@ -13,8 +13,4 @@ class Business < ApplicationRecord
   validates :contact_name, :company, :bio, presence: true
 
   delegate :email, to: :user
-
-  def candidates_for_search
-    Candidate.where(id: candidates.pluck(:id))
-  end
 end
