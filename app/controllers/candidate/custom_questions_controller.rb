@@ -1,11 +1,12 @@
 class Candidate::CustomQuestionsController < ApplicationController
   include AssessmentFormConcern
 
-  before_action :authenticate_candidate!
+  before_action :authenticate_user!
   before_action :hide_navbar
   before_action :set_assessment_participation
   before_action :set_current_custom_question
   before_action :validate_save_answer_params, only: %i[save_answer]
+  before_action :authorize_record
 
   def start; end
 
@@ -44,5 +45,9 @@ class Candidate::CustomQuestionsController < ApplicationController
     return redirect_to questions_candidate_custom_question_path(next_unanswered_custom_question) if next_unanswered_custom_question.present?
 
     redirect_to checkout_candidate_assessment_participation_path(@assessment_participation)
+  end
+
+  def authorize_record
+    authorize @current_custom_question
   end
 end
