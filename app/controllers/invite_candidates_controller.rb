@@ -2,10 +2,10 @@ class InviteCandidatesController < ApplicationController
   include AssessmentFinder
   include TurboStreamRenderer
 
-  before_action :authenticate_business!, except: %i[public_link invite_me]
+  before_action :authenticate_user!, except: %i[public_link invite_me]
   before_action :set_assessment, except: :public_link
   before_action :hide_navbar, only: :public_link
-
+  before_action :authorize_record
   def share; end
 
   def activate_public_link
@@ -74,7 +74,7 @@ class InviteCandidatesController < ApplicationController
   end
 
   def update_candidates_list(options = {})
-    query = AssessmentParticipationQuery.new(@assessment.assessment_participations)
+    query = AssessmentParticipationQuery.new(user: current_user, relation: @assessment.assessment_participations)
     query.execute
     assessment_participations = paginate(query.relation)
 
@@ -89,5 +89,9 @@ class InviteCandidatesController < ApplicationController
       update_email_inviting: options[:update_email_inviting],
       update_bulk_inviting: options[:update_bulk_inviting]
     )
+  end
+
+  def authorize_record
+    authorize! @assessment, with: AssessmentParticipationPolicy
   end
 end

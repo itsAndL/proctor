@@ -1,9 +1,9 @@
 class TestLibraryController < ApplicationController
-  before_action :authenticate_business!
+  before_action :authenticate_user!
 
   def index
+    authorize! with: TestPolicy
     query = TestQuery.new
-
     @tests = query.execute(
       search_query: params[:search_query],
       category_ids: params[:test_category]&.map(&:to_i),
@@ -17,5 +17,6 @@ class TestLibraryController < ApplicationController
 
   def show
     @test = Test.find(params[:hashid])
+    authorize! @test, with: TestPolicy
   end
 end

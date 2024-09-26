@@ -3,8 +3,9 @@
 class AssessmentParticipationQuery
   attr_reader :relation
 
-  def initialize(relation = AssessmentParticipation.all)
-    @relation = relation
+  def initialize(user: current_user, relation: AssessmentParticipation.all)
+    policy = AssessmentParticipationPolicy.new(user:)
+    @relation = policy.authorized_scope(relation)
   end
 
   def filter_by_search_query(search_query)
@@ -17,6 +18,10 @@ class AssessmentParticipationQuery
     return relation if status.blank?
 
     @relation = @relation.where(status:)
+  end
+
+  def find(hashid)
+    @relation.find(hashid)
   end
 
   def sorted

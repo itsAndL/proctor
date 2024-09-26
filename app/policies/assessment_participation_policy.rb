@@ -43,6 +43,50 @@ class AssessmentParticipationPolicy < ApplicationPolicy
     owner?
   end
 
+  def share?
+    owner?
+  end
+
+  def activate_public_link?
+    owner?
+  end
+
+  def deactivate_public_link?
+    owner?
+  end
+
+  def public_link?
+    owner?
+  end
+
+  def invite_me?
+    owner?
+  end
+
+  def invite?
+    owner?
+  end
+
+  def check_candidate?
+    owner?
+  end
+
+  def post_invite?
+    owner?
+  end
+
+  def bulk_invite?
+    owner?
+  end
+
+  def bulk_invite_upload?
+    owner?
+  end
+
+  def bulk_invite_template?
+    owner?
+  end
+
   relation_scope do |relation|
     next relation if user.business?
 
