@@ -1,7 +1,8 @@
 class AssessmentCustomQuestionsController < ApplicationController
   include AssessmentItemManagement
 
-  before_action :authenticate_business!
+  before_action :authenticate_user!
+  before_action :authorize_record
 
   private
 
@@ -35,5 +36,9 @@ class AssessmentCustomQuestionsController < ApplicationController
 
   def render_item_card
     CustomQuestionCardComponent.new(custom_question: @item, assessment: @assessment).render_in(view_context)
+  end
+
+  def authorize_record
+    authorize! @item, with: CustomQuestionPolicy
   end
 end

@@ -63,12 +63,35 @@ module AssessmentItemManagement
   end
 
   # These methods should be implemented in the subclasses
-  def association_name; end
-  def item_class; end
-  def item_param_key; end
-  def item_key; end
-  def item_name; end
-  def table_id; end
-  def render_table; end
-  def render_item_card; end
+  def association_name
+    raise NotImplementedError
+  end
+
+  def item_class
+    raise NotImplementedError
+  end
+
+  def item_param_key
+    raise NotImplementedError
+  end
+
+  def item_key
+    raise NotImplementedError
+  end
+
+  def item_name
+    raise NotImplementedError
+  end
+
+  def table_id
+    raise NotImplementedError
+  end
+
+  def render_table
+    raise NotImplementedError
+  end
+
+  def render_item_card
+    raise NotImplementedError
+  end
 end
