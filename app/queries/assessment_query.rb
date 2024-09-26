@@ -3,8 +3,9 @@
 class AssessmentQuery
   attr_reader :relation
 
-  def initialize(relation = Assessment.all)
-    @relation = relation
+  def initialize(user, relation: Assessment.all)
+    policy = AssessmentPolicy.new(user:)
+    @relation = policy.authorized_scope(relation)
   end
 
   def filter_by_search_query(search_query)

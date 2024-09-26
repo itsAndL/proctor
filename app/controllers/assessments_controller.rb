@@ -5,7 +5,7 @@ class AssessmentsController < ApplicationController
 
   def index
     authorize!
-    query = AssessmentQuery.new
+    query = AssessmentQuery.new(current_user)
     @filtered_assessments = query.filter_by_search_query(params[:search_query])
 
     @state = params[:state] || 'active'
