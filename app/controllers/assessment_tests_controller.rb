@@ -1,7 +1,8 @@
 class AssessmentTestsController < ApplicationController
   include AssessmentItemManagement
 
-  before_action :authenticate_business!
+  before_action :authenticate_user!
+  before_action :authorize_record
 
   private
 
@@ -35,5 +36,9 @@ class AssessmentTestsController < ApplicationController
 
   def render_item_card
     TestCardComponent.new(test: @item, assessment: @assessment).render_in(view_context)
+  end
+
+  def authorize_record
+    authorize! @item, with: TestPolicy
   end
 end

@@ -1,5 +1,6 @@
 class CustomQuestionResponsesController < ApplicationController
   before_action :set_custom_question_response
+  before_action :authorize_record
 
   def edit; end
 
@@ -35,5 +36,9 @@ class CustomQuestionResponsesController < ApplicationController
 
   def custom_question_response_params
     params.require(:custom_question_response).permit(:rating, :comment)
+  end
+
+  def authorize_record
+    authorize! @custom_question_reponse
   end
 end
