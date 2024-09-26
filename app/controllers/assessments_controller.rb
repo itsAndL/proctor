@@ -1,5 +1,4 @@
 class AssessmentsController < ApplicationController
-  # # TODO: remove before_action :authenticate_business!
   before_action :authenticate_user!
   before_action :set_assessment, except: %i[index new create]
   before_action :authorize_record, except: %i[index new create]
