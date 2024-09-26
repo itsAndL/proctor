@@ -1,12 +1,13 @@
 class Candidate::TestsController < ApplicationController
   include AssessmentFormConcern
 
-  before_action :authenticate_candidate!
+  before_action :authenticate_user!
   before_action :hide_navbar
   before_action :set_assessment_participation
   before_action :set_current_test, except: %i[feedback]
   before_action :set_current_question, only: %i[save_answer]
   before_action :validate_save_answer_params, only: %i[save_answer]
+  before_action :authorize_record
 
   def show
     participation_test = @assessment_participation.participation_tests.find_by(test: @current_test)
@@ -84,5 +85,9 @@ class Candidate::TestsController < ApplicationController
   def set_current_question
     question_id = params[:question_id]
     @question = Question.find(question_id)
+  end
+
+  def authorize_record
+    authorize! @current_test, with: TestPolicy
   end
 end
