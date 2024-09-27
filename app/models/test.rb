@@ -58,7 +58,45 @@ class Test < ApplicationRecord
     %w[coding_test multiple_choice_test questionnaire_test]
   end
 
+  def next_preview(test)
+    next_question_of_type(test, true)
+  end
+
+  def next_non_preview(test)
+    next_question_of_type(test, false)
+  end
+
+  def previous_preview(test)
+    previous_question_of_type(test, true)
+  end
+
+  def previous_non_preview(test)
+    previous_question_of_type(test, false)
+  end
+
   private
+
+  def next_question_of_type(is_preview, is_active: true)
+    next_question = test_questions.joins(:question)
+                                  .where(test:)
+                                  .where('test_questions.position > ?', test_question.position)
+                                  .where(questions: { preview: is_preview })
+                                  .where(questions: { active: is_active })
+                                  .order('test_questions.position ASC')
+                                  .first
+    next_question&.question
+  end
+
+  def previous_question_of_type(test, is_preview, is_active: true)
+    prev_question = test_questions.joins(:question)
+                                  .where(test:)
+                                  .where('test_questions.position < ?', test_question.position)
+                                  .where(questions: { preview: is_preview })
+                                  .where(questions: { active: is_active })
+                                  .order('test_questions.position DESC')
+                                  .first
+    prev_question&.question
+  end
 
   def active_non_preview_questions
     @active_non_preview_questions ||= questions.non_preview.active
