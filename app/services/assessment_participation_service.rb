@@ -54,7 +54,8 @@ class AssessmentParticipationService
   end
 
   def create_question_answer(test, question, params)
-    return test.next_preview if question.preview
+    test_question = test.test_questions.find_by(question:)
+    return test.next_preview(test_question) if question.preview
 
     participation_test = @assessment_participation.participation_tests.find_by(test:)
     selected_options_ids = params[:selected_options]

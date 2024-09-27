@@ -58,27 +58,26 @@ class Test < ApplicationRecord
     %w[coding_test multiple_choice_test questionnaire_test]
   end
 
-  def next_preview(test)
-    next_question_of_type(test, true)
+  def next_preview(test_question)
+    next_question_of_type(true, test_question:)
   end
 
-  def next_non_preview(test)
-    next_question_of_type(test, false)
+  def next_non_preview(test_question)
+    next_question_of_type(false, test_question:)
   end
 
-  def previous_preview(test)
-    previous_question_of_type(test, true)
+  def previous_preview(test_question)
+    previous_question_of_type(true, test_question:)
   end
 
-  def previous_non_preview(test)
-    previous_question_of_type(test, false)
+  def previous_non_preview(test_question)
+    previous_question_of_type(false, test_question:)
   end
 
   private
 
-  def next_question_of_type(is_preview, is_active: true)
+  def next_question_of_type(is_preview, test_question:, is_active: true)
     next_question = test_questions.joins(:question)
-                                  .where(test:)
                                   .where('test_questions.position > ?', test_question.position)
                                   .where(questions: { preview: is_preview })
                                   .where(questions: { active: is_active })
@@ -87,9 +86,8 @@ class Test < ApplicationRecord
     next_question&.question
   end
 
-  def previous_question_of_type(test, is_preview, is_active: true)
+  def previous_question_of_type(is_preview, test_question:, is_active: true)
     prev_question = test_questions.joins(:question)
-                                  .where(test:)
                                   .where('test_questions.position < ?', test_question.position)
                                   .where(questions: { preview: is_preview })
                                   .where(questions: { active: is_active })
