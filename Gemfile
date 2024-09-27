@@ -45,7 +45,16 @@ gem 'tzinfo-data', platforms: %i[windows jruby]
 gem 'bootsnap', require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
+gem 'acts_as_list'
+gem 'caxlsx', '~> 4.1'
+gem 'devise', '~> 4.9'
+gem 'hashid-rails', '~> 1.4'
 gem 'image_processing', '~> 1.2'
+gem 'pg_search', '~> 2.3'
+gem 'rexml', '~> 3.3'
+gem 'roo', '~> 2.10'
+gem 'sucker_punch', '~> 3.2'
+gem 'view_component', '~> 3.12'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -68,12 +77,9 @@ group :development do
   gem 'letter_opener_web'
 end
 
-gem 'acts_as_list'
-gem 'caxlsx', '~> 4.1'
-gem 'devise', '~> 4.9'
-gem 'hashid-rails', '~> 1.4'
-gem 'pg_search', '~> 2.3'
-gem 'rexml', '~> 3.3'
-gem 'roo', '~> 2.10'
-gem 'sucker_punch', '~> 3.2'
-gem 'view_component', '~> 3.12'
+group :test do
+  gem 'database_cleaner-active_record'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'rspec-rails', '~> 7.0.0'
+end

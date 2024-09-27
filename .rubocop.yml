@@ -2,6 +2,9 @@ AllCops:
   NewCops: enable
   TargetRubyVersion: 3.3.0
 
+
+  Naming/VariableNumber:
+  Enabled: false
 # Disable the Style/Documentation cop
 Style/Documentation:
   Enabled: false
