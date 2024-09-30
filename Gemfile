@@ -65,6 +65,8 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 
+  gem 'easy_translate'
+  gem 'i18n-tasks', '~> 1.0.14'
   gem 'letter_opener_web'
 end
 

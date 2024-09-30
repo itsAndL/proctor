@@ -83,7 +83,7 @@
                 <% end %>
               </div>
               <%= form.hidden_field :rating, data: { custom_question_rating_target: "ratingInput" }, value: @custom_question_response.rating.to_i %>
-              <%= form.text_area :comment, placeholder: "<%= t('.comment_placeholder') %>", rows: 4, class: "primary-field" %>
+              <%= form.text_area :comment, placeholder: <%= t('.comment_placeholder'), rows: 4, class: "primary-field" %>
             </div>
 
             <div class="mt-12 flex items-center justify-end gap-x-4 bg-white">
