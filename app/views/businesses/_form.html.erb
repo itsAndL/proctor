@@ -30,7 +30,7 @@
                     <div>
                        <%= form.label :bio, class: "required-label" %>
                        <%= form.text_area :bio, rows: "3", required: true, placeholder: "Write a few sentences about your company.", class: "primary-field" %>
-                       <%= render FieldErrorComponent.new(:company, business) %>
+                       <%= render FieldErrorComponent.new(:bio, business) %>
                     </div>
 
                     <div data-controller="file-upload" data-file-upload-visibility-class="hidden" data-file-upload-loading-class="opacity-50">
@@ -48,7 +48,7 @@
                           <p class="mt-1.5 text-xs leading-5 text-gray-500">JPG, JPEG or PNG. 2MB max.</p>
                         </div>
                       </div>
-                      <%= render FieldErrorComponent.new(:company, business) %>
+                      <%= render FieldErrorComponent.new(:avatar, business) %>
                       <div data-file-upload-target="error" class="hidden bg-red-50 border-l-4 border-red-400 p-4 mt-4">
                         <div class="ml-3">
                           <p class="text-sm text-red-700"><%= t(".something_went_wrong") %></p>
@@ -74,7 +74,7 @@
                     <div>
                       <%= form.label :contact_name, class: "required-label" %>
                       <%= form.text_field :contact_name, autocomplete: "name", required: true, class: "primary-field" %>
-                      <%= render FieldErrorComponent.new(:company, business) %>
+                      <%= render FieldErrorComponent.new(:contact_name, business) %>
                     </div>
 
                     <div>

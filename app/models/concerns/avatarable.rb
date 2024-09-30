@@ -10,7 +10,6 @@ module Avatarable
     end
 
     validates :avatar, content_type: ["image/png", "image/jpeg", "image/jpg"], max_file_size: 2.megabytes
-    validates :avatar, attached: true, on: :create
 
     before_save :anonymize_avatar_filename
 
