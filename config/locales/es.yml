@@ -7,9 +7,26 @@ es:
       de: "Alemán"
   assessment_mailer:
     invite_email:
-      invite_subject: "Has sido invitado a realizar una evaluación para %{company}"
+      greeting: "Hola, %{name}"
+      invitation: "Has sido invitado a participar en una evaluación por %{company}."
+      assessment_description: "Esta evaluación está diseñada para evaluar tus habilidades y conocimientos en un área específica. Es una oportunidad para demostrar tus capacidades de manera justa e imparcial. La evaluación tomará aproximadamente %{duration} para completarse."
+      new_to_assesskit: "¿Nuevo en AssessKit? Aquí tienes una <a href=\"#\" style=\"color: #2563eb;\">guía paso a paso</a> sobre qué esperar"
+      technical_requirements: "Para los requisitos técnicos y la compatibilidad de dispositivos, consulta nuestros <a href=\"#\" style=\"color: #2563eb;\">requisitos del sistema</a>"
+      troubleshooting_guide: "Si encuentras algún problema, consulta nuestra <a href=\"#\" style=\"color: #2563eb;\">guía de solución de problemas</a>"
+      attempts_info: "Tienes 1 intento para completar esta evaluación. Aunque recomendamos completar la evaluación en una sola sesión, puedes pausar y tomar descansos entre las pruebas."
+      accommodations_info: "Hay adaptaciones disponibles si es necesario. Más detalles se pueden encontrar en la página de resumen una vez que comiences."
+      browser_recommendation: "Te sugerimos usar Google Chrome en una computadora portátil o de escritorio para evitar cualquier problema técnico."
+      start_assessment_button: "Comenzar evaluación"
+      support_info: "Si tienes alguna pregunta o necesitas asistencia, no dudes en contactar a nuestro equipo de soporte."
     reminder_email:
-      reminder_subject: "Recordatorio: Completa tu evaluación para %{company}"
+      greeting: "Hola, %{name}"
+      reminder: "Este es un recordatorio para completar tu evaluación para %{company}."
+      duration: "La evaluación tomará aproximadamente %{duration} para completarse."
+      assistance: "Si necesitas asistencia, consulta nuestra"
+      troubleshooting_guide: "guía de solución de problemas"
+      technical_requirements: "Para los requisitos técnicos y la compatibilidad de dispositivos, consulta nuestros"
+      system_requirements: "requisitos del sistema"
+      start_assessment_button: "Comenzar evaluación"
   duration:
     zero_min: "0 min"
     hour: "hora"

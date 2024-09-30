@@ -7,9 +7,26 @@ de:
       de: "Deutsch"
   assessment_mailer:
     invite_email:
-      invite_subject: "Sie wurden eingeladen, eine Bewertung für %{company} zu machen"
+      greeting: "Hallo, %{name}"
+      invitation: "Sie wurden eingeladen, an einer Bewertung von %{company} teilzunehmen."
+      assessment_description: "Diese Bewertung soll Ihre Fähigkeiten und Kenntnisse in einem bestimmten Bereich bewerten. Es ist eine Gelegenheit, Ihre Fähigkeiten fair und unvoreingenommen zu demonstrieren. Die Bewertung dauert ungefähr %{duration}."
+      new_to_assesskit: "Neu bei AssessKit? Hier ist eine <a href=\"#\" style=\"color: #2563eb;\">Schritt-für-Schritt-Anleitung</a>, was Sie erwartet"
+      technical_requirements: "Für technische Anforderungen und Gerätekompatibilität, siehe unsere <a href=\"#\" style=\"color: #2563eb;\">Systemanforderungen</a>"
+      troubleshooting_guide: "Wenn Sie auf Probleme stoßen, lesen Sie bitte unseren <a href=\"#\" style=\"color: #2563eb;\">Fehlerbehebungsleitfaden</a>"
+      attempts_info: "Sie haben 1 Versuch, diese Bewertung abzuschließen. Obwohl wir empfehlen, die Bewertung in einer Sitzung abzuschließen, können Sie Pausen einlegen und zwischen den Tests pausieren."
+      accommodations_info: "Unterkünfte sind bei Bedarf verfügbar. Weitere Details finden Sie auf der Übersichtsseite, sobald Sie beginnen."
+      browser_recommendation: "Wir empfehlen die Verwendung von Google Chrome auf einem Laptop oder Desktop, um technische Probleme zu vermeiden."
+      start_assessment_button: "Bewertung starten"
+      support_info: "Wenn Sie Fragen haben oder Unterstützung benötigen, wenden Sie sich bitte an unser Support-Team."
     reminder_email:
-      reminder_subject: "Erinnerung: Schließen Sie Ihre Bewertung für %{company} ab"
+      greeting: "Hallo, %{name}"
+      reminder: "Dies ist eine Erinnerung, Ihre Bewertung für %{company} abzuschließen."
+      duration: "Die Bewertung dauert ungefähr %{duration}."
+      assistance: "Wenn Sie Unterstützung benötigen, lesen Sie bitte unseren"
+      troubleshooting_guide: "Fehlerbehebungsleitfaden"
+      technical_requirements: "Für technische Anforderungen und Gerätekompatibilität, siehe unsere"
+      system_requirements: "Systemanforderungen"
+      start_assessment_button: "Bewertung starten"
   duration:
     zero_min: "0 Min"
     hour: "Stunde"

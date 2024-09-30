@@ -7,9 +7,26 @@ en:
       de: "German"
   assessment_mailer:
     invite_email:
-      invite_subject: "You've been invited to take an assessment for %{company}"
+      greeting: "Hello, %{name}"
+      invitation: "You have been invited to participate in an assessment by %{company}."
+      assessment_description: "This assessment is designed to evaluate your skills and knowledge in a specific area. It's an opportunity to demonstrate your abilities in a fair and unbiased manner. The assessment will take approximately %{duration} to complete."
+      new_to_assesskit: "New to AssessKit? Here's a <a href=\"#\" style=\"color: #2563eb;\">step-by-step guide</a> on what to expect"
+      technical_requirements: "For technical requirements and device compatibility, check out our <a href=\"#\" style=\"color: #2563eb;\">system requirements</a>"
+      troubleshooting_guide: "If you encounter any issues, please refer to our <a href=\"#\" style=\"color: #2563eb;\">troubleshooting guide</a>"
+      attempts_info: "You have 1 attempt to complete this assessment. While we recommend completing the assessment in one session, you can pause and take breaks between tests."
+      accommodations_info: "Accommodations are available if needed. More details can be found on the overview page once you start."
+      browser_recommendation: "We suggest using Google Chrome on a laptop or desktop to avoid any technical issues."
+      start_assessment_button: "Start Assessment"
+      support_info: "If you have any questions or need assistance, please don't hesitate to contact our support team."
     reminder_email:
-      reminder_subject: "Reminder: Complete your assessment for %{company}"
+      greeting: "Hello, %{name}"
+      reminder: "This is a reminder to complete your assessment for %{company}."
+      duration: "The assessment will take approximately %{duration} to complete."
+      assistance: "If you need assistance, please refer to our"
+      troubleshooting_guide: "troubleshooting guide"
+      technical_requirements: "For technical requirements and device compatibility, check out our"
+      system_requirements: "system requirements"
+      start_assessment_button: "Start Assessment"
   duration:
     zero_min: "0 min"
     hour: "hour"

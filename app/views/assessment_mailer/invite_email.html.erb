@@ -23,17 +23,19 @@
                             </span>
                           </p>
                           <p style="margin: 0;">&nbsp;</p>
-                          <p style="margin: 0;">
-                            <span style="color: #242424; font-family: Arial, helvetica, sans-serif;">
-                              <%= t('.description', duration: format_duration(@assessment.duration_seconds, true)) %>
-                            </span>
-                          </p>
+                          <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;"><%= t('.assessment_description', duration: format_duration(@assessment.duration_seconds, true)) %></span></p>
                           <p style="margin: 0;">&nbsp;</p>
                           <ul style="color: #242424; font-family: Arial, helvetica, sans-serif;">
-                            <li><%= t('.new_to_assesskit') %> <a href="#" style="color: #2563eb;"><%= t('.step_by_step_guide') %></a></li>
-                            <li><%= t('.system_requirements') %> <a href="#" style="color: #2563eb;"><%= t('.requirements_link') %></a></li>
-                            <li><%= t('.troubleshooting') %> <a href="#" style="color: #2563eb;"><%= t('.troubleshooting_guide') %></a></li>
+                            <li><%= t('.new_to_assesskit') %></li>
+                            <li><%= t('.technical_requirements') %></li>
+                            <li><%= t('.troubleshooting_guide') %></li>
                           </ul>
+                          <p style="margin: 0;">&nbsp;</p>
+                          <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;"><%= t('.attempts_info') %></span></p>
+                          <p style="margin: 0;">&nbsp;</p>
+                          <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;"><%= t('.accommodations_info') %></span></p>
+                          <p style="margin: 0;">&nbsp;</p>
+                          <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;"><%= t('.browser_recommendation') %></span></p>
                         </div>
                       </td>
                     </tr>
@@ -72,7 +74,7 @@
                                     </tr>
                                     <tr>
                                       <td height="18" align="center" valign="top" class="r22-i nl2go-default-textstyle" style="color: #3b3f44; font-family: Arial; font-size: 15px; line-height: 1.5; word-break: break-word;">
-                                        <%= link_to overview_candidate_assessment_participation_url(@assessment_participation), title: "Start Assessment", data: {btn: 1}, sib_link_id: 0, class: "r23-r default-button", style: "font-style: normal; font-weight: normal; line-height: 1.15; text-decoration: none; word-break: break-word; border-style: solid; word-wrap: break-word; display: block; -webkit-text-size-adjust: none; background-color: #2563eb; border-color: #000000; border-radius: 50px; border-width: 0px; color: #000000; font-family: open sans,arial,helvetica,sans-serif; font-size: 16px; height: 18px; mso-hide: all; padding-bottom: 12px; padding-left: 5px; padding-right: 5px; padding-top: 12px; width: 190px;" do %>
+                                        <%= link_to overview_candidate_assessment_participation_url(@assessment_participation), title: t('.start_assessment_button'), data: {btn: 1}, sib_link_id: 0, class: "r23-r default-button", style: "font-style: normal; font-weight: normal; line-height: 1.15; text-decoration: none; word-break: break-word; border-style: solid; word-wrap: break-word; display: block; -webkit-text-size-adjust: none; background-color: #2563eb; border-color: #000000; border-radius: 50px; border-width: 0px; color: #000000; font-family: open sans,arial,helvetica,sans-serif; font-size: 16px; height: 18px; mso-hide: all; padding-bottom: 12px; padding-left: 5px; padding-right: 5px; padding-top: 12px; width: 190px;" do %>
                                           <span style="color: #ffffff; font-size: 15px;"><%= t('.start_assessment_button') %></span>
                                         <% end %>
                                       </td>
@@ -112,11 +114,7 @@
                     <tr>
                       <td class="r15-c nl2go-default-textstyle" align="left" style="color: #3b3f44; font-family: Arial; font-size: 15px; line-height: 1.5; word-break: break-word; text-align: left; valign: top;">
                         <div>
-                          <p style="margin: 0;">
-                            <span style="color: #242424; font-family: Arial, helvetica, sans-serif;">
-                              <%= t('.support_contact') %>
-                            </span>
-                          </p>
+                          <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;"><%= t('.support_info') %></span></p>
                         </div>
                       </td>
                     </tr>
