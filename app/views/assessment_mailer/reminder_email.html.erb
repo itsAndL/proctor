@@ -11,16 +11,9 @@
                     <tr>
                       <td class="r15-c nl2go-default-textstyle" align="left" style="color: #3b3f44; font-family: Arial; font-size: 15px; line-height: 1.5; word-break: break-word; text-align: left; valign: top;">
                         <div>
-                          <h2 class="default-heading2" style="margin: 0; color: #1f2d3d; font-family: Poppins,arial; font-size: 32px; word-break: break-word; line-height: 34px"><span style="color: #242424; font-family: Arial, helvetica, sans-serif; font-size: 27px;">Hello <%= @recipient.name || @recipient.email %>!</span></h2>
+                          <h2 class="default-heading2" style="margin: 0; color: #1f2d3d; font-family: Poppins,arial; font-size: 32px; word-break: break-word; line-height: 34px"><span style="color: #242424; font-family: Arial, helvetica, sans-serif; font-size: 27px;">Hi <%= @recipient.name || @recipient.email %>!</span></h2>
                           <p style="margin: 0;">&nbsp;</p>
-                          <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;">This is a friendly reminder that you have an assessment to complete for <%= @assessment.business.company %>.</span></p>
-                          <p style="margin: 0;">&nbsp;</p>
-                          <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;">The assessment will take approximately <%= format_duration(@assessment.duration_seconds, true) %> to complete. Your participation is important, and we encourage you to complete it at your earliest convenience.</span></p>
-                          <p style="margin: 0;">&nbsp;</p>
-                          <ul style="color: #242424; font-family: Arial, helvetica, sans-serif;">
-                            <li>If you need any assistance, please refer to our <a href="#" style="color: #2563eb;">troubleshooting guide</a></li>
-                            <li>For technical requirements, check out our <a href="#" style="color: #2563eb;">system requirements</a></li>
-                          </ul>
+                          <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;">Just a reminder that you have an assessment to complete for <strong><%= @assessment.business.company %></strong>.</span></p>
                         </div>
                       </td>
                     </tr>
@@ -82,6 +75,35 @@
           </tbody>
         </table>
       </td>
+    </tr>
+  </tbody>
+</table>
+
+<table cellspacing="0" cellpadding="0" border="0" role="presentation" width="100%" align="center" class="r3-o" style="background-color: #ffffff; table-layout: fixed; width: 100%;">
+  <tbody>
+    <tr>
+      <th width="100%" valign="top" class="r5-c" style="font-weight: normal;">
+        <table cellspacing="0" cellpadding="0" border="0" role="presentation" width="100%" class="r6-o" style="table-layout: fixed; width: 100%;">
+          <tbody>
+            <tr>
+              <td valign="top" class="r14-i" style="padding-left: 40px; padding-right: 40px; padding-top: 20px;">
+                <table width="100%" cellspacing="0" cellpadding="0" border="0" role="presentation">
+                  <tbody>
+                    <tr>
+                      <td class="r15-c nl2go-default-textstyle" align="left" style="color: #3b3f44; font-family: Arial; font-size: 15px; line-height: 1.5; word-break: break-word; text-align: left; valign: top;">
+                        <div>
+                          <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;">If the above link does not work, copy and paste this URL into your browser:</span></p>
+                          <p style="margin: 0;"><span style="color: #2563eb; font-family: Arial, helvetica, sans-serif;"><%= overview_candidate_assessment_participation_url(@assessment_participation) %></span></p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </th>
     </tr>
   </tbody>
 </table>
