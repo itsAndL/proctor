@@ -13,15 +13,39 @@
                         <div>
                           <h2 class="default-heading2" style="margin: 0; color: #1f2d3d; font-family: Poppins,arial; font-size: 32px; word-break: break-word; line-height: 34px"><span style="color: #242424; font-family: Arial, helvetica, sans-serif; font-size: 27px;">Hello <%= @recipient.name || @recipient.email %>!</span></h2>
                           <p style="margin: 0;">&nbsp;</p>
-                          <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;">You've been invited to take an assessment by <%= @assessment.business.company %>.</span></p>
+                          <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;">You've been invited to take an assessment by <strong><%= @assessment.business.company %></strong>.</span></p>
                           <p style="margin: 0;">&nbsp;</p>
-                          <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;">This assessment is designed to evaluate your skills and knowledge in a specific area. It's an opportunity to demonstrate your abilities in a fair and unbiased manner. The assessment will take approximately <%= format_duration(@assessment.duration_seconds, true) %> to complete.</span></p>
+                          <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;">This assessment is designed to evaluate your skills and knowledge in specific areas. It's an opportunity to demonstrate your abilities in a fair and unbiased manner.</span></p>
                           <p style="margin: 0;">&nbsp;</p>
-                          <ul style="color: #242424; font-family: Arial, helvetica, sans-serif;">
-                            <li>New to AssessKit? Here's a <a href="#" style="color: #2563eb;">step-by-step guide</a> on what to expect</li>
-                            <li>For technical requirements and device compatibility, check out our <a href="#" style="color: #2563eb;">system requirements</a></li>
-                            <li>If you encounter any issues, please refer to our <a href="#" style="color: #2563eb;">troubleshooting guide</a></li>
+                          <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;"><strong>Here are the details of your assessment:</strong></span></p>
+                          <ul style="color: #242424; font-family: Arial, helvetica, sans-serif; margin-top: 6px">
+                            <li>Language: <%= Assessment.human_enum_name(:language, @assessment.language) %></li>
+                            <li>Duration: <%= format_duration(@assessment.duration_seconds, true) %></li>
+                            <% if @assessment.tests.any? %>
+                              <li>Tests on:
+                                <ul>
+                                  <% @assessment.tests.each do |test| %>
+                                    <li><%= test.title %></li>
+                                  <% end %>
+                                </ul>
+                              </li>
+                            <% end %>
+                            <% if @assessment.custom_questions.any? %>
+                              <li>Custom questions on:
+                                <ul>
+                                  <% @assessment.custom_questions.each do |question| %>
+                                    <li><%= question.title %></li>
+                                  <% end %>
+                                </ul>
+                              </li>
+                            <% end %>
                           </ul>
+                          <p style="margin: 0;">&nbsp;</p>
+                          <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;">You have 1 attempt to complete this assessment. While we recommend completing the assessment in one session, you can pause and take breaks between tests.</span></p>
+                          <p style="margin: 0;">&nbsp;</p>
+                          <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;">Accommodations are available if needed. More details can be found on the overview page once you start.</span></p>
+                          <p style="margin: 0;">&nbsp;</p>
+                          <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;">We suggest using Google Chrome on a laptop or desktop to avoid any technical issues.</span></p>
                         </div>
                       </td>
                     </tr>
@@ -100,6 +124,9 @@
                     <tr>
                       <td class="r15-c nl2go-default-textstyle" align="left" style="color: #3b3f44; font-family: Arial; font-size: 15px; line-height: 1.5; word-break: break-word; text-align: left; valign: top;">
                         <div>
+                          <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;">If the above link does not work, copy and paste this URL into your browser:</span></p>
+                          <p style="margin: 0;"><span style="color: #2563eb; font-family: Arial, helvetica, sans-serif;"><%= overview_candidate_assessment_participation_url(@assessment_participation) %></span></p>
+                          <p style="margin: 0;">&nbsp;</p>
                           <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;">If you have any questions or need assistance, please don't hesitate to contact our support team.</span></p>
                         </div>
                       </td>
