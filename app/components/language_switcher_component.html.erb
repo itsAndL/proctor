@@ -6,7 +6,11 @@
     <div class="rounded-md p-4 flex flex-col bg-white shadow-lg gap-4">
       <% @locales.each do |locale| %>
         <% active_class = I18n.locale == locale ? "text-blue-500" : "text-gray-700" %>
-        <%= link_to t("shared.languages.#{locale}"), url_for(locale: locale), class: "text-sm font-semibold hover:underline #{active_class}" %>
+        <% unless @guest %>
+          <%= button_to t("shared.languages.#{locale}"), change_locale_path(locale: locale), method: :post, class: "text-sm font-semibold hover:underline #{active_class}" %>
+        <% else %>
+          <%= link_to t("shared.languages.#{locale}"), url_for(locale: locale), class: "text-sm font-semibold hover:underline #{active_class}" %>
+        <% end %>
       <% end %>
     </div>
   </div>

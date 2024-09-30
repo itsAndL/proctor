@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
+  post 'locale/:locale', to: 'profile#change_locale', as: :change_locale
   scope '(:locale)', locale: /en|fr|es|de/ do
     namespace :api do
       resources :monitoring, only: [:update], param: :hashid

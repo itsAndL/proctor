@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
   include AuthenticationConcern
-  include Locales
   include SecondaryRootPath
   include PaginationConcern
   include NavbarVisibilityConcern
+  include Locales
 
   around_action :set_locale
 
