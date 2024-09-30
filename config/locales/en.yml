@@ -85,7 +85,7 @@ en:
     index:
       ensuring: "Ensuring"
       integrit: "Integrity"
-      in_remote_testing: "in remote testing" 
+      in_remote_testing: "in Remote Testing" 
       hero_description: "Secure, monitor, and manage remote assessments with confidence and ease, providing a fair testing environment for all."
       start_free_trial: "Start free trial"
       features_title: "Comprehensive Remote Testing Features"
