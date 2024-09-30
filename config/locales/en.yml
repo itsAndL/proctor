@@ -3,6 +3,8 @@ en:
     languages:
       fr: "French"
       en: "English"
+      es: "Spanish"
+      de: "German"
   assessment_mailer:
     invite_email:
       invite_subject: "You've been invited to take an assessment for %{company}"
@@ -423,7 +425,6 @@ en:
         support:
           title: "Support"
           description: "We offer dedicated customer support to assist users and address any concerns promptly."
-
   activerecord:
     attributes:
       business:

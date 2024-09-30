@@ -1,4 +1,10 @@
 fr:
+  shared:
+    languages:
+      fr: "Français"
+      en: "Anglais"
+      de: "Allemand"
+      es: "Espagnol"
   assessment_mailer:
     invite_email:
       invite_subject: "Vous avez été invité à passer une évaluation pour %{company}"
@@ -36,10 +42,6 @@ fr:
   alert:
     business_required: "Vous devez être connecté en tant qu'entreprise pour accéder à cette page."
     candidate_required: "Vous devez être connecté en tant que candidat pour accéder à cette page."
-  shared:
-    languages:
-      fr: "Français"
-      en: "Anglais"
   footer_component:
     features: "Fonctionnalités"
     pricing: "Tarification"

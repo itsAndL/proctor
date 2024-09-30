@@ -1,0 +1,467 @@
+de:
+  shared:
+    languages:
+      fr: "Französisch"
+      en: "Englisch"
+      es: "Spanisch"
+      de: "Deutsch"
+  assessment_mailer:
+    invite_email:
+      invite_subject: "Sie wurden eingeladen, eine Bewertung für %{company} zu machen"
+    reminder_email:
+      reminder_subject: "Erinnerung: Schließen Sie Ihre Bewertung für %{company} ab"
+  duration:
+    zero_min: "0 Min"
+    hour: "Stunde"
+    minute: "Minute"
+    min: "Min"
+    second: "Sekunde"
+    sec: "Sek"
+  flash:
+    create_success: "Die Bewertung wurde erfolgreich erstellt."
+    update_success: "Die Bewertung wurde erfolgreich aktualisiert."
+    archive_success: "Bewertung wurde erfolgreich archiviert."
+    unarchive_success: "Bewertung wurde erfolgreich wiederhergestellt."
+    update_tests_success: "Die Tests der Bewertung wurden erfolgreich aktualisiert."
+    update_questions_success: "Die Fragen der Bewertung wurden erfolgreich aktualisiert."
+    finish_success: "Bewertung wurde erfolgreich abgeschlossen."
+    update_title_success: "Bewertungstitel wurde erfolgreich aktualisiert."
+    create_success: "Ihr Unternehmensprofil wurde erfolgreich erstellt."
+    update_success: "Ihr Unternehmensprofil wurde erfolgreich aktualisiert."
+    create_success: "Ihr Kandidatenprofil wurde erfolgreich erstellt."
+    update_success: "Ihr Kandidatenprofil wurde erfolgreich aktualisiert."
+    update_success: "Bewertung wurde erfolgreich aktualisiert."
+    no_file_attached: "Keine Datei an diese Antwort angehängt."
+    activate_success: "Öffentlicher Link zur Bewertung wurde erfolgreich aktiviert."
+    deactivate_success: "Öffentlicher Link zur Bewertung wurde erfolgreich deaktiviert."
+    invite_success: "Einladung wurde erfolgreich gesendet."
+    bulk_invite_success: "Masseneinladung erfolgreich gesendet!"
+    select_file: "Bitte wählen Sie eine Datei zum Hochladen aus."
+    invite_me_success: "Einladung erfolgreich gesendet!"
+    already_added: "Dieser Kandidat wurde dieser Bewertung bereits hinzugefügt."
+  alert:
+    business_required: "Sie müssen als Unternehmen angemeldet sein, um auf diese Seite zuzugreifen."
+    candidate_required: "Sie müssen als Kandidat angemeldet sein, um auf diese Seite zuzugreifen."
+  footer_component:
+    features: "Funktionen"
+    pricing: "Preise"
+    about_us: "Über uns"
+    contact: "Kontakt"
+    all_rights_reserved: "Alle Rechte vorbehalten"
+  invite_candidates:
+    link_inacitve:
+      title: "Bewertung nicht verfügbar"
+      apology: "Wir entschuldigen uns, aber diese Bewertung ist derzeit nicht aktiv."
+      explanation: "Die Bewertung, auf die Sie zugreifen möchten, wurde möglicherweise abgeschlossen, ist abgelaufen oder wurde vorübergehend vom Administrator deaktiviert."
+      contact_info: "Wenn Sie glauben, dass dies ein Fehler ist, wenden Sie sich bitte an den Bewertungsadministrator oder die Organisation, die Ihnen diesen Link zur Verfügung gestellt hat."
+      return_home: "Zur Startseite zurückkehren"
+    public_link:
+      title: "Nehmen Sie an unserer Bewertung teil"
+      introduction: "Vielen Dank für Ihr Interesse an dieser Bewertung! Bitte geben Sie Ihre E-Mail-Adresse an und wir senden Ihnen weitere Informationen mit einem Link zum Start."
+      email_label: "E-Mail"
+      submit_button: "Bitte laden Sie mich ein"
+  roles:
+    new:
+      title: "Was führt Sie zu AssessKit?"
+      business:
+        link_text: "Ich bin ein Unternehmen"
+        description: "Sie sind hier, um Bewertungen zu erstellen und zu verwalten, um Kandidaten, Studenten oder Teammitglieder für Einstellungs-, Bildungs- oder Entwicklungszwecke zu bewerten."
+      candidate:
+        link_text: "Ich bin ein Kandidat"
+        description: "Sie sind hier, um Bewertungen abzulegen und Ihre Fähigkeiten für Jobmöglichkeiten, Schulauswertungen oder persönliches Wachstum zu präsentieren."
+  test_library:
+    index:
+      title: "Tests"
+      create_assessment: "Bewertung erstellen"
+    show:
+      get_in_touch: "Kontakt aufnehmen"
+      preview_sample_questions: "Beispiel-Fragen anzeigen"
+      type: "Typ"
+      time: "Zeit"
+      level: "Niveau"
+      covered_skills: "Abgedeckte Fähigkeiten"
+      relevant_for: "Dieser Test ist relevant für"
+      description: "Beschreibung"
+      close: "schließen"
+  home:
+    index:
+      ensuring: "Sicherstellen"
+      integrit: "Integrität"
+      in_remote_testing: "bei Fernprüfungen"
+      hero_description: "Sichern, überwachen und verwalten Sie Fernbewertungen mit Vertrauen und Leichtigkeit und bieten Sie eine faire Testumgebung für alle."
+      start_free_trial: "Kostenlose Testversion starten"
+      features_title: "Umfassende Funktionen für Fernprüfungen"
+      secure_test_environment: "Sicheres Testumfeld"
+      secure_test_environment_description: "Überwachen Sie alle Bildschirmaktivitäten, um unbefugten Zugriff zu verhindern."
+      webcam_monitoring: "Webcam-Überwachung"
+      webcam_monitoring_description: "Verwenden Sie die Webcam des Kandidaten, um eine betrugsfreie Umgebung zu gewährleisten."
+      full_screen_mode: "Vollbildmodus"
+      full_screen_mode_description: "Erzwingen Sie den Vollbildmodus, um das Wechseln zwischen Anwendungen zu verhindern."
+      copy_paste_blocking: "Kopieren-Einfügen-Sperre"
+      copy_paste_blocking_description: "Deaktivieren Sie die Kopieren-Einfügen"
+      customizable_tests: "Customizable Tests"
+      customizable_tests_description: "Select from our test library with a variety of predefined tests."
+      anti_cheating_statistics: "Anti-Cheating Statistics"
+      anti_cheating_statistics_description: "Detailed reports on potential cheating behaviors."
+      benefits: "Benefits"
+      why_choose_assesskit: "Why Choose AssessKit?" 
+      increased_security: "Increased Security"
+      increased_security_description: "Ensure the integrity of your testing process with advanced monitoring tools."
+      convenience_and_flexibility: "Convenience and Flexibility"
+      convenience_and_flexibility_description: "Conduct tests remotely, saving time and resources."
+      reliable_results: "Reliable Results"
+      reliable_results_description: "Trust the scores and statistics provided, reflecting genuine perfomance."
+      user_friendly_interface: "User-Friendly Interface"
+      user_friendly_interface_description: "Easily create, manage, and monitor assessments with an intuitive platform design."
+      how_it_works: "How It Works"
+      simple_and_effective: "Simple and Effective"
+      create_tests: "Create tests"
+      create_tests_description: "Select and customize predefined tests from our extensive test library to fit your needs."
+      invite_test_takers: "Invite Test-Takers"
+      invite_test_takers_description: "Send secure invitations to candidates."
+      monitor_exams: "Monitor exams"
+      monitor_exams_description: "Use our monitoring tools to ensure a fair testing environment."
+      analyze_results: "Analyze results"
+      analyze_results_description: "Get instant scores and detailed reports."
+      simple_pricing: "Simple Pricing"
+      for_everyone: "for everyone"
+      pricing_description: "Our pricing plans are designed to be straightforward and affordable, catering to businesses of all sizes."
+      basic: "Basic"
+      basic_description: "Good for individuals and small teams that are just getting started."
+      basic_price: "$29"
+      per_month: "/month"
+      secure_test_environment: "Secure Test Environment"
+      webcam_monitoring: "Webcam Monitoring"
+      full_screen_mode: "Full-Screen Mode"
+      copy_paste_blocking: "Copy-Paste Blocking"
+      customizable_tests_basic: "Customizable Tests"
+      anti_cheating_statistics: "Anti-Cheating Statistics"
+      get_started: "Get started"
+      pro: "Pro"
+      pro_description: "Perfect for small / medium sized businesses."
+      pro_price: "$49"
+      per_month: "/month"
+      all_basic_features: "All Basic Plan features"
+      customizable_tests_pro: "Customizable Tests (up to 100 tests/month)"
+      priority_support: "Priority Support"
+      enhanced_reporting: "Enhanced Reporting"
+      time_limits: "Time Limits"
+      get_started: "Get started"
+      enterprise: "Enterprise"
+      enterprise_description: "Designed for large enterprises and organizations with extensive testing needs."
+      enterprise_price: "$79"
+      per_month: "/month"
+      all_pro_features: "All Pro Plan features"
+      unlimited_customizable_tests: "Unlimited Customizable Tests"
+      advanced_security_options: "Advanced Security Options"
+      cta_title: "Ready to Secure Your Tests?"
+      cta_description: "Start today and see the difference AssessKit can make."
+      cta_button: "Get Started Today"
+  customer:
+    profile:
+      team:
+        manage_team_members: "Teammitglieder verwalten"
+        add_user: "Benutzer hinzufügen"
+        name: "Name"
+        email: "E-Mail"
+        role: "Rolle"
+        actions: "Aktionen"
+        owner: "Besitzer"
+        reset_pass: "Passwort zurücksetzen"
+        edit: "Bearbeiten"
+        archive: "Archivieren"
+    candidates:
+      index:
+        candidates: "Kandidaten"
+        create_assessment: "Bewertung erstellen"
+        search_candidates: "Kandidaten suchen"
+        assessment: "Bewertung"
+        name: "Name"
+        email: "E-Mail"
+        assessments: "Bewertungen"
+        last_activity: "Letzte Aktivität"
+        actions: "Aktionen"
+  custom_question_responses:
+    edit:
+      review_answer: "Antwort überprüfen"
+      question: "Frage"
+      what_to_look_for: "Worauf bei der Antwort zu achten ist?"
+      answer: "Antwort"
+      no_answer: "Der Kandidat hat keine Antwort geschrieben."
+      download_file: "Datei herunterladen"
+      no_file_uploaded: "Der Kandidat hat keine Dateien hochgeladen."
+      no_time_limit: "Keine Zeitbegrenzung"
+      finished_in: "Abgeschlossen in %{duration} von %{total_duration}"
+      rate_answer: "Antwort bewerten"
+      comment_placeholder: "Kommentar"
+      cancel: "Abbrechen"
+      confirm: "Bestätigen"
+      close: "Schließen"
+  custom_question_library:
+    index:
+      custom_questions: "Benutzerdefinierte Fragen"
+      create_assessment: "Bewertung erstellen"
+  contact:
+    index:
+      get_in_touch: "Kontakt aufnehmen"
+      help_message: "Haben Sie Fragen oder benötigen Sie weitere Informationen? Wir sind hier, um zu helfen. Kontaktieren Sie uns über die unten stehenden Informationen oder füllen Sie das Formular aus, und wir werden uns so schnell wie möglich bei Ihnen melden."
+      address: "Adresse"
+      telephone: "Telefon"
+      email: "E-Mail"
+      first_name: "Vorname"
+      last_name: "Nachname"
+      phone_number: "Telefonnummer"
+      message: "Nachricht"
+      send_message: "Nachricht senden"
+  candidates:
+    form:
+      avatar: "Ihr Profilbild"
+      loading: "Laden..."
+      candidate_profile: "Ihr Kandidatenprofil"
+      profile: "Profil"
+      profile_info_warning: "Diese Informationen werden öffentlich angezeigt, seien Sie also vorsichtig, was Sie teilen."
+      change_avatar: "Avatar ändern"
+      file_format_warning: "JPG, JPEG oder PNG. Max. 2MB."
+      something_went_wrong: "Beim Hochladen der Datei ist ein Fehler aufgetreten."
+      save: "Speichern"
+  candidate:
+    tests:
+      feedback:
+        first_test: "Sie haben nun den ersten Test abgeschlossen"
+        intro: "Helfen Sie uns, diesen Test zu verbessern, indem Sie anonymes Feedback geben. Ihre Antwort wird nur für AssessKit verfügbar sein, nicht für Ihren Prüfer."
+        measurement_opinion: "Meiner Meinung nach hat der Test meine Fähigkeiten in %{skill} genau gemessen."
+        yes: "Ja"
+        somewhat: "Einigermaßen"
+        no: "Nein"
+        placeholder: "Bitte erzählen Sie uns mehr über Ihre Antwort..."
+        finish: "Fertig"
+    custom_questions:
+      start:
+        title: "Benutzerdefinierte Fragen"
+    assessment_participations:
+      checkout:
+        great_job: "Großartige Arbeit! Sie haben Ihre Bewertung abgeschlossen."
+        see_results_prompt: "Möchten Sie Ihre Ergebnisse jetzt sehen? Wir leiten Sie automatisch weiter, um Ihr Bewertungsergebnis anzuzeigen."
+        redirecting_message: "Weiterleitung in %{seconds} Sekunden."
+        go_now: "Jetzt dorthin gehen"
+      index:
+        my_assessments: "Meine Bewertungen"
+        no_assessments_title: "Noch keine Bewertungen"
+        no_assessments_message: "Sie wurden noch zu keiner Bewertung eingeladen."
+        company_name: "Firmenname"
+        invited_on: "Eingeladen am"
+        last_activity: "Letzte Aktivität"
+      overview:
+        greeting: "Hallo %{name},"
+        completion_status: "Sie haben %{completed} von %{total} Tests abgeschlossen."
+        get_started_prompt: "Klicken Sie auf <strong>Loslegen</strong>, wenn Sie bereit sind, mit Ihrer Bewertung fortzufahren."
+        welcome_message: "Willkommen zu unserer Bewertung."
+        assessment_value: "Das Abschließen dieser Bewertung hilft Ihnen, Ihre Fähigkeiten und Ihr Wissen zu präsentieren."
+        good_luck: "Viel Glück!"
+        before_you_start: "Ein paar Dinge, bevor Sie beginnen:"
+        assessment_structure: "Diese Bewertung besteht aus <strong>%{parts}</strong>. Es wird ungefähr <strong>%{duration}</strong> dauern, sie abzuschließen."
+        timed_assessment: "Die Bewertung ist zeitlich begrenzt. Ein Timer wird pro Test oder pro Frage angezeigt."
+        preview_questions: "Vor jedem Test können Vorschaufragen gestellt werden, <strong>beachten Sie, dass der Timer für den Test bereits gestartet ist.</strong>"
+        camera_usage: "Bitte erlauben Sie die Verwendung Ihrer Kamera/Webcam und verlassen Sie den Vollbildmodus nicht. Es werden regelmäßig Schnappschüsse von Ihnen während der Bewertung gemacht. Diese Maßnahmen werden ergriffen, um Fairness für alle zu gewährleisten."
+        calculator_use: "Sie können einen Taschenrechner, Stift und Papier verwenden."
+        recommendation: "Wir empfehlen, die Bewertung in einem Durchgang abzuschließen."
+        get_started: "Loslegen"
+      setup:
+        camera_setup: "Kameraeinstellung"
+        camera_info: "Wir verwenden Kamerabilder, um Fairness für alle zu gewährleisten. Stellen Sie sicher, dass Sie vor Ihrer Kamera sitzen."
+        camera_label: "Kamera"
+        loading_cameras: "Kameras laden..."
+        camera_error_message: "Es scheint, dass keine Kamera oder kein Mikrofon mit Ihrem Computer verbunden ist oder sie blockiert sind. Um die Kamera und das Mikrofon zu aktivieren, klicken Sie auf das <strong>Kamera blockiert</strong> Symbol in der Adressleiste Ihres Browsers und laden Sie die Seite neu. Wenn Sie keine Kamera aktivieren, können Sie die Bewertung trotzdem durchführen, aber %{company} kann dann keine Fairness überprüfen."
+        webcam_troubleshoot: "Probleme mit Ihrer Webcam?"
+        camera_permission: "Stellen Sie sicher, dass Sie Ihrem Browser die Erlaubnis erteilt haben, auf Ihre Kamera zuzugreifen."
+        supported_browser: "Stellen Sie sicher, dass Sie einen <a target='_blank' href='%{url}' class='underline'><strong>unterstützten Browser</strong></a> verwenden."
+        multiple_camera_devices: "Wenn Sie mehrere Kamerageräte haben, stellen Sie sicher, dass Sie Ihrem Browser und unserer Website die Erlaubnis erteilt haben, das richtige Gerät zu verwenden."
+        incognito_mode: "Versuchen Sie, die Bewertung im Inkognito-Modus oder in einem privaten Fenster zu starten."
+        drivers_update: "Stellen Sie sicher, dass Ihre Kameratreiber und Ihr Webbrowser auf dem neuesten Stand sind."
+        restart_device: "Starten Sie Ihr Gerät neu und versuchen Sie erneut, auf die Bewertung zuzugreifen, indem Sie den Link in der Einladungsemail verwenden."
+        next: "Weiter"
+      show:
+        company_name: "Firmenname"
+        invited_on: "Eingeladen am"
+        resume_assessment: "Bewertung fortsetzen"
+        start_assessment: "Bewertung starten"
+        your_progress: "Ihr Fortschritt"
+        tests: "Tests"
+        out_of: "von"
+        time_left: "Verbleibende Zeit"
+        about: "Über"
+        approx_time: "Ungefähre Zeit zur Fertigstellung der Bewertung"
+        before_you_start: "Ein paar Dinge, bevor Sie beginnen"
+        important_things: "Wichtige Dinge"
+        timed_assessment: "Die Bewertung ist zeitlich begrenzt. Ein Timer wird pro Test oder pro Frage angezeigt."
+        preview_questions: "Vor jedem Test können Vorschaufragen gestellt werden, <strong>beachten Sie, dass der Timer für den Test bereits gestartet ist.</strong>"
+        camera_webcam_info: "Bitte erlauben Sie die Verwendung Ihrer Kamera/Webcam und verlassen Sie den Vollbildmodus nicht. Es werden regelmäßig Schnappschüsse von Ihnen während der Bewertung gemacht."
+        audio_info: "Schalten Sie Ihre Lautsprecher oder Kopfhörer ein (um Audio abzuspielen)."
+        calculator_info: "Sie können einen Taschenrechner, Stift und Papier verwenden."
+        completion_recommendation: "Wir empfehlen, die Bewertung in einem Durchgang abzuschließen."
+        name: "Name"
+        time_taken: "Benötigte Zeit"
+        score: "Ergebnis"
+  businesses:
+    form:
+      your_business_profile: "Ihr Unternehmensprofil"
+      business_details: "Unternehmensdetails"
+      business_info: "Informationen über Ihr Unternehmen."
+      bio_placeholder: "Schreiben Sie ein paar Sätze über Ihr Unternehmen."
+      avatar: "Avatar"
+      change_avatar: "Avatar ändern"
+      avatar_info: "JPG, JPEG oder PNG. Max. 2MB."
+      something_went_wrong: "Etwas ist schief gelaufen."
+      personal_details: "Persönliche Details"
+      personal_info: "Informationen über Sie, den Ansprechpartner für Ihr Unternehmen bei AssessKit."
+      avatar: "Ihr Firmenlogo"
+      loading: "Laden..."
+      change_avatar: "Hochladen"
+      something_went_wrong: "Beim Hochladen Ihres Bildes ist ein Fehler aufgetreten, bitte versuchen Sie es erneut."
+      save: "Speichern"
+  assessments:
+    form:
+      title: "Bewertungsdetails"
+      title_message: "Geben Sie einen klaren und prägnanten Titel für Ihre Bewertung ein. Dieser wird für die Kandidaten sichtbar sein."
+      language_message: "Dies ist die Sprache, in der Ihre Kandidaten die Bewertung ablegen werden. Alle Tests, die Sie zu dieser Bewertung hinzufügen, müssen in derselben Sprache sein."
+      language_prompt: "Sprache auswählen"
+    add_questions:
+      title: "Fragen hinzufügen"
+    choose_tests:
+      title: "Tests auswählen"
+    finalize:
+      title: "Abschließen"
+      tip: "Sie können Ihre Bewertung konfigurieren und Änderungen vornehmen, bis Sie den ersten Kandidaten einladen."
+    index:
+      title: "Bewertungen"
+      create_assessment: "Bewertung erstellen"
+      search_placeholder: "Bewertungen suchen"
+      active: "Aktiv (%{count})"
+      inactive: "Inaktiv (%{count})"
+      archived: "Archiviert (%{count})"
+      name: "Name"
+      candidates: "Kandidaten"
+      progress: "Fortschritt"
+      last_activity: "Letzte Aktivität"
+      date_created: "Erstellungsdatum"
+      actions: "Aktionen"
+      edit: "Bearbeiten"
+      archive: "Archivieren"
+      unarchive: "Archivierung aufheben"
+    rename:
+      rename_assessment: "Bewertung umbenennen"
+      cancel: "Abbrechen"
+      save: "Speichern"
+      close: "Schließen"
+    require_edit:
+      assessment_edit_required: "Bewertungsbearbeitung erforderlich"
+      edit_instructions: "Bevor Sie Kandidaten einladen, fügen Sie bitte mindestens einen Fähigkeitstest oder eine benutzerdefinierte Frage hinzu."
+      cancel: "Abbrechen"
+      edit_assessment: "Bewertung bearbeiten"
+      close: "Schließen"
+    show:
+      try_yourself: "Selbst ausprobieren"
+      invite: "Einladen"
+      edit_assessment: "Bewertung bearbeiten"
+      archive: "Archivieren"
+      unarchive: "Archivierung aufheben"
+  assessment_participations:
+    delete_confirmation:
+      delete_candidate: "Kandidat löschen"
+      confirm_delete: "Sind Sie sicher, dass Sie diesen Kandidaten dauerhaft löschen möchten? Der Zugriff auf die Bewertung wird widerrufen, wenn der Kandidat seine Bewertung noch nicht abgeschlossen hat. Nach dem Löschen können Sie den Kandidaten erneut einladen."
+      cancel: "Abbrechen"
+      delete: "Löschen"
+      close: "Schließen"
+  assessment_mailer:
+    assessment_invitation:
+      greeting: "Hallo %{name}!"
+      invitation: "Sie wurden von %{company} eingeladen, an einer Bewertung teilzunehmen."
+      description: "Diese Bewertung soll Ihre Fähigkeiten und Ihr Wissen in einem bestimmten Bereich bewerten. Es ist eine Gelegenheit, Ihre Fähigkeiten fair und unvoreingenommen zu demonstrieren. Die Bewertung wird ungefähr %{duration} dauern."
+      new_to_assesskit: "Neu bei AssessKit? Hier ist ein"
+      step_by_step_guide: "Schritt-für-Schritt-Leitfaden, was Sie erwartet"
+      system_requirements: "Für technische Anforderungen und Gerätekompatibilität, siehe unsere"
+      requirements_link: "Systemanforderungen"
+      troubleshooting: "Wenn Sie auf Probleme stoßen, lesen Sie bitte unseren"
+      troubleshooting_guide: "Fehlerbehebungsleitfaden"
+      start_assessment: "Bewertung starten"
+      start_assessment_button: "Bewertung starten"
+      support_contact: "Wenn Sie Fragen haben oder Unterstützung benötigen, wenden Sie sich bitte an unser Support-Team."
+    reminder_email:
+      greeting: "Hallo %{name}!"
+      reminder: "Dies ist eine freundliche Erinnerung, dass Sie eine Bewertung für %{company} abschließen müssen."
+      duration: "Die Bewertung wird ungefähr %{duration} dauern. Ihre Teilnahme ist wichtig, und wir ermutigen Sie, sie so bald wie möglich abzuschließen."
+      assistance: "Wenn Sie Unterstützung benötigen, lesen Sie bitte unseren"
+      troubleshooting_guide: "Fehlerbehebungsleitfaden"
+      technical_requirements: "Für technische Anforderungen, siehe unsere"
+      system_requirements: "Systemanforderungen"
+      start_assessment: "Bewertung starten"
+      start_assessment_button: "Bewertung starten"
+  about:
+    index:
+      mission:
+        title: "Unsere Mission"
+        description: "Unsere Mission ist es, die Art und Weise, wie Fernprüfungen durchgeführt werden, zu revolutionieren. Wir streben danach, eine sichere und benutzerfreundliche Plattform zu schaffen, die die höchsten Standards für Prüfungsintegrität und Fairness einhält. Durch den Einsatz modernster Technologie ermöglichen wir es Organisationen, Fernbewertungen mit Vertrauen durchzuführen."
+      vision:
+        title: "Unsere Vision"
+        description: "Wir wollen der führende Anbieter von Fernprüfungslösungen sein, der für unser Engagement für Sicherheit, Zuverlässigkeit und Benutzererfahrung anerkannt wird. Wir stellen uns eine Welt vor, in der Fernprüfungen genauso vertrauenswürdig und gültig sind wie traditionelle Präsenzprüfungen."
+      values:
+        title: "Unsere Werte"
+        description: "Bei AssessKit leiten unsere Werte alles, was wir tun. Sie spiegeln unser Engagement für Exzellenz und Integrität bei der Bereitstellung von Fernprüfungslösungen wider."
+        integrity:
+          title: "Integrität"
+          description: "Wir stellen sicher, dass alle Tests, die über unsere Plattform durchgeführt werden, sicher und betrugsfrei sind."
+        innovation:
+          title: "Innovation"
+          description: "Wir verbessern kontinuierlich unsere Technologie, um die bestmögliche Testerfahrung zu bieten."
+        reliability:
+          title: "Zuverlässigkeit"
+          description: "Wir liefern konsistente und genaue Ergebnisse, denen Organisationen vertrauen können."
+        user_centricity:
+          title: "Benutzerzentriertheit"
+          description: "Wir gestalten unsere Plattform mit dem Benutzer im Hinterkopf, um sie intuitiv und einfach zu bedienen zu machen."
+        transparency:
+          title: "Transparenz"
+          description: "Wir pflegen eine offene und klare Kommunikation und bieten detaillierte Berichte und Einblicke."
+        support:
+          title: "Unterstützung"
+          description: "Wir bieten engagierten Kundensupport, um Benutzer zu unterstützen und alle Bedenken umgehend zu klären."
+  activerecord:
+    attributes:
+      business:
+        contact_name: "Ihr Name"
+        contact_role: "Ihre Berufsbezeichnung oder Rolle"
+        company: "Firmenname"
+        website: "Webseite"
+        bio: "Bio"
+        avatar: "Ihr Firmenlogo"
+      candidate:
+        name: "Ihr Name"
+        avatar: "Ihr Profilbild"
+    enums:
+      language: &languages
+        english: "Englisch"
+        spanish: "Spanisch"
+        french: "Französisch"
+        german: "Deutsch"
+      assessment:
+        language:
+          <<: *languages
+      test:
+        language:
+          <<: *languages
+      custom_question:
+        language:
+          <<: *languages
+      assessment_participation:
+        status:
+          started: "Gestartet"
+          completed: "Abgeschlossen"
+          archived: "Archiviert"
+          invited: "Eingeladen"
+          invitation_clicked: "Einladung angeklickt"
+  errors:
+    messages:
+      attached: "ist nicht angehängt"
+      content_type_invalid: "Bildformat wird nicht unterstützt"
+      max_file_size_invalid: "Bild über %{size}"
+      blank: "darf nicht leer sein"

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
-  scope '(:locale)', locale: /en|fr/ do
+  scope '(:locale)', locale: /en|fr|es|de/ do
     namespace :api do
       resources :monitoring, only: [:update], param: :hashid
     end
