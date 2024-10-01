@@ -5,13 +5,17 @@ module Locales
 
   included do
     def set_locale(&action)
-      locale = if user_signed_in?
-                 current_user.locale.to_sym
-               elsif params[:locale].present? && I18n.available_locales.map(&:to_s).include?(params[:locale])
-                 params[:locale].to_sym
-               else
-                 I18n.default_locale
-               end
+      locale =
+        if params[:locale].present? && I18n.available_locales.map(&:to_s).include?(params[:locale])
+          params[:locale].to_sym
+        elsif user_signed_in?
+          current_user.locale.to_sym
+        else
+          I18n.default_locale
+        end
+
+      current_user.update(locale:) if user_signed_in? && current_user.locale.to_sym != locale
+
       I18n.with_locale(locale, &action)
     end
 
