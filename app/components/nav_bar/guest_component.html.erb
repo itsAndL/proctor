@@ -6,10 +6,10 @@
       </a>
     </div>
     <div class="hidden lg:flex lg:gap-x-9">
-      <a href="/#features" class="text-base font-semibold leading-6 text-gray-700"><%= t('.features') %></a>
-      <a href="/#pricing" class="text-base font-semibold leading-6 text-gray-700"><%= t('.pricing') %></a>
-      <a href="/about" class="text-base font-semibold leading-6 text-gray-700"><%= t('.about_us') %></a>
-      <a href="/contact" class="text-base font-semibold leading-6 text-gray-700"><%= t('.contact') %></a>
+      <%= link_to t('.features'), "#{root_path}#features", class: "text-base font-semibold leading-6 text-gray-700" %>
+      <%= link_to t('.pricing'), "#{root_path}#pricing", class: "text-base font-semibold leading-6 text-gray-700" %>
+      <%= link_to t('.about_us'), helpers.about_path, class: "text-base font-semibold leading-6 text-gray-700" %>
+      <%= link_to t('.contact'), helpers.contact_path, class: "text-base font-semibold leading-6 text-gray-700" %>
     </div>
     <div class="hidden lg:inline-flex flex flex-1 items-center justify-end gap-x-3">
       <%= render LanguageSwitcherComponent.new %>

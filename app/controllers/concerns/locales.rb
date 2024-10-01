@@ -8,12 +8,15 @@ module Locales
       locale =
         if params[:locale].present? && I18n.available_locales.map(&:to_s).include?(params[:locale])
           params[:locale].to_sym
+        elsif session[:locale].present? && I18n.available_locales.map(&:to_s).include?(session[:locale])
+          session[:locale].to_sym
         elsif user_signed_in?
           current_user.locale.to_sym
         else
           I18n.default_locale
         end
 
+      session[:locale] = locale
       current_user.update(locale:) if user_signed_in? && current_user.locale.to_sym != locale
 
       I18n.with_locale(locale, &action)
