@@ -39,6 +39,6 @@ class PaginationComponent < ViewComponent::Base
   end
 
   def page_info
-    "#{start_item} - #{end_item} of #{total_items}"
+    "#{start_item} - #{end_item} #{t('of')} #{total_items}"
   end
 end

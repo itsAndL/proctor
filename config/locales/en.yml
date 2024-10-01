@@ -1,5 +1,6 @@
 ---
 en:
+  of: of
   about:
     index:
       mission:
@@ -129,7 +130,8 @@ en:
   assessment_title_component:
     duration: Duration
     language: Language
-    tests_count: Tests count
+    tests: Tests
+    tests_count: "%{count} Tests"
     title:
       untitled: Untitled
   assessments:
@@ -603,6 +605,14 @@ en:
       time: Time
       type: Type
 # COMPONENTS
+  anti_cheating_monitor_component:
+    anti_cheating_monitor: "Anti-cheating monitor"
+    device_used: "Device used"
+    location: "Location"
+    ip_address_check: "Filled out only once from IP address?"
+    webcam_enabled: "Webcam enabled?"
+    fullscreen_active: "Full-screen mode always active?"
+    mouse_in_window: "Mouse always in assessment window?"
   assessment_results_component:
     average_score: average score
     best_candidate_score: best candidate score

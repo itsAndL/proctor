@@ -11,8 +11,7 @@ class AssessmentTitleComponent < ViewComponent::Base
   end
 
   def tests_count
-    count = @assessment.tests.count
-    "#{count} #{count == 1 ? t('.test') : t('.tests')}"
+    @assessment.tests.count
   end
 
   def show_language

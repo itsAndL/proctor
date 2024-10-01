@@ -157,11 +157,17 @@ fr:
     delete_confirmation:
       cancel: Annuler
       close: Fermer
-      confirm_delete: Etes-vous sûr de vouloir supprimer définitivement ce candidat
-        ? L'accès à l'évaluation sera révoqué si le candidat n'a pas terminé son évaluation.
-        Après la suppression, vous pouvez réinviter le candidat.
+      confirm_delete: Etes-vous sûr de vouloir supprimer définitivement ce candidat ? L'accès à l'évaluation sera révoqué si le candidat n'a pas terminé son évaluation. Après la suppression, vous pouvez réinviter le candidat.
       delete: Supprimer
       delete_candidate: Supprimer le candidat
+  anti_cheating_monitor_component:
+    anti_cheating_monitor: "Surveillance anti-triche"
+    device_used: "Appareil utilisé"
+    location: "Emplacement"
+    ip_address_check: "Rempli une seule fois depuis l'adresse IP ?"
+    webcam_enabled: "Webcam activée ?"
+    fullscreen_active: "Mode plein écran toujours actif ?"
+    mouse_in_window: "Souris toujours dans la fenêtre d'évaluation ?"
   assessment_results_component:
     average_score: score moyen
     best_candidate_score: meilleur score du candidat
@@ -181,7 +187,8 @@ fr:
   assessment_title_component:
     duration: La durée
     language: Langue
-    tests_count: Nombre de tests
+    tests: tests
+    tests_count: "%{count} tests"
     title:
       untitled: Sans titre
   assessments:

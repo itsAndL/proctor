@@ -165,6 +165,14 @@ es:
         evaluación. Después de eliminar, puede volver a invitar al candidato."
       delete: Borrar
       delete_candidate: Eliminar candidato
+  anti_cheating_monitor_component:
+    anti_cheating_monitor: "Monitor anti-trampas"
+    device_used: "Dispositivo utilizado"
+    location: "Ubicación"
+    ip_address_check: "¿Completado solo una vez desde la dirección IP?"
+    webcam_enabled: "¿Cámara web habilitada?"
+    fullscreen_active: "¿Modo de pantalla completa siempre activo?"
+    mouse_in_window: "¿Ratón siempre en la ventana de evaluación?"
   assessment_results_component:
     average_score: puntuación media
     best_candidate_score: mejor puntuación del candidato
@@ -184,7 +192,8 @@ es:
   assessment_title_component:
     duration: Duración
     language: Idioma
-    tests_count: Recuento de pruebas
+    tests: pruebas
+    tests_count: "%{count} pruebas"
     title:
       untitled: Sin título
   assessments:

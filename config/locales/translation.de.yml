@@ -170,6 +170,14 @@ de:
         einladen.
       delete: Löschen
       delete_candidate: Kandidat löschen
+  anti_cheating_monitor_component:
+    anti_cheating_monitor: "Anti-Schummel-Monitor"
+    device_used: "Verwendetes Gerät"
+    location: "Standort"
+    ip_address_check: "Nur einmal von der IP-Adresse ausgefüllt?"
+    webcam_enabled: "Webcam aktiviert?"
+    fullscreen_active: "Vollbildmodus immer aktiv?"
+    mouse_in_window: "Maus immer im Bewertungsfenster?"
   assessment_results_component:
     average_score: durchschnittliche Punktzahl
     best_candidate_score: bestes Bewerberergebnis
@@ -189,7 +197,8 @@ de:
   assessment_title_component:
     duration: Dauer
     language: Sprache
-    tests_count: Tests zählen
+    tests: Tests
+    tests_count: "%{count} Tests"
     title:
       untitled: Unbenannt
   assessments:
