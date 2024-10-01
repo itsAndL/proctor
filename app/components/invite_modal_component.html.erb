@@ -7,16 +7,16 @@
         </button>
       </form>
 
-      <h1 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">Invite candidates</h1>
+      <h1 class="font-bold leading-7 text-gray-800 text-xl tracking-tight"><%= t('.invite_candidates') %></h1>
       
       <%= tag.turbo_frame id: "modal-content" do %>
         <div class="mt-8 sm:mt-10">
           <div class="border-b border-gray-300">
             <nav class="-mb-px flex overflow-x-auto" aria-label="Tabs">
               <button type="button" class="" aria-current="page"></button>
-              <%= link_to "Share link", share_assessment_path(@assessment), class: tab_class('share'), data: { turbo_frame: "modal-content" } %>
-              <%= link_to "Invite by email", invite_assessment_path(@assessment), class: tab_class('invite'), data: { turbo_frame: "modal-content" } %>
-              <%= link_to "Invite in bulk", bulk_invite_assessment_path(@assessment), class: tab_class('bulk_invite'), data: { turbo_frame: "modal-content" } %>
+              <%= link_to t('.share_link'), share_assessment_path(@assessment), class: tab_class('share'), data: { turbo_frame: "modal-content" } %>
+              <%= link_to t('.invite_by_email'), invite_assessment_path(@assessment), class: tab_class('invite'), data: { turbo_frame: "modal-content" } %>
+              <%= link_to t('.invite_in_bulk'), bulk_invite_assessment_path(@assessment), class: tab_class('bulk_invite'), data: { turbo_frame: "modal-content" } %>
             </nav>
           </div>
 
@@ -25,7 +25,7 @@
       <% end %>
     </div>
     <form method="dialog" class="modal-backdrop">
-      <button>close</button>
+      <button><%= t('.close') %></button>
     </form>
   </dialog>
 <% end %>

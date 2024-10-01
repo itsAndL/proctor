@@ -13,9 +13,9 @@
         <button data-question-answer-target="trigger" type="button" class="primary-button gap-x-2.5 px-7 py-3">
           <span>
             <% if @answered_questions_count == @questions_count %>
-                <%= (!custom_question? && @question&.preview) ? "Start test": "Finish" %>
+                <%= (!custom_question? && @question&.preview) ? t('.start_test') : t('.finish') %>
             <% else %>
-              Next
+              <%= t('.next') %>
             <% end %>
           </span>
           <%= helpers.svg_tag "chevron_right", class: "size-3" %>
@@ -24,12 +24,12 @@
     <% else %>
       <% if @save_path %>
         <%= link_to @save_path, class: "gap-x-2.5 px-7 py-3 primary-button" do %>
-          <span>Next</span>
+          <span><%= t('.next') %></span>
           <%= helpers.svg_tag "chevron_right", "stroke-width": 3, class: "size-3" %>
         <% end %>
       <% else %>
         <button data-controller="tab-closer" data-action="click->tab-closer#close" type="button" class="gap-x-2.5 px-7 py-3 primary-button">
-          <span>Finish</span>
+          <span><%= t('.finish') %></span>
           <%= helpers.svg_tag "chevron_right", "stroke-width": 3, class: "size-3" %>
         </button>
       <% end %>

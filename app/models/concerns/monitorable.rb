@@ -31,7 +31,7 @@ module Monitorable
     add_location(data[:location]) if data[:location]
     add_ip(data[:ip]) if data[:ip]
 
-    save_screenshot(data[:webcam_image]) if data[:webcam_image]
+    save_screenshot(data[:webcam_image]) if data[:webcam_image] # rubocop:disable Lint/Debugger
 
     save
   end

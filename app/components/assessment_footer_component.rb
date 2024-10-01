@@ -16,13 +16,11 @@ class AssessmentFooterComponent < ViewComponent::Base
       choose_tests_assessment_path(@assessment)
     when 'finalize'
       add_questions_assessment_path(@assessment)
-    else
-      nil
     end
   end
 
   def next_button_text
-    @current_step == 'finalize' ? 'Finish' : 'Next'
+    @current_step == 'finalize' ? t('.finish') : t('.next')
   end
 
   def show_back_button?

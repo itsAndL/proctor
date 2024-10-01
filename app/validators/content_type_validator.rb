@@ -3,8 +3,8 @@ class ContentTypeValidator < ActiveModel::EachValidator
     return unless value.attached?
 
     content_types = Array(options[:in])
-    if content_types.exclude?(value.content_type)
-      record.errors.add(attribute, :content_type_invalid)
-    end
+    return unless content_types.exclude?(value.content_type)
+
+    record.errors.add(attribute, :content_type_invalid)
   end
 end

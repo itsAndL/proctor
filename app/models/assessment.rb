@@ -98,6 +98,7 @@ class Assessment < ApplicationRecord
   def public_link_active?
     public_link_active
   end
+
   def progress
     participations = assessment_participations
     return 0 if participations.empty?

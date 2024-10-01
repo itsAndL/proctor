@@ -1,3 +1,3 @@
-class DeviseMailer <  Devise::Mailer
+class DeviseMailer < Devise::Mailer
   layout 'mailer'
 end

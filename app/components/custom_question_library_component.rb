@@ -15,10 +15,10 @@ class CustomQuestionLibraryComponent < ViewComponent::Base
 
   def filters_applied?
     params[:question_source].present? ||
-    params[:search_query].present? ||
-    params[:question_category].present? ||
-    params[:question_type].present? ||
-    params[:language].present?
+      params[:search_query].present? ||
+      params[:question_category].present? ||
+      params[:question_type].present? ||
+      params[:language].present?
   end
 
   private

@@ -40,6 +40,10 @@ class AssessmentParticipation < ApplicationRecord
     custom_question_responses.exists?(custom_question_id: custom_question.id)
   end
 
+  def humanized_status
+    self.class.human_enum_name(:status, status)
+  end
+
   def device_used
     devices.last
   end
@@ -62,9 +66,7 @@ class AssessmentParticipation < ApplicationRecord
     questions_answered_count = participation_test&.questions_answered_count || 0
 
     is_test_completed = participation_test&.completed?
-    score_percentage = if is_test_completed && total_questions.positive?
-                         (correct_answers.to_f / total_questions * 100).round(2)
-                       end
+    score_percentage = ((correct_answers.to_f / total_questions * 100).round(2) if is_test_completed && total_questions.positive?)
     OpenStruct.new(
       test_id: test.id,
       test_name: test.title,

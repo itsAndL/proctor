@@ -8,6 +8,13 @@ class User < ApplicationRecord
   has_one :business, dependent: :destroy
   has_one :candidate, dependent: :destroy
 
+  enum locale: {
+    en: 0,
+    es: 1,
+    fr: 2,
+    de: 3
+  }
+
   def business?
     business.present?
   end

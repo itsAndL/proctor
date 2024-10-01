@@ -11,14 +11,14 @@ module AuthenticationConcern
     authenticate_user!
     return if current_user.business
 
-    redirect_to root_path, alert: 'You need to be logged in as a business to access this page.'
+    redirect_to root_path, alert: t('alert.business_required')
   end
 
   def authenticate_candidate!
     authenticate_user!
     return if current_user.candidate
 
-    redirect_to root_path, alert: 'You need to be logged in as a candidate to access this page.'
+    redirect_to root_path, alert: t('alert.candidate_required')
   end
 
   def current_business

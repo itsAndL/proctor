@@ -21,7 +21,6 @@ module Seeds
           question_attributes['type'],
           question_attributes['content'],
           question_attributes['preview']
-          # question_attributes['duration_seconds']
         )
         associate_question_with_test(question, test)
         update_options(question, options)
@@ -54,9 +53,9 @@ module Seeds
 
     def build_new_question(test, type, content, preview)
       test.questions.build(
-        content: content,
+        content:,
         type: "#{type.camelcase}Question",
-        preview: preview,
+        preview:
       )
     end
 

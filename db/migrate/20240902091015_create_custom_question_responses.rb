@@ -10,6 +10,6 @@ class CreateCustomQuestionResponses < ActiveRecord::Migration[7.1]
       t.timestamps
     end
 
-    add_index :custom_question_responses, [:assessment_participation_id, :custom_question_id], unique: true, name: 'index_custom_question_responses_uniqueness'
+    add_index :custom_question_responses, %i[assessment_participation_id custom_question_id], unique: true, name: 'index_custom_question_responses_uniqueness'
   end
 end

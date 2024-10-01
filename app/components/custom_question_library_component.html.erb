@@ -6,9 +6,9 @@
     <%= tag.turbo_frame id: "filter_section" do %>
       <p class="text-base text-gray-700 font-bold">
         <% if filters_applied? %>
-          Results (<%= @custom_questions.count %>)
+          <%= t('.results_count', count: @custom_questions.count) %>
         <% else %>
-          <%= pluralize(@custom_questions.count, 'custom question') %> available
+          <%= t('.available_count', count: @custom_questions.count) %>
         <% end %>
       </p>
 

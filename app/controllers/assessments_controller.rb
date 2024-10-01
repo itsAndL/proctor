@@ -29,7 +29,7 @@ class AssessmentsController < ApplicationController
     if @assessment.save
       redirect_to(
         choose_tests_assessment_path(@assessment),
-        notice: 'The assessment was successfully created.'
+        notice: t('flash.create_success')
       )
     else
       render :new, status: :unprocessable_entity
@@ -42,7 +42,7 @@ class AssessmentsController < ApplicationController
     if @assessment.update(assessment_params)
       redirect_to(
         determine_redirect_path(choose_tests_assessment_path(@assessment)),
-        notice: 'The assessment was successfully updated.'
+        notice: t('flash.update_success')
       )
     else
       render :edit, status: :unprocessable_entity
@@ -51,12 +51,12 @@ class AssessmentsController < ApplicationController
 
   def archive
     @assessment.archive!
-    redirect_to assessments_path, notice: 'Assessment was successfully archived.'
+    redirect_to assessments_path, notice: t('flash.archive_success')
   end
 
   def unarchive
     @assessment.unarchive!
-    redirect_to assessments_path, notice: 'Assessment was successfully unarchived.'
+    redirect_to assessments_path, notice: t('flash.unarchive_success')
   end
 
   def require_edit; end
@@ -68,7 +68,7 @@ class AssessmentsController < ApplicationController
       update_assessment_test_positions
       redirect_to(
         determine_redirect_path(add_questions_assessment_path(@assessment)),
-        notice: "The assessment's tests were successfully updated."
+        notice: t('flash.update_tests_success')
       )
     else
       render :choose_tests, status: :unprocessable_entity
@@ -80,14 +80,14 @@ class AssessmentsController < ApplicationController
   def update_questions
     redirect_to(
       determine_redirect_path(finalize_assessment_path(@assessment)),
-      notice: "The assessment's questions were successfully updated."
+      notice: t('flash.update_questions_success')
     )
   end
 
   def finalize; end
 
   def finish
-    redirect_to assessment_path(@assessment), notice: 'Assessment was successfully finalized.'
+    redirect_to assessment_path(@assessment), notice: t('flash.finish_success')
   end
 
   def rename; end
@@ -102,7 +102,7 @@ class AssessmentsController < ApplicationController
                 'assessment-title', AssessmentTitleComponent.new(assessment: @assessment, rename: true)
               ),
               turbo_stream.replace('modal', helpers.turbo_frame_tag('modal')),
-              turbo_stream.replace('notification', NotificationComponent.new(notice: "Assessment title was successfully updated."))
+              turbo_stream.replace('notification', NotificationComponent.new(notice: t('flash.update_title_success')))
             ])
         end
       end

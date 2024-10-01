@@ -22,7 +22,7 @@ class AssessmentScoreCardComponent < ViewComponent::Base
   end
 
   def status
-    assessment_participation.status.humanize
+    assessment_participation.humanized_status
   end
 
   def tests_present?

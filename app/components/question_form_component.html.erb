@@ -3,7 +3,7 @@
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-9">
     <!-- Question Content -->
     <div>
-      <h2 class="mb-6 font-bold leading-7 text-gray-800 text-xl tracking-tight">Question</h2>
+      <h2 class="mb-6 font-bold leading-7 text-gray-800 text-xl tracking-tight"><%= t('.question') %></h2>
       <div class="text-sm md:text-base font-medium text-gray-800">
         <%= @question.content %>
       </div>
@@ -12,7 +12,7 @@
     <div>
       <% if @test %>
         <h2 class="font-bold leading-7 text-gray-800 text-xl tracking-tight">
-          <%= @question.is_a?(MultipleChoiceQuestion) ? "Select only one answer" : "Select all that apply" %>
+          <%= @question.is_a?(MultipleChoiceQuestion) ? t('.select_one_answer') : t('.select_all_apply') %>
         </h2>
         <div class="mt-6 space-y-5">
           <% if @question.is_a?(MultipleChoiceQuestion) || @question.is_a?(MultipleResponseQuestion) %>
@@ -31,26 +31,26 @@
         </div>
       <% elsif @question.is_a?(CustomQuestion) %>
         <% if @question.is_a?(FileUploadCustomQuestion) %>
-          <label class="block font-bold leading-7 text-gray-800 text-xl tracking-tight pb-4">Upload your file</label>
+          <label class="block font-bold leading-7 text-gray-800 text-xl tracking-tight pb-4"><%= t('.upload_file') %></label>
           <div class="mt-2" data-controller="file-selector">
             <label class="block w-full text-sm text-gray-900 border-gray-300 rounded-md cursor-pointer border p-8">
               <%= form.file_field :file_upload, class: "hidden", accept: '.csv, .xls, .xlsx, .doc, .txt, .ppt, .pptx, .odp, .key, .pdf, .png, .jpg, .psd, .bmp, .gif', data: { action: 'change->file-selector#updateFileName', file_selector_target: 'input' } %>
               <div class="text-center w-full">
                 <%= helpers.svg_tag "arrow_up_tray", class: "mx-auto size-6 text-gray-800", "stroke-width": 2.5 %>
                 <div class="mt-4 text-sm leading-6 text-gray-700 font-medium gap-y-3 gap-x-1">
-                  <p>Drag and drop file here or click to upload</p>
-                  <p data-file-selector-target="filename">400MB max file size.</p>
+                  <p><%= t('.drag_drop_or_click') %></p>
+                  <p data-file-selector-target="filename"><%= t('.max_file_size') %></p>
                 </div>
               </div>
             </label>
             <div class="mt-4 text-sm leading-6 text-gray-700 font-medium gap-y-3 gap-x-1" data-file-selector-target="supportedtypes">
-              <p><strong>Supported file types:</strong> <span>.csv, .xls, .xlsx, .doc, .txt, .ppt, .pptx, .odp, .key, .pdf, .png, .jpg, .psd, .bmp, .gif</span></p>
+              <p><strong><%= t('.supported_file_types') %>:</strong> <span>.csv, .xls, .xlsx, .doc, .txt, .ppt, .pptx, .odp, .key, .pdf, .png, .jpg, .psd, .bmp, .gif</span></p>
             </div>
           </div>
         <% elsif @question.is_a?(EssayCustomQuestion) %>
-          <label class="block font-bold leading-7 text-gray-800 text-xl tracking-tight pb-4">Enter your answer here</label>
+          <label class="block font-bold leading-7 text-gray-800 text-xl tracking-tight pb-4"><%= t('.enter_answer') %></label>
           <div class="mt-2">
-            <%= helpers.rich_text_area_tag :essay_content, nil, rows: 5, attachments: false, placeholder: "Write your answer here..." %>
+            <%= helpers.rich_text_area_tag :essay_content, nil, rows: 5, attachments: false, placeholder: t('.write_answer_placeholder') %>
           </div>
         <% end %>
       <% end %>
@@ -59,7 +59,7 @@
   </div>
 <% end %>
 
-<% unless (!@question.is_a?(CustomQuestion) &&  @question.preview )  %>
+<% unless (!@question.is_a?(CustomQuestion) && @question.preview) %>
   <dialog data-question-answer-target="modal" class="modal px-6">
     <div class="modal-box max-w-xl rounded-xl p-8 bg-white">
       <form method="dialog">
@@ -68,18 +68,16 @@
         </button>
       </form>
       <div>
-        <h1 class="font-bold leading-7 text-gray-800 text-xl">Are you sure you want to skip this question?</h1>
-        <p class="mt-4 text-gray-800 text-sm font-semibold">
-          You cannot come back to this question later. Even if you don't know the answer, just pick the answer you feel best about. You might get it right!
-        </p>
+        <h1 class="font-bold leading-7 text-gray-800 text-xl"><%= t('.skip_question_title') %></h1>
+        <p class="mt-4 text-gray-800 text-sm font-semibold"><%= t('.skip_question_message') %></p>
         <div class="mt-9 flex items-center justify-end gap-x-4">
-          <button type="button" class="secondary-button px-6 py-2.5" data-action="click->question-answer#skip">Skip Question</button>
-          <button type="button" class="primary-button px-6 py-2.5" data-action="click->question-answer#close">Choose Answer</button>
+          <button type="button" class="secondary-button px-6 py-2.5" data-action="click->question-answer#skip"><%= t('.skip_question_button') %></button>
+          <button type="button" class="primary-button px-6 py-2.5" data-action="click->question-answer#close"><%= t('.choose_answer_button') %></button>
         </div>
       </div>
     </div>
     <form method="dialog" class="modal-backdrop">
-      <button>close</button>
+      <button><%= t('.close') %></button>
     </form>
   </dialog>
 <% end %>

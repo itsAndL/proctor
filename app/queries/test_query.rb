@@ -42,7 +42,7 @@ class TestQuery
   def filter_by_language(language)
     return relation if language.blank?
 
-    @relation = relation.where(language: language)
+    @relation = relation.where(language:)
   end
 
   def active

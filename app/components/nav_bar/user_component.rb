@@ -6,6 +6,7 @@ class NavBar::UserComponent < ViewComponent::Base
   attr_reader :user
 
   def initialize(user)
+    super
     @user = user
   end
 
@@ -37,13 +38,13 @@ class NavBar::UserComponent < ViewComponent::Base
 
   def business_navbar_links
     [
-      { title: 'Assessments', path: assessments_path },
-      { title: 'Candidates', path: customer_candidates_path }
+      { title: t('.assessments'), path: assessments_path },
+      { title: t('.candidates'), path: customer_candidates_path }
     ]
   end
 
   def candidate_navbar_links
-    [{ title: 'My assessments', path: candidate_assessment_participations_path }]
+    [{ title: t('.my_assessments'), path: candidate_assessment_participations_path }]
   end
 
   def user_navbar_links
@@ -54,26 +55,26 @@ class NavBar::UserComponent < ViewComponent::Base
     profile_path = user.business.persisted? ? edit_business_path(user.business) : new_business_path
 
     [
-      { title: 'My account', path: edit_user_registration_path },
-      { title: 'My business profile', path: profile_path },
-      { title: 'Test Library', path: test_library_index_path },
-      { title: 'Custom Questions Library', path: custom_question_library_index_path }
+      { title: t('.my_account'), path: edit_user_registration_path },
+      { title: t('.my_business_profile'), path: profile_path },
+      { title: t('.test_library'), path: test_library_index_path },
+      { title: t('.custom_questions_library'), path: custom_question_library_index_path }
     ]
   end
 
   def candidate_dropdown_links
-    profile_path = user.candidate.persisted? ? edit_candidate_path(user.candidate) : new_candidate_path
+    profile_path = user.candidate.persisted? ? edit_candidate_path(hashid: user.candidate) : new_candidate_path
 
     [
-      { title: 'My account', path: edit_user_registration_path },
-      { title: 'My candidate profile', path: profile_path }
+      { title: t('.my_account'), path: edit_user_registration_path },
+      { title: t('.my_candidate_profile'), path: profile_path }
     ]
   end
 
   def user_dropdown_links
     [
-      { title: 'My account', path: edit_user_registration_path },
-      { title: 'Get started', path: new_role_path }
+      { title: t('.my_account'), path: edit_user_registration_path },
+      { title: t('.get_started'), path: new_role_path }
     ]
   end
 end

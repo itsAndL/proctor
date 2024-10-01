@@ -2,7 +2,7 @@
   <div class="py-6 px-4 sm:p-8">
     <div class="border border-gray-200 bg-white rounded-xl h-fit">
       <div class="p-5">
-        <h2 class="text-base font-bold text-black">Custom questions</h2>
+        <h2 class="text-base font-bold text-black"><%= t('.custom_questions') %></h2>
       </div>
 
       <div class="flow-root">
@@ -10,9 +10,9 @@
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="border-t border-gray-200">
               <tr>
-                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-bold text-gray-800 sm:pl-6">Question</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800">View answer</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden sm:table-cell">Avg. rating</th>
+                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-bold text-gray-800 sm:pl-6"><%= t('.question') %></th>
+                <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800"><%= t('.view_answer') %></th>
+                <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden sm:table-cell"><%= t('.avg_rating') %></th>
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
@@ -29,10 +29,10 @@
                       <% case custom_question_response.custom_question.type %>
                       <% when "EssayCustomQuestion" %>
                         <%= helpers.svg_tag "eye", class: "size-4", "stroke-width": 2 %>
-                        <span>Read</span>
+                        <span><%= t('.read') %></span>
                       <% when "FileUploadCustomQuestion" %>
                         <%= helpers.svg_tag "arrow_down_tray", class: "size-4", "stroke-width": 2 %>
-                        <span>Download</span>
+                        <span><%= t('.download') %></span>
                       <% end %>
                     <% end %>
                   </td>
