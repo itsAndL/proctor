@@ -175,7 +175,7 @@ class FilterComponent < ViewComponent::Base
     {
       title: t('.language'),
       options: [
-        select_option('language', Assessment.languages.keys.map { |lang| [lang.titleize, lang] }, params[:language])
+        select_option('language', Assessment.languages.keys.map { |lang| [t("shared.languages.#{lang}"), lang] }, params[:language])
       ]
     }
   end

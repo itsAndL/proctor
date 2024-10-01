@@ -770,8 +770,27 @@ es:
       esta solicitud no almacena %{id} en la memoria. Considere la posibilidad de convertir el número de
       procesos/trabajadores a uno (1) o utilizar un servidor diferente en el desarrollo.
   filter_component:
-    clear: Claro
+    clear: Borrar
     filters: Filtros
+    free: Gratis
+    highlights: Destacados
+    new: Nuevo
+    popular: Popular
+    language: Idioma
+    search_questions: Buscar preguntas
+    search_tests: Buscar pruebas
+    question_category: Categoría de preguntas
+    question_type: Tipo de pregunta
+    assesskit: Assesskit
+    my_company: Mi empresa
+    show_questions_from: Mostrar preguntas de
+    assesskit: Assesskit
+    my_company: Mi empresa
+    show_tests_from: Mostrar pruebas de
+    test_duration: Duración de la prueba
+    up_to_10_mins: Hasta 10 minutos
+    test_focus: Enfoque de la prueba
+    test_format: Formato de la prueba
   flash:
     actions:
       create:
@@ -1181,6 +1200,10 @@ es:
       en: Inglés
       es: Español
       fr: Francés
+      english: Inglés
+      spanish: Español
+      french: Francés
+      german: Alemán 
   test_card_component:
     add: Añadir
     details: Detalles

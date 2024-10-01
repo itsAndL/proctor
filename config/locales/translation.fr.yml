@@ -773,8 +773,27 @@ fr:
       cette requête n'a pas stocké %{id} en mémoire. Envisagez de réduire le nombre de
       processus/travailleurs à un (1) ou d'utiliser un autre serveur pour le développement.
   filter_component:
-    clear: Clair
+    clear: Effacer
     filters: Filtres
+    free: Gratuit
+    highlights: Points forts
+    new: Nouveau
+    popular: Populaire
+    language: Langue
+    search_questions: Rechercher des questions
+    search_tests: Rechercher des tests
+    question_category: Catégorie de question
+    question_type: Type de question
+    assesskit: Assesskit
+    my_company: Mon entreprise
+    show_questions_from: Montrer les questions de
+    assesskit: Assesskit
+    my_company: Mon entreprise
+    show_tests_from: Montrer les tests de
+    test_duration: Durée du test
+    up_to_10_mins: Jusqu'à 10 minutes
+    test_focus: Focus du test
+    test_format: Format du test
   flash:
     actions:
       create:
@@ -1183,6 +1202,10 @@ fr:
     ready_to_start: 'Prêt à commencer ? Cliquez sur le lien ci-dessous :'
   shared:
     languages:
+      english: Anglais
+      spanish: Espagnol
+      french: Français
+      german: Allemand
       de: Allemand
       en: Anglais
       es: Espagnol

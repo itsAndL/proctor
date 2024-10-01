@@ -786,8 +786,28 @@ de:
       der von dieser Anfrage betroffen ist, %{id} nicht im Speicher speichern. Ziehen Sie in Erwägung, die Anzahl der
       prozesse/Arbeiter auf einen (1) zu reduzieren oder einen anderen Server für die Entwicklung zu verwenden.
   filter_component:
-    clear: Klar
+    clear: Löschen
     filters: Filter
+    highlights: Highlights
+    language: Sprache
+    test_duration: Testdauer
+    test_format: TestFormat
+    show_tests_from: Tests anzeigen von
+    free: Kostenlos
+    new: Neu
+    popular: Beliebt
+    search_questions: Fragen durchsuchen
+    search_tests: Tests durchsuchen
+    question_category: Fragenkategorie
+    question_type: Fragetyp
+    assesskit: Assesskit
+    my_company: Meine Firma
+    show_questions_from: Fragen anzeigen von
+    assesskit: Assesskit
+    my_company: Meine Firma
+    up_to_10_mins: Bis zu 10 Minuten
+    test_focus: Testschwerpunkt
+    search_tests: Tests durchsuchen
   flash:
     actions:
       create:
@@ -1201,6 +1221,10 @@ de:
       en: Englisch
       es: Spanisch
       fr: Französisch
+      english: Englisch
+      spanish: Spanisch
+      french: Französisch
+      german: Deutsch
   test_card_component:
     add: Hinzufügen
     details: Einzelheiten

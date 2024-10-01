@@ -402,6 +402,8 @@ en:
     messages:
       not_saved: Not saved
   filter_component:
+    clear: Clear
+    filters: Filters
     highlights_section:
       free: Free
       highlights: Highlights
@@ -570,6 +572,10 @@ en:
       default_placeholder: Search
   shared:
     languages:
+      english: English
+      spanish: Spanish
+      french: Frensh
+      german: German
       de: German
       en: English
       es: Spanish
@@ -668,9 +674,6 @@ en:
     name: Name
     name_placeholder: Name
     send_invitation_email: Send an invitation email to candidates.
-  filter_component:
-    clear: Clear
-    filters: Filters
   footer_component:
     about_us: About Us
     all_rights_reserved: All rights reserved
