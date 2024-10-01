@@ -4,7 +4,7 @@ class AssessmentMailer < ApplicationMailer
   def invite_email(assessment_participation)
     setup_email_variables(assessment_participation)
     mail(
-      to: @recipient.email,
+      to: @email,
       subject: t('.invite_subject', company: @assessment.business.company)
     )
   end
@@ -12,7 +12,7 @@ class AssessmentMailer < ApplicationMailer
   def reminder_email(assessment_participation)
     setup_email_variables(assessment_participation)
     mail(
-      to: @recipient.email,
+      to: @email,
       subject: t('.reminder_subject', company: @assessment.business.company)
     )
   end
@@ -23,5 +23,6 @@ class AssessmentMailer < ApplicationMailer
     @assessment_participation = assessment_participation
     @assessment = @assessment_participation.assessment
     @recipient = @assessment_participation.participant
+    @email = @recipient.email
   end
 end

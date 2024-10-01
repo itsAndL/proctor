@@ -89,30 +89,27 @@ en:
       save_and_exit: Save and exit
   assessment_mailer:
     invite_email:
-      accommodations_info: Bitte kontaktieren Sie uns, wenn Sie Unterkünfte benötigen.
-      assessment_description: Diese Bewertung soll Ihre Fähigkeiten bewerten.
-      assessment_details: 'Bewertungsdetails:'
-      custom_questions: Benutzerdefinierte Fragen
-      duration: Dauer
-      final_note: Vielen Dank für Ihre Teilnahme!
-      greeting: Hello %{name}!
+      accommodations: Accommodations are available if needed. More details can be found on the overview page once you start.
+      assessment_description: This assessment is designed to evaluate your skills and knowledge in specific areas. It's an opportunity to demonstrate your abilities in a fair and unbiased manner.
+      assessment_details: 'Here are the details of your assessment:'
+      contact_support: If you have any questions or need assistance, please don't hesitate to contact our support team.
+      custom_questions_on: 'Custom questions on:'
+      duration: 'Duration: %{duration}'
+      hello: Hello %{name}!
       invite_subject: Sie wurden eingeladen, eine Bewertung abzulegen
-      invited_by: Sie wurden von %{company} eingeladen, eine Bewertung abzuschließen.
-      language: Sprache
-      recommendation: Wir empfehlen, die Bewertung in einer ruhigen Umgebung abzuschließen.
-      single_attempt: Sie haben nur einen Versuch, die Bewertung abzulegen.
+      invited_by: You've been invited to take an assessment by <strong>%{company}</strong>.
+      language: 'Language: %{language}'
+      link_not_work: 'If the above link does not work, copy and paste this URL into your browser:'
+      one_attempt: You have 1 attempt to complete this assessment. While we recommend completing the assessment in one session, you can pause and take breaks between tests.
       start_assessment: Start Assessment
-      tests: Tests
+      tests_on: 'Tests on:'
+      use_chrome: We suggest using Google Chrome on a laptop or desktop to avoid any technical issues.
     reminder_email:
-      assistance: If you need any assistance, please refer to our
-      duration: The assessment will take approximately %{duration} to complete. Your participation is important, and we encourage you to complete it at your earliest convenience.
-      greeting: Hello %{name}!
-      reminder: This is a friendly reminder that you have an assessment to complete for %{company}.
+      greeting: Hi %{name}!
+      link_not_working: 'If the above link does not work, copy and paste this URL into your browser:'
+      reminder: Just a reminder that you have an assessment to complete for %{company}.
       reminder_subject: Reminder subject
-      start_assessment_button: Start Assessment
-      system_requirements: system requirements
-      technical_requirements: For technical requirements, check out our
-      troubleshooting_guide: troubleshooting guide
+      start_assessment: Start Assessment
   assessment_participations:
     delete_confirmation:
       cancel: Cancel
@@ -120,22 +117,6 @@ en:
       confirm_delete: Are you sure you want to permanently delete this candidate? Access to the assessment will be revoked if the candidate hasn't completed their assessment. After deleting, you can re-invite the candidate.
       delete: Delete
       delete_candidate: Delete candidate
-  assessment_results_component:
-    average_score: Average score
-    best_candidate_score: Best candidate score
-    candidate_pool_average: Candidate pool average
-    pending: Pending
-    tests_included_in_scoring: Tests included in scoring
-  assessment_score_card_component:
-    assessment: Assessment
-    average_score: Average score
-    invited: Invited
-    send_results_to_candidate: Send results to candidate
-    status: Status
-  assessment_stepper_component:
-    completed: Completed
-    current: Current
-    upcoming: Upcoming
   assessment_title_component:
     duration: Duration
     language: Language
@@ -186,20 +167,6 @@ en:
       invite: Invite
       try_yourself: Try yourself
       unarchive: Unarchive
-  bulk_inviting_component:
-    csv: Csv
-    download_templates: Download templates
-    drag_and_drop: Drag and drop
-    example: Example
-    file_columns_order: File columns order
-    file_limit: File limit
-    file_selected: File selected
-    invite_candidates: Invite candidates
-    invite_multiple_candidates: Invite multiple candidates
-    keep_in_mind: Keep in mind
-    max_file_size: Max file size
-    supported_file_types: Supported file types
-    xlsx: Xlsx
   businesses:
     form:
       avatar: Your company logo
@@ -292,13 +259,6 @@ en:
         placeholder: Please tell us more about your answer...
         somewhat: Somewhat
         'yes': 'Yes'
-  candidate_import_preview_component:
-    email: Email
-    name: Name
-  candidate_rating_component:
-    notes_placeholder: Notes placeholder
-    rating_description: Rating description
-    your_rating: Your rating
   candidates:
     form:
       avatar: Your profile picture
@@ -310,19 +270,6 @@ en:
       profile_info_warning: This information will be displayed publicly so be careful what you share.
       save: Save
       something_went_wrong: Something went wrong while uploading the file.
-  candidates_list_component:
-    actions: Actions
-    avg_score: Avg score
-    candidates: Candidates
-    copy_link: Copy link
-    delete_candidate: Delete candidate
-    invited_on: Invited on
-    name: Name
-    overall_rating: Overall rating
-    search_candidates: Search candidates
-    send_reminder: Send reminder
-    send_results: Send results
-    status: Status
   contact:
     index:
       address: Address
@@ -344,9 +291,6 @@ en:
     index:
       create_assessment: Create Assessment
       custom_questions: Custom Questions
-  custom_question_library_component:
-    available_count: Available count
-    results_count: Results count
   custom_question_responses:
     edit:
       answer: Answer
@@ -362,14 +306,6 @@ en:
       rate_answer: Rate Answer
       review_answer: Review Answer
       what_to_look_for: What to Look For in the Answer?
-  custom_questions_table_component:
-    actions: Actions
-    duration: Duration
-    no_questions_message: No questions message
-    question: Question
-    remove_question: Remove question
-    selected_questions: Selected questions
-    type: Type
   customer:
     candidates:
       index:
@@ -441,8 +377,8 @@ en:
         forgot_password: Forgot password
         password_label: Password label
         remember_me: Remember me
-        sign_in_button: Sign in button
-        sign_in_title: Sign in title
+        sign_in_button: Sign in
+        sign_in_title: Sign in
     shared:
       links:
         didnt_receive_confirmation_instructions: Didnt receive confirmation instructions
@@ -458,25 +394,14 @@ en:
     sec: sec
     second: second
     zero_min: 0 min
-  email_inviting_component:
-    actions: Actions
-    add: Add
-    email: Email
-    email_placeholder: Email placeholder
-    invite_candidates: Invite candidates
-    name: Name
-    name_placeholder: Name placeholder
-    send_invitation_email: Send invitation email
   empty_test_results_component:
     initialize:
-      default_description: Default description
-      default_title: Default title
+      default_description: There are no results to display.
+      default_title: No results
   errors:
     messages:
       not_saved: Not saved
   filter_component:
-    clear: Clear
-    filters: Filters
     highlights_section:
       free: Free
       highlights: Highlights
@@ -523,12 +448,6 @@ en:
     update_success: Rating was successfully updated.
     update_tests_success: The assessment's tests were successfully updated.
     update_title_success: Assessment title was successfully updated.
-  footer_component:
-    about_us: About Us
-    all_rights_reserved: All rights reserved
-    contact: Contact
-    features: Features
-    pricing: Pricing
   home:
     index:
       advanced_security_options: Advanced Security Options
@@ -601,27 +520,13 @@ en:
       contact_info: Contact info
       explanation: Explanation
       return_home: Return home
-      title: Title
+      title: Link inactive
     public_link:
       email_label: Email
       introduction: Thanks for your interest in this assessment! Please provide your email address and we'll send you more information with a link to begin.
       submit_button: Please invite me
       title: Take our assessment
-  invite_modal_component:
-    close: Close
-    invite_by_email: Invite by email
-    invite_candidates: Invite candidates
-    invite_in_bulk: Invite in bulk
-    share_link: Share link
   nav_bar:
-    guest_component:
-      about_us: About us
-      contact: Contact
-      features: Features
-      get_started: Get started
-      log_in: Log in
-      pricing: Pricing
-      today: Today
     user_component:
       business_dropdown_links:
         custom_questions_library: Custom questions library
@@ -636,61 +541,21 @@ en:
         my_candidate_profile: My candidate profile
       candidate_navbar_links:
         my_assessments: My assessments
-      sign_out: Sign out
       user_dropdown_links:
         get_started: Get started
         my_account: My account
   no_results_component:
     message:
-      default_message: Default message
+      default_message: This assessment has not been started yet
     title:
-      default_title: Default title
+      default_title: Assessment not started
   not_started_component:
     message:
-      default_message: Default message
+      default_message: Try a new search or apply a different filter.
     title:
-      default_title: Default title
+      default_title: Sorry, no results were found.
   pagination_component:
     items_per_page: Items per page
-  participation_progress_indicators_component:
-    no_limit: No limit
-    time_for_question: Time for question
-  participation_setup_component:
-    actual_test_message: Actual test message
-    intro_message: Intro message
-    next_page: Next page
-    next_test: Next test
-    practice_questions: Practice questions
-    questions: Questions
-    seconds: Seconds
-    stay_on_screen_message: Stay on screen message
-    will_start_in: Will start in
-  question_form_component:
-    choose_answer_button: Choose answer button
-    close: Close
-    drag_drop_or_click: Drag drop or click
-    enter_answer: Enter answer
-    max_file_size: Max file size
-    question: Question
-    select_all_apply: Select all apply
-    select_one_answer: Select one answer
-    skip_question_button: Skip question button
-    skip_question_message: Skip question message
-    skip_question_title: Skip question title
-    supported_file_types: Supported file types
-    upload_file: Upload file
-    write_answer_placeholder: Write answer placeholder
-  question_header_component:
-    finish: Finish
-    next: Next
-    start_test: Start test
-  report_custom_questions_component:
-    avg_rating: Avg rating
-    custom_questions: Custom questions
-    download: Download
-    question: Question
-    read: Read
-    view_answer: View answer
   roles:
     new:
       business:
@@ -702,28 +567,13 @@ en:
       title: What brings you to AssessKit?
   search_input_component:
     initialize:
-      default_placeholder: Default placeholder
-  share_link_component:
-    active_source: Active source
-    copy_invitation_text: Copy invitation text
-    copy_link: Copy link
-    invitation_text: Invitation text
-    invitation_text_html: Invitation text html
-    invite_candidates: Invite candidates
-    ready_to_start: Ready to start
+      default_placeholder: Search
   shared:
     languages:
       de: German
       en: English
       es: Spanish
       fr: French
-  test_card_component:
-    add: Add
-    details: Details
-    free: Free
-    popular: Popular
-    preview: Preview
-    remove: Remove
   test_library:
     index:
       create_assessment: Create assessment
@@ -737,13 +587,183 @@ en:
       relevant_for: This test is relevant for
       time: Time
       type: Type
+# COMPONENTS
+  assessment_results_component:
+    average_score: average score
+    best_candidate_score: best candidate score
+    candidate_pool_average: candidate pool average
+    pending: pending
+    tests_included_in_scoring: Tests included in scoring
+  assessment_score_card_component:
+    assessment: Assessment
+    average_score: Average score
+    invited: Invited
+    send_results_to_candidate: Send results to candidate
+    status: Status
+  assessment_stepper_component:
+    completed: Completed
+    current: Current
+    upcoming: Upcoming
+  bulk_inviting_component:
+    csv: CSV
+    download_templates: 'You can download one of these templates:'
+    drag_and_drop: Drag and drop file here or click to upload
+    example: Example
+    file_columns_order: 'Make sure you use two columns in your file in the following order:'
+    file_limit: Name, Email. You can only add 1200 candidates per file.
+    file_selected: 'File selected:'
+    invite_candidates: Invite candidates
+    invite_multiple_candidates: Invite multiple candidates at once through a CSV or XLSX file upload.
+    keep_in_mind: Keep in mind...
+    max_file_size: 10MB max file size.
+    supported_file_types: 'Supported file types:'
+    xlsx: XLSX
+  candidate_import_preview_component:
+    email: Email
+    name: Name
+  candidate_rating_component:
+    notes_placeholder: Add your private notes here (auto-saved)...
+    rating_description: Give your personal overall rating of this candidate based on your impressions and interactions with him or her.
+    your_rating: Your rating
+  candidates_list_component:
+    actions: Actions
+    avg_score: Avg. % score
+    candidates: Candidates
+    copy_link: Copy candidate assessment link
+    delete_candidate: Delete candidate
+    invited_on: Invited on
+    name: Name
+    overall_rating: Overall rating
+    search_candidates: Search candidates
+    send_reminder: Send reminder
+    send_results: Send results
+    status: Status
+  custom_question_library_component:
+    available_count:
+      one: 1 custom question available
+      other: "%{count} custom questions available"
+    results_count:
+      one: Result (1)
+      other: Results (%{count})
+  custom_questions_table_component:
+    actions: Actions
+    duration: Duration
+    no_questions_message: Add questions to capture information critical to your screening process. Dig deeper with additional questions.
+    question: Question
+    remove_question: Remove question
+    selected_questions: Selected questions
+    type: Type
+    types:
+      long_answer: Long Answer
+      multiple_choice: Multiple Choice
+      rating_scale: Rating Scale
+      short_answer: Short Answer
+      true_false: True/False
+  email_inviting_component:
+    actions: Actions
+    add: Add
+    email: Email
+    email_placeholder: Email *
+    invite_candidates: Invite candidates
+    name: Name
+    name_placeholder: Name
+    send_invitation_email: Send an invitation email to candidates.
+  filter_component:
+    clear: Clear
+    filters: Filters
+  footer_component:
+    about_us: About Us
+    all_rights_reserved: All rights reserved
+    contact: Contact
+    features: Features
+    pricing: Pricing
+  invite_modal_component:
+    close: Close
+    invite_by_email: Invite by email
+    invite_candidates: Invite candidates
+    invite_in_bulk: Invite in bulk
+    share_link: Share link
+  nav_bar:
+    guest_component:
+      about_us: About Us
+      contact: Contact
+      features: Features
+      get_started: Get started
+      log_in: Log in
+      pricing: Pricing
+      today: today
+    user_component:
+      sign_out: Sign out
+  participation_progress_indicators_component:
+    no_limit: No Limit
+    time_for_question: 'Time for question %{answered_count} of %{questions_count}:'
+  participation_setup_component:
+    actual_test_message: The actual test starts now. Good luck!
+    intro_message: for this test to get a sense of what to expect. After that, your actual tests will begin.
+    next_page: Next page
+    next_test: 'This is the next test:'
+    practice_questions: Practice questions
+    questions: Questions
+    seconds: seconds
+    stay_on_screen_message: Please stay on this screen. The timer for your next test has started and cannot be paused. The timer continues even when you close the browser.
+    will_start_in: will start in
+  question_form_component:
+    choose_answer_button: Choose Answer
+    close: Close
+    drag_drop_or_click: Drag and drop file here or click to upload
+    enter_answer: Enter your answer here
+    max_file_size: 400MB max file size.
+    question: Question
+    select_all_apply: Select all that apply
+    select_one_answer: Select only one answer
+    skip_question_button: Skip Question
+    skip_question_message: You cannot come back to this question later. Even if you don't know the answer, just pick the answer you feel best about. You might get it right!
+    skip_question_title: Are you sure you want to skip this question?
+    supported_file_types: Supported file types
+    upload_file: Upload your file
+    write_answer_placeholder: Write your answer here...
+  question_header_component:
+    finish: Finish
+    next: Next
+    start_test: Start test
+  report_custom_questions_component:
+    avg_rating: Avg. rating
+    custom_questions: Custom questions
+    download: Download
+    question: Question
+    read: Read
+    view_answer: View answer
+  share_link_component:
+    active_source: Active source
+    copy_invitation_text: 'Copy and add this text to your invitation:'
+    copy_link: Copy link
+    invitation_text: |-
+      We want to ensure that everyone has a fair and equal chance, so we're using a AssessKit assessment (%{root_url}). This helps maintain fairness and integrity in our process.
+
+      Ready to get started? Click the link below:
+
+      %{public_assessment_url}
+    invitation_text_html: We want to ensure that everyone has a fair and equal chance, so we're using a AssessKit assessment (%{root_url}). This helps maintain fairness and integrity in our process.
+    invite_candidates: Invite candidates by sharing a public link. This link will direct them to the assessment and capture their name and email for tracking purposes.
+    ready_to_start: 'Ready to get started? Click the link below:'
+  test_card_component:
+    add: Add
+    details: Details
+    free: Free
+    popular: Popular
+    preview: Preview
+    remove: Remove
   test_library_component:
-    results_count: Results count
-    suggest_new_test: Suggest new test
-    tests_available: Tests available
+    results_count:
+      one: Result (1)
+      other: Results (%{count})
+    suggest_new_test: Suggest a new test to AssessKit.
+    tests_available:
+      one: 1 test available
+      other: "%{count} tests available"
   tests_table_component:
     actions: Actions
-    add_tests_message: Add tests message
+    add_tests_message: Add tests to evaluate your candidates.
     duration: Duration
     remove_test: Remove test
     selected_tests: Selected tests

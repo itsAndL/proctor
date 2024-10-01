@@ -8,7 +8,7 @@ module Locales
       locale = if user_signed_in?
                  current_user.locale.to_sym
                elsif params[:locale].present? && I18n.available_locales.map(&:to_s).include?(params[:locale])
-                 params[:locale]
+                 params[:locale].to_sym
                else
                  I18n.default_locale
                end

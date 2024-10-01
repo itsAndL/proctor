@@ -11,6 +11,7 @@ class Business < ApplicationRecord
   has_many :candidates, -> { distinct }, through: :assessment_participations
 
   validates :contact_name, :company, :bio, presence: true
+  validates :avatar, attached: true, on: :create
 
   delegate :email, to: :user
 
