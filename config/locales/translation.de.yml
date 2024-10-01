@@ -77,6 +77,11 @@ de:
           invited: Eingeladen
           started: Gestartet
       custom_question:
+        type:
+          essay_custom_question: Essay Custom Question
+          file_upload_custom_question: File Upload Custom Question
+          video_custom_question: Video Custom Question
+          multiple_choice_custom_question: Multiple Choice Custom Question
         language:
           english: Englisch
           french: Französisch
@@ -93,6 +98,10 @@ de:
           french: Französisch
           german: Deutsch
           spanish: Spanisch
+        type:
+          coding_test: Conding
+          multiple_choice_test: MultipleChoice
+          questionnaire_test: Questionnaire
     errors:
       messages:
         record_invalid: 'Gültigkeitsprüfung ist fehlgeschlagen: %{errors}'

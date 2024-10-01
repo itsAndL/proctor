@@ -27,7 +27,7 @@
         </div>
         <div class="flex gap-x-1.5 items-center text-gray-800 text-sm font-medium">
           <%= helpers.svg_tag "shapes", class: "size-4" %>
-          <p><%= t(".types.#{@test.type.underscore}") %></p>
+        <p><%= Test.human_enum_name(:type, @test.type.underscore) %></p>
         </div>
       </div>
 

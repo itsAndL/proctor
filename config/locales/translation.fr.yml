@@ -71,6 +71,11 @@ fr:
           invited: Sur invitation
           started: Commencé
       custom_question:
+        type:
+          essay_custom_question: Essay Custom Question
+          file_upload_custom_question: File Upload Custom Question
+          video_custom_question: Video Custom Question
+          multiple_choice_custom_question: Multiple Choice Custom Question
         language:
           english: Anglais
           french: Français
@@ -87,6 +92,10 @@ fr:
           french: Français
           german: Allemand
           spanish: Espagnol
+        type:
+          coding_test: Conding
+          multiple_choice_test: MultipleChoice
+          questionnaire_test: Questionnaire
     errors:
       messages:
         record_invalid: 'La validation a échoué : %{errors}'

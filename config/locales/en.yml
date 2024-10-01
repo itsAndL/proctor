@@ -56,6 +56,11 @@ en:
           invited: Invited
           started: Started
       custom_question:
+        type:
+          essay_custom_question: Essay Custom Question
+          file_upload_custom_question: File Upload Custom Question
+          video_custom_question: Video Custom Question
+          multiple_choice_custom_question: Multiple Choice Custom Question
         language:
           english: English
           french: French
@@ -67,6 +72,10 @@ en:
         german: German
         spanish: Spanish
       test:
+        type:
+          coding_test: Conding
+          multiple_choice_test: MultipleChoice
+          questionnaire_test: Questionnaire
         language:
           english: English
           french: French
