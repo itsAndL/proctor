@@ -1102,7 +1102,16 @@ es:
       pricing: Precios
       today: hoy
     user_component:
+      assessments: Evaluaciones
+      candidates: Candidatos
       sign_out: Cerrar sesión
+      custom_questions_library: Biblioteca de preguntas personalizadas
+      my_account: Mi cuenta
+      my_business_profile: Mi perfil empresarial
+      test_library: Biblioteca de pruebas
+      my_candidate_profile: Mi perfil de candidato
+      my_assessments: Mis evaluaciones
+      get_started: Empezar
   no_results_component:
     message:
       default_message: Esta evaluación aún no se ha iniciado

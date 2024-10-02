@@ -1103,7 +1103,16 @@ fr:
       pricing: Tarification
       today: aujourd'hui
     user_component:
-      sign_out: S'inscrire
+      assessments: Évaluations
+      candidates: Candidats
+      sign_out: Déconnexion
+      custom_questions_library: Bibliothèque de questions personnalisées
+      my_account: Mon compte
+      my_business_profile: Mon profil d'entreprise
+      test_library: Bibliothèque de tests
+      my_candidate_profile: Mon profil de candidat
+      my_assessments: Mes évaluations
+      get_started: Commencer
   no_results_component:
     message:
       default_message: Cette évaluation n'a pas encore commencé

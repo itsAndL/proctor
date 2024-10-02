@@ -18,8 +18,11 @@ module Locales
 
       session[:locale] = locale
       current_user.update(locale:) if user_signed_in? && current_user.locale.to_sym != locale
-
-      I18n.with_locale(locale, &action)
+      if params[:locale] == locale.to_s
+        I18n.with_locale(locale, &action)
+      else
+        redirect_to url_for(params.permit!.merge(locale:))
+      end
     end
 
     def default_url_options(options = {})

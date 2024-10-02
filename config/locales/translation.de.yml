@@ -1120,7 +1120,16 @@ de:
       pricing: Preisgestaltung
       today: heute
     user_component:
+      assessments: Bewertungen
+      candidates: Kandidaten
       sign_out: Abmelden
+      custom_questions_library: Bibliothek benutzerdefinierter Fragen
+      my_account: Mein Konto
+      my_business_profile: Mein Unternehmensprofil
+      test_library: Testbibliothek
+      my_candidate_profile: Mein Kandidatenprofil
+      my_assessments: Meine Bewertungen
+      get_started: Los geht's
   no_results_component:
     message:
       default_message: Diese Bewertung wurde noch nicht begonnen
