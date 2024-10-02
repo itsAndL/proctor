@@ -19,7 +19,7 @@ class NavBar::BaseComponent < ViewComponent::Base
   end
 
   def component
-    if @user.blank? || guest_page?
+    if guest_page? || @user.blank?
       NavBar::GuestComponent.new
     else
       NavBar::UserComponent.new(@user)
