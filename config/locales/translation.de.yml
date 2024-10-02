@@ -52,6 +52,9 @@ de:
         title: Unsere Vision
   activerecord:
     attributes:
+      assessment:
+        title: "Titel"
+        language: "Sprache"
       business:
         avatar: Ihr Firmenlogo
         bio: Bio
@@ -78,10 +81,10 @@ de:
           started: Gestartet
       custom_question:
         type:
-          essay_custom_question: Essay Custom Question
-          file_upload_custom_question: File Upload Custom Question
-          video_custom_question: Video Custom Question
-          multiple_choice_custom_question: Multiple Choice Custom Question
+          essay_custom_question: Aufsatz
+          file_upload_custom_question: Datei-Upload
+          video_custom_question: Video
+          multiple_choice_custom_question: Multiple-Choice
         language:
           english: Englisch
           french: Französisch
@@ -93,15 +96,19 @@ de:
         german: Deutsch
         spanish: Spanisch
       test:
+        level:
+          entry_level: Einstiegsniveau
+          intermediate: Mittelstufe
+          advanced: Fortgeschritten  
         language:
           english: Englisch
           french: Französisch
           german: Deutsch
           spanish: Spanisch
         type:
-          coding_test: Conding
-          multiple_choice_test: MultipleChoice
-          questionnaire_test: Questionnaire
+          coding_test: Programmier
+          multiple_choice_test: Multiple-Choice
+          questionnaire_test: Fragebogen
     errors:
       messages:
         record_invalid: 'Gültigkeitsprüfung ist fehlgeschlagen: %{errors}'
@@ -115,9 +122,8 @@ de:
     candidate_required: Sie müssen als Kandidat eingeloggt sein, um auf diese Seite
       zugreifen zu können.
   anti_cheating_monitor_component:
-    check_status:
-      'no': Nein
-      'yes': Ja
+    'no': Nein
+    'yes': Ja
   assessment_footer_component:
     finish: Oberfläche
     next: Weiter
@@ -832,6 +838,9 @@ de:
     test_focus: Testschwerpunkt
     search_tests: Tests durchsuchen
   flash:
+    candidate_deleted: "Der Kandidat wurde gelöscht."
+    reminder_sent: "Erinnerung erfolgreich gesendet."
+    rating_updated: "Bewertung erfolgreich aktualisiert."
     actions:
       create:
         notice: "%{resource_name} wurde erfolgreich erstellt."

@@ -46,6 +46,9 @@ fr:
         title: Notre vision
   activerecord:
     attributes:
+      assessment:
+        title: Titre
+        language: Langue
       business:
         avatar: Le logo de votre entreprise
         bio: Bio
@@ -72,10 +75,10 @@ fr:
           started: Commencé
       custom_question:
         type:
-          essay_custom_question: Essay Custom Question
-          file_upload_custom_question: File Upload Custom Question
-          video_custom_question: Video Custom Question
-          multiple_choice_custom_question: Multiple Choice Custom Question
+          essay_custom_question: Dissertation
+          file_upload_custom_question: Téléchargement de fichier
+          video_custom_question: Vidéo
+          multiple_choice_custom_question: Choix multiple
         language:
           english: Anglais
           french: Français
@@ -87,14 +90,18 @@ fr:
         german: Allemand
         spanish: Espagnol
       test:
+        level:
+          entry_level: Niveau débutant
+          intermediate: Intermédiaire
+          advanced: Avancé      
         language:
           english: Anglais
           french: Français
           german: Allemand
           spanish: Espagnol
         type:
-          coding_test: Conding
-          multiple_choice_test: MultipleChoice
+          coding_test: Codage
+          multiple_choice_test: Choix-multiple
           questionnaire_test: Questionnaire
     errors:
       messages:
@@ -110,17 +117,14 @@ fr:
     candidate_required: Vous devez être connecté en tant que candidat pour accéder
       à cette page.
   anti_cheating_monitor_component:
-    check_status:
-      'no': Non
-      'yes': Oui
+    'no': Non
+    'yes': Oui
   assessment_footer_component:
-    next_button_text:
-      finish: Finition
-      next: Suivant
+    finish: Finition
+    next: Suivant
   assessment_header_component:
-    save_and_exit_button:
-      exit: Sortie
-      save_and_exit: Sauvegarder et quitter
+    exit: Sortie
+    save_and_exit: Sauvegarder et quitter
   assessment_mailer:
     invite_email:
       accommodations: Des hébergements sont disponibles si nécessaire. Vous trouverez
@@ -816,6 +820,9 @@ fr:
     test_focus: Focus du test
     test_format: Format du test
   flash:
+    candidate_deleted: "Le candidat a été supprimé."
+    reminder_sent: "Rappel envoyé avec succès."
+    rating_updated: "Évaluation mise à jour avec succès."
     actions:
       create:
         notice: "%{resource_name} a été créé avec succès."

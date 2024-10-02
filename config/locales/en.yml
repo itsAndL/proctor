@@ -42,6 +42,9 @@ en:
       candidate:
         avatar: Your profile picture
         name: Your name
+      assessment:
+        title: Title
+        language: Language
     enums:
       assessment:
         language:
@@ -58,10 +61,10 @@ en:
           started: Started
       custom_question:
         type:
-          essay_custom_question: Essay Custom Question
-          file_upload_custom_question: File Upload Custom Question
-          video_custom_question: Video Custom Question
-          multiple_choice_custom_question: Multiple Choice Custom Question
+          essay_custom_question: Essay
+          file_upload_custom_question: File upload
+          video_custom_question: Video
+          multiple_choice_custom_question: Multiple-choice
         language:
           english: English
           french: French
@@ -73,9 +76,13 @@ en:
         german: German
         spanish: Spanish
       test:
+        level:
+          entry_level: Entry Level 
+          intermediate: Intermediate
+          advanced: Advanced
         type:
           coding_test: Conding
-          multiple_choice_test: MultipleChoice
+          multiple_choice_test: Multiple-choice
           questionnaire_test: Questionnaire
         language:
           english: English
@@ -421,36 +428,29 @@ en:
   filter_component:
     clear: Clear
     filters: Filters
-    highlights_section:
-      free: Free
-      highlights: Highlights
-      new: New
-      popular: Popular
-    language_section:
-      language: Language
-    library_config:
-      search_questions: Search questions
-      search_tests: Search tests
-    question_category_section:
-      question_category: Question category
-    question_type_section:
-      question_type: Question type
-    show_questions_from_section:
-      assesskit: Assesskit
-      my_company: My company
-      show_questions_from: Show questions from
-    show_tests_from_section:
-      assesskit: Assesskit
-      my_company: My company
-      show_tests_from: Show tests from
-    test_duration_section:
-      test_duration: Test duration
-      up_to_10_mins: Up to 10 mins
-    test_focus_section:
-      test_focus: Test focus
-    test_format_section:
-      test_format: Test format
+    free: Free
+    highlights: Highlights
+    new: New
+    popular: Popular
+    language: Language
+    search_questions: Search questions
+    search_tests: Search tests
+    question_category: Question category
+    question_type: Question type
+    assesskit: Assesskit
+    my_company: My company
+    show_questions_from: Show questions from
+    assesskit: Assesskit
+    my_company: My company
+    show_tests_from: Show tests from
+    test_duration: Test duration
+    up_to_10_mins: Up to 10 mins
+    test_focus: Test focus
+    test_format: Test format
   flash:
+    candidate_deleted: "The candidate has been deleted."
+    reminder_sent: "Reminder sent successfully."
+    rating_updated: "Rating updated successfully."
     activate_success: Assessment public link was successfully activated.
     already_added: This candidate has already been added to this assessment.
     archive_success: Assessment was successfully archived.

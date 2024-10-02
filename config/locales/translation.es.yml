@@ -52,6 +52,9 @@ es:
         title: Nuestra visión
   activerecord:
     attributes:
+      assessment:
+        title: Título
+        language: Idioma
       business:
         avatar: El logotipo de su empresa
         bio: Bio
@@ -78,10 +81,10 @@ es:
           started: Comenzó
       custom_question:
         type:
-          essay_custom_question: Essay Custom Question
-          file_upload_custom_question: File Upload Custom Question
-          video_custom_question: Video Custom Question
-          multiple_choice_custom_question: Multiple Choice Custom Question
+          essay_custom_question: Dissertation
+          file_upload_custom_question: Téléchargement de fichier
+          video_custom_question: Vidéo
+          multiple_choice_custom_question: Choix multiple
         language:
           english: Inglés
           french: Francés
@@ -93,15 +96,19 @@ es:
         german: Alemán
         spanish: Español
       test:
+        level:
+            entry_level: Nivel principiante
+            intermediate: Intermedio
+            advanced: Avanzado  
         language:
           english: Inglés
           french: Francés
           german: Alemán
           spanish: Español
         type:
-          coding_test: Conding
-          multiple_choice_test: MultipleChoice
-          questionnaire_test: Questionnaire
+          coding_test: Prueba de codificación
+          multiple_choice_test: Prueba de opción múltiple
+          questionnaire_test: Cuestionario
     errors:
       messages:
         record_invalid: 'La validación falló: %{errors}'
@@ -815,6 +822,9 @@ es:
     test_focus: Enfoque de la prueba
     test_format: Formato de la prueba
   flash:
+    candidate_deleted: "El candidato ha sido eliminado."
+    reminder_sent: "Recordatorio enviado con éxito."
+    rating_updated: "Calificación actualizada con éxito."
     actions:
       create:
         notice: "%{resource_name} se ha creado correctamente."
