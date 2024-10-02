@@ -99,6 +99,7 @@ en:
   assessment_footer_component:
     finish: Finish
     next: Next
+    back: Back
   assessment_header_component:
     exit: Exit
     save_and_exit: Save and exit

@@ -127,6 +127,7 @@ de:
   assessment_footer_component:
     finish: Oberfläche
     next: Weiter
+    back: Zurück
   assessment_header_component:
     exit: Ausfahrt
     save_and_exit: Speichern und beenden

@@ -81,10 +81,10 @@ es:
           started: Comenzó
       custom_question:
         type:
-          essay_custom_question: Dissertation
-          file_upload_custom_question: Téléchargement de fichier
-          video_custom_question: Vidéo
-          multiple_choice_custom_question: Choix multiple
+          essay_custom_question: Ensayo
+          file_upload_custom_question: Subida de archivo
+          video_custom_question: Vídeo
+          multiple_choice_custom_question: Elección múltiple
         language:
           english: Inglés
           french: Francés

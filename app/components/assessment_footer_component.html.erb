@@ -3,7 +3,7 @@
     <% if show_back_button? %>
       <%= link_to back_link, class: "secondary-button px-5 py-3 gap-x-2.5" do %>
         <%= helpers.svg_tag "chevron_left", class: "size-3 -mb-0.5", "stroke-width": 3 %>
-        Back
+        <%= t('.back') %>
       <% end %>
     <% end %>
     <button type="button" class="primary-button px-5 py-3 gap-x-2.5" data-controller="form-submit" data-action="form-submit#submitForm">

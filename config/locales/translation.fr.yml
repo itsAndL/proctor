@@ -122,6 +122,7 @@ fr:
   assessment_footer_component:
     finish: Finition
     next: Suivant
+    back: Retour
   assessment_header_component:
     exit: Sortie
     save_and_exit: Sauvegarder et quitter
