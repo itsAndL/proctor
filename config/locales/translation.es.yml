@@ -231,6 +231,8 @@ es:
       progress: Progreso
       search_placeholder: Buscar evaluaciones
       title: Evaluaciones
+      archive: "Archivo"
+      unarchive: "Desarchivar"
     rename:
       cancel: Cancelar
       close: Cerrar
@@ -1128,15 +1130,11 @@ es:
       my_assessments: Mis evaluaciones
       get_started: Empezar
   no_results_component:
-    message:
-      default_message: Esta evaluación aún no se ha iniciado
-    title:
-      default_title: Evaluación no iniciada
+    default_message: Esta evaluación aún no se ha iniciado
+    default_title: Evaluación no iniciada
   not_started_component:
-    message:
-      default_message: Intente una nueva búsqueda o aplique un filtro diferente.
-    title:
-      default_title: Lo sentimos, no se han encontrado resultados.
+    default_message: Intente una nueva búsqueda o aplique un filtro diferente.
+    default_title: Lo sentimos, no se han encontrado resultados.
   number:
     human:
       decimal_units:

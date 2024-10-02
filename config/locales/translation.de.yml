@@ -236,6 +236,8 @@ de:
       progress: Fortschritt
       search_placeholder: Bewertungen suchen
       title: Beurteilungen
+      archive: "Archiv"
+      unarchive: "Nicht archivieren"
     rename:
       cancel: Abbrechen
       close: Schließen Sie
@@ -1145,16 +1147,12 @@ de:
       my_assessments: Meine Bewertungen
       get_started: Los geht's
   no_results_component:
-    message:
-      default_message: Diese Bewertung wurde noch nicht begonnen
-    title:
-      default_title: Bewertung nicht begonnen
+    default_message: Diese Bewertung wurde noch nicht begonnen
+    default_title: Bewertung nicht begonnen
   not_started_component:
-    message:
-      default_message: Versuchen Sie eine neue Suche oder wenden Sie einen anderen
-        Filter an.
-    title:
-      default_title: Es wurden leider keine Ergebnisse gefunden.
+    default_message: Versuchen Sie eine neue Suche oder wenden Sie einen anderen
+      Filter an.
+    default_title: Es wurden leider keine Ergebnisse gefunden.
   number:
     human:
       decimal_units:

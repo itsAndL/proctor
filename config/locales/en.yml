@@ -166,6 +166,8 @@ en:
       progress: Progress
       search_placeholder: Search assessments
       title: Assessments
+      archive: Archive
+      unarchive: Unarchive
     rename:
       cancel: Cancel
       close: Close
@@ -558,15 +560,11 @@ en:
       my_assessments: My Assessments
       get_started: Get Started
   no_results_component:
-    message:
-      default_message: This assessment has not been started yet
-    title:
-      default_title: Assessment not started
+    default_message: This assessment has not been started yet
+    default_title: Assessment not started
   not_started_component:
-    message:
-      default_message: Try a new search or apply a different filter.
-    title:
-      default_title: Sorry, no results were found.
+    default_message: Try a new search or apply a different filter.
+    default_title: Sorry, no results were found.
   pagination_component:
     items_per_page: Items per page
   roles:
