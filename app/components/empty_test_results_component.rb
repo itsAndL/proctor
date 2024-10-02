@@ -2,7 +2,15 @@
 
 class EmptyTestResultsComponent < ViewComponent::Base
   def initialize(title: nil, description: nil)
-    @title = title || t('.default_title')
-    @description = description || t('.default_description')
+    @title = title
+    @description = description
+  end
+
+  def title
+    @title || t('.default_title')
+  end
+
+  def description
+    @description || t('.default_description')
   end
 end

@@ -35,7 +35,7 @@
             <div class="space-y-1">
               <%= svg_tag "bar_chart", class: "size-4" %>
               <div class="text-sm font-bold"><%= t('.level') %></div>
-              <div class="text-xs font-medium"><%= @test.level.humanize %></div>
+              <div class="text-xs font-medium"><%= Test.human_enum_name(:level, @test.level) %></div>
             </div>
           </div>
           

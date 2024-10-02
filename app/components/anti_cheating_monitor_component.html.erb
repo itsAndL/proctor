@@ -1,19 +1,19 @@
 <dl class="max-sm:px-4 order-2 lg:order-3 sm:col-span-2 space-y-8 py-7 sm:py-0">
   <div>
-    <dt class="font-bold text-gray-800">Anti-cheating monitor</dt>
+    <dt class="font-bold text-gray-800"><%= t('.anti_cheating_monitor') %></dt>
     <dd class="mt-3">
       <div class="space-y-1">
-        <%= render AntiCheatingMonitor::ItemComponent.new(icon: "device", label: "Device used", value: device_used) %>
-        <%= render AntiCheatingMonitor::ItemComponent.new(icon: "location", label: "Location", value: location) %>
+        <%= render AntiCheatingMonitor::ItemComponent.new(icon: "device", label: t('.device_used'), value: device_used) %>
+        <%= render AntiCheatingMonitor::ItemComponent.new(icon: "location", label: t('.location'), value: location) %>
       </div>
       <div class="pt-3 pb-2.5">
         <div class="border-t border-gray-300"></div>
       </div>
       <div class="space-y-1.5">
-        <%= render AntiCheatingMonitor::ItemComponent.new(icon: "ip", label: "Filled out only once from IP address?", value: ip_address_check) %>
-        <%= render AntiCheatingMonitor::ItemComponent.new(icon: "webcam", label: "Webcam enabled?", value: webcam_enabled) %>
-        <%= render AntiCheatingMonitor::ItemComponent.new(icon: "fullscreen", label: "Full-screen mode always active?", value: fullscreen_active) %>
-        <%= render AntiCheatingMonitor::ItemComponent.new(icon: "mouse", label: "Mouse always in assessment window?", value: mouse_in_window) %>
+        <%= render AntiCheatingMonitor::ItemComponent.new(icon: "ip", label: t('.ip_address_check'), value: ip_address_check) %>
+        <%= render AntiCheatingMonitor::ItemComponent.new(icon: "webcam", label: t('.webcam_enabled'), value: webcam_enabled) %>
+        <%= render AntiCheatingMonitor::ItemComponent.new(icon: "fullscreen", label: t('.fullscreen_active'), value: fullscreen_active) %>
+        <%= render AntiCheatingMonitor::ItemComponent.new(icon: "mouse", label: t('.mouse_in_window'), value: mouse_in_window) %>
       </div>
 
       <% if @assessment_participation.completed? && @screenshots.any? %>

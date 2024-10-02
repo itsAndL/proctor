@@ -75,7 +75,7 @@ class Candidate::TestsController < ApplicationController
     if @participation_service.first_unanswered_test.present?
       redirect_to candidate_test_path(@participation_service.first_unanswered_test)
     elsif @participation_service.more_custom_questions?
-      redirect_to start_candidate_custom_question_path(@participation_service.first_unanswered_custom_question)
+      redirect_to start_candidate_custom_question_path(hashid: @participation_service.first_unanswered_custom_question)
     else
       redirect_to checkout_candidate_assessment_participation_path(@assessment_participation)
     end

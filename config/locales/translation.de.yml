@@ -52,6 +52,9 @@ de:
         title: Unsere Vision
   activerecord:
     attributes:
+      assessment:
+        title: "Titel"
+        language: "Sprache"
       business:
         avatar: Ihr Firmenlogo
         bio: Bio
@@ -77,6 +80,11 @@ de:
           invited: Eingeladen
           started: Gestartet
       custom_question:
+        type:
+          essay_custom_question: Aufsatz
+          file_upload_custom_question: Datei-Upload
+          video_custom_question: Video
+          multiple_choice_custom_question: Multiple-Choice
         language:
           english: Englisch
           french: Französisch
@@ -88,11 +96,19 @@ de:
         german: Deutsch
         spanish: Spanisch
       test:
+        level:
+          entry_level: Einstiegsniveau
+          intermediate: Mittelstufe
+          advanced: Fortgeschritten  
         language:
           english: Englisch
           french: Französisch
           german: Deutsch
           spanish: Spanisch
+        type:
+          coding_test: Programmier
+          multiple_choice_test: Multiple-Choice
+          questionnaire_test: Fragebogen
     errors:
       messages:
         record_invalid: 'Gültigkeitsprüfung ist fehlgeschlagen: %{errors}'
@@ -106,17 +122,15 @@ de:
     candidate_required: Sie müssen als Kandidat eingeloggt sein, um auf diese Seite
       zugreifen zu können.
   anti_cheating_monitor_component:
-    check_status:
-      'no': Nein
-      'yes': Ja
+    'no': Nein
+    'yes': Ja
   assessment_footer_component:
-    next_button_text:
-      finish: Oberfläche
-      next: Weiter
+    finish: Oberfläche
+    next: Weiter
+    back: Zurück
   assessment_header_component:
-    save_and_exit_button:
-      exit: Ausfahrt
-      save_and_exit: Speichern und beenden
+    exit: Ausfahrt
+    save_and_exit: Speichern und beenden
   assessment_mailer:
     invite_email:
       accommodations: Unterkünfte sind bei Bedarf verfügbar. Weitere Einzelheiten
@@ -161,6 +175,14 @@ de:
         einladen.
       delete: Löschen
       delete_candidate: Kandidat löschen
+  anti_cheating_monitor_component:
+    anti_cheating_monitor: "Anti-Schummel-Monitor"
+    device_used: "Verwendetes Gerät"
+    location: "Standort"
+    ip_address_check: "Nur einmal von der IP-Adresse ausgefüllt?"
+    webcam_enabled: "Webcam aktiviert?"
+    fullscreen_active: "Vollbildmodus immer aktiv?"
+    mouse_in_window: "Maus immer im Bewertungsfenster?"
   assessment_results_component:
     average_score: durchschnittliche Punktzahl
     best_candidate_score: bestes Bewerberergebnis
@@ -180,7 +202,8 @@ de:
   assessment_title_component:
     duration: Dauer
     language: Sprache
-    tests_count: Tests zählen
+    tests: Tests
+    tests_count: "%{count} tests"
     title:
       untitled: Unbenannt
   assessments:
@@ -214,6 +237,8 @@ de:
       progress: Fortschritt
       search_placeholder: Bewertungen suchen
       title: Beurteilungen
+      archive: "Archiv"
+      unarchive: "Nicht archivieren"
     rename:
       cancel: Abbrechen
       close: Schließen Sie
@@ -591,6 +616,14 @@ de:
       send_paranoid_instructions: Falls Ihre E-Mail-Adresse in unserer Datenbank existiert,
         erhalten Sie in wenigen Minuten eine E-Mail, mit der Sie Ihre Registrierung
         bestätigen können.
+      new:
+        resend_confirmation_instructions: "Bestätigungsanweisungen erneut senden"
+        email_address: "E-Mail-Adresse"
+        resend_instructions: "Anweisungen erneut senden"
+        dont_have_account: "Haben Sie kein Konto?"
+        create_one: "Erstellen Sie eines"
+        already_have_account: "Haben Sie bereits ein Konto?"
+        log_in: "Einloggen"
     failure:
       already_authenticated: Sie sind bereits angemeldet.
       inactive: Ihr Konto ist noch nicht aktiv.
@@ -661,10 +694,10 @@ de:
         your_account: Ihr Konto
       new:
         already_registered: Bereits registriert
-        email_label: E-Mail-Etikett
+        email_label: E-Mail
         get_started_title: Starttitel
-        password_confirmation_label: Etikett zur Bestätigung des Passworts
-        password_label: Kennwort-Etikett
+        password_confirmation_label: Bestätigung des Passworts
+        password_label: Kennwort
         sign_in: Eintragen
         sign_up: Registrieren
         to_your_account: Zu Ihrem Konto
@@ -687,9 +720,9 @@ de:
       new:
         create_account: Konto erstellen
         dont_have_an_account: Ich habe kein Konto
-        email_label: E-Mail-Etikett
+        email_label: E-Mail
         forgot_password: Passwort vergessen
-        password_label: Kennwort-Etikett
+        password_label: Kennwort
         remember_me: Erinnern Sie sich an mich
         sign_in_button: Eintragen
         sign_in_title: Eintragen
@@ -728,9 +761,8 @@ de:
     name_placeholder: Name
     send_invitation_email: Senden Sie eine Einladungs-E-Mail an die Kandidaten.
   empty_test_results_component:
-    initialize:
-      default_description: Es sind keine Ergebnisse zu sehen.
-      default_title: Keine Ergebnisse
+    default_description: Es sind keine Ergebnisse zu sehen.
+    default_title: Keine Ergebnisse
   errors:
     connection_refused: |
       Huch! Die Verbindung zur Web Console-Middleware konnte nicht hergestellt werden.
@@ -786,9 +818,32 @@ de:
       der von dieser Anfrage betroffen ist, %{id} nicht im Speicher speichern. Ziehen Sie in Erwägung, die Anzahl der
       prozesse/Arbeiter auf einen (1) zu reduzieren oder einen anderen Server für die Entwicklung zu verwenden.
   filter_component:
-    clear: Klar
+    clear: Löschen
     filters: Filter
+    highlights: Highlights
+    language: Sprache
+    test_duration: Testdauer
+    test_format: TestFormat
+    show_tests_from: Tests anzeigen von
+    free: Kostenlos
+    new: Neu
+    popular: Beliebt
+    search_questions: Fragen durchsuchen
+    search_tests: Tests durchsuchen
+    question_category: Fragenkategorie
+    question_type: Fragetyp
+    assesskit: Assesskit
+    my_company: Meine Firma
+    show_questions_from: Fragen anzeigen von
+    assesskit: Assesskit
+    my_company: Meine Firma
+    up_to_10_mins: Bis zu 10 Minuten
+    test_focus: Testschwerpunkt
+    search_tests: Tests durchsuchen
   flash:
+    candidate_deleted: "Der Kandidat wurde gelöscht."
+    reminder_sent: "Erinnerung erfolgreich gesendet."
+    rating_updated: "Bewertung erfolgreich aktualisiert."
     actions:
       create:
         notice: "%{resource_name} wurde erfolgreich erstellt."
@@ -1082,18 +1137,23 @@ de:
       pricing: Preisgestaltung
       today: heute
     user_component:
+      assessments: Bewertungen
+      candidates: Kandidaten
       sign_out: Abmelden
+      custom_questions_library: Bibliothek benutzerdefinierter Fragen
+      my_account: Mein Konto
+      my_business_profile: Mein Unternehmensprofil
+      test_library: Testbibliothek
+      my_candidate_profile: Mein Kandidatenprofil
+      my_assessments: Meine Bewertungen
+      get_started: Los geht's
   no_results_component:
-    message:
-      default_message: Diese Bewertung wurde noch nicht begonnen
-    title:
-      default_title: Bewertung nicht begonnen
+    default_message: Diese Bewertung wurde noch nicht begonnen
+    default_title: Bewertung nicht begonnen
   not_started_component:
-    message:
-      default_message: Versuchen Sie eine neue Suche oder wenden Sie einen anderen
-        Filter an.
-    title:
-      default_title: Es wurden leider keine Ergebnisse gefunden.
+    default_message: Versuchen Sie eine neue Suche oder wenden Sie einen anderen
+      Filter an.
+    default_title: Es wurden leider keine Ergebnisse gefunden.
   number:
     human:
       decimal_units:
@@ -1201,6 +1261,10 @@ de:
       en: Englisch
       es: Spanisch
       fr: Französisch
+      english: Englisch
+      spanish: Spanisch
+      french: Französisch
+      german: Deutsch
   test_card_component:
     add: Hinzufügen
     details: Einzelheiten

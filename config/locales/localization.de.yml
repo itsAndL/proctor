@@ -11,6 +11,7 @@
 #
 ---
 de:
+  of: von
   date:
     formats:
       default: "%d.%m.%Y"

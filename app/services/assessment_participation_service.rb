@@ -39,7 +39,7 @@ class AssessmentParticipationService
     participation_test.save!
 
     return candidate_test_path(hashid: first_unanswered_test) if first_unanswered_test
-    return start_candidate_custom_question_path(first_unanswered_custom_question) if first_unanswered_custom_question
+    return start_candidate_custom_question_path(hashid: first_unanswered_custom_question) if first_unanswered_custom_question
 
     checkout_candidate_assessment_participation_path(hashid: @assessment_participation)
   end
@@ -121,7 +121,7 @@ class AssessmentParticipationService
     if @assessment_participation.unanswered_tests.any?
       candidate_test_path(hashid: first_unanswered_test)
     elsif @assessment_participation.unanswered_custom_questions.any?
-      start_candidate_custom_question_path(first_unanswered_custom_question)
+      start_candidate_custom_question_path(hashid: first_unanswered_custom_question)
     else
       checkout_candidate_assessment_participation_path(hashid: @assessment_participation)
     end

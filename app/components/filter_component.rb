@@ -112,7 +112,7 @@ class FilterComponent < ViewComponent::Base
           type,
           params[:test_type]&.include?(type),
           "test-type-#{index}",
-          "#{t(".types.test.#{type}", default: type.humanize)} #{count_span(type.camelize.constantize.accessible_by_business(@business).count)}"
+          "#{Test.human_enum_name(:type, type)} #{count_span(type.camelize.constantize.accessible_by_business(@business).count)}"
         )
       end
     }
@@ -150,7 +150,7 @@ class FilterComponent < ViewComponent::Base
           type,
           params[:question_type]&.include?(type),
           "question-type-#{index}",
-          "#{t(".types.custom_question.#{type}", default: type.humanize)} #{count_span(type.camelize.constantize.accessible_by_business(@business).count)}"
+          "#{CustomQuestion.human_enum_name(:type, type)} #{count_span(type.camelize.constantize.accessible_by_business(@business).count)}"
         )
       end
     }
@@ -175,7 +175,7 @@ class FilterComponent < ViewComponent::Base
     {
       title: t('.language'),
       options: [
-        select_option('language', Assessment.languages.keys.map { |lang| [lang.titleize, lang] }, params[:language])
+        select_option('language', Assessment.languages.keys.map { |lang| [t("shared.languages.#{lang}"), lang] }, params[:language])
       ]
     }
   end

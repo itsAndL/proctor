@@ -52,6 +52,9 @@ es:
         title: Nuestra visión
   activerecord:
     attributes:
+      assessment:
+        title: Título
+        language: Idioma
       business:
         avatar: El logotipo de su empresa
         bio: Bio
@@ -77,6 +80,11 @@ es:
           invited: Invitado
           started: Comenzó
       custom_question:
+        type:
+          essay_custom_question: Ensayo
+          file_upload_custom_question: Subida de archivo
+          video_custom_question: Vídeo
+          multiple_choice_custom_question: Elección múltiple
         language:
           english: Inglés
           french: Francés
@@ -88,11 +96,19 @@ es:
         german: Alemán
         spanish: Español
       test:
+        level:
+            entry_level: Nivel principiante
+            intermediate: Intermedio
+            advanced: Avanzado  
         language:
           english: Inglés
           french: Francés
           german: Alemán
           spanish: Español
+        type:
+          coding_test: Prueba de codificación
+          multiple_choice_test: Prueba de opción múltiple
+          questionnaire_test: Cuestionario
     errors:
       messages:
         record_invalid: 'La validación falló: %{errors}'
@@ -107,13 +123,11 @@ es:
       'no': 'No'
       'yes': Sí
   assessment_footer_component:
-    next_button_text:
-      finish: Acabado
-      next: Siguiente
+    finish: Acabado
+    next: Siguiente
   assessment_header_component:
-    save_and_exit_button:
-      exit: Salida
-      save_and_exit: Guardar y salir
+    exit: Salida
+    save_and_exit: Guardar y salir
   assessment_mailer:
     invite_email:
       accommodations: Hay alojamiento disponible si es necesario. Encontrarás más
@@ -156,6 +170,14 @@ es:
         evaluación. Después de eliminar, puede volver a invitar al candidato."
       delete: Borrar
       delete_candidate: Eliminar candidato
+  anti_cheating_monitor_component:
+    anti_cheating_monitor: "Monitor anti-trampas"
+    device_used: "Dispositivo utilizado"
+    location: "Ubicación"
+    ip_address_check: "¿Completado solo una vez desde la dirección IP?"
+    webcam_enabled: "¿Cámara web habilitada?"
+    fullscreen_active: "¿Modo de pantalla completa siempre activo?"
+    mouse_in_window: "¿Ratón siempre en la ventana de evaluación?"
   assessment_results_component:
     average_score: puntuación media
     best_candidate_score: mejor puntuación del candidato
@@ -175,7 +197,8 @@ es:
   assessment_title_component:
     duration: Duración
     language: Idioma
-    tests_count: Recuento de pruebas
+    tests: pruebas
+    tests_count: "%{count} pruebas"
     title:
       untitled: Sin título
   assessments:
@@ -208,6 +231,8 @@ es:
       progress: Progreso
       search_placeholder: Buscar evaluaciones
       title: Evaluaciones
+      archive: "Archivo"
+      unarchive: "Desarchivar"
     rename:
       cancel: Cancelar
       close: Cerrar
@@ -578,6 +603,14 @@ es:
       send_paranoid_instructions: Si tu correo existe en nuestra base de datos, en
         unos minutos recibirás un correo con instrucciones sobre cómo confirmar tu
         cuenta.
+      new:
+        resend_confirmation_instructions: "Reenviar instrucciones de confirmación"
+        email_address: "Dirección de correo electrónico"
+        resend_instructions: "Reenviar instrucciones"
+        dont_have_account: "¿No tienes una cuenta?"
+        create_one: "Crear una"
+        already_have_account: "¿Ya tienes una cuenta?"
+        log_in: "Iniciar sesión"
     failure:
       already_authenticated: Ya has iniciado sesión.
       inactive: Tu cuenta aún no ha sido activada.
@@ -647,10 +680,10 @@ es:
         your_account: Su cuenta
       new:
         already_registered: Ya está registrado
-        email_label: Etiqueta de correo electrónico
+        email_label: E-mail
         get_started_title: Título de inicio
-        password_confirmation_label: Etiqueta de confirmación de contraseña
-        password_label: Etiqueta de contraseña
+        password_confirmation_label: Confirmación de contraseña
+        password_label:  Contraseña
         sign_in: Iniciar sesión
         sign_up: Registrarse
         to_your_account: A su cuenta
@@ -673,9 +706,9 @@ es:
       new:
         create_account: Crear una cuenta
         dont_have_an_account: No tengo cuenta
-        email_label: Etiqueta de correo electrónico
+        email_label: E-mail
         forgot_password: Contraseña olvidada
-        password_label: Etiqueta de contraseña
+        password_label:  Contraseña
         remember_me: Acuérdate de mí
         sign_in_button: Iniciar sesión
         sign_in_title: Iniciar sesión
@@ -712,9 +745,8 @@ es:
     name_placeholder: Nombre
     send_invitation_email: Envíe un correo electrónico de invitación a los candidatos.
   empty_test_results_component:
-    initialize:
-      default_description: No hay resultados que mostrar.
-      default_title: Sin resultados
+    default_description: No hay resultados que mostrar.
+    default_title: Sin resultados
   errors:
     connection_refused: |
       ¡Ups! Error al conectar con el middleware de la consola web.
@@ -770,9 +802,31 @@ es:
       esta solicitud no almacena %{id} en la memoria. Considere la posibilidad de convertir el número de
       procesos/trabajadores a uno (1) o utilizar un servidor diferente en el desarrollo.
   filter_component:
-    clear: Claro
+    clear: Borrar
     filters: Filtros
+    free: Gratis
+    highlights: Destacados
+    new: Nuevo
+    popular: Popular
+    language: Idioma
+    search_questions: Buscar preguntas
+    search_tests: Buscar pruebas
+    question_category: Categoría de preguntas
+    question_type: Tipo de pregunta
+    assesskit: Assesskit
+    my_company: Mi empresa
+    show_questions_from: Mostrar preguntas de
+    assesskit: Assesskit
+    my_company: Mi empresa
+    show_tests_from: Mostrar pruebas de
+    test_duration: Duración de la prueba
+    up_to_10_mins: Hasta 10 minutos
+    test_focus: Enfoque de la prueba
+    test_format: Formato de la prueba
   flash:
+    candidate_deleted: "El candidato ha sido eliminado."
+    reminder_sent: "Recordatorio enviado con éxito."
+    rating_updated: "Calificación actualizada con éxito."
     actions:
       create:
         notice: "%{resource_name} se ha creado correctamente."
@@ -1065,17 +1119,22 @@ es:
       pricing: Precios
       today: hoy
     user_component:
+      assessments: Evaluaciones
+      candidates: Candidatos
       sign_out: Cerrar sesión
+      custom_questions_library: Biblioteca de preguntas personalizadas
+      my_account: Mi cuenta
+      my_business_profile: Mi perfil empresarial
+      test_library: Biblioteca de pruebas
+      my_candidate_profile: Mi perfil de candidato
+      my_assessments: Mis evaluaciones
+      get_started: Empezar
   no_results_component:
-    message:
-      default_message: Esta evaluación aún no se ha iniciado
-    title:
-      default_title: Evaluación no iniciada
+    default_message: Esta evaluación aún no se ha iniciado
+    default_title: Evaluación no iniciada
   not_started_component:
-    message:
-      default_message: Intente una nueva búsqueda o aplique un filtro diferente.
-    title:
-      default_title: Lo sentimos, no se han encontrado resultados.
+    default_message: Intente una nueva búsqueda o aplique un filtro diferente.
+    default_title: Lo sentimos, no se han encontrado resultados.
   number:
     human:
       decimal_units:
@@ -1181,6 +1240,10 @@ es:
       en: Inglés
       es: Español
       fr: Francés
+      english: Inglés
+      spanish: Español
+      french: Francés
+      german: Alemán 
   test_card_component:
     add: Añadir
     details: Detalles

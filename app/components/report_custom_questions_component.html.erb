@@ -29,7 +29,7 @@
                       <% case custom_question_response.custom_question.type %>
                       <% when "EssayCustomQuestion" %>
                         <%= helpers.svg_tag "eye", class: "size-4", "stroke-width": 2 %>
-                        <span><%= t('.read') %></span>
+                        <span class="whitespace-nowrap"><%= t('.read') %></span>
                       <% when "FileUploadCustomQuestion" %>
                         <%= helpers.svg_tag "arrow_down_tray", class: "size-4", "stroke-width": 2 %>
                         <span><%= t('.download') %></span>
