@@ -129,7 +129,7 @@ en:
     duration: Duration
     language: Language
     tests: Tests
-    tests_count: "%{count} Tests"
+    tests_count: "%{count} tests"
     title:
       untitled: Untitled
   assessments:

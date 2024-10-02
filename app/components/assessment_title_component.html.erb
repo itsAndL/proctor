@@ -20,7 +20,7 @@
       <div class="flex gap-x-1.5 items-center text-gray-600">
         <%= helpers.svg_tag "test_document", class: "size-4" %>
         <p id="tests-count" class="font-medium text-sm">
-          <%= t('.tests_count', count: tests_count) %>
+          <%= t('.tests_count', count: @assessment.tests.count) %>
         </p>
       </div>
 

@@ -10,10 +10,6 @@ class AssessmentTitleComponent < ViewComponent::Base
     @assessment.title.present? ? @assessment.title : t('.untitled')
   end
 
-  def tests_count
-    @assessment.tests.count
-  end
-
   def show_language
     @assessment.language.present?
   end

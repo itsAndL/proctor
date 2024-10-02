@@ -196,7 +196,7 @@ de:
     duration: Dauer
     language: Sprache
     tests: Tests
-    tests_count: "%{count} Tests"
+    tests_count: "%{count} tests"
     title:
       untitled: Unbenannt
   assessments:
