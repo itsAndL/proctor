@@ -12,10 +12,10 @@
         </p>
         <div data-controller="countdown" class="mt-12 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
           <p class="text-gray-800 space-y-3 font-medium text-sm">
-            <%= t('.redirecting_message', seconds: "<strong><span data-countdown-target='timer'>10</span></strong>") %>
+            <%= t('.redirecting_message', seconds: "<strong><span data-countdown-target='timer'>10</span></strong>").html_safe %>
           </p>
           <a data-countdown-target="nextPage" href="<%= @next_url %>" class="gap-x-2.5 px-7 py-3 primary-button">
-            <span><%= t('.go_now') %></span>
+            <span class="whitespace-nowrap"><%= t('.go_now') %></span>
             <%= svg_tag "chevron_right", class: "size-3" %>
           </a>
         </div>
