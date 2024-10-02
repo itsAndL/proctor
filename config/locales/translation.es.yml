@@ -116,13 +116,11 @@ es:
       'no': 'No'
       'yes': Sí
   assessment_footer_component:
-    next_button_text:
-      finish: Acabado
-      next: Siguiente
+    finish: Acabado
+    next: Siguiente
   assessment_header_component:
-    save_and_exit_button:
-      exit: Salida
-      save_and_exit: Guardar y salir
+    exit: Salida
+    save_and_exit: Guardar y salir
   assessment_mailer:
     invite_email:
       accommodations: Hay alojamiento disponible si es necesario. Encontrarás más
@@ -596,6 +594,14 @@ es:
       send_paranoid_instructions: Si tu correo existe en nuestra base de datos, en
         unos minutos recibirás un correo con instrucciones sobre cómo confirmar tu
         cuenta.
+      new:
+        resend_confirmation_instructions: "Reenviar instrucciones de confirmación"
+        email_address: "Dirección de correo electrónico"
+        resend_instructions: "Reenviar instrucciones"
+        dont_have_account: "¿No tienes una cuenta?"
+        create_one: "Crear una"
+        already_have_account: "¿Ya tienes una cuenta?"
+        log_in: "Iniciar sesión"
     failure:
       already_authenticated: Ya has iniciado sesión.
       inactive: Tu cuenta aún no ha sido activada.
@@ -665,10 +671,10 @@ es:
         your_account: Su cuenta
       new:
         already_registered: Ya está registrado
-        email_label: Etiqueta de correo electrónico
+        email_label: E-mail
         get_started_title: Título de inicio
-        password_confirmation_label: Etiqueta de confirmación de contraseña
-        password_label: Etiqueta de contraseña
+        password_confirmation_label: Confirmación de contraseña
+        password_label:  Contraseña
         sign_in: Iniciar sesión
         sign_up: Registrarse
         to_your_account: A su cuenta
@@ -691,9 +697,9 @@ es:
       new:
         create_account: Crear una cuenta
         dont_have_an_account: No tengo cuenta
-        email_label: Etiqueta de correo electrónico
+        email_label: E-mail
         forgot_password: Contraseña olvidada
-        password_label: Etiqueta de contraseña
+        password_label:  Contraseña
         remember_me: Acuérdate de mí
         sign_in_button: Iniciar sesión
         sign_in_title: Iniciar sesión
@@ -730,9 +736,8 @@ es:
     name_placeholder: Nombre
     send_invitation_email: Envíe un correo electrónico de invitación a los candidatos.
   empty_test_results_component:
-    initialize:
-      default_description: No hay resultados que mostrar.
-      default_title: Sin resultados
+    default_description: No hay resultados que mostrar.
+    default_title: Sin resultados
   errors:
     connection_refused: |
       ¡Ups! Error al conectar con el middleware de la consola web.

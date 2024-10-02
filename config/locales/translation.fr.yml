@@ -381,7 +381,7 @@ fr:
         somewhat: Un peu
         'yes': Oui
   candidate_import_preview_component:
-    email: Courriel
+    email: E-mail
     name: Nom
   candidate_rating_component:
     notes_placeholder: Ajoutez vos notes privées ici (sauvegarde automatique)...
@@ -416,7 +416,7 @@ fr:
   contact:
     index:
       address: Adresse
-      email: Courriel
+      email: E-mail
       first_name: Prénom
       get_in_touch: Prendre contact
       help_message: Vous avez des questions ou besoin de plus d'informations ? Nous
@@ -482,7 +482,7 @@ fr:
         assessments: Évaluations
         candidates: Candidats
         create_assessment: Créer une évaluation
-        email: Courriel
+        email: E-mail
         last_activity: Dernière activité
         name: Nom
         search_candidates: Recherche de candidats
@@ -492,7 +492,7 @@ fr:
         add_user: Ajouter un utilisateur
         archive: Archives
         edit: Editer
-        email: Courriel
+        email: E-mail
         manage_team_members: Gérer les membres de l'équipe
         name: Nom
         owner: Propriétaire
@@ -594,6 +594,14 @@ fr:
       send_paranoid_instructions: Si votre email existe sur notre base de données,
         vous recevrez sous quelques minutes un message avec des instructions pour
         confirmer votre compte.
+      new:
+        resend_confirmation_instructions: "Renvoyer les instructions de confirmation"
+        email_address: "Adresse e-mail"
+        resend_instructions: "Renvoyer les instructions"
+        dont_have_account: "Vous n'avez pas de compte ?"
+        create_one: "Créer un compte"
+        already_have_account: "Vous avez déjà un compte ?"
+        log_in: "Se connecter"
     failure:
       already_authenticated: Vous êtes déjà connecté(e).
       inactive: Votre compte n’est pas encore activé.
@@ -632,42 +640,40 @@ fr:
       new:
         didnt_receive_confirmation_instructions: Je n'ai pas reçu les instructions
           de confirmation
-        email_address: Adresse électronique
+        email_address: E-mail
         forgot_your_password: Mot de passe oublié ?
         log_in_to_your_account: Connectez-vous à votre compte
         send_reset_link: Envoyer le lien de réinitialisation
       no_token: Vous ne pouvez pas accéder à cette page si vous n’y accédez pas depuis
         un email de réinitialisation de mot de passe. Si vous venez en effet d’un
         tel email, vérifiez que vous avez copié l’adresse URL en entier.
-      send_instructions: Vous allez recevoir sous quelques minutes un email vous indiquant
-        comment réinitialiser votre mot de passe.
+      send_instructions: Vous allez recevoir sous quelques minutes un email vous indiquant comment réinitialiser votre mot de passe.
       send_paranoid_instructions: Si votre email existe dans notre base de données,
         vous recevrez un lien vous permettant de récupérer votre mot de passe.
       updated: Votre mot de passe a bien été modifié. Vous êtes maintenant connecté(e).
       updated_not_active: Votre mot de passe a bien été modifié.
     registrations:
-      destroyed: Au revoir ! Votre compte a bien été supprimé. Nous espérons vous
-        revoir bientôt.
+      destroyed: Au revoir ! Votre compte a bien été supprimé. Nous espérons vous revoir bientôt.
       edit:
-        change_email: Modifier l'adresse électronique
-        change_email_address: Modifier l'adresse électronique
+        change_email: Modifier l'E-mail
+        change_email_address: Modifier l'E-mail
         change_password: Modifier le mot de passe
         confirm_password: Confirmer le mot de passe
-        current_email: Courriel actuel
+        current_email: E-mail actuel
         current_password: Mot de passe actuel
         enter_current_password_to_change_email: Saisir le mot de passe actuel pour
-          changer d'adresse électronique
+          changer d'E-mail
         enter_current_password_to_change_password: Saisir le mot de passe actuel pour
           modifier le mot de passe
-        new_email: Nouveau courriel
+        new_email: Nouveau E-mail
         new_password: Nouveau mot de passe
         your_account: Votre compte
       new:
         already_registered: Déjà inscrit
-        email_label: Étiquette de courrier électronique
+        email_label: E-mail
         get_started_title: Lancer le titre
-        password_confirmation_label: Etiquette de confirmation du mot de passe
-        password_label: Étiquette du mot de passe
+        password_confirmation_label: confirmation du mot de passe
+        password_label: Mot de passe
         sign_in: S'inscrire
         sign_up: Inscription
         to_your_account: Vers votre compte
@@ -689,9 +695,9 @@ fr:
       new:
         create_account: Créer un compte
         dont_have_an_account: Ne pas avoir de compte
-        email_label: Étiquette de courrier électronique
+        email_label: E-mail
         forgot_password: Mot de passe oublié
-        password_label: Étiquette du mot de passe
+        password_label: Mot de passe
         remember_me: Souvenez-vous de moi
         sign_in_button: S'inscrire
         sign_in_title: S'inscrire
@@ -723,16 +729,15 @@ fr:
   email_inviting_component:
     actions: Actions
     add: Ajouter
-    email: Courriel
-    email_placeholder: Courriel *
+    email: E-mail
+    email_placeholder: E-mail *
     invite_candidates: Inviter les candidats
     name: Nom
     name_placeholder: Nom
-    send_invitation_email: Envoyez un courriel d'invitation aux candidats.
+    send_invitation_email: Envoyez un E-mail d'invitation aux candidats.
   empty_test_results_component:
-    initialize:
-      default_description: Il n'y a pas de résultats à afficher.
-      default_title: Pas de résultats
+    default_description: Il n'y a pas de résultats à afficher.
+    default_title: Pas de résultats
   errors:
     connection_refused: |
       Oups ! Échec de la connexion à l'intergiciel de la console Web.
@@ -1081,15 +1086,15 @@ fr:
       return_home: Retour à la maison
       title: Lien inactif
     public_link:
-      email_label: Courriel
+      email_label: E-mail
       introduction: Merci de l'intérêt que vous portez à cette évaluation ! Veuillez
-        indiquer votre adresse électronique et nous vous enverrons de plus amples
+        indiquer votre E-mail et nous vous enverrons de plus amples
         informations ainsi qu'un lien pour commencer.
       submit_button: Veuillez m'inviter
       title: Faites notre évaluation
   invite_modal_component:
     close: Fermer
-    invite_by_email: Inviter par courriel
+    invite_by_email: Inviter par E-mail
     invite_candidates: Inviter les candidats
     invite_in_bulk: Inviter en masse
     share_link: Partager le lien
@@ -1222,7 +1227,7 @@ fr:
       égale et équitable, c'est pourquoi nous utilisons une évaluation AssessKit (%{root_url}).
       Cela permet de maintenir l'équité et l'intégrité de notre processus.
     invite_candidates: Invitez les candidats en partageant un lien public. Ce lien
-      les dirigera vers l'évaluation et enregistrera leur nom et leur adresse électronique
+      les dirigera vers l'évaluation et enregistrera leur nom et leur E-mail
       à des fins de suivi.
     ready_to_start: 'Prêt à commencer ? Cliquez sur le lien ci-dessous :'
   shared:

@@ -75,12 +75,12 @@
                               <% if assessment.assessment_participations.any? %>
                                 <button type="button" class="group flex items-center gap-x-2.5 px-4 py-2 text-sm text-zinc-400 font-medium">
                                   <%= svg_tag "pencil_square", class: "size-5" %>
-                                  <%= t('.edit') %>
+                                  <span class="whitespace-nowrap"><%= t('.edit') %></span>
                                 </button>
                               <% else %>
                                 <%= link_to edit_assessment_path(assessment), class: "group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium" do %>
                                   <%= svg_tag "pencil_square", class: "size-5 group-hover:text-gray-500" %>
-                                  <%= t('.edit') %>
+                                  <span class="whitespace-nowrap"><%= t('.edit') %></span>
                                 <% end %>
                               <% end %>
                               <%= button_to assessment.archived? ? unarchive_assessment_path(assessment) : archive_assessment_path(assessment), method: :patch, class: "group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium" do %>

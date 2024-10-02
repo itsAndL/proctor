@@ -90,13 +90,11 @@ en:
       'no': 'No'
       'yes': 'Yes'
   assessment_footer_component:
-    next_button_text:
-      finish: Finish
-      next: Next
+    finish: Finish
+    next: Next
   assessment_header_component:
-    save_and_exit_button:
-      exit: Exit
-      save_and_exit: Save and exit
+    exit: Exit
+    save_and_exit: Save and exit
   assessment_mailer:
     invite_email:
       accommodations: Accommodations are available if needed. More details can be found on the overview page once you start.
@@ -342,6 +340,15 @@ en:
         reset_pass: Reset password
         role: Role
   devise:
+    confirmations:
+      new:
+        resend_confirmation_instructions: "Resend confirmation instructions"
+        email_address: "Email address"
+        resend_instructions: "Resend instructions"
+        dont_have_account: "Don’t have an account?"
+        create_one: "Create one"
+        already_have_account: "Already have an account?"
+        log_in: "Log in"
     passwords:
       edit:
         already_have_account: Already have account
@@ -373,10 +380,10 @@ en:
         your_account: Your account
       new:
         already_registered: Already registered
-        email_label: Email label
+        email_label: Email
         get_started_title: Get started title
-        password_confirmation_label: Password confirmation label
-        password_label: Password label
+        password_confirmation_label: Password confirmation
+        password_label: Password
         sign_in: Sign in
         sign_up: Sign up
         to_your_account: To your account
@@ -384,9 +391,9 @@ en:
       new:
         create_account: Create account
         dont_have_an_account: Dont have an account
-        email_label: Email label
+        email_label: Email
         forgot_password: Forgot password
-        password_label: Password label
+        password_label: Password
         remember_me: Remember me
         sign_in_button: Sign in
         sign_in_title: Sign in
@@ -406,9 +413,8 @@ en:
     second: second
     zero_min: 0 min
   empty_test_results_component:
-    initialize:
-      default_description: There are no results to display.
-      default_title: No results
+    default_description: There are no results to display.
+    default_title: No results
   errors:
     messages:
       not_saved: Not saved
