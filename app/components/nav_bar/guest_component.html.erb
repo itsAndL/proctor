@@ -7,8 +7,8 @@
               <select class="flex items-center rounded-md border-transparent bg-gray-900 bg-none py-0.5 pl-2 pr-5 text-sm font-medium text-white focus:border-transparent focus:outline-none focus:ring-0 group-hover:text-gray-100" onchange="window.location.href=this.value;">
                 <% I18n.available_locales.each do |locale| %>
                   <option value="<%= url_for(locale: locale) %>" <%= 'selected' if I18n.locale == locale %>>
-                        <%= locale.upcase %>
-                      </option>
+                    <%= locale.upcase %>
+                  </option>
                   <% end %>
               </select>
               <div class="pointer-events-none absolute inset-y-0 -right-0.5 flex items-center">
