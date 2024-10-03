@@ -19,7 +19,7 @@ class NavBar::BaseComponent < ViewComponent::Base
   end
 
   def component
-    if guest_page? || @user.blank?
+    if helpers.guest_page?(@current_path) || @user.blank?
       NavBar::GuestComponent.new
     else
       NavBar::UserComponent.new(@user)
@@ -27,16 +27,6 @@ class NavBar::BaseComponent < ViewComponent::Base
   end
 
   private
-
-  def guest_page?
-    @current_path = remove_locale_from_path @current_path
-    [root_path, home_path, contact_path, about_path].map { |path| remove_locale_from_path(path) }.include?(@current_path)
-  end
-
-  def remove_locale_from_path(path)
-    locales = I18n.available_locales.join('|')
-    path.sub(%r{^/(#{locales})(/|$)}, '/')
-  end
 
   def on_edit_user_registration_page?
     helpers.current_page?(helpers.edit_user_registration_path)
