@@ -7,7 +7,8 @@ module PagesHelper
   private
 
   def normalize_path(path)
-    path.gsub(%r{^/(?:#{I18n.available_locales.join('|')})}, '')
+    normalized = path.gsub(%r{^/(?:#{I18n.available_locales.join('|')})}, '')
+    normalized.empty? ? '/' : normalized
   end
 
   def guest_paths
