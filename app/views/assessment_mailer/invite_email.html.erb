@@ -13,7 +13,7 @@
                         <div>
                           <h2 class="default-heading2" style="margin: 0; color: #1f2d3d; font-family: Poppins,arial; font-size: 32px; word-break: break-word; line-height: 34px"><span style="color: #242424; font-family: Arial, helvetica, sans-serif; font-size: 27px;"><%= t('.hello', name: @recipient.name || @recipient.email) %></span></h2>
                           <p style="margin: 0;">&nbsp;</p>
-                          <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;"><%= t('.invited_by', company: @assessment.business.company) %></span></p>
+                          <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;"><%= t('.invited_by', company: @assessment.business.company).html_safe %></span></p>
                           <p style="margin: 0;">&nbsp;</p>
                           <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;"><%= t('.assessment_description') %></span></p>
                           <p style="margin: 0;">&nbsp;</p>
@@ -46,6 +46,10 @@
                           <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;"><%= t('.accommodations') %></span></p>
                           <p style="margin: 0;">&nbsp;</p>
                           <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;"><%= t('.use_chrome') %></span></p>
+                          <% unless @account_exists %>
+                            <p style="margin: 0;">&nbsp;</p>
+                            <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;"><%= t('.need_account') %></span></p>
+                          <% end %>
                         </div>
                       </td>
                     </tr>

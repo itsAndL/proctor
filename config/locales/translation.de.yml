@@ -121,6 +121,8 @@ de:
       zugreifen zu können.
     candidate_required: Sie müssen als Kandidat eingeloggt sein, um auf diese Seite
       zugreifen zu können.
+    log_as_business: Sie sind nicht berechtigt, auf diese Seite zuzugreifen. Bitte melden Sie sich als Unternehmen an.
+    log_as_candidate: Sie sind nicht berechtigt, auf diese Seite zuzugreifen. Bitte melden Sie sich als Kandidat an.
   anti_cheating_monitor_component:
     'no': Nein
     'yes': Ja
@@ -157,6 +159,7 @@ de:
       tests_on: 'Tests am:'
       use_chrome: Wir empfehlen die Verwendung von Google Chrome auf einem Laptop
         oder Desktop, um technische Probleme zu vermeiden.
+      need_account: Um diese Bewertung abzuschließen, benötigen Sie ein AssessKit-Konto. Keine Sorge – Sie können ganz einfach eines erstellen, indem Sie auf den untenstehenden Button klicken, um Ihre Bewertung zu starten.
     reminder_email:
       greeting: Hallo %{name}!
       link_not_working: 'Wenn der obige Link nicht funktioniert, kopieren Sie diese
@@ -273,6 +276,18 @@ de:
     max_file_size: maximale Dateigröße 10 MB.
     supported_file_types: 'Unterstützte Dateitypen:'
     xlsx: XLSX
+  business:
+    registrations:
+      new:
+        get_started: Starten Sie kostenlos mit AssessKit
+        email_address: E-Mail-Adresse
+        password: Passwort
+        company_name: Firmenname
+        sign_up: Registrieren
+        already_have_account: Haben Sie schon ein Konto?
+        login: Anmelden
+        are_you_candidate: Sind Sie ein Kandidat?
+        take_me: Bring mich dorthin
   businesses:
     form:
       avatar: Ihr Firmenlogo
@@ -388,6 +403,19 @@ de:
     custom_questions:
       start:
         title: Benutzerdefinierte Fragen
+    registrations:
+      new:
+        create_profile: Erstellen Sie Ihr AssessKit-Profil
+        enter_email: Geben Sie die E-Mail-Adresse ein, an die Sie eine Bewertungs-Einladung erhalten haben.
+        email_address: E-Mail-Adresse
+        password: Passwort
+        your_name: Ihr Name
+        sign_up: Registrieren
+        already_have_account: Haben Sie schon ein Konto?
+        login: Anmelden
+        are_you_business: Sind Sie ein Unternehmen?
+        take_me: Bring mich dorthin
+
     tests:
       feedback:
         finish: Oberfläche
@@ -620,8 +648,8 @@ de:
         resend_confirmation_instructions: "Bestätigungsanweisungen erneut senden"
         email_address: "E-Mail-Adresse"
         resend_instructions: "Anweisungen erneut senden"
-        dont_have_account: "Haben Sie kein Konto?"
-        create_one: "Erstellen Sie eines"
+        business_dont_have_account: "Geschäftlich unterwegs und kein Konto?"
+        create_one: "Erstellen Sie eines!"
         already_have_account: "Haben Sie bereits ein Konto?"
         log_in: "Einloggen"
     failure:
@@ -660,12 +688,15 @@ de:
         log_in: Einloggen
         new_password: Neues Passwort
       new:
-        didnt_receive_confirmation_instructions: Ich habe keine Anweisungen zur Bestätigung
+        didnt_receive_confirmation_instructions: Ich habe keine Anweisungen zur Bestätigung.
           erhalten
         email_address: E-Mail Adresse
         forgot_your_password: Haben Sie Ihr Passwort vergessen?
         log_in_to_your_account: Bei Ihrem Konto anmelden
         send_reset_link: Link zum Zurücksetzen senden
+        business: Unternehmen
+        candidate: Kandidat
+        click_here: Klicken Sie hier
       no_token: Sie können sich nicht auf dieser Seite anmelden, wenn Sie nicht von
         einer Passwort-Zurücksetzen-E-Mail kommen. Wenn Sie von solch einer E-Mail
         kommen, überprüfen Sie bitte, ob Sie die gesamte URL verwendet haben.
@@ -692,15 +723,6 @@ de:
         new_email: Neue E-Mail
         new_password: Neues Passwort
         your_account: Ihr Konto
-      new:
-        already_registered: Bereits registriert
-        email_label: E-Mail
-        get_started_title: Starttitel
-        password_confirmation_label: Bestätigung des Passworts
-        password_label: Kennwort
-        sign_in: Eintragen
-        sign_up: Registrieren
-        to_your_account: Zu Ihrem Konto
       signed_up: Sie haben sich erfolgreich registriert.
       signed_up_but_inactive: Sie haben sich erfolgreich registriert. Wir konnten
         Sie jedoch nicht anmelden, weil Ihr Konto noch nicht aktiviert ist.
@@ -717,15 +739,6 @@ de:
         Passwort geändert hat, müssen Sie sich erneut anmelden
     sessions:
       already_signed_out: Erfolgreich abgemeldet.
-      new:
-        create_account: Konto erstellen
-        dont_have_an_account: Ich habe kein Konto
-        email_label: E-Mail
-        forgot_password: Passwort vergessen
-        password_label: Kennwort
-        remember_me: Erinnern Sie sich an mich
-        sign_in_button: Eintragen
-        sign_in_title: Eintragen
       signed_in: Erfolgreich angemeldet.
       signed_out: Erfolgreich abgemeldet.
     shared:
@@ -1136,6 +1149,7 @@ de:
       log_in: Einloggen
       pricing: Preisgestaltung
       today: heute
+      for_candidates: Für Kandidaten
     user_component:
       assessments: Bewertungen
       candidates: Kandidaten
@@ -1237,6 +1251,19 @@ de:
   search_input_component:
     initialize:
       default_placeholder: Suche
+  sign_in_form_component:
+    candidate_title: Melden Sie sich bei Ihrem Kandidatenkonto an
+    business_title: Melden Sie sich bei Ihrem Unternehmenskonto an
+    email_address: E-Mail-Adresse
+    password: Passwort
+    keep_me_logged_in: Angemeldet bleiben
+    forgot_password: Passwort vergessen?
+    sign_in: Anmelden
+    dont_have_account: Haben Sie noch kein Konto?
+    sign_up_now: Jetzt registrieren
+    are_you_candidate: Sind Sie ein Kandidat?
+    are_you_business: Sind Sie ein Unternehmen?
+    take_me: Bring mich dorthin
   share_link_component:
     active_source: Aktive Quelle
     copy_invitation_text: 'Kopieren Sie diesen Text und fügen Sie ihn Ihrer Einladung

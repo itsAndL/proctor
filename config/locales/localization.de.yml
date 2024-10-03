@@ -12,6 +12,7 @@
 ---
 de:
   of: von
+  or: oder
   date:
     formats:
       default: "%d.%m.%Y"

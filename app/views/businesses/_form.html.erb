@@ -26,12 +26,12 @@
                     <%= form.text_field :website, placeholder: "www.example.com", class: "primary-field" %>
                   </div>
                   <div>
-                    <%= form.label :bio, class: "required-label" %>
-                    <%= form.text_area :bio, rows: "3", required: true, placeholder: t('.bio_placeholder'), class: "primary-field" %>
+                    <%= form.label :bio, class: "primary-label" %>
+                    <%= form.text_area :bio, rows: "3", placeholder: t('.bio_placeholder'), class: "primary-field" %>
                     <%= render FieldErrorComponent.new(:bio, business) %>
                   </div>
                   <div data-controller="file-upload" data-file-upload-visibility-class="hidden" data-file-upload-loading-class="opacity-50">
-                    <span class="required-label"><%= t(".avatar") %></span>
+                    <span class="primary-label"><%= t(".avatar") %></span>
                     <div class="mt-2 flex items-center gap-x-5">
                       <div class="relative">
                         <%= render AvatarComponent.new(avatarable: business, variant: :medium, data: {"file-upload-target": "image"}) %>
@@ -68,8 +68,8 @@
               <div class="col-span-2">
                 <div class="grid grid-cols-1 gap-x-6 gap-y-6">
                   <div>
-                    <%= form.label :contact_name, class: "required-label" %>
-                    <%= form.text_field :contact_name, autocomplete: "name", required: true, class: "primary-field" %>
+                    <%= form.label :contact_name, class: "primary-label" %>
+                    <%= form.text_field :contact_name, autocomplete: "name", class: "primary-field" %>
                     <%= render FieldErrorComponent.new(:contact_name, business) %>
                   </div>
                   <div>

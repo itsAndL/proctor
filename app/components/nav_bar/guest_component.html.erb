@@ -1,4 +1,28 @@
 <header data-controller="toggle" class="bg-white border-b border-zinc-100">
+  <div class="bg-gray-900 ">
+    <div class="mx-auto flex h-10 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <form class="block flex-1">
+        <div class="flex">
+          <div class="group relative -ml-2 rounded-md border-transparent bg-gray-900 focus-within:ring-2 focus-within:ring-white">
+            <select class="flex items-center rounded-md border-transparent bg-gray-900 bg-none py-0.5 pl-2 pr-5 text-sm font-medium text-white focus:border-transparent focus:outline-none focus:ring-0 group-hover:text-gray-100">
+              <option>EN</option>
+              <option>FR</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 -right-0.5 flex items-center">
+              <svg class="h-5 w-5 text-gray-300" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <div class="flex flex-1 items-center justify-end space-x-6">
+        <%= link_to t('.log_in'), helpers.new_business_session_path, class: "text-sm font-medium text-white hover:text-gray-100" %>
+         <%= link_to t('.for_candidates'), helpers.new_candidate_session_path, class: "text-sm font-medium text-white hover:text-gray-100" %>
+      </div>
+    </div>
+  </div>
   <nav class="mx-auto flex max-w-7xl items-center justify-between gap-x-5 px-6 py-5 lg:px-8" aria-label="Global">
     <div class="flex lg:flex-1">
       <a href="/" class="-m-1.5 p-1.5">
@@ -11,10 +35,9 @@
       <%= link_to t('.about_us'), helpers.about_path, class: "text-base font-semibold leading-6 text-gray-700" %>
       <%= link_to t('.contact'), helpers.contact_path, class: "text-base font-semibold leading-6 text-gray-700" %>
     </div>
-    <div class="hidden lg:inline-flex flex flex-1 items-center justify-end gap-x-3">
+    <div class="flex flex-1 items-center justify-end gap-x-5">
       <%= render LanguageSwitcherComponent.new %>
-      <%= link_to t('.log_in'), helpers.new_session_path(User), class: "hidden whitespace-nowrap group lg:inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none ring-slate-700 ring-inset text-slate-700 hover:text-slate-900 active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300" %>
-      <%= link_to helpers.new_registration_path(User), class: "group whitespace-nowrap inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-blue-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600" do %>
+      <%= link_to helpers.new_business_registration_path, class: "group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-blue-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600" do %>
         <span><%= t('.get_started') %> <span class="hidden lg:inline"><%= t('.today') %></span></span>
       <% end %>
     </div>
@@ -51,12 +74,8 @@
             <a href="/contact" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"><%= t('.contact') %></a>
           </div>
           <div class="py-6">
-            <%= link_to helpers.new_registration_path(User), class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" do %>
-              <%= t('.get_started') %>
-            <% end %>
-            <%= link_to helpers.new_session_path(User), class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" do %>
-              <%= t('.log_in') %>
-            <% end %>
+            <%= link_to t('.get_started'), helpers.new_business_registration_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
+            <%= link_to t('.log_in'), helpers.new_business_session_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
           </div>
         </div>
       </div>

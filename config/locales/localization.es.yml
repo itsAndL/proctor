@@ -1,5 +1,6 @@
 es:
   of: de
+  or: o
   date:
     formats:
       default: "%-d/%-m/%Y"

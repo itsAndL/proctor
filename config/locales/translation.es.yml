@@ -118,6 +118,8 @@ es:
   alert:
     business_required: Debe iniciar sesión como empresa para acceder a esta página.
     candidate_required: Debe iniciar sesión como candidato para acceder a esta página.
+    log_as_business: No está autorizado para acceder a esta página. Por favor, inicie sesión como empresa.
+    log_as_candidate: No está autorizado para acceder a esta página. Por favor, inicie sesión como candidato.
   anti_cheating_monitor_component:
     check_status:
       'no': 'No'
@@ -153,6 +155,7 @@ es:
       tests_on: 'Pruebas en:'
       use_chrome: Le sugerimos que utilice Google Chrome en un ordenador portátil
         o de sobremesa para evitar problemas técnicos.
+      need_account: Para completar esta evaluación, necesitará una cuenta de AssessKit. No se preocupe, podrá crear una fácilmente al hacer clic en el botón de abajo para comenzar su evaluación.
     reminder_email:
       greeting: "¡Hola %{name}!"
       link_not_working: 'Si el enlace anterior no funciona, copie y pegue esta URL
@@ -267,6 +270,18 @@ es:
     max_file_size: 'tamaño máximo del archivo: 10 MB.'
     supported_file_types: 'Tipos de archivo compatibles:'
     xlsx: XLSX
+  business:
+    registrations:
+      new:
+        get_started: Comience con AssessKit gratis
+        email_address: Dirección de correo electrónico
+        password: Contraseña
+        company_name: Nombre de la empresa
+        sign_up: Regístrate
+        already_have_account: ¿Ya tienes una cuenta?
+        login: Iniciar sesión
+        are_you_candidate: ¿Eres un candidato?
+        take_me: Llévame allí
   businesses:
     form:
       avatar: El logotipo de su empresa
@@ -377,6 +392,18 @@ es:
     custom_questions:
       start:
         title: Preguntas personalizadas
+    registrations:
+      new:
+        create_profile: Crea tu perfil de AssessKit
+        enter_email: Introduce la dirección de correo electrónico a la que recibiste la invitación para la evaluación.
+        email_address: Dirección de correo electrónico
+        password: Contraseña
+        your_name: Tu nombre
+        sign_up: Regístrate
+        already_have_account: ¿Ya tienes una cuenta?
+        login: Iniciar sesión
+        are_you_business: ¿Eres una empresa?
+        take_me: Llévame allí
     tests:
       feedback:
         finish: Acabado
@@ -607,8 +634,8 @@ es:
         resend_confirmation_instructions: "Reenviar instrucciones de confirmación"
         email_address: "Dirección de correo electrónico"
         resend_instructions: "Reenviar instrucciones"
-        dont_have_account: "¿No tienes una cuenta?"
-        create_one: "Crear una"
+        business_dont_have_account: "¿Eres una empresa y no tienes una cuenta?"
+        create_one: "Crear una!"
         already_have_account: "¿Ya tienes una cuenta?"
         log_in: "Iniciar sesión"
     failure:
@@ -646,11 +673,14 @@ es:
         log_in: Conectarse
         new_password: Nueva contraseña
       new:
-        didnt_receive_confirmation_instructions: No he recibido instrucciones de confirmación
+        didnt_receive_confirmation_instructions: No he recibido instrucciones de confirmación.
         email_address: Dirección de correo electrónico
         forgot_your_password: "¿Ha olvidado su contraseña?"
         log_in_to_your_account: Acceda a su cuenta
         send_reset_link: Enviar enlace de reinicio
+        business: Empresa
+        candidate: Candidato
+        click_here: Haga clic aquí
       no_token: No puedes acceder a esta página si no es a través de un enlace para
         resetear tu contraseña. Si has llegado hasta aquí desde el email para resetear
         tu contraseña, por favor asegúrate de que la URL introducida está completa.
@@ -678,15 +708,6 @@ es:
         new_email: Nuevo correo electrónico
         new_password: Nueva contraseña
         your_account: Su cuenta
-      new:
-        already_registered: Ya está registrado
-        email_label: E-mail
-        get_started_title: Título de inicio
-        password_confirmation_label: Confirmación de contraseña
-        password_label:  Contraseña
-        sign_in: Iniciar sesión
-        sign_up: Registrarse
-        to_your_account: A su cuenta
       signed_up: Bienvenido. Tu cuenta fue creada.
       signed_up_but_inactive: Tu cuenta ha sido creada correctamente. Sin embargo,
         no hemos podido iniciar la sesión porque tu cuenta aún no está activada.
@@ -703,15 +724,6 @@ es:
         se cambió su contraseña, debe iniciar sesión nuevamente
     sessions:
       already_signed_out: Sesión finalizada.
-      new:
-        create_account: Crear una cuenta
-        dont_have_an_account: No tengo cuenta
-        email_label: E-mail
-        forgot_password: Contraseña olvidada
-        password_label:  Contraseña
-        remember_me: Acuérdate de mí
-        sign_in_button: Iniciar sesión
-        sign_in_title: Iniciar sesión
       signed_in: Sesión iniciada.
       signed_out: Sesión finalizada.
     shared:
@@ -1118,6 +1130,7 @@ es:
       log_in: Conectarse
       pricing: Precios
       today: hoy
+      for_candidates: Para candidatos
     user_component:
       assessments: Evaluaciones
       candidates: Candidatos
@@ -1217,6 +1230,19 @@ es:
   search_input_component:
     initialize:
       default_placeholder: Buscar en
+  sign_in_form_component:
+    candidate_title: Inicia sesión en tu cuenta de candidato
+    business_title: Inicia sesión en tu cuenta de empresa
+    email_address: Dirección de correo electrónico
+    password: Contraseña
+    keep_me_logged_in: Mantenerme conectado
+    forgot_password: ¿Olvidaste tu contraseña?
+    sign_in: Iniciar sesión
+    dont_have_account: ¿No tienes una cuenta?
+    sign_up_now: Regístrate ahora
+    are_you_candidate: ¿Eres un candidato?
+    are_you_business: ¿Eres una empresa?
+    take_me: Llévame allí
   share_link_component:
     active_source: Fuente activa
     copy_invitation_text: 'Copie y añada este texto a su invitación:'
