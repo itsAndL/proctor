@@ -1,6 +1,7 @@
 ---
 en:
   of: of
+  or: or
   about:
     index:
       mission:
@@ -92,6 +93,8 @@ en:
   alert:
     business_required: You need to be logged in as a business to access this page.
     candidate_required: You need to be logged in as a candidate to access this page.
+    log_as_business: You are not authorized to access this page. Please log in as a business.
+    log_as_candidate: You are not authorized to access this page. Please log in as a candidate.
   anti_cheating_monitor_component:
     check_status:
       'no': 'No'
@@ -120,6 +123,7 @@ en:
       start_assessment: Start Assessment
       tests_on: 'Tests on:'
       use_chrome: We suggest using Google Chrome on a laptop or desktop to avoid any technical issues.
+      need_account: To complete this assessment, you'll need an AssessKit account. Don't worry - you can easily create one when you click the button below to start your assessment.
     reminder_email:
       greeting: Hi %{name}!
       link_not_working: 'If the above link does not work, copy and paste this URL into your browser:'
@@ -186,6 +190,18 @@ en:
       invite: Invite
       try_yourself: Try yourself
       unarchive: Unarchive
+  business:
+    registrations:
+      new:
+        get_started: Get started with AssessKit for free
+        email_address: Email address
+        password: Password
+        company_name: Company name
+        sign_up: Sign up
+        already_have_account: Already have an account?
+        login: Log in
+        are_you_candidate: Are you a candidate?
+        take_me: Take me there
   businesses:
     form:
       avatar: Your company logo
@@ -268,6 +284,18 @@ en:
     custom_questions:
       start:
         title: Custom questions
+    registrations:
+      new:
+        create_profile: Create your AssessKit Profile
+        enter_email: Enter the email address to which you received an assessment invite.
+        email_address: Email address
+        password: Password
+        your_name: Your name
+        sign_up: Sign up
+        already_have_account: Already have an account?
+        login: Log in
+        are_you_business: Are you a business?
+        take_me: Take me there
     tests:
       feedback:
         finish: Finish
@@ -355,8 +383,8 @@ en:
         resend_confirmation_instructions: "Resend confirmation instructions"
         email_address: "Email address"
         resend_instructions: "Resend instructions"
-        dont_have_account: "Don’t have an account?"
-        create_one: "Create one"
+        business_dont_have_account: "Business and don’t have an account?"
+        create_one: "Create one!"
         already_have_account: "Already have an account?"
         log_in: "Log in"
     passwords:
@@ -370,11 +398,14 @@ en:
         log_in: Log in
         new_password: New password
       new:
-        didnt_receive_confirmation_instructions: Didnt receive confirmation instructions
+        didnt_receive_confirmation_instructions: Didnt receive confirmation instructions.
         email_address: Email address
         forgot_your_password: Forgot your password
         log_in_to_your_account: Log in to your account
         send_reset_link: Send reset link
+        business: Business
+        candidate: Candidate
+        click_here: Click here
     registrations:
       edit:
         change_email: Change email
@@ -388,25 +419,6 @@ en:
         new_email: New email
         new_password: New password
         your_account: Your account
-      new:
-        already_registered: Already registered
-        email_label: Email
-        get_started_title: Get started title
-        password_confirmation_label: Password confirmation
-        password_label: Password
-        sign_in: Sign in
-        sign_up: Sign up
-        to_your_account: To your account
-    sessions:
-      new:
-        create_account: Create account
-        dont_have_an_account: Dont have an account
-        email_label: Email
-        forgot_password: Forgot password
-        password_label: Password
-        remember_me: Remember me
-        sign_in_button: Sign in
-        sign_in_title: Sign in
     shared:
       links:
         didnt_receive_confirmation_instructions: Didnt receive confirmation instructions
@@ -713,6 +725,7 @@ en:
       log_in: Log in
       pricing: Pricing
       today: today
+      for_candidates: For candidates
     user_component:
       sign_out: Sign out
   participation_progress_indicators_component:
@@ -754,6 +767,19 @@ en:
     question: Question
     read: Read
     view_answer: View answer
+  sign_in_form_component:
+    candidate_title: Sign in to your candidate account
+    business_title: Sign in to your business account
+    email_address: Email address
+    password: Password
+    keep_me_logged_in: Keep me logged in
+    forgot_password: Forgot password?
+    sign_in: Sign in
+    dont_have_account: Don’t have an account?
+    sign_up_now: Sign up now
+    are_you_candidate: Are you a candidate?
+    are_you_business: Are you a business?
+    take_me: Take me there
   share_link_component:
     active_source: Active source
     copy_invitation_text: 'Copy and add this text to your invitation:'

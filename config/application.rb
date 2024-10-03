@@ -42,9 +42,13 @@ module Proctor
     # Use Sucker Punch for background jobs.
     config.active_job.queue_adapter = :sucker_punch
 
-    # Set the default locale to English.
-    config.i18n.default_locale = :en
+    # Permitted locales available for the application
     config.i18n.available_locales = %i[en fr es de]
+
+    # Set default locale
+    config.i18n.default_locale = :en
+
+    # Use default language as fallback if translation is missing
     config.i18n.fallbacks = true
   end
 end

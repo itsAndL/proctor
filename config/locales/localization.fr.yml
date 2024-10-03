@@ -12,6 +12,7 @@
 ---
 fr:
   of: de
+  or: ou
   date:
     formats:
       default: "%d/%m/%Y"

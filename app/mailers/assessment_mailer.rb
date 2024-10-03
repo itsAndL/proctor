@@ -3,6 +3,7 @@ class AssessmentMailer < ApplicationMailer
 
   def invite_email(assessment_participation)
     setup_email_variables(assessment_participation)
+    @account_exists = User.exists?(email: @email)
     mail(
       to: @email,
       subject: t('.invite_subject', company: @assessment.business.company)

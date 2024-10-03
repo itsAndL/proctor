@@ -46,6 +46,10 @@
                           <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;"><%= t('.accommodations') %></span></p>
                           <p style="margin: 0;">&nbsp;</p>
                           <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;"><%= t('.use_chrome') %></span></p>
+                          <% unless @account_exists %>
+                            <p style="margin: 0;">&nbsp;</p>
+                            <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;"><%= t('.need_account') %></span></p>
+                          <% end %>
                         </div>
                       </td>
                     </tr>

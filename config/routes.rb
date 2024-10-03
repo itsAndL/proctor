@@ -6,10 +6,28 @@ Rails.application.routes.draw do
       resources :monitoring, only: [:update], param: :hashid
     end
 
-    devise_for :users, path: '/auth', controllers: {
-      registrations: 'users/registrations',
-      confirmations: 'users/confirmations'
-    }
+    devise_for :users, path: '/auth', skip: %i[registrations sessions], controllers: { confirmations: 'users/confirmations' }
+
+    scope '/auth' do
+      devise_scope :user do
+        # Business routes
+        get 'business/sign_up', to: 'business/registrations#new', as: :new_business_registration
+        post 'business', to: 'business/registrations#create', as: :business_registration
+        get 'business/sign_in', to: 'business/sessions#new', as: :new_business_session
+        post 'business/sign_in', to: 'business/sessions#create', as: :business_session
+
+        # Candidate routes
+        get 'candidate/sign_up', to: 'candidate/registrations#new', as: :new_candidate_registration
+        post 'candidate', to: 'candidate/registrations#create', as: :candidate_registration
+        get 'candidate/sign_in', to: 'candidate/sessions#new', as: :new_candidate_session
+        post 'candidate/sign_in', to: 'candidate/sessions#create', as: :candidate_session
+
+        # Common routes
+        delete 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
+        get 'edit', to: 'devise/registrations#edit', as: :edit_user_registration
+        put 'update', to: 'devise/registrations#update', as: :user_registration
+      end
+    end
 
     resource :role, only: :new
     resources :businesses, only: %i[new create edit update], param: :hashid

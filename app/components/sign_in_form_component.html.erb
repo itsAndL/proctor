@@ -1,0 +1,42 @@
+<div>
+  <a aria-label="Home" href="/"><%= helpers.svg_tag "assesskit", class: "h-12 w-auto" %></a>
+  <h2 class="mt-9 text-2xl font-bold leading-9 tracking-tight text-gray-900"><%= title %></h2>
+
+  <%= form_for(resource, as: resource_name, url: session_path) do |f| %>
+    <div class="mt-7 grid grid-cols-1 gap-y-7">
+      <div>
+        <%= f.label :email, t(".email_address"), class: "required-label" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, class: "primary-field" %>
+        <%= render FieldErrorComponent.new(:email, resource) %>
+      </div>   
+      
+      <div>
+        <%= f.label :password, t(".password"), class: "required-label" %>
+        <%= f.password_field :password, autocomplete: "current-password", required: true, class: "primary-field" %>
+        <%= render FieldErrorComponent.new(:password, resource) %>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <% if helpers.devise_mapping.rememberable? %>
+          <div class="flex items-center">
+            <%= f.check_box :remember_me, checked: true, class: "h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-600" %>
+            <%= f.label :remember_me, t('.keep_me_logged_in'), class: "ml-2 block text-sm font-medium leading-6 text-black" %>
+          </div>
+        <% end %>
+
+        <div class="text-sm leading-6">
+          <%= link_to t('.forgot_password'), helpers.new_password_path(resource_name), class: "font-semibold text-blue-600 hover:text-blue-500" %>
+        </div>
+      </div>
+
+      <div>
+        <%= f.submit t('.sign_in'), class: "mt-3 primary-button w-full" %>
+      </div>
+    </div>
+  <% end %>
+
+  <div  class="mt-7 text-xs font-medium text-gray-600 space-y-2">
+    <p><%= t('.dont_have_account') %> <%= link_to t(".sign_up_now"), new_registration_path, class: "font-semi-bold text-blue-600 hover:underline" %></p>
+    <p><%= another_user_type?[:question] %> <%= link_to t(".take_me"), another_user_type?[:path] , class: "font-semi-bold text-blue-600 hover:underline" %></p>
+  </div>
+</div>
