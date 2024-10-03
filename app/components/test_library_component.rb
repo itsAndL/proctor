@@ -17,10 +17,10 @@ class TestLibraryComponent < ViewComponent::Base
 
   def filters_applied?
     params[:test_source].present? ||
-    params[:search_query].present? ||
-    params[:test_category].present? ||
-    params[:test_type].present? ||
-    params[:language].present?
+      params[:search_query].present? ||
+      params[:test_category].present? ||
+      params[:test_type].present? ||
+      params[:language].present?
   end
 
   private

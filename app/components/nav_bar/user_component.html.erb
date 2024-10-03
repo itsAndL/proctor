@@ -39,6 +39,7 @@
           </div>
         </div>
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
+          <%= render LanguageSwitcherComponent.new(guest: false) %>
           <!-- Profile dropdown -->
           <div class="dropdown dropdown-end relative ml-3 inline-block text-left">
             <div>
@@ -49,7 +50,6 @@
                 </svg>
               </button>
             </div>
-
             <!--
               Dropdown menu, show/hide based on menu state.
 
@@ -68,14 +68,13 @@
                 <% end %>
               </div>
               <div class="py-1" role="none">
-                <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "block px-4 py-2 text-sm font-medium text-gray-800 hover:bg-zinc-100" %>
+                <%= link_to t('.sign_out'), destroy_user_session_path, data: { turbo_method: :delete }, class: "block px-4 py-2 text-sm font-medium text-gray-800 hover:bg-zinc-100" %>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
     <!-- Mobile menu, show/hide based on menu state. -->
     <div data-toggle-target="element" class="hidden md:hidden" id="mobile-menu">
       <div class="space-y-1 pb-4 pt-2">
@@ -83,7 +82,7 @@
         <% mobile_links.each do |link| %>
           <%= link_to link[:title], link[:path], class: helpers.dropdown_item(link[:path]) %>
         <% end %>
-        <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700" %>
+        <%= link_to t('.sign_out'), destroy_user_session_path, data: { turbo_method: :delete }, class: "block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700" %>
       </div>
     </div>
   </nav>

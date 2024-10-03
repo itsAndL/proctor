@@ -9,31 +9,29 @@ class AssessmentParticipationsController < ApplicationController
     @assessment_participation.destroy
 
     query = AssessmentParticipationQuery.new(@assessment.assessment_participations)
-    assessment_participations = query.execute
+    query.execute
     assessment_participations = paginate(query.relation)
 
     render(turbo_stream:
       [
         turbo_stream.replace('candidates-list',
-          CandidatesListComponent.new(
-            assessment: @assessment,
-            assessment_participations: assessment_participations,
-            current_page: @current_page,
-            total_items: @total_items,
-            per_page: @per_page
-          )
-        ),
+                             CandidatesListComponent.new(
+                               assessment: @assessment,
+                               assessment_participations:,
+                               current_page: @current_page,
+                               total_items: @total_items,
+                               per_page: @per_page
+                             )),
         turbo_stream.replace('modal', helpers.turbo_frame_tag('modal')),
-        turbo_stream.replace('notification', NotificationComponent.new(notice: 'The candidate has been deleted.'))
-      ]
-    )
+        turbo_stream.replace('notification', NotificationComponent.new(notice: t('flash.candidate_deleted')))
+      ])
   end
 
   def send_reminder
     result = InvitationService.send_reminder(@assessment_participation)
 
     if result.success?
-      render turbo_stream: turbo_stream.replace('notification', NotificationComponent.new(notice: 'Reminder sent successfully.'))
+      render turbo_stream: turbo_stream.replace('notification', NotificationComponent.new(notice: t('flash.reminder_sent')))
     else
       render turbo_stream: turbo_stream.replace('notification', NotificationComponent.new(alert: result.error_message))
     end
@@ -45,14 +43,12 @@ class AssessmentParticipationsController < ApplicationController
     if @assessment_participation.update(assessment_participation_params)
       render turbo_stream: [
         turbo_stream.replace('notification',
-          NotificationComponent.new(notice: 'Rating updated successfully.')
-        ),
+                             NotificationComponent.new(notice: t('flash.rating_updated'))),
         turbo_stream.replace(star_rating_identifier, StarRatingComponent.new(@assessment_participation))
       ]
     else
       render turbo_stream: turbo_stream.replace('notification',
-        NotificationComponent.new(alert: @assessment_participation.errors.full_messages.join(', '))
-      ), status: :unprocessable_entity
+                                                NotificationComponent.new(alert: @assessment_participation.errors.full_messages.join(', '))), status: :unprocessable_entity
     end
   end
 

@@ -11,6 +11,13 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :business
   accepts_nested_attributes_for :candidate
 
+  enum locale: {
+    en: 0,
+    fr: 1,
+    es: 2,
+    de: 3
+  }
+
   # Skip confirmation for candidates
   def skip_confirmation!
     self.confirmed_at = Time.current if candidate?
@@ -18,7 +25,7 @@ class User < ApplicationRecord
 
   # Automatically confirm email for candidates
   def after_confirmation
-    self.confirm! if candidate?
+    confirm! if candidate?
   end
 
   def business?

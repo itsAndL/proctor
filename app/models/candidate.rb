@@ -16,13 +16,13 @@ class Candidate < ApplicationRecord
   delegate :email, to: :user
 
   scope :with_email, lambda { |email|
-    joins(:user).where("LOWER(users.email) = LOWER(?)", email)
+    joins(:user).where('LOWER(users.email) = LOWER(?)', email)
   }
 
   pg_search_scope :filter_by_search_query,
                   against: :name,
                   using: {
-                    tsearch: { prefix: true },
+                    tsearch: { prefix: true }
                   }
 
   def self.find_by_email(email)

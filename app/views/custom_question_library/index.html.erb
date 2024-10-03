@@ -1,14 +1,12 @@
 <main class="bg-zinc-50 h-full">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="pt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-y-5 gap-x-4">
-      <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Custom questions</h1>
-  
+      <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight"><%= t('.custom_questions') %></h1>
       <%= link_to new_assessment_path, class: "primary-button" do %>
         <%= svg_tag "plus_circle" %>
-        Create assessment
+        <%= t('.create_assessment') %>
       <% end %>
     </div>
-
     <div class="mt-8">
       <%= render CustomQuestionLibraryComponent.new(custom_questions: @custom_questions, clear_path: custom_question_library_index_path, business: current_business) %>
     </div>

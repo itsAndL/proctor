@@ -17,7 +17,7 @@ class CandidateQuery
     return relation if assessment_id.blank?
 
     @relation = relation.joins(:assessment_participations)
-                        .where(assessment_participations: { assessment_id: assessment_id })
+                        .where(assessment_participations: { assessment_id: })
   end
 
   def sorted

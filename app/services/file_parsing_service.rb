@@ -10,8 +10,6 @@ class FileParsingService
     end
   end
 
-  private
-
   def self.parse_csv(file)
     CSV.read(file.path, headers: true).map do |row|
       { name: row['Name'], email: row['Email'] }
@@ -22,7 +20,7 @@ class FileParsingService
     spreadsheet = Roo::Spreadsheet.open(file.path)
     headers = spreadsheet.row(1)
     (2..spreadsheet.last_row).map do |i|
-      row = Hash[[headers, spreadsheet.row(i)].transpose]
+      row = [headers, spreadsheet.row(i)].transpose.to_h
       { name: row['Name'], email: row['Email'] }
     end
   end

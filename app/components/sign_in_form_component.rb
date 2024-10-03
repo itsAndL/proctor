@@ -20,20 +20,15 @@ class SignInFormComponent < ViewComponent::Base
   end
 
   def title
-    case user_type
-    when :candidate
-      'Sign in to your candidate account'
-    when :business
-      'Sign in to your business account'
-    end
+    t(".#{user_type}_title")
   end
 
   def another_user_type?
     case user_type
     when :candidate
-      { question: 'Are you a business?', path: new_business_session_path }
+      { question: t('.are_you_business'), path: new_business_session_path }
     when :business
-      { question: 'Are you a candidate?', path: new_candidate_session_path }
+      { question: t('.are_you_candidate'), path: new_candidate_session_path }
     end
   end
 end

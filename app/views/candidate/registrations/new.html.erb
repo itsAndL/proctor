@@ -6,39 +6,39 @@
   <div class="w-full max-w-xl p-12 bg-white rounded-xl border border-gray-200">
     <div>
       <a aria-label="Home" href="/"><%= svg_tag "assesskit", class: "h-12 w-auto" %></a>
-      <h2 class="mt-12 text-2xl font-bold leading-9 tracking-tight text-gray-900">Create your AssessKit Profile</h2>
-      <p class="mt-2 text-sm text-gray-700">Enter the email address to which you received an assessment invite.</p>
+      <h2 class="mt-12 text-2xl font-bold leading-9 tracking-tight text-gray-900"><%= t(".create_profile") %></h2>
+      <p class="mt-2 text-sm text-gray-700"><%= t(".enter_email") %></p>
       <%= form_for(resource, as: resource_name, url: candidate_registration_path) do |f| %>
         <div class="mt-8 grid grid-cols-1 gap-y-7">
           <div>
-            <%= f.label :email, "Email address", class: "required-label" %>
+            <%= f.label :email, t(".email_address"), class: "required-label" %>
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "primary-field" %>
             <%= render FieldErrorComponent.new(:email, resource) %>
           </div>
 
           <div>
-            <%= f.label :password, class: "required-label" %>
+            <%= f.label :password, t(".password"), class: "required-label" %>
             <%= f.password_field :password, autocomplete: "new-password", class: "primary-field" %>
             <%= render FieldErrorComponent.new(:password, resource) %>
           </div>
 
           <%= f.fields_for :candidate_attributes do |c| %>
             <div>
-              <%= c.label :name, "Your name", class: "required-label" %>
+              <%= c.label :name, t(".your_name"), class: "required-label" %>
               <%= c.text_field :name, autocomplete: "name", class: "primary-field" %>
               <%= render FieldErrorComponent.new(:name, resource.candidate) %>
             </div>
           <% end %>
 
           <div>
-            <%= f.submit "Sign up", class: "mt-1 primary-button w-full" %>
+            <%= f.submit t(".sign_up"), class: "mt-1 primary-button w-full" %>
           </div>
         </div>
       <% end %>
 
       <div class="mt-7 text-xs font-medium text-gray-600 space-y-2">
-        <p>Already have an account? <%= link_to "Log in", new_candidate_session_path, class: "font-semibold text-blue-600 hover:underline" %>
-        <p>Are you a business? <%= link_to 'Take me there', new_business_registration_path , class: "font-semi-bold text-blue-600 hover:underline" %></p>
+        <p><%= t(".already_have_account") %> <%= link_to t(".login"), new_candidate_session_path, class: "font-semibold text-blue-600 hover:underline" %>
+        <p><%= t(".are_you_business") %> <%= link_to t(".take_me"), new_business_registration_path , class: "font-semi-bold text-blue-600 hover:underline" %></p>
       </div>
     </div>
   </div>

@@ -41,9 +41,7 @@ class Candidate::CustomQuestionsController < ApplicationController
     @current_custom_question = @assessment_participation.unanswered_custom_questions.find(params[:hashid])
   rescue ActiveRecord::RecordNotFound
     next_unanswered_custom_question = @participation_service.first_unanswered_custom_question
-    if next_unanswered_custom_question.present?
-      return redirect_to questions_candidate_custom_question_path(next_unanswered_custom_question)
-    end
+    return redirect_to questions_candidate_custom_question_path(next_unanswered_custom_question) if next_unanswered_custom_question.present?
 
     redirect_to checkout_candidate_assessment_participation_path(@assessment_participation)
   end

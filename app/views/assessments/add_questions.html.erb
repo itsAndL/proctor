@@ -1,22 +1,17 @@
 <%= render AssessmentHeaderComponent.new(assessment: @assessment) %>
-
 <main class="bg-zinc-50 h-full relative">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-16">
-    <%= render AssessmentStepperComponent.new(current_step: 'Add questions', assessment: @assessment) %>
-
+    <%= render AssessmentStepperComponent.new(current_step: :add_questions, assessment: @assessment) %>
     <div class="mt-10 reltive">
-      <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Add questions</h1>
+      <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight"><%= t('.title') %></h1>
       <%= form_with(model: @assessment, url: update_questions_assessment_path(@assessment), method: :patch, id: "form-to-submit") {} %>
-
       <div class="mt-6">
         <%= render CustomQuestionsTableComponent.new(assessment: @assessment) %>
       </div>
-
       <div class="mt-10">
         <%= render CustomQuestionLibraryComponent.new(custom_questions: CustomQuestion.send(@assessment.language).accessible_by_business(current_business).sorted, clear_path: add_questions_assessment_path(@assessment), assessment: @assessment, business: current_business) %>
       </div>
     </div>
   </div>
-
   <%= render AssessmentFooterComponent.new(assessment: @assessment, current_step: action_name) %>
 </main>

@@ -6,25 +6,23 @@
           <%= svg_tag "x_mark", "stroke-width": 2 %>
         </button>
       </form>
-
       <div>
-        <h1 class="font-bold leading-7 text-gray-800 text-xl">Rename assessment</h1>
+        <h1 class="font-bold leading-7 text-gray-800 text-xl"><%= t('.rename_assessment') %></h1>
         <%= form_with(model: @assessment, url: update_title_assessment_path(@assessment), method: :patch, class: "mt-8") do |form| %>
           <div>
             <%= form.label :title, class: "required-label" %>
             <%= form.text_field :title, required: true, autocomplete: "organization", class: "primary-field" %>
             <%= render FieldErrorComponent.new(:title, @assessment) %>
-
             <div class="mt-9 flex items-center justify-end gap-x-4">
-              <button type="button" class="secondary-button px-6 py-2.5" onclick="this.closest('dialog').close()">Cancel</button>
-              <%= form.submit "Save", class: "primary-button px-6 py-2.5" %>
+              <button type="button" class="secondary-button px-6 py-2.5" onclick="this.closest('dialog').close()"><%= t('.cancel') %></button>
+              <%= form.submit t('.save'), class: "primary-button px-6 py-2.5" %>
             </div>
           </div>
         <% end %>
       </div>
     </div>
     <form method="dialog" class="modal-backdrop">
-      <button>close</button>
+      <button><%= t('.close') %></button>
     </form>
   </dialog>
 <% end %>

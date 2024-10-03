@@ -12,25 +12,25 @@ module AuthenticationConcern
   def authenticate_business!
     unless current_user
       store_location_for(:user, request.fullpath)
-      redirect_to new_business_session_path, alert: 'You need to be logged in as a business to access this page.'
+      redirect_to new_business_session_path, alert: t('alert.business_required')
       return
     end
 
-    unless current_business
-      redirect_to secondary_root_path, alert: 'You are not authorized to access this page. Please log in as a business.'
-    end
+    return if current_business
+
+    redirect_to secondary_root_path, alert: t('alert.log_as_business')
   end
 
   def authenticate_candidate!
     unless current_user
       store_location_for(:user, request.fullpath)
-      redirect_to new_candidate_session_path, alert: 'You need to be logged in as a candidate to access this page.'
+      redirect_to new_candidate_session_path, alert: t('alert.candidate_required')
       return
     end
 
-    unless current_candidate
-      redirect_to secondary_root_path, alert: 'You are not authorized to access this page. Please log in as a candidate.'
-    end
+    return if current_candidate
+
+    redirect_to secondary_root_path, alert: t('alert.log_as_candidate')
   end
 
   def current_business

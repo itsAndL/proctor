@@ -9,7 +9,7 @@
 
       <div class="pt-3 w-fit">
         <% if @test.preview_questions.any? %>
-          <%= link_to "Preview sample questions", test_library_preview_question_path(@test, @test.preview_questions.first), target: "_blank", class: "secondary-button py-2.5" %>
+          <%= link_to t('.preview_sample_questions'), test_library_preview_question_path(@test, @test.preview_questions.first), target: "_blank", class: "secondary-button py-2.5" %>
         <% end %>
       </div>
 
@@ -24,24 +24,24 @@
           <div class="mt-7 flex flex-wrap gap-x-16 gap-y-5">
             <div class="space-y-1">
               <%= svg_tag "shapes_collection", class: "size-4" %>
-              <div class="text-sm font-bold">Type</div>
+              <div class="text-sm font-bold"><%= t('.type') %></div>
               <div class="text-xs font-medium"><%= @test.category %></div>
             </div>
             <div class="space-y-1">
               <%= svg_tag "clock", class: "size-4" %>
-              <div class="text-sm font-bold">Time</div>
+              <div class="text-sm font-bold"><%= t('.time') %></div>
               <div class="text-xs font-medium"><%= format_duration(@test.duration_seconds) %></div>
             </div>
             <div class="space-y-1">
               <%= svg_tag "bar_chart", class: "size-4" %>
-              <div class="text-sm font-bold">Level</div>
-              <div class="text-xs font-medium"><%= @test.level.humanize %></div>
+              <div class="text-sm font-bold"><%= t('.level') %></div>
+              <div class="text-xs font-medium"><%= Test.human_enum_name(:level, @test.level) %></div>
             </div>
           </div>
           
           <% if @test.covered_skills.present? %>
             <div class="mt-7">
-              <h2 class="font-bold leading-7 text-gray-900 text-lg tracking-tight">Covered skills</h2>
+              <h2 class="font-bold leading-7 text-gray-900 text-lg tracking-tight"><%= t('.covered_skills') %></h2>
               <div class="mt-1 space-y-1.5">
                 <% @test.covered_skills.each do |skill| %>
                   <div class="flex gap-x-2.5 items-center font-medium text-sm text-gray-800">
@@ -55,20 +55,20 @@
 
           <% if @test.relevancy.present? %>
             <div class="mt-7">
-              <h2 class="font-bold leading-7 text-gray-900 text-lg tracking-tight">This test is relevant for</h2>
+              <h2 class="font-bold leading-7 text-gray-900 text-lg tracking-tight"><%= t('.relevant_for') %></h2>
               <p class="mt-2 font-medium text-sm text-gray-800"><%= @test.relevancy %></p>
             </div>
           <% end %>
         </div>
 
         <div>
-          <h2 class="font-bold leading-7 text-gray-900 text-lg tracking-tight">Description</h2>
+          <h2 class="font-bold leading-7 text-gray-900 text-lg tracking-tight"><%= t('.description') %></h2>
           <div class="mt-2 font-medium text-sm text-gray-800 flex flex-col gap-y-4"><%= simple_format(@test.description) %></div>
         </div>
       </div>
     </div>
     <form method="dialog" class="modal-backdrop">
-      <button>close</button>
+      <button><%= t('.close') %></button>
     </form>
   </dialog>
 <% end %>

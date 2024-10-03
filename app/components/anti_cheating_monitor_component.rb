@@ -7,11 +7,11 @@ class AntiCheatingMonitorComponent < ViewComponent::Base
   end
 
   def device_used
-    @assessment_participation.device_used || "N/A"
+    @assessment_participation.device_used || 'N/A'
   end
 
   def location
-    @assessment_participation.location || "N/A"
+    @assessment_participation.location || 'N/A'
   end
 
   def ip_address_check
@@ -48,11 +48,11 @@ class AntiCheatingMonitorComponent < ViewComponent::Base
     value = @assessment_participation.send(attribute)
     case value
     when true
-      ["Yes", :positive]
+      [t('.yes'), :positive]
     when false
-      ["No", :negative]
+      [t('.no'), :negative]
     else
-      "N/A"
+      'N/A'
     end
   end
 end

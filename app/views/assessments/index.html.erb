@@ -1,40 +1,37 @@
 <main class="bg-zinc-50 h-full">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="py-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-y-5 gap-x-4">
-      <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Assessments</h1>
-  
+      <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+        <%= t('.title') %>
+      </h1>
       <div>
         <%= link_to new_assessment_path, class: "primary-button" do %>
           <%= svg_tag "plus_circle" %>
-          Create assessment
+          <%= t('.create_assessment') %>
         <% end %>
       </div>
     </div>
-
-    <div class="pt-2 sm:pt-5 pb-5 flex flex-col md:flex-row md:justify-between md:itmes-center gap-x-20 gap-y-6">
+    <div class="pt-2 sm:pt-5 pb-5 flex flex-col md:flex-row md:justify-between md:items-center gap-x-20 gap-y-6">
       <div class="w-full md:max-w-sm h-fit">
         <%= form_with url: assessments_path, method: :get, data: { controller: "search", search_target: "form" } do |form| %>
-          <%= render SearchInputComponent.new(form:, placeholder: "Search assessments") %>
-
+          <%= render SearchInputComponent.new(form:, placeholder: t('.search_placeholder')) %>
           <% params.permit(:page, :per_page, :state).to_h.each do |key, value| %>
             <%= form.hidden_field key, value: value %>
           <% end %>
         <% end %>
       </div>
-
       <span class="md:whitespace-nowrap isolate max-md:grid max-md:grid-cols-3 md:flex rounded-md shadow-sm border border-gray-800 divide-x divide-gray-800 bg-white">
         <%= link_to assessments_path(params.permit(:page, :per_page, :search_query).merge(state: 'active')), class: "inline-flex justify-center md:w-[120px] relative rounded-l-md px-3 sm:px-5 py-3 text-xs sm:text-sm font-#{@state == 'active' ? 'bold' : 'semibold'} text-gray-900 #{@state == 'active' ? 'bg-blue-50' : 'hover:bg-gray-50'} focus:z-10" do %>
-          Active (<%= @filtered_assessments.active.count %>)
+          <%= t('.active', count: @filtered_assessments.active.count) %>
         <% end %>
         <%= link_to assessments_path(state: 'inactive'), class: "inline-flex justify-center md:w-[124px] relative px-3 sm:px-5 py-3 text-xs sm:text-sm font-#{@state == 'inactive' ? 'bold' : 'semibold'} text-gray-900 #{@state == 'inactive' ? 'bg-blue-50' : 'hover:bg-gray-50'} focus:z-10" do %>
-          Inactive (<%= @filtered_assessments.inactive.count %>)
+          <%= t('.inactive', count: @filtered_assessments.inactive.count) %>
         <% end %>
         <%= link_to assessments_path(params.permit(:page, :per_page, :search_query).merge(state: 'archived')), class: "inline-flex justify-center md:w-[130px] relative rounded-r-md px-3 sm:px-5 py-3 text-xs sm:text-sm font-#{@state == 'archived' ? 'bold' : 'semibold'} text-gray-900 #{@state == 'archived' ? 'bg-blue-50' : 'hover:bg-gray-50'} focus:z-10" do %>
-          Archived (<%= @filtered_assessments.archived.count %>)
+          <%= t('.archived', count: @filtered_assessments.archived.count) %>
         <% end %>
       </span>
     </div>
-
     <div class="pb-16">
       <div class="border border-gray-200 bg-white rounded-xl">
         <div class="flow-root">
@@ -42,18 +39,18 @@
             <table class="min-w-full divide-y divide-gray-200">
               <thead>
                 <tr>
-                  <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-bold text-gray-800 sm:pl-6">Name</th>
-                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden sm:table-cell">Candidates</th>
-                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden sm:table-cell">Progress</th>
-                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden md:table-cell">Last activity</th>
-                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden lg:table-cell">Date created</th>
+                  <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-bold text-gray-800 sm:pl-6"><%= t('.name') %></th>
+                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden sm:table-cell"><%= t('.candidates') %></th>
+                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden sm:table-cell"><%= t('.progress') %></th>
+                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden md:table-cell"><%= t('.last_activity') %></th>
+                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden lg:table-cell"><%= t('.date_created') %></th>
                   <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                    <span class="sr-only">Actions</span>
+                    <span class="sr-only"><%= t('.actions') %></span>
                   </th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-200">
-                <% if @assessments.empty? %>             
+                <% if @assessments.empty? %>
                   <tr>
                     <td colspan="5"><%= render NoResultsComponent.new %></td>
                   </tr>
@@ -73,24 +70,22 @@
                           <button tabindex="<%= index %>" type="button" class="text-gray-800 hover:bg-white hover:rounded-full p-0.5">
                             <%= svg_tag "ellipsis_vertical" %>
                           </button>
-
                           <div tabindex="<%= index %>" class="dropdown-content absolute right-8 -top-4 z-10 mt-2 w-40 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-                            <div class="py-1" role="none">  
+                            <div class="py-1" role="none">
                               <% if assessment.assessment_participations.any? %>
                                 <button type="button" class="group flex items-center gap-x-2.5 px-4 py-2 text-sm text-zinc-400 font-medium">
                                   <%= svg_tag "pencil_square", class: "size-5" %>
-                                  Edit
+                                  <span class="whitespace-nowrap"><%= t('.edit') %></span>
                                 </button>
                               <% else %>
                                 <%= link_to edit_assessment_path(assessment), class: "group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium" do %>
                                   <%= svg_tag "pencil_square", class: "size-5 group-hover:text-gray-500" %>
-                                  Edit
+                                  <span class="whitespace-nowrap"><%= t('.edit') %></span>
                                 <% end %>
                               <% end %>
-                              
                               <%= button_to assessment.archived? ? unarchive_assessment_path(assessment) : archive_assessment_path(assessment), method: :patch, class: "group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium" do %>
                                 <%= svg_tag "archive_box", class: "size-5 group-hover:text-gray-500" %>
-                                <%= assessment.archived? ? "Unarchive" : "Archive" %>
+                                <%= t(assessment.archived? ? '.unarchive' : '.archive') %>
                               <% end %>
                             </div>
                           </div>
@@ -103,7 +98,6 @@
             </table>
           </div>
         </div>
-
         <!-- Pagination -->
         <%= render PaginationComponent.new(
           current_page: @current_page,

@@ -9,9 +9,7 @@ class AssessmentParticipationService
   end
 
   def start
-    if @assessment_participation.invited? || @assessment_participation.invitation_clicked?
-      @assessment_participation.started!
-    end
+    @assessment_participation.started! if @assessment_participation.invited? || @assessment_participation.invitation_clicked?
     create_participation_tests
     determine_next_url
   end
@@ -22,7 +20,7 @@ class AssessmentParticipationService
 
   def complete
     @assessment_participation.completed! if @assessment_participation.started?
-    candidate_assessment_participation_path(@assessment_participation)
+    candidate_assessment_participation_path(hashid: @assessment_participation)
   end
 
   def start_test(test)
@@ -40,10 +38,10 @@ class AssessmentParticipationService
     participation_test.status = :completed
     participation_test.save!
 
-    return candidate_test_path(first_unanswered_test) if first_unanswered_test
-    return start_candidate_custom_question_path(first_unanswered_custom_question) if first_unanswered_custom_question
+    return candidate_test_path(hashid: first_unanswered_test) if first_unanswered_test
+    return start_candidate_custom_question_path(hashid: first_unanswered_custom_question) if first_unanswered_custom_question
 
-    checkout_candidate_assessment_participation_path(@assessment_participation)
+    checkout_candidate_assessment_participation_path(hashid: @assessment_participation)
   end
 
   def first_unanswered_test
@@ -121,11 +119,11 @@ class AssessmentParticipationService
 
   def determine_next_url
     if @assessment_participation.unanswered_tests.any?
-      candidate_test_path(first_unanswered_test)
+      candidate_test_path(hashid: first_unanswered_test)
     elsif @assessment_participation.unanswered_custom_questions.any?
-      start_candidate_custom_question_path(first_unanswered_custom_question)
+      start_candidate_custom_question_path(hashid: first_unanswered_custom_question)
     else
-      checkout_candidate_assessment_participation_path(@assessment_participation)
+      checkout_candidate_assessment_participation_path(hashid: @assessment_participation)
     end
   end
 
@@ -141,9 +139,7 @@ class AssessmentParticipationService
 
   def create_participation_tests
     @assessment.tests.each do |test|
-      unless @assessment_participation.participation_tests.exists?(test:)
-        @assessment_participation.participation_tests.create(test:, status: :pending)
-      end
+      @assessment_participation.participation_tests.create(test:, status: :pending) unless @assessment_participation.participation_tests.exists?(test:)
     end
   end
 end

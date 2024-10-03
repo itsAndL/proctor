@@ -26,13 +26,13 @@
                               method: :delete,
                               class: "danger-button px-3" do %>
                   <%= helpers.svg_tag "x_mark", class: "size-4 -mb-0.5 inline" %>
-                  Remove
+                  <%= t('.remove') %>
                 <% end %>
               <% else %>
                 <%= button_to assessment_custom_question_assessment_custom_questions_path(@assessment, @custom_question),
                               method: :post,
                               class: "black-button px-6" do %>
-                  Add
+                  <%= t('.add') %>
                 <% end %>
               <% end %>
             <% end %>
@@ -45,18 +45,18 @@
       </div>
     </summary>
     <% if @custom_question.relevancy.present? || @custom_question.look_for.present? %>
-      <div class="rounded-b-xl bg-white shadow-sm pb-8 pt-4 px-4 sm:px-6  font-medium text-gray-700">
+      <div class="rounded-b-xl bg-white shadow-sm pb-8 pt-4 px-4 sm:px-6 font-medium text-gray-700">
         <div class="min-h-[180px] bg-zinc-100 grid grid-cols-1 <%= "md:grid-cols-2" if @custom_question.relevancy.present? && @custom_question.look_for.present? %> px-4 pt-4 pb-6 gap-x-7">
           <% if @custom_question.relevancy.present? %>
             <div>
-              <h2 class="font-bold leading-7 text-gray-900 text-base tracking-tight">Why is this question relevant?</h2>
+              <h2 class="font-bold leading-7 text-gray-900 text-base tracking-tight"><%= t('.relevancy_title') %></h2>
               <p class="mt-2 font-medium text-sm text-gray-800"><%= @custom_question.relevancy %></p>
             </div>
           <% end %>
 
           <% if @custom_question.look_for.present? %>
             <div>
-              <h2 class="font-bold leading-7 text-gray-900 text-base tracking-tight">What to look for in the answer?</h2>
+              <h2 class="font-bold leading-7 text-gray-900 text-base tracking-tight"><%= t('.look_for_title') %></h2>
               <div class="mt-2 font-medium text-sm text-gray-800 flex flex-col gap-y-8"><%= simple_format(@custom_question.look_for) %></div>
             </div> 
           <% end %>                 

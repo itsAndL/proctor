@@ -14,17 +14,15 @@ module SeedsHelper
       http.use_ssl = true
 
       request = Net::HTTP::Get.new(uri)
-      request["Accept"] = "application/vnd.github.v3+json"
+      request['Accept'] = 'application/vnd.github.v3+json'
 
       response = http.request(request)
 
-      if response.is_a?(Net::HTTPSuccess)
-        gist_data = JSON.parse(response.body)
-        file_content = gist_data['files'].values.first['content']
-        JSON.parse(file_content)
-      else
-        raise "Failed to fetch gist: #{response.code} #{response.message}"
-      end
+      raise "Failed to fetch gist: #{response.code} #{response.message}" unless response.is_a?(Net::HTTPSuccess)
+
+      gist_data = JSON.parse(response.body)
+      file_content = gist_data['files'].values.first['content']
+      JSON.parse(file_content)
     end
   end
 end

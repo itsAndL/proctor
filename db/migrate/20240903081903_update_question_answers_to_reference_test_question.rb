@@ -24,10 +24,10 @@ class UpdateQuestionAnswersToReferenceTestQuestion < ActiveRecord::Migration[7.1
     change_column_null :question_answers, :test_question_id, false
 
     # Remove old index
-    remove_index :question_answers, name: "index_question_answers_on_participation_question_and_test"
+    remove_index :question_answers, name: 'index_question_answers_on_participation_question_and_test'
 
     # Add new unique index
-    add_index :question_answers, [:assessment_participation_id, :test_question_id], unique: true, name: "index_question_answers_on_participation_and_test_question"
+    add_index :question_answers, %i[assessment_participation_id test_question_id], unique: true, name: 'index_question_answers_on_participation_and_test_question'
 
     # Remove old columns and their indexes
     remove_index :question_answers, :question_id
@@ -42,10 +42,10 @@ class UpdateQuestionAnswersToReferenceTestQuestion < ActiveRecord::Migration[7.1
     add_reference :question_answers, :test, foreign_key: true
 
     # Remove new index
-    remove_index :question_answers, name: "index_question_answers_on_participation_and_test_question"
+    remove_index :question_answers, name: 'index_question_answers_on_participation_and_test_question'
 
     # Restore old index
-    add_index :question_answers, [:assessment_participation_id, :question_id, :test_id], unique: true, name: "index_question_answers_on_participation_question_and_test"
+    add_index :question_answers, %i[assessment_participation_id question_id test_id], unique: true, name: 'index_question_answers_on_participation_question_and_test'
 
     # Restore data from test_question association
     QuestionAnswer.find_each do |question_answer|

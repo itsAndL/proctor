@@ -10,8 +10,8 @@ class ShortTextQuestion < Question
   private
 
   def all_options_correct
-    unless options.all?(&:correct?)
-      errors.add(:base, "All options must be correct")
-    end
+    return if options.all?(&:correct?)
+
+    errors.add(:base, 'All options must be correct')
   end
 end
