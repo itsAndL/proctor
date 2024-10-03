@@ -8,5 +8,15 @@ module LanguageEnum
       french: 2,
       german: 3
     }
+
+    def self.language_name_by_locale(locale)
+      languages = {
+        en: :english,
+        fr: :french,
+        de: :german,
+        es: :spanish
+      }
+      languages[locale.to_sym].to_s
+    end
   end
 end

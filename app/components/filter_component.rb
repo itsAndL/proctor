@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 class FilterComponent < ViewComponent::Base
-  def initialize(clear_path:, library:, business: nil, assessment: nil)
+  def initialize(clear_path:, library:, business: nil, assessment: nil, locale: I18n.locale.to_s)
     @clear_path = clear_path
     @library = library
     @business = business
     @assessment = assessment
+    @locale = locale
   end
 
   def filter_sections
@@ -175,7 +176,7 @@ class FilterComponent < ViewComponent::Base
     {
       title: t('.language'),
       options: [
-        select_option('language', Assessment.languages.keys.map { |lang| [t("shared.languages.#{lang}"), lang] }, params[:language])
+        select_option('language', Assessment.languages.keys.map { |lang| [t("shared.languages.#{lang}"), lang] }, params[:language] || language_hash(@locale))
       ]
     }
   end
@@ -223,5 +224,15 @@ class FilterComponent < ViewComponent::Base
 
   def count_span(count)
     "<span class='text-gray-500'>(#{count})</span>"
+  end
+
+  def language_hash(locale)
+    languages = {
+      en: :english,
+      fr: :french,
+      de: :german,
+      es: :spanish
+    }
+    languages[locale.to_sym].to_s
   end
 end

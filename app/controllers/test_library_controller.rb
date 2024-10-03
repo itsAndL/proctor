@@ -3,7 +3,6 @@ class TestLibraryController < ApplicationController
 
   def index
     query = TestQuery.new
-
     @tests = query.execute(
       search_query: params[:search_query],
       category_ids: params[:test_category]&.map(&:to_i),
@@ -11,7 +10,7 @@ class TestLibraryController < ApplicationController
       business: current_business,
       only_system: params[:test_source] == 'assesskit' || params[:test_source].blank?,
       only_business: params[:test_source] == 'my_company',
-      language: params[:language] || :english
+      language: params[:language]
     )
   end
 

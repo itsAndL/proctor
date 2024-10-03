@@ -3,8 +3,9 @@
 class TestQuery
   attr_reader :relation
 
-  def initialize(relation = Test.all)
+  def initialize(relation = Test.all, locale: I18n.locale)
     @relation = relation
+    @locale = locale
   end
 
   def filter_by_search_query(search_query)
@@ -40,8 +41,7 @@ class TestQuery
   end
 
   def filter_by_language(language)
-    return relation if language.blank?
-
+    language = Test.language_name_by_locale(@locale) if language.blank?
     @relation = relation.where(language:)
   end
 
