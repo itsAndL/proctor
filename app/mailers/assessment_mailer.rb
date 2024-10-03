@@ -24,5 +24,10 @@ class AssessmentMailer < ApplicationMailer
     @assessment = @assessment_participation.assessment
     @recipient = @assessment_participation.participant
     @email = @recipient.email
+    I18n.locale = if @assessment_participation.candidate.present?
+                    @recipient.user.locale
+                  else
+                    :en
+                  end
   end
 end
