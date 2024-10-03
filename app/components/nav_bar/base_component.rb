@@ -29,7 +29,13 @@ class NavBar::BaseComponent < ViewComponent::Base
   private
 
   def guest_page?
-    [root_path, home_path, contact_path, about_path].include?(@current_path)
+    @current_path = remove_locale_from_path @current_path
+    [root_path, home_path, contact_path, about_path].map { |path| remove_locale_from_path(path) }.include?(@current_path)
+  end
+
+  def remove_locale_from_path(path)
+    locales = I18n.available_locales.join('|')
+    path.sub(%r{^/(#{locales})(/|$)}, '/')
   end
 
   def on_edit_user_registration_page?
