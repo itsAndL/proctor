@@ -46,6 +46,10 @@
                           <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;">Accommodations are available if needed. More details can be found on the overview page once you start.</span></p>
                           <p style="margin: 0;">&nbsp;</p>
                           <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;">We suggest using Google Chrome on a laptop or desktop to avoid any technical issues.</span></p>
+                          <% unless @account_exists %>
+                            <p style="margin: 0;">&nbsp;</p>
+                            <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;">To complete this assessment, you'll need an AssessKit account. Don't worry - you can easily create one when you click the button below to start your assessment.</span></p>
+                          <% end %>
                         </div>
                       </td>
                     </tr>

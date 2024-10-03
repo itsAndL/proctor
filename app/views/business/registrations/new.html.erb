@@ -1,0 +1,43 @@
+<div class="relative flex min-h-full shrink-0 justify-center md:px-12 lg:px-0">
+  <div class="relative z-10 flex flex-1 flex-col bg-white px-4 py-10 shadow-2xl sm:justify-center md:flex-none md:px-28">
+    <div class="mx-auto w-full max-w-md sm:px-4 md:w-96 md:max-w-sm md:px-0">
+      <a aria-label="Home" href="/"><%= svg_tag "assesskit", class: "h-12 w-auto" %></a>
+      <h2 class="mt-9 text-2xl font-bold leading-9 tracking-tight text-gray-900">Get started with AssessKit for free</h2>
+
+      <%= form_for(resource, as: resource_name, url: business_registration_path) do |f| %>
+        <div class="mt-7 grid grid-cols-1 gap-y-7">
+          <div>
+            <%= f.label :email, "Email address", class: "required-label" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, class: "primary-field" %>
+            <%= render FieldErrorComponent.new(:email, resource) %>
+          </div>   
+          
+          <div>
+            <%= f.label :password, class: "required-label" %>
+            <%= f.password_field :password, autocomplete: "new-password", required: true, class: "primary-field" %>
+            <%= render FieldErrorComponent.new(:password, resource) %>
+          </div>
+
+          <%= f.fields_for :business_attributes do |b| %>
+            <div>
+              <%= b.label :company, "Company name", class: "required-label" %>
+              <%= b.text_field :company, autocomplete: "organization", class: "primary-field" %>
+              <%= render FieldErrorComponent.new(:name, resource.business) %>
+            </div>
+          <% end %>
+
+          <div>
+            <%= f.submit "Sign up", class: "mt-1 primary-button w-full" %>
+          </div>
+        </div>
+      <% end %>
+      <div class="mt-7 text-xs font-medium text-gray-600 space-y-2">
+        <p>Already have an account? <%= link_to "Log in", new_business_session_path, class: "font-semibold text-blue-600 hover:underline" %>
+        <p>Are you a candidate? <%= link_to 'Take me there', new_candidate_registration_path , class: "font-semi-bold text-blue-600 hover:underline" %></p>
+      </div>
+    </div>
+  </div>
+  <div class="hidden sm:contents lg:relative lg:block lg:flex-1">
+    <%= image_tag "features-bg.jpg", width: "1664", height: "1866", loading: "lazy", decoding: "async", class: "absolute inset-0 h-full w-full object-cover", style: "color:transparent" %>
+  </div>
+</div>

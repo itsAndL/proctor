@@ -1,24 +1,36 @@
 module AuthenticationConcern
+  include SecondaryRootPath
   extend ActiveSupport::Concern
 
   included do
     helper_method :current_business, :current_candidate
+    before_action :store_user_location!, if: :storable_location?
   end
 
   private
 
   def authenticate_business!
-    authenticate_user!
-    return if current_user.business
+    unless current_user
+      store_location_for(:user, request.fullpath)
+      redirect_to new_business_session_path, alert: 'You need to be logged in as a business to access this page.'
+      return
+    end
 
-    redirect_to root_path, alert: 'You need to be logged in as a business to access this page.'
+    unless current_business
+      redirect_to secondary_root_path, alert: 'You are not authorized to access this page. Please log in as a business.'
+    end
   end
 
   def authenticate_candidate!
-    authenticate_user!
-    return if current_user.candidate
+    unless current_user
+      store_location_for(:user, request.fullpath)
+      redirect_to new_candidate_session_path, alert: 'You need to be logged in as a candidate to access this page.'
+      return
+    end
 
-    redirect_to root_path, alert: 'You need to be logged in as a candidate to access this page.'
+    unless current_candidate
+      redirect_to secondary_root_path, alert: 'You are not authorized to access this page. Please log in as a candidate.'
+    end
   end
 
   def current_business
@@ -27,5 +39,13 @@ module AuthenticationConcern
 
   def current_candidate
     @current_candidate ||= current_user&.candidate
+  end
+
+  def storable_location?
+    request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
+  end
+
+  def store_user_location!
+    store_location_for(:user, request.fullpath)
   end
 end

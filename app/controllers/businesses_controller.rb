@@ -1,4 +1,6 @@
 class BusinessesController < ApplicationController
+  include SecondaryRootPath
+
   before_action :authenticate_user!, only: %i[new create]
   before_action :authenticate_business!, only: %i[edit update]
   before_action :require_new_business!, only: %i[new create]

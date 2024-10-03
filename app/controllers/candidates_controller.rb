@@ -1,4 +1,6 @@
 class CandidatesController < ApplicationController
+  include SecondaryRootPath
+
   before_action :authenticate_user!, only: %i[new create]
   before_action :authenticate_candidate!, only: %i[edit update]
   before_action :require_new_candidate!, only: %i[new create]

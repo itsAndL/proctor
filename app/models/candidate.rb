@@ -11,6 +11,7 @@ class Candidate < ApplicationRecord
   has_many :assessments, through: :assessment_participations
 
   validates :name, presence: true
+  validate :invited_to_assessment, on: :create
 
   delegate :email, to: :user
 
@@ -40,5 +41,11 @@ class Candidate < ApplicationRecord
 
     temp_candidate.assessment_participations.update_all(candidate_id: id, temp_candidate_id: nil)
     temp_candidate.destroy
+  end
+
+  def invited_to_assessment
+    return if User.exists?(email: user.email) || TempCandidate.exists?(email: user.email)
+
+    errors.add(:not_invited, 'You are not allowed to create an account without an invitation')
   end
 end
