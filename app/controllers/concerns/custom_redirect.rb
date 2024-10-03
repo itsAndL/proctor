@@ -13,6 +13,10 @@ module CustomRedirect
   private
 
   def guest_page?(path)
-    [root_path, home_path, contact_path, about_path].include?(path)
+    [root_path, home_path, contact_path, about_path].include? normalize_path(path)
+  end
+
+  def normalize_path(path)
+    path.gsub(%r{^/(?:#{I18n.available_locales.join('|')})}, '')
   end
 end
