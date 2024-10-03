@@ -123,6 +123,7 @@ de:
       zugreifen zu können.
     log_as_business: Sie sind nicht berechtigt, auf diese Seite zuzugreifen. Bitte melden Sie sich als Unternehmen an.
     log_as_candidate: Sie sind nicht berechtigt, auf diese Seite zuzugreifen. Bitte melden Sie sich als Kandidat an.
+    candidate_registration_required: Um mit der Bewertung fortzufahren, schließen Sie bitte Ihre Registrierung als Kandidat ab.
   anti_cheating_monitor_component:
     'no': Nein
     'yes': Ja

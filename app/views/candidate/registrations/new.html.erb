@@ -12,7 +12,7 @@
         <div class="mt-8 grid grid-cols-1 gap-y-7">
           <div>
             <%= f.label :email, t(".email_address"), class: "required-label" %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "primary-field" %>
+            <%= f.email_field :email, autofocus: true, value: params[:email_address], autocomplete: "email", class: "primary-field", disabled: params[:email_address].present? %>
             <%= render FieldErrorComponent.new(:email, resource) %>
           </div>
 

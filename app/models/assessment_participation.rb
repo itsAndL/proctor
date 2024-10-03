@@ -3,6 +3,8 @@ class AssessmentParticipation < ApplicationRecord
   include PgSearch::Model
   include Monitorable
 
+  before_create :generate_invitation_token
+
   belongs_to :assessment
   belongs_to :temp_candidate, optional: true
   belongs_to :candidate, optional: true
@@ -144,5 +146,9 @@ class AssessmentParticipation < ApplicationRecord
     return unless candidate.blank? && temp_candidate.blank?
 
     errors.add(:base, 'Either candidate or temp candidate must be present')
+  end
+
+  def generate_invitation_token
+    self.invitation_token = SecureRandom.uuid
   end
 end

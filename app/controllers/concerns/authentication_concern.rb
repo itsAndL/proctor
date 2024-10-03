@@ -24,6 +24,10 @@ module AuthenticationConcern
   def authenticate_candidate!
     unless current_user
       store_location_for(:user, request.fullpath)
+
+      invitation_service = InvitationAuthenticationService.new(self)
+      return if invitation_service.authenticate
+
       redirect_to new_candidate_session_path, alert: t('alert.candidate_required')
       return
     end

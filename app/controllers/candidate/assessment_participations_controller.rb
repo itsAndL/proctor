@@ -1,13 +1,18 @@
 class Candidate::AssessmentParticipationsController < ApplicationController
   before_action :authenticate_candidate!
   before_action :hide_navbar, except: %i[show index]
-  before_action :set_assessment_participation, except: %i[index]
+  before_action :set_assessment_participation, except: %i[index invitation]
 
   def index
     @assessment_participations = current_candidate.assessment_participations.order(created_at: :desc)
   end
 
   def show; end
+
+  def invitation
+    @assessment_participation = AssessmentParticipation.find_by!(invitation_token: params[:token])
+    redirect_to overview_candidate_assessment_participation_path(@assessment_participation)
+  end
 
   def overview
     @participation_service.invitataion_clicked

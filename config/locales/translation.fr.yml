@@ -118,6 +118,7 @@ fr:
       à cette page.
     log_as_business: Vous n'êtes pas autorisé à accéder à cette page. Veuillez vous connecter en tant qu'entreprise.
     log_as_candidate: Vous n'êtes pas autorisé à accéder à cette page. Veuillez vous connecter en tant que candidat.
+    candidate_registration_required: Pour poursuivre l'évaluation, veuillez compléter votre inscription en tant que candidat.
   anti_cheating_monitor_component:
     'no': Non
     'yes': Oui
