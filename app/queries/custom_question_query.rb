@@ -3,8 +3,9 @@
 class CustomQuestionQuery
   attr_reader :relation
 
-  def initialize(relation = CustomQuestion.all)
+  def initialize(relation = CustomQuestion.all, locale: I18n.locale)
     @relation = relation
+    @locale = locale
   end
 
   def filter_by_search_query(search_query)
@@ -40,8 +41,7 @@ class CustomQuestionQuery
   end
 
   def filter_by_language(language)
-    return relation if language.blank?
-
+    language = CustomQuestion.language_name_by_locale(@locale) if language.blank?
     @relation = relation.where(language:)
   end
 
