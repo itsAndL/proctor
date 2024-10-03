@@ -120,6 +120,7 @@ es:
     candidate_required: Debe iniciar sesión como candidato para acceder a esta página.
     log_as_business: No está autorizado para acceder a esta página. Por favor, inicie sesión como empresa.
     log_as_candidate: No está autorizado para acceder a esta página. Por favor, inicie sesión como candidato.
+    candidate_registration_required: Para continuar con la evaluación, complete su registro como candidato.
   anti_cheating_monitor_component:
     check_status:
       'no': 'No'

@@ -50,7 +50,8 @@ Rails.application.routes.draw do
       end
     end
 
-    get '/a/:public_link_token', to: 'invite_candidates#public_link', as: :public_assessment
+    get 'i/:token', to: 'candidate/assessment_participations#invitation', as: :invitation
+    get 'a/:public_link_token', to: 'invite_candidates#public_link', as: :public_assessment
 
     resources :assessments, only: %i[index show new create edit update], param: :hashid do
       member do

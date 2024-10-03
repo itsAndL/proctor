@@ -95,6 +95,7 @@ en:
     candidate_required: You need to be logged in as a candidate to access this page.
     log_as_business: You are not authorized to access this page. Please log in as a business.
     log_as_candidate: You are not authorized to access this page. Please log in as a candidate.
+    candidate_registration_required: To proceed with the assessment, please complete your registration as a candidate.
   anti_cheating_monitor_component:
     check_status:
       'no': 'No'
