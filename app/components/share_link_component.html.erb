@@ -26,7 +26,7 @@
     <div class="mt-5 flex gap-x-3 sm:gap-x-5 items-center" data-controller="copy" data-copy-active-value="<%= @assessment.public_link_active? %>">
       <div class="relative w-full max-w-sm">
         <label for="url" class="absolute -top-2.5 left-3 inline-block bg-zinc-50 px-1 text-xs font-medium text-gray-400">URL</label>
-        <input type="text" name="url" id="url" disabled class="block w-full rounded-lg border-0 py-2.5 px-4 text-gray-900 font-semibold shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 disabled:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 text-sm sm:leading-6" value="<%= public_assessment_url(@assessment.public_link_token) %>" data-copy-target="source" data-copy-text="<%= public_assessment_url(@assessment.public_link_token) %>">
+        <input type="text" name="url" id="url" disabled class="block w-full rounded-lg border-0 py-2.5 px-4 text-gray-900 font-semibold shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 disabled:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 text-sm sm:leading-6" value="<%= normalized_public_assessment_url %>" data-copy-target="source" data-copy-text="<%= normalized_public_assessment_url %>">
       </div>
 
       <div>
@@ -44,13 +44,13 @@
       <h3 class="text-gray-900 font-bold text-sm"><%= t('.copy_invitation_text') %></h3>
       <div class="mt-3 flex gap-x-1.5 items-end -mr-3 ">
         <div class="overflow-x-auto">
-          <div class="border border-gray-200 p-4 rounded-lg bg-white <%= @assessment.public_link_active? ? 'text-gray-900' : 'text-gray-400 pointer-events-none' %> font-medium text-sm" data-copy-target="source" data-copy-text="<%= t('.invitation_text', root_url: root_url, public_assessment_url: public_assessment_url(@assessment.public_link_token)) %>">
-            <p><%= t('.invitation_text_html', root_url: @assessment.public_link_active? ? link_to(root_url, root_path, class: "text-blue-600 break-words underline", data: {turbo: false}, target: :_blank) : content_tag(:span, root_url, class: "break-words underline")) %></p>
+          <div class="border border-gray-200 p-4 rounded-lg bg-white <%= @assessment.public_link_active? ? 'text-gray-900' : 'text-gray-400 pointer-events-none' %> font-medium text-sm" data-copy-target="source" data-copy-text="<%= t('.invitation_text', root_url: normalized_root_url, public_assessment_url: normalized_public_assessment_url) %>">
+            <p><%= t('.invitation_text_html', root_url: @assessment.public_link_active? ? link_to(normalized_root_url, root_path, class: "text-blue-600 break-words underline", data: {turbo: false}, target: :_blank) : content_tag(:span, normalized_root_url, class: "break-words underline")) %></p>
             <p class="mt-5"><%= t('.ready_to_start') %></p>
             <% if @assessment.public_link_active? %>
-              <%= link_to public_assessment_url(@assessment.public_link_token), public_assessment_path(@assessment.public_link_token), class: "text-blue-600 underline break-words mt-1", data: {turbo: false}, target: :_blank %>
+              <%= link_to normalized_public_assessment_url, public_assessment_path(@assessment.public_link_token), class: "text-blue-600 underline break-words mt-1", data: {turbo: false}, target: :_blank %>
             <% else %>
-              <p class="underline break-words"><%= public_assessment_url(@assessment.public_link_token) %></p>
+              <p class="underline break-words"><%= normalized_public_assessment_url %></p>
             <% end %>
           </div>
         </div>

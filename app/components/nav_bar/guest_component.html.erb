@@ -9,7 +9,7 @@
                   <option value="<%= url_for(locale: locale) %>" <%= 'selected' if I18n.locale == locale %>>
                     <%= locale.upcase %>
                   </option>
-                  <% end %>
+                <% end %>
               </select>
               <div class="pointer-events-none absolute inset-y-0 -right-0.5 flex items-center">
                 <svg class="h-5 w-5 text-gray-300" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -20,7 +20,7 @@
           </div>
         </form>
         <div class="flex flex-1 items-center justify-end space-x-6">
-          <%= link_to t('.log_in'), helpers.new_user_session_path, class: "text-sm font-medium text-white hover:text-gray-100" %>
+          <%= link_to t('.log_in'), helpers.new_user_session_path, class: "hidden md:block text-sm font-medium text-white hover:text-gray-100" %>
           <%= link_to t('.for_candidates'), helpers.new_candidate_registration_path, class: "text-sm font-medium text-white hover:text-gray-100" %>
         </div>
       </div>

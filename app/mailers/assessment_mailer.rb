@@ -1,5 +1,6 @@
 class AssessmentMailer < ApplicationMailer
   helper DurationHelper
+  helper PagesHelper
 
   def invite_email(assessment_participation)
     setup_email_variables(assessment_participation)

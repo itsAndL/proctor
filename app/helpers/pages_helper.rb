@@ -9,6 +9,13 @@ module PagesHelper
     normalized.empty? ? '/' : normalized
   end
 
+  def normalize_url(url)
+    uri = URI.parse(url)
+    path = normalize_path(uri.path)
+    uri.path = path
+    uri.to_s
+  end
+
   private
 
   def guest_paths
