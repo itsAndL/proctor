@@ -621,18 +621,6 @@ en:
       introduction: Thanks for your interest in this assessment! Please provide your email address and we'll send you more information with a link to begin.
       submit_button: Please invite me
       title: Take our assessment
-  nav_bar:
-    user_component:
-      assessments: Assessments
-      candidates: Candidates
-      sign_out: Sign out
-      custom_questions_library: Custom Questions Library
-      my_account: My Account
-      my_business_profile: My Business Profile
-      test_library: Test Library
-      my_candidate_profile: My Candidate Profile
-      my_assessments: My Assessments
-      get_started: Get Started
   no_results_component:
     default_message: This assessment has not been started yet
     default_title: Assessment not started
@@ -788,7 +776,18 @@ en:
       today: today
       for_candidates: For candidates
     user_component:
+      assessments: Assessments
+      candidates: Candidates
       sign_out: Sign out
+      custom_questions_library: Custom Questions Library
+      my_account: My Account
+      my_business_profile: My Business Profile
+      test_library: Test Library
+      my_candidate_profile: My Candidate Profile
+      my_assessments: My Assessments
+      get_started: Get Started
+      account: Account
+      signed_in_as: Signed in as
   participation_progress_indicators_component:
     no_limit: No Limit
     time_for_question: 'Time for question %{answered_count} of %{questions_count}:'

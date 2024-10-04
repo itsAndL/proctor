@@ -1167,6 +1167,8 @@ de:
       my_candidate_profile: Mein Kandidatenprofil
       my_assessments: Meine Bewertungen
       get_started: Los geht's
+      account: Konto
+      signed_in_as: Angemeldet als
   no_results_component:
     default_message: Diese Bewertung wurde noch nicht begonnen
     default_title: Bewertung nicht begonnen

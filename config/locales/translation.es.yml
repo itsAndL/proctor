@@ -1150,6 +1150,8 @@ es:
       my_candidate_profile: Mi perfil de candidato
       my_assessments: Mis evaluaciones
       get_started: Empezar
+      account: Cuenta
+      signed_in_as: Conectado como
   no_results_component:
     default_message: Esta evaluación aún no se ha iniciado
     default_title: Evaluación no iniciada
