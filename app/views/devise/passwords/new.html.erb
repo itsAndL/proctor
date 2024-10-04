@@ -1,14 +1,14 @@
 <div class="relative flex min-h-full shrink-0 justify-center md:px-12 lg:px-0">
   <div class="relative z-10 flex flex-1 flex-col bg-white px-4 py-10 shadow-2xl sm:justify-center md:flex-none md:px-24">
     <div class="mx-auto w-full max-w-md sm:px-4 md:w-96 md:max-w-sm md:px-0">
-      <a aria-label="Home" href="/"><%= svg_tag "assesskit", class: "h-12 w-auto" %></a>
+      <div class="w-fit"><a aria-label="Home" href="/"><%= svg_tag "assesskit", class: "h-12 w-auto" %></a></div>
       <h2 class="mt-9 text-2xl font-bold leading-8 tracking-tight text-gray-900"><%= t('.forgot_your_password') %></h2>
   
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
         <div class="mt-7 grid grid-cols-1 gap-y-7">
           <div>
             <%= f.label :email, t('.email_address'), class: "required-label" %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, class: "primary-field" %>
+            <%= f.email_field :email, autocomplete: "email", required: true, class: "primary-field" %>
           </div>
 
           <div>
