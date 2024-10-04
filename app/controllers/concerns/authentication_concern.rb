@@ -12,7 +12,7 @@ module AuthenticationConcern
   def authenticate_business!
     unless current_user
       store_location_for(:user, request.fullpath)
-      redirect_to new_business_session_path, alert: t('alert.business_required')
+      redirect_to new_user_session_path, alert: t('alert.business_required')
       return
     end
 
@@ -28,7 +28,7 @@ module AuthenticationConcern
       invitation_service = InvitationAuthenticationService.new(self)
       return if invitation_service.authenticate
 
-      redirect_to new_candidate_session_path, alert: t('alert.candidate_required')
+      redirect_to new_user_session_path, alert: t('alert.candidate_required')
       return
     end
 

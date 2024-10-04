@@ -60,7 +60,7 @@ class FilterComponent < ViewComponent::Base
     {
       title: t('.show_tests_from'),
       options: [
-        radio_option('test_source', 'assesskit', params[:test_source] != 'my_company', 'test-source-assesskit', t('.assesskit')),
+        radio_option('test_source', 'assesskit', params[:test_source] != 'my_company', 'test-source-assesskit', 'AssessKit'),
         radio_option('test_source', 'my_company', params[:test_source] == 'my_company', 'test-source-my-company', t('.my_company'))
       ],
       expanded: true
@@ -135,7 +135,7 @@ class FilterComponent < ViewComponent::Base
     {
       title: t('.show_questions_from'),
       options: [
-        checkbox_option('question_source[]', 'assesskit', params[:question_source]&.include?('assesskit'), 'question-source-assesskit', t('.assesskit')),
+        checkbox_option('question_source[]', 'assesskit', params[:question_source]&.include?('assesskit'), 'question-source-assesskit', 'AssessKit'),
         checkbox_option('question_source[]', 'my_company', params[:question_source]&.include?('my_company'), 'question-source-my-company', t('.my_company'))
       ],
       expanded: true

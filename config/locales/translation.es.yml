@@ -665,23 +665,22 @@ es:
       success: Has sido autorizado satisfactoriamente en la cuenta %{kind}.
     passwords:
       edit:
-        already_have_account: Ya tiene cuenta
+        already_have_account: ¿Ya tiene una cuenta?
         change_my_password: Cambiar mi contraseña
         change_your_password: Cambie su contraseña
         confirm_password: Confirmar contraseña
         create_one: Crear uno
-        dont_have_account: No tengo cuenta
+        dont_have_account: ¿No tiene una cuenta?
         log_in: Conectarse
         new_password: Nueva contraseña
       new:
-        didnt_receive_confirmation_instructions: No he recibido instrucciones de confirmación.
+        forgot_your_password: ¿Olvidaste tu contraseña?
         email_address: Dirección de correo electrónico
-        forgot_your_password: "¿Ha olvidado su contraseña?"
-        log_in_to_your_account: Acceda a su cuenta
-        send_reset_link: Enviar enlace de reinicio
-        business: Empresa
-        candidate: Candidato
-        click_here: Haga clic aquí
+        send_reset_link: Enviar enlace de restablecimiento
+        already_have_account: ¿Ya tienes una cuenta?
+        log_in: Iniciar sesión
+        didnt_receive_confirmation_instructions: ¿No recibiste las instrucciones de confirmación?
+        click_here: Haz clic aquí
       no_token: No puedes acceder a esta página si no es a través de un enlace para
         resetear tu contraseña. Si has llegado hasta aquí desde el email para resetear
         tu contraseña, por favor asegúrate de que la URL introducida está completa.
@@ -693,8 +692,6 @@ es:
       updated: Se ha cambiado tu contraseña. Ya iniciaste sesión.
       updated_not_active: Tu contraseña fue cambiada.
     registrations:
-      destroyed: "¡Adiós! Tu cuenta ha sido cancelada correctamente. Esperamos verte
-        pronto."
       edit:
         change_email: Cambiar correo electrónico
         change_email_address: Cambiar la dirección de correo electrónico
@@ -709,6 +706,8 @@ es:
         new_email: Nuevo correo electrónico
         new_password: Nueva contraseña
         your_account: Su cuenta
+      destroyed: "¡Adiós! Tu cuenta ha sido cancelada correctamente. Esperamos verte
+        pronto."
       signed_up: Bienvenido. Tu cuenta fue creada.
       signed_up_but_inactive: Tu cuenta ha sido creada correctamente. Sin embargo,
         no hemos podido iniciar la sesión porque tu cuenta aún no está activada.
@@ -724,9 +723,18 @@ es:
       updated_but_not_signed_in: Su cuenta se ha actualizado correctamente, pero como
         se cambió su contraseña, debe iniciar sesión nuevamente
     sessions:
-      already_signed_out: Sesión finalizada.
-      signed_in: Sesión iniciada.
-      signed_out: Sesión finalizada.
+      new:
+        login_to_your_profile: Inicie sesión en su perfil de AssessKit
+        dont_have_an_account: ¿No tiene una cuenta?
+        sign_up_now: Regístrese ahora
+        email_address: Dirección de correo electrónico
+        password: Contraseña
+        keep_me_logged_in: Mantener sesión iniciada
+        forgot_password: ¿Olvidó su contraseña?
+        sign_in: Iniciar sesión
+      signed_in: Sesión iniciada con éxito.
+      signed_out: Sesión cerrada con éxito.
+      already_signed_out: Sesión cerrada con éxito.
     shared:
       links:
         didnt_receive_confirmation_instructions: No he recibido instrucciones de confirmación
@@ -789,7 +797,9 @@ es:
       not_an_integer: debe ser un entero
       not_found: no se ha encontrado
       not_locked: no estaba bloqueada
-      not_saved: No guardado
+      not_saved:
+        one: "1 error impidió que este %{resource} fuera guardado:"
+        other: "%{count} errores impidieron que este %{resource} fuera guardado:"
       odd: debe ser impar
       other_than: debe ser distinto de %{count}
       password_too_long: es demasiado largo
@@ -826,11 +836,8 @@ es:
     search_tests: Buscar pruebas
     question_category: Categoría de preguntas
     question_type: Tipo de pregunta
-    assesskit: Assesskit
     my_company: Mi empresa
     show_questions_from: Mostrar preguntas de
-    assesskit: Assesskit
-    my_company: Mi empresa
     show_tests_from: Mostrar pruebas de
     test_duration: Duración de la prueba
     up_to_10_mins: Hasta 10 minutos
@@ -1231,19 +1238,6 @@ es:
   search_input_component:
     initialize:
       default_placeholder: Buscar en
-  sign_in_form_component:
-    candidate_title: Inicia sesión en tu cuenta de candidato
-    business_title: Inicia sesión en tu cuenta de empresa
-    email_address: Dirección de correo electrónico
-    password: Contraseña
-    keep_me_logged_in: Mantenerme conectado
-    forgot_password: ¿Olvidaste tu contraseña?
-    sign_in: Iniciar sesión
-    dont_have_account: ¿No tienes una cuenta?
-    sign_up_now: Regístrate ahora
-    are_you_candidate: ¿Eres un candidato?
-    are_you_business: ¿Eres una empresa?
-    take_me: Llévame allí
   share_link_component:
     active_source: Fuente activa
     copy_invitation_text: 'Copie y añada este texto a su invitación:'

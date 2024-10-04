@@ -380,6 +380,9 @@ en:
         role: Role
   devise:
     confirmations:
+      confirmed: "Your email address has been successfully confirmed."
+      send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
+      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
       new:
         resend_confirmation_instructions: "Resend confirmation instructions"
         email_address: "Email address"
@@ -388,25 +391,53 @@ en:
         create_one: "Create one!"
         already_have_account: "Already have an account?"
         log_in: "Log in"
+    failure:
+      already_authenticated: "You are already signed in."
+      inactive: "Your account is not activated yet."
+      invalid: "Invalid %{authentication_keys} or password."
+      locked: "Your account is locked."
+      last_attempt: "You have one more attempt before your account is locked."
+      not_found_in_database: "Invalid %{authentication_keys} or password."
+      timeout: "Your session expired. Please sign in again to continue."
+      unauthenticated: "You need to sign in or sign up before continuing."
+      unconfirmed: "You have to confirm your email address before continuing."
+    mailer:
+      confirmation_instructions:
+        subject: "Confirmation instructions"
+      email_changed:
+        subject: "Email Changed"
+      password_change:
+        subject: "Password Changed"
+      reset_password_instructions:
+        subject: "Reset password instructions"
+      unlock_instructions:
+        subject: "Unlock instructions"
+    omniauth_callbacks:
+      failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
+      success: "Successfully authenticated from %{kind} account."
     passwords:
       edit:
-        already_have_account: Already have account
+        already_have_account: Already have an account?
         change_my_password: Change my password
         change_your_password: Change your password
         confirm_password: Confirm password
         create_one: Create one
-        dont_have_account: Dont have account
+        dont_have_account: Don't have an account?
         log_in: Log in
         new_password: New password
       new:
-        didnt_receive_confirmation_instructions: Didnt receive confirmation instructions.
-        email_address: Email address
         forgot_your_password: Forgot your password
-        log_in_to_your_account: Log in to your account
+        email_address: Email address
         send_reset_link: Send reset link
-        business: Business
-        candidate: Candidate
+        already_have_account: Already have account?
+        log_in: Log in
+        didnt_receive_confirmation_instructions: Didn't receive confirmation instructions.
         click_here: Click here
+      no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
+      send_instructions: "You will receive an email with instructions on how to reset your password in a few minutes."
+      send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
+      updated: "Your password has been changed successfully. You are now signed in."
+      updated_not_active: "Your password has been changed successfully."
     registrations:
       edit:
         change_email: Change email
@@ -420,6 +451,27 @@ en:
         new_email: New email
         new_password: New password
         your_account: Your account
+      destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
+      signed_up: "Welcome! You have signed up successfully."
+      signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
+      signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
+      signed_up_but_unconfirmed: "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account."
+      update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirmation link to confirm your new email address."
+      updated: "Your account has been updated successfully."
+      updated_but_not_signed_in: "Your account has been updated successfully, but since your password was changed, you need to sign in again."
+    sessions:
+      new:
+        login_to_your_profile: Log in to your AssessKit profile
+        dont_have_an_account: Don't have an account?
+        sign_up_now: Sign up now
+        email_address: Email address
+        password: Password
+        keep_me_logged_in: Keep me logged in
+        forgot_password: Forgot password?
+        sign_in: Sign in
+      signed_in: "Signed in successfully."
+      signed_out: "Signed out successfully."
+      already_signed_out: "Signed out successfully."
     shared:
       links:
         didnt_receive_confirmation_instructions: Didnt receive confirmation instructions
@@ -428,6 +480,10 @@ en:
         log_in: Log in
         sign_in_with: Sign in with
         sign_up: Sign up
+    unlocks:
+      send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
+      send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."
+      unlocked: "Your account has been unlocked successfully. Please sign in to continue."
   duration:
     hour: hour
     min: min
@@ -440,7 +496,14 @@ en:
     default_title: No results
   errors:
     messages:
-      not_saved: Not saved
+      already_confirmed: "was already confirmed, please try signing in"
+      confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
+      expired: "has expired, please request a new one"
+      not_found: "not found"
+      not_locked: "was not locked"
+      not_saved:
+        one: "1 error prohibited this %{resource} from being saved:"
+        other: "%{count} errors prohibited this %{resource} from being saved:"
   filter_component:
     clear: Clear
     filters: Filters
@@ -453,11 +516,8 @@ en:
     search_tests: Search tests
     question_category: Question category
     question_type: Question type
-    assesskit: Assesskit
     my_company: My company
     show_questions_from: Show questions from
-    assesskit: Assesskit
-    my_company: My company
     show_tests_from: Show tests from
     test_duration: Test duration
     up_to_10_mins: Up to 10 mins
@@ -768,19 +828,6 @@ en:
     question: Question
     read: Read
     view_answer: View answer
-  sign_in_form_component:
-    candidate_title: Sign in to your candidate account
-    business_title: Sign in to your business account
-    email_address: Email address
-    password: Password
-    keep_me_logged_in: Keep me logged in
-    forgot_password: Forgot password?
-    sign_in: Sign in
-    dont_have_account: Don’t have an account?
-    sign_up_now: Sign up now
-    are_you_candidate: Are you a candidate?
-    are_you_business: Are you a business?
-    take_me: Take me there
   share_link_component:
     active_source: Active source
     copy_invitation_text: 'Copy and add this text to your invitation:'

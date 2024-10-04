@@ -416,7 +416,6 @@ de:
         login: Anmelden
         are_you_business: Sind Sie ein Unternehmen?
         take_me: Bring mich dorthin
-
     tests:
       feedback:
         finish: Oberfläche
@@ -680,24 +679,22 @@ de:
       success: Sie haben sich erfolgreich mit Ihrem %{kind}-Konto angemeldet.
     passwords:
       edit:
-        already_have_account: Sie haben bereits ein Konto
+        already_have_account: Haben Sie bereits ein Konto?
         change_my_password: Ändere mein Passwort
         change_your_password: Passwort ändern
         confirm_password: Bestätigen Sie das Passwort
         create_one: Eine erstellen
-        dont_have_account: Ich habe kein Konto
+        dont_have_account: Sie haben noch kein Konto?
         log_in: Einloggen
         new_password: Neues Passwort
-      new:
-        didnt_receive_confirmation_instructions: Ich habe keine Anweisungen zur Bestätigung.
-          erhalten
-        email_address: E-Mail Adresse
-        forgot_your_password: Haben Sie Ihr Passwort vergessen?
-        log_in_to_your_account: Bei Ihrem Konto anmelden
-        send_reset_link: Link zum Zurücksetzen senden
-        business: Unternehmen
-        candidate: Kandidat
-        click_here: Klicken Sie hier
+        new:
+          forgot_your_password: Passwort vergessen
+          email_address: E-Mail-Adresse
+          send_reset_link: Link zum Zurücksetzen senden
+          already_have_account: Bereits ein Konto?
+          log_in: Anmelden
+          didnt_receive_confirmation_instructions: Keine Bestätigungsanweisungen erhalten?
+          click_here: Hier klicken
       no_token: Sie können sich nicht auf dieser Seite anmelden, wenn Sie nicht von
         einer Passwort-Zurücksetzen-E-Mail kommen. Wenn Sie von solch einer E-Mail
         kommen, überprüfen Sie bitte, ob Sie die gesamte URL verwendet haben.
@@ -709,7 +706,6 @@ de:
       updated: Ihr Passwort wurde geändert. Sie sind jetzt angemeldet.
       updated_not_active: Ihr Passwort wurde erfolgreich geändert.
     registrations:
-      destroyed: Ihr Konto wurde gelöscht. Wir hoffen, dass wir Sie bald wiedersehen.
       edit:
         change_email: E-Mail ändern
         change_email_address: E-Mail Adresse ändern
@@ -724,6 +720,7 @@ de:
         new_email: Neue E-Mail
         new_password: Neues Passwort
         your_account: Ihr Konto
+      destroyed: Ihr Konto wurde gelöscht. Wir hoffen, dass wir Sie bald wiedersehen.
       signed_up: Sie haben sich erfolgreich registriert.
       signed_up_but_inactive: Sie haben sich erfolgreich registriert. Wir konnten
         Sie jedoch nicht anmelden, weil Ihr Konto noch nicht aktiviert ist.
@@ -739,9 +736,18 @@ de:
       updated_but_not_signed_in: Ihre Daten wurden aktualisiert, aber da sich Ihr
         Passwort geändert hat, müssen Sie sich erneut anmelden
     sessions:
-      already_signed_out: Erfolgreich abgemeldet.
+      new:
+        login_to_your_profile: Melden Sie sich bei Ihrem AssessKit-Profil an
+        dont_have_an_account: Sie haben noch kein Konto?
+        sign_up_now: Jetzt registrieren
+        email_address: E-Mail-Adresse
+        password: Passwort
+        keep_me_logged_in: Angemeldet bleiben
+        forgot_password: Passwort vergessen?
+        sign_in: Anmelden
       signed_in: Erfolgreich angemeldet.
       signed_out: Erfolgreich abgemeldet.
+      already_signed_out: Erfolgreich abgemeldet.
     shared:
       links:
         didnt_receive_confirmation_instructions: Ich habe keine Anweisungen zur Bestätigung
@@ -806,7 +812,9 @@ de:
       not_an_integer: muss ganzzahlig sein
       not_found: nicht gefunden
       not_locked: ist nicht gesperrt
-      not_saved: Nicht gespeichert
+      not_saved:
+        one: "1 Fehler verhinderte, dass dieses %{resource} gespeichert wurde:"
+        other: "%{count} Fehler verhinderten, dass dieses %{resource} gespeichert wurde:"
       odd: muss ungerade sein
       other_than: darf nicht gleich %{count} sein
       password_too_long: ist zu lang
@@ -846,14 +854,11 @@ de:
     search_tests: Tests durchsuchen
     question_category: Fragenkategorie
     question_type: Fragetyp
-    assesskit: Assesskit
     my_company: Meine Firma
     show_questions_from: Fragen anzeigen von
-    assesskit: Assesskit
-    my_company: Meine Firma
     up_to_10_mins: Bis zu 10 Minuten
     test_focus: Testschwerpunkt
-    search_tests: Tests durchsuchen
+    test_format: Testsformat
   flash:
     candidate_deleted: "Der Kandidat wurde gelöscht."
     reminder_sent: "Erinnerung erfolgreich gesendet."
@@ -1252,19 +1257,6 @@ de:
   search_input_component:
     initialize:
       default_placeholder: Suche
-  sign_in_form_component:
-    candidate_title: Melden Sie sich bei Ihrem Kandidatenkonto an
-    business_title: Melden Sie sich bei Ihrem Unternehmenskonto an
-    email_address: E-Mail-Adresse
-    password: Passwort
-    keep_me_logged_in: Angemeldet bleiben
-    forgot_password: Passwort vergessen?
-    sign_in: Anmelden
-    dont_have_account: Haben Sie noch kein Konto?
-    sign_up_now: Jetzt registrieren
-    are_you_candidate: Sind Sie ein Kandidat?
-    are_you_business: Sind Sie ein Unternehmen?
-    take_me: Bring mich dorthin
   share_link_component:
     active_source: Aktive Quelle
     copy_invitation_text: 'Kopieren Sie diesen Text und fügen Sie ihn Ihrer Einladung

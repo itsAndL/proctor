@@ -1,12 +1,11 @@
 <% if resource.candidate&.errors[:not_invited].any? %>
   <%= render NotificationComponent.new(notice:, alert: resource.candidate.errors[:not_invited].first) %>
 <% end %>
-
-<div class="flex items-center justify-center min-h-screen bg-zinc-50 px-4 sm:px-6">
-  <div class="w-full max-w-xl p-12 bg-white rounded-xl border border-gray-200">
-    <div>
+<div class="relative flex min-h-full shrink-0 justify-center md:px-12 lg:px-0">
+  <div class="relative z-10 flex flex-1 flex-col bg-white px-4 py-10 shadow-2xl sm:justify-center md:flex-none md:px-24">
+    <div class="mx-auto w-full max-w-md sm:px-4 md:w-96 md:max-w-sm md:px-0">
       <a aria-label="Home" href="/"><%= svg_tag "assesskit", class: "h-12 w-auto" %></a>
-      <h2 class="mt-12 text-2xl font-bold leading-9 tracking-tight text-gray-900"><%= t(".create_profile") %></h2>
+      <h2 class="mt-12 text-2xl font-bold leading-8 tracking-tight text-gray-900"><%= t(".create_profile") %></h2>
       <p class="mt-2 text-sm text-gray-700"><%= t(".enter_email") %></p>
       <%= form_for(resource, as: resource_name, url: candidate_registration_path) do |f| %>
         <div class="mt-8 grid grid-cols-1 gap-y-7">
@@ -37,9 +36,12 @@
       <% end %>
 
       <div class="mt-7 text-xs font-medium text-gray-600 space-y-2">
-        <p><%= t(".already_have_account") %> <%= link_to t(".login"), new_candidate_session_path, class: "font-semibold text-blue-600 hover:underline" %>
+        <p><%= t(".already_have_account") %> <%= link_to t(".login"), new_user_session_path, class: "font-semibold text-blue-600 hover:underline" %>
         <p><%= t(".are_you_business") %> <%= link_to t(".take_me"), new_business_registration_path , class: "font-semi-bold text-blue-600 hover:underline" %></p>
       </div>
     </div>
+  </div>
+  <div class="hidden sm:contents lg:relative lg:block lg:flex-1">
+    <%= image_tag "features-bg.jpg", width: "1664", height: "1866", loading: "lazy", decoding: "async", class: "absolute inset-0 h-full w-full object-cover", style: "color:transparent" %>
   </div>
 </div>
