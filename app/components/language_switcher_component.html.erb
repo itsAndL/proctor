@@ -1,12 +1,12 @@
 <div class="dropdown dropdown-hover">
-  <button type="button" class="secondary-button">
-    <%= helpers.svg_tag "language", class: "size-5" %>
+  <button type="button">
+    <%= helpers.svg_tag "language", class: "size-5 -mb-1" %>
   </button>
-  <div class="dropdown-content absolute max-sm:-left-2 sm:-right-2 z-10 -mr-1 mt-2 origin-top-right">
-    <div class="rounded-md p-4 flex flex-col bg-white shadow-lg gap-4">
+  <div class="dropdown-content absolute max-sm:-left-2 sm:-right-2 z-10 -mr-1 mt-2 origin-top-right border rounded-md">
+    <div class="rounded-md p-4 flex flex-col bg-white shadow-lg gap-3">
       <% @locales.each do |locale| %>
-        <% active_class = I18n.locale == locale ? "text-blue-500" : "text-gray-700" %>        
-        <%= link_to t("shared.languages.#{locale}"), url_for(locale: locale), class: "text-sm font-semibold hover:underline #{active_class}" %>
+        <% active_class = I18n.locale == locale ? "text-blue-600 hover:text-blue-500" : "text-gray-700 hover:text-gray-500" %>        
+        <%= link_to t("shared.languages.#{locale}"), url_for(locale: locale), class: "text-sm font-semibold #{active_class}" %>
       <% end %>
     </div>
   </div>
