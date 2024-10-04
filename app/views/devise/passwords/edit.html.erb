@@ -1,8 +1,8 @@
 <div class="relative flex min-h-full shrink-0 justify-center md:px-12 lg:px-0">
-  <div class="relative z-10 flex flex-1 flex-col bg-white px-4 py-10 shadow-2xl sm:justify-center md:flex-none md:px-28">
+  <div class="relative z-10 flex flex-1 flex-col bg-white px-4 py-10 shadow-2xl sm:justify-center md:flex-none md:px-24">
     <div class="mx-auto w-full max-w-md sm:px-4 md:w-96 md:max-w-sm md:px-0">
       <a aria-label="Home" href="/"><%= svg_tag "assesskit", class: "h-12 w-auto" %></a>
-      <h2 class="mt-9 text-2xl font-bold leading-9 tracking-tight text-gray-900"><%= t('.change_your_password') %></h2>
+      <h2 class="mt-9 text-2xl font-bold leading-8 tracking-tight text-gray-900"><%= t('.change_your_password') %></h2>
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
         <%= f.hidden_field :reset_password_token %>
 
@@ -26,7 +26,7 @@
       <% end %>
       <div class="mt-7 text-xs font-medium text-gray-600 space-y-2">
         <p><%= t('.dont_have_account') %> <%= link_to t('.create_one'), new_business_registration_path, class: "font-semibold text-blue-600 hover:underline" %>
-        <p><%= t('.already_have_account') %> <%= link_to t('.log_in'), new_business_session_path , class: "font-semi-bold text-blue-600 hover:underline" %></p>
+        <p><%= t('.already_have_account') %> <%= link_to t('.log_in'), new_user_session_path , class: "font-semi-bold text-blue-600 hover:underline" %></p>
       </div>
     </div>
   </div>

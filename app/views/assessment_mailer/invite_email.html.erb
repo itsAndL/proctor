@@ -88,7 +88,7 @@
                                     </tr>
                                     <tr>
                                       <td height="18" align="center" valign="top" class="r22-i nl2go-default-textstyle" style="color: #3b3f44; font-family: Arial; font-size: 15px; line-height: 1.5; word-break: break-word;">
-                                        <%= link_to invitation_url(@assessment_participation.invitation_token, locale: I18n.locale), title: t('.start_assessment'), data: {btn: 1}, sib_link_id: 0, class: "r23-r default-button", style: "font-style: normal; font-weight: normal; line-height: 1.15; text-decoration: none; word-break: break-word; border-style: solid; word-wrap: break-word; display: block; -webkit-text-size-adjust: none; background-color: #2563eb; border-color: #000000; border-radius: 50px; border-width: 0px; color: #000000; font-family: open sans,arial,helvetica,sans-serif; font-size: 16px; height: 18px; mso-hide: all; padding-bottom: 12px; padding-left: 5px; padding-right: 5px; padding-top: 12px; width: 190px;" do %>
+                                        <%= link_to normalize_url(invitation_url(@assessment_participation.invitation_token, locale: I18n.locale)), title: t('.start_assessment'), data: {btn: 1}, sib_link_id: 0, class: "r23-r default-button", style: "font-style: normal; font-weight: normal; line-height: 1.15; text-decoration: none; word-break: break-word; border-style: solid; word-wrap: break-word; display: block; -webkit-text-size-adjust: none; background-color: #2563eb; border-color: #000000; border-radius: 50px; border-width: 0px; color: #000000; font-family: open sans,arial,helvetica,sans-serif; font-size: 16px; height: 18px; mso-hide: all; padding-bottom: 12px; padding-left: 5px; padding-right: 5px; padding-top: 12px; width: 190px;" do %>
                                           <span style="color: #ffffff; font-size: 15px;"><%= t('.start_assessment') %></span>
                                         <% end %>
                                       </td>
@@ -129,7 +129,7 @@
                       <td class="r15-c nl2go-default-textstyle" align="left" style="color: #3b3f44; font-family: Arial; font-size: 15px; line-height: 1.5; word-break: break-word; text-align: left; valign: top;">
                         <div>
                           <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;"><%= t('.link_not_work') %></span></p>
-                          <p style="margin: 0;"><span style="color: #2563eb; font-family: Arial, helvetica, sans-serif;"><%= invitation_url(@assessment_participation.invitation_token, locale: I18n.locale) %></span></p>
+                          <p style="margin: 0;"><span style="color: #2563eb; font-family: Arial, helvetica, sans-serif;"><%= normalize_url(invitation_url(@assessment_participation.invitation_token, locale: I18n.locale)) %></span></p>
                           <p style="margin: 0;">&nbsp;</p>
                           <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;"><%= t('.contact_support') %></span></p>
                         </div>

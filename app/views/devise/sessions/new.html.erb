@@ -1,0 +1,47 @@
+<div class="relative flex min-h-full shrink-0 justify-center md:px-12 lg:px-0">
+  <div class="relative z-10 flex flex-1 flex-col bg-white px-4 py-10 shadow-2xl sm:justify-center md:flex-none md:px-24">
+    <div class="mx-auto w-full max-w-md sm:px-4 md:w-96 md:max-w-sm md:px-0">
+      <a aria-label="Home" href="/"><%= svg_tag "assesskit", class: "h-12 w-auto" %></a>
+      <h2 class="mt-10 text-2xl font-bold leading-8 tracking-tight text-gray-900"><%= t(".login_to_your_profile") %></h2>
+      <p class="mt-2 text-sm text-gray-600 font-medium">
+        <%= t(".dont_have_an_account") %>
+        <%= link_to t(".sign_up_now"), new_business_registration_path, class: "text-blue-600 hover:underline" %>
+      </p>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="mt-8 grid grid-cols-1 gap-y-7">
+          <div>
+            <%= f.label :email, t(".email_address"), class: "required-label" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", value: params[:email_address], required: true, class: "primary-field" %>
+            <%= render FieldErrorComponent.new(:email, resource) %>
+          </div>   
+
+          <div>
+            <%= f.label :password, t(".password"), class: "required-label" %>
+            <%= f.password_field :password, autocomplete: "current-password", required: true, class: "primary-field" %>
+            <%= render FieldErrorComponent.new(:password, resource) %>
+          </div>
+
+          <div class="flex items-center justify-between">
+            <% if devise_mapping.rememberable? %>
+              <div class="flex items-center">
+                <%= f.check_box :remember_me, checked: true, class: "h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-600" %>
+                <%= f.label :remember_me, t(".keep_me_logged_in"), class: "ml-2 block text-sm font-medium leading-6 text-black" %>
+              </div>
+            <% end %>
+
+            <div class="text-sm leading-6">
+              <%= link_to t(".forgot_password"), new_password_path(resource_name), class: "font-semibold text-blue-600 hover:text-blue-500" %>
+            </div>
+          </div>
+
+          <div>
+            <%= f.submit t(".sign_in"), class: "mt-1 group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-blue-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600 w-full" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="hidden sm:contents lg:relative lg:block lg:flex-1">
+    <%= image_tag "features-bg.jpg", width: "1664", height: "1866", loading: "lazy", decoding: "async", class: "absolute inset-0 h-full w-full object-cover", style: "color:transparent" %>
+  </div>
+</div>

@@ -12,7 +12,7 @@ class InvitationAuthenticationService
 
     if assessment_participation.temp_candidate_id.nil?
       @controller.redirect_to(
-        @controller.new_candidate_session_path(email_address: assessment_participation.candidate.email),
+        @controller.new_user_session_path(email_address: assessment_participation.candidate.email),
         alert: I18n.t('alert.candidate_required')
       )
     else

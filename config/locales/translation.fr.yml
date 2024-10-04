@@ -664,23 +664,21 @@ fr:
       success: Autorisé par votre compte %{kind}.
     passwords:
       edit:
-        already_have_account: Vous avez déjà un compte
+        already_have_account: Vous avez déjà un compte ?
         change_my_password: Changer mon mot de passe
         change_your_password: Changer votre mot de passe
         confirm_password: Confirmer le mot de passe
         create_one: Créer un
-        dont_have_account: Pas de compte
+        dont_have_account: Vous n'avez pas de compte ?
         log_in: Se connecter
         new_password: Nouveau mot de passe
       new:
-        didnt_receive_confirmation_instructions: Je n'ai pas reçu les instructions.
-          de confirmation.
-        email_address: E-mail
-        forgot_your_password: Mot de passe oublié ?
-        log_in_to_your_account: Connectez-vous à votre compte
+        forgot_your_password: Mot de passe oublié
+        email_address: Adresse e-mail
         send_reset_link: Envoyer le lien de réinitialisation
-        business: Entreprise
-        candidate: Candidat
+        already_have_account: Vous avez déjà un compte ?
+        log_in: Se connecter
+        didnt_receive_confirmation_instructions: Vous n'avez pas reçu les instructions de confirmation ?
         click_here: Cliquez ici
       no_token: Vous ne pouvez pas accéder à cette page si vous n’y accédez pas depuis
         un email de réinitialisation de mot de passe. Si vous venez en effet d’un
@@ -691,7 +689,6 @@ fr:
       updated: Votre mot de passe a bien été modifié. Vous êtes maintenant connecté(e).
       updated_not_active: Votre mot de passe a bien été modifié.
     registrations:
-      destroyed: Au revoir ! Votre compte a bien été supprimé. Nous espérons vous revoir bientôt.
       edit:
         change_email: Modifier l'E-mail
         change_email_address: Modifier l'E-mail
@@ -706,6 +703,7 @@ fr:
         new_email: Nouveau E-mail
         new_password: Nouveau mot de passe
         your_account: Votre compte
+      destroyed: Au revoir ! Votre compte a bien été supprimé. Nous espérons vous revoir bientôt.
       signed_up: Bienvenue ! Vous vous êtes bien enregistré(e).
       signed_up_but_inactive: Vous vous êtes bien enregistré(e). Cependant, nous n’avons
         pas pu vous connecter car votre compte n’a pas encore été activé.
@@ -720,9 +718,18 @@ fr:
       updated_but_not_signed_in: Votre compte a été mis à jour avec succès. Vous devez
         vous reconnecter car votre mot de passe a été modifié.
     sessions:
-      already_signed_out: Déconnecté(e).
-      signed_in: Connecté(e).
-      signed_out: Déconnecté(e).
+      new:
+        login_to_your_profile: Connectez-vous à votre profil AssessKit
+        dont_have_an_account: Vous n'avez pas de compte ?
+        sign_up_now: Inscrivez-vous maintenant
+        email_address: Adresse e-mail
+        password: Mot de passe
+        keep_me_logged_in: Rester connecté
+        forgot_password: Mot de passe oublié ?
+        sign_in: Se connecter
+      signed_in: Connecté avec succès.
+      signed_out: Déconnecté avec succès.
+      already_signed_out: Déconnecté avec succès.
     shared:
       links:
         didnt_receive_confirmation_instructions: Je n'ai pas reçu les instructions
@@ -787,7 +794,9 @@ fr:
       not_an_integer: doit être un nombre entier
       not_found: n’a pas été trouvé(e)
       not_locked: n’était pas verrouillé(e)
-      not_saved: Pas sauvée
+      not_saved:
+        one: "1 erreur a empêché ce(tte) %{resource} d'être sauvegardé(e) :"
+        other: "%{count} erreurs ont empêché ce(tte) %{resource} d'être sauvegardé(e) :"
       odd: doit être impair
       other_than: doit être différent de %{count}
       password_too_long: est trop long
@@ -825,11 +834,8 @@ fr:
     search_tests: Rechercher des tests
     question_category: Catégorie de question
     question_type: Type de question
-    assesskit: Assesskit
     my_company: Mon entreprise
     show_questions_from: Montrer les questions de
-    assesskit: Assesskit
-    my_company: Mon entreprise
     show_tests_from: Montrer les tests de
     test_duration: Durée du test
     up_to_10_mins: Jusqu'à 10 minutes
@@ -1233,19 +1239,6 @@ fr:
   search_input_component:
     initialize:
       default_placeholder: Recherche
-  sign_in_form_component:
-    candidate_title: Connectez-vous à votre compte candidat
-    business_title: Connectez-vous à votre compte entreprise
-    email_address: Adresse e-mail
-    password: Mot de passe
-    keep_me_logged_in: Rester connecté
-    forgot_password: Mot de passe oublié ?
-    sign_in: Connexion
-    dont_have_account: Vous n'avez pas de compte ?
-    sign_up_now: Inscrivez-vous maintenant
-    are_you_candidate: Êtes-vous un candidat ?
-    are_you_business: Êtes-vous une entreprise ?
-    take_me: Emmenez-moi là-bas
   share_link_component:
     active_source: Source active
     copy_invitation_text: 'Copiez et ajoutez ce texte à votre invitation :'

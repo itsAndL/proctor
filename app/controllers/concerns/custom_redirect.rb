@@ -3,7 +3,6 @@ module CustomRedirect
 
   included do
     include SecondaryRootPath
-    include PagesHelper
   end
 
   def redirect_to_appropriate_path
