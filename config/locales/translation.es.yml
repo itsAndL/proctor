@@ -1129,6 +1129,9 @@ es:
     invite_candidates: Invitar a los candidatos
     invite_in_bulk: Invitar en masa
     share_link: Compartir enlace
+  layouts:
+    application:
+      title: "AssessKit - Garantizando la integridad en las pruebas remotas"
   nav_bar:
     guest_component:
       about_us: Quiénes somos

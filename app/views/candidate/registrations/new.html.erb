@@ -9,9 +9,17 @@
       <p class="mt-2 text-sm text-gray-700"><%= t(".enter_email") %></p>
       <%= form_for(resource, as: resource_name, url: candidate_registration_path) do |f| %>
         <div class="mt-8 grid grid-cols-1 gap-y-7">
+          <%= f.fields_for :candidate_attributes do |c| %>
+            <div>
+              <%= c.label :name, t(".your_name"), class: "required-label" %>
+              <%= c.text_field :name, autocomplete: "name", class: "primary-field" %>
+              <%= render FieldErrorComponent.new(:name, resource.candidate) %>
+            </div>
+          <% end %>
+
           <div>
             <%= f.label :email, t(".email_address"), class: "required-label" %>
-            <%= f.email_field :email, value: params[:email_address], autocomplete: "email", class: "primary-field", disabled: params[:email_address].present? %>
+            <%= f.email_field :email, value: params[:email_address], autocomplete: "email", class: "primary-field" %>
             <%= render FieldErrorComponent.new(:email, resource) %>
           </div>
 
@@ -20,14 +28,6 @@
             <%= f.password_field :password, autocomplete: "new-password", class: "primary-field" %>
             <%= render FieldErrorComponent.new(:password, resource) %>
           </div>
-
-          <%= f.fields_for :candidate_attributes do |c| %>
-            <div>
-              <%= c.label :name, t(".your_name"), class: "required-label" %>
-              <%= c.text_field :name, autocomplete: "name", class: "primary-field" %>
-              <%= render FieldErrorComponent.new(:name, resource.candidate) %>
-            </div>
-          <% end %>
 
           <div>
             <%= f.submit t(".sign_up"), class: "mt-1 primary-button w-full" %>

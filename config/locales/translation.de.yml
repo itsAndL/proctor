@@ -1146,6 +1146,9 @@ de:
     invite_candidates: Kandidaten einladen
     invite_in_bulk: Einladen in Massen
     share_link: Link teilen
+  layouts:
+    application:
+      title: "AssessKit - Gewährleistung der Integrität bei Fernprüfungen"
   nav_bar:
     guest_component:
       about_us: Über uns

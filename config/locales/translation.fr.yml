@@ -1127,6 +1127,9 @@ fr:
     invite_candidates: Inviter les candidats
     invite_in_bulk: Inviter en masse
     share_link: Partager le lien
+  layouts:
+    application:
+      title: "AssessKit - Assurer l'intégrité des tests à distance"
   nav_bar:
     guest_component:
       about_us: À propos de nous

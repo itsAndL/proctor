@@ -6,6 +6,14 @@
 
       <%= form_for(resource, as: resource_name, url: business_registration_path) do |f| %>
         <div class="mt-7 grid grid-cols-1 gap-y-7">
+          <%= f.fields_for :business_attributes do |b| %>
+            <div>
+              <%= b.label :company, t(".company_name"), class: "required-label" %>
+              <%= b.text_field :company, autocomplete: "organization", class: "primary-field" %>
+              <%= render FieldErrorComponent.new(:name, resource.business) %>
+            </div>
+          <% end %>
+
           <div>
             <%= f.label :email, t(".email_address"), class: "required-label" %>
             <%= f.email_field :email, autocomplete: "email", required: true, class: "primary-field" %>
@@ -17,14 +25,6 @@
             <%= f.password_field :password, autocomplete: "new-password", required: true, class: "primary-field" %>
             <%= render FieldErrorComponent.new(:password, resource) %>
           </div>
-
-          <%= f.fields_for :business_attributes do |b| %>
-            <div>
-              <%= b.label :company, t(".company_name"), class: "required-label" %>
-              <%= b.text_field :company, autocomplete: "organization", class: "primary-field" %>
-              <%= render FieldErrorComponent.new(:name, resource.business) %>
-            </div>
-          <% end %>
 
           <div>
             <%= f.submit t(".sign_up"), class: "mt-1 primary-button w-full" %>

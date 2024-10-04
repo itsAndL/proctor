@@ -621,6 +621,9 @@ en:
       introduction: Thanks for your interest in this assessment! Please provide your email address and we'll send you more information with a link to begin.
       submit_button: Please invite me
       title: Take our assessment
+  layouts:
+    application:
+      title: "AssessKit - Ensuring Integrity in Remote Testing"
   no_results_component:
     default_message: This assessment has not been started yet
     default_title: Assessment not started
