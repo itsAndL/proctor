@@ -51,6 +51,13 @@ es:
           tan fiables y válidos como las evaluaciones tradicionales en persona.
         title: Nuestra visión
   activerecord:
+    models:
+      assessment:
+        one: "Evaluación"
+        other: "Evaluaciones"
+      candidate:
+        one: "Candidato"
+        other: "Candidatos"
     attributes:
       assessment:
         title: Título

@@ -32,6 +32,13 @@ en:
         description: To be the leading provider of remote testing solutions, recognized for our commitment to security, reliability, and user experience. We envision a world where remote exams are as trustworthy and valid as traditional in-person assessments.
         title: Our Vision
   activerecord:
+    models:
+      assessment:
+        one: Assessment
+        other: Assessments
+      candidate:
+        one: Candidate
+        other: Candidates
     attributes:
       business:
         avatar: Your company logo

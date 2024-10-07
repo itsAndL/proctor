@@ -73,11 +73,12 @@
           </div>
           <!-- Pagination -->
           <%= render PaginationComponent.new(
-          current_page: @current_page,
-          total_items: @total_items,
-          per_page: @per_page,
-          additional_params: { search_query: params[:search_query], assessment_id: params[:assessment_id] }
-        ) %>
+            article_name: Candidate.model_name.human(count: 2),
+            current_page: @current_page,
+            total_items: @total_items,
+            per_page: @per_page,
+            additional_params: { search_query: params[:search_query], assessment_id: params[:assessment_id] }
+          ) %>
         </div>
       </div>
     </div>
