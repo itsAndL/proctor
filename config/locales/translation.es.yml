@@ -461,6 +461,9 @@ es:
     send_reminder: Enviar recordatorio
     send_results: Enviar resultados
     status: Estado
+    invite_candidates_title: "Invitar candidatos"
+    invite_candidates_message: "Invita a los candidatos a realizar la evaluación."
+    invite_action_title: "Invitar"
   contact:
     index:
       address: Dirección
@@ -486,6 +489,9 @@ es:
       create_assessment: Crear evaluación
       custom_questions: Preguntas personalizadas
   custom_question_library_component:
+    no_custom_questions_title: "No hay preguntas personalizadas disponibles"
+    no_custom_questions_message: "Añada preguntas personalizadas para capturar información
+      crítica para su proceso de selección. Profundice con preguntas adicionales."
     available_count:
       one: 1 pregunta personalizada disponible
       other: "%{count} preguntas personalizadas disponibles"
@@ -1194,7 +1200,7 @@ es:
           tb: TB
           zb: ZB
   pagination_component:
-    items_per_page: Artículos por página
+    items_per_page: "%{article} por página"
   participation_progress_indicators_component:
     no_limit: Sin límite
     time_for_question: 'Hora de la pregunta %{answered_count} de %{questions_count}:'
