@@ -41,7 +41,7 @@ class Test < ApplicationRecord
   end
 
   def category=(value)
-    self.test_category = TestCategory.find_or_create_by(title: value)
+    self.test_category = TestCategory.find_or_initialize_by(title: value)
   end
 
   def selected_questions

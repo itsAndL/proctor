@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CustomQuestionQuery
+  include LanguageHelper
+
   attr_reader :relation
 
   def initialize(relation = CustomQuestion.all, locale: I18n.locale)
@@ -41,7 +43,7 @@ class CustomQuestionQuery
   end
 
   def filter_by_language(language)
-    language = CustomQuestion.language_name_by_locale(@locale) if language.blank?
+    language = map_locale_to_language(@locale) if language.blank?
     @relation = relation.where(language:)
   end
 
