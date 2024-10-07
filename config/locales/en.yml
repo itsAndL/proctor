@@ -116,7 +116,7 @@ en:
       custom_questions_on: 'Custom questions on:'
       duration: 'Duration: %{duration}'
       hello: Hello %{name}!
-      invite_subject: Sie wurden eingeladen, eine Bewertung abzulegen
+      invite_subject: You have been invited to take an assessment
       invited_by: You've been invited to take an assessment by <strong>%{company}</strong>.
       language: 'Language: %{language}'
       link_not_work: 'If the above link does not work, copy and paste this URL into your browser:'
