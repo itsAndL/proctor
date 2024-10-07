@@ -1173,8 +1173,8 @@ de:
       account: Konto
       signed_in_as: Angemeldet als
   no_results_component:
-    default_message: Diese Bewertung wurde noch nicht begonnen
-    default_title: Bewertung nicht begonnen
+    default_message: Versuchen Sie eine neue Suche oder wenden Sie einen anderen Filter an.
+    default_title: Es wurden leider keine Ergebnisse gefunden.
   not_started_component:
     default_message: Versuchen Sie eine neue Suche oder wenden Sie einen anderen
       Filter an.

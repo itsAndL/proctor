@@ -1156,8 +1156,8 @@ es:
       account: Cuenta
       signed_in_as: Conectado como
   no_results_component:
-    default_message: Esta evaluación aún no se ha iniciado
-    default_title: Evaluación no iniciada
+    default_message: No se han encontrado resultados.
+    default_title: Intente una nueva búsqueda o aplique un filtro diferente.
   not_started_component:
     default_message: Intente una nueva búsqueda o aplique un filtro diferente.
     default_title: Lo sentimos, no se han encontrado resultados.
