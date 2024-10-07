@@ -474,6 +474,9 @@ de:
     send_reminder: Erinnerung senden
     send_results: Ergebnisse senden
     status: Status
+    invite_candidates_title: "Kandidaten einladen"
+    invite_candidates_message: "Laden Sie Kandidaten ein, um Ihre Bewertung abzuschließen."
+    invite_action_title: "Einladung"
   contact:
     index:
       address: Adresse
@@ -498,6 +501,10 @@ de:
       create_assessment: Beurteilung erstellen
       custom_questions: Benutzerdefinierte Fragen
   custom_question_library_component:
+    no_custom_questions_title: "Keine benutzerdefinierten Fragen"
+    no_custom_questions_message: "Fügen Sie benutzerdefinierte Fragen hinzu, um wichtige
+      Informationen für Ihren Screening-Prozess zu erfassen. Vertiefen Sie die Informationen
+      mit zusätzlichen Fragen."
     available_count:
       one: 1 benutzerdefinierte Frage verfügbar
       other: "%{count} benutzerdefinierte Fragen verfügbar"
@@ -1212,7 +1219,7 @@ de:
           tb: TB
           zb: ZB
   pagination_component:
-    items_per_page: Artikel pro Seite
+    items_per_page: "%{article} pro Seite"
   participation_progress_indicators_component:
     no_limit: Kein Limit
     time_for_question: 'Zeit für die Frage %{answered_count} von %{questions_count}:'

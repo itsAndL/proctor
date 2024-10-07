@@ -78,7 +78,7 @@ fr:
           archived: Archivé
           completed: Terminé
           invitation_clicked: Invitation cliquée
-          invited: Sur invitation
+          invited: Invité
           started: Commencé
       custom_question:
         type:
@@ -193,7 +193,7 @@ fr:
   assessment_score_card_component:
     assessment: L'évaluation
     average_score: Note moyenne
-    invited: Sur invitation
+    invited: Invité
     send_results_to_candidate: Envoyer les résultats au candidat
     status: Statut
   assessment_stepper_component:
@@ -448,7 +448,7 @@ fr:
       something_went_wrong: Un problème s'est produit lors du téléchargement du fichier.
   candidates_list_component:
     actions: Actions
-    avg_score: Score moyen (en %)
+    avg_score: Score moyen %
     candidates: Candidats
     copy_link: Copier le lien d'évaluation du candidat
     delete_candidate: Supprimer le candidat
@@ -459,6 +459,9 @@ fr:
     send_reminder: Envoyer un rappel
     send_results: Envoyer les résultats
     status: Statut
+    invite_candidates_title: Inviter les candidats
+    invite_candidates_message: Invitez les candidats à compléter cette évaluation et à évaluer leur performance.
+    invite_action_title: Inviter 
   contact:
     index:
       address: Adresse
@@ -483,6 +486,8 @@ fr:
       create_assessment: Créer une évaluation
       custom_questions: Questions personnalisées
   custom_question_library_component:
+    no_custom_questions_title: Pas de questions personnalisées
+    no_custom_questions_message: "Il n'y a pas de questions personnalisées disponibles pour le moment."
     available_count:
       one: 1 question personnalisée disponible
       other: "%{count} Questions personnalisées disponibles"
@@ -1192,7 +1197,7 @@ fr:
           tb: To
           zb: ZB
   pagination_component:
-    items_per_page: Articles par page
+    items_per_page: "%{article} par page"
   participation_progress_indicators_component:
     no_limit: Pas de limite
     time_for_question: 'L''heure est à la question %{answered_count} de %{questions_count}

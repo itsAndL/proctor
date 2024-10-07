@@ -632,13 +632,13 @@ en:
     application:
       title: "AssessKit - Ensuring Integrity in Remote Testing"
   no_results_component:
-    default_message: This assessment has not been started yet
-    default_title: Assessment not started
+    default_message: No results
+    default_title: Try a new search or apply a different filter.
   not_started_component:
     default_message: Try a new search or apply a different filter.
     default_title: Sorry, no results were found.
   pagination_component:
-    items_per_page: Items per page
+    items_per_page: "%{article} per page"
   roles:
     new:
       business:
@@ -737,7 +737,12 @@ en:
     send_reminder: Send reminder
     send_results: Send results
     status: Status
+    invite_candidates_title: "Invite candidates"
+    invite_candidates_message: "Invitez les candidats à compléter cette évaluation et à évaluer leur performance."
+    invite_action_title: "Invite"
   custom_question_library_component:
+    no_custom_questions_title: "No custom questions"
+    no_custom_questions_message: "There are no custom questions available at the moment."
     available_count:
       one: 1 custom question available
       other: "%{count} custom questions available"
