@@ -696,6 +696,10 @@ en:
     send_results_to_candidate: Send results to candidate
     status: Status
   assessment_stepper_component:
+    assessment_details: "Assessment details"
+    choose_tests: "Choose tests"
+    add_questions: "Add questions"
+    finalize: "Finalize"
     completed: Completed
     current: Current
     upcoming: Upcoming

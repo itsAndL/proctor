@@ -210,6 +210,10 @@ de:
     completed: Abgeschlossen
     current: Aktuell
     upcoming: Demnächst
+    assessment_details: "Bewertungsdetails"
+    choose_tests: "Tests auswählen"
+    add_questions: "Fragen hinzufügen"
+    finalize: "Fertigstellen"
   assessment_title_component:
     duration: Dauer
     language: Sprache

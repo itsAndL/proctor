@@ -200,6 +200,10 @@ fr:
     completed: Terminé
     current: Actuel
     upcoming: À venir
+    assessment_details: "Détails de l'évaluation"
+    choose_tests: "Choisir les tests"
+    add_questions: "Ajouter des questions"
+    finalize: "Finaliser"
   assessment_title_component:
     duration: La durée
     language: Langue

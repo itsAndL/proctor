@@ -202,6 +202,10 @@ es:
     send_results_to_candidate: Enviar los resultados al candidato
     status: Estado
   assessment_stepper_component:
+    assessment_details: Detalles de la evaluación
+    choose_tests: Elegir pruebas
+    add_questions: Añadir preguntas
+    finalize: Finalizar
     completed: Completado
     current: Actual
     upcoming: Próximamente
