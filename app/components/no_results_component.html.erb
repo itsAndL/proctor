@@ -1,25 +1,20 @@
 <div class="py-8">
   <div class="flex justify-center gap-1 flex-col items-center">
     <% if @svg %>
-        <%= helpers.svg_tag @svg, class: "size-16" %>
-
+      <%= helpers.svg_tag @svg, class: "size-16" %>
     <% else %>
-        <%= helpers.svg_tag 'mystery_box', class: "size-auto" %>
+      <%= helpers.svg_tag 'mystery_box', class: "size-auto" %>
     <% end %>
-  <p class="mt-2 font-bold text-black text-base text-center leading-tight"><%= title %></p>
-  <div class="mt-1 flex flex-col gap-2 items-center">
-    <% if message %>
-      <% if @linkeable %>
-        <a class="text-blue-600 text-sm font-semibold hover:underline" href="mailto:contact@assesskit.com?subject=<%= message %>"><%= message %></a>
-      <% else %>
-        <p class="text-black text-sm font-semibold break-words w-[315px] text-center pb-2"><%= message %></p>
+    <p class="mt-2 font-bold text-black text-base text-center leading-tight"><%= title %></p>
+    <div class="mt-1 flex flex-col gap-2 items-center">
+      <% if message %>
+        <% if @linkeable %>
+          <a class="text-blue-600 text-sm font-semibold hover:underline" href="mailto:contact@assesskit.com?subject=<%= message %>"><%= message %></a>
+        <% else %>
+          <p class="text-black text-sm font-semibold break-words w-[315px] text-center pb-2"><%= message %></p>
+        <% end %>
       <% end %>
-    <% end %>
-    <% if @action_link %>
-      <%= link_to @action_link, class: 'secondary-button', data: { turbo_frame: "modal" } do %>
-        <%= @action_title %>
-      <% end %>
-    <% end %>
-  </div>
+      <%= link_to @action_title, @action_link, class: 'secondary-button', data: { turbo_frame: "modal" } if @action_link %>
+    </div>
   </div>
 </div>

@@ -316,7 +316,7 @@ fr:
           vous redirigerons automatiquement vers les résultats de votre évaluation.
       index:
         company_name: Nom de l'entreprise
-        invited_on: Invité sur
+        invited_on: Invité à
         last_activity: Dernière activité
         my_assessments: Mes évaluations
         no_assessments_message: Vous n'avez encore été invité à aucune évaluation.
@@ -384,7 +384,7 @@ fr:
         completion_recommendation: Nous recommandons de réaliser l'évaluation en une
           seule fois.
         important_things: Les choses importantes
-        invited_on: Invité sur
+        invited_on: Invité à
         name: Nom
         out_of: hors de
         preview_questions: Avant chaque test, il peut y avoir des questions de prévisualisation,
@@ -452,7 +452,7 @@ fr:
     candidates: Candidats
     copy_link: Copier le lien d'évaluation du candidat
     delete_candidate: Supprimer le candidat
-    invited_on: Invité sur
+    invited_on: Invité à
     name: Nom
     overall_rating: Note globale
     search_candidates: Recherche de candidats
