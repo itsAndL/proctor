@@ -31,7 +31,7 @@ class CustomQuestion < ApplicationRecord
   end
 
   def category=(value)
-    self.custom_question_category = CustomQuestionCategory.find_or_create_by(title: value)
+    self.custom_question_category = CustomQuestionCategory.find_or_initialize_by(title: value)
   end
 
   def self.types

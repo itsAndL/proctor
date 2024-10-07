@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
 class FilterComponent < ViewComponent::Base
-  def initialize(clear_path:, library:, business: nil, assessment: nil, locale: I18n.locale.to_s)
+  include LanguageHelper
+
+  def initialize(records, clear_path:, business: nil, assessment: nil, locale: I18n.locale.to_s)
+    @records = records
     @clear_path = clear_path
-    @library = library
     @business = business
     @assessment = assessment
     @locale = locale
@@ -24,26 +26,34 @@ class FilterComponent < ViewComponent::Base
   private
 
   def library_config
-    case @library
-    when :test
+    case @records.table_name
+    when 'tests'
+      test_categories = TestCategory.joins(:tests).where(tests: { language: }).distinct
+      sections = [
+        show_tests_from_section,
+        # highlights_section,
+        test_format_section,
+        test_duration_section
+      ]
+      sections.insert(1, test_focus_section(test_categories)) if test_categories.any?
+      sections << language_section unless @assessment
+
       {
-        sections: [
-          show_tests_from_section,
-          highlights_section,
-          test_focus_section,
-          test_format_section,
-          test_duration_section
-        ].tap { |sections| sections << language_section unless @assessment },
+        sections:,
         placeholder: t('.search_tests'),
         filter_url: helpers.test_library_index_path
       }
-    when :custom_question
+    when 'custom_questions'
+      question_categories = CustomQuestionCategory.joins(:custom_questions).where(custom_questions: { language: }).distinct
+      sections = [
+        show_questions_from_section,
+        question_type_section
+      ]
+      sections << question_category_section(question_categories) if question_categories.any?
+      sections << language_section unless @assessment
+
       {
-        sections: [
-          show_questions_from_section,
-          question_type_section,
-          question_category_section
-        ].tap { |sections| sections << language_section unless @assessment },
+        sections:,
         placeholder: t('.search_questions'),
         filter_url: helpers.custom_question_library_index_path
       }
@@ -89,16 +99,17 @@ class FilterComponent < ViewComponent::Base
     }
   end
 
-  def test_focus_section
+  def test_focus_section(categories)
     {
       title: t('.test_focus'),
-      options: TestCategory.order(:title).map.with_index(1) do |test_type, index|
+      options: categories.order(:title).map.with_index(1) do |test_type, index|
+        count = @records.joins(:test_category).where(test_categories: { id: test_type.id }).accessible_by_business(@business).active.count
         checkbox_option(
           'test_category[]',
           test_type.id,
           params[:test_category]&.include?(test_type.id.to_s),
           "test-category-#{index}",
-          "#{test_type.title} #{count_span(test_type.tests.accessible_by_business(@business).active.count)}"
+          "#{test_type.title} #{count_span(count)}"
         )
       end
     }
@@ -108,26 +119,38 @@ class FilterComponent < ViewComponent::Base
     {
       title: t('.test_format'),
       options: Test.types.map.with_index(1) do |type, index|
+        count = @records.where(type: type.camelize).accessible_by_business(@business).count
         checkbox_option(
           'test_type[]',
           type,
           params[:test_type]&.include?(type),
           "test-type-#{index}",
-          "#{Test.human_enum_name(:type, type)} #{count_span(type.camelize.constantize.accessible_by_business(@business).count)}"
+          "#{Test.human_enum_name(:type, type)} #{count_span(count)}"
         )
       end
     }
   end
 
   def test_duration_section
+    durations = [
+      { range: 'less_10', label: t('.up_to_10_mins'), seconds: 0..600 },
+      { range: '11_to_20', label: '11-20 mins', seconds: 601..1200 },
+      { range: '21_to_30', label: '21-30 mins', seconds: 1201..1800 },
+      { range: '31_to_60', label: '31-60 mins', seconds: 1801..3600 }
+    ]
+
     {
       title: t('.test_duration'),
-      options: [
-        checkbox_option('test-duration[]', 'less_10', false, 'test-duration-1', "#{t('.up_to_10_mins')} #{count_span(363)}"),
-        checkbox_option('test-duration[]', '11_to_20', false, 'test-duration-2', "11-20 mins #{count_span(21)}"),
-        checkbox_option('test-duration[]', '21_to_30', false, 'test-duration-3', "21-30 mins #{count_span(19)}"),
-        checkbox_option('test-duration[]', '31_to_60', false, 'test-duration-4', "31-60 mins #{count_span(13)}")
-      ]
+      options: durations.map.with_index(1) do |duration, index|
+        count = @records.accessible_by_business(@business).where(duration_seconds: duration[:seconds]).count
+        checkbox_option(
+          'test_duration[]',
+          duration[:range],
+          params[:test_duration]&.include?(duration[:range]),
+          "test-duration-#{index}",
+          "#{duration[:label]} #{count_span(count)}"
+        )
+      end
     }
   end
 
@@ -146,27 +169,29 @@ class FilterComponent < ViewComponent::Base
     {
       title: t('.question_type'),
       options: CustomQuestion.types.map.with_index(1) do |type, index|
+        count = @records.where(type: type.camelize).accessible_by_business(@business).count
         checkbox_option(
           'question_type[]',
           type,
           params[:question_type]&.include?(type),
           "question-type-#{index}",
-          "#{CustomQuestion.human_enum_name(:type, type)} #{count_span(type.camelize.constantize.accessible_by_business(@business).count)}"
+          "#{CustomQuestion.human_enum_name(:type, type)} #{count_span(count)}"
         )
       end
     }
   end
 
-  def question_category_section
+  def question_category_section(categories)
     {
       title: t('.question_category'),
-      options: CustomQuestionCategory.order(:title).map.with_index(1) do |question_type, index|
+      options: categories.order(:title).map.with_index(1) do |question_type, index|
+        count = @records.joins(:custom_question_category).where(custom_question_categories: { id: question_type.id }).accessible_by_business(@business).count
         checkbox_option(
           'question_category[]',
           question_type.id,
           params[:question_category]&.include?(question_type.id.to_s),
-          "test-category-#{index}",
-          "#{question_type.title} #{count_span(question_type.custom_questions.accessible_by_business(@business).count)}"
+          "question-category-#{index}",
+          "#{question_type.title} #{count_span(count)}"
         )
       end
     }
@@ -176,7 +201,7 @@ class FilterComponent < ViewComponent::Base
     {
       title: t('.language'),
       options: [
-        select_option('language', Assessment.languages.keys.map { |lang| [t("shared.languages.#{lang}"), lang] }, params[:language] || language_hash(@locale))
+        select_option('language', Assessment.languages.keys.map { |lang| [t("shared.languages.#{lang}"), lang] }, language)
       ]
     }
   end
@@ -226,13 +251,7 @@ class FilterComponent < ViewComponent::Base
     "<span class='text-gray-500'>(#{count})</span>"
   end
 
-  def language_hash(locale)
-    languages = {
-      en: :english,
-      fr: :french,
-      de: :german,
-      es: :spanish
-    }
-    languages[locale.to_sym].to_s
+  def language
+    params[:language] || map_locale_to_language(@locale)
   end
 end

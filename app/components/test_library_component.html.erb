@@ -1,9 +1,9 @@
-<div class="grid grid-cols-1 gap-x-12 gap-y-8 lg:grid-cols-4">
-  <!-- Filters -->
-  <%= render FilterComponent.new(clear_path: @clear_path, assessment: @assessment, library: @library, business: @business) %>
+<%= tag.turbo_frame id: "filter_result" do %>
+  <div class="grid grid-cols-1 gap-x-12 gap-y-8 lg:grid-cols-4">
+    <!-- Filters -->
+    <%= render FilterComponent.new(tests, clear_path: @clear_path, assessment: @assessment, business: @business) %>
 
-  <div class="lg:col-span-3">
-    <%= tag.turbo_frame id: "filter_section" do %>
+    <div class="lg:col-span-3">
       <p class="text-base text-gray-700 font-bold">
         <% if filters_applied? %>
           <%= t('.results_count', count: @tests.count) %>
@@ -25,6 +25,6 @@
           </div>
         <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
-</div>
+<% end %>

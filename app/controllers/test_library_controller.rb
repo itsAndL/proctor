@@ -10,7 +10,8 @@ class TestLibraryController < ApplicationController
       business: current_business,
       only_system: params[:test_source] == 'assesskit' || params[:test_source].blank?,
       only_business: params[:test_source] == 'my_company',
-      language: params[:language]
+      language: params[:language],
+      durations: params[:test_duration]
     )
   end
 
