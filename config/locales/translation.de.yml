@@ -501,10 +501,6 @@ de:
       create_assessment: Beurteilung erstellen
       custom_questions: Benutzerdefinierte Fragen
   custom_question_library_component:
-    no_custom_questions_title: "Keine benutzerdefinierten Fragen"
-    no_custom_questions_message: "Fügen Sie benutzerdefinierte Fragen hinzu, um wichtige
-      Informationen für Ihren Screening-Prozess zu erfassen. Vertiefen Sie die Informationen
-      mit zusätzlichen Fragen."
     available_count:
       one: 1 benutzerdefinierte Frage verfügbar
       other: "%{count} benutzerdefinierte Fragen verfügbar"

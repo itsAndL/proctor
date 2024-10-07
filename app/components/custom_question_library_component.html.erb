@@ -1,7 +1,6 @@
 <div class="grid grid-cols-1 gap-x-12 gap-y-8 lg:grid-cols-4">
   <!-- Filters -->
   <%= render FilterComponent.new(clear_path: @clear_path, assessment: @assessment, library: @library, business: @business) %>
-
   <div class="lg:col-span-3">
     <%= tag.turbo_frame id: "filter_section" do %>
       <p class="text-base text-gray-700 font-bold">
@@ -11,14 +10,10 @@
           <%= t('.available_count', count: @custom_questions.count) %>
         <% end %>
       </p>
-
       <div class="mt-3 pb-16">
         <% if @custom_questions.empty? %>
           <div class="pt-12">
-            <%= render NoResultsComponent.new(
-              title: t(".no_custom_questions_title"),
-              message: t(".no_custom_questions_message")
-            ) %>          
+            <%= render NoResultsComponent.new %>
           </div>
         <% else %>
           <div class="grid grid-cols-1 gap-6">

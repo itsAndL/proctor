@@ -9,14 +9,16 @@
             <option class="font-medium text-gray-400" value="" selected><%= t('.status') %></option>
             <% AssessmentParticipation.statuses.keys.each do |status| %>
               <% active_option = status == params[:status] %>
-              <option class="font-medium <%= 'bg-zinc-200' if active_option %>" value="<%= status %>" <%= 'selected' if active_option %>><%= AssessmentParticipation.human_enum_name(:status,status) %></option>
-              <% end %>
-            </select>
-          </div>
-          <% params.permit(:page, :per_page).to_h.each do |key, value| %>
-            <%= form.hidden_field key, value: value %>
-          <% end %>
+              <option class="font-medium <%= 'bg-zinc-200' if active_option %>" value="<%= status %>" <%= 'selected' if active_option %>>
+                <%= AssessmentParticipation.human_enum_name(:status,status) %>
+              </option>
+            <% end %>
+          </select>
+        </div>
+        <% params.permit(:page, :per_page).to_h.each do |key, value| %>
+          <%= form.hidden_field key, value: value %>
         <% end %>
+      <% end %>
       </div>
       <div class="flow-root">
         <div class="inline-block min-w-full align-middle">
@@ -112,7 +114,7 @@
       </div>
       <!-- Pagination -->
       <% if @assessment_participation.present? %>
-         <%= render PaginationComponent.new(
+        <%= render PaginationComponent.new(
             article_name: Candidate.model_name.human(count: 2),
             current_page: @current_page,
             total_items: @total_items,

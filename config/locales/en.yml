@@ -741,8 +741,6 @@ en:
     invite_candidates_message: "Invitez les candidats à compléter cette évaluation et à évaluer leur performance."
     invite_action_title: "Invite"
   custom_question_library_component:
-    no_custom_questions_title: "No custom questions"
-    no_custom_questions_message: "There are no custom questions available at the moment."
     available_count:
       one: 1 custom question available
       other: "%{count} custom questions available"

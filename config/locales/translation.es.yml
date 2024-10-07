@@ -489,9 +489,6 @@ es:
       create_assessment: Crear evaluación
       custom_questions: Preguntas personalizadas
   custom_question_library_component:
-    no_custom_questions_title: "No hay preguntas personalizadas disponibles"
-    no_custom_questions_message: "Añada preguntas personalizadas para capturar información
-      crítica para su proceso de selección. Profundice con preguntas adicionales."
     available_count:
       one: 1 pregunta personalizada disponible
       other: "%{count} preguntas personalizadas disponibles"
