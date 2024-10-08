@@ -65,7 +65,8 @@ fr:
         website: Site web
       candidate:
         avatar: Votre photo de profil
-        name: Votre nom
+        name: Nom
+        email: E-mail
     enums:
       assessment:
         language:
@@ -426,9 +427,6 @@ fr:
         placeholder: Veuillez nous en dire plus sur votre réponse...
         somewhat: Un peu
         'yes': Oui
-  candidate_import_preview_component:
-    email: E-mail
-    name: Nom
   candidate_rating_component:
     notes_placeholder: Ajoutez vos notes privées ici (sauvegarde automatique)...
     rating_description: Donnez votre appréciation personnelle de ce candidat en vous

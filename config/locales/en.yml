@@ -48,8 +48,9 @@ en:
         contact_role: Your job title or role
         website: Website
       candidate:
-        avatar: Your profile picture
-        name: Your name
+        avatar: Profile picture
+        name: Name
+        email: Email
       assessment:
         title: Title
         language: Language
@@ -717,9 +718,6 @@ en:
     max_file_size: 10MB max file size.
     supported_file_types: 'Supported file types:'
     xlsx: XLSX
-  candidate_import_preview_component:
-    email: Email
-    name: Name
   candidate_rating_component:
     notes_placeholder: Add your private notes here (auto-saved)...
     rating_description: Give your personal overall rating of this candidate based on your impressions and interactions with him or her.

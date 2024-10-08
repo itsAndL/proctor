@@ -71,7 +71,8 @@ es:
         website: Página web
       candidate:
         avatar: Su foto de perfil
-        name: Su nombre
+        name: Nombre
+        email: E-mail
     enums:
       assessment:
         language:
@@ -428,9 +429,6 @@ es:
         placeholder: Por favor, cuéntenos más sobre su respuesta...
         somewhat: Algo
         'yes': Sí
-  candidate_import_preview_component:
-    email: E-mail
-    name: Nombre
   candidate_rating_component:
     notes_placeholder: Añada aquí sus notas privadas (autoguardadas)...
     rating_description: Indique su valoración global personal de este candidato basándose

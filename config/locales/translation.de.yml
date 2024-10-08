@@ -71,7 +71,8 @@ de:
         website: Website
       candidate:
         avatar: Ihr Profilbild
-        name: Ihr Name
+        name: Name
+        email: E-mail
     enums:
       assessment:
         language:
@@ -440,9 +441,6 @@ de:
         placeholder: Bitte erzählen Sie uns mehr über Ihre Antwort...
         somewhat: Irgendwie
         'yes': Ja
-  candidate_import_preview_component:
-    email: E-Mail
-    name: Name
   candidate_rating_component:
     notes_placeholder: Fügen Sie hier Ihre privaten Notizen hinzu (wird automatisch
       gespeichert)...
