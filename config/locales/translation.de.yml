@@ -51,6 +51,13 @@ de:
           vertrauenswürdig und gültig sind wie herkömmliche Prüfungen vor Ort.
         title: Unsere Vision
   activerecord:
+    models:
+      assessment:
+        one: "Bewertung"
+        other: "Bewertungen"
+      candidate:
+        one: "Kandidat"
+        other: "Kandidaten"
     attributes:
       assessment:
         title: "Titel"
@@ -64,7 +71,8 @@ de:
         website: Website
       candidate:
         avatar: Ihr Profilbild
-        name: Ihr Name
+        name: Name
+        email: E-mail
     enums:
       assessment:
         language:
@@ -200,9 +208,10 @@ de:
     send_results_to_candidate: Ergebnisse an den Bewerber senden
     status: Status
   assessment_stepper_component:
-    completed: Abgeschlossen
-    current: Aktuell
-    upcoming: Demnächst
+    assessment_details: "Bewertungsdetails"
+    choose_tests: "Tests auswählen"
+    add_questions: "Fragen hinzufügen"
+    finalize: "Fertigstellen"
   assessment_title_component:
     duration: Dauer
     language: Sprache
@@ -429,9 +438,6 @@ de:
         placeholder: Bitte erzählen Sie uns mehr über Ihre Antwort...
         somewhat: Irgendwie
         'yes': Ja
-  candidate_import_preview_component:
-    email: E-Mail
-    name: Name
   candidate_rating_component:
     notes_placeholder: Fügen Sie hier Ihre privaten Notizen hinzu (wird automatisch
       gespeichert)...
@@ -463,6 +469,9 @@ de:
     send_reminder: Erinnerung senden
     send_results: Ergebnisse senden
     status: Status
+    invite_candidates_title: "Kandidaten einladen"
+    invite_candidates_message: "Laden Sie Kandidaten ein, um Ihre Bewertung abzuschließen."
+    invite_action_title: "Einladung"
   contact:
     index:
       address: Adresse
@@ -1173,8 +1182,8 @@ de:
       account: Konto
       signed_in_as: Angemeldet als
   no_results_component:
-    default_message: Diese Bewertung wurde noch nicht begonnen
-    default_title: Bewertung nicht begonnen
+    default_message: Versuchen Sie eine neue Suche oder wenden Sie einen anderen Filter an.
+    default_title: Es wurden leider keine Ergebnisse gefunden.
   not_started_component:
     default_message: Versuchen Sie eine neue Suche oder wenden Sie einen anderen
       Filter an.
@@ -1201,7 +1210,7 @@ de:
           tb: TB
           zb: ZB
   pagination_component:
-    items_per_page: Artikel pro Seite
+    items_per_page: "%{article} pro Seite"
   participation_progress_indicators_component:
     no_limit: Kein Limit
     time_for_question: 'Zeit für die Frage %{answered_count} von %{questions_count}:'

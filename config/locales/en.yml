@@ -32,6 +32,13 @@ en:
         description: To be the leading provider of remote testing solutions, recognized for our commitment to security, reliability, and user experience. We envision a world where remote exams are as trustworthy and valid as traditional in-person assessments.
         title: Our Vision
   activerecord:
+    models:
+      assessment:
+        one: Assessment
+        other: Assessments
+      candidate:
+        one: Candidate
+        other: Candidates
     attributes:
       business:
         avatar: Your company logo
@@ -41,8 +48,9 @@ en:
         contact_role: Your job title or role
         website: Website
       candidate:
-        avatar: Your profile picture
-        name: Your name
+        avatar: Profile picture
+        name: Name
+        email: Email
       assessment:
         title: Title
         language: Language
@@ -116,7 +124,7 @@ en:
       custom_questions_on: 'Custom questions on:'
       duration: 'Duration: %{duration}'
       hello: Hello %{name}!
-      invite_subject: Sie wurden eingeladen, eine Bewertung abzulegen
+      invite_subject: You have been invited to take an assessment
       invited_by: You've been invited to take an assessment by <strong>%{company}</strong>.
       language: 'Language: %{language}'
       link_not_work: 'If the above link does not work, copy and paste this URL into your browser:'
@@ -625,13 +633,13 @@ en:
     application:
       title: "AssessKit - Ensuring Integrity in Remote Testing"
   no_results_component:
-    default_message: This assessment has not been started yet
-    default_title: Assessment not started
+    default_message: No results
+    default_title: Try a new search or apply a different filter.
   not_started_component:
     default_message: Try a new search or apply a different filter.
     default_title: Sorry, no results were found.
   pagination_component:
-    items_per_page: Items per page
+    items_per_page: "%{article} per page"
   roles:
     new:
       business:
@@ -689,9 +697,10 @@ en:
     send_results_to_candidate: Send results to candidate
     status: Status
   assessment_stepper_component:
-    completed: Completed
-    current: Current
-    upcoming: Upcoming
+    assessment_details: "Assessment details"
+    choose_tests: "Choose tests"
+    add_questions: "Add questions"
+    finalize: "Finalize"
   bulk_inviting_component:
     csv: CSV
     download_templates: 'You can download one of these templates:'
@@ -706,9 +715,6 @@ en:
     max_file_size: 10MB max file size.
     supported_file_types: 'Supported file types:'
     xlsx: XLSX
-  candidate_import_preview_component:
-    email: Email
-    name: Name
   candidate_rating_component:
     notes_placeholder: Add your private notes here (auto-saved)...
     rating_description: Give your personal overall rating of this candidate based on your impressions and interactions with him or her.
@@ -726,6 +732,9 @@ en:
     send_reminder: Send reminder
     send_results: Send results
     status: Status
+    invite_candidates_title: "Invite candidates"
+    invite_candidates_message: "Invitez les candidats à compléter cette évaluation et à évaluer leur performance."
+    invite_action_title: "Invite"
   custom_question_library_component:
     available_count:
       one: 1 custom question available

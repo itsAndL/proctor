@@ -51,6 +51,13 @@ es:
           tan fiables y válidos como las evaluaciones tradicionales en persona.
         title: Nuestra visión
   activerecord:
+    models:
+      assessment:
+        one: "Evaluación"
+        other: "Evaluaciones"
+      candidate:
+        one: "Candidato"
+        other: "Candidatos"
     attributes:
       assessment:
         title: Título
@@ -64,7 +71,8 @@ es:
         website: Página web
       candidate:
         avatar: Su foto de perfil
-        name: Su nombre
+        name: Nombre
+        email: E-mail
     enums:
       assessment:
         language:
@@ -195,9 +203,10 @@ es:
     send_results_to_candidate: Enviar los resultados al candidato
     status: Estado
   assessment_stepper_component:
-    completed: Completado
-    current: Actual
-    upcoming: Próximamente
+    assessment_details: Detalles de la evaluación
+    choose_tests: Elegir pruebas
+    add_questions: Añadir preguntas
+    finalize: Finalizar
   assessment_title_component:
     duration: Duración
     language: Idioma
@@ -275,7 +284,7 @@ es:
     registrations:
       new:
         get_started: Comience con AssessKit gratis
-        email_address: Dirección de correo electrónico
+        email_address: Dirección de e-mail
         password: Contraseña
         company_name: Nombre de la empresa
         sign_up: Regístrate
@@ -359,7 +368,7 @@ es:
           el dispositivo correcto.
         next: Siguiente
         restart_device: Reinicie su dispositivo e intente acceder de nuevo a la evaluación
-          utilizando el enlace del correo electrónico de invitación.
+          utilizando el enlace del e-mail de invitación.
         supported_browser: Asegúrese de que utiliza un <a target='_blank' href='%{url}'
           class='underline'><strong>navegador compatible.</strong></a>
         webcam_troubleshoot: "¿Problemas con la cámara web?"
@@ -396,8 +405,8 @@ es:
     registrations:
       new:
         create_profile: Crea tu perfil de AssessKit
-        enter_email: Introduce la dirección de correo electrónico a la que recibiste la invitación para la evaluación.
-        email_address: Dirección de correo electrónico
+        enter_email: Introduce la dirección de e-mail a la que recibiste la invitación para la evaluación.
+        email_address: Dirección de e-mail
         password: Contraseña
         your_name: Tu nombre
         sign_up: Regístrate
@@ -417,9 +426,6 @@ es:
         placeholder: Por favor, cuéntenos más sobre su respuesta...
         somewhat: Algo
         'yes': Sí
-  candidate_import_preview_component:
-    email: Correo electrónico
-    name: Nombre
   candidate_rating_component:
     notes_placeholder: Añada aquí sus notas privadas (autoguardadas)...
     rating_description: Indique su valoración global personal de este candidato basándose
@@ -450,10 +456,13 @@ es:
     send_reminder: Enviar recordatorio
     send_results: Enviar resultados
     status: Estado
+    invite_candidates_title: "Invitar candidatos"
+    invite_candidates_message: "Invita a los candidatos a realizar la evaluación."
+    invite_action_title: "Invitar"
   contact:
     index:
       address: Dirección
-      email: Correo electrónico
+      email: E-mail
       first_name: Nombre
       get_in_touch: Póngase en contacto
       help_message: "¿Tiene preguntas o necesita más información? Estamos aquí para
@@ -519,7 +528,7 @@ es:
         assessments: Evaluaciones
         candidates: Candidatos
         create_assessment: Crear evaluación
-        email: Correo electrónico
+        email: E-mail
         last_activity: Última actividad
         name: Nombre
         search_candidates: Buscar candidatos
@@ -529,7 +538,7 @@ es:
         add_user: Añadir usuario
         archive: Archivo
         edit: Editar
-        email: Correo electrónico
+        email: E-mail
         manage_team_members: Gestionar a los miembros del equipo
         name: Nombre
         owner: Propietario
@@ -633,7 +642,7 @@ es:
         cuenta.
       new:
         resend_confirmation_instructions: "Reenviar instrucciones de confirmación"
-        email_address: "Dirección de correo electrónico"
+        email_address: "Dirección de e-mail"
         resend_instructions: "Reenviar instrucciones"
         business_dont_have_account: "¿Eres una empresa y no tienes una cuenta?"
         create_one: "Crear una!"
@@ -675,7 +684,7 @@ es:
         new_password: Nueva contraseña
       new:
         forgot_your_password: ¿Olvidaste tu contraseña?
-        email_address: Dirección de correo electrónico
+        email_address: Dirección de e-mail
         send_reset_link: Enviar enlace de restablecimiento
         already_have_account: ¿Ya tienes una cuenta?
         log_in: Iniciar sesión
@@ -693,17 +702,17 @@ es:
       updated_not_active: Tu contraseña fue cambiada.
     registrations:
       edit:
-        change_email: Cambiar correo electrónico
-        change_email_address: Cambiar la dirección de correo electrónico
+        change_email: Cambiar e-mail
+        change_email_address: Cambiar la dirección de e-mail
         change_password: Cambiar contraseña
         confirm_password: Confirmar contraseña
-        current_email: Correo electrónico actual
+        current_email: E-mail actual
         current_password: Contraseña actual
         enter_current_password_to_change_email: Introduzca la contraseña actual para
-          cambiar el correo electrónico
+          cambiar el e-mail
         enter_current_password_to_change_password: Introduzca la contraseña actual
           para cambiar la contraseña
-        new_email: Nuevo correo electrónico
+        new_email: Nuevo e-mail
         new_password: Nueva contraseña
         your_account: Su cuenta
       destroyed: "¡Adiós! Tu cuenta ha sido cancelada correctamente. Esperamos verte
@@ -714,11 +723,11 @@ es:
       signed_up_but_locked: Tu cuenta ha sido creada correctamente. Sin embargo, no
         hemos podido iniciar la sesión porque que tu cuenta está bloqueada.
       signed_up_but_unconfirmed: Se ha enviado un mensaje con un enlace de confirmación
-        a tu correo electrónico. Abre el enlace para activar tu cuenta.
+        a tu e-mail. Abre el enlace para activar tu cuenta.
       update_needs_confirmation: Has actualizado tu cuenta correctamente, pero es
-        necesario confirmar tu nuevo correo electrónico. Por favor, comprueba tu correo
+        necesario confirmar tu nuevo e-mail. Por favor, comprueba tu correo
         y sigue el enlace de confirmación para finalizar la comprobación del nuevo
-        correo electrónico.
+        e-mail.
       updated: Tu cuenta se ha actualizado.
       updated_but_not_signed_in: Su cuenta se ha actualizado correctamente, pero como
         se cambió su contraseña, debe iniciar sesión nuevamente
@@ -727,7 +736,7 @@ es:
         login_to_your_profile: Inicie sesión en su perfil de AssessKit
         dont_have_an_account: ¿No tiene una cuenta?
         sign_up_now: Regístrese ahora
-        email_address: Dirección de correo electrónico
+        email_address: Dirección de e-mail
         password: Contraseña
         keep_me_logged_in: Mantener sesión iniciada
         forgot_password: ¿Olvidó su contraseña?
@@ -759,12 +768,12 @@ es:
   email_inviting_component:
     actions: Acciones
     add: Añadir
-    email: Correo electrónico
-    email_placeholder: Correo electrónico *
+    email: E-mail
+    email_placeholder: E-mail *
     invite_candidates: Invitar a los candidatos
     name: Nombre
     name_placeholder: Nombre
-    send_invitation_email: Envíe un correo electrónico de invitación a los candidatos.
+    send_invitation_email: Envíe un e-mail de invitación a los candidatos.
   empty_test_results_component:
     default_description: No hay resultados que mostrar.
     default_title: Sin resultados
@@ -1118,14 +1127,14 @@ es:
       return_home: Volver a casa
       title: Enlace inactivo
     public_link:
-      email_label: Correo electrónico
+      email_label: E-mail
       introduction: Gracias por su interés en esta evaluación Indique su dirección
-        de correo electrónico y le enviaremos más información con un enlace para empezar.
+        de e-mail y le enviaremos más información con un enlace para empezar.
       submit_button: Por favor, invítame
       title: Realice nuestra evaluación
   invite_modal_component:
     close: Cerrar
-    invite_by_email: Invitar por correo electrónico
+    invite_by_email: Invitar por e-mail
     invite_candidates: Invitar a los candidatos
     invite_in_bulk: Invitar en masa
     share_link: Compartir enlace
@@ -1156,8 +1165,8 @@ es:
       account: Cuenta
       signed_in_as: Conectado como
   no_results_component:
-    default_message: Esta evaluación aún no se ha iniciado
-    default_title: Evaluación no iniciada
+    default_message: No se han encontrado resultados.
+    default_title: Intente una nueva búsqueda o aplique un filtro diferente.
   not_started_component:
     default_message: Intente una nueva búsqueda o aplique un filtro diferente.
     default_title: Lo sentimos, no se han encontrado resultados.
@@ -1183,7 +1192,7 @@ es:
           tb: TB
           zb: ZB
   pagination_component:
-    items_per_page: Artículos por página
+    items_per_page: "%{article} por página"
   participation_progress_indicators_component:
     no_limit: Sin límite
     time_for_question: 'Hora de la pregunta %{answered_count} de %{questions_count}:'
@@ -1257,7 +1266,7 @@ es:
       oportunidades, por lo que utilizamos una evaluación de AssessKit (%{root_url}).
       Esto ayuda a mantener la equidad y la integridad en nuestro proceso.
     invite_candidates: Invite a los candidatos compartiendo un enlace público. Este
-      enlace les dirigirá a la evaluación y capturará su nombre y correo electrónico
+      enlace les dirigirá a la evaluación y capturará su nombre y e-mail
       para fines de seguimiento.
     ready_to_start: "¿Listo para empezar? Haga clic en el siguiente enlace:"
   shared:

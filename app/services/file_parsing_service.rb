@@ -12,7 +12,7 @@ class FileParsingService
 
   def self.parse_csv(file)
     CSV.read(file.path, headers: true).map do |row|
-      { name: row['Name'], email: row['Email'] }
+      { name: row[Candidate.human_attribute_name(:name)], email: row[Candidate.human_attribute_name(:email)] }
     end
   end
 
@@ -21,7 +21,7 @@ class FileParsingService
     headers = spreadsheet.row(1)
     (2..spreadsheet.last_row).map do |i|
       row = [headers, spreadsheet.row(i)].transpose.to_h
-      { name: row['Name'], email: row['Email'] }
+      { name: row[Candidate.human_attribute_name(:name)], email: row[Candidate.human_attribute_name(:email)] }
     end
   end
 end

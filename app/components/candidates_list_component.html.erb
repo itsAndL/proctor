@@ -2,28 +2,26 @@
   <div class="border border-gray-200 bg-white rounded-xl">
     <div class="p-5 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
       <h2 class="text-base font-bold text-black"><%= t('.candidates') %></h2>
-
       <%= form_with url: assessment_path(@assessment), method: :get, data: { controller: "search", search_target: "form" } do |form| %>
         <div class="flex flex-col sm:flex-row items-center gap-y-3 sm:gap-x-5">
           <%= render SearchInputComponent.new(form:, placeholder: t('.search_candidates')) %>
-
           <select name="status" onchange="this.form.submit()" class="select-field w-full sm:w-60 py-2.5 pl-5 pr-10 rounded-xl">
             <option class="font-medium text-gray-400" value="" selected><%= t('.status') %></option>
             <% AssessmentParticipation.statuses.keys.each do |status| %>
               <% active_option = status == params[:status] %>
-              <option class="font-medium <%= 'bg-zinc-200' if active_option %>" value="<%= status %>" <%= 'selected' if active_option %>><%= AssessmentParticipation.human_enum_name(:status,status) %></option>
+              <option class="font-medium <%= 'bg-zinc-200' if active_option %>" value="<%= status %>" <%= 'selected' if active_option %>>
+                <%= AssessmentParticipation.human_enum_name(:status,status) %>
+              </option>
             <% end %>
           </select>
         </div>
-
         <% params.permit(:page, :per_page).to_h.each do |key, value| %>
           <%= form.hidden_field key, value: value %>
         <% end %>
       <% end %>
-    </div>
-
-    <div class="flow-root">
-      <div class="inline-block min-w-full align-middle">
+      </div>
+      <div class="flow-root">
+        <div class="inline-block min-w-full align-middle">
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="border-t border-gray-200">
               <tr>
@@ -38,12 +36,26 @@
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
-              <% if @assessment_participations.empty? %>             
+              <% if  @assessment.assessment_participations.empty? %>
                 <tr>
-                  <td colspan="6"><%= render NoResultsComponent.new %></td>
+                  <td colspan="6">
+                    <%= render NoResultsComponent.new(
+                      title: t('.invite_candidates_title'),
+                      message: t('.invite_candidates_message'),
+                      action_title: t('.invite_action_title'),
+                      action_link: helpers.assessment_invite_eligibility_path(@assessment),
+                      svg: "envelope"
+                    ) %>
+                  </td>
+                </tr>
+              <% elsif @assessment_participations.empty? %>
+                <tr>
+                  <td colspan="6">
+                    <%= render NoResultsComponent.new %>
+                  </td>
                 </tr>
               <% else %>
-                <% @assessment_participations.each_with_index do |assessment_participation, index| %>  
+                <% @assessment_participations.each_with_index do |assessment_participation, index| %>
                   <tr class="hover:bg-blue-50 cursor-pointer" data-controller="clickable-row" data-clickable-row-url-value="<%= report_assessment_participation_path(assessment_participation) %>" data-action="click->clickable-row#handleClick">
                     <td class="max-w-24 py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6 truncate"><%= assessment_participation.participant.name || assessment_participation.participant.email %></td>
                     <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800">
@@ -54,24 +66,21 @@
                     <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800 hidden md:table-cell">
                       <%= render(StarRatingComponent.new(assessment_participation)) %>
                     </td>
-
                     <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
                       <div class="ignore dropdown dropdown-hover">
                         <button tabindex="<%= index %>" type="button" class="text-gray-800 hover:bg-white hover:rounded-full p-0.5">
                           <%= helpers.svg_tag "ellipsis_vertical" %>
                         </button>
-
                         <div tabindex="<%= index %>" class="dropdown-content absolute right-8 -top-4 z-10 mt-2 w-68 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                           <div class="py-1" role="none">
                             <div data-controller="copy-link" data-copy-link-link-value="<%= overview_candidate_assessment_participation_url(assessment_participation) %>">
                               <button type="button"
                                       data-action="click->copy-link#copy"
-                                      class="group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium">
+                                class="group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium">
                                 <%= helpers.svg_tag "clipboard", class: "size-5 group-hover:text-gray-500" %>
                                 <span data-copy-link-target="text"><%= t('.copy_link') %></span>
                               </button>
                             </div>
-
                             <% unless assessment_participation.completed? %>
                               <%= button_to send_reminder_assessment_participation_path(assessment_participation),
                                             method: :post,
@@ -81,12 +90,10 @@
                                 <span><%= t('.send_reminder') %></span>
                               <% end %>
                             <% end %>
-
                             <button type="button" class="group flex items-center gap-x-2.5 px-4 py-2 text-sm <%= started_or_completed?(assessment_participation) ? "text-gray-700" : "text-gray-400 pointer-events-none" %> font-medium">
                               <%= helpers.svg_tag "envelope", class: "size-5 group-hover:text-gray-500", "stroke-width": 2 %>
                               <span data-copy-link-target="text"><%= t('.send_results') %></span>
                             </button>
-
                             <%= button_to delete_confirmation_assessment_participation_path(assessment_participation),
                                 method: :get,
                                 class: "group flex items-center gap-x-2.5 px-4 py-2 text-sm text-gray-700 font-medium",
@@ -103,15 +110,17 @@
               <% end %>
             </tbody>
           </table>
+        </div>
       </div>
+      <!-- Pagination -->
+      <% if @assessment_participation.present? %>
+        <%= render PaginationComponent.new(
+            article_name: Candidate.model_name.human(count: 2),
+            current_page: @current_page,
+            total_items: @total_items,
+            per_page: @per_page,
+            additional_params: { search_query: params[:search_query], status: params[:status] }
+          ) %>
+      <% end %>
     </div>
-
-    <!-- Pagination -->
-    <%= render PaginationComponent.new(
-      current_page: @current_page,
-      total_items: @total_items,
-      per_page: @per_page,
-      additional_params: { search_query: params[:search_query], status: params[:status] }
-    ) %>
-  </div>
-<% end %>
+  <% end %>
