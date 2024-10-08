@@ -6,7 +6,6 @@ class CustomQuestionLibraryComponent < ViewComponent::Base
     @clear_path = clear_path
     @assessment = assessment
     @business = business
-    @library = :custom_question
   end
 
   def before_render

@@ -1,4 +1,4 @@
-<%= form_with url: filter_url, method: :get, data: { controller: "search", search_target: "form", "turbo-frame": "filter_section" } do |form| %>
+<%= form_with url: filter_url, method: :get, data: { controller: "search", search_target: "form", "turbo-frame": "filter_result" } do |form| %>
   <%= render SearchInputComponent.new(form:, placeholder:) %>
 
   <h2 class="pt-7 text-xl font-bold text-black"><%= t('.filters') %></h2>

@@ -8,7 +8,6 @@ class TestLibraryComponent < ViewComponent::Base
     @clear_path = clear_path
     @assessment = assessment
     @business = business
-    @library = :test
   end
 
   def before_render
@@ -20,7 +19,8 @@ class TestLibraryComponent < ViewComponent::Base
       params[:search_query].present? ||
       params[:test_category].present? ||
       params[:test_type].present? ||
-      params[:language].present?
+      params[:language].present? ||
+      params[:test_duration].present?
   end
 
   private

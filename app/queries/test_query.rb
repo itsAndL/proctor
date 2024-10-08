@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class TestQuery
+  include LanguageHelper
+
   attr_reader :relation
 
   def initialize(relation = Test.all, locale: I18n.locale)
@@ -41,8 +43,14 @@ class TestQuery
   end
 
   def filter_by_language(language)
-    language = Test.language_name_by_locale(@locale) if language.blank?
+    language = map_locale_to_language(@locale) if language.blank?
     @relation = relation.where(language:)
+  end
+
+  def filter_by_duration(durations)
+    return relation if durations.blank?
+
+    @relation = relation.where(duration_seconds: duration_ranges(durations))
   end
 
   def active
@@ -53,14 +61,28 @@ class TestQuery
     @relation = relation.sorted
   end
 
-  def execute(search_query: nil, category_ids: nil, types: nil, business: nil, only_system: false, only_business: false, language: nil)
+  def execute(search_query: nil, category_ids: nil, types: nil, business: nil, only_system: false, only_business: false, language: nil, durations: nil)
     filter_by_search_query(search_query)
     filter_by_categories(category_ids)
     filter_by_types(types)
     filter_by_business(business, only_system:, only_business:)
     filter_by_language(language)
+    filter_by_duration(durations)
     active
     sorted
     @relation
+  end
+
+  private
+
+  def duration_ranges(durations)
+    ranges = {
+      'less_10' => 0..600,
+      '11_to_20' => 601..1200,
+      '21_to_30' => 1201..1800,
+      '31_to_60' => 1801..3600
+    }
+
+    durations.map { |duration| ranges[duration] }.compact
   end
 end
