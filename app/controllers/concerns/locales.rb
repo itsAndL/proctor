@@ -5,7 +5,7 @@ module Locales
 
   included do
     def set_locale(&action)
-      accept_language = request.env['HTTP_ACCEPT_LANGUAGE']&.split(',')&.first(2)&.join
+      accept_language = request.env['HTTP_ACCEPT_LANGUAGE']&.first(2)
       locale =
         if params[:locale].present? && valide_locale?(params[:locale])
           params[:locale].to_sym
