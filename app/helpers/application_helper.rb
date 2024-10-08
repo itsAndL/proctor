@@ -10,6 +10,15 @@ module ApplicationHelper
   end
 
   def human_date(date)
-    date.strftime('%B %d, %Y')
+    case I18n.locale
+    when :en
+      date.strftime('%B %d, %Y')
+    when :es
+      date.strftime('%d de %B de %Y')
+    when :de
+      date.strftime('%d. %B %Y')
+    when :fr
+      date.strftime('%d %B %Y')
+    end
   end
 end

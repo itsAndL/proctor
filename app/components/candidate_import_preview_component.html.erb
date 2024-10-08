@@ -2,8 +2,8 @@
   <table class="min-w-full bg-white rounded-lg overflow-hidden">
     <thead class="bg-blue-600 text-white text-xs pointer-events-none">
       <tr>
-        <th class="py-2 px-4 text-left"><%= t('.name') %></th>
-        <th class="py-2 px-4 text-left"><%= t('.email') %></th>
+        <th class="py-2 px-4 text-left"><%= Candidate.human_attribute_name(:name) %></th>
+        <th class="py-2 px-4 text-left"><%= Candidate.human_attribute_name(:email) %></th>
       </tr>
     </thead>
     <tbody class="divide-y divide-gray-200 text-xs font-semibold pointer-events-none">

@@ -45,6 +45,13 @@ fr:
           fiables et valides que les évaluations traditionnelles en personne.
         title: Notre vision
   activerecord:
+    models:
+      assessment:
+        one: "Évaluation"
+        other: "Évaluations"
+      candidate: 
+        one: "Candidat"
+        other: "Candidats"
     attributes:
       assessment:
         title: Titre
@@ -58,7 +65,8 @@ fr:
         website: Site web
       candidate:
         avatar: Votre photo de profil
-        name: Votre nom
+        name: Nom
+        email: E-mail
     enums:
       assessment:
         language:
@@ -71,7 +79,7 @@ fr:
           archived: Archivé
           completed: Terminé
           invitation_clicked: Invitation cliquée
-          invited: Sur invitation
+          invited: Invité
           started: Commencé
       custom_question:
         type:
@@ -186,13 +194,14 @@ fr:
   assessment_score_card_component:
     assessment: L'évaluation
     average_score: Note moyenne
-    invited: Sur invitation
+    invited: Invité
     send_results_to_candidate: Envoyer les résultats au candidat
     status: Statut
   assessment_stepper_component:
-    completed: Terminé
-    current: Actuel
-    upcoming: À venir
+    assessment_details: "Détails de l'évaluation"
+    choose_tests: "Choisir les tests"
+    add_questions: "Ajouter des questions"
+    finalize: "Finaliser"
   assessment_title_component:
     duration: La durée
     language: Langue
@@ -305,7 +314,7 @@ fr:
           vous redirigerons automatiquement vers les résultats de votre évaluation.
       index:
         company_name: Nom de l'entreprise
-        invited_on: Invité sur
+        invited_on: Invité à
         last_activity: Dernière activité
         my_assessments: Mes évaluations
         no_assessments_message: Vous n'avez encore été invité à aucune évaluation.
@@ -373,7 +382,7 @@ fr:
         completion_recommendation: Nous recommandons de réaliser l'évaluation en une
           seule fois.
         important_things: Les choses importantes
-        invited_on: Invité sur
+        invited_on: Invité à
         name: Nom
         out_of: hors de
         preview_questions: Avant chaque test, il peut y avoir des questions de prévisualisation,
@@ -415,9 +424,6 @@ fr:
         placeholder: Veuillez nous en dire plus sur votre réponse...
         somewhat: Un peu
         'yes': Oui
-  candidate_import_preview_component:
-    email: E-mail
-    name: Nom
   candidate_rating_component:
     notes_placeholder: Ajoutez vos notes privées ici (sauvegarde automatique)...
     rating_description: Donnez votre appréciation personnelle de ce candidat en vous
@@ -437,17 +443,20 @@ fr:
       something_went_wrong: Un problème s'est produit lors du téléchargement du fichier.
   candidates_list_component:
     actions: Actions
-    avg_score: Score moyen (en %)
+    avg_score: Score moyen %
     candidates: Candidats
     copy_link: Copier le lien d'évaluation du candidat
     delete_candidate: Supprimer le candidat
-    invited_on: Invité sur
+    invited_on: Invité à
     name: Nom
     overall_rating: Note globale
     search_candidates: Recherche de candidats
     send_reminder: Envoyer un rappel
     send_results: Envoyer les résultats
     status: Statut
+    invite_candidates_title: Inviter les candidats
+    invite_candidates_message: Invitez les candidats à compléter cette évaluation et à évaluer leur performance.
+    invite_action_title: Inviter 
   contact:
     index:
       address: Adresse
@@ -1154,8 +1163,8 @@ fr:
       account: Compte
       signed_in_as: Connecté en tant que
   no_results_component:
-    default_message: Cette évaluation n'a pas encore commencé
-    default_title: L'évaluation n'a pas commencé
+    default_message: Essayez une nouvelle recherche ou appliquez un autre filtre.
+    default_title: Désolé, aucun résultat n'a été trouvé.
   not_started_component:
     default_message: Essayez une nouvelle recherche ou appliquez un autre filtre.
     default_title: Désolé, aucun résultat n'a été trouvé.
@@ -1181,7 +1190,7 @@ fr:
           tb: To
           zb: ZB
   pagination_component:
-    items_per_page: Articles par page
+    items_per_page: "%{article} par page"
   participation_progress_indicators_component:
     no_limit: Pas de limite
     time_for_question: 'L''heure est à la question %{answered_count} de %{questions_count}

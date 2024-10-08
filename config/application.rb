@@ -46,7 +46,7 @@ module Proctor
     config.i18n.available_locales = %i[en fr es de]
 
     # Set default locale
-    config.i18n.default_locale = :en
+    config.i18n.default_locale = :fr
 
     # Use default language as fallback if translation is missing
     config.i18n.fallbacks = true

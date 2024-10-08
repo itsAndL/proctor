@@ -9,4 +9,8 @@ module Questionable
 
     validates :content, :type, presence: true
   end
+
+  def randomized_options
+    options.order('RANDOM()')
+  end
 end

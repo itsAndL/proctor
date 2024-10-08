@@ -9,17 +9,17 @@
               <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 group-hover:bg-blue-800">
                 <%= helpers.svg_tag "check", class: "h-6 w-6 text-white" %>
               </span>
-              <span class="ml-4 text-sm font-medium text-gray-900"><%= t('.completed', default: step[:name]) %></span>
+              <span class="ml-4 text-sm font-medium text-gray-900"><%= step[:name] %></span>
             <% when :current %>
               <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border-2 border-blue-600">
                 <span class="text-blue-600"><%= index + 1 %></span>
               </span>
-              <span class="ml-4 text-sm font-medium text-blue-600"><%= t('.current', default: step[:name]) %></span>
+              <span class="ml-4 text-sm font-medium text-blue-600"><%= step[:name] %></span>
             <% when :upcoming %>
               <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border-2 border-gray-300 group-hover:border-gray-400">
                 <span class="text-gray-500 group-hover:text-gray-900"><%= index + 1 %></span>
               </span>
-              <span class="ml-4 text-sm font-medium text-gray-500 group-hover:text-gray-900"><%= t('.upcoming', default: step[:name]) %></span>
+              <span class="ml-4 text-sm font-medium text-gray-500 group-hover:text-gray-900"><%=  step[:name] %></span>
             <% end %>
           </span>
         <% end %>
