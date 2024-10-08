@@ -198,9 +198,6 @@ fr:
     send_results_to_candidate: Envoyer les résultats au candidat
     status: Statut
   assessment_stepper_component:
-    completed: Terminé
-    current: Actuel
-    upcoming: À venir
     assessment_details: "Détails de l'évaluation"
     choose_tests: "Choisir les tests"
     add_questions: "Ajouter des questions"

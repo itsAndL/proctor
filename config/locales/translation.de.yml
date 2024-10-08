@@ -208,9 +208,6 @@ de:
     send_results_to_candidate: Ergebnisse an den Bewerber senden
     status: Status
   assessment_stepper_component:
-    completed: Abgeschlossen
-    current: Aktuell
-    upcoming: Demnächst
     assessment_details: "Bewertungsdetails"
     choose_tests: "Tests auswählen"
     add_questions: "Fragen hinzufügen"

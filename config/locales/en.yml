@@ -701,9 +701,6 @@ en:
     choose_tests: "Choose tests"
     add_questions: "Add questions"
     finalize: "Finalize"
-    completed: Completed
-    current: Current
-    upcoming: Upcoming
   bulk_inviting_component:
     csv: CSV
     download_templates: 'You can download one of these templates:'

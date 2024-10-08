@@ -207,9 +207,6 @@ es:
     choose_tests: Elegir pruebas
     add_questions: Añadir preguntas
     finalize: Finalizar
-    completed: Completado
-    current: Actual
-    upcoming: Próximamente
   assessment_title_component:
     duration: Duración
     language: Idioma
