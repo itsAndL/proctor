@@ -16,6 +16,7 @@ export default class extends Controller {
   }
 
   connect() {
+    this.initialize()
     if (this.fullscreenValue) {
       this.enterFullscreen()
     } else {
@@ -69,35 +70,31 @@ export default class extends Controller {
   async initializeWebcam(retryCount = 0) {
     console.log('Initializing webcam...');
     try {
-      console.log('Checking mediaDevices support...');
       if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
         throw new Error('mediaDevices not supported');
       }
 
-      console.log('Enumerating devices...');
-      let devices = await navigator.mediaDevices.enumerateDevices();
-      console.log('All devices:', devices);
+      const devices = await navigator.mediaDevices.enumerateDevices();
+      const videoDevices = devices.filter(device => device.kind === 'videoinput');
 
-      let videoDevices = devices.filter(device => device.kind === 'videoinput');
-      console.log('Video devices:', videoDevices);
+      if (videoDevices.length === 0) {
+        throw new Error('No video devices found');
+      }
 
       const selectedDeviceId = await this.selectCamera()
       if (!selectedDeviceId) {
         throw new Error('No camera selected');
       }
-      console.log('Selected device ID:', selectedDeviceId);
 
-      // Re-enumerate devices after permissions have been granted
-      devices = await navigator.mediaDevices.enumerateDevices();
-      videoDevices = devices.filter(device => device.kind === 'videoinput');
-      console.log('Updated video devices:', videoDevices);
-
-      this.populateCameraSelect(videoDevices)
       await this.startWebcam(selectedDeviceId)
 
       if (this.hasCameraSelectTarget) {
+        this.populateCameraSelect(videoDevices)
         this.cameraSelectTarget.value = selectedDeviceId
       }
+
+      // Report webcam as enabled after successful initialization
+      this.reportWebcamStatus(true)
     } catch (error) {
       console.error('Webcam initialization error:', error);
       if (retryCount < 3) {
@@ -106,6 +103,7 @@ export default class extends Controller {
       } else {
         this.logError('webcam', error, { retryCount });
         this.showCameraError("Failed to initialize webcam after multiple attempts. Please check your camera settings and permissions.");
+        this.reportWebcamStatus(false)
       }
     }
   }
@@ -180,9 +178,7 @@ export default class extends Controller {
       const constraints = {
         video: { deviceId: { exact: deviceId } }
       };
-      console.log('Using constraints:', constraints);
       this.webcamStream = await navigator.mediaDevices.getUserMedia(constraints);
-      console.log('Webcam stream obtained:', this.webcamStream);
 
       if (this.hasCameraStreamTarget) {
         this.cameraStreamTarget.srcObject = this.webcamStream;
@@ -190,6 +186,7 @@ export default class extends Controller {
           console.log('Camera stream metadata loaded');
           this.cameraStreamTarget.play();
           this.hideCameraError();
+          this.reportWebcamStatus(true)
         };
         this.cameraStreamTarget.onerror = (event) => {
           console.error('Camera stream error:', event);
@@ -197,24 +194,27 @@ export default class extends Controller {
           this.showCameraError('An error occurred with the camera stream. Attempting to reconnect...');
           this.handleWebcamEnded();
         };
-        // Add event listener for unexpected stream end
         this.webcamStream.getVideoTracks()[0].addEventListener('ended', this.handleWebcamEnded.bind(this));
-      }
-      if (this.reportWebcamValue) {
-        this.debouncedSendUpdate({ webcam_enabled: true });
       }
     } catch (error) {
       console.error('Error starting webcam:', error);
       this.logError('webcam', error, { deviceId });
       this.showCameraError('Failed to start the webcam. Please check your camera settings and permissions.');
-      // Attempt to reconnect after a short delay
+      this.reportWebcamStatus(false)
       setTimeout(() => this.handleWebcamEnded(), 3000);
     }
   }
 
   handleWebcamEnded() {
     console.warn("Webcam stream ended unexpectedly. Attempting to reconnect...")
+    this.reportWebcamStatus(false)
     this.initializeWebcam()
+  }
+
+  reportWebcamStatus(isEnabled) {
+    if (this.reportWebcamValue) {
+      this.debouncedSendUpdate({ webcam_enabled: isEnabled });
+    }
   }
 
   async handleCameraChange(event) {
@@ -234,9 +234,7 @@ export default class extends Controller {
     if (this.hasCameraStreamTarget) {
       this.cameraStreamTarget.classList.add('hidden');
     }
-    if (this.reportWebcamValue) {
-      this.debouncedSendUpdate({ webcam_enabled: false });
-    }
+    this.reportWebcamStatus(false)
   }
 
   hideCameraError() {
@@ -292,22 +290,14 @@ export default class extends Controller {
     setRandomInterval();
   }
 
-  captureWebcamImage() {
+  async captureWebcamImage() {
     return new Promise((resolve, reject) => {
       console.log('Attempting to capture webcam image...');
-      console.log('Webcam stream:', this.webcamStream);
-      console.log('Webcam stream active:', this.webcamStream && this.webcamStream.active);
-
       if (this.webcamStream && this.webcamStream.active) {
         const videoTrack = this.webcamStream.getVideoTracks()[0];
-        console.log('Video track:', videoTrack);
-        console.log('Video track enabled:', videoTrack && videoTrack.enabled);
-
         if (!videoTrack || !videoTrack.enabled) {
           console.warn('Video track is not available or not enabled');
-          if (this.reportWebcamValue) {
-            this.debouncedSendUpdate({ webcam_enabled: false });
-          }
+          this.reportWebcamStatus(false)
           return;
         }
 
@@ -326,22 +316,19 @@ export default class extends Controller {
           video.pause();
           video.srcObject = null;
           console.log('Webcam image captured and sent');
+          this.reportWebcamStatus(true)
           resolve();
         };
 
         video.onerror = (error) => {
           console.error('Error occurred while setting up video for capture:', error);
           this.logError('webcam', error, { context: 'image capture' });
+          this.reportWebcamStatus(false)
           reject(error);
         };
       } else {
         console.warn('Webcam stream not available for capture');
-        if (this.reportWebcamValue) {
-          this.debouncedSendUpdate({ webcam_enabled: false });
-        }
-
-        // Attempt to reinitialize the webcam
-        console.log('Attempting to reinitialize webcam...');
+        this.reportWebcamStatus(false)
         this.initializeWebcam().then(resolve).catch(reject);
       }
     });
