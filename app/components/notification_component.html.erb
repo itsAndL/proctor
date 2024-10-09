@@ -2,7 +2,7 @@
   <% if @notice.present? || @alert.present? %>
     <div
       data-controller="notification"
-      data-notification-delay-value="5000"
+      data-notification-delay-value="6000"
       class="fixed z-50 px-4 py-5 w-fit bottom-0"
       data-notification-target="container"
     >
@@ -37,7 +37,7 @@
         <div class="relative  <%= @notice ? 'bg-blue-50' : 'bg-red-50' %> h-1">
           <div
             data-notification-target="progressBar"
-            class="absolute top-0 left-0 h-full <%= @notice ? 'bg-blue-600' : 'bg-red-600' %> transition-all duration-[5000ms] ease-linear"
+            class="absolute top-0 left-0 h-full <%= @notice ? 'bg-blue-600' : 'bg-red-600' %> transition-all duration-[6000ms] ease-linear"
             style="width: 100%;"
           ></div>
         </div>
