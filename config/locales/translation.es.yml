@@ -307,7 +307,11 @@ es:
       save: Guardar
       something_went_wrong: Algo ha ido mal al subir tu imagen, por favor inténtalo
         de nuevo.
-      your_business_profile: Perfil de su empresa
+      my_profile: Mi perfil
+      my_credentials: Mis credenciales
+      language: Idioma
+      language_info: Elija su idioma para AssessKit y las comunicaciones.
+      select_language: Seleccionar un idioma
   candidate:
     assessment_participations:
       checkout:
@@ -434,7 +438,8 @@ es:
   candidates:
     form:
       avatar: Su foto de perfil
-      candidate_profile: Su perfil de candidato
+      my_profile: Mi perfil
+      my_credentials: Mis credenciales
       change_avatar: Cambiar avatar
       file_format_warning: JPG, JPEG o PNG. 2 MB como máximo.
       loading: Cargando...
@@ -443,6 +448,9 @@ es:
         cuidado con lo que compartes.
       save: Guardar
       something_went_wrong: Algo ha ido mal al cargar el archivo.
+      language: Idioma
+      language_info: Elija su idioma para AssessKit y las comunicaciones.
+      select_language: Seleccionar un idioma
   candidates_list_component:
     actions: Acciones
     avg_score: Puntuación media
@@ -714,7 +722,8 @@ es:
           para cambiar la contraseña
         new_email: Nuevo e-mail
         new_password: Nueva contraseña
-        your_account: Su cuenta
+        my_credentials: Mis credenciales
+        my_profile: Mi perfil
       destroyed: "¡Adiós! Tu cuenta ha sido cancelada correctamente. Esperamos verte
         pronto."
       signed_up: Bienvenido. Tu cuenta fue creada.
@@ -1156,14 +1165,10 @@ es:
       candidates: Candidatos
       sign_out: Cerrar sesión
       custom_questions_library: Biblioteca de preguntas personalizadas
-      my_account: Mi cuenta
-      my_business_profile: Mi perfil empresarial
+      settings: Configuración
       test_library: Biblioteca de pruebas
-      my_candidate_profile: Mi perfil de candidato
       my_assessments: Mis evaluaciones
-      get_started: Empezar
-      account: Cuenta
-      signed_in_as: Conectado como
+      get_started: Comenzar
   no_results_component:
     default_message: No se han encontrado resultados.
     default_title: Intente una nueva búsqueda o aplique un filtro diferente.

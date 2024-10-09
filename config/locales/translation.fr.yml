@@ -303,7 +303,11 @@ fr:
       save: Économiser
       something_went_wrong: Un problème s'est produit lors du téléchargement de votre
         image, veuillez réessayer.
-      your_business_profile: Votre profil d'entreprise
+      my_profile: Mon profil
+      my_credentials: Mes identifiants
+      language: Langue
+      language_info: Choisissez votre langue pour AssessKit et les communications.
+      select_language: Sélectionner une langue
   candidate:
     assessment_participations:
       checkout:
@@ -432,7 +436,8 @@ fr:
   candidates:
     form:
       avatar: Votre photo de profil
-      candidate_profile: Votre profil de candidat
+      my_profile: Mon profil
+      my_credentials: Mes identifiants
       change_avatar: Changer d'avatar
       file_format_warning: JPG, JPEG ou PNG. 2MB max.
       loading: Chargement...
@@ -441,6 +446,9 @@ fr:
         faites attention à ce que vous partagez.
       save: Économiser
       something_went_wrong: Un problème s'est produit lors du téléchargement du fichier.
+      language: Langue
+      language_info: Choisissez votre langue pour AssessKit et les communications.
+      select_language: Sélectionner une langue
   candidates_list_component:
     actions: Actions
     avg_score: Score moyen %
@@ -711,7 +719,8 @@ fr:
           modifier le mot de passe
         new_email: Nouveau E-mail
         new_password: Nouveau mot de passe
-        your_account: Votre compte
+        my_credentials: Mes identifiants
+        my_profile: Mon profil
       destroyed: Au revoir ! Votre compte a bien été supprimé. Nous espérons vous revoir bientôt.
       signed_up: Bienvenue ! Vous vous êtes bien enregistré(e).
       signed_up_but_inactive: Vous vous êtes bien enregistré(e). Cependant, nous n’avons
@@ -1154,14 +1163,10 @@ fr:
       candidates: Candidats
       sign_out: Déconnexion
       custom_questions_library: Bibliothèque de questions personnalisées
-      my_account: Mon compte
-      my_business_profile: Mon profil d'entreprise
+      settings: Paramètres
       test_library: Bibliothèque de tests
-      my_candidate_profile: Mon profil de candidat
       my_assessments: Mes évaluations
       get_started: Commencer
-      account: Compte
-      signed_in_as: Connecté en tant que
   no_results_component:
     default_message: Essayez une nouvelle recherche ou appliquez un autre filtre.
     default_title: Désolé, aucun résultat n'a été trouvé.

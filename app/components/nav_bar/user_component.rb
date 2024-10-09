@@ -55,8 +55,7 @@ class NavBar::UserComponent < ViewComponent::Base
     profile_path = user.business.persisted? ? edit_business_path(user.business) : new_business_path
 
     [
-      { title: t('.my_account'), path: edit_user_registration_path },
-      { title: t('.my_business_profile'), path: profile_path },
+      { title: t('.settings'), path: profile_path },
       { title: t('.test_library'), path: test_library_index_path },
       { title: t('.custom_questions_library'), path: custom_question_library_index_path }
     ]
@@ -66,14 +65,13 @@ class NavBar::UserComponent < ViewComponent::Base
     profile_path = user.candidate.persisted? ? edit_candidate_path(hashid: user.candidate) : new_candidate_path
 
     [
-      { title: t('.my_account'), path: edit_user_registration_path },
-      { title: t('.my_candidate_profile'), path: profile_path }
+      { title: t('.settings'), path: profile_path }
     ]
   end
 
   def user_dropdown_links
     [
-      { title: t('.my_account'), path: edit_user_registration_path },
+      { title: t('.settings'), path: edit_user_registration_path },
       { title: t('.get_started'), path: new_role_path }
     ]
   end

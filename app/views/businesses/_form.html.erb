@@ -1,56 +1,54 @@
-<main class="bg-zinc-50 h-full">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
-    <div class="pt-12">
-      <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
-        <%= t('.your_business_profile') %>
-      </h1>
-    </div>
-    <%= form_with model: business do |form| %>
-      <div class="pt-6 space-y-8">
-        <div class="bg-white shadow sm:overflow-hidden rounded-xl">
-          <div class="px-4 py-6 sm:px-6 sm:py-7">
-            <div class="grid grid-cols-1 gap-x-10 gap-y-10 md:grid-cols-3">
+<main class="bg-zinc-50 px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 pb-12 sm:pb-16">
+  <div class="border border-gray-300 bg-white rounded-3xl mx-auto max-w-7xl">
+    <nav class="flex border-b border-gray-300 px-7 gap-x-0.5">
+      <%= link_to t('.my_profile'), nil, class: "px-5 py-5 text-sm text-gray-900 hover:bg-blue-50/50 border-b-2 font-bold border-blue-600" %>
+      <%= link_to t('.my_credentials'), edit_user_registration_path, class: "px-5 py-5 text-sm text-gray-900 hover:bg-blue-50/50 border-b-2 font-medium border-transparent hover:border-gray-600" %>
+    </nav>
+   
+    <div class="py-6 px-7">
+      <h1 class="font-bold leading-7 text-gray-900 sm:truncate text-xl sm:tracking-tight"><%= t('.my_profile') %></h1>
+
+      <%= form_with model: business do |form| %>
+        <div class="grid grid-cols-1 gap-x-10 gap-y-10 md:grid-cols-3 py-6">
+          <div>
+            <h2 class="text-base font-bold text-gray-900"><%= t('.business_details') %></h2>
+            <p class="mt-1 text-sm font-semibold text-gray-500 leading-5"><%= t('.business_info') %></p>
+          </div>
+          <div class="col-span-2">
+            <div class="grid grid-cols-1 gap-x-6 gap-y-6">
               <div>
-                <h2 class="text-base font-bold text-gray-900"><%= t('.business_details') %></h2>
-                <p class="mt-1 text-sm font-semibold text-gray-500 leading-5"><%= t('.business_info') %></p>
+                <%= form.label :company, class: "required-label" %>
+                <%= form.text_field :company, required: true, autocomplete: "organization", class: "primary-field" %>
+                <%= render FieldErrorComponent.new(:company, business) %>
               </div>
-              <div class="col-span-2">
-                <div class="grid grid-cols-1 gap-x-6 gap-y-6">
-                  <div>
-                    <%= form.label :company, class: "required-label" %>
-                    <%= form.text_field :company, required: true, autocomplete: "organization", class: "primary-field" %>
-                    <%= render FieldErrorComponent.new(:company, business) %>
-                  </div>
-                  <div>
-                    <%= form.label :website, class: "primary-label" %>
-                    <%= form.text_field :website, placeholder: "www.example.com", class: "primary-field" %>
-                  </div>
-                  <div>
-                    <%= form.label :bio, class: "primary-label" %>
-                    <%= form.text_area :bio, rows: "3", placeholder: t('.bio_placeholder'), class: "primary-field" %>
-                    <%= render FieldErrorComponent.new(:bio, business) %>
-                  </div>
-                  <div data-controller="file-upload" data-file-upload-visibility-class="hidden" data-file-upload-loading-class="opacity-50">
-                    <span class="primary-label"><%= t(".avatar") %></span>
-                    <div class="mt-2 flex items-center gap-x-5">
-                      <div class="relative">
-                        <%= render AvatarComponent.new(avatarable: business, variant: :medium, data: {"file-upload-target": "image"}) %>
-                        <div data-file-upload-target="activity" class="hidden absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                          <%= svg_tag "refresh", class: "w-8 h-8 text-gray-900 animate-reverse-spin", title: t(".loading") %>
-                        </div>
-                      </div>
-                      <div>
-                        <%= form.file_field :avatar, direct_upload: true, accept: "image/png, image/jpg, image/jpeg", data: {action: "file-upload#select direct-upload:initialize->file-upload#start direct-upload:error->file-upload#error"}, class: "hidden" %>
-                        <%= form.label :avatar, t(".change_avatar"), class: "black-button px-3.5 text-xs" %>
-                        <p class="mt-1.5 text-xs leading-5 text-gray-500"><%= t('.avatar_info') %></p>
-                      </div>
+              <div>
+                <%= form.label :website, class: "primary-label" %>
+                <%= form.text_field :website, placeholder: "www.example.com", class: "primary-field" %>
+              </div>
+              <div>
+                <%= form.label :bio, class: "primary-label" %>
+                <%= form.text_area :bio, rows: "3", placeholder: t('.bio_placeholder'), class: "primary-field" %>
+                <%= render FieldErrorComponent.new(:bio, business) %>
+              </div>
+              <div data-controller="file-upload" data-file-upload-visibility-class="hidden" data-file-upload-loading-class="opacity-50">
+                <span class="primary-label"><%= t(".avatar") %></span>
+                <div class="mt-2 flex items-center gap-x-5">
+                  <div class="relative">
+                    <%= render AvatarComponent.new(avatarable: business, variant: :medium, data: {"file-upload-target": "image"}) %>
+                    <div data-file-upload-target="activity" class="hidden absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                      <%= svg_tag "refresh", class: "w-8 h-8 text-gray-900 animate-reverse-spin", title: t(".loading") %>
                     </div>
-                    <%= render FieldErrorComponent.new(:avatar, business) %>
-                    <div data-file-upload-target="error" class="hidden bg-red-50 border-l-4 border-red-400 p-4 mt-4">
-                      <div class="ml-3">
-                        <p class="text-sm text-red-700"><%= t(".something_went_wrong") %></p>
-                      </div>
-                    </div>
+                  </div>
+                  <div>
+                    <%= form.file_field :avatar, direct_upload: true, accept: "image/png, image/jpg, image/jpeg", data: {action: "file-upload#select direct-upload:initialize->file-upload#start direct-upload:error->file-upload#error"}, class: "hidden" %>
+                    <%= form.label :avatar, t(".change_avatar"), class: "black-button px-3.5 text-xs" %>
+                    <p class="mt-1.5 text-xs leading-5 text-gray-500"><%= t('.avatar_info') %></p>
+                  </div>
+                </div>
+                <%= render FieldErrorComponent.new(:avatar, business) %>
+                <div data-file-upload-target="error" class="hidden bg-red-50 border-l-4 border-red-400 p-4 mt-4">
+                  <div class="ml-3">
+                    <p class="text-sm text-red-700"><%= t(".something_went_wrong") %></p>
                   </div>
                 </div>
               </div>
@@ -58,33 +56,56 @@
           </div>
         </div>
 
-        <div class="bg-white shadow sm:overflow-hidden rounded-xl">
-          <div class="px-4 py-6 sm:px-6 sm:py-7">
-            <div class="grid grid-cols-1 gap-x-10 gap-y-10 md:grid-cols-3">
+        <div class="grid grid-cols-1 gap-x-10 gap-y-10 md:grid-cols-3 py-6">
+          <div>
+            <h2 class="text-base font-bold text-gray-900"><%= t('.personal_details') %></h2>
+            <p class="mt-1 text-sm font-semibold text-gray-500 leading-5"><%= t('.personal_info') %></p>
+          </div>
+          <div class="col-span-2">
+            <div class="grid grid-cols-1 gap-x-6 gap-y-6">
               <div>
-                <h2 class="text-base font-bold text-gray-900"><%= t('.personal_details') %></h2>
-                <p class="mt-1 text-sm font-semibold text-gray-500 leading-5"><%= t('.personal_info') %></p>
+                <%= form.label :contact_name, class: "primary-label" %>
+                <%= form.text_field :contact_name, autocomplete: "name", class: "primary-field" %>
+                <%= render FieldErrorComponent.new(:contact_name, business) %>
               </div>
-              <div class="col-span-2">
-                <div class="grid grid-cols-1 gap-x-6 gap-y-6">
-                  <div>
-                    <%= form.label :contact_name, class: "primary-label" %>
-                    <%= form.text_field :contact_name, autocomplete: "name", class: "primary-field" %>
-                    <%= render FieldErrorComponent.new(:contact_name, business) %>
-                  </div>
-                  <div>
-                    <%= form.label :contact_role, class: "primary-label" %>
-                    <%= form.text_field :contact_role, autocomplete: "organization-title", class: "primary-field" %>
-                  </div>
-                </div>
+              <div>
+                <%= form.label :contact_role, class: "primary-label" %>
+                <%= form.text_field :contact_role, autocomplete: "organization-title", class: "primary-field" %>
               </div>
             </div>
           </div>
         </div>
-        <div class="text-right">
+        
+        <%= form.fields_for :user do |user_form| %>
+          <div class="grid grid-cols-1 gap-x-10 gap-y-10 md:grid-cols-3 py-6">
+            <div>
+              <h2 class="text-base font-bold text-gray-900">
+                <%= t('.language') %>
+              </h2>
+              <p class="mt-1 text-sm font-semibold text-gray-500 leading-5">
+                 <%= t('.language_info') %>
+              </p>
+            </div>
+
+            <div class="col-span-2">
+              <div class="grid grid-cols-1 gap-x-6 gap-y-6">
+                <div>
+                  <%= user_form.label :locale, t('.language'), class: "primary-label" %>
+                  <%= user_form.select :locale, 
+                        User.locales.keys.map { |locale| [t("shared.languages.#{locale}"), locale] },
+                        { prompt: t('.select_language'), selected: user_form.object&.locale || current_user.locale }, 
+                        { class: "primary-field" } %>
+                  <%= render FieldErrorComponent.new(:locale, user_form.object || current_user) %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="text-right pt-6 pb-4">
           <%= form.submit t('.save'), class: "primary-button px-5 py-2.5" %>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </main>
