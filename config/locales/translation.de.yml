@@ -313,7 +313,11 @@ de:
       save: Speichern Sie
       something_went_wrong: Beim Hochladen Ihres Bildes ist ein Fehler aufgetreten.
         Bitte versuchen Sie es erneut.
-      your_business_profile: Ihr Unternehmensprofil
+      my_profile: Mein Profil
+      my_credentials: Meine Identifikation
+      language: Sprache
+      language_info: Wählen Sie Ihre Sprache für AssessKit und Kommunikationen.
+      select_language: Sprache auswählen
   candidate:
     assessment_participations:
       checkout:
@@ -447,7 +451,8 @@ de:
   candidates:
     form:
       avatar: Ihr Profilbild
-      candidate_profile: Ihr Bewerberprofil
+      my_profile: Mein Profil
+      my_credentials: Meine Identifikation
       change_avatar: Avatar ändern
       file_format_warning: JPG, JPEG oder PNG. maximal 2 MB.
       loading: Laden...
@@ -456,6 +461,9 @@ de:
         Sie also vorsichtig, was Sie weitergeben.
       save: Speichern Sie
       something_went_wrong: Beim Hochladen der Datei ist ein Fehler aufgetreten.
+      language: Sprache
+      language_info: Wählen Sie Ihre Sprache für AssessKit und Kommunikationen.
+      select_language: Sprache auswählen
   candidates_list_component:
     actions: Aktionen
     avg_score: Durchschnittliche Punktzahl in %
@@ -728,7 +736,8 @@ de:
           das Passwort zu ändern
         new_email: Neue E-Mail
         new_password: Neues Passwort
-        your_account: Ihr Konto
+        my_credentials: Meine Anmeldedaten
+        my_profile: Mein Profil
       destroyed: Ihr Konto wurde gelöscht. Wir hoffen, dass wir Sie bald wiedersehen.
       signed_up: Sie haben sich erfolgreich registriert.
       signed_up_but_inactive: Sie haben sich erfolgreich registriert. Wir konnten
@@ -1172,15 +1181,11 @@ de:
       assessments: Bewertungen
       candidates: Kandidaten
       sign_out: Abmelden
-      custom_questions_library: Bibliothek benutzerdefinierter Fragen
-      my_account: Mein Konto
-      my_business_profile: Mein Unternehmensprofil
+      custom_questions_library: Bibliothek für benutzerdefinierte Fragen
+      settings: Einstellungen
       test_library: Testbibliothek
-      my_candidate_profile: Mein Kandidatenprofil
       my_assessments: Meine Bewertungen
-      get_started: Los geht's
-      account: Konto
-      signed_in_as: Angemeldet als
+      get_started: Loslegen
   no_results_component:
     default_message: Versuchen Sie eine neue Suche oder wenden Sie einen anderen Filter an.
     default_title: Es wurden leider keine Ergebnisse gefunden.

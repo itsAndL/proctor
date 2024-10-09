@@ -224,7 +224,11 @@ en:
       personal_info: Information about you, the contact point for your business on AssessKit.
       save: Save
       something_went_wrong: Something went wrong uploading your image, please try again.
-      your_business_profile: Your business profile
+      my_profile: My profile
+      my_credentials: My credentials
+      language: Language
+      language_info: Choose your language for AssessKit and communications.
+      select_language: Select a language
   candidate:
     assessment_participations:
       checkout:
@@ -318,7 +322,8 @@ en:
   candidates:
     form:
       avatar: Your profile picture
-      candidate_profile: Your candidate profile
+      my_profile: My profile
+      my_credentials: My credentials
       change_avatar: Change Avatar
       file_format_warning: JPG, JPEG or PNG. 2MB max.
       loading: Loading...
@@ -326,6 +331,9 @@ en:
       profile_info_warning: This information will be displayed publicly so be careful what you share.
       save: Save
       something_went_wrong: Something went wrong while uploading the file.
+      language: Language
+      language_info: Choose your language for AssessKit and communications.
+      select_language: Select a language
   contact:
     index:
       address: Address
@@ -458,7 +466,8 @@ en:
         enter_current_password_to_change_password: Enter current password to change password
         new_email: New email
         new_password: New password
-        your_account: Your account
+        my_credentials: My credentials
+        my_profile: My profile
       destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."
       signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
@@ -791,15 +800,11 @@ en:
       assessments: Assessments
       candidates: Candidates
       sign_out: Sign out
-      custom_questions_library: Custom Questions Library
-      my_account: My Account
-      my_business_profile: My Business Profile
-      test_library: Test Library
-      my_candidate_profile: My Candidate Profile
-      my_assessments: My Assessments
-      get_started: Get Started
-      account: Account
-      signed_in_as: Signed in as
+      custom_questions_library: Custom questions library
+      settings: Settings
+      test_library: Test library
+      my_assessments: My assessments
+      get_started: Get started
   participation_progress_indicators_component:
     no_limit: No Limit
     time_for_question: 'Time for question %{answered_count} of %{questions_count}:'

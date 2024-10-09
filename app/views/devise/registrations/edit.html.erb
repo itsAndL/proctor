@@ -1,87 +1,83 @@
-<main class="bg-zinc-50 h-full">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
-    <div class="pt-12">
-      <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight"><%= t('.your_account') %></h1>
-    </div>
-      
-    <div class="pt-6 space-y-8">
-      <div class="bg-white shadow sm:overflow-hidden rounded-xl">
-        <div class="px-4 py-6 sm:px-6 sm:py-7">
-          <div class="grid grid-cols-1 gap-x-10 gap-y-10 md:grid-cols-3">
-            <div>
-              <h2 class="text-base font-bold text-gray-900"><%= t('.change_email_address') %></h2>
-              <p class="mt-1 text-sm font-semibold text-gray-500 leading-5"><%= t('.enter_current_password_to_change_email') %></p>
-            </div>
+<main class="bg-zinc-50 px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 pb-12 sm:pb-16">
+  <div class="border border-gray-300 bg-white rounded-3xl mx-auto max-w-7xl">
+    <nav class="flex border-b border-gray-300 px-7 gap-x-0.5">
+      <%= link_to t('.my_profile'), profile_path, class: "px-5 py-5 text-sm text-gray-900 hover:bg-blue-50/50 border-b-2 font-medium border-transparent hover:border-gray-600" %>
+      <%= link_to t('.my_credentials'), nil, class: "px-5 py-5 text-sm text-gray-900 hover:bg-blue-50/50 border-b-2 font-bold border-blue-600" %>
+    </nav>
+   
+    <div class="py-6 px-7">
+      <h1 class="font-bold leading-7 text-gray-900 sm:truncate text-xl sm:tracking-tight"><%= t('.my_credentials') %></h1>
 
-            <div class="col-span-2">
-              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-                <div class="grid grid-cols-1 gap-x-6 gap-y-6">              
-                  <div>
-                    <label for="current-email" class="disabled-label"><%= t('.current_email') %></label>
-                    <input type="email" name="current-email" id="current-email" class="primary-field" disabled value="<%= resource.email %>">
-                  </div>
+      <div class="divide-y divide-gray-300">
+        <div class="grid grid-cols-1 gap-x-10 gap-y-10 md:grid-cols-3 py-6">
+          <div>
+            <h2 class="text-base font-bold text-gray-900"><%= t('.change_email_address') %></h2>
+            <p class="mt-1 text-sm font-semibold text-gray-500 leading-5"><%= t('.enter_current_password_to_change_email') %></p>
+          </div>
 
-                  <div>
-                    <%= f.label :email, t('.new_email'), class: "required-label" %>
-                    <%= f.email_field :email, autocomplete: "email", required: true, class: "primary-field" %>
-                    <%= render FieldErrorComponent.new(:email, resource) %>
-                  </div>
-
-                  <div>
-                    <%= f.label :current_password, t('.current_password'), class: "required-label" %>
-                    <%= f.password_field :current_password, autocomplete: "current-password", required: true, class: "primary-field" %>
-                    <%= render FieldErrorComponent.new(:current_password, resource) %>
-                  </div>
+          <div class="col-span-2">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+              <div class="grid grid-cols-1 gap-x-6 gap-y-6">              
+                <div>
+                  <label for="current-email" class="disabled-label"><%= t('.current_email') %></label>
+                  <input type="email" name="current-email" id="current-email" class="primary-field" disabled value="<%= resource.email %>">
                 </div>
 
-                <div class="mt-8 text-right">
-                  <%= f.submit t('.change_email'), class: "primary-button px-5 py-2.5" %>
+                <div>
+                  <%= f.label :email, t('.new_email'), class: "required-label" %>
+                  <%= f.email_field :email, autocomplete: "email", required: true, class: "primary-field" %>
+                  <%= render FieldErrorComponent.new(:email, resource) %>
                 </div>
-              <% end %>
-            </div>
+
+                <div>
+                  <%= f.label :current_password, t('.current_password'), class: "required-label" %>
+                  <%= f.password_field :current_password, autocomplete: "current-password", required: true, class: "primary-field" %>
+                  <%= render FieldErrorComponent.new(:current_password, resource) %>
+                </div>
+              </div>
+
+              <div class="mt-8 text-right">
+                <%= f.submit t('.change_email'), class: "primary-button px-5 py-2.5" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 gap-x-10 gap-y-10 md:grid-cols-3 py-6">
+          <div>
+            <h2 class="text-base font-bold text-gray-900"><%= t('.change_password') %></h2>
+            <p class="mt-1 text-sm font-semibold text-gray-500 leading-5"><%= t('.enter_current_password_to_change_password') %></p>
+          </div>
+
+          <div class="col-span-2">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+              <div class="grid grid-cols-1 gap-x-6 gap-y-6">
+                <div>
+                  <%= f.label :current_password, t('.current_password'), class: "required-label" %>
+                  <%= f.password_field :current_password, autocomplete: "current-password", required: true, class: "primary-field" %>
+                  <%= render FieldErrorComponent.new(:current_password, resource) %>
+                </div>
+
+                <div>
+                  <%= f.label :password, t('.new_password'), class: "required-label" %>
+                  <%= f.password_field :password, autocomplete: "new-password", required: true, class: "primary-field" %>
+                  <%= render FieldErrorComponent.new(:password, resource) %>
+                </div>
+                
+                <div>
+                  <%= f.label :password_confirmation, t('.confirm_password'), class: "required-label" %>
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true, class: "primary-field" %>
+                  <%= render FieldErrorComponent.new(:password_confirmation, resource) %>
+                </div>
+              </div>
+
+              <div class="mt-8 text-right">
+                <%= f.submit t('.change_password'), class: "primary-button px-5 py-2.5" %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
-
-      <div class="bg-white shadow sm:overflow-hidden rounded-xl">
-        <div class="px-4 py-6 sm:px-6 sm:py-7">
-          <div class="grid grid-cols-1 gap-x-10 gap-y-10 md:grid-cols-3">
-            <div>
-              <h2 class="text-base font-bold text-gray-900"><%= t('.change_password') %></h2>
-              <p class="mt-1 text-sm font-semibold text-gray-500 leading-5"><%= t('.enter_current_password_to_change_password') %></p>
-            </div>
-
-            <div class="col-span-2">
-              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-                <div class="grid grid-cols-1 gap-x-6 gap-y-6">
-                  <div>
-                    <%= f.label :current_password, t('.current_password'), class: "required-label" %>
-                    <%= f.password_field :current_password, autocomplete: "current-password", required: true, class: "primary-field" %>
-                    <%= render FieldErrorComponent.new(:current_password, resource) %>
-                  </div>
-
-                  <div>
-                    <%= f.label :password, t('.new_password'), class: "required-label" %>
-                    <%= f.password_field :password, autocomplete: "new-password", required: true, class: "primary-field" %>
-                    <%= render FieldErrorComponent.new(:password, resource) %>
-                  </div>
-                  
-                  <div>
-                    <%= f.label :password_confirmation, t('.confirm_password'), class: "required-label" %>
-                    <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true, class: "primary-field" %>
-                    <%= render FieldErrorComponent.new(:password_confirmation, resource) %>
-                  </div>
-                </div>
-
-                <div class="mt-8 text-right">
-                  <%= f.submit t('.change_password'), class: "primary-button px-5 py-2.5" %>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     </div>
   </div>
 </main>

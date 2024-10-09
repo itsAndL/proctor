@@ -1,6 +1,4 @@
 class BusinessesController < ApplicationController
-  include SecondaryRootPath
-
   before_action :authenticate_user!, only: %i[new create]
   before_action :authenticate_business!, only: %i[edit update]
   before_action :require_new_business!, only: %i[new create]
@@ -14,7 +12,7 @@ class BusinessesController < ApplicationController
     @business.assign_attributes(business_params)
 
     if @business.save
-      redirect_to edit_business_path(@business), notice: t('flash.create_success')
+      redirect_to edit_business_path(@business, locale: new_locale), notice: t('flash.create_success')
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +26,7 @@ class BusinessesController < ApplicationController
     @business = current_business
 
     if @business.update(business_params)
-      redirect_to secondary_root_path, notice: t('flash.update_success')
+      redirect_to edit_business_path(@business, locale: new_locale), notice: t('flash.update_success')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -43,6 +41,10 @@ class BusinessesController < ApplicationController
   end
 
   def business_params
-    params.require(:business).permit(:contact_name, :contact_role, :company, :bio, :website, :avatar)
+    params.require(:business).permit(:contact_name, :contact_role, :company, :bio, :website, :avatar, user_attributes: %i[id locale])
+  end
+
+  def new_locale
+    params.dig('business', 'user', 'locale')
   end
 end

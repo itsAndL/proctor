@@ -1,6 +1,4 @@
 class CandidatesController < ApplicationController
-  include SecondaryRootPath
-
   before_action :authenticate_user!, only: %i[new create]
   before_action :authenticate_candidate!, only: %i[edit update]
   before_action :require_new_candidate!, only: %i[new create]
@@ -14,7 +12,7 @@ class CandidatesController < ApplicationController
     @candidate.assign_attributes(candidate_params)
 
     if @candidate.save
-      redirect_to edit_candidate_path(@candidate), notice: t('flash.create_success')
+      redirect_to edit_candidate_path(@candidate, locale: new_locale), notice: t('flash.create_success')
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +26,7 @@ class CandidatesController < ApplicationController
     @candidate = current_candidate
 
     if @candidate.update(candidate_params)
-      redirect_to secondary_root_path, notice: t('flash.update_success')
+      redirect_to edit_candidate_path(@candidate, locale: new_locale), notice: t('flash.update_success')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -39,10 +37,14 @@ class CandidatesController < ApplicationController
   def require_new_candidate!
     return if current_candidate.blank?
 
-    redirect_to edit_candidate_path(current_candidate)
+    redirect_to edit_candidate_path(current_ca, locale: ndidate)
   end
 
   def candidate_params
-    params.require(:candidate).permit(:name, :avatar)
+    params.require(:candidate).permit(:name, :avatar, user_attributes: %i[id locale])
+  end
+
+  def new_locale
+    params.dig('candidate', 'user', 'locale')
   end
 end

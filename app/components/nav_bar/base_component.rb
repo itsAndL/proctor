@@ -29,6 +29,6 @@ class NavBar::BaseComponent < ViewComponent::Base
   private
 
   def on_edit_user_registration_page?
-    helpers.current_page?(helpers.edit_user_registration_path)
+    helpers.normalize_path(request.path) == helpers.normalize_path(edit_user_registration_path)
   end
 end
