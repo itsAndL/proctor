@@ -3,7 +3,8 @@ class Candidate::TestsController < ApplicationController
 
   before_action :authenticate_candidate!
   before_action :hide_navbar
-  before_action :set_assessment_participation
+  before_action :setup_assessment_context
+  before_action :redirect_completed_assessment, only: %i[intro practice_questions start questions feedback]
   before_action :set_current_test, except: %i[feedback]
   before_action :set_current_question, only: %i[save_answer]
   before_action :validate_save_answer_params, only: %i[save_answer]
@@ -63,10 +64,16 @@ class Candidate::TestsController < ApplicationController
     params.require(:question_id)
   end
 
-  def set_assessment_participation
+  def setup_assessment_context
     @assessment_participation = find_assessment_participation_from_session
     redirect_to candidate_assessment_participations_path unless @assessment_participation
     @participation_service = AssessmentParticipationService.new(@assessment_participation)
+  end
+
+  def redirect_completed_assessment
+    return unless @assessment_participation.completed?
+
+    redirect_to candidate_assessment_participation_path(@assessment_participation)
   end
 
   def set_current_test

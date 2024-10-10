@@ -3,7 +3,8 @@ class Candidate::CustomQuestionsController < ApplicationController
 
   before_action :authenticate_candidate!
   before_action :hide_navbar
-  before_action :set_assessment_participation
+  before_action :setup_assessment_context
+  before_action :redirect_completed_assessment, only: %i[start questions]
   before_action :set_current_custom_question
   before_action :validate_save_answer_params, only: %i[save_answer]
 
@@ -31,10 +32,16 @@ class Candidate::CustomQuestionsController < ApplicationController
     params.require(:question_id)
   end
 
-  def set_assessment_participation
+  def setup_assessment_context
     @assessment_participation = find_assessment_participation_from_session
     redirect_to candidate_assessment_participations_path unless @assessment_participation
     @participation_service = AssessmentParticipationService.new(@assessment_participation)
+  end
+
+  def redirect_completed_assessment
+    return unless @assessment_participation.completed?
+
+    redirect_to candidate_assessment_participation_path(@assessment_participation)
   end
 
   def set_current_custom_question
