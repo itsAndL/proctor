@@ -20,7 +20,7 @@
               <div class="grid grid-cols-1 gap-x-6 gap-y-6">              
                 <div>
                   <label for="current-email" class="disabled-label"><%= t('.current_email') %></label>
-                  <input type="email" name="current-email" id="current-email" class="primary-field" disabled value="<%= resource.email %>">
+                  <input type="email" name="current-email" id="current-email" class="primary-field" disabled value="<%= User.find(resource.id).email %>">
                 </div>
 
                 <div>

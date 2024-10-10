@@ -9,7 +9,8 @@ Rails.application.routes.draw do
     devise_for :users, path: '/auth', skip: %i[registrations], controllers: {
       confirmations: 'users/confirmations',
       passwords: 'users/passwords',
-      sessions: 'users/sessions'
+      sessions: 'users/sessions',
+      registrations: 'users/registrations'
     }
 
     scope '/auth' do
@@ -23,8 +24,8 @@ Rails.application.routes.draw do
         post 'candidate', to: 'candidate/registrations#create', as: :candidate_registration
 
         # Common routes
-        get 'edit', to: 'devise/registrations#edit', as: :edit_user_registration
-        put 'update', to: 'devise/registrations#update', as: :user_registration
+        get 'edit', to: 'users/registrations#edit', as: :edit_user_registration
+        put 'update', to: 'users/registrations#update', as: :user_registration
       end
     end
 

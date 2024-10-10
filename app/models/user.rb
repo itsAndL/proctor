@@ -18,21 +18,24 @@ class User < ApplicationRecord
     de: 3
   }
 
-  # Skip confirmation for candidates
-  def skip_confirmation!
-    self.confirmed_at = Time.current if candidate?
-  end
-
-  # Automatically confirm email for candidates
-  def after_confirmation
-    confirm! if candidate?
-  end
-
   def business?
     business.present?
   end
 
   def candidate?
     candidate.present?
+  end
+
+  def skip_confirmation!
+    super
+    self.confirmed_at = Time.current if candidate?
+  end
+
+  def send_confirmation_notification?
+    super && !candidate?
+  end
+
+  def will_save_change_to_email?
+    super || (email.present? && email_in_database.present? && email != email_in_database)
   end
 end

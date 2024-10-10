@@ -19,4 +19,8 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   def after_confirmation_path_for(_resource_name, _resource)
     secondary_root_path
   end
+
+  def after_resending_confirmation_instructions_path_for(_resource_name)
+    secondary_root_path
+  end
 end
