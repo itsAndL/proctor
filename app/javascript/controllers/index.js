@@ -67,9 +67,6 @@ application.register("screenshot-slider", ScreenshotSliderController)
 import SearchController from "./search_controller"
 application.register("search", SearchController)
 
-import SliderController from "./slider_controller"
-application.register("slider", SliderController)
-
 import SortableController from "./sortable_controller"
 application.register("sortable", SortableController)
 

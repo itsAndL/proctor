@@ -2,7 +2,7 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["input", "filename", "supportedtypes"];
+  static targets = ["input", "filename", "supportedTypes"];
 
   connect() {
     // Bind the updateFileName method to the input change event
