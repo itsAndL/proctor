@@ -9,6 +9,10 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+
+    <%= javascript_tag do %>
+      window.I18n = <%= t("javascript").to_json.html_safe %>
+    <% end %>
   </head>
 
   <body class="bg-white flex flex-col h-screen">

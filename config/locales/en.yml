@@ -1,9 +1,25 @@
 ---
 en:
-  of: of
-  or: or
+  javascript:
+    assessment_title_controller:
+      no_title: Untitled assessment
+    file_selector_controller:
+      max_file_size: "400MB max file size."
+    email_inviting_controller:
+      valid_email: Please enter a valid email address.
+      candidate_already_invited: "This candidate has already been invited."
+    copy_controller:
+      copied: Copied
+    choose_tests_controller:
+      add: Add
+      remove: Remove
+      test_placement: Test n˚
+    bulk_inviting_controller:
+      file_not_selected: Please select a file to upload.
   about:
     index:
+      heading: "We’re Changing the Future of Remote Testing."
+      description: "AssessKit is dedicated to providing secure, reliable, and efficient remote testing solutions. Our mission is to ensure the integrity of online exams by using advanced monitoring tools and innovative technology. We aim to support educational institutions, businesses, and certification bodies in delivering fair and accurate assessments, regardless of where test-takers are located."
       mission:
         description: Our mission is to revolutionize the way remote testing is conducted. We strive to create a secure and user-friendly platform that upholds the highest standards of exam integrity and fairness. By leveraging cutting-edge technology, we empower organizations to conduct remote assessments with confidence.
         title: Our Mission
@@ -32,14 +48,17 @@ en:
         description: To be the leading provider of remote testing solutions, recognized for our commitment to security, reliability, and user experience. We envision a world where remote exams are as trustworthy and valid as traditional in-person assessments.
         title: Our Vision
   activerecord:
-    models:
-      assessment:
-        one: Assessment
-        other: Assessments
+    placeholders:
       candidate:
-        one: Candidate
-        other: Candidates
+        name: Name
+        email: Email
+      custom_question:
+        title: Title
+        essay_content: Write your answer here...
     attributes:
+      assessment:
+        language: Language
+        title: Title
       business:
         avatar: Your company logo
         bio: Bio
@@ -49,12 +68,15 @@ en:
         website: Website
       candidate:
         avatar: Profile picture
-        name: Name
         email: Email
-      assessment:
-        title: Title
-        language: Language
+        name: Name
     enums:
+      user:
+        locale:
+          de: German
+          en: English
+          fr: French
+          es: Spanish
       assessment:
         language:
           english: English
@@ -69,35 +91,51 @@ en:
           invited: Invited
           started: Started
       custom_question:
-        type:
-          essay_custom_question: Essay
-          file_upload_custom_question: File upload
-          video_custom_question: Video
-          multiple_choice_custom_question: Multiple-choice
         language:
           english: English
           french: French
           german: German
           spanish: Spanish
+        type:
+          essay_custom_question: Essay
+          file_upload_custom_question: File upload
+          multiple_choice_custom_question: Multiple-choice
+          video_custom_question: Video
       language:
         english: English
         french: French
         german: German
         spanish: Spanish
       test:
-        level:
-          entry_level: Entry Level 
-          intermediate: Intermediate
-          advanced: Advanced
-        type:
-          coding_test: Conding
-          multiple_choice_test: Multiple-choice
-          questionnaire_test: Questionnaire
         language:
           english: English
           french: French
           german: German
           spanish: Spanish
+        level:
+          advanced: Advanced
+          entry_level: Entry Level
+          intermediate: Intermediate
+        type:
+          coding_test: Conding
+          multiple_choice_test: Multiple-choice
+          questionnaire_test: Questionnaire
+    models:
+      assessment:
+        one: Assessment
+        other: Assessments
+      candidate:
+        one: Candidate
+        other: Candidates
+      custom_question:
+        one: Custom question
+        other: Custom questions
+      test:
+        one: Test
+        other: Tests
+      question:
+        one: Question
+        other: Questions
     errors:
       messages:
         record_invalid: 'Validation failed: %{errors}'
@@ -110,46 +148,53 @@ en:
             email:
               invalid_work_email: "The email doesn't seem to be a valid work email."
   alert:
-    business_required: You need to be logged in as a business to access this page.
-    candidate_required: You need to be logged in as a candidate to access this page.
-    log_as_business: You are not authorized to access this page. Please log in as a business.
-    log_as_candidate: You are not authorized to access this page. Please log in as a candidate.
-    candidate_registration_required: To proceed with the assessment, please complete your registration as a candidate.
+    candidate_required: Candidate required
+    log_as_candidate: Log as candidate
   anti_cheating_monitor_component:
-    check_status:
-      'no': 'No'
-      'yes': 'Yes'
+    is_active:      
+      true: "Yes"
+      false: "No"
+    anti_cheating_monitor: Anti-cheating monitor
+    device_used: Device used
+    fullscreen_active: Fullscreen active
+    ip_address_check: Filled out only once from IP address?
+    location: Location
+    mouse_in_window: Mouse always in assessment window?
+    webcam_enabled: Webcam enabled?
   assessment_footer_component:
+    back: Back
     finish: Finish
     next: Next
-    back: Back
   assessment_header_component:
     exit: Exit
     save_and_exit: Save and exit
+  mailer:
+    all_the_best: "All the best,"
+    team_signature: "The AssessKit team"
   assessment_mailer:
     invite_email:
       accommodations: Accommodations are available if needed. More details can be found on the overview page once you start.
       assessment_description: This assessment is designed to evaluate your skills and knowledge in specific areas. It's an opportunity to demonstrate your abilities in a fair and unbiased manner.
       assessment_details: 'Here are the details of your assessment:'
       contact_support: If you have any questions or need assistance, please don't hesitate to contact our support team.
-      custom_questions_on: 'Custom questions on:'
+      custom_questions_on: Custom questions on
       duration: 'Duration: %{duration}'
       hello: Hello %{name}!
-      invite_subject: You have been invited to take an assessment
+      invite_subject: You've been invited to take an assessment for %{company}
       invited_by: You've been invited to take an assessment by <strong>%{company}</strong>.
       language: 'Language: %{language}'
       link_not_work: 'If the above link does not work, copy and paste this URL into your browser:'
+      need_account: Need account
       one_attempt: You have 1 attempt to complete this assessment. While we recommend completing the assessment in one session, you can pause and take breaks between tests.
-      start_assessment: Start Assessment
-      tests_on: 'Tests on:'
+      start_assessment: Start assessment
+      tests_on: Tests on
       use_chrome: We suggest using Google Chrome on a laptop or desktop to avoid any technical issues.
-      need_account: To complete this assessment, you'll need an AssessKit account. Don't worry - you can easily create one when you click the button below to start your assessment.
     reminder_email:
-      greeting: Hi %{name}!
-      link_not_working: 'If the above link does not work, copy and paste this URL into your browser:'
-      reminder: Just a reminder that you have an assessment to complete for %{company}.
-      reminder_subject: Reminder subject
-      start_assessment: Start Assessment
+      greeting: Hello %{name}!
+      link_not_working: '<span style="color: #242424; font-family: Arial, helvetica, sans-serif;">If the above link does not work, copy and paste this URL into your browser:</span>'
+      reminder: Reminder
+      reminder_subject: 'Reminder: Complete your assessment for %{company}'
+      start_assessment: Start assessment
   assessment_participations:
     delete_confirmation:
       cancel: Cancel
@@ -157,13 +202,33 @@ en:
       confirm_delete: Are you sure you want to permanently delete this candidate? Access to the assessment will be revoked if the candidate hasn't completed their assessment. After deleting, you can re-invite the candidate.
       delete: Delete
       delete_candidate: Delete candidate
+    destroy:
+      candidate_deleted: Candidate deleted
+    rate:
+      rating_updated: Rating updated successfully
+    send_reminder:
+      reminder_sent: Reminder sent
+  assessment_results_component:
+    average_score: Average score
+    best_candidate_score: Your best candidate score
+    candidate_pool_average: Your candidate pool average
+    pending: Pending
+    tests_included_in_scoring: Tests included in scoring
+  assessment_score_card_component:
+    average_score: Average score
+    invited: Invited
+    send_results_to_candidate: Send results to candidate
+    status: Status
+  assessment_stepper_component:
+    assessment_details: "Assessment details"
+    choose_tests: "Choose tests"
+    add_questions: "Add questions"
+    finalize: "Finalize"
   assessment_title_component:
-    duration: Duration
-    language: Language
-    tests: Tests
-    tests_count: "%{count} tests"
-    title:
-      untitled: Untitled
+    test:
+      one: "%{count} test"
+      other: "%{count} tests"
+    untitled: Untitled
   assessments:
     add_questions:
       title: Add questions
@@ -187,7 +252,6 @@ en:
       edit: Edit
       inactive: Inactive (%{count})
       last_activity: Last activity
-      name: Name
       progress: Progress
       search_placeholder: Search assessments
       title: Assessments
@@ -210,17 +274,32 @@ en:
       invite: Invite
       try_yourself: Try yourself
       unarchive: Unarchive
+  bulk_inviting_component:
+    csv: Csv
+    download_templates: 'You can download one of these templates:'
+    drag_and_drop: Drag and drop file here or click to upload
+    example: Example
+    file_columns_order: 'Make sure you use two columns in your file in the following order:'
+    file_limit: Name, Email. You can only add 1200 candidates per file.
+    file_selected: 'File selected:'
+    invite_candidates: Invite candidates
+    invite_multiple_candidates: Invite multiple candidates at once through a CSV or XLSX file upload.
+    keep_in_mind: Keep in mind...
+    max_file_size: 10MB max file size.
+    supported_file_types: Supported file types
+    xlsx: Xlsx
   business:
     registrations:
       new:
-        get_started: Get started with AssessKit for free
         work_email: Work email
-        password: Password
-        company_name: Company name
-        sign_up: Sign up
         already_have_account: Already have an account?
-        login: Log in
         are_you_candidate: Are you a candidate?
+        company_name: Company name
+        work_email: Work email
+        get_started: Get started with AssessKit for free
+        login: Log in
+        password: Password
+        sign_up: Sign up
         take_me: Take me there
   businesses:
     form:
@@ -284,6 +363,7 @@ en:
         supported_browser: Ensure you are using a <a target='_blank' href='%{url}' class='underline'><strong>supported browser.</strong></a>
         webcam_troubleshoot: Trouble with your webcam?
       show:
+        no_time_limit: No Time Limit
         about: About
         approx_time: Approximate time to complete assessment
         audio_info: Turn on your speakers or headphones (to play audio).
@@ -294,7 +374,6 @@ en:
         completion_recommendation: We recommend completing the assessment in one go.
         important_things: Important things
         invited_on: Invited on
-        name: Name
         out_of: out of
         preview_questions: Before each test there may be preview questions, <strong>be aware the timer for the test will have already started.</strong>
         resume_assessment: Resume assessment
@@ -310,26 +389,30 @@ en:
         title: Custom questions
     registrations:
       new:
-        create_profile: Create your AssessKit Profile
-        enter_email: Enter the email address to which you received an assessment invite.
-        email_address: Email address
-        password: Password
-        your_name: Your name
-        sign_up: Sign up
         already_have_account: Already have an account?
-        login: Log in
         are_you_business: Are you a business?
+        create_profile: Create your AssessKit Profile
+        email_address: Email address
+        enter_email: Enter the email address to which you received an assessment invite.
+        login: Log in
+        password: Password
+        sign_up: Sign up
         take_me: Take me there
+        your_name: Your name
     tests:
       feedback:
         finish: Finish
         finished_first_test: Finished first test
         intro: Help us improve this test by providing anonymous feedback. Your answer will only be available to AssessKit, not your assessor.
         measurement_opinion: In your opinion, did the test accurately measure your skills in %{skill}?
-        'no': 'No'
+        'no': Non
         placeholder: Please tell us more about your answer...
         somewhat: Somewhat
-        'yes': 'Yes'
+        'yes': Oui
+  candidate_rating_component:
+    notes_placeholder: Add your private notes here (auto-saved)...
+    rating_description: Give your personal overall rating of this candidate based on your impressions and interactions with him or her.
+    your_rating: Your rating
   candidates:
     form:
       avatar: Your profile picture
@@ -345,6 +428,26 @@ en:
       language: Language
       language_info: Choose your language for AssessKit and communications.
       select_language: Select a language
+  candidates_list_component:
+    actions: Actions
+    avg_score: Avg score
+    candidates: Candidates
+    copy_link: Copy candidate assessment link
+    delete_candidate: Delete candidate
+    invited_on: Invited on
+    overall_rating: Overall rating
+    search_candidates: Search candidates
+    send_reminder: Send reminder
+    send_results: Send results
+    status: Status
+    invite_candidates_title: "Invite candidates"
+    invite_candidates_message: "Invitez les candidats à compléter cette évaluation et à évaluer leur performance."
+    invite_action_title: "Invite"
+  concerns:
+    authentication_concern:
+      authenticate_business!:
+        business_required: Business required
+        log_as_business: Log as business
   contact:
     index:
       address: Address
@@ -359,14 +462,21 @@ en:
       telephone: Telephone
   custom_question_card_component:
     add: Add
-    look_for_title: Look for title
-    relevancy_title: Relevancy title
+    look_for_title: What to look for in the answer?
+    relevancy_title: Why is this question relevant?
     remove: Remove
   custom_question_library:
     index:
       create_assessment: Create Assessment
       custom_questions: Custom Questions
+  custom_question_library_component:
+    available_count:
+      one: "%{count} custom question available"
+      other: "%{count} custom questions available"
+    results_count: Results %{count}
   custom_question_responses:
+    download:
+      no_file_attached: No file attached
     edit:
       answer: Answer
       cancel: Cancel
@@ -381,17 +491,21 @@ en:
       rate_answer: Rate Answer
       review_answer: Review Answer
       what_to_look_for: What to Look For in the Answer?
+      comment_placeholder: Add your private notes here (auto-saved)...
+    update:
+      rating_update_success: Rating updated successfully
+  custom_questions_table_component:
+    actions: Actions
+    no_questions_message: Add questions to capture information critical to your screening process. Dig deeper with additional questions
+    remove_question: Remove question
+    selected_questions: Selected questions
   customer:
     candidates:
       index:
         actions: Actions
         assessment: Assessment
-        assessments: Assessments
-        candidates: Candidates
         create_assessment: Create assessment
-        email: Email
         last_activity: Last activity
-        name: Name
         search_candidates: Search candidates
     profile:
       team:
@@ -399,74 +513,80 @@ en:
         add_user: Add user
         archive: Archive
         edit: Edit
-        email: Email
         manage_team_members: Manage team members
-        name: Name
         owner: Owner
         reset_pass: Reset password
         role: Role
   devise:
-    confirmations:
-      confirmed: "Your email address has been successfully confirmed."
-      send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
-      new:
-        resend_confirmation_instructions: "Resend confirmation instructions"
-        email_address: "Email address"
-        resend_instructions: "Resend instructions"
-        business_dont_have_account: "Business and don’t have an account?"
-        create_one: "Create one!"
-        already_have_account: "Already have an account?"
-        log_in: "Log in"
     failure:
-      already_authenticated: "You are already signed in."
-      inactive: "Your account is not activated yet."
-      invalid: "Invalid %{authentication_keys} or password."
-      locked: "Your account is locked."
-      last_attempt: "You have one more attempt before your account is locked."
-      not_found_in_database: "Invalid %{authentication_keys} or password."
-      timeout: "Your session expired. Please sign in again to continue."
-      unauthenticated: "You need to sign in or sign up before continuing."
-      unconfirmed: "You have to confirm your email address before continuing."
+      already_authenticated: You are already signed in.
+      inactive: Your account is not activated yet.
+      invalid: Invalid %{authentication_keys} or password.
+      last_attempt: You have one more attempt before your account is locked.
+      locked: Your account is locked.
+      not_found_in_database: Invalid %{authentication_keys} or password.
+      timeout: Your session expired. Please sign in again to continue.
+      unauthenticated: You need to sign in or sign up before continuing.
+      unconfirmed: You have to confirm your email address before continuing.
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        action: Confirm my account
+        greeting: Welcome %{recipient}!
+        instruction: 'You can confirm your account email through the link below:'
+        subject: Confirmation instructions
       email_changed:
-        subject: "Email Changed"
+        greeting: Hello %{recipient}!
+        message: We're contacting you to notify you that your email has been changed to %{email}.
+        message_unconfirmed: We're contacting you to notify you that your email is being changed to %{email}.
+        subject: Email Changed
       password_change:
-        subject: "Password Changed"
+        greeting: Hello %{recipient}!
+        message: We're contacting you to notify you that your password has been changed.
+        subject: Password Changed
       reset_password_instructions:
-        subject: "Reset password instructions"
+        action: Change my password
+        greeting: Hello %{recipient}!
+        instruction: Someone has requested a link to change your password. You can do this through the link below.
+        instruction_2: If you didn't request this, please ignore this email.
+        instruction_3: Your password won't change until you access the link above and create a new one.
+        subject: Reset password instructions
       unlock_instructions:
-        subject: "Unlock instructions"
-    omniauth_callbacks:
-      failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
-      success: "Successfully authenticated from %{kind} account."
+        action: Unlock my account
+        greeting: Hello %{recipient}!
+        instruction: 'Click the link below to unlock your account:'
+        message: Your account has been locked due to an excessive number of unsuccessful sign in attempts.
+        subject: Unlock instructions
+    confirmations:
+      new:
+        already_have_account: Already have account
+        business_dont_have_account: Business dont have account
+        create_one: Create one
+        email_address: Email address
+        log_in: Log in
+        resend_confirmation_instructions: Resend confirmation instructions
+        resend_instructions: Resend instructions
     passwords:
       edit:
-        already_have_account: Already have an account?
+        already_have_account: Already have account
         change_my_password: Change my password
         change_your_password: Change your password
         confirm_password: Confirm password
         create_one: Create one
-        dont_have_account: Don't have an account?
+        dont_have_account: Dont have account
         log_in: Log in
         new_password: New password
       new:
-        forgot_your_password: Forgot your password
-        email_address: Email address
-        send_reset_link: Send reset link
-        already_have_account: Already have account?
-        log_in: Log in
-        didnt_receive_confirmation_instructions: Didn't receive confirmation instructions.
+        already_have_account: Already have account
         click_here: Click here
-      no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
-      send_instructions: "You will receive an email with instructions on how to reset your password in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
-      updated: "Your password has been changed successfully. You are now signed in."
-      updated_not_active: "Your password has been changed successfully."
+        didnt_receive_confirmation_instructions: Didnt receive confirmation instructions
+        email_address: Email address
+        forgot_your_password: Forgot your password
+        log_in: Log in
+        send_reset_link: Send reset link
     registrations:
       edit:
+        my_credentials: My credentials
+        my_profile: My profile
         change_email: Change email
         change_email_address: Change email address
         change_password: Change password
@@ -477,29 +597,17 @@ en:
         enter_current_password_to_change_password: Enter current password to change password
         new_email: New email
         new_password: New password
-        my_credentials: My credentials
-        my_profile: My profile
-      destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
-      signed_up: "Welcome! You have signed up successfully."
-      signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
-      signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
-      signed_up_but_unconfirmed: "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account."
-      update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirmation link to confirm your new email address."
-      updated: "Your account has been updated successfully."
-      updated_but_not_signed_in: "Your account has been updated successfully, but since your password was changed, you need to sign in again."
+        your_account: Your account
     sessions:
       new:
-        login_to_your_profile: Log in to your AssessKit profile
-        dont_have_an_account: Don't have an account?
-        sign_up_now: Sign up now
+        dont_have_an_account: Dont have an account
         email_address: Email address
-        password: Password
+        forgot_password: Forgot password
         keep_me_logged_in: Keep me logged in
-        forgot_password: Forgot password?
+        login_to_your_profile: Login to your profile
+        password: Password
         sign_in: Sign in
-      signed_in: "Signed in successfully."
-      signed_out: "Signed out successfully."
-      already_signed_out: "Signed out successfully."
+        sign_up_now: Sign up now
     shared:
       links:
         didnt_receive_confirmation_instructions: Didnt receive confirmation instructions
@@ -508,30 +616,32 @@ en:
         log_in: Log in
         sign_in_with: Sign in with
         sign_up: Sign up
-    unlocks:
-      send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
-      send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."
-      unlocked: "Your account has been unlocked successfully. Please sign in to continue."
   duration:
-    hour: hour
-    min: min
-    minute: minute
-    sec: sec
-    second: second
-    zero_min: 0 min
+    hour: Hour
+    min: Min
+    minute: Minute
+    sec: Sec
+    second: Second
+    zero_min: Zero min
+  email_inviting_component:
+    actions: Actions
+    add: Add
+    invite_candidates: Invite candidates
+    send_invitation_email: Send an invitation email to candidates.
   empty_test_results_component:
-    default_description: There are no results to display.
-    default_title: No results
+    default_description: No tests from the library were included in this assessment.
+    default_title: Therefore there are no test results to show.
   errors:
     messages:
-      already_confirmed: "was already confirmed, please try signing in"
-      confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
-      expired: "has expired, please request a new one"
-      not_found: "not found"
-      not_locked: "was not locked"
-      not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+      inclusion: "The value must be either %{values}."
+      too_many_options: Must have at most 5 options
+      too_few_options: Must have at least 2 options
+      must_have_one_correct_option: Must have at least one correct option
+      all_options_must_be_correct: "All options must be correct"
+      no_correct_option: Must have at least one correct option
+      max_five_tests: An assessment can have a maximum of 5 tests.
+      candidate_or_tmp_must_be_present: "Either candidate or temporary file must be present"
+      not_saved: Not saved
   filter_component:
     clear: Clear
     filters: Filters
@@ -546,31 +656,33 @@ en:
     question_type: Question type
     my_company: My company
     show_questions_from: Show questions from
+    my_company: My company
     show_tests_from: Show tests from
     test_duration: Test duration
     up_to_10_mins: Up to 10 mins
     test_focus: Test focus
     test_format: Test format
   flash:
-    candidate_deleted: "The candidate has been deleted."
-    reminder_sent: "Reminder sent successfully."
-    rating_updated: "Rating updated successfully."
-    activate_success: Assessment public link was successfully activated.
-    already_added: This candidate has already been added to this assessment.
-    archive_success: Assessment was successfully archived.
-    bulk_invite_success: Bulk invitation sent successfully!
-    create_success: Your candidate profile was successfully created.
-    deactivate_success: Assessment public link was successfully deactivated.
-    finish_success: Assessment was successfully finalized.
-    invite_me_success: Invitation sent successfully!
-    invite_success: Invitation was successfully sent.
-    no_file_attached: No file attached to this response.
-    select_file: Please select a file to upload.
-    unarchive_success: Assessment was successfully unarchived.
-    update_questions_success: The assessment's questions were successfully updated.
-    update_success: Rating was successfully updated.
-    update_tests_success: The assessment's tests were successfully updated.
-    update_title_success: Assessment title was successfully updated.
+    candidate_already_added: Candidate already added
+    bulk_invitation_send: 'Bulk invitation send'
+    file_not_selected: File not selected
+    invitation_sent: Invitation sent
+    node_successfully_updated: "%{resource}'s %{child} were successfully updated."
+    personalize_successfully_created: Your %{resource} profile was successfully updated
+    personalize_successfully_updated: Your %{resource} profile was successfully updated
+    successfully_archived: '%{resource} was successfully activated.'
+    successfully_activated: '%{resource} was successfully activated.'
+    successfully_created: '%{resource} was successfully activated.'
+    successfully_deactivated: '%{resource} was successfully activated.'
+    successfully_finished: '%{resource} was successfully activated.'
+    successfully_unarchived: '%{resource} was successfully activated.'
+    successfully_updated: '%{resource} was successfully activated.'
+  footer_component:
+    about_us: About us
+    all_rights_reserved: All rights reserved
+    contact: Contact
+    features: Features
+    pricing: Pricing
   home:
     index:
       advanced_security_options: Advanced Security Options
@@ -637,6 +749,10 @@ en:
       webcam_monitoring: Webcam Monitoring
       webcam_monitoring_description: Use the candidate's webcam to ensure a cheat-free environment.
       why_choose_assesskit: Why Choose AssessKit?
+  invitation_authentication_service:
+    authenticate:
+      candidate_registration_required: Candidate registration required
+      candidate_required: Candidate required
   invite_candidates:
     link_inactive:
       apology: Apology
@@ -649,17 +765,83 @@ en:
       introduction: Thanks for your interest in this assessment! Please provide your email address and we'll send you more information with a link to begin.
       submit_button: Please invite me
       title: Take our assessment
+  invite_modal_component:
+    close: Close
+    invite_by_email: Invite by email
+    invite_candidates: Invite candidates
+    invite_in_bulk: Invite in bulk
+    share_link: Share link
   layouts:
     application:
-      title: "AssessKit - Ensuring Integrity in Remote Testing"
+      title: AssessKit - Ensuring Integrity in Remote Testing
+  nav_bar:
+    guest_component:
+      about_us: About us
+      contact: Contact
+      features: Features
+      for_candidates: For candidates
+      get_started: Get started
+      log_in: Log in
+      pricing: Pricing
+      today: Today
+    user_component:
+      settings: Settings
+      account: Account
+      custom_questions_library: Custom questions library
+      my_account: My account
+      my_business_profile: My business profile
+      test_library: Test library
+      assessments: Assessments
+      candidates: Candidates
+      my_account: My account
+      my_candidate_profile: My candidate profile
+      my_assessments: My assessments
+      sign_out: Sign out
+      signed_in_as: Signed in as
+      get_started: Get started
+      my_account: My account
   no_results_component:
-    default_message: No results
+    default_message: Sorry, no results were found.
     default_title: Try a new search or apply a different filter.
   not_started_component:
-    default_message: Try a new search or apply a different filter.
-    default_title: Sorry, no results were found.
+    default_message: This candidate has not started their assessment yet
+    default_title: Therefore there are no test results to show.
+  of: Of
   pagination_component:
-    items_per_page: "%{article} per page"
+    items_per_page: Items per page
+  participation_progress_indicators_component:
+    no_limit: No limit
+    time_for_question: 'Time for question %{answered_count} of %{questions_count}:'
+  participation_setup_component:
+    actual_test_message: The actual test starts now. Good luck!
+    intro_message: For this test to get a sense of what to expect. After that, your actual tests will begin.
+    next_page: Next page
+    next_test: 'This is the next test:'
+    practice_questions: Practice questions
+    seconds: Seconds
+    stay_on_screen_message: Please stay on this screen. The timer for your next test has <strong>started</strong> and <strong>cannot be paused</strong>. The timer continues even when you close the browser.
+    will_start_in: Will start in
+  question_form_component:
+    choose_answer_button: Choose Answer
+    close: Close
+    drag_drop_or_click: Drag and drop file here or click to upload
+    max_file_size: 400MB max file size.
+    question: Question
+    select_all_apply: Select all that apply
+    select_one_answer: Select only one answer
+    skip_question_button: Skip Question
+    skip_question_message: You cannot come back to this question later. Even if you don't know the answer, just pick the answer you feel best about. You might get it right!
+    skip_question_title: Are you sure you want to skip this question?
+    supported_file_types: Supported file types
+  question_header_component:
+    finish: Finish
+    next: Next
+    start_test: Start test
+  report_custom_questions_component:
+    avg_rating: Avg rating
+    download: Download
+    read: Read
+    view_answer: View answer
   roles:
     new:
       business:
@@ -670,18 +852,22 @@ en:
         link_text: I'm a Candidate
       title: What brings you to AssessKit?
   search_input_component:
-    initialize:
-      default_placeholder: Search
-  shared:
-    languages:
-      english: English
-      spanish: Spanish
-      french: French
-      german: German
-      de: German
-      en: English
-      es: Spanish
-      fr: French
+    default_placeholder: Search
+  share_link_component:
+    active_source: Active source
+    copy_invitation_text: 'Copy and add this text to your invitation:'
+    copy_link: Copy link
+    invitation_text: Invitation text
+    invitation_text_html: We want to ensure that everyone has a fair and equal chance, so we're using a AssessKit assessment
+    invite_candidates: Invite candidates by sharing a public link. This link will direct them to the assessment and capture their name and email for tracking purposes.
+    ready_to_start: This helps maintain fairness and integrity in our process.<p class="mt-5">Ready to get started? Click the link below:</p>
+  test_card_component:
+    add: Add
+    details: Details
+    free: Free
+    popular: Popular
+    preview: Preview
+    remove: Remove
   test_library:
     index:
       create_assessment: Create assessment
@@ -695,198 +881,16 @@ en:
       relevant_for: This test is relevant for
       time: Time
       type: Type
-# COMPONENTS
-  anti_cheating_monitor_component:
-    anti_cheating_monitor: "Anti-cheating monitor"
-    device_used: "Device used"
-    location: "Location"
-    ip_address_check: "Filled out only once from IP address?"
-    webcam_enabled: "Webcam enabled?"
-    fullscreen_active: "Full-screen mode always active?"
-    mouse_in_window: "Mouse always in assessment window?"
-  assessment_results_component:
-    average_score: average score
-    best_candidate_score: best candidate score
-    candidate_pool_average: candidate pool average
-    pending: pending
-    tests_included_in_scoring: Tests included in scoring
-  assessment_score_card_component:
-    assessment: Assessment
-    average_score: Average score
-    invited: Invited
-    send_results_to_candidate: Send results to candidate
-    status: Status
-  assessment_stepper_component:
-    assessment_details: "Assessment details"
-    choose_tests: "Choose tests"
-    add_questions: "Add questions"
-    finalize: "Finalize"
-  bulk_inviting_component:
-    csv: CSV
-    download_templates: 'You can download one of these templates:'
-    drag_and_drop: Drag and drop file here or click to upload
-    example: Example
-    file_columns_order: 'Make sure you use two columns in your file in the following order:'
-    file_limit: Name, Email. You can only add 1200 candidates per file.
-    file_selected: 'File selected:'
-    invite_candidates: Invite candidates
-    invite_multiple_candidates: Invite multiple candidates at once through a CSV or XLSX file upload.
-    keep_in_mind: Keep in mind...
-    max_file_size: 10MB max file size.
-    supported_file_types: 'Supported file types:'
-    xlsx: XLSX
-  candidate_rating_component:
-    notes_placeholder: Add your private notes here (auto-saved)...
-    rating_description: Give your personal overall rating of this candidate based on your impressions and interactions with him or her.
-    your_rating: Your rating
-  candidates_list_component:
-    actions: Actions
-    avg_score: Avg. % score
-    candidates: Candidates
-    copy_link: Copy candidate assessment link
-    delete_candidate: Delete candidate
-    invited_on: Invited on
-    name: Name
-    overall_rating: Overall rating
-    search_candidates: Search candidates
-    send_reminder: Send reminder
-    send_results: Send results
-    status: Status
-    invite_candidates_title: "Invite candidates"
-    invite_candidates_message: "Invitez les candidats à compléter cette évaluation et à évaluer leur performance."
-    invite_action_title: "Invite"
-  custom_question_library_component:
-    available_count:
-      one: 1 custom question available
-      other: "%{count} custom questions available"
-    results_count:
-      one: Result (1)
-      other: Results (%{count})
-  custom_questions_table_component:
-    actions: Actions
-    duration: Duration
-    no_questions_message: Add questions to capture information critical to your screening process. Dig deeper with additional questions.
-    question: Question
-    remove_question: Remove question
-    selected_questions: Selected questions
-    type: Type
-    types:
-      long_answer: Long Answer
-      multiple_choice: Multiple Choice
-      rating_scale: Rating Scale
-      short_answer: Short Answer
-      true_false: True/False
-  email_inviting_component:
-    actions: Actions
-    add: Add
-    email: Email
-    email_placeholder: Email *
-    invite_candidates: Invite candidates
-    name: Name
-    name_placeholder: Name
-    send_invitation_email: Send an invitation email to candidates.
-  footer_component:
-    about_us: About Us
-    all_rights_reserved: All rights reserved
-    contact: Contact
-    features: Features
-    pricing: Pricing
-  invite_modal_component:
-    close: Close
-    invite_by_email: Invite by email
-    invite_candidates: Invite candidates
-    invite_in_bulk: Invite in bulk
-    share_link: Share link
-  nav_bar:
-    guest_component:
-      about_us: About Us
-      contact: Contact
-      features: Features
-      get_started: Get started
-      log_in: Log in
-      pricing: Pricing
-      today: today
-      for_candidates: For candidates
-    user_component:
-      assessments: Assessments
-      candidates: Candidates
-      sign_out: Sign out
-      custom_questions_library: Custom questions library
-      settings: Settings
-      test_library: Test library
-      my_assessments: My assessments
-      get_started: Get started
-  participation_progress_indicators_component:
-    no_limit: No Limit
-    time_for_question: 'Time for question %{answered_count} of %{questions_count}:'
-  participation_setup_component:
-    actual_test_message: The actual test starts now. Good luck!
-    intro_message: for this test to get a sense of what to expect. After that, your actual tests will begin.
-    next_page: Next page
-    next_test: 'This is the next test:'
-    practice_questions: Practice questions
-    questions: Questions
-    seconds: seconds
-    stay_on_screen_message: Please stay on this screen. The timer for your next test has started and cannot be paused. The timer continues even when you close the browser.
-    will_start_in: will start in
-  question_form_component:
-    choose_answer_button: Choose Answer
-    close: Close
-    drag_drop_or_click: Drag and drop file here or click to upload
-    enter_answer: Enter your answer here
-    max_file_size: 400MB max file size.
-    question: Question
-    select_all_apply: Select all that apply
-    select_one_answer: Select only one answer
-    skip_question_button: Skip Question
-    skip_question_message: You cannot come back to this question later. Even if you don't know the answer, just pick the answer you feel best about. You might get it right!
-    skip_question_title: Are you sure you want to skip this question?
-    supported_file_types: Supported file types
-    upload_file: Upload your file
-    write_answer_placeholder: Write your answer here...
-  question_header_component:
-    finish: Finish
-    next: Next
-    start_test: Start test
-  report_custom_questions_component:
-    avg_rating: Avg. rating
-    custom_questions: Custom questions
-    download: Download
-    question: Question
-    read: Read
-    view_answer: View answer
-  share_link_component:
-    active_source: Active source
-    copy_invitation_text: 'Copy and add this text to your invitation:'
-    copy_link: Copy link
-    invitation_text: |-
-      We want to ensure that everyone has a fair and equal chance, so we're using a AssessKit assessment (%{root_url}). This helps maintain fairness and integrity in our process.
-
-      Ready to get started? Click the link below:
-
-      %{public_assessment_url}
-    invitation_text_html: We want to ensure that everyone has a fair and equal chance, so we're using a AssessKit assessment (%{root_url}). This helps maintain fairness and integrity in our process.
-    invite_candidates: Invite candidates by sharing a public link. This link will direct them to the assessment and capture their name and email for tracking purposes.
-    ready_to_start: 'Ready to get started? Click the link below:'
-  test_card_component:
-    add: Add
-    details: Details
-    free: Free
-    popular: Popular
-    preview: Preview
-    remove: Remove
   test_library_component:
     results_count:
-      one: Result (1)
-      other: Results (%{count})
-    suggest_new_test: Suggest a new test to AssessKit.
+      one: "%{count} result"
+      other: "%{count} results"
+    suggest_new_test: Suggest a new test to AssessKit
     tests_available:
-      one: 1 test available
+      one: "%{count} test available"
       other: "%{count} tests available"
   tests_table_component:
     actions: Actions
     add_tests_message: Add tests to evaluate your candidates.
-    duration: Duration
     remove_test: Remove test
     selected_tests: Selected tests
-    test: Test

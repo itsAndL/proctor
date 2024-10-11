@@ -15,9 +15,7 @@ class User < ApplicationRecord
 
   enum locale: {
     en: 0,
-    fr: 1,
-    es: 2,
-    de: 3
+    fr: 1
   }
 
   def business?

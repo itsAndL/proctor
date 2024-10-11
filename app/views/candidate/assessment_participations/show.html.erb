@@ -61,14 +61,23 @@
               <div></div>
               <div>
                 <dt class="font-bold text-gray-800"><%= t('.time_left') %>:</dt>
-                <dd class="mt-2 text-gray-800 font-medium text-sm">
-                  <%= render(ProgressBarComponent.new(total: @assessment_participation.assessment.duration_seconds, progress: @participation_service.time_left_overall)) %>
-                </dd>
-                <dd>
-                  <span class="text-gray-800 font-medium text-sm">
-                    <%= format_duration(@participation_service.time_left_overall) %>
-                  </span>
-                </dd>
+                <% if @participation_service.time_left_overall.positive? %>
+                  <dd class="mt-2 text-gray-800 font-medium text-sm">
+                    <%= render(ProgressBarComponent.new(total: @assessment_participation.assessment.duration_seconds, progress: @participation_service.time_left_overall)) %>
+                  </dd>
+                  <dd>
+                    <span class="text-gray-800 font-medium text-sm">
+                      <%= format_duration(@participation_service.time_left_overall) %>
+                    </span>
+                  </dd>
+                <% else %>
+                  <div class="mt-3 mb-9 flex items-center gap-x-1">
+                    <%= svg_tag "clock", class: "size-5" %>
+                    <p class="text-gray-900 text-sm font-medium">
+                      <%= t('.no_time_limit') %>
+                    </p>
+                  </div>
+                <% end %>
               </div>
             </dl>
           </div>
@@ -118,7 +127,7 @@
             <table class="min-w-full divide-y divide-gray-200">
               <thead>
                 <tr>
-                  <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-bold text-gray-800 sm:pl-6"><%= t('.name') %></th>
+                  <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-bold text-gray-800 sm:pl-6"><%= Test.human_attribute_name(:title) %></th>
                   <th scope="col" class="py-3.5 pl-3 pr-4 sm:pr-6 text-left text-sm font-bold text-gray-800 hidden sm:table-cell"><%= t('.time_taken') %></th>
                   <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-right"><%= t('.score') %></th>
                 </tr>

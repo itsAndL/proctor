@@ -23,7 +23,7 @@ export default class extends Controller {
 
   showCopiedFeedback(button) {
     const originalText = button.innerHTML
-    button.innerHTML = "Copied!"
+    button.innerHTML = I18n.copy_controller.copied
     setTimeout(() => {
       button.innerHTML = originalText
     }, 2000)

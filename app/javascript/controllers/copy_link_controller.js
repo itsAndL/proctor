@@ -7,7 +7,7 @@ export default class extends Controller {
   copy() {
     navigator.clipboard.writeText(this.linkValue).then(() => {
       const originalText = this.textTarget.textContent
-      this.textTarget.textContent = "Copied!"
+      this.textTarget.textContent = I18n.copy_controller.copied
       setTimeout(() => {
         this.textTarget.textContent = originalText
       }, 2000)

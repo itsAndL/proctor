@@ -11,7 +11,11 @@
                     <tr>
                       <td class="r15-c nl2go-default-textstyle" align="left" style="color: #3b3f44; font-family: Arial; font-size: 15px; line-height: 1.5; word-break: break-word; text-align: left; valign: top;">
                         <div>
-                          <h2 class="default-heading2" style="margin: 0; color: #1f2d3d; font-family: Poppins,arial; font-size: 32px; word-break: break-word; line-height: 34px"><span style="color: #242424; font-family: Arial, helvetica, sans-serif; font-size: 27px;"><%= t('.hello', name: @recipient.name || @recipient.email) %></span></h2>
+                          <h2 class="default-heading2" style="margin: 0; color: #1f2d3d; font-family: Poppins,arial; font-size: 32px; word-break: break-word; line-height: 34px">
+                            <span style="color: #242424; font-family: Arial, helvetica, sans-serif; font-size: 27px;">
+                              <%= t('.hello', name: @recipient.name || @recipient.email) %>
+                            </span>
+                          </h2>
                           <p style="margin: 0;">&nbsp;</p>
                           <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;"><%= t('.invited_by', company: @assessment.business.company).html_safe %></span></p>
                           <p style="margin: 0;">&nbsp;</p>

@@ -18,6 +18,6 @@ module MultipleChoiceQuestionable
   def only_one_correct_option
     return unless options.select(&:correct?).count != 1
 
-    errors.add(:base, 'Must have exactly one correct option')
+    errors.add(:base, :must_have_one_correct_option)
   end
 end

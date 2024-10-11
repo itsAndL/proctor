@@ -12,7 +12,7 @@ class BusinessesController < ApplicationController
     @business.assign_attributes(business_params)
 
     if @business.save
-      redirect_to edit_business_path(@business, locale: new_locale), notice: t('flash.create_success')
+      redirect_to edit_business_path(@business), notice: t('flash.personalize_successfully_created', resource: Business.model_name)
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,7 +26,7 @@ class BusinessesController < ApplicationController
     @business = current_business
 
     if @business.update(business_params)
-      redirect_to edit_business_path(@business, locale: new_locale), notice: t('flash.update_success')
+      redirect_to secondary_root_path, notice: t('flash.personalize_successfully_updated', resource: Business.model_name)
     else
       render :edit, status: :unprocessable_entity
     end

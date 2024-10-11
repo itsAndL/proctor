@@ -22,8 +22,8 @@
                 <table class="min-w-full divide-y divide-gray-200">
                   <thead class="bg-zinc-50">
                     <tr>
-                      <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-bold text-gray-800 sm:pl-6"><%= t('.name') %></th>
-                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden md:table-cell"><%= t('.email') %></th>
+                      <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-bold text-gray-800 sm:pl-6"><%= Candidate.human_attribute_name(:name) %></th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden md:table-cell"><%= Candidate.human_attribute_name(:name) %></th>
                       <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800"><%= t('.role') %></th>
                       <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
                         <span class="sr-only"><%= t('.actions') %></span>

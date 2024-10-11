@@ -3,7 +3,7 @@
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-9">
     <!-- Question Content -->
     <div>
-      <h2 class="mb-6 font-bold leading-7 text-gray-800 text-xl tracking-tight"><%= t('.question') %></h2>
+      <h2 class="mb-6 font-bold leading-7 text-gray-800 text-xl tracking-tight"><%= Question.model_name %></h2>
       <div class="text-sm md:text-base font-medium text-gray-800">
         <%= @question.content %>
       </div>
@@ -31,7 +31,7 @@
         </div>
       <% elsif @question.is_a?(CustomQuestion) %>
         <% if @question.is_a?(FileUploadCustomQuestion) %>
-          <label class="block font-bold leading-7 text-gray-800 text-xl tracking-tight pb-4"><%= t('.upload_file') %></label>
+          <label class="block font-bold leading-7 text-gray-800 text-xl tracking-tight pb-4"><%= CustomQuestion.human_attribute_name(:file_upload) %></label>
           <div class="mt-2" data-controller="file-selector">
             <label class="block w-full text-sm text-gray-900 border-gray-300 rounded-md cursor-pointer border p-8">
               <%= form.file_field :file_upload, class: "hidden", accept: '.csv, .xls, .xlsx, .doc, .txt, .ppt, .pptx, .odp, .key, .pdf, .png, .jpg, .psd, .bmp, .gif', data: { action: 'change->file-selector#updateFileName', file_selector_target: 'input' } %>
@@ -48,9 +48,9 @@
             </div>
           </div>
         <% elsif @question.is_a?(EssayCustomQuestion) %>
-          <label class="block font-bold leading-7 text-gray-800 text-xl tracking-tight pb-4"><%= t('.enter_answer') %></label>
+          <label class="block font-bold leading-7 text-gray-800 text-xl tracking-tight pb-4"><%= CustomQuestion.human_attribute_name(:essay_content) %></label>
           <div class="mt-2">
-            <%= helpers.rich_text_area_tag :essay_content, nil, rows: 5, attachments: false, placeholder: t('.write_answer_placeholder') %>
+            <%= helpers.rich_text_area_tag :essay_content, nil, rows: 5, attachments: false, placeholder: CustomQuestion.human_placeholder(:essay_content) %>
           </div>
         <% end %>
       <% end %>

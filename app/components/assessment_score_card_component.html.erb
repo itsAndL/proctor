@@ -3,7 +3,7 @@
     <div class="max-sm:px-4 flex flex-col sm:flex-row sm:justify-between sm:items-center sm:gap-x-7 max-sm:gap-y-8">
       <div>
         <div class="flex items-center gap-x-5 mb-2">
-          <h3 class="hidden md:block text-xl font-bold text-gray-700"><%= t('.assessment') %></h3>
+          <h3 class="hidden md:block text-xl font-bold text-gray-700"><%= Assessment.model_name.human %></h3>
           <p class="text-xl font-semibold text-gray-600"><%= assessment.title %></p>
         </div>
         <%= render(StarRatingComponent.new(assessment_participation)) %>

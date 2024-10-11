@@ -1,0 +1,934 @@
+---
+fr:
+  javascript:
+    assessment_title_controller:
+      no_title: "Sans titre Evaluation"
+    file_selector_controller:
+      max_file_size: "Taille maximale du fichier : 400 Mo."
+    email_inviting_controller:
+      email_invalid: "Veuillez entrer une adresse e-mail valide."
+      candidate_already_invited: "Ce candidat a déjà été invité."
+    copy_controller:
+      copied: Copié
+    choose_tests_controller:
+      add: Ajouter
+      remove: Supprimer
+      test_placement: Test n˚
+    bulk_inviting_controller:
+      file_not_selected: "Veuillez sélectionner un fichier à télécharger"
+  about:
+    index:
+      heading: "Nous changeons l'avenir des tests à distance."
+      description: "AssessKit s'engage à fournir des solutions de test à distance sécurisées, fiables et efficaces. Notre mission est de garantir l'intégrité des examens en ligne en utilisant des outils de surveillance avancés et une technologie innovante. Nous visons à soutenir les établissements d'enseignement, les entreprises et les organismes de certification dans la réalisation d'évaluations équitables et précises, quel que soit l'endroit où se trouvent les candidats."
+      mission:
+        description: Notre mission est de révolutionner la manière dont les tests à distance sont effectués. Nous nous efforçons de créer une plateforme sécurisée et conviviale qui respecte les normes les plus strictes en matière d'intégrité et d'équité des examens. En tirant parti d'une technologie de pointe, nous permettons aux organisations d'effectuer des évaluations à distance en toute confiance.
+        title: Notre mission
+      values:
+        description: Chez AssessKit, nos valeurs guident tout ce que nous faisons. Elles reflètent notre engagement en faveur de l'excellence et de l'intégrité dans la fourniture de solutions de test à distance.
+        innovation:
+          description: Nous améliorons continuellement notre technologie afin d'offrir la meilleure expérience de test possible.
+          title: L'innovation
+        integrity:
+          description: Nous veillons à ce que tous les tests effectués par l'intermédiaire de notre plateforme soient sécurisés et exempts de toute tricherie.
+          title: Intégrité
+        reliability:
+          description: Nous fournissons des résultats cohérents et précis auxquels les organisations peuvent se fier.
+          title: Fiabilité
+        support:
+          description: Nous proposons une assistance clientèle dédiée pour aider les utilisateurs et répondre rapidement à leurs préoccupations.
+          title: Soutien
+        title: Nos valeurs
+        transparency:
+          description: Nous maintenons une communication ouverte et claire, en fournissant des rapports et des informations détaillés.
+          title: Transparence
+        user_centricity:
+          description: Nous concevons notre plateforme en pensant à l'utilisateur, en la rendant intuitive et facile à utiliser.
+          title: Centrage sur l'utilisateur
+      vision:
+        description: Être le premier fournisseur de solutions de test à distance, reconnu pour son engagement en matière de sécurité, de fiabilité et d'expérience utilisateur. Nous envisageons un monde où les examens à distance sont aussi fiables et valides que les évaluations traditionnelles en personne.
+        title: Notre vision
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'Échec de la validation : %{errors}'
+        restrict_dependent_destroy:
+          has_many: Impossible de supprimer l'enregistrement car des %{record} dépendants existent
+          has_one: Impossible de supprimer l'enregistrement car un %{record} dépendant existe
+      models:
+        user:
+          attributes:
+            email:
+              invalid_work_email: "L'e-mail ne semble pas être un e-mail professionnel valide."
+    placeholders:
+      candidate:
+        name: Prénom
+        email: E-mail
+      custom_question:
+        title: Titre
+        essay_content: Écrivez votre réponse ici...
+    attributes:
+      assessment:
+        language: Langue
+        title: Titre
+      business:
+        avatar: Votre logo d'entreprise
+        bio: Bio
+        company: Nom de l'entreprise
+        contact_name: Nom du contact
+        contact_role: Rôle ou poste
+        website: "Site web"
+      candidate:
+        avatar: Photo de profil
+        email: E-mail
+        name: Prénom
+    enums:
+      assessment:
+        language: &language
+          english: Anglais
+          french: Français
+          german: Allemand
+          spanish: Espagnol
+      user:
+        locale:
+          de: Allemand
+          en: Anglais
+          fr: Français
+          es: Espagnol
+      assessment_participation:
+        status:
+          archived: Archivé
+          completed: Terminé
+          invitation_clicked: Invitation cliquée
+          invited: Invité
+          started: Commencé
+      custom_question:
+        language: *language
+        type:
+          essay_custom_question: Essay
+          file_upload_custom_question: File upload
+          multiple_choice_custom_question: Multiple-choice
+          video_custom_question: Video
+      language: *language
+      test:
+        language: *language
+        level:
+          advanced: Avancé
+          entry_level: "Niveau d'entrée"
+          intermediate: "Intermédiaire"
+        type:
+          coding_test: Codage
+          multiple_choice_test: Multiple-choice
+          questionnaire_test: Questionnaire
+    models:
+      assessment:
+        one: Evaluation
+        other: Evaluations
+      candidate:
+        one: Candidat
+        other: Candidats
+      custom_question:
+        one: Question personnalisée
+        other: Questions personnalisées
+      test:
+        one: Test
+        other: Tests
+      quetion:
+        one: Question
+        other: Questions
+  alert:
+    candidate_required: "Candidat requis"
+    log_as_candidate: "Se connecter en tant que candidat"
+  anti_cheating_monitor_component:
+    anti_cheating_monitor: "Anti-cheating monitor"
+    is_active:
+      true: "Oui"
+      false: "Non"
+    device_used: Appareil utilisé
+    fullscreen_active: Plein écran actif
+    ip_address_check: "Vérification de l'adresse IP"
+    location: "Emplacement"
+    mouse_in_window: "Souris dans la fenêtre"
+    webcam_enabled: Webcam activée
+  assessment_footer_component:
+    back: "Retour"
+    finish: "Terminer"
+    next: "Suivant"
+  assessment_header_component:
+    exit: "Sortie"
+    save_and_exit: "Enregistrer et quitter"
+  mailer:
+    all_the_best: "Tout le meilleur,"
+    team_signature: "L'équipe AssessKit"
+  assessment_mailer:
+    invite_email:
+      accommodations: Des aménagements sont disponibles si nécessaire. Plus de détails peuvent être trouvés sur la page de présentation une fois que vous commencez.
+      assessment_description: Cette évaluation est conçue pour évaluer vos compétences et connaissances dans des domaines spécifiques. C'est une opportunité de démontrer vos capacités de manière équitable et impartiale.
+      assessment_details: 'Voici les détails de votre évaluation :'
+      contact_support: Si vous avez des questions ou besoin d'assistance, n'hésitez pas à contacter notre équipe de support.
+      custom_questions_on: Questions personnalisées sur
+      duration: 'Durée : %{duration}'
+      hello: Bonjour %{name} !
+      invite_subject: Vous avez été invité à passer une évaluation pour %{company}
+      invited_by: Vous avez été invité à passer une évaluation par <strong>%{company}</strong>.
+      language: 'Langue : %{language}'
+      link_not_work: 'Si le lien ci-dessus ne fonctionne pas, copiez et collez cette URL dans votre navigateur :'
+      need_account: Besoin de compte
+      one_attempt: Vous avez 1 tentative pour compléter cette évaluation. Bien que nous recommandions de terminer l'évaluation en une seule session, vous pouvez faire des pauses entre les tests.
+      start_assessment: Commencer l'évaluation
+      tests_on: Tests sur
+      use_chrome: Nous suggérons d'utiliser Google Chrome sur un ordinateur portable ou de bureau pour éviter tout problème technique.
+    reminder_email:
+      greeting: Bonjour %{name} !
+      link_not_working: '<span style="color: #242424; font-family: Arial, helvetica, sans-serif;">Si le lien ci-dessus ne fonctionne pas, copiez et collez cette URL dans votre navigateur :</span>'
+      reminder: Rappel
+      reminder_subject: 'Rappel : Complétez votre évaluation pour %{company}'
+      start_assessment: Commencer l'évaluation
+  assessment_participations:
+    delete_confirmation:
+      cancel: Annuler
+      close: Fermer
+      confirm_delete: Etes-vous sûr de vouloir supprimer définitivement ce candidat ? L'accès à l'évaluation sera révoqué si le candidat n'a pas terminé son évaluation. Après la suppression, vous pouvez réinviter le candidat.
+      delete: Supprimer
+      delete_candidate: Supprimer le candidat
+    destroy:
+      candidate_deleted: "Candidat supprimé"
+    rate:
+      rating_updated: "Note mise à jour avec succès"
+    send_reminder:
+      reminder_sent: "Rappel envoyé"
+  assessment_results_component:
+    average_score: "Score moyen"
+    best_candidate_score: "Meilleur score du candidat"
+    candidate_pool_average: "Moyenne du groupe de candidats"
+    pending: "En attente"
+    tests_included_in_scoring: "Tests inclus dans le score"
+  assessment_score_card_component:
+    average_score: "Score moyen"
+    invited: "Invité"
+    send_results_to_candidate: "Envoyer les résultats au candidat"
+    status: 'Statut'
+  assessment_title_component:
+    test:
+      one: "%{count} test"
+      other: "%{count} tests"
+    untitled: "Sans titre Evaluation"
+  assessments:
+    add_questions:
+      title: Ajouter des questions
+    choose_tests:
+      title: Choisir les tests
+    finalize:
+      tip: Vous pouvez configurer et modifier votre évaluation jusqu'à ce que vous invitiez le premier candidat.
+      title: Finaliser
+    form:
+      language_message: Il s'agit de la langue dans laquelle vos candidats passeront votre évaluation. Tous les tests que vous ajoutez à cette évaluation doivent être dans la même langue.
+      language_prompt: Sélectionner une langue
+      title: Détails de l'évaluation
+      title_message: Saisissez un titre clair et concis pour votre évaluation. Il sera visible par les candidats.
+    index:
+      archive: "Archives"
+      unarchive: "Désarchiver"
+      actions: Actions
+      active: Actif (%{count})
+      archived: Archivé (%{count})
+      candidates: Candidats
+      create_assessment: Créer une évaluation
+      date_created: Date de création
+      edit: Editer
+      inactive: Inactif (%{count})
+      last_activity: Dernière activité
+      progress: Progrès
+      search_placeholder: Recherche d'évaluations
+      title: Évaluations
+    rename:
+      cancel: Annuler
+      close: Fermer
+      rename_assessment: Renommer l'évaluation
+      save: Économiser
+    require_edit:
+      assessment_edit_required: Édition de l'évaluation requise
+      cancel: Annuler
+      close: Fermer
+      edit_assessment: Modifier l'évaluation
+      edit_instructions: Avant d'inviter les candidats, veuillez inclure au moins un test de compétences ou une question personnalisée.
+    show:
+      archive: Archives
+      edit_assessment: Modifier l'évaluation
+      invite: Invitation
+      try_yourself: Essayez vous-même
+      unarchive: Désarchiver
+  assessment_stepper_component:
+    assessment_details: "Détails de l'évaluation"
+    choose_tests: "Choisir les tests"
+    add_questions: "Ajouter des questions"
+    finalize: "Finaliser"
+  bulk_inviting_component:
+    csv: Csv
+    download_templates: "Vous pouvez télécharger l'un de ces modèles :"
+    drag_and_drop: Glissez-déposez le fichier ici ou cliquez pour télécharger
+    example: Exemple
+    file_columns_order: "Assurez-vous d'utiliser deux colonnes dans votre fichier dans l'ordre suivant :"
+    file_limit: Nom, E-mail. Vous pouvez ajouter jusqu'à 1200 candidats par fichier.
+    file_selected: 'Fichier sélectionné :'
+    invite_candidates: Inviter des candidats
+    invite_multiple_candidates: Invitez plusieurs candidats à la fois via un téléchargement de fichier CSV ou XLSX.
+    keep_in_mind: Gardez à l'esprit...
+    max_file_size: Taille maximale du fichier de 10 Mo.
+    supported_file_types: Types de fichiers pris en charge
+    xlsx: Xlsx
+  business:
+    registrations:
+      new:
+        work_email: E-mail professionnel
+        already_have_account: Vous avez déjà un compte ?
+        are_you_candidate: Êtes-vous un candidat ?
+        company_name: Nom de l'entreprise
+        email_address: Adresse e-mail
+        get_started: Commencez avec AssessKit gratuitement
+        login: Connexion
+        password: Mot de passe
+        sign_up: Inscrivez-vous
+        take_me: Emmenez-moi là-bas
+  businesses:
+    form:
+      avatar: Le logo de votre entreprise
+      avatar_info: JPG, JPEG ou PNG. 2MB max.
+      bio_placeholder: Rédigez quelques phrases sur votre entreprise.
+      business_details: Informations sur l'entreprise
+      business_info: Informations sur votre entreprise.
+      change_avatar: Télécharger
+      loading: Chargement...
+      personal_details: Données personnelles
+      personal_info: Informations sur vous, le point de contact de votre entreprise sur AssessKit.
+      save: Économiser
+      something_went_wrong: Un problème s'est produit lors du téléchargement de votre image, veuillez réessayer.
+      your_business_profile: Votre profil d'entreprise
+  candidate:
+    assessment_participations:
+      checkout:
+        go_now: Aller sur place
+        great_job: Bon travail ! Vous avez terminé votre évaluation.
+        redirecting_message: Redirection dans %{seconds} secondes.
+        see_results_prompt: Vous souhaitez consulter vos résultats maintenant ? Nous vous redirigerons automatiquement vers les résultats de votre évaluation.
+      index:
+        company_name: Nom de l'entreprise
+        invited_on: Invité sur
+        last_activity: Dernière activité
+        my_assessments: Mes évaluations
+        no_assessments_message: Vous n'avez encore été invité à aucune évaluation.
+        no_assessments_title: Pas encore d'évaluation
+      overview:
+        assessment_structure: 'Cette évaluation comprend <strong>%{parts}</strong>. Il faudra environ <strong>%{duration}</strong> pour la mener à bien <strong>.</strong> '
+        assessment_value: Cette évaluation vous permettra de mettre en valeur vos compétences et vos connaissances.
+        before_you_start: 'Quelques précisions avant de commencer :'
+        calculator_use: Vous pouvez utiliser une calculatrice, un stylo et du papier.
+        camera_usage: Veuillez autoriser l'utilisation de votre appareil photo/webcam et ne pas laisser le mode plein écran. Des photos de vous seront prises périodiquement au cours de l'évaluation. Ces mesures sont prises pour garantir l'équité pour tous.
+        completion_status: Vous avez effectué %{completed} des %{total} tests.
+        get_started: Commencer
+        get_started_prompt: Cliquez sur le bouton " <strong>Commencer"</strong> lorsque vous êtes prêt à poursuivre votre évaluation.
+        good_luck: Bonne chance !
+        greeting: Bonjour %{name},
+        preview_questions: Avant chaque test, il peut y avoir des questions de prévisualisation, mais <strong>sachez que le chronomètre du test a déjà commencé</strong>.
+        recommendation: Nous recommandons de réaliser l'évaluation en une seule fois.
+        timed_assessment: L'évaluation est chronométrée. Un chronomètre est affiché par test ou par question.
+        welcome_message: Bienvenue dans notre évaluation.
+      setup:
+        camera_error_message: Il semble que vous n'ayez pas de caméra ou de micro connecté à votre ordinateur ou qu'ils soient bloqués. Pour activer la caméra et le micro, cliquez sur l'icône de la <strong>caméra bloquée</strong> dans la barre d'adresse de votre navigateur et rechargez la page. Si vous n'activez pas de caméra, vous pouvez toujours passer l'évaluation, mais %{company} ne pourra alors pas vérifier le fair-play.
+        camera_info: Nous utilisons les images des caméras pour garantir l'équité pour tous. Assurez-vous d'être devant votre caméra.
+        camera_label: Appareil photo
+        camera_permission: Assurez-vous que vous avez autorisé votre navigateur à accéder à votre appareil photo.
+        camera_setup: Configuration de la caméra
+        drivers_update: Assurez-vous que les pilotes de votre appareil photo et votre navigateur Web sont à jour.
+        incognito_mode: Essayez de lancer l'évaluation en mode incognito ou dans une fenêtre privée.
+        loading_cameras: Chargement des caméras...
+        multiple_camera_devices: Si vous possédez plusieurs appareils photo, assurez-vous que vous avez autorisé votre navigateur et notre site web à utiliser le bon appareil.
+        next: Suivant
+        restart_device: Redémarrez votre appareil et essayez d'accéder à nouveau à l'évaluation en utilisant le lien figurant dans l'e-mail d'invitation.
+        supported_browser: Assurez-vous que vous utilisez un <a target='_blank' href='%{url}' class='underline'><strong>un navigateur compatible.</strong></a>
+        webcam_troubleshoot: Des problèmes avec votre webcam ?
+      show:
+        no_time_limit: Pas de limite de temps
+        about: A propos de
+        approx_time: Durée approximative de l'évaluation
+        audio_info: Allumez vos haut-parleurs ou votre casque (pour écouter le son).
+        before_you_start: Quelques précisions avant de commencer
+        calculator_info: Vous pouvez utiliser une calculatrice, un stylo et du papier.
+        camera_webcam_info: Veuillez autoriser l'utilisation de votre appareil photo/webcam et ne pas laisser le mode plein écran. Des photos de vous seront prises périodiquement au cours de l'évaluation.
+        company_name: Nom de l'entreprise
+        completion_recommendation: Nous recommandons de réaliser l'évaluation en une seule fois.
+        important_things: Les choses importantes
+        invited_on: Invité sur
+        out_of: hors de
+        preview_questions: Avant chaque test, il peut y avoir des questions de prévisualisation, mais <strong>sachez que le chronomètre du test a déjà commencé</strong>.
+        resume_assessment: Évaluation du curriculum vitae
+        score: Score
+        start_assessment: Début de l'évaluation
+        tests: Tests
+        time_left: Temps restant
+        time_taken: Temps nécessaire
+        timed_assessment: L'évaluation est chronométrée. Un chronomètre est affiché par test ou par question.
+        your_progress: Vos progrès
+    custom_questions:
+      start:
+        title: Questions personnalisées
+    registrations:
+      new:
+        already_have_account: Vous avez déjà un compte ?
+        are_you_business: Êtes-vous une entreprise ?
+        create_profile: Créez votre profil AssessKit
+        email_address: Adresse e-mail
+        enter_email: Entrez l'adresse e-mail à laquelle vous avez reçu une invitation d'évaluation.
+        login: Connexion
+        password: Mot de passe
+        sign_up: Inscrivez-vous
+        take_me: Emmenez-moi là-bas
+        your_name: Votre nom
+    tests:
+      feedback:
+        finish: Finition
+        finished_first_test: Premier test terminé
+        intro: Aidez-nous à améliorer ce test en nous faisant part de vos commentaires anonymes. Votre réponse ne sera accessible qu'à AssessKit, et non à votre évaluateur.
+        measurement_opinion: Selon vous, le test a-t-il mesuré avec précision vos compétences en %{skill} ?
+        placeholder: Veuillez nous en dire plus sur votre réponse...
+        somewhat: Un peu
+        'no': Non
+        'yes': Oui
+  candidate_rating_component:
+    notes_placeholder: Ajoutez vos notes privées ici (enregistrement automatique)...
+    rating_description: Donnez votre note globale personnelle de ce candidat en fonction de vos impressions et interactions avec lui ou elle.
+    your_rating: Votre note
+  candidates:
+    form:
+      avatar: Votre photo de profil
+      my_profile: Mon profil
+      my_credentials: Mes identifiants
+      change_avatar: Changer d'avatar
+      file_format_warning: JPG, JPEG ou PNG. 2MB max.
+      loading: Chargement...
+      profile: Profil
+      profile_info_warning: Ces informations seront affichées publiquement, alors
+        faites attention à ce que vous partagez.
+      save: Économiser
+      something_went_wrong: Un problème s'est produit lors du téléchargement du fichier.
+      language: Langue
+      language_info: Choisissez votre langue pour AssessKit et les communications.
+      select_language: Sélectionner une langue
+  candidates_list_component:
+    actions: Actions
+    avg_score: Score moyen
+    candidates: Candidats
+    copy_link: Copier le lien
+    delete_candidate: Supprimer le candidat
+    invited_on: Invité le
+    overall_rating: Note globale
+    search_candidates: Recherche de candidats
+    send_reminder: Envoyer un rappel
+    send_results: Envoyer les résultats
+    status: Statut
+    invite_candidates_title: Inviter les candidats
+    invite_candidates_message: Invitez les candidats à compléter cette évaluation et à évaluer leur performance.
+    invite_action_title: Inviter 
+  concerns:
+    authentication_concern:
+      authenticate_business!:
+        business_required: "Vous devez être connecté en tant qu'entreprise pour accéder à cette page."
+        log_as_business: "Se connecter en tant qu'entreprise"
+  contact:
+    index:
+      address: Adresse
+      email: E-mail
+      first_name: Prénom
+      get_in_touch: Prendre contact
+      help_message: Vous avez des questions ou besoin de plus d'informations ? Nous sommes là pour vous aider. Contactez-nous en utilisant les informations ci-dessous ou remplissez le formulaire et nous vous répondrons dans les plus brefs délais.
+      last_name: Nom de famille
+      message: Message
+      phone_number: Numéro de téléphone
+      send_message: Envoyer un message
+      telephone: Téléphone
+  custom_question_card_component:
+    add: Ajouter
+    look_for_title: Que faut-il attendre de la réponse ?
+    relevancy_title: Pourquoi cette question est-elle pertinente ?
+    remove: "Supprimer"
+  custom_question_library:
+    index:
+      create_assessment: Créer une évaluation
+      custom_questions: Questions personnalisées
+  custom_question_library_component:
+    available_count:
+      one: "%{count} question personnalisée disponible"
+      other: "%{count} questions personnalisées disponibles"
+    results_count: Résultats %{count}
+  custom_question_responses:
+    download:
+      no_file_attached: "Aucun fichier joint"
+    edit:
+      answer: Réponse
+      cancel: Annuler
+      close: Fermer
+      confirm: Confirmer
+      download_file: Télécharger le fichier
+      finished_in: Terminé en %{duration} à partir de %{total_duration}
+      no_answer: Le candidat n'a pas écrit de réponse.
+      no_file_uploaded: Le candidat n'a pas téléchargé de fichiers.
+      no_time_limit: Pas de limite de temps
+      question: Question
+      rate_answer: Taux de réponse
+      review_answer: Réponse à l'examen
+      what_to_look_for: Que faut-il attendre de la réponse ?
+      comment_placeholder: Ajoutez vos notes privées ici (enregistrement automatique)...
+    update:
+      rating_update_success: Note mise à jour avec succès
+  custom_questions_table_component:
+    actions: Actions
+    no_questions_message: Aucun message de question
+    remove_question: Supprimer la question
+    selected_questions: Questions sélectionnées
+  customer:
+    candidates:
+      index:
+        actions: Actions
+        assessment: L'évaluation
+        create_assessment: Créer une évaluation
+        last_activity: Dernière activité
+        search_candidates: Recherche de candidats
+    profile:
+      team:
+        actions: Actions
+        add_user: Ajouter un utilisateur
+        archive: Archives
+        edit: Editer
+        manage_team_members: Gérer les membres de l'équipe
+        owner: Propriétaire
+        reset_pass: Réinitialiser le mot de passe
+        role: Rôle
+  devise:
+    failure:
+      already_authenticated: Vous êtes déjà connecté.
+      inactive: Votre compte n'est pas encore activé.
+      invalid: "%{authentication_keys} ou mot de passe invalide."
+      last_attempt: Il vous reste une tentative avant que votre compte ne soit verrouillé.
+      locked: Votre compte est verrouillé.
+      not_found_in_database: "%{authentication_keys} ou mot de passe invalide."
+      timeout: Votre session a expiré. Veuillez vous reconnecter pour continuer.
+      unauthenticated: Vous devez vous connecter ou vous inscrire avant de continuer.
+      unconfirmed: Vous devez confirmer votre adresse e-mail avant de continuer.
+    mailer:
+      confirmation_instructions:
+        action: Confirmer mon compte
+        greeting: Bienvenue %{recipient}!
+        instruction: 'Vous pouvez confirmer votre adresse e-mail via le lien ci-dessous :'
+        subject: Instructions de confirmation
+      email_changed:
+        greeting: Bonjour %{recipient}!
+        message: Nous vous contactons pour vous informer que votre adresse e-mail a été changée en %{email}.
+        message_unconfirmed: Nous vous contactons pour vous informer que votre adresse e-mail est en cours de modification en %{email}.
+        subject: E-mail modifié
+      password_change:
+        greeting: Bonjour %{recipient}!
+        message: Nous vous contactons pour vous informer que votre mot de passe a été modifié.
+        subject: Mot de passe modifié
+      reset_password_instructions:
+        action: Changer mon mot de passe
+        greeting: Bonjour %{recipient}!
+        instruction: Quelqu'un a demandé un lien pour changer votre mot de passe. Vous pouvez le faire via le lien ci-dessous.
+        instruction_2: Si vous n'avez pas fait cette demande, veuillez ignorer cet e-mail.
+        instruction_3: Votre mot de passe ne sera pas modifié tant que vous n'aurez pas accédé au lien ci-dessus et créé un nouveau mot de passe.
+        subject: Instructions de réinitialisation du mot de passe
+      unlock_instructions:
+        action: Déverrouiller mon compte
+        greeting: Bonjour %{recipient}!
+        instruction: 'Cliquez sur le lien ci-dessous pour déverrouiller votre compte :'
+        message: Votre compte a été verrouillé en raison d'un nombre excessif de tentatives de connexion infructueuses.
+        subject: Instructions de déverrouillage
+    confirmations:
+      new:
+        already_have_account: Vous avez déjà un compte ?
+        business_dont_have_account: L'entreprise n'a pas de compte ?
+        create_one: Créez-en un
+        email_address: Adresse e-mail
+        log_in: Connexion
+        resend_confirmation_instructions: Renvoyer les instructions de confirmation
+        resend_instructions: Renvoyer les instructions
+    passwords:
+      edit:
+        already_have_account: Vous avez déjà un compte ?
+        change_my_password: Changer mon mot de passe
+        change_your_password: Changer votre mot de passe
+        confirm_password: Confirmer le mot de passe
+        create_one: Créez-en un
+        dont_have_account: Vous n'avez pas de compte ?
+        log_in: Connexion
+        new_password: Nouveau mot de passe    
+      new:
+        already_have_account: Vous avez déjà un compte ?
+        click_here: Cliquez ici
+        didnt_receive_confirmation_instructions: Vous n'avez pas reçu les instructions de confirmation ?
+        email_address: Adresse e-mail
+        forgot_your_password: Mot de passe oublié ?
+        log_in: Connexion
+        send_reset_link: Envoyer le lien de réinitialisation
+    registrations:
+      updated: "Votre compte a été mis à jour avec succès."
+      edit:
+        my_credentials: "Mes identifiants"
+        my_profile: "Mon profil"
+        change_email: Changer d'e-mail
+        change_email_address: Changer l'adresse e-mail
+        change_password: Changer le mot de passe
+        confirm_password: Confirmer le mot de passe
+        current_email: E-mail actuel
+        current_password: Mot de passe actuel
+        enter_current_password_to_change_email: Entrez le mot de passe actuel pour changer l'e-mail
+        enter_current_password_to_change_password: Entrez le mot de passe actuel pour changer le mot de passe
+        new_email: Nouvel e-mail
+        new_password: Nouveau mot de passe
+        your_account: Votre compte
+    sessions:
+      signed_out: Vous avez été déconnecté.
+      signed_in: Vous êtes connecté.
+      new:
+        dont_have_an_account: Vous n'avez pas de compte ?
+        email_address: Adresse e-mail
+        forgot_password: Mot de passe oublié ?
+        keep_me_logged_in: Gardez-moi connecté
+        login_to_your_profile: Connectez-vous à votre profil
+        password: Mot de passe
+        sign_in: Se connecter
+        sign_up_now: Inscrivez-vous maintenant
+    shared:
+      links:
+        didnt_receive_confirmation_instructions: Vous n'avez pas reçu les instructions de confirmation ?
+        didnt_receive_unlock_instructions: Vous n'avez pas reçu les instructions de déverrouillage ?
+        forgot_your_password: Mot de passe oublié ?
+        log_in: Connexion
+        sign_in_with: Se connecter avec
+        sign_up: Inscrivez-vous
+  duration:
+    hour: Heure
+    min: Min
+    minute: Minute
+    sec: Sec
+    second: Seconde
+    zero_min: Zéro min
+  email_inviting_component:
+    actions: Actions
+    add: Ajouter
+    invite_candidates: Inviter des candidats
+    send_invitation_email: Envoyer l'e-mail d'invitation
+  empty_test_results_component:
+    default_description: Aucun test de la bibliothèque n'a été inclus dans cette évaluation.
+    default_title: Par conséquent, il n'y a aucun résultat de test à afficher.
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      inclusion: "La valeur doit être soit %{values}."    
+      too_many_options: "Vous ne pouvez avoir au maximum que 5 options."
+      too_few_options: "Vous devez avoir au moins 2 options."
+      must_have_one_correct_option: "Vous devez avoir au moins une option correcte."
+      all_options_must_be_correct: "Toutes les options doivent être correctes."
+      no_correct_option: "Vous devez avoir au moins une option correcte."
+      max_five_tests: "Une évaluation peut avoir au maximum 5 tests."
+      candidate_or_tmp_must_be_present: "Le candidat ou un fichier temporaire doit être présent."
+      not_saved: "Non enregistré"
+      blank: "ne peut pas être vide"
+      taken: "a déjà été pris"
+      invalid: "est invalide"
+      too_short: "est trop court (au moins %{count} caractères)"
+      too_long: "est trop long (au plus %{count} caractères)"
+      not_a_number: "n'est pas un nombre"
+      confirmation: "ne correspond pas à la confirmation"
+      already_confirmed: a déjà été confirmé, veuillez essayer de vous connecter
+      confirmation_period_expired: doit être confirmé dans %{period}, veuillez en demander un nouveau
+      expired: a expiré, veuillez en demander un nouveau
+      not_found: non trouvé
+      not_locked: n'était pas verrouillé
+  filter_component:
+    clear: Effacer
+    filters: Filtres
+    free: Gratuit
+    highlights: Points forts
+    new: Nouveau
+    popular: Populaire
+    language: Langue
+    search_questions: Rechercher des questions
+    search_tests: Rechercher des tests
+    question_category: Catégorie de question
+    question_type: Type de question
+    my_company: Mon entreprise
+    show_questions_from: Afficher les questions de
+    my_company: Mon entreprise
+    show_tests_from: Afficher les tests de
+    test_duration: Durée du test
+    up_to_10_mins: Jusqu'à 10 minutes
+    test_focus: Objectif du test
+    test_format: Format du test
+  flash:
+    candidate_already_added: Candidat déjà ajouté
+    bulk_invitation_send: 'Invitation en masse envoyée'
+    file_not_selected: Fichier non sélectionné
+    invitation_sent: Invitation envoyée
+    node_successfully_updated: "%{resource} %{child} a été mis à jour avec succès."
+    personalize_successfully_created: Votre profil %{resource} a été créé avec succès
+    personalize_successfully_updated: Votre profil %{resource} a été mis à jour avec succès
+    successfully_archived: '%{resource} a été archivé avec succès.'
+    successfully_activated: '%{resource} a été activé avec succès.'
+    successfully_created: '%{resource} a été créé avec succès.'
+    successfully_deactivated: '%{resource} a été désactivé avec succès.'
+    successfully_finished: '%{resource} a été terminé avec succès.'
+    successfully_unarchived: '%{resource} a été désarchivé avec succès.'
+    successfully_updated: '%{resource} a été mis à jour avec succès.'
+  footer_component:
+    about_us: À propos de nous
+    all_rights_reserved: Tous droits réservés
+    contact: Contact
+    features: Fonctionnalités
+    pricing: Tarification
+  home:
+    index:
+      advanced_security_options: Options de sécurité avancées
+      all_basic_features: Toutes les caractéristiques du plan de base
+      all_pro_features: Toutes les fonctionnalités du Plan Pro
+      analyze_results: Analyser les résultats
+      analyze_results_description: Obtenez des scores instantanés et des rapports détaillés.
+      anti_cheating_statistics: Statistiques sur la lutte contre la tricherie
+      anti_cheating_statistics_description: Des rapports détaillés sur les comportements de tricherie potentiels.
+      basic: De base
+      basic_description: Idéal pour les individus et les petites équipes qui commencent à travailler.
+      basic_price: "$29"
+      benefits: Avantages
+      convenience_and_flexibility: Commodité et flexibilité
+      convenience_and_flexibility_description: Effectuer des tests à distance, ce qui permet de gagner du temps et d'économiser des ressources.
+      copy_paste_blocking: Blocage du copier-coller
+      copy_paste_blocking_description: Désactiver les fonctions de copier-coller pour préserver l'intégrité des tests.
+      create_tests: Créer des tests
+      create_tests_description: Sélectionnez et personnalisez des tests prédéfinis à partir de notre vaste bibliothèque de tests pour répondre à vos besoins.
+      cta_button: Commencez dès aujourd'hui
+      cta_description: Commencez dès aujourd'hui et voyez la différence qu'AssessKit peut faire.
+      cta_title: Prêt à sécuriser vos tests ?
+      customizable_tests: Tests personnalisables
+      customizable_tests_basic: Tests personnalisables
+      customizable_tests_description: Sélectionnez dans notre bibliothèque de tests une variété de tests prédéfinis.
+      customizable_tests_pro: Tests personnalisables (jusqu'à 100 tests/mois)
+      enhanced_reporting: Rapports améliorés
+      ensuring: Garantir
+      enterprise: Entreprise
+      enterprise_description: Conçu pour les grandes entreprises et les organisations ayant des besoins importants en matière de tests.
+      enterprise_price: "$79"
+      features_title: Fonctionnalités complètes de test à distance
+      for_everyone: pour tous
+      full_screen_mode: Mode plein écran
+      full_screen_mode_description: Renforcer le mode plein écran pour éviter de passer d'une application à l'autre.
+      get_started: Commencer
+      hero_description: Sécurisez, contrôlez et gérez les évaluations à distance avec confiance et facilité, en offrant un environnement de test équitable pour tous.
+      how_it_works: Comment ça marche
+      in_remote_testing: dans les tests à distance
+      increased_security: Sécurité accrue
+      increased_security_description: Garantissez l'intégrité de votre processus de test grâce à des outils de surveillance avancés.
+      integrity: Intégrité
+      invite_test_takers: Inviter les participants au test
+      invite_test_takers_description: Envoyer des invitations sécurisées aux candidats.
+      monitor_exams: Surveiller les examens
+      monitor_exams_description: Utilisez nos outils de contrôle pour garantir un environnement de test équitable.
+      per_month: "/mois"
+      pricing_description: Nos plans tarifaires sont conçus pour être simples et abordables, et s'adressent aux entreprises de toutes tailles.
+      priority_support: Soutien prioritaire
+      pro: Pro
+      pro_description: Parfait pour les petites et moyennes entreprises.
+      pro_price: "$49"
+      reliable_results: Des résultats fiables
+      reliable_results_description: Faites confiance aux notes et aux statistiques fournies, qui reflètent des performances réelles.
+      secure_test_environment: Environnement de test sécurisé
+      secure_test_environment_description: Surveiller toutes les activités de l'écran afin d'empêcher tout accès non autorisé.
+      simple_and_effective: Simple et efficace
+      simple_pricing: Tarification simple
+      start_free_trial: Démarrer l'essai gratuit
+      time_limits: Limites de temps
+      unlimited_customizable_tests: Nombre illimité de tests personnalisables
+      user_friendly_interface: Interface conviviale
+      user_friendly_interface_description: Créez, gérez et contrôlez facilement les évaluations grâce à une plateforme intuitive.
+      webcam_monitoring: Surveillance par webcam
+      webcam_monitoring_description: Utilisez la webcam du candidat pour garantir un environnement sans tricherie.
+      why_choose_assesskit: Pourquoi choisir AssessKit ?
+  i18n:
+    transliterate:
+      rule:
+        à: a
+        â: a
+        æ: ae
+        ç: c
+        è: e
+        é: e
+        ê: e
+        ë: e
+        î: i
+        ï: i
+        ô: o
+        ù: u
+        û: u
+        ü: u
+        ÿ: "y"
+        œ: oe
+  invitation_authentication_service:
+    authenticate:
+      candidate_registration_required: "L'inscription du candidat est requise"
+      candidate_required: "Candidat requis"
+  invite_candidates:
+    link_inactive:
+      apology: Excuses
+      contact_info: Contact info
+      explanation: Explication
+      return_home: Retour à la maison
+      title: Lien inactif
+    public_link:
+      email_label: E-mail
+      introduction: Merci de l'intérêt que vous portez à cette évaluation ! Veuillez indiquer votre E-mail et nous vous enverrons de plus amples informations ainsi qu'un lien pour commencer.
+      submit_button: Veuillez m'inviter
+      title: Faites notre évaluation
+  invite_modal_component:
+    close: Fermer
+    invite_by_email: Inviter par e-mail
+    invite_candidates: Inviter des candidats
+    invite_in_bulk: Inviter en masse
+    share_link: Partager le lien
+  layouts:
+    application:
+      title: AssessKit - Assurer l'intégrité des tests à distance
+  nav_bar:
+    guest_component:
+      about_us: À propos de nous
+      contact: Contact
+      features: Fonctionnalités
+      for_candidates: Pour les candidats
+      get_started: Commencer
+      log_in: Connexion
+      pricing: Tarification
+      today: Aujourd'hui
+    user_component:
+      settings: Paramètres
+      account: Compte
+      custom_questions_library: Bibliothèque de questions personnalisées
+      my_account: Mon compte
+      my_business_profile: Mon profil d'entreprise
+      test_library: Bibliothèque de tests
+      assessments: Évaluations
+      candidates: Candidats
+      my_account: Mon compte
+      my_candidate_profile: Mon profil de candidat
+      my_assessments: Mes évaluations
+      sign_out: Déconnexion
+      signed_in_as: Connecté en tant que
+      get_started: Commencer
+      my_account: Mon compte
+  no_results_component:
+    default_message: Désolé, aucun résultat n'a été trouvé.
+    default_title: Essayez une nouvelle recherche ou appliquez un autre filtre.
+  not_started_component:
+    default_message: Ce candidat n'a pas encore commencé son évaluation
+    default_title: Par conséquent, il n'y a aucun résultat de test à afficher.
+  of: De
+  pagination_component:
+    items_per_page: "Articles par page"
+  participation_progress_indicators_component:
+    no_limit: "Pas de limite"
+    time_for_question: "Temps pour la question"
+  participation_setup_component:
+    actual_test_message: Le test réel commence maintenant. Bonne chance!
+    intro_message: Pour ce test, ayez une idée de ce à quoi vous attendre. Après cela, vos tests réels commenceront.
+    next_page: Page suivante
+    next_test: 'Ceci est le prochain test :'
+    practice_questions: Questions pratiques
+    seconds: Secondes
+    stay_on_screen_message: Veuillez rester sur cet écran. Le chronomètre de votre prochain test a <strong>commencé</strong> et <strong>ne peut pas être mis en pause</strong>. Le chronomètre continue même lorsque vous fermez le navigateur.
+    will_start_in: Commencera dans
+  question_form_component:
+    choose_answer_button: Choisir la réponse
+    close: Fermer
+    drag_drop_or_click: Glissez-déposez le fichier ici ou cliquez pour le télécharger
+    enter_answer: Saisissez votre réponse ici
+    max_file_size: 'taille maximale du fichier : 400 Mo.'
+    question: Question
+    select_all_apply: Cochez toutes les cases qui s'appliquent
+    select_one_answer: Sélectionnez une seule réponse
+    skip_question_button: Sauter la question
+    skip_question_message: Vous ne pouvez pas revenir sur cette question plus tard.
+      Même si vous ne connaissez pas la réponse, choisissez celle qui vous convient
+      le mieux. Vous aurez peut-être raison !
+    skip_question_title: Êtes-vous sûr de vouloir passer cette question ?
+    supported_file_types: Types de fichiers pris en charge
+    upload_file: Téléchargez votre fichier
+    write_answer_placeholder: Inscrivez votre réponse ici...
+  question_header_component:
+    finish: Terminer
+    next: Suivant
+    start_test: Commencer le test
+  report_custom_questions_component:
+    avg_rating: Note moyenne
+    download: Télécharger
+    read: Lire
+    view_answer: Voir la réponse
+  roles:
+    new:
+      business:
+        description: Vous êtes ici pour créer et gérer des évaluations afin d'évaluer les candidats, les étudiants ou les membres de l'équipe à des fins d'embauche, de formation ou de développement des compétences.
+        link_text: Je suis une entreprise
+      candidate:
+        description: Vous êtes ici pour passer des évaluations et mettre en valeur vos compétences en vue d'un emploi, d'une évaluation scolaire ou d'un développement personnel.
+        link_text: Je suis candidat
+      title: Qu'est-ce qui vous a amené à AssessKit ?
+  search_input_component:
+    default_placeholder: Rechercher
+  share_link_component:
+    active_source: Source active
+    copy_invitation_text: Copier le texte de l'invitation
+    copy_link: Copier le lien
+    invitation_text: Texte de l'invitation
+    invitation_text_html: Texte de l'invitation en HTML
+    invite_candidates: Inviter des candidats
+    ready_to_start: Prêt à commencer
+  test_card_component:
+    add: Ajouter
+    details: Détails
+    free: Gratuit
+    popular: Populaire
+    preview: Aperçu
+    remove: Supprimer
+  test_library:
+    index:
+      create_assessment: Créer une évaluation
+      title: Tests
+    show:
+      close: fermer
+      covered_skills: Compétences couvertes
+      description: Description
+      level: Niveau
+      preview_sample_questions: Prévisualiser les exemples de questions
+      relevant_for: Ce test est pertinent pour
+      time: L'heure
+      type: Type
+  test_library_component:
+    results_count: Nombre de résultats
+    suggest_new_test: Suggérer un nouveau test
+    tests_available: Tests disponibles
+  tests_table_component:
+    actions: Actions
+    add_tests_message: Ajouter un message de test
+    remove_test: Supprimer le test
+    selected_tests: Tests sélectionnés
+  datetime:
+    distance_in_words:
+      x_days:
+        one: il y a 1 jour
+        other: il y a %{count} jours
+      about_x_hours:
+        one: il y a 1 heure
+        other: il y a %{count} heures
+      x_minutes: 
+        one: il y a 1 minute
+        other: il y a %{count} minutes
+      x_seconds:
+        one: il y a 1 seconde
+        other: il y a %{count} secondes
+      less_than_x_minutes:
+        one: il y a moins d'une minute
+        other: il y a moins de %{count} minutes

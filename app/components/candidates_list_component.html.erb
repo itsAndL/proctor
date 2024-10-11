@@ -25,7 +25,7 @@
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="border-t border-gray-200">
               <tr>
-                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-bold text-gray-800 sm:pl-6"><%= t('.name') %></th>
+                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-bold text-gray-800 sm:pl-6"><%= Candidate.human_attribute_name(:name) %></th>
                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800"><%= t('.avg_score') %></th>
                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800"><%= t('.status') %></th>
                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-gray-800 hidden md:table-cell"><%= t('.invited_on') %></th>

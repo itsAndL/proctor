@@ -43,12 +43,14 @@ module Proctor
     config.active_job.queue_adapter = :sucker_punch
 
     # Permitted locales available for the application
-    config.i18n.available_locales = %i[en fr es de]
+    config.i18n.available_locales = %i[en fr]
 
     # Set default locale
     config.i18n.default_locale = :fr
 
     # Use default language as fallback if translation is missing
-    config.i18n.fallbacks = true
+    # config.i18n.fallbacks = true
+
+    config.action_mailer.preview_paths << "#{Rails.root}/lib/mailer_previews"
   end
 end

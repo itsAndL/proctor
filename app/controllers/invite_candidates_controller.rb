@@ -10,12 +10,12 @@ class InviteCandidatesController < ApplicationController
 
   def activate_public_link
     @assessment.activate_public_link!
-    render_turbo_stream_update(update_share_link: true, notice: t('flash.activate_success'))
+    render_turbo_stream_update(update_share_link: true, notice: t('flash.successfully_activated', resource: Assessment.model_name.human))
   end
 
   def deactivate_public_link
     @assessment.deactivate_public_link!
-    render_turbo_stream_update(update_share_link: true, notice: t('flash.deactivate_success'))
+    render_turbo_stream_update(update_share_link: true, notice: t('flash.successfully_deactivated', resource: Assessment.model_name.human))
   end
 
   def public_link
@@ -38,7 +38,7 @@ class InviteCandidatesController < ApplicationController
   def post_invite
     candidates = JSON.parse(params[:candidates])
     InvitationService.bulk_invite(@assessment, candidates)
-    update_candidates_list(update_email_inviting: true, notice: t('flash.invite_success'))
+    update_candidates_list(update_email_inviting: true, notice: t('flash.invitation_sent'))
   end
 
   def bulk_invite; end
@@ -47,9 +47,9 @@ class InviteCandidatesController < ApplicationController
     if params[:file].present?
       candidates = FileParsingService.parse_bulk_invite_file(params[:file])
       InvitationService.bulk_invite(@assessment, candidates)
-      update_candidates_list(update_bulk_inviting: true, notice: t('flash.bulk_invite_success'))
+      update_candidates_list(update_bulk_inviting: true, notice: t('flash.bulk_invitation_send'))
     else
-      render_turbo_stream_update(update_bulk_inviting: true, alert: t('flash.select_file'))
+      render_turbo_stream_update(update_bulk_inviting: true, alert: t('flash.file_not_selected'))
     end
   end
 
@@ -65,7 +65,7 @@ class InviteCandidatesController < ApplicationController
   def handle_invite_me_result(result)
     notice_type = result.success? && result.is_new ? :notice : :alert
     message = if result.success?
-                result.is_new ? t('flash.invite_me_success') : t('flash.already_added')
+                result.is_new ? t('flash.invitation_sent') : t('flash.candidate_already_added')
               else
                 result.error_message
               end

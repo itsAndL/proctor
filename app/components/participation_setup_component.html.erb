@@ -17,8 +17,8 @@
             <% end %>
           </p>
           <div class="mt-5 border-t border-gray-300 pt-5 pr-2">
-            <p class="text-gray-800 space-y-3 font-medium"><%= @intro ? t('.practice_questions') : t('.questions') %> <%= t('.will_start_in') %> <strong data-countdown-target="timer"><%= countdown_time %></strong> <%= t('.seconds') %></p>
-            <p class="mt-4 text-gray-800 space-y-3 font-medium"><%= t('.stay_on_screen_message') %></p>
+            <p class="text-gray-800 space-y-3 font-medium"><%= @intro ? t('.practice_questions') : Question.model_name %> <%= t('.will_start_in') %> <strong data-countdown-target="timer"><%= countdown_time %></strong> <%= t('.seconds') %></p>
+            <p class="mt-4 text-gray-800 space-y-3 font-medium"><%= t('.stay_on_screen_message').html_safe %></p>
           </div>
           <%= link_to @next_url, data: { countdown_target: "nextPage" }, class: "hidden" do %>
             <%= t('.next_page') %>

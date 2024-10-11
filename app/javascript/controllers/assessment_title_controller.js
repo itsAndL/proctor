@@ -10,6 +10,6 @@ export default class extends Controller {
 
   updateTitle() {
     const title = this.inputTarget.value.trim()
-    this.displayTarget.textContent = title || "Untitled assessment"
+    this.displayTarget.textContent = title || I18n.assessment_title_controller.no_title
   }
 }

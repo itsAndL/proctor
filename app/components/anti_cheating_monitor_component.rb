@@ -48,9 +48,9 @@ class AntiCheatingMonitorComponent < ViewComponent::Base
     value = @assessment_participation.send(attribute)
     case value
     when true
-      [t('.yes'), :positive]
+      [t('.is_active.true'), :positive]
     when false
-      [t('.no'), :negative]
+      [t('.is_active.false'), :negative]
     else
       'N/A'
     end

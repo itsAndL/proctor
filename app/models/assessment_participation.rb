@@ -145,7 +145,7 @@ class AssessmentParticipation < ApplicationRecord
   def candidate_or_temp_candidate_present
     return unless candidate.blank? && temp_candidate.blank?
 
-    errors.add(:base, 'Either candidate or temp candidate must be present')
+    errors.add(:base, :candidate_or_tmp_must_be_present)
   end
 
   def generate_invitation_token

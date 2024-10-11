@@ -8,7 +8,9 @@
             <div class="mt-4 flex gap-x-5 items-center">
               <div class="flex gap-x-2 items-center text-gray-900">
                 <%= helpers.svg_tag helpers.custom_question_type_icon(@custom_question), class: "size-4 mt-0.5" %>
-                <p class="text-sm font-medium"><%= t(".types.#{@custom_question.type.underscore}") %></p>
+                <p class="text-sm font-medium">
+                  <%= CustomQuestion.human_enum_name(:type, @custom_question.type.underscore) %>
+                </p>
               </div>
 
               <div class="flex gap-x-2 items-center text-gray-900 text-sm font-medium">

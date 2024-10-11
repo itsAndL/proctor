@@ -18,7 +18,8 @@ export default class extends Controller {
     if (this.validateEmail(email)) {
       const exists = await this.checkCandidateEmail(email)
       if (exists) {
-        this.showErrorMessage("This candidate has already been invited.")
+        this.showErrorMessage(I18n.email_inviting_controller.candidate_already_invited)
+        
       } else {
         this.candidatesValue = [...this.candidatesValue, { name, email }]
         this.renderCandidates()
@@ -26,7 +27,7 @@ export default class extends Controller {
         this.hideErrorMessage()
       }
     } else {
-      this.showErrorMessage("Please enter a valid email address.")
+      this.showErrorMessage(I18n.email_inviting_controller.invalid_email)
     }
   }
 
