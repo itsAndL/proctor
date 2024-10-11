@@ -12,7 +12,7 @@ class CandidatesController < ApplicationController
     @candidate.assign_attributes(candidate_params)
 
     if @candidate.save
-      redirect_to edit_candidate_path(@candidate), notice: t('flash.personalize_successfully_created', resource: Candidate.model_name)
+      redirect_to edit_candidate_path(@candidate), notice: t('flash.personalize_successfully_created', resource: Candidate.model_name.human)
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,7 +26,7 @@ class CandidatesController < ApplicationController
     @candidate = current_candidate
 
     if @candidate.update(candidate_params)
-      redirect_to secondary_root_path, notice: t('flash.personalize_successfully_updated', resource: Candidate.model_name)
+      redirect_to secondary_root_path, notice: t('flash.personalize_successfully_updated', resource: Candidate.model_name.human)
     else
       render :edit, status: :unprocessable_entity
     end
