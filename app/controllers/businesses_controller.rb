@@ -12,7 +12,8 @@ class BusinessesController < ApplicationController
     @business.assign_attributes(business_params)
 
     if @business.save
-      redirect_to edit_business_path(@business, locale: new_locale), notice: t('flash.create_success')
+      I18n.locale = new_locale
+      redirect_to edit_business_path(@business), notice: t('flash.create_success')
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,7 +27,8 @@ class BusinessesController < ApplicationController
     @business = current_business
 
     if @business.update(business_params)
-      redirect_to edit_business_path(@business, locale: new_locale), notice: t('flash.update_success')
+      I18n.locale = new_locale
+      redirect_to edit_business_path(@business), notice: t('flash.update_success')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -45,6 +47,6 @@ class BusinessesController < ApplicationController
   end
 
   def new_locale
-    params.dig('business', 'user', 'locale')
+    params.dig('business', 'user_attributes', 'locale')
   end
 end

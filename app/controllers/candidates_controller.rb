@@ -12,7 +12,8 @@ class CandidatesController < ApplicationController
     @candidate.assign_attributes(candidate_params)
 
     if @candidate.save
-      redirect_to edit_candidate_path(@candidate, locale: new_locale), notice: t('flash.create_success')
+      I18n.locale = new_locale
+      redirect_to edit_candidate_path(@candidate), notice: t('flash.create_success')
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,7 +27,8 @@ class CandidatesController < ApplicationController
     @candidate = current_candidate
 
     if @candidate.update(candidate_params)
-      redirect_to edit_candidate_path(@candidate, locale: new_locale), notice: t('flash.update_success')
+      I18n.locale = new_locale
+      redirect_to edit_candidate_path(@candidate), notice: t('flash.update_success')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -45,6 +47,6 @@ class CandidatesController < ApplicationController
   end
 
   def new_locale
-    params.dig('candidate', 'user', 'locale')
+    params.dig('candidate', 'user_attributes', 'locale')
   end
 end

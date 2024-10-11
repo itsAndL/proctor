@@ -3,6 +3,4 @@ class ApplicationController < ActionController::Base
   include PaginationConcern
   include NavbarVisibilityConcern
   include Locales
-
-  around_action :set_locale
 end

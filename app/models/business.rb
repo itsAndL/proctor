@@ -10,6 +10,8 @@ class Business < ApplicationRecord
   has_many :assessment_participations, through: :assessments
   has_many :candidates, -> { distinct }, through: :assessment_participations
 
+  accepts_nested_attributes_for :user
+
   validates :company, presence: true
   # validates :avatar, attached: true, on: :create
 
