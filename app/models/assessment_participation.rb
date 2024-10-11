@@ -129,15 +129,22 @@ class AssessmentParticipation < ApplicationRecord
   end
 
   def unanswered_custom_questions
-    unanswered = custom_questions
-                 .left_joins(:custom_question_responses)
-                 .where(custom_question_responses: { id: nil })
+    cq = CustomQuestion.arel_table
+    acq = AssessmentCustomQuestion.arel_table
+    cr = CustomQuestionResponse.arel_table
 
-    pending_or_started = custom_questions
-                         .left_joins(:custom_question_responses)
-                         .where(custom_question_responses: { status: %i[pending started] })
+    join_condition = cr[:custom_question_id].eq(cq[:id])
+                                            .and(cr[:assessment_participation_id].eq(id))
 
-    unanswered.or(pending_or_started).select('custom_questions.*')
+    unanswered_conditions = cr[:id].eq(nil).or(cr[:status].in([0, 1]))
+
+    CustomQuestion
+      .joins(:assessment_custom_questions)
+      .joins(acq.join(cr, Arel::Nodes::OuterJoin)
+        .on(join_condition).join_sources)
+      .where(acq[:assessment_id].eq(assessment.id))
+      .where(unanswered_conditions)
+      .distinct
   end
 
   private
