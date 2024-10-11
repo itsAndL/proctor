@@ -111,21 +111,39 @@ class AssessmentParticipation < ApplicationRecord
   end
 
   def unanswered_tests
-    tests.joins(:participation_tests)
-         .where(participation_tests: { status: %i[pending started] })
-         .select('tests.*')
+    tests_table = Test.arel_table
+    participation_tests_table = ParticipationTest.arel_table
+
+    unanswered_conditions = participation_tests_table[:status].in(%i[pending started])
+
+    Test
+      .joins(:participation_tests)
+      .where(unanswered_conditions)
+      .select(tests_table[Arel.star])
   end
 
   def answered_tests
-    tests.joins(:participation_tests)
-         .where(participation_tests: { status: :completed })
-         .select('tests.*')
+    tests_table = Test.arel_table
+    participation_tests_table = ParticipationTest.arel_table
+
+    answered_conditions = participation_tests_table[:status].eq(:completed)
+
+    Test
+      .joins(:participation_tests)
+      .where(answered_conditions)
+      .select(tests_table[Arel.star])
   end
 
   def answered_custom_questions
-    custom_questions.joins(:custom_question_responses)
-                    .where(custom_question_responses: { status: :completed })
-                    .select('custom_questions.*')
+    custom_questions_table = CustomQuestion.arel_table
+    custom_question_responses_table = CustomQuestionResponse.arel_table
+
+    answered_conditions = custom_question_responses_table[:status].eq(:completed)
+
+    CustomQuestion
+      .joins(:custom_question_responses)
+      .where(answered_conditions)
+      .select(custom_questions_table[Arel.star])
   end
 
   def unanswered_custom_questions
