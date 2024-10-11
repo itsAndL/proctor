@@ -124,6 +124,11 @@ de:
           has_many: Datensatz kann nicht gelöscht werden, da abhängige %{record} existieren.
           has_one: Datensatz kann nicht gelöscht werden, da ein abhängiger %{record}-Datensatz
             existiert.
+      models:
+        user:
+          attributes:
+            email:
+              invalid_work_email: "Die E-Mail-Adresse scheint keine gültige Geschäfts-E-Mail-Adresse zu sein."
   alert:
     business_required: Sie müssen als Unternehmen eingeloggt sein, um auf diese Seite
       zugreifen zu können.
@@ -290,7 +295,7 @@ de:
     registrations:
       new:
         get_started: Starten Sie kostenlos mit AssessKit
-        email_address: E-Mail-Adresse
+        work_email: Geschäftliche E-Mail
         password: Passwort
         company_name: Firmenname
         sign_up: Registrieren

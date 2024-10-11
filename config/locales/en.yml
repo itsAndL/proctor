@@ -98,6 +98,17 @@ en:
           french: French
           german: German
           spanish: Spanish
+    errors:
+      messages:
+        record_invalid: 'Validation failed: %{errors}'
+        restrict_dependent_destroy:
+          has_many: Cannot delete record because dependent %{record} exist
+          has_one: Cannot delete record because a dependent %{record} exists
+      models:
+        user:
+          attributes:
+            email:
+              invalid_work_email: "The email doesn't seem to be a valid work email."
   alert:
     business_required: You need to be logged in as a business to access this page.
     candidate_required: You need to be logged in as a candidate to access this page.
@@ -203,7 +214,7 @@ en:
     registrations:
       new:
         get_started: Get started with AssessKit for free
-        email_address: Email address
+        work_email: Work email
         password: Password
         company_name: Company name
         sign_up: Sign up

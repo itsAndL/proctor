@@ -119,6 +119,11 @@ fr:
             dépendants existent
           has_one: Vous ne pouvez pas supprimer l'enregistrement car un(e) %{record}
             dépendant(e) existe
+      models:
+        user:
+          attributes:
+            email:
+              invalid_work_email: "L'adresse e-mail ne semble pas être une adresse professionnelle valide."
   alert:
     business_required: Vous devez être connecté en tant qu'entreprise pour accéder
       à cette page.
@@ -280,7 +285,7 @@ fr:
     registrations:
       new:
         get_started: Commencez avec AssessKit gratuitement
-        email_address: Adresse e-mail
+        work_email: E-mail professionnel
         password: Mot de passe
         company_name: Nom de l'entreprise
         sign_up: Inscrivez-vous

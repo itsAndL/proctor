@@ -11,6 +11,8 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :business
   accepts_nested_attributes_for :candidate
 
+  validate :work_email_required, if: :business?
+
   enum locale: {
     en: 0,
     fr: 1,
@@ -24,6 +26,13 @@ class User < ApplicationRecord
 
   def candidate?
     candidate.present?
+  end
+
+  def work_email_required
+    validator = EmailValidatorService.new(email)
+    return if validator.valid_work_email?
+
+    errors.add(:email, :invalid_work_email)
   end
 
   def skip_confirmation!

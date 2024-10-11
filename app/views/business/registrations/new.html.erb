@@ -15,7 +15,7 @@
           <% end %>
 
           <div>
-            <%= f.label :email, t(".email_address"), class: "required-label" %>
+            <%= f.label :email, t(".work_email"), class: "required-label" %>
             <%= f.email_field :email, autocomplete: "email", required: true, class: "primary-field" %>
             <%= render FieldErrorComponent.new(:email, resource) %>
           </div>   

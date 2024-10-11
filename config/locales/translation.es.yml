@@ -123,6 +123,11 @@ es:
         restrict_dependent_destroy:
           has_many: No se puede eliminar el registro porque existen %{record} dependientes
           has_one: No se puede eliminar el registro porque existe un %{record} dependiente
+      models:
+        user:
+          attributes:
+            email:
+              invalid_work_email: "El correo electrónico no parece ser una dirección de trabajo válida."
   alert:
     business_required: Debe iniciar sesión como empresa para acceder a esta página.
     candidate_required: Debe iniciar sesión como candidato para acceder a esta página.
@@ -284,7 +289,7 @@ es:
     registrations:
       new:
         get_started: Comience con AssessKit gratis
-        email_address: Dirección de e-mail
+        work_email: Correo electrónico del trabajo
         password: Contraseña
         company_name: Nombre de la empresa
         sign_up: Regístrate
