@@ -10,6 +10,8 @@ class Candidate < ApplicationRecord
   has_many :assessment_participations, dependent: :destroy
   has_many :assessments, through: :assessment_participations
 
+  accepts_nested_attributes_for :user
+
   validates :name, presence: true
   validate :invited_to_assessment, on: :create
 
