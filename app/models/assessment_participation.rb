@@ -111,39 +111,21 @@ class AssessmentParticipation < ApplicationRecord
   end
 
   def unanswered_tests
-    tests_table = Test.arel_table
-    participation_tests_table = ParticipationTest.arel_table
-
-    unanswered_conditions = participation_tests_table[:status].in(%i[pending started])
-
-    Test
-      .joins(:participation_tests)
-      .where(unanswered_conditions)
-      .select(tests_table[Arel.star])
+    Test.joins(:participation_tests)
+        .where(participation_tests: { assessment_participation_id: id, status: %i[pending started] })
+        .select('tests.*')
   end
 
   def answered_tests
-    tests_table = Test.arel_table
-    participation_tests_table = ParticipationTest.arel_table
-
-    answered_conditions = participation_tests_table[:status].eq(:completed)
-
-    Test
-      .joins(:participation_tests)
-      .where(answered_conditions)
-      .select(tests_table[Arel.star])
+    tests.joins(:participation_tests)
+         .where(participation_tests: { status: :completed })
+         .select('tests.*')
   end
 
   def answered_custom_questions
-    custom_questions_table = CustomQuestion.arel_table
-    custom_question_responses_table = CustomQuestionResponse.arel_table
-
-    answered_conditions = custom_question_responses_table[:status].eq(:completed)
-
-    CustomQuestion
-      .joins(:custom_question_responses)
-      .where(answered_conditions)
-      .select(custom_questions_table[Arel.star])
+    custom_questions.joins(:custom_question_responses)
+                    .where(custom_question_responses: { status: :completed })
+                    .select('custom_questions.*')
   end
 
   def unanswered_custom_questions
@@ -154,12 +136,12 @@ class AssessmentParticipation < ApplicationRecord
     join_condition = cr[:custom_question_id].eq(cq[:id])
                                             .and(cr[:assessment_participation_id].eq(id))
 
-    unanswered_conditions = cr[:id].eq(nil).or(cr[:status].in([0, 1]))
+    unanswered_conditions = cr[:id].eq(nil).or(cr[:status].in(%i[pending started]))
 
     CustomQuestion
       .joins(:assessment_custom_questions)
       .joins(acq.join(cr, Arel::Nodes::OuterJoin)
-        .on(join_condition).join_sources)
+      .on(join_condition).join_sources)
       .where(acq[:assessment_id].eq(assessment.id))
       .where(unanswered_conditions)
       .distinct
