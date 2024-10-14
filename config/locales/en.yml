@@ -351,7 +351,7 @@ en:
         supported_browser: Ensure you are using a <a target='_blank' href='%{url}' class='underline'><strong>supported browser.</strong></a>
         webcam_troubleshoot: Trouble with your webcam?
       show:
-        no_time_limit: No Time Limit
+        no_time_limit: No time limit
         about: About
         approx_time: Approximate time to complete assessment
         audio_info: Turn on your speakers or headphones (to play audio).
@@ -474,7 +474,7 @@ en:
       finished_in: Finished in %{duration} out of %{total_duration}
       no_answer: The candidate has not written any answer.
       no_file_uploaded: The candidate has not uploaded any files.
-      no_time_limit: No Time Limit
+      no_time_limit: No time limit
       question: Question
       rate_answer: Rate Answer
       review_answer: Review Answer
