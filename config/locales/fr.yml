@@ -207,6 +207,11 @@ fr:
     invited: "Invité"
     send_results_to_candidate: "Envoyer les résultats au candidat"
     status: 'Statut'
+  assessment_stepper_component:
+    assessment_details: "Détails de l'évaluation"
+    choose_tests: "Choisir les tests"
+    add_questions: "Ajouter des questions"
+    finalize: "Finaliser"
   assessment_title_component:
     test:
       one: "%{count} test"
@@ -257,11 +262,6 @@ fr:
       invite: Invitation
       try_yourself: Essayez vous-même
       unarchive: Désarchiver
-  assessment_stepper_component:
-    assessment_details: "Détails de l'évaluation"
-    choose_tests: "Choisir les tests"
-    add_questions: "Ajouter des questions"
-    finalize: "Finaliser"
   bulk_inviting_component:
     csv: Csv
     download_templates: "Vous pouvez télécharger l'un de ces modèles :"
@@ -302,7 +302,11 @@ fr:
       personal_info: Informations sur vous, le point de contact de votre entreprise sur AssessKit.
       save: Économiser
       something_went_wrong: Un problème s'est produit lors du téléchargement de votre image, veuillez réessayer.
-      your_business_profile: Votre profil d'entreprise
+      my_profile: Mon profil
+      my_credentials: Mes identifiants
+      language: Langue
+      language_info: Choisissez votre langue pour AssessKit et les communications.
+      select_language: Sélectionner une langue
   candidate:
     assessment_participations:
       checkout:
@@ -406,8 +410,7 @@ fr:
       file_format_warning: JPG, JPEG ou PNG. 2MB max.
       loading: Chargement...
       profile: Profil
-      profile_info_warning: Ces informations seront affichées publiquement, alors
-        faites attention à ce que vous partagez.
+      profile_info_warning: Ces informations seront affichées publiquement, alors faites attention à ce que vous partagez.
       save: Économiser
       something_went_wrong: Un problème s'est produit lors du téléchargement du fichier.
       language: Langue
@@ -750,25 +753,6 @@ fr:
       webcam_monitoring: Surveillance par webcam
       webcam_monitoring_description: Utilisez la webcam du candidat pour garantir un environnement sans tricherie.
       why_choose_assesskit: Pourquoi choisir AssessKit ?
-  i18n:
-    transliterate:
-      rule:
-        à: a
-        â: a
-        æ: ae
-        ç: c
-        è: e
-        é: e
-        ê: e
-        ë: e
-        î: i
-        ï: i
-        ô: o
-        ù: u
-        û: u
-        ü: u
-        ÿ: "y"
-        œ: oe
   invitation_authentication_service:
     authenticate:
       candidate_registration_required: "L'inscription du candidat est requise"
@@ -845,15 +829,12 @@ fr:
     choose_answer_button: Choisir la réponse
     close: Fermer
     drag_drop_or_click: Glissez-déposez le fichier ici ou cliquez pour le télécharger
-    enter_answer: Saisissez votre réponse ici
     max_file_size: 'taille maximale du fichier : 400 Mo.'
     question: Question
     select_all_apply: Cochez toutes les cases qui s'appliquent
     select_one_answer: Sélectionnez une seule réponse
     skip_question_button: Sauter la question
-    skip_question_message: Vous ne pouvez pas revenir sur cette question plus tard.
-      Même si vous ne connaissez pas la réponse, choisissez celle qui vous convient
-      le mieux. Vous aurez peut-être raison !
+    skip_question_message: Vous ne pouvez pas revenir sur cette question plus tard. Même si vous ne connaissez pas la réponse, choisissez celle qui vous convient le mieux. Vous aurez peut-être raison !
     skip_question_title: Êtes-vous sûr de vouloir passer cette question ?
     supported_file_types: Types de fichiers pris en charge
     upload_file: Téléchargez votre fichier
@@ -907,9 +888,13 @@ fr:
       time: L'heure
       type: Type
   test_library_component:
-    results_count: Nombre de résultats
-    suggest_new_test: Suggérer un nouveau test
-    tests_available: Tests disponibles
+    results_count:
+      one: "%{count} résultat"
+      other: "%{count} résultats"
+    suggest_new_test: Suggérer un nouveau test à AssessKit
+    tests_available:
+      one: "%{count} test disponible"
+      other: "%{count} tests disponibles"
   tests_table_component:
     actions: Actions
     add_tests_message: Ajouter un message de test
