@@ -3,7 +3,7 @@
 # The "main" locale.
 base_locale: en
 ## All available locales are inferred from the data by default. Alternatively, specify them explicitly:
-locales: [en, fr, es, de]
+locales: [en, fr]
 ## Reporting locale, default: en. Available: en, ru.
 # internal_locale: en
 
@@ -17,13 +17,6 @@ data:
   read:
     # Default:
     - config/locales/%{locale}.yml
-    ## More files:
-    - config/locales/*.%{locale}.yml
-    - config/locales/components/%{locale}.yml
-    - config/locales/devise/%{locale}.yml
-    - config/locales/mailer/%{locale}.yml
-    - config/locales/localization/%{locale}.yml
-    - config/locales/activerecord/%{locale}.yml
 
 
   # Locale files to write new keys to, based on a list of key pattern => file rules. Matched from top to bottom:
