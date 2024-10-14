@@ -24,12 +24,6 @@ data:
   
   router: conservative_router
   write:
-    # - ['devise.*', 'config/locales/devise/%{locale}.yml']
-    # - ['activerecord.*', 'config/locales/activerecord/%{locale}.yml']
-    # - ['{*}_component.*', 'config/locales/components/%{locale}.yml']
-    # - ['{date,number,time,datetime,support,duration,date,shared,helpers,flash,alert,errors}.*', 'config/locales/localization/%{locale}.yml']
-    # - ['{of,or}', 'config/locales/localization/%{locale}.yml']
-    # - ['{*}_mailer.*', 'config/locales/mailer/%{locale}.yml']
     - 'config/locales/%{locale}.yml'
 
 
@@ -88,7 +82,7 @@ search:
 
   ## Alternatively, the only files or `File.fnmatch patterns` to search in `paths`:
   ## If specified, this settings takes priority over `exclude`, but `exclude` still applies.
-  only: ["*.rb", "*.html.erb", "*.html.haml", "*.html.slim"]
+  only: ["*.rb", "*.html.erb"]
 
   ## If `strict` is `false`, guess usages such as t("categories.#{category}.title"). The default is `true`.
   strict: false
@@ -130,10 +124,7 @@ ignore_unused:
   - 'support.*'
   - 'or'
   - 'helpers.*'
-  - '{devise,kaminari,will_paginate}.*'
-# - 'simple_form.{yes,no}'
-# - 'simple_form.{placeholders,hints,labels}.*'
-# - 'simple_form.{error_notification,required}.:'
+  - '{devise}.*'
 
 ## Exclude these keys from the `i18n-tasks eq-base' report:
 # ignore_eq_base:
@@ -147,8 +138,8 @@ ignore_unused:
 # - 'activerecord.attributes.*'
 
 ## Ignore these keys completely:
-ignore:
- - kaminari.*
+# ignore:
+#  - kaminari.*
 
 ## Sometimes, it isn't possible for i18n-tasks to match the key correctly,
 ## e.g. in case of a relative key defined in a helper method.
