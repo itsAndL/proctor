@@ -18,7 +18,7 @@ module Locales
   end
 
   def extract_locale_from_user
-    current_user.locale.to_sym if user_signed_in?
+    current_user.locale.to_sym if user_signed_in? && current_user.locale.present?
   end
 
   def extract_locale_from_params
