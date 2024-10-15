@@ -61,7 +61,7 @@ export default class extends Controller {
     if (this.hasFileInputTarget && this.fileInputTarget.files.length) {
       this.formTarget.requestSubmit()
     } else {
-      alert("Please select a file to upload.")
+      alert(I18n.bulk_invite_controller.file_not_selected)
     }
   }
 }

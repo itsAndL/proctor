@@ -84,7 +84,7 @@ class AssessmentParticipationService
   end
 
   def time_left_overall
-    @assessment_participation.unanswered_tests.sum { |test| time_left(test) }
+    @assessment_participation.unanswered_tests.sum { |test| time_left(test) } + @assessment_participation.unanswered_custom_questions.sum(&:duration_seconds)
   end
 
   def more_custom_questions?

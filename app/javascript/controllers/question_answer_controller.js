@@ -10,9 +10,12 @@ export default class extends Controller {
   connect() {
     if (this.hasModalTarget) {
       this.triggerTarget.addEventListener("click", this.sendForm.bind(this))
-    } else {
-      this.triggerTarget.addEventListener("click", () => this.formSubmitTarget.click())
-    } this.start()
+    } else if (this.hasTriggerTarget) {
+      this.triggerTarget.addEventListener("click", this.skip.bind(this))
+    }
+    if (this.hasTimerLabelTarget) {
+      this.start()
+    }
   }
 
   sendForm() {
@@ -81,7 +84,7 @@ export default class extends Controller {
 
       if (timeLeft <= 0) {
         this.stop();
-        this.formSubmitTarget.click(); 
+        this.formSubmitTarget.click();
         return;
       }
 

@@ -71,7 +71,7 @@
                 <div>
                   <%= user_form.label :locale, t('.language'), class: "primary-label" %>
                   <%= user_form.select :locale, 
-                        User.locales.keys.map { |locale| [t("shared.languages.#{locale}"), locale] },
+                        User.locales.keys.map { |locale| [User.human_enum_name(:locale, locale), locale] },
                         { prompt: t('.select_language'), selected: user_form.object&.locale || current_user.locale }, 
                         { class: "primary-field" } %>
                   <%= render FieldErrorComponent.new(:locale, user_form.object || current_user) %>

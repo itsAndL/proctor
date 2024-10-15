@@ -10,7 +10,7 @@ class CustomQuestionResponsesController < ApplicationController
         turbo_stream.replace('report-custom-questions',
                              ReportCustomQuestionsComponent.new(assessment_participation: @custom_question_response.assessment_participation)),
         turbo_stream.replace('modal', helpers.turbo_frame_tag('modal')),
-        turbo_stream.replace('notification', NotificationComponent.new(notice: t('flash.update_success')))
+        turbo_stream.replace('notification', NotificationComponent.new(notice: t('.rating_update_success')))
       ])
     else
       render :edit, status: :unprocessable_entity
@@ -23,7 +23,7 @@ class CustomQuestionResponsesController < ApplicationController
                 filename: @custom_question_response.file_upload.filename.to_s,
                 content_type: @custom_question_response.file_upload.content_type
     else
-      redirect_to edit_custom_question_response_path(@custom_question_response), alert: t('flash.no_file_attached')
+      redirect_to edit_custom_question_response_path(@custom_question_response), alert: t('.no_file_attached')
     end
   end
 

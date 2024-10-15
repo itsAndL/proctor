@@ -101,7 +101,7 @@
                     <tr>
                       <td class="r15-c nl2go-default-textstyle" align="left" style="color: #3b3f44; font-family: Arial; font-size: 15px; line-height: 1.5; word-break: break-word; text-align: left; valign: top;">
                         <div>
-                          <p style="margin: 0;"><%= t('.link_not_working') %></p>
+                          <p style="margin: 0;"><%= t('.link_not_working').html_safe %></p>
                           <p style="margin: 0;"><span style="color: #2563eb; font-family: Arial, helvetica, sans-serif;"><%= normalize_url(invitation_url(@assessment_participation.invitation_token, locale: I18n.locale)) %></span></p>
                         </div>
                       </td>

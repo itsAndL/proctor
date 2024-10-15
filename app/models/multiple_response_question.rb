@@ -12,6 +12,6 @@ class MultipleResponseQuestion < Question
   def at_least_one_correct_option
     return unless options.none?(&:correct?)
 
-    errors.add(:base, 'Must have at least one correct option')
+    errors.add(:base, :no_correct_option)
   end
 end

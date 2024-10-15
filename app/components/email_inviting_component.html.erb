@@ -8,8 +8,8 @@
           <table class="min-w-full divide-y divide-gray-200">
             <thead>
               <tr>
-                <th scope="col" class="bg-zinc-50 rounded-s-xl py-3.5 pl-4 pr-3 text-left text-sm font-bold text-gray-800 sm:pl-6"><%= t('.name') %></th>
-                <th scope="col" class="bg-zinc-50 px-3 py-3.5 text-left text-sm font-bold text-gray-800"><%= t('.email') %></th>
+                <th scope="col" class="bg-zinc-50 rounded-s-xl py-3.5 pl-4 pr-3 text-left text-sm font-bold text-gray-800 sm:pl-6"><%= Candidate.human_attribute_name(:name) %></th>
+                <th scope="col" class="bg-zinc-50 px-3 py-3.5 text-left text-sm font-bold text-gray-800"><%= Candidate.human_attribute_name(:name) %></th>
                 <th scope="col" class="bg-zinc-50 rounded-e-xl relative py-3.5 pl-3 pr-4 sm:pr-6">
                   <span class="sr-only"><%= t('.actions') %></span>
                 </th>
@@ -21,10 +21,10 @@
             <tfoot>
               <tr>
                 <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6">
-                  <input data-email-inviting-target="nameInput" type="text" class="primary-field min-w-40" placeholder="<%= t('.name_placeholder') %>">
+                  <input data-email-inviting-target="nameInput" type="text" class="primary-field min-w-40" placeholder="<%= Candidate.human_placeholder(:name) %>">
                 </td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-800">
-                  <input data-email-inviting-target="emailInput" type="email" class="primary-field min-w-40" placeholder="<%= t('.email_placeholder') %>">
+                  <input data-email-inviting-target="emailInput" type="email" class="primary-field min-w-40" placeholder="<%= Candidate.human_placeholder(:email) %>">
                 </td>
                 <td class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
                   <button type="button" data-email-inviting-target="addButton" data-action="click->email-inviting#addCandidate" class="secondary-button gap-x-2 px-2.5 py-1.5">

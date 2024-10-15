@@ -12,13 +12,13 @@ module AuthenticationConcern
   def authenticate_business!
     unless current_user
       store_location_for(:user, request.fullpath)
-      redirect_to new_user_session_path, alert: t('alert.business_required')
+      redirect_to new_user_session_path, alert: t('.business_required')
       return
     end
 
     return if current_business
 
-    redirect_to secondary_root_path, alert: t('alert.log_as_business')
+    redirect_to secondary_root_path, alert: t('.log_as_business')
   end
 
   def authenticate_candidate!

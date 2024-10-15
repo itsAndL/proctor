@@ -13,12 +13,7 @@ class User < ApplicationRecord
 
   validate :work_email_required, on: :create, if: :business?
 
-  enum locale: {
-    en: 0,
-    fr: 1,
-    es: 2,
-    de: 3
-  }
+  enum locale: { en: 0, fr: 1 }
 
   def business?
     business.present?

@@ -13,7 +13,7 @@ class CandidatesController < ApplicationController
 
     if @candidate.save
       I18n.locale = new_locale
-      redirect_to edit_candidate_path(@candidate), notice: t('flash.create_success')
+      redirect_to edit_candidate_path(@candidate), notice: t('flash.personalize_successfully_created', resource: Candidate.model_name.human)
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class CandidatesController < ApplicationController
 
     if @candidate.update(candidate_params)
       I18n.locale = new_locale
-      redirect_to edit_candidate_path(@candidate), notice: t('flash.update_success')
+      redirect_to secondary_root_path, notice: t('flash.personalize_successfully_updated', resource: Candidate.model_name.human)
     else
       render :edit, status: :unprocessable_entity
     end

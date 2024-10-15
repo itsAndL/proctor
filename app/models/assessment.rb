@@ -150,7 +150,7 @@ class Assessment < ApplicationRecord
   def max_five_tests
     return if assessment_tests.size <= 5
 
-    errors.add(:base, 'An assessment can have a maximum of 5 tests')
+    errors.add(:base, :max_five_tests)
   end
 
   def tests_duration

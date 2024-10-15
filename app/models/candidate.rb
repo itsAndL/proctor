@@ -48,6 +48,6 @@ class Candidate < ApplicationRecord
   def invited_to_assessment
     return if User.exists?(email: user.email) || TempCandidate.exists?(email: user.email)
 
-    errors.add(:not_invited, 'You are not allowed to create an account without an invitation')
+    errors.add(:base, :not_allowed_without_invitation)
   end
 end

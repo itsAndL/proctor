@@ -23,7 +23,7 @@ class AssessmentParticipationsController < ApplicationController
                                per_page: @per_page
                              )),
         turbo_stream.replace('modal', helpers.turbo_frame_tag('modal')),
-        turbo_stream.replace('notification', NotificationComponent.new(notice: t('flash.candidate_deleted')))
+        turbo_stream.replace('notification', NotificationComponent.new(notice: t('.candidate_deleted')))
       ])
   end
 
@@ -31,7 +31,7 @@ class AssessmentParticipationsController < ApplicationController
     result = InvitationService.send_reminder(@assessment_participation)
 
     if result.success?
-      render turbo_stream: turbo_stream.replace('notification', NotificationComponent.new(notice: t('flash.reminder_sent')))
+      render turbo_stream: turbo_stream.replace('notification', NotificationComponent.new(notice: t('.reminder_sent')))
     else
       render turbo_stream: turbo_stream.replace('notification', NotificationComponent.new(alert: result.error_message))
     end
@@ -43,7 +43,7 @@ class AssessmentParticipationsController < ApplicationController
     if @assessment_participation.update(assessment_participation_params)
       render turbo_stream: [
         turbo_stream.replace('notification',
-                             NotificationComponent.new(notice: t('flash.rating_updated'))),
+                             NotificationComponent.new(notice: t('.rating_updated'))),
         turbo_stream.replace(star_rating_identifier, StarRatingComponent.new(@assessment_participation))
       ]
     else

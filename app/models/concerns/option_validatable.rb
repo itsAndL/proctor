@@ -11,9 +11,9 @@ module OptionValidatable
     option_count = options.size
     min_options = self.class.min_options
     if option_count < min_options
-      errors.add(:base, "Must have at least #{min_options} option(s)")
+      errors.add(:base, :too_few_options, min_options:)
     elsif option_count > 10
-      errors.add(:base, 'Can have a maximum of 10 options')
+      errors.add(:base, :too_many_options)
     end
   end
 end

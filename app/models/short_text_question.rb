@@ -12,6 +12,6 @@ class ShortTextQuestion < Question
   def all_options_correct
     return if options.all?(&:correct?)
 
-    errors.add(:base, 'All options must be correct')
+    errors.add(:base, :all_options_must_be_correct)
   end
 end
