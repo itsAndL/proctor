@@ -42,7 +42,7 @@ Rails.application.configure do
 
   # Disable caching for Action Mailer templates even if Action Controller
   # caching is enabled.
-  # config.action_mailer.perform_caching = false
+  config.action_mailer.perform_caching = false
 
   config.action_mailer.asset_host = 'http://localhost:3000'
 

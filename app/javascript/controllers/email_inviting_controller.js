@@ -19,7 +19,6 @@ export default class extends Controller {
       const exists = await this.checkCandidateEmail(email)
       if (exists) {
         this.showErrorMessage(I18n.email_inviting_controller.candidate_already_invited)
-        
       } else {
         this.candidatesValue = [...this.candidatesValue, { name, email }]
         this.renderCandidates()
