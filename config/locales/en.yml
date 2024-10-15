@@ -625,6 +625,8 @@ en:
   errors:
     format: '%{attribute} %{message}'
     messages:
+      max_file_size_invalid: "must be less than %{max_size}MB"
+      content_type_invalid: "content type %{content_type} is invalid"
       inclusion: "The value must be either %{values}."
       too_many_options: Must have at most 5 options
       too_few_options: Must have at least 2 options
@@ -632,7 +634,7 @@ en:
       all_options_must_be_correct: "All options must be correct"
       no_correct_option: Must have at least one correct option
       max_five_tests: An assessment can have a maximum of 5 tests.
-      candidate_or_tmp_must_be_present: "Either candidate or temporary file must be present"
+      candidate_or_tmp_must_be_present: "Either candidate or temporary candidate must be present"
       not_saved: Not saved
       blank: "can't be blank"
       taken: "has already been taken"
@@ -646,6 +648,8 @@ en:
       expired: has expired, please request a new one
       not_found: not found
       not_locked: was not locked
+      required: "is required"
+      not_allowd_without_invitation: 'You are not allowed to create an account without an invitation'
   filter_component:
     clear: Clear
     filters: Filters

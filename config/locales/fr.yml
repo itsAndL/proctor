@@ -625,6 +625,8 @@ fr:
   errors:
     format: "%{attribute} %{message}"
     messages:
+      max_file_size_invalid: "doit être inférieur à %{max_size}MB"
+      content_type_invalid: "contient un type de contenu non valide"
       inclusion: "La valeur doit être soit %{values}."    
       too_many_options: "Vous ne pouvez avoir au maximum que 5 options."
       too_few_options: "Vous devez avoir au moins 2 options."
@@ -632,7 +634,7 @@ fr:
       all_options_must_be_correct: "Toutes les options doivent être correctes."
       no_correct_option: "Vous devez avoir au moins une option correcte."
       max_five_tests: "Une évaluation peut avoir au maximum 5 tests."
-      candidate_or_tmp_must_be_present: "Le candidat ou un fichier temporaire doit être présent."
+      candidate_or_tmp_must_be_present: "Le candidat ou un candidat temporaire doit être présent."
       not_saved: "Non enregistré"
       blank: "ne peut pas être vide"
       taken: "a déjà été pris"
@@ -646,6 +648,8 @@ fr:
       expired: a expiré, veuillez en demander un nouveau
       not_found: non trouvé
       not_locked: n'était pas verrouillé
+      required: "est requis"
+      not_allowed_without_invitation: "Vous n'êtes pas autorisé à créer un compte sans invitation"
   filter_component:
     clear: Effacer
     filters: Filtres
