@@ -86,14 +86,10 @@ fr:
         language: &language
           english: Anglais
           french: Français
-          german: Allemand
-          spanish: Espagnol
       user:
         locale:
-          de: Allemand
           en: Anglais
           fr: Français
-          es: Espagnol
       assessment_participation:
         status:
           archived: Archivé
