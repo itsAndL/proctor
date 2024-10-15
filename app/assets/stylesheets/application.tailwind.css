@@ -50,6 +50,3 @@
 .options:has(.item:checked) {
   @apply border-2 border-blue-600;
 }
-.translation-missing {
-  @apply text-red-500 bg-red-100;
-}
