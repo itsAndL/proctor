@@ -11,7 +11,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :business
   accepts_nested_attributes_for :candidate
 
-  validate :work_email_required, if: :business?
+  validate :work_email_required, on: :create, if: :business?
 
   enum locale: {
     en: 0,
