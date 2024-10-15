@@ -132,8 +132,10 @@ en:
         one: Question
         other: Questions
   alert:
-    candidate_required: Candidate required
-    log_as_candidate: Log as candidate
+    business_required: You need to be logged in as a business to access this page.
+    candidate_required: You need to be logged in as a candidate to access this page.
+    log_as_business: You are not authorized to access this page. Please log in as a business.
+    log_as_candidate: You are not authorized to access this page. Please log in as a candidate.
   anti_cheating_monitor_component:
     is_active:      
       true: "Yes"
@@ -427,11 +429,6 @@ en:
     invite_candidates_title: "Invite candidates"
     invite_candidates_message: "Invitez les candidats à compléter cette évaluation et à évaluer leur performance."
     invite_action_title: "Invite"
-  concerns:
-    authentication_concern:
-      authenticate_business!:
-        business_required: Business required
-        log_as_business: Log as business
   contact:
     index:
       address: Address

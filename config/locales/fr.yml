@@ -132,8 +132,10 @@ fr:
         one: Question
         other: Questions
   alert:
-    candidate_required: "Candidat requis"
-    log_as_candidate: "Se connecter en tant que candidat"
+    business_required: Vous devez être connecté en tant qu'entreprise pour accéder à cette page.
+    candidate_required: Vous devez être connecté en tant que candidat pour accéder à cette page.
+    log_as_business: Vous n'êtes pas autorisé à accéder à cette page. Veuillez vous connecter en tant qu'entreprise.
+    log_as_candidate: Vous n'êtes pas autorisé à accéder à cette page. Veuillez vous connecter en tant que candidat.
   anti_cheating_monitor_component:
     anti_cheating_monitor: "Anti-cheating monitor"
     is_active:
@@ -427,11 +429,6 @@ fr:
     invite_candidates_title: Inviter les candidats
     invite_candidates_message: Invitez les candidats à compléter cette évaluation et à évaluer leur performance.
     invite_action_title: Inviter 
-  concerns:
-    authentication_concern:
-      authenticate_business!:
-        business_required: "Vous devez être connecté en tant qu'entreprise pour accéder à cette page."
-        log_as_business: "Se connecter en tant qu'entreprise"
   contact:
     index:
       address: Adresse
