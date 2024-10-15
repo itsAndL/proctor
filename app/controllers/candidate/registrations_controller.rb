@@ -32,4 +32,8 @@ class Candidate::RegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for(_resource)
     redirect_to_appropriate_path
   end
+
+  def after_sign_in_path_for(_resource)
+    redirect_to_appropriate_path
+  end
 end
