@@ -786,7 +786,7 @@ en:
     name_placeholder: Name
     send_invitation_email: Send an invitation email to candidates.
   footer_component:
-    about_us: About Us
+    about_us: About us
     all_rights_reserved: All rights reserved
     contact: Contact
     features: Features
@@ -799,7 +799,7 @@ en:
     share_link: Share link
   nav_bar:
     guest_component:
-      about_us: About Us
+      about_us: About us
       contact: Contact
       features: Features
       get_started: Get started
