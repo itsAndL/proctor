@@ -239,7 +239,7 @@ fr:
       candidates: Candidats
       create_assessment: Créer une évaluation
       date_created: Date de création
-      edit: Editer
+      edit: Modifier
       inactive: Inactif (%{count})
       last_activity: Dernière activité
       progress: Progrès
@@ -500,7 +500,7 @@ fr:
         actions: Actions
         add_user: Ajouter un utilisateur
         archive: Archives
-        edit: Editer
+        edit: Modifier
         manage_team_members: Gérer les membres de l'équipe
         owner: Propriétaire
         reset_pass: Réinitialiser le mot de passe
