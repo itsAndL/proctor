@@ -608,12 +608,12 @@ en:
         sign_in_with: Sign in with
         sign_up: Sign up
   duration:
-    hour: Hour
-    min: Min
-    minute: Minute
-    sec: Sec
-    second: Second
-    zero_min: Zero min
+    hour: hour
+    min: min
+    minute: minute
+    sec: sec
+    second: second
+    zero_min: 0 min
   email_inviting_component:
     actions: Actions
     add: Add
