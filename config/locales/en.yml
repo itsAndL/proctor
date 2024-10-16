@@ -472,7 +472,7 @@ en:
       rate_answer: Rate Answer
       review_answer: Review Answer
       what_to_look_for: What to Look For in the Answer?
-      comment_placeholder: Add your private notes here (auto-saved)...
+      comment_placeholder: Comment...
     update:
       rating_update_success: Rating updated successfully
   custom_questions_table_component:

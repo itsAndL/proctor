@@ -472,7 +472,7 @@ fr:
       rate_answer: Taux de réponse
       review_answer: Réponse à l'examen
       what_to_look_for: Que faut-il attendre de la réponse ?
-      comment_placeholder: Ajoutez vos notes privées ici (enregistrement automatique)...
+      comment_placeholder: Commentaire...
     update:
       rating_update_success: Note mise à jour avec succès
   custom_questions_table_component:
