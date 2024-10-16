@@ -229,7 +229,7 @@ export default class WebcamHandler {
           canvas.height = video.videoHeight;
           canvas.getContext('2d').drawImage(video, 0, 0);
           const imageDataUrl = canvas.toDataURL('image/jpeg');
-          this.controller.updateSender.debouncedSendUpdate({ webcam_image: imageDataUrl });
+          this.controller.updateSender.sendUpdate({ webcam_image: imageDataUrl });
           video.pause();
           video.srcObject = null;
           this.reportWebcamStatus(true);
