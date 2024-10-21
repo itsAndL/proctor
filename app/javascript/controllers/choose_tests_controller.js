@@ -117,7 +117,7 @@ export default class extends Controller {
     return this.createButton('add-test-btn black-button px-6 ml-auto', I18n.choose_tests_controller.add, '')
   }
 
-  createButton(className, text, iconSvg) {    
+  createButton(className, text, iconSvg) {
     const button = document.createElement('button')
     button.type = 'button'
     button.className = className
