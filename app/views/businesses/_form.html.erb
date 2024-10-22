@@ -90,7 +90,7 @@
             <div class="col-span-2">
               <div class="grid grid-cols-1 gap-x-6 gap-y-6">
                 <div>
-                  <%= user_form.label :locale, t('.language'), class: "primary-label" %>
+                  <%= user_form.label :locale, t('.language'), class: "required-label" %>
                   <%= user_form.select :locale, 
                         User.locales.keys.map { |locale| [User.human_enum_name(:locale, locale), locale] },
                         { prompt: t('.select_language'), selected: user_form.object&.locale || current_user.locale }, 

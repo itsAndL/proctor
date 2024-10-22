@@ -28,7 +28,7 @@ class BusinessesController < ApplicationController
 
     if @business.update(business_params)
       I18n.locale = new_locale
-      redirect_to secondary_root_path, notice: t('flash.personalize_successfully_updated', resource: Business.model_name.human)
+      redirect_to edit_business_path(@business), notice: t('flash.personalize_successfully_updated', resource: Business.model_name.human)
     else
       render :edit, status: :unprocessable_entity
     end

@@ -314,15 +314,15 @@ fr:
         see_results_prompt: Vous souhaitez consulter vos résultats maintenant ? Nous vous redirigerons automatiquement vers les résultats de votre évaluation.
       index:
         company_name: Nom de l'entreprise
-        invited_on: Invité sur
+        invited_on: Invité le
         last_activity: Dernière activité
         my_assessments: Mes évaluations
         no_assessments_message: Vous n'avez encore été invité à aucune évaluation.
         no_assessments_title: Pas encore d'évaluation
       overview:
         assessment_structure: 'Cette évaluation comprend <strong>%{parts}</strong>. Il faudra environ <strong>%{duration}</strong> pour la mener à bien <strong>.</strong> '
-        assessment_value: Cette évaluation vous permettra de mettre en valeur vos compétences et vos connaissances.
-        before_you_start: 'Quelques précisions avant de commencer :'
+        assessment_value: La réalisation de cette évaluation vous permettra de mettre en valeur vos compétences et connaissances.
+        before_you_start: 'Quelques points avant de commencer :'
         calculator_use: Vous pouvez utiliser une calculatrice, un stylo et du papier.
         camera_usage: Veuillez autoriser l'utilisation de votre appareil photo/webcam et ne pas laisser le mode plein écran. Des photos de vous seront prises périodiquement au cours de l'évaluation. Ces mesures sont prises pour garantir l'équité pour tous.
         completion_status: Vous avez effectué %{completed} des %{total} tests.
@@ -347,10 +347,10 @@ fr:
         next: Suivant
         restart_device: Redémarrez votre appareil et essayez d'accéder à nouveau à l'évaluation en utilisant le lien figurant dans l'e-mail d'invitation.
         supported_browser: Assurez-vous que vous utilisez un <a target='_blank' href='%{url}' class='underline'><strong>un navigateur compatible.</strong></a>
-        webcam_troubleshoot: Des problèmes avec votre webcam ?
+        webcam_troubleshoot: Un problème avec votre webcam ?
       show:
         no_time_limit: Pas de limite de temps
-        about: A propos de
+        about: À propos
         approx_time: Durée approximative de l'évaluation
         audio_info: Allumez vos haut-parleurs ou votre casque (pour écouter le son).
         before_you_start: Quelques précisions avant de commencer
@@ -359,15 +359,15 @@ fr:
         company_name: Nom de l'entreprise
         completion_recommendation: Nous recommandons de réaliser l'évaluation en une seule fois.
         important_things: Les choses importantes
-        invited_on: Invité sur
-        out_of: hors de
+        invited_on: Invité le
+        out_of: sur
         preview_questions: Avant chaque test, il peut y avoir des questions de prévisualisation, mais <strong>sachez que le chronomètre du test a déjà commencé</strong>.
-        resume_assessment: Évaluation du curriculum vitae
+        resume_assessment: Reprendre l'évaluation
         score: Score
         start_assessment: Début de l'évaluation
         tests: Tests
         time_left: Temps restant
-        time_taken: Temps nécessaire
+        time_taken: Temps pris
         timed_assessment: L'évaluation est chronométrée. Un chronomètre est affiché par test ou par question.
         your_progress: Vos progrès
     custom_questions:
@@ -387,12 +387,12 @@ fr:
         your_name: Votre nom
     tests:
       feedback:
-        finish: Finition
+        finish: Terminer
         finished_first_test: Premier test terminé
         intro: Aidez-nous à améliorer ce test en nous faisant part de vos commentaires anonymes. Votre réponse ne sera accessible qu'à AssessKit, et non à votre évaluateur.
         measurement_opinion: Selon vous, le test a-t-il mesuré avec précision vos compétences en %{skill} ?
         placeholder: Veuillez nous en dire plus sur votre réponse...
-        somewhat: Un peu
+        somewhat: Quelque peu
         'no': Non
         'yes': Oui
   candidate_rating_component:
