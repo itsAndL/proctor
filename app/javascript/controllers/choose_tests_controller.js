@@ -102,7 +102,7 @@ export default class extends Controller {
   createInactiveTest(number) {
     const div = document.createElement('div')
     div.className = "inactive-test cursor-pointer rounded-xl px-5 py-3 text-sm font-semibold text-gray-400 border border-dashed border-gray-400 shadow-sm text-center"
-    test_number = `${I18n.choose_tests_controller.test_placement}${number}`
+    const test_number = `${I18n.choose_tests_controller.test_placement}${number}`
     div.innerHTML = `
       <span>${test_number}</span>
       <input type="hidden" name="assessment[test_ids][]" value="">`
@@ -110,19 +110,19 @@ export default class extends Controller {
   }
 
   createRemoveButton() {
-    return this.createButton('remove-test-btn danger-button px-3 ml-auto', I18n.choose_tests_controller.remove, this.removeIconSvg())
+    return this.createButton('remove-test-btn danger-button px-3 ml-auto', I18n.choose_tests_controller.remove, this.removeIconSvg(), 'remove')
   }
 
   createAddButton() {
-    return this.createButton('add-test-btn black-button px-6 ml-auto', I18n.choose_tests_controller.add, '')
+    return this.createButton('add-test-btn black-button px-6 ml-auto', I18n.choose_tests_controller.add, '', 'add')
   }
 
-  createButton(className, text, iconSvg) {
+  createButton(className, text, iconSvg, action) {    
     const button = document.createElement('button')
     button.type = 'button'
     button.className = className
     button.innerHTML = `${iconSvg}${text}`
-    button.setAttribute('data-action', `choose-tests#${text.toLowerCase()}Test`)
+    button.setAttribute('data-action', `choose-tests#${action.toLowerCase()}Test`)
     return button
   }
 
