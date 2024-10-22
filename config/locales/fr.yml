@@ -858,12 +858,12 @@ fr:
     default_placeholder: Rechercher
   share_link_component:
     active_source: Source active
-    copy_invitation_text: Copier le texte de l'invitation
+    copy_invitation_text: 'Copiez et ajoutez ce texte à votre invitation :'
     copy_link: Copier le lien
-    invitation_text: "Nous voulons nous assurer que tout le monde ait une chance équitable et égale, c'est pourquoi nous utilisons une évaluation AssessKit (%{root_url})\n. Cela aide à maintenir l'équité et l'intégrité de notre processus.\nPrêt à commencer ? Cliquez sur le lien ci-dessous:\n%{public_assessment_url}"
-    invitation_text_html: "Nous voulons nous assurer que tout le monde ait une chance équitable et égale, c'est pourquoi nous utilisons une évaluation AssessKit (%{root_url})\n. Cela aide à maintenir l'équité et l'intégrité de notre processus.\nPrêt à commencer ? Cliquez sur le lien ci-dessous:\n%{public_assessment_url}"
+    invitation_text: "Nous voulons nous assurer que tout le monde a une chance équitable et égale, c'est pourquoi nous utilisons une évaluation AssessKit (%{root_url}).\n\nCela aide à maintenir l'équité et l'intégrité de notre processus.\n\nPrêt à commencer ? Cliquez sur le lien ci-dessous :\n\n%{public_assessment_url}"
+    invitation_text_html: "Nous voulons nous assurer que tout le monde a une chance équitable et égale, c'est pourquoi nous utilisons une évaluation AssessKit (%{root_url})."
     invite_candidates: Invitez des candidats en partageant un lien public. Ce lien les dirigera vers l'évaluation et capturera leur nom et leur e-mail à des fins de suivi.
-    ready_to_start: Prêt à commencer
+    ready_to_start: Cela aide à maintenir l'équité et l'intégrité de notre processus.<p class="mt-5">Prêt à commencer ? Cliquez sur le lien ci-dessous :</p>
   test_card_component:
     add: Ajouter
     details: Détails

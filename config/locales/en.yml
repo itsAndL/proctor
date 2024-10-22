@@ -860,8 +860,8 @@ en:
     active_source: Active source
     copy_invitation_text: 'Copy and add this text to your invitation:'
     copy_link: Copy link
-    invitation_text: "We want to ensure that everyone has a fair and equal chance, so we're using a AssessKit assessment (%{root_url}).\nThis helps maintain fairness and integrity in our process.\nReady to get started? Click the link below:\n%{public_assessment_url}"
-    invitation_text_html: "We want to ensure that everyone has a fair and equal chance, so we're using a AssessKit assessment (%{root_url}).\nThis helps maintain fairness and integrity in our process.\nReady to get started? Click the link below:\n%{public_assessment_url}"
+    invitation_text: "We want to ensure that everyone has a fair and equal chance, so we're using a AssessKit assessment (%{root_url}).\n\nThis helps maintain fairness and integrity in our process.\n\nReady to get started? Click the link below:\n\n%{public_assessment_url}"
+    invitation_text_html: "We want to ensure that everyone has a fair and equal chance, so we're using a AssessKit assessment (%{root_url})."
     invite_candidates: Invite candidates by sharing a public link. This link will direct them to the assessment and capture their name and email for tracking purposes.
     ready_to_start: This helps maintain fairness and integrity in our process.<p class="mt-5">Ready to get started? Click the link below:</p>
   test_card_component:
