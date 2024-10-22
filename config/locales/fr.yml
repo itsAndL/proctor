@@ -618,7 +618,7 @@ fr:
   errors:
     format: "%{attribute} %{message}"
     messages:
-      max_file_size_invalid: "doit être inférieur à %{max_size}MB"
+      max_file_size_invalid: "doit être inférieur à 2MB"
       content_type_invalid: "contient un type de contenu non valide"
       inclusion: "La valeur doit être soit %{values}."    
       too_many_options: "Vous ne pouvez avoir au maximum que 5 options."
@@ -860,7 +860,7 @@ fr:
     active_source: Source active
     copy_invitation_text: Copier le texte de l'invitation
     copy_link: Copier le lien
-    invitation_text: Texte de l'invitation
+    invitation_text: "Nous voulons nous assurer que tout le monde ait une chance équitable et égale, c'est pourquoi nous utilisons une évaluation AssessKit (%{root_url})\n. Cela aide à maintenir l'équité et l'intégrité de notre processus.\nPrêt à commencer ? Cliquez sur le lien ci-dessous:\n%{public_assessment_url}"
     invitation_text_html: Texte de l'invitation en HTML
     invite_candidates: Inviter des candidats
     ready_to_start: Prêt à commencer

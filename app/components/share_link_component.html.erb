@@ -40,7 +40,7 @@
       <h3 class="text-gray-900 font-bold text-sm"><%= t('.copy_invitation_text') %></h3>
       <div class="mt-3 flex gap-x-1.5 items-end -mr-3 ">
         <div class="overflow-x-auto">
-          <div class="border border-gray-200 p-4 rounded-lg bg-white <%= @assessment.public_link_active? ? 'text-gray-900' : 'text-gray-400 pointer-events-none' %> font-medium text-sm" data-copy-target="source" data-copy-text="<%= t('.invitation_text', root_url: normalized_root_url, public_assessment_url: normalized_public_assessment_url) %>">
+        <div class="border border-gray-200 p-4 rounded-lg bg-white <%= @assessment.public_link_active? ? 'text-gray-900' : 'text-gray-400 pointer-events-none' %> font-medium text-sm" data-copy-target="source" data-copy-text="<%= t('.invitation_text', root_url: normalized_root_url, public_assessment_url: normalized_public_assessment_url) %>">
             <p><%= t('.invitation_text_html', root_url: @assessment.public_link_active? ? link_to(normalized_root_url, root_path, class: "text-blue-600 break-words underline", data: {turbo: false}, target: :_blank) : content_tag(:span, normalized_root_url, class: "break-words underline")) %></p>
             <p class="mt-5"><%= t('.ready_to_start').html_safe %></p>
             <% if @assessment.public_link_active? %>
