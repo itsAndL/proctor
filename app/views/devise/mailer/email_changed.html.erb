@@ -12,15 +12,15 @@
                     <tr>
                       <td class="r15-c nl2go-default-textstyle" align="left" style="color: #3b3f44; font-family: Arial; font-size: 15px; line-height: 1.5; word-break: break-word; text-align: left; valign: top;">
                         <div>
-                          <h2 class="default-heading2" style="margin: 0; color: #1f2d3d; font-family: Poppins,arial; font-size: 32px; word-break: break-word; line-height: 34px"><span style="color: #242424; font-family: Arial, helvetica, sans-serif; font-size: 27px;">Hello <%= @email %>!</span></h2>
+                          <h2 class="default-heading2" style="margin: 0; color: #1f2d3d; font-family: Poppins,arial; font-size: 32px; word-break: break-word; line-height: 34px"><span style="color: #242424; font-family: Arial, helvetica, sans-serif; font-size: 27px;"><%= t(".greeting", recipient: @email) %></span></h2>
                           <p style="margin: 0;">&nbsp;</p>
                           <p style="margin: 0;">
                             <span style="color: #242424; font-family: Arial, helvetica, sans-serif;">
                               <strong>
                                 <% if @resource.try(:unconfirmed_email?) %>
-                                  We're contacting you to notify you that your email is being changed to <%= @resource.unconfirmed_email %>.
+                                  <%= t(".message_unconfirmed", email: @resource.unconfirmed_email) %>
                                 <% else %>
-                                  We're contacting you to notify you that your email has been changed to <%= @resource.email %>.
+                                  <%= t(".message", email: @resource.email) %>
                                 <% end %>
                               </strong>
                             </span>

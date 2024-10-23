@@ -20,7 +20,7 @@
           <div class="rounded-md p-4 flex flex-col bg-white shadow-lg gap-3">
             <% I18n.available_locales.each do |locale| %>
               <% active_class = I18n.locale == locale ? "text-blue-600 hover:text-blue-500" : "text-gray-700 hover:text-gray-500" %>        
-              <%= link_to t("shared.languages.#{locale}"), url_for(locale: locale), class: "text-sm font-semibold #{active_class}" %>
+              <%= link_to t(".locales.#{locale}"), url_for(locale: locale), class: "text-sm font-semibold #{active_class}" %>
             <% end %>
           </div>
         </div>
@@ -70,13 +70,13 @@
             <div class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dropdown">
               <button type="button" class="flex items-center gap-x-1.5">
                 <div><%= helpers.svg_tag "globe_alt", class: "size-5", "stroke-width": 2 %></div>
-                <span><%= t("shared.languages.#{I18n.locale}") %></span>
+                <span><%= t(".locales.#{I18n.locale}") %></span>
               </button>
               <div class="dropdown-content absolute top-9 left-4 z-10 -mr-1 mt-2 border rounded-md">
                 <div class="rounded-md p-4 flex flex-col bg-white shadow-lg gap-3">
                   <% I18n.available_locales.each do |locale| %>
                     <% active_class = I18n.locale == locale ? "text-blue-600 hover:text-blue-500" : "text-gray-700 hover:text-gray-500" %>        
-                    <%= link_to t("shared.languages.#{locale}"), url_for(locale: locale), class: "text-sm font-semibold #{active_class}" %>
+                    <%= link_to t(".locales.#{locale}"), url_for(locale: locale), class: "text-sm font-semibold #{active_class}" %>
                   <% end %>
                 </div>
               </div>

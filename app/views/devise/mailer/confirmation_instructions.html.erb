@@ -12,9 +12,9 @@
                     <tr>
                       <td class="r15-c nl2go-default-textstyle" align="left" style="color: #3b3f44; font-family: Arial; font-size: 15px; line-height: 1.5; word-break: break-word; text-align: left; valign: top;">
                         <div>
-                          <h2 class="default-heading2" style="margin: 0; color: #1f2d3d; font-family: Poppins,arial; font-size: 32px; word-break: break-word; line-height: 34px"><span style="color: #242424; font-family: Arial, helvetica, sans-serif; font-size: 27px;">Welcome <%= @email %>!</span></h2>
+                          <h2 class="default-heading2" style="margin: 0; color: #1f2d3d; font-family: Poppins,arial; font-size: 32px; word-break: break-word; line-height: 34px"><span style="color: #242424; font-family: Arial, helvetica, sans-serif; font-size: 27px;"><%= t(".greeting", recipient: @email) %></span></h2>
                           <p style="margin: 0;">&nbsp;</p>
-                          <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;"><strong>You can confirm your account email through the link below:</strong></span></p>
+                          <p style="margin: 0;"><span style="color: #242424; font-family: Arial, helvetica, sans-serif;"><strong><%= t(".instruction") %></strong></span></p>
                           <p style="margin: 0;">&nbsp;</p>
                         </div>
                       </td>
@@ -65,8 +65,8 @@
                                         </v:roundrect>
                                         <![endif]-->
                                         <!--[if !mso]><!-- -->
-                                          <%= link_to confirmation_url(@resource, confirmation_token: @token), title: "Confirm my account", data: {btn: 1}, sib_link_id: 0, class: "r23-r default-button", style: "font-style: normal; font-weight: normal; line-height: 1.15; text-decoration: none; word-break: break-word; border-style: solid; word-wrap: break-word; display: block; -webkit-text-size-adjust: none; background-color: #2563eb; border-color: #000000; border-radius: 50px; border-width: 0px; color: #000000; font-family: open sans,arial,helvetica,sans-serif; font-size: 16px; height: 18px; mso-hide: all; padding-bottom: 12px; padding-left: 5px; padding-right: 5px; padding-top: 12px; width: 190px;" do %>
-                                            <span style="color: #ffffff; font-size: 15px;">Confirm my account</span>
+                                          <%= link_to confirmation_url(@resource, confirmation_token: @token), title: t(".action"), data: {btn: 1}, sib_link_id: 0, class: "r23-r default-button", style: "font-style: normal; font-weight: normal; line-height: 1.15; text-decoration: none; word-break: break-word; border-style: solid; word-wrap: break-word; display: block; -webkit-text-size-adjust: none; background-color: #2563eb; border-color: #000000; border-radius: 50px; border-width: 0px; color: #000000; font-family: open sans,arial,helvetica,sans-serif; font-size: 16px; height: 18px; mso-hide: all; padding-bottom: 12px; padding-left: 5px; padding-right: 5px; padding-top: 12px; width: 190px;" do %>
+                                            <span style="color: #ffffff; font-size: 15px;"><%= t(".action") %></span>
                                           <% end %>
                                         <!--<![endif]--> 
                                       </td>

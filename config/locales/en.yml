@@ -87,7 +87,7 @@ en:
           english: English
           french: French
       user:
-        locale:
+        locale: &locales
           en: English
           fr: French
       assessment_participation:
@@ -527,7 +527,7 @@ en:
       reset_password_instructions:
         action: Change my password
         greeting: Hello %{recipient}!
-        instruction: Someone has requested a link to change your password. You can do this through the link below.
+        instruction: Someone has requested a link to change your password. <strong>You can do this through the link below.</strong>
         instruction_2: If you didn't request this, please ignore this email.
         instruction_3: Your password won't change until you access the link above and create a new one.
         subject: Reset password instructions
@@ -538,34 +538,40 @@ en:
         message: Your account has been locked due to an excessive number of unsuccessful sign in attempts.
         subject: Unlock instructions
     confirmations:
+      send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
+      confirmed: "Your email address has been successfully confirmed."
       new:
-        already_have_account: Already have account
-        business_dont_have_account: Business dont have account
+        already_have_account: Already have an account?
+        business_dont_have_account: Business and don't have an account?
         create_one: Create one
         email_address: Email address
         log_in: Log in
         resend_confirmation_instructions: Resend confirmation instructions
         resend_instructions: Resend instructions
     passwords:
+      send_instructions: "You will receive an email with instructions on how to reset your password in a few minutes."
+      updated: "Your password has been changed successfully. You are now signed in."
       edit:
-        already_have_account: Already have account
+        already_have_account: Already have an account?
         change_my_password: Change my password
         change_your_password: Change your password
         confirm_password: Confirm password
         create_one: Create one
-        dont_have_account: Dont have account
+        dont_have_account: Don't have an account?
         log_in: Log in
         new_password: New password
       new:
-        already_have_account: Already have account
+        already_have_account: Already have an account?
         click_here: Click here
-        didnt_receive_confirmation_instructions: Didnt receive confirmation instructions
+        didnt_receive_confirmation_instructions: Didn't receive confirmation instructions?
         email_address: Email address
         forgot_your_password: Forgot your password
         log_in: Log in
         send_reset_link: Send reset link
     registrations:
-      updated: "Your account has been successfully updated."    
+      updated: "Your account has been successfully updated."
+      signed_up_but_unconfirmed: "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account."    
+      signed_up: "Welcome! You have signed up successfully."
       edit:
         my_credentials: My credentials
         my_profile: My profile
@@ -584,7 +590,7 @@ en:
       signed_out: You have been signed out.
       signed_in: You are signed in.
       new:
-        dont_have_an_account: Don't have an account
+        dont_have_an_account: Don't have an account?
         email_address: Email address
         forgot_password: Forgot password
         keep_me_logged_in: Keep me logged in
@@ -594,8 +600,8 @@ en:
         sign_up_now: Sign up now
     shared:
       links:
-        didnt_receive_confirmation_instructions: Didnt receive confirmation instructions
-        didnt_receive_unlock_instructions: Didnt receive unlock instructions
+        didnt_receive_confirmation_instructions: Didn't receive confirmation instructions
+        didnt_receive_unlock_instructions: Didn't receive unlock instructions
         forgot_your_password: Forgot your password
         log_in: Log in
         sign_in_with: Sign in with
@@ -642,7 +648,7 @@ en:
       not_found: not found
       not_locked: was not locked
       required: "is required"
-      not_allowd_without_invitation: 'You are not allowed to create an account without an invitation'
+      not_allowed_without_invitation: 'You are not allowed to create an account without an invitation'
   filter_component:
     clear: Clear
     filters: Filters
@@ -703,7 +709,7 @@ en:
       copy_paste_blocking_description: Disable copy-paste functions to maintain test integrity.
       create_tests: Create tests
       create_tests_description: Select and customize predefined tests from our extensive test library to fit your needs.
-      cta_button: Get Started Today
+      cta_button: Get started today
       cta_description: Start today and see the difference AssessKit can make.
       cta_title: Ready to Secure Your Tests?
       customizable_tests: Customizable Tests
@@ -716,7 +722,7 @@ en:
       enterprise_description: Designed for large enterprises and organizations with extensive testing needs.
       enterprise_price: "$79"
       features_title: Comprehensive Remote Testing Features
-      for_everyone: for everyone
+      for_everyone: for Everyone
       full_screen_mode: Full-Screen Mode
       full_screen_mode_description: Enforce full-screen mode to prevent switching between applications.
       get_started: Get started
@@ -752,8 +758,8 @@ en:
       why_choose_assesskit: Why Choose AssessKit?
   invitation_authentication_service:
     authenticate:
-      candidate_registration_required: Candidate registration required
-      candidate_required: Candidate required
+      candidate_registration_required: To proceed with the assessment, please complete your registration as a candidate.
+      candidate_required: You need to be logged in as a candidate to access this page.
   invite_candidates:
     link_inactive:
       apology: Apology
@@ -785,6 +791,7 @@ en:
       log_in: Log in
       pricing: Pricing
       today: Today
+      locales: *locales
     user_component:
       settings: Settings
       account: Account

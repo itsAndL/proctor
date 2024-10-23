@@ -87,7 +87,7 @@ fr:
           english: Anglais
           french: Français
       user:
-        locale:
+        locale: &locales
           en: Anglais
           fr: Français
       assessment_participation:
@@ -155,7 +155,7 @@ fr:
     exit: "Sortie"
     save_and_exit: "Enregistrer et quitter"
   mailer:
-    all_the_best: "Tout le meilleur,"
+    all_the_best: "Bien à vous,"
     team_signature: "L'équipe AssessKit"
   assessment_mailer:
     invite_email:
@@ -283,7 +283,7 @@ fr:
         company_name: Nom de l'entreprise
         email_address: Adresse e-mail
         get_started: Commencez avec AssessKit gratuitement
-        login: Connexion
+        login: Connectez-vous
         password: Mot de passe
         sign_up: Inscrivez-vous
         take_me: Emmenez-moi là-bas
@@ -380,7 +380,7 @@ fr:
         create_profile: Créez votre profil AssessKit
         email_address: Adresse e-mail
         enter_email: Entrez l'adresse e-mail à laquelle vous avez reçu une invitation d'évaluation.
-        login: Connexion
+        login: Connectez-vous
         password: Mot de passe
         sign_up: Inscrivez-vous
         take_me: Emmenez-moi là-bas
@@ -434,12 +434,12 @@ fr:
       address: Adresse
       email: E-mail
       first_name: Prénom
-      get_in_touch: Prendre contact
+      get_in_touch: Contactez-nous
       help_message: Vous avez des questions ou besoin de plus d'informations ? Nous sommes là pour vous aider. Contactez-nous en utilisant les informations ci-dessous ou remplissez le formulaire et nous vous répondrons dans les plus brefs délais.
       last_name: Nom de famille
       message: Message
       phone_number: Numéro de téléphone
-      send_message: Envoyer un message
+      send_message: Envoyer le message
       telephone: Téléphone
   custom_question_card_component:
     add: Ajouter
@@ -527,7 +527,7 @@ fr:
       reset_password_instructions:
         action: Changer mon mot de passe
         greeting: Bonjour %{recipient}!
-        instruction: Quelqu'un a demandé un lien pour changer votre mot de passe. Vous pouvez le faire via le lien ci-dessous.
+        instruction: Quelqu'un a demandé un lien pour changer votre mot de passe. <strong>Vous pouvez le faire via le lien ci-dessous.</strong>
         instruction_2: Si vous n'avez pas fait cette demande, veuillez ignorer cet e-mail.
         instruction_3: Votre mot de passe ne sera pas modifié tant que vous n'aurez pas accédé au lien ci-dessus et créé un nouveau mot de passe.
         subject: Instructions de réinitialisation du mot de passe
@@ -538,15 +538,19 @@ fr:
         message: Votre compte a été verrouillé en raison d'un nombre excessif de tentatives de connexion infructueuses.
         subject: Instructions de déverrouillage
     confirmations:
+      send_instructions: "Vous allez recevoir un email contenant les instructions pour confirmer votre adresse email dans quelques minutes."
+      confirmed: "Votre adresse email a été confirmée avec succès."
       new:
         already_have_account: Vous avez déjà un compte ?
-        business_dont_have_account: L'entreprise n'a pas de compte ?
+        business_dont_have_account: Entreprise et vous n'avez pas de compte ?
         create_one: Créez-en un
         email_address: Adresse e-mail
-        log_in: Connexion
+        log_in: Connectez-vous
         resend_confirmation_instructions: Renvoyer les instructions de confirmation
         resend_instructions: Renvoyer les instructions
     passwords:
+      send_instructions: "Vous allez recevoir un email contenant les instructions pour réinitialiser votre mot de passe dans quelques minutes."
+      updated: "Votre mot de passe a été modifié avec succès. Vous êtes maintenant connecté(e)."
       edit:
         already_have_account: Vous avez déjà un compte ?
         change_my_password: Changer mon mot de passe
@@ -554,7 +558,7 @@ fr:
         confirm_password: Confirmer le mot de passe
         create_one: Créez-en un
         dont_have_account: Vous n'avez pas de compte ?
-        log_in: Connexion
+        log_in: Connectez-vous
         new_password: Nouveau mot de passe    
       new:
         already_have_account: Vous avez déjà un compte ?
@@ -562,10 +566,12 @@ fr:
         didnt_receive_confirmation_instructions: Vous n'avez pas reçu les instructions de confirmation ?
         email_address: Adresse e-mail
         forgot_your_password: Mot de passe oublié ?
-        log_in: Connexion
+        log_in: Connectez-vous
         send_reset_link: Envoyer le lien de réinitialisation
     registrations:
       updated: "Votre compte a été mis à jour avec succès."
+      signed_up_but_unconfirmed: "Un message de confirmation a été envoyé à votre adresse email. Veuillez suivre le lien pour activer votre compte."
+      signed_up: "Bienvenue ! Vous vous êtes inscrit(e) avec succès."
       edit:
         my_credentials: "Mes identifiants"
         my_profile: "Mon profil"
@@ -597,7 +603,7 @@ fr:
         didnt_receive_confirmation_instructions: Vous n'avez pas reçu les instructions de confirmation ?
         didnt_receive_unlock_instructions: Vous n'avez pas reçu les instructions de déverrouillage ?
         forgot_your_password: Mot de passe oublié ?
-        log_in: Connexion
+        log_in: Connectez-vous
         sign_in_with: Se connecter avec
         sign_up: Inscrivez-vous
   duration:
@@ -695,7 +701,7 @@ fr:
       anti_cheating_statistics_description: Des rapports détaillés sur les comportements de tricherie potentiels.
       basic: De base
       basic_description: Idéal pour les individus et les petites équipes qui commencent à travailler.
-      basic_price: "$29"
+      basic_price: "29€"
       benefits: Avantages
       convenience_and_flexibility: Commodité et flexibilité
       convenience_and_flexibility_description: Effectuer des tests à distance, ce qui permet de gagner du temps et d'économiser des ressources.
@@ -703,7 +709,7 @@ fr:
       copy_paste_blocking_description: Désactiver les fonctions de copier-coller pour préserver l'intégrité des tests.
       create_tests: Créer des tests
       create_tests_description: Sélectionnez et personnalisez des tests prédéfinis à partir de notre vaste bibliothèque de tests pour répondre à vos besoins.
-      cta_button: Commencez dès aujourd'hui
+      cta_button: Commencer maintenant
       cta_description: Commencez dès aujourd'hui et voyez la différence qu'AssessKit peut faire.
       cta_title: Prêt à sécuriser vos tests ?
       customizable_tests: Tests personnalisables
@@ -714,7 +720,7 @@ fr:
       ensuring: Garantir
       enterprise: Entreprise
       enterprise_description: Conçu pour les grandes entreprises et les organisations ayant des besoins importants en matière de tests.
-      enterprise_price: "$79"
+      enterprise_price: "79€"
       features_title: Fonctionnalités complètes de test à distance
       for_everyone: pour tous
       full_screen_mode: Mode plein écran
@@ -725,7 +731,7 @@ fr:
       in_remote_testing: dans les tests à distance
       increased_security: Sécurité accrue
       increased_security_description: Garantissez l'intégrité de votre processus de test grâce à des outils de surveillance avancés.
-      integrity: Intégrité
+      integrity: intégrité
       invite_test_takers: Inviter les participants au test
       invite_test_takers_description: Envoyer des invitations sécurisées aux candidats.
       monitor_exams: Surveiller les examens
@@ -735,14 +741,14 @@ fr:
       priority_support: Soutien prioritaire
       pro: Pro
       pro_description: Parfait pour les petites et moyennes entreprises.
-      pro_price: "$49"
+      pro_price: "49€"
       reliable_results: Des résultats fiables
       reliable_results_description: Faites confiance aux notes et aux statistiques fournies, qui reflètent des performances réelles.
       secure_test_environment: Environnement de test sécurisé
       secure_test_environment_description: Surveiller toutes les activités de l'écran afin d'empêcher tout accès non autorisé.
       simple_and_effective: Simple et efficace
       simple_pricing: Tarification simple
-      start_free_trial: Démarrer l'essai gratuit
+      start_free_trial: Essai gratuit
       time_limits: Limites de temps
       unlimited_customizable_tests: Nombre illimité de tests personnalisables
       user_friendly_interface: Interface conviviale
@@ -752,8 +758,8 @@ fr:
       why_choose_assesskit: Pourquoi choisir AssessKit ?
   invitation_authentication_service:
     authenticate:
-      candidate_registration_required: "L'inscription du candidat est requise"
-      candidate_required: "Candidat requis"
+      candidate_registration_required: "Pour continuer l'évaluation, veuillez compléter votre inscription en tant que candidat."
+      candidate_required: "Vous devez être connecté(e) en tant que candidat pour accéder à cette page."
   invite_candidates:
     link_inactive:
       apology: Excuses
@@ -782,9 +788,10 @@ fr:
       features: Fonctionnalités
       for_candidates: Pour les candidats
       get_started: Commencer
-      log_in: Connexion
+      log_in: Connectez-vous
       pricing: Tarification
       today: Aujourd'hui
+      locales: *locales
     user_component:
       settings: Paramètres
       account: Compte
