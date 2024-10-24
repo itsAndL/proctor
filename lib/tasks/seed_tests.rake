@@ -9,9 +9,6 @@ namespace :seed do
 
     puts "Seeding tests from gist with id=#{gist_id}"
     tests_data.each do |test_data|
-      test_exists = Test.exists?(title: test_data['title'])
-      next if test_exists
-
       test = SeedsHelper.create_multiple_choice_test!(test_data['title'], test_data['attributes'])
       puts "Seeded test: #{test.title}"
       test_data['questions'].each do |question|
