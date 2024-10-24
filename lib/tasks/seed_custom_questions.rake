@@ -2,7 +2,7 @@
 
 namespace :seed do
   desc 'Custom seeding for custom questions from github gist'
-  task tests: :environment do
+  task custom_questions: :environment do
     gist_id = parse_gist_flag(ARGV)
 
     custom_questions_data = SeedsHelper.fetch_gist_content(gist_id)
